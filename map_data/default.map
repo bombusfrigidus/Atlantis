@@ -1,0 +1,43 @@
+definitions = "definition.csv"
+provinces = "provinces.png"
+rivers = "rivers.png"
+topology = "heightmap.heightmap"
+continent = "continent.txt"
+adjacencies = "adjacencies.csv"
+island_region = "island_region.txt"
+seasons = "seasons.txt"
+
+#############
+# SEA ZONES
+#############
+
+sea_zones = RANGE { 10 12 } 
+
+###############
+# MAJOR RIVERS
+###############
+
+########
+# LAKES
+########
+
+#####################
+# IMPASSABLE TERRAIN
+#####################
+# Can be colored by whoever owns the most of the province's neighbours.
+# Blocks unit movement.
+
+############
+# WASTELAND
+############
+# These are actually supposed to be Wasteland:
+# Cannot be colored. Blocks unit movement, used for things like Sahara desert. 
+
+# IMPASSABLE SEA ZONES
+# These sea provinces cannot be crossed/sailed
+
+impassable_seas = LIST { 13 }
+
+# UNUSED PROVINCES
+# These provinces cause issues because they are passable land, but not part of any title.
+# They are probably not visible anywhere on the map, so feel free to reuse them (after double checking that they are actually missing).

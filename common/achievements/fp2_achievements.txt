@@ -1,0 +1,87 @@
+﻿fp2_historys_best_friends = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_basque_in_my_glory = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_friendship_is_magic = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_high_stakes_chess = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_iberia_or_iberia = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_andalusian_inquisition = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_iberian_hostilities = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_iberian_conciliation = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_iberian_compromise = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_holiday_in_iberia = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp2_el_cid_achievement = {
+	possible = { 
+		always = no
+		has_fp2_dlc_trigger = yes
+	}
+	happened = { always = no }
+}

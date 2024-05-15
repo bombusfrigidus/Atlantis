@@ -1,0 +1,13 @@
+﻿1 = { 
+	name = "Atlas"
+	dynasty = 1
+	dna = 1
+	religion = "hellenic_pagan"
+	culture = "greek"
+	1.1.1 = {
+		birth = yes
+	}
+	1.1.2 = {
+		death = yes
+	}
+}

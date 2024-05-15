@@ -1,0 +1,79 @@
+﻿fp1_01_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_02_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_03_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_04_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_05_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_06_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_07_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_08_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_09_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp1_10_achievement = {
+	possible = { 
+		always = no
+		has_fp1_dlc_trigger = yes
+	}
+	happened = { always = no }
+}

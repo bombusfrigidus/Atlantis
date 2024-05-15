@@ -1,0 +1,99 @@
+﻿ep1_01_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_02_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_03_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_04_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_05_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_06_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_07_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_08_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_09_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_10_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_11_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_12_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_13_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_14_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_15_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_16_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_17_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_18_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_19_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}
+
+ep1_20_achievement = {
+	possible = { always = no }
+	happened = { always = no }
+}

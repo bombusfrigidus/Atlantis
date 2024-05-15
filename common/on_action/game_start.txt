@@ -1,0 +1,280 @@
+﻿# Empty scope
+on_game_start = {
+	events = {
+		easteregg_event.0001				# Charna and Jakub duel.
+	}
+
+	effect = {
+		#Epidemics 3 months grace
+		set_global_variable = {
+			name = start_epidemic_grace
+			value = yes
+			months = 3
+		}
+
+		### RELIGIOUS THINGS ###
+		# Set up Holy Site Buildings to be buildable in Holy Sites
+		every_religion_global = {
+			every_faith = {
+				every_holy_site = {
+					limit = {
+						NOT = {
+							title_province = {
+								this = province:1 # Atlantis | Watch out for hard-coding.
+							}
+						}
+						title_province = {
+							has_special_building_slot = no
+						}
+					}
+					title_province = {
+						add_special_building_slot = holy_site_other_grand_temple_01
+					}
+				}
+			}
+		}
+		
+		### UNIVERSITIES ###
+
+		### COA ###
+		
+		### GRANDEUR ###
+		#Royal Court: Set starting Grandeur to be the same as Expected
+		if = {
+			limit = {
+				has_dlc_feature = royal_court
+			}
+			every_character_with_royal_court = {
+				set_current_court_grandeur = court_grandeur_minimum_expected
+				apply_hold_court_grace_effect = yes
+				# Stops Hold Court reminders at game start
+				set_variable = {
+					name = last_hold_court_date
+					value = current_year
+				}
+			}
+		}
+
+		### STRUGGLES ###
+
+		### REGENCIES ###
+		# Pre-defined historic regencies setup.
+		## NOTE: we do these first to avoid feed messages getting weird due to regents being replaced immediately after getting their position.
+
+		# Set up anyone who should be in a regency at start whether we have sources or not.
+		## If you start as a child, incapable, or imprisoned, you get a regency.
+		every_ruler = {
+			limit = {
+				OR = {
+					is_adult = no
+					is_incapable = yes
+					is_imprisoned = yes
+					government_has_flag = government_is_clan
+				}
+			}
+			# We don't want to check over so many characters *twice*, so we check again inside the block to determine what type of regency to put 'em in.
+			## Temporary Regencies.
+			if = {
+				limit = { is_imprisoned = yes }
+				trigger_event = {
+					id = diarchy.0001
+					delayed = yes
+				}
+			}
+			if = {
+				limit = { government_has_flag = government_is_clan }
+			}
+			## Entrenched Regencies.
+			else = {
+				trigger_event = {
+					id = diarchy.0011
+					delayed = yes
+				}
+			}
+		}
+		# Sort custom regencies.
+		
+		### FERTILE LANDS ###
+		# For deserts that are supposed to be very fertile
+
+		### DEBUG GLOBAL VARIABLES ###
+		# We set these here so that they present nicely and you can see when some variables register zero.
+
+		# FP3 Struggle.
+
+		# UNITY CONFIG
+
+		# LEGITIMACY CONFIG
+
+	}
+}
+
+# Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
+on_game_start_after_lobby = {
+	effect = {
+		# Make sure that Realm Priests are landed theocrats where it makes sense
+		every_ruler = {
+			limit = {
+				highest_held_title_tier >= tier_duchy
+			}
+			if = {
+				limit = {
+					exists = cp:councillor_court_chaplain
+					cp:councillor_court_chaplain = {
+						is_ruler = no
+					}
+					faith = { has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
+					any_vassal = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+				}
+				random_vassal = {
+					limit = {
+						is_physically_able_adult = yes
+						is_councillor = no
+						government_has_flag = government_is_theocracy
+						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
+						faith = liege.faith
+					}
+					weight = {
+						base = 1
+						modifier = {
+							add = 1000
+							faith.religious_head ?= this
+						}
+						modifier = {
+							add = learning
+						}
+						modifier = {
+							add = primary_title.tier
+						}
+					}
+					liege = {
+						assign_councillor_type = {
+							type = councillor_court_chaplain
+							remove_existing_councillor = yes
+							target = prev
+						}
+					}
+				}
+			}
+		}
+	
+		### GAME RULE: VIEW ON SAME-SEX RELATIONS
+		if = {
+			limit = { has_game_rule = accepted_same_sex_relations }
+			game_rule_accepted_same_sex_relations_effect = yes
+		}
+
+		### GAME RULE: RANDOM RULER PLACEMENT
+		if = {
+			limit = { NOT = { has_game_rule = random_ruler_placement_off } }
+			game_rule_random_ruler_placement_effect = yes
+		}
+
+		### GAME RULE: RANDOMIZE FAITH
+		if = {
+			limit = { has_game_rule = randomized_faiths_on }
+			game_rule_randomize_faith_effect = yes
+		}
+
+		### GAME RULE: FAITH ACCEPTANCE
+		if = {
+			limit = { has_game_rule = full_faith_acceptance }
+			game_rule_faith_acceptance_effect = yes
+		}
+
+		### GAME RULE: GENDER EQUALITY ###
+		if = {
+			limit = { has_game_rule = full_gender_equality }
+			game_rule_full_gender_equality_effect = yes
+		}
+		else_if = {
+			limit = { has_game_rule = inversed_gender_equality }
+			game_rule_inversed_gender_equality_effect = yes
+		}
+
+		### GAME RULE: SEXUALITY DISTRIBUTION ###
+		if = {
+			limit = { NOT = { has_game_rule = sexuality_distribution_default } }
+			game_rule_sexuality_distribution_effect = yes
+		}
+		else = { # So that children 10+ starts with a sexuality
+			child_sexuality_distribution_effect = yes
+		}
+
+		# Give Ruler Designer characters regencies.
+		every_in_global_list = {
+			variable = rd_chars_needing_regencies
+			trigger_event = diarchy.0011
+			# Aaaand clean the list.
+			save_temporary_scope_as = char_temp
+			remove_list_global_variable = {
+				name = rd_chars_needing_regencies
+				target = scope:char_temp
+			}
+		}
+
+		### HOLD COURT STARTING GRACE
+		every_character_with_royal_court = {
+			set_variable = {
+				name = hold_court_cooldown
+	 			days = standard_hold_court_cooldown_time
+	 		}
+		}
+		
+		#Set starting cultural acceptance
+
+		# Specific innovation unlock
+		if = {
+			limit = {
+				game_start_date >= 1066.1.1
+			}
+			every_culture_global = {
+				limit = {
+					OR = {
+						has_cultural_pillar = heritage_arabic
+						this = culture:yemeni
+					}
+				}
+				add_innovation = innovation_ghilman
+			}
+		}
+		# Custom ruler under the HRE should have lowered feudal obligations
+		if = {
+			limit = { exists = title:e_hre.holder }
+			title:e_hre.holder = {
+				every_vassal = {
+					limit = {
+						is_ai = no
+						vassal_contract_has_modifiable_obligations = yes
+					}
+					vassal_contract_decrease_obligation_level = feudal_government_taxes
+					vassal_contract_decrease_obligation_level = feudal_government_levies
+					set_vassal_contract_modification_blocked = no
+				}
+			}
+		}
+		### CE1 LEGITIMACY SETUP ###
+		every_ruler = {
+			limit = {
+				exists = dynasty
+				highest_held_title_tier >= tier_county
+				# Exclude unplayable for now
+				NOR = {
+					government_has_flag = government_is_republic
+					government_has_flag = government_is_theocracy
+				}
+				is_landed = yes
+			}
+			add_legitimacy = base_legitimacy_value
+		}
+	}
+	events = {
+		game_rule.1000	#Autopopulate families.
+	}
+}

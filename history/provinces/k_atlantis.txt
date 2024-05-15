@@ -1,0 +1,52 @@
+# e_atlantis
+#  k_atlantis
+#   d_atlantis 
+#    c_atlantis
+
+# 1 = {
+#     culture = greek
+#     religion = hellenic_pagan
+#     holding = castle_holding
+# }
+
+# 2 = {
+# 	holding = none
+# }
+
+# 3 = {
+# 	holding = none
+# }
+
+#    c_atlantis_b
+
+# 4 = {
+# 	culture = greek
+# 	religion = hellenic_pagan
+# 	holding = tribal_holding
+# }
+
+# 5 = {
+# 	holding = none
+# }
+
+# 6 = {
+# 	culture = greek
+# 	religion = hellenic_pagan
+# 	holding = tribal_holding
+# }
+
+#    c_atlantis_c
+
+# 7 = {
+# 	culture = greek
+# 	religion = hellenic_pagan
+# 	holding = tribal_holding
+# }
+
+# 8 = {
+# 	holding = none
+# }
+
+# 9 = {
+# 	holding = none
+# }

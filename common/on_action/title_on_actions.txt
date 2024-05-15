@@ -1,0 +1,1164 @@
+﻿#On actions about titles
+
+# All on-actions in this file provide scope:transfer_type unless otherwise noted
+# scope:transfer_type has the following permutations:
+# flag:conquest
+# flag:conquest_holy_war
+# flag:conquest_claim
+# flag:conquest_populist
+# flag:inheritance
+# flag:abdication
+# flag:destroyed
+# flag:created
+# flag:usurped
+# flag:granted
+# flag:revoked
+# flag:election
+# flag:independency
+# flag:returned
+# flag:leased_out
+# flag:lease_revoked
+# flag:faction_demand
+# flag:swear_fealty
+
+# A title is destroyed
+# root = the holder before destruction
+# scope:landed_title = the title that is being destroyed
+# Does *not* provide scope:transfer_type
+on_title_destroyed = {
+	events = {
+		british_isles.1031	# Danelaw-England partition calc.
+	}
+
+	effect = {
+		scope:landed_title = {
+			every_claimant = { remove_claim = prev } # remove existing claims
+		}
+	}
+}
+
+# A title is transferred to a new character
+# root = the new holder
+# scope:title = the title that changes hands
+# scope:previous_holder = previous holder. Might be dead
+on_title_gain = {
+	effect = {
+
+		scope:title = { update_dynamic_coa = yes }
+		
+		if = {
+			limit = {
+				scope:title = { is_holy_order = yes }
+				NOT = { has_trait = order_member }
+				government_has_flag = government_is_holy_order
+			}
+			add_trait = order_member
+		}
+
+		#Did I receive a title from my sibling?
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				scope:previous_holder = {
+					is_alive = yes
+					exists = var:sibling_waiting_for_land
+					any_sibling = {
+						this = root
+						this = scope:previous_holder.var:sibling_waiting_for_land
+					}
+				}
+			}
+			add_character_flag = {
+				flag = got_title_from_sibling
+				years = 4
+			}
+		}
+		
+		# Grandeur in elective realms
+		if = {
+			limit = {
+				exists = var:previous_holder_grandeur_value
+				has_royal_court = yes
+			}
+			hidden_effect = {
+				change_current_court_grandeur = -100 # Reset to 0
+				change_current_court_grandeur = var:previous_holder_grandeur_value
+				remove_variable = previous_holder_grandeur_value
+			}
+		}
+
+		# Petition allowed again
+		if = {
+			limit = { has_variable = petition_title_cooldown }
+			remove_variable = petition_title_cooldown
+		}
+
+		# If a player is on their way to pay homage, invalidate.
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				any_player = { var:homage_liege_scope ?= scope:previous_holder }
+			}
+			every_player = {
+				limit = {
+					var:homage_liege_scope ?= scope:previous_holder
+					NOT = { has_character_flag = currently_invalidating_petition_liege_travel }
+				}
+				current_travel_plan = { cancel_travel_plan = yes }
+				trigger_event = pay_homage.0601
+				add_character_flag = {
+					flag = currently_invalidating_petition_liege_travel
+					days = 1
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				exists = scope:previous_holder
+				scope:previous_holder = {
+					any_character_artifact = {
+						has_variable = artifact_succession_title #Is this an artifact that should follow a title?
+						var:artifact_succession_title = { is_title_created = yes } #Does the title the artifact should follow exist?
+						var:artifact_succession_title = scope:title #Scope title is the artifact title
+					}
+				}
+			}
+			scope:previous_holder = {
+				every_character_artifact = {
+					limit = {
+						has_variable = artifact_succession_title #Is this an artifact that should follow a title?
+						var:artifact_succession_title = { is_title_created = yes } #Does the title the artifact should follow exist?
+						var:artifact_succession_title = scope:title #Scope title is the artifact title
+					}
+					if = {
+						limit = {
+							OR = {
+								scope:transfer_type = flag:conquest
+								scope:transfer_type = flag:conquest_holy_war
+								scope:transfer_type = flag:conquest_claim
+								scope:transfer_type = flag:conquest_populist
+								scope:transfer_type = flag:abdication
+								scope:transfer_type = flag:usurped
+								scope:transfer_type = flag:revoked
+								scope:transfer_type = flag:faction_demand
+							}
+						}
+						set_owner = {
+							target = root
+							history = {
+								type = conquest
+								actor = scope:previous_holder
+								recipient = root
+								location = scope:previous_holder.location
+							}
+						}
+					}
+					else = {
+						set_owner = {
+							target = root
+							history = {
+								type = inherited
+								recipient = root
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# FP3 Title Transfer Notification
+		if = {
+			limit = { 
+				exists = struggle:persian_struggle
+				OR = {
+					scope:title = title:d_sunni
+					scope:title = title:e_arabia
+				}
+			}
+			struggle:persian_struggle = { # Wet script
+				every_involved_ruler = {
+					send_interface_toast = {
+						type = event_toast_effect_bad
+						title = persian_struggle_central_title_transfer.t
+						left_icon = scope:previous_holder
+						right_icon = scope:title.holder
+
+						custom_tooltip = persian_struggle_central_title_transfer.desc
+					}
+				}
+				every_interloper_ruler = {
+					send_interface_toast = {
+						type = event_toast_effect_bad
+						title = persian_struggle_central_title_transfer.t
+						left_icon = scope:previous_holder
+						right_icon = scope:title.holder
+
+						custom_tooltip = persian_struggle_central_title_transfer.desc
+					}
+				}
+			}
+		}
+
+
+		#Struggle Catalyst
+		if = {
+			limit = {
+				scope:title.tier >= tier_county
+				title:e_persia = {
+					any_in_de_jure_hierarchy = {
+						this = 	scope:title
+					}
+				}
+				NOR = {
+					scope:transfer_type = flag:created
+					scope:transfer_type = flag:inheritance
+				}
+				fp3_character_uninvolved_in_struggle_trigger = yes
+				scope:previous_holder ?= {
+					fp3_character_involved_in_struggle_trigger = yes
+					any_character_struggle = {
+						phase_has_catalyst = catalyst_interloper_uninvolved_gain_struggle_titles
+					}
+				}
+			}
+			scope:previous_holder ?= {
+				every_character_struggle = {
+					limit = { phase_has_catalyst = catalyst_interloper_uninvolved_gain_struggle_titles }
+					activate_struggle_catalyst = {
+						catalyst = catalyst_interloper_uninvolved_gain_struggle_titles
+						character = root
+					}
+					log_debug_variable_for_persian_struggle_effect = { VAR = concession_catalyst_interloper_uninvolved_gain_struggle_titles }
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:title.tier >= tier_county
+				title:e_persia = {
+					any_in_de_jure_hierarchy = {
+						this = scope:title
+					}
+				}
+				NOR = {
+					scope:transfer_type = flag:created
+					scope:transfer_type = flag:inheritance
+				}
+				fp3_character_involved_in_struggle_trigger = yes
+				any_character_struggle = {
+					phase_has_catalyst = catalyst_gain_struggle_titles_from_interlopers_uninvolved
+					# Stop catalyst from affecting those who are only just now uninvolved due to losing this title
+					OR = {
+						NOT = { is_culture_involved_in_struggle = scope:previous_holder.culture }
+						NOT = { is_faith_involved_in_struggle = scope:previous_holder.faith }
+					}
+				}
+				scope:previous_holder ?= {
+					OR = {
+						fp3_character_uninvolved_in_struggle_trigger = yes
+						fp3_character_interloper_in_struggle_trigger = yes
+					}
+				}
+			}
+			every_character_struggle = {
+				limit = { phase_has_catalyst = catalyst_gain_struggle_titles_from_interlopers_uninvolved }
+				activate_struggle_catalyst = {
+					catalyst = catalyst_gain_struggle_titles_from_interlopers_uninvolved
+					character = root
+				}
+				log_debug_variable_for_persian_struggle_effect = { VAR = stabil_catalyst_gain_struggle_titles_from_interlopers_uninvolved }
+			}
+		}
+
+		# Achievements
+		if = { # FP2 El Cid
+			limit = {
+				scope:title = title:k_valencia
+				has_character_flag = fp2_el_cid_blood_relation_legacy
+			}
+			set_global_variable = { # DO. NOT. USE. add_achievement_global_variable_effect. IT BREAKS THE ACHIEVEMENT.
+				name = fp2_el_cid_achievement_unlocked
+				value = yes
+			}
+		}
+		
+		# Am I The Chad?
+		if = {
+			limit = { root = character:easteregg_chad_uhl }
+			set_house = house:house_chad_uhl
+		}
+		
+		# Memories
+		# Ascended to the throne
+		if = {
+			limit = {
+				OR = {
+					is_ruler = no
+					highest_held_title_tier <= scope:title.tier
+				}
+			}
+			
+			root = {
+				create_character_memory = {
+					type = ascended_throne_memory
+				}
+				
+				scope:new_memory = {
+					save_scope_as = ascended_throne_memory
+					set_variable = childhood_memory
+					set_variable = {
+						name = landed_title
+						value = scope:title
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				scope:transfer_type = flag:created
+				is_alive = yes
+			}
+			every_vassal = {
+				limit = {
+					has_vassal_stance = courtly
+				}
+				if = {
+					limit = {
+						scope:title.tier = tier_duchy
+					}
+					add_opinion = {
+						target = root
+						modifier = courtly_title_creation_opinion
+						opinion = 10
+					}
+				}
+				else = {
+					add_opinion = {
+						target = root
+						modifier = courtly_title_creation_opinion
+						opinion = 30
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+
+				always = no
+
+				scope:title = title:c_atlantis
+				# Samaritan HoF exists
+				exists = title:d_samaritan.holder
+				# Samaritan HoF is not independent
+				title:d_samaritan.holder = { exists = liege }
+				# Samaritan HoF is not Samaritan
+				title:d_samaritan.holder = { NOT = { faith = faith:samaritan } }
+				# root is at least a king, or their liege is, or their liege's liege is
+				OR = {
+					highest_held_title_tier >= tier_kingdom
+					liege ?= { highest_held_title_tier >= tier_kingdom }
+					liege.liege ?= { highest_held_title_tier >= tier_kingdom }
+				}
+			}
+			create_title_and_vassal_change = {
+				type = created
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			if = {
+				limit = {
+					highest_held_title_tier >= tier_kingdom
+				}
+				title:d_samaritan.holder = {
+					change_liege = {
+						liege = root
+						change = scope:title_change
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					exists = liege
+					liege = { highest_held_title_tier >= tier_kingdom }
+				}
+				title:d_samaritan.holder = {
+					change_liege = {
+						liege = root.liege
+						change = scope:title_change
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					exists = liege.liege
+					liege.liege = { highest_held_title_tier >= tier_kingdom }
+				}
+				title:d_samaritan.holder = {
+					change_liege = {
+						liege = root.liege.liege
+						change = scope:title_change
+					}
+				}
+			}
+			resolve_title_and_vassal_change = scope:title_change
+		}
+
+		# FP3 Struggle special cases
+		## Convert detractors to supporters if they inherit either of the titles they're detracting against.
+		if = {
+			limit = {
+				exists = struggle:persian_struggle
+				NOT = { has_trait = fp3_struggle_supporter }
+				OR = {
+					scope:title = title:d_sunni
+					scope:title = title:e_arabia
+				}
+			}
+			if = {
+				limit = { has_trait = fp3_struggle_detractor }
+				remove_trait = fp3_struggle_detractor
+			}
+			add_trait = fp3_struggle_supporter
+		}
+		
+		# Special Legitimacy gain for being elected
+		if = {
+			limit = {
+				scope:title = {
+					has_order_of_succession = election
+				}
+			}
+			save_scope_value_as = {
+				name = title_tier_minus_2
+				value = {
+					value = scope:title.tier
+					subtract = 2
+				}
+			}
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = legitimacy_gain_toast
+				left_icon = root
+				right_icon = scope:title
+				add_legitimacy = {
+					value = {
+						value = major_legitimacy_gain
+						multiply = scope:title_tier_minus_2
+					}
+				}
+			}
+		}
+		
+		### CE1 LEGITIMACY SETUP ###
+		if = {
+			limit = { # Catch new landed rulers
+				exists = dynasty
+				# Exclude unplayable for now
+				NOR = {
+					government_has_flag = government_is_republic
+					government_has_flag = government_is_theocracy
+				}
+				legitimacy = 0
+				days_as_ruler < 1
+				OR = {
+					scope:title.tier = tier_county
+					any_held_title = { tier = tier_county }
+				}
+			}
+			add_legitimacy = succession_legitimacy_value
+		}
+
+		# Did I conquer a place with holy order leases not of my faith?
+		if = {
+			limit = {
+				scope:title = {
+					any_in_de_jure_hierarchy = {
+						tier = tier_barony
+						is_under_holy_order_lease = yes
+						county.holder = {
+							any_liege_or_above = { this = root }
+						}
+						lessee = {
+							NAND = { # Only for leases of people who are not of your faith or the holder's faith
+								faith = root.faith
+								faith = prev.county.holder.faith
+							}
+						}
+					}
+				}
+			}
+			scope:title = {
+				every_in_de_jure_hierarchy = {
+					limit = {
+						tier = tier_barony
+						is_under_holy_order_lease = yes
+						county.holder = {
+							any_liege_or_above = { this = root }
+						}
+						lessee = {
+							NAND = { # Only for leases of people who are not of your faith or the holder's faith
+								faith = root.faith
+								faith = prev.county.holder.faith
+							}
+						}
+					}
+					revoke_lease = yes
+				}
+			}
+		}
+	}
+	events = {
+		roman_restoration.0005		#New Roman Emperor gets Augustus trait. (old holder, if still alive, loses it)
+		roman_restoration.0199		#Restoring the Pentarchy.
+		religious_decision.0312		# Base game: new holder of a county with a runestone
+		fp1_other_decisions.0113	# FP1: new holder of a county with a runestone
+		delay = { days = 1 }
+		realm_maintenance.2001		#Big notification about inheriting emperor tier title
+		british_isles.1032			# Danelaw-England partition calc.
+		fp1_major_decisions.1011	# Harald Tanglehair becomes Harald Fairhair.
+		fp1_major_decisions.1012	# If Norway has just been created for the first time, flag that.
+		title_event.0001			# Rename West Francia to France
+		title_event.0002			# Rename East Francia to Germany
+		title_event.0011			# Asturias becomes Leon upon emergence of Castille
+	}
+}
+
+# A title is inherited by a character
+# root = the new holder
+# scope:title = the title that changes hands
+# scope:previous_holder = previous holder. Should be dead
+on_title_gain_inheritance = {
+	events = {
+		delay = { days = 1 }
+		# Try to end inherited entrenched regencies automatically — we need to launder this by a day to make sure the AI realises they've inherited a diarchy.
+		diarchy.0113
+	}
+	effect = {
+		if = {
+			limit = {
+				scope:title = title:e_mongol_empire
+				has_character_flag = gain_mongol_succession_dread
+			}
+			add_dread = 50
+		}
+	}
+}
+
+# A title is usurped by a character
+# root = the new holder
+# scope:title = the title that changes hands
+# scope:previous_holder = previous holder. Shouldn't be dead
+on_title_gain_usurpation = {
+	events = {}
+	effect = {
+		# Struggle Catalysts
+		if = {
+			limit = { # FP2
+				# We are only interested in the title within the Struggle Region
+				title:e_spain = {
+					any_in_de_jure_hierarchy = {
+						this = 	scope:title
+					}
+				}
+				# Only for usurpation
+				scope:transfer_type = flag:usurped
+
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_fp2
+							CHAR = root
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_fp2
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_usurp_title_fp2
+						character = root
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = { # FP3
+				title:e_persia = { any_in_de_jure_hierarchy = { this = scope:title } }
+				scope:transfer_type = flag:usurped
+
+				root = {
+					any_character_struggle = {
+						involvement = involved
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_fp3
+							CHAR = root
+						}
+					}
+				}
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_usurp_title_fp3
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_usurp_title_fp3
+						character = root
+					}
+					log_debug_variable_for_persian_struggle_effect = { VAR = unrest_catalyst_usurp_title_fp3 }
+				}
+			}
+		}
+	}
+}
+
+# A title is lost by a character
+# root = the old holder
+# scope:title = the title that changes hands
+# scope:new_holder = new holder.
+on_title_lost = {
+	events = {
+		british_isles.1033	# Danelaw-England partition calc.
+	}
+
+	effect = {
+		#Make sure nobody ever has only the Kingdom of Fashion
+		if = {
+			limit = {
+				scope:title = { tier = tier_kingdom }
+				has_title = title:k_fashion
+				NOT = {
+					any_held_title = { # Only trigger if you don't have any kingdom titles other than Fashion and the kingdom you just lost. Double negative is confusing but it's the only way I could think to script it
+						tier = tier_kingdom
+						NOT = { this = title:k_fashion }
+						NOT = { this = scope:title }
+					}
+				}
+			}
+			destroy_title = title:k_fashion
+		}
+		#Earmark landless Scandinavians for adventuring.
+		if = {
+			limit = {
+				#We only want to grab tribal cultures.
+				culture = {
+					NOT = { has_cultural_era_or_later = culture_era_early_medieval }
+				}
+				#Must have lost their last piece of land.
+				is_landed = no
+				#If they've ventured far outside Europe, they're unlikely to come back, so we don't #want them.
+				scope:title = {
+					tier = tier_county
+					title_province = {
+						OR = {
+							geographical_region = world_europe
+							geographical_region = world_asia_minor
+						}
+					}
+				}
+			}
+			#Norse, Norwegians, & Danes go into the western adventurer list.
+			if = {
+				limit = {
+					OR = {
+						has_culture = culture:norse
+						has_culture = culture:norwegian
+						has_culture = culture:danish
+					}
+				}
+				add_to_global_variable_list = {
+					name = western_scandinavian_adventurer_list
+					target = this
+				}
+			}
+			#Norse & Swedes go into the eastern adventurer list.
+			if = {
+				limit = {
+					OR = {
+						has_culture = culture:norse
+						has_culture = culture:swedish
+					}
+				}
+				add_to_global_variable_list = {
+					name = eastern_scandinavian_adventurer_list
+					target = this
+				}
+			}
+		}
+
+		#To remove concubines if a character becomes unlanded
+		if = {
+			limit = {
+				is_landed = no
+				any_concubine = { count >= 1 }
+			}
+			every_concubine = { root = { remove_concubine = prev } }
+		}
+
+		#Apply loss of stress to the Rivals
+		if = {
+			limit = {
+				scope:title.tier >= tier_county
+				OR = {
+					scope:transfer_type = flag:conquest
+					scope:transfer_type = flag:conquest_holy_war
+					scope:transfer_type = flag:conquest_claim
+					scope:transfer_type = flag:conquest_populist
+					scope:transfer_type = flag:abdication
+					scope:transfer_type = flag:usurped
+					scope:transfer_type = flag:revoked
+					scope:transfer_type = flag:faction_demand
+				}
+			}
+			root = {
+				save_scope_as = actor
+			}
+			every_relation ={
+				type = rival
+
+				send_interface_message = {
+					type = event_generic_neutral
+					title = msg_rival_dethroned
+					left_icon = scope:actor
+					right_icon = scope:title
+
+					custom_tooltip = msg_rival_dethroned_desc
+
+					stress_impact = { 
+						base = medium_stress_loss
+						vengeful = medium_stress_loss
+					}
+				}
+			}
+		}
+
+		# Struggle catalyst
+		if = {
+			limit = {
+				any_character_struggle = {
+					involvement = involved
+					phase_has_catalyst = catalyst_revoke_title
+				}
+				OR = {
+					scope:transfer_type = flag:revoked
+					scope:transfer_type = flag:lease_revoked
+				}
+			}
+			every_character_struggle = {
+				activate_struggle_catalyst = {
+					catalyst = catalyst_revoke_title
+					character = scope:new_holder
+				}
+			}
+		}
+		
+		# Memories
+		# Lost a significant title
+		if = {
+			limit = {
+				scope:title.tier >= highest_held_title_tier
+				exists = scope:new_holder
+			}
+			
+			root = {
+				create_character_memory = {
+					type = lost_title_memory
+					
+					participants = {
+						new_holder = scope:new_holder
+					}
+				}
+				
+				scope:new_memory = {
+					save_scope_as = lost_title_memory
+					set_variable = {
+						name = landed_title
+						value = scope:title
+					}
+				}
+			}
+		}
+
+		# LEGITIMACY LOSS FROM USURPATION
+		if = {
+			limit = { scope:transfer_type ?= flag:usurped }
+			# Minus 2, since we want Duchy to be 1, and it's normally 3
+			save_scope_value_as = {
+				name = title_tier_minus_2
+				value = {
+					value = scope:title.tier
+					subtract = 2
+				}
+			}
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = legitimacy_loss_toast
+				left_icon = root
+				right_icon = scope:title
+				custom_tooltip = legitimacy_loss_usurpation_tt
+				add_legitimacy = {
+					value = {
+						value = miniscule_legitimacy_loss
+						multiply = scope:title_tier_minus_2
+					}
+				}
+			}
+		}
+	}
+}
+
+# A claim is gained by a character
+# root = the claimant
+# scope:title = the title that is claimed
+# scope:transfer_type = flag:inheritance or none
+on_explicit_claim_gain = {
+	effect = {
+		if = {
+			limit = { 
+				title:k_england.holder = root
+			}
+			title:k_england = {
+				update_dynamic_coa = yes
+			}
+		}
+		# Struggle Catalyst
+		if = { # FP2
+			limit = {
+				NOT = { scope:transfer_type = flag:inheritance }
+
+				root = {
+					any_character_struggle = {
+						is_struggle_type = iberian_struggle
+						involvement = involved
+					}
+				}
+				title:e_spain = { any_in_de_jure_hierarchy = { this = scope:title } }
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_gain_claim_on_title_fp2
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_gain_claim_on_title_fp2
+						character = root
+					}
+				}
+			}
+		}
+		else_if = { # FP3
+			limit = {
+				NOT = { scope:transfer_type = flag:inheritance }
+
+				root = {
+					any_character_struggle = {
+						is_struggle_type = persian_struggle
+						involvement = involved
+					}
+				}
+				title:e_persia = { any_in_de_jure_hierarchy = { this = scope:title } }
+			}
+			root = {
+				every_character_struggle = {
+					involvement = involved
+					limit = {
+						activate_struggle_catalyst_secondary_character_involvement_involved_trigger = {
+							CATALYST = catalyst_gain_claim_on_title_fp3
+							CHAR = root
+						}
+					}
+					activate_struggle_catalyst = {
+						catalyst = catalyst_gain_claim_on_title_fp3
+						character = root
+					}
+					log_debug_variable_for_persian_struggle_effect = { VAR = unrest_catalyst_gain_claim_on_title_fp3 }
+				}
+			}
+		}
+	}
+}
+
+# A claim is lost by a character
+# root = the claimant
+# scope:title = the title that was claimed
+on_explicit_claim_lost = {
+	effect = {
+		if = {
+			limit = { 
+				title:k_england.holder = root 
+			}
+			title:k_england = {
+				update_dynamic_coa = yes
+			}
+		}
+	}
+}
+
+# A title change makes the character rank up in the landed tiers (eg Duke -> King)
+# root = character ranking up
+# scope:title = old primary title
+on_rank_up = { # Will not fire during history execution or for dying characters
+	events = {
+	}
+	effect = {
+		add_achievement_flag_effect = { FLAG = achievement_moving_up_in_the_world_flag }
+		update_embassies_effect = yes
+		every_ally = {
+			update_embassies_effect = yes
+		}
+		# Make a note of ranking up for stele purposes.
+		if = {
+			limit = {
+				# DLC check.
+				has_fp1_dlc_trigger = yes
+				# Is the culture eligible?
+				fp1_can_raise_stele_trigger = yes
+				# Aaaaand, for balance reasons, were they landed already?
+				exists = scope:title
+			}
+			set_variable = {
+				name = recent_rank_increase
+				value = root.primary_title
+				years = 5
+			}
+		}
+		# Remove any rank-inappropriate modifiers (e.g., baron buffs).
+		remove_character_modifier = mandate_baronial_troops_trained_modifier
+		remove_character_modifier = mandate_baronial_troops_half_trained_modifier
+	}
+}
+
+# A title change makes the character rank down in the landed tiers (eg King -> Duke)
+# root = character ranking down
+# scope:title = old primary title
+on_rank_down = { # Will not fire during history execution or for dying characters
+	events = {
+	}
+	effect = {
+		if = {
+			limit = {
+				NOR = {
+					has_trait = humble
+					has_trait = content
+					has_trait = generous
+				}
+			}
+			add_character_flag = {
+				flag = make_suicide_available
+				years = 5
+			}
+			set_variable = {
+				name = rank_demoted
+				value = yes
+			}
+		}
+		update_embassies_effect = yes
+		every_ally = {
+			update_embassies_effect = yes
+		}
+		# Inform hostage havers
+		if = {
+			limit = {
+				any_home_court_hostage = { count >= 1 }
+			}
+			save_scope_as = home_court
+			every_home_court_hostage = {
+				save_scope_as = hostage
+				warden = {
+					save_scope_as = warden
+					trigger_event = { id = bp2_hostage_system.0410 days = 5 }
+				}
+			}
+		}
+	}
+}
+
+# A character gains a vassal
+# root = character gaining vassal
+# scope:vassal = vassal being gained
+# scope:old_liege = the previous liege of the vassal. Might be the null character (vassal used to be a non-ruler or independent), so make sure to use "exists" checks where relevant
+on_vassal_gained = {
+	events = {
+		realm_maintenance.1000 # Notify vassals of new liege
+	}
+}
+
+# A baron is found or created for a title, E.G., due to the player using the "Give to Low Noble" action
+# No transfer type here; it's always a grant
+# root = the baron
+# scope:liege = the person who wanted them created
+# scope:title = the barony
+on_baron_found_or_created_for_title = {
+	effect = {
+		add_opinion = {
+			target = scope:liege
+			modifier = received_title_barony
+		}
+	}
+}
+
+# Called when realm capital changes. It can be manual move, loss in conquest, move after inheritance,
+# move when granted a better title, becoming landed for the first time
+# root: New realm capital barony
+# scope:old_capital - previous capital barony. Can be empty, can be owned by someone else
+on_realm_capital_change = {
+	effect = {
+		holder = {
+			# Do we need to refresh their vizier's modifiers?
+			if = {
+				limit = { has_diarchy_parameter = diarchy_is_vizierate }
+				diarch = {
+					# What we're doing here is regenerating loc on the diarchs that might refer to a specific place which they no longer have access to.
+					## This is gonna get real gross, folks, so my apologies.
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t1_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_treasure_modifier
+							desc = vizier_extravagance_t1_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t1_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_activities_modifier
+							desc = vizier_extravagance_t1_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_property_modifier }
+						remove_character_modifier = vizier_extravagance_t1_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_property_modifier
+							desc = vizier_extravagance_t1_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t1_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t1_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t1_charity_modifier
+							desc = vizier_extravagance_t1_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t2_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_treasure_modifier
+							desc = vizier_extravagance_t2_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t2_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_activities_modifier
+							desc = vizier_extravagance_t2_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_property_modifier }
+						remove_character_modifier = vizier_extravagance_t2_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_property_modifier
+							desc = vizier_extravagance_t2_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t2_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t2_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t2_charity_modifier
+							desc = vizier_extravagance_t2_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t3_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_treasure_modifier
+							desc = vizier_extravagance_t3_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t3_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_activities_modifier
+							desc = vizier_extravagance_t3_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_property_modifier }
+						remove_character_modifier = vizier_extravagance_t3_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_property_modifier
+							desc = vizier_extravagance_t3_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t3_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t3_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t3_charity_modifier
+							desc = vizier_extravagance_t3_charity_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_treasure_modifier }
+						remove_character_modifier = vizier_extravagance_t4_treasure_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_treasure_modifier
+							desc = vizier_extravagance_t4_treasure_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_activities_modifier }
+						remove_character_modifier = vizier_extravagance_t4_activities_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_activities_modifier
+							desc = vizier_extravagance_t4_activities_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_property_modifier }
+						remove_character_modifier = vizier_extravagance_t4_property_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_property_modifier
+							desc = vizier_extravagance_t4_property_modifier_custom_desc.on_action
+						}
+					}
+					if = {
+						limit = { has_character_modifier = vizier_extravagance_t4_charity_modifier }
+						remove_character_modifier = vizier_extravagance_t4_charity_modifier
+						add_character_modifier = {
+							modifier = vizier_extravagance_t4_charity_modifier
+							desc = vizier_extravagance_t4_charity_modifier_custom_desc.on_action
+						}
+					}
+				}
+			}
+		}
+	}
+}

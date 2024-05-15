@@ -1,0 +1,209 @@
+﻿# Smooth over errors involving orphaned events, variables that are set but not used, and variables that are used but not set.
+
+namespace = atlantis
+
+atlantis.0001 = {
+
+	hidden = yes
+	orphan = yes
+	
+	trigger = {
+
+		# Variables that are set but not used. These follow the same quasi-random order as error.log (which is annoying).
+
+		has_global_variable = achievement_mother_of_us_all_siguic
+		has_global_variable = achievement_mother_of_us_all_orisha
+		has_global_variable = achievement_mother_of_us_all_bori
+		has_global_variable = achievement_mother_of_us_all_roog_sene
+		has_global_variable = achievement_mother_of_us_all_akom
+		has_global_variable = achievement_mother_of_us_all_kushitism
+		has_global_variable = achievement_mother_of_us_all_waaqism
+		has_global_variable = achievement_mother_of_us_all_achamanism
+
+		exists = global_var:achieved_ahab_achievement
+		exists = global_var:finished_a_thousand_and_one_nights_achievement
+		exists = global_var:ce1_cant_touch_this_achievement_unlocked
+		exists = global_var:finished_imperial_march_achievement
+		exists = global_var:ce1_the_pharaoh_islands_achievement_unlocked
+		exists = global_var:ce1_local_legend_achievement_unlocked
+		has_character_flag = achievement_moving_up_in_the_world_flag
+		exists = global_var:fp2_historys_best_friends_achievement_unlocked
+		exists = global_var:ce1_legendary_achievement_unlocked
+		has_character_flag = fp3_abassid_strong_achievement_unlocked
+		has_character_flag = fp3_challenger_caliphate_achievement_unlocked
+		exists = global_var:fp2_el_cid_achievement_unlocked
+		has_variable = one_of_a_kind_var
+		exists = global_var:achievement_norman_yoke_war_flag
+		exists = global_var:finished_little_william_marshal_achievement
+		exists = global_var:diverged_culture_nobody_comes_to_fika_achievement
+		exists = global_var:finished_black_dinner_achievement
+		exists = var:ep1_03_achievement_unlocked
+		exists = global_var:finished_the_grandest_tour_achievement
+		has_character_flag = achievement_know_your_place_flag
+		exists = global_var:finished_a_knights_tale_achievement
+		has_character_flag = achievement_al_andalus_flag
+		exists = global_var:ce1_not_today_achievement_unlocked
+		exists = global_var:danelaw_became_england
+		has_character_flag = achievement_for_the_faith_flag
+		exists = global_var:ce1_neverending_story_achievement_unlocked
+		has_character_flag = achievement_a_house_of_my_own_flag
+		exists = global_var:fp2_iberian_hostilities_achievement_unlocked
+		has_character_flag = achievement_non_nobis_domine_flag
+		exists = global_var:ce1_canonized_achievement_unlocked
+		exists = global_var:fp2_iberian_conciliation_achievement_unlocked
+		has_character_flag = achievement_bad_blood_flag
+		has_character_flag = achievement_stressful_situation_flag
+		has_character_flag = achievement_the_things_love_does_for_us_flag
+		has_character_flag = achievement_the_things_we_do_for_love_flag
+		has_character_flag = fp3_assassinated_tier1
+		has_character_flag = fp3_assassinated_tier2
+		has_character_flag = fp3_assassinated_tier3
+		has_character_flag = first_of_the_crusader_kings_achievement_flag
+		exists = global_var:player_declared_war
+		has_character_flag = achievement_until_death_do_us_part_flag
+		exists = global_var:finished_your_eternal_reward_achievement
+		has_character_flag = canute_the_greater_achievement_flag
+		has_character_flag = achievement_fine_print_flag
+		has_character_flag = a_dangerous_business_achievement_flag
+		exists = var:ep1_02_achievement_unlocked
+		exists = global_var:fp2_high_stakes_chess_achievement_unlocked
+		has_character_flag = fp3_vassalize_the_caliph_achievement_unlocked
+		is_target_in_variable_list = {
+			name = pathway_to_heaven_achievement_tally
+			target = root
+		}
+		has_character_flag = achievement_its_not_a_cult_flag
+		exists = global_var:diverged_culture_beta_israel_achievement
+		has_character_flag = fp3_mulct_them_dry_achievement_flag
+		has_character_flag = fp3_rekindle_iran_achievement_unlocked
+		has_character_flag = achievement_not_so_feudal_system_flag
+		exists = global_var:ce1_upward_mobility_achievement_unlocked
+		exists = global_var:fp2_basque_in_my_glory_achievement_unlocked
+		exists = global_var:ce1_f_achievement_unlocked
+		has_character_flag = volva_achievement_flag
+		has_character_flag = achievement_an_unfortunate_accident_flag
+		exists = global_var:holy_order_give_a_dog_a_bone_achievement
+		exists = global_var:achieved_sir_lance_a_lot_achievement
+		has_character_flag = achievement_death_did_us_part_flag
+		exists = global_var:finished_hunting_accident_achievement
+		exists = global_var:fp2_iberian_compromise_achievement_unlocked
+
+	}
+	
+	immediate = {
+		
+		# Variables that are used but not set.
+
+		#  Miscellaneous
+
+		set_variable = { name = block_conversion_till_nebulous_circumstances }
+		add_character_flag = raiktor
+		add_character_flag = intrigue_duel_on_attack
+		set_variable = { name = block_reformation_var }
+		set_variable = struggle_block_dissolution_faction
+		set_variable = { name = block_conversion_till_decision_taken }
+
+		set_variable = { name = university value = yes }
+
+		#  Modifier(s)
+		random_scheme = {
+			limit = {}
+			add_scheme_modifier = {
+				type = massive_extra_success_chance_modifier
+			}
+		}
+
+		#  Bookmark(s)
+
+		add_to_global_variable_list = {
+			name = triggered_bookmark_events
+			target = flag:bookmark_867_northmen_aellas_capture
+		}
+
+		#  Legends
+
+		set_variable = { name = mythical_ancestor_var value = flag:naga }
+		set_variable = { name = mythical_ancestor_var value = flag:afrasiyab }
+		set_variable = { name = mythical_ancestor_var value = flag:noah }
+		set_variable = { name = mythical_ancestor_var value = flag:shibi_chakravarti }
+
+		#  Achievements		
+
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_give_a_dog_a_bone_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_norman_yoke_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_the_grandest_tour_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_your_eternal_reward_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_imperial_march_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_black_dinner_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_thousand_and_one_nights_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_knights_tale_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_hunting_accident_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_pathway_to_heaven_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_sir_lance_a_lot_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_ahab_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = started_a_e_i_o_u_and_me_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = ce1_cant_touch_this_achievement_unlocked
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = diverged_culture_nobody_comes_to_fika_achievement
+			VALUE = yes
+		}
+		add_achievement_global_variable_effect = {
+			VARIABLE = fp2_iberian_compromise_achievement_unlocked
+			VALUE = yes
+		}
+
+		# Events
+		
+		trigger_event = game_rule.1011
+		trigger_event = historical_artifacts.0023
+		trigger_event = major_decisions.2001
+		trigger_event = diarchy.0012
+		trigger_event = fp1_scandinavian_adventurers.0004
+		trigger_event = fp1_scandinavian_adventurers.0011
+		trigger_event = fp1_scandinavian_adventurers.0021
+		trigger_event = debug_portraits.1
+
+	}
+}

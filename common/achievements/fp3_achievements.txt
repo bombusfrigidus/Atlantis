@@ -1,0 +1,85 @@
+﻿###################################
+# FP3 Achievements
+# Ideation by The Thalassic Ship
+# Implementation by Hugo Cortell
+###################################
+
+fp3_rich_in_diversity_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_darius_revenge_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_mulct_them_dry_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_the_umma_strikes_back_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_royal_flush_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_fiscal_res_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_abassid_strong_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_challenger_caliphate_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_vassalize_the_caliph_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
+
+fp3_rekindle_iran_achievement = {
+	possible = { 
+		always = no
+		has_fp3_dlc_trigger = yes
+	}
+	happened = { always = no }
+}
