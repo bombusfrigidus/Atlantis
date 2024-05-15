@@ -2,8 +2,8 @@
 	name = "Atlas"
 	dynasty = 1
 	dna = 1
-	religion = "hellenic_pagan"
-	culture = "greek"
+	religion = "atlantite"
+	culture = "atlantean"
 	1.1.1 = {
 		birth = yes
 	}

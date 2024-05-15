@@ -7,4 +7,3 @@
 #	duchies = { }, takes county title names declared in landed_titles.txt
 #	counties = { }, takes county title names declared in landed_titles.txt
 #	provinces = { }, takes province id numbers declared in /history/provinces
-

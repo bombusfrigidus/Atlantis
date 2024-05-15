@@ -11,6 +11,8 @@ atlantis.0001 = {
 
 		# Variables that are set but not used. These follow the same quasi-random order as error.log (which is annoying).
 
+		religion = { exists = var:religion_invisible }
+
 		has_global_variable = achievement_mother_of_us_all_siguic
 		has_global_variable = achievement_mother_of_us_all_orisha
 		has_global_variable = achievement_mother_of_us_all_bori

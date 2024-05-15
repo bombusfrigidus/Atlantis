@@ -1,0 +1,15 @@
+﻿#############
+# Atlantite #
+#############
+
+# Atlantite
+
+atlantis = {
+	county = c_atlantis
+	
+	character_modifier = {
+		name = holy_site_rome_effect_name
+		development_growth_factor = 0.1
+		stewardship = 1
+	}
+}

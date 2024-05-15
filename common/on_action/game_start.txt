@@ -5,6 +5,45 @@ on_game_start = {
 	}
 
 	effect = {
+
+		# Atlantis | Select heritages to hide in GUI. (This doesn't work because heritages aren't scopes. Figure it out.)
+		# heritage:heritage_akan = { set_variable = heritage_invisible }
+
+		# Atlantis | Select religions to hide in GUI.
+		religion:akom_religion = { set_variable = religion_invisible }
+		religion:baltic_religion = { set_variable = religion_invisible }
+		religion:zunism_religion = { set_variable = religion_invisible }
+		religion:basque_religion = { set_variable = religion_invisible }
+		religion:bon_religion = { set_variable = religion_invisible }
+		religion:buddhism_religion = { set_variable = religion_invisible }
+		religion:christianity_religion = { set_variable = religion_invisible }
+		religion:tani_religion = { set_variable = religion_invisible }
+		religion:dualism_religion = { set_variable = religion_invisible }
+		religion:finno_ugric_religion = { set_variable = religion_invisible }
+		religion:germanic_religion = { set_variable = religion_invisible }
+		religion:hellenism_religion = { set_variable = religion_invisible }
+		religion:hinduism_religion = { set_variable = religion_invisible }
+		religion:islam_religion = { set_variable = religion_invisible }
+		religion:jainism_religion = { set_variable = religion_invisible }
+		religion:judaism_religion = { set_variable = religion_invisible }
+		religion:kushitism_religion = { set_variable = religion_invisible }
+		religion:magyar_religion = { set_variable = religion_invisible }
+		religion:mundhum_religion = { set_variable = religion_invisible }
+		religion:north_african_religion = { set_variable = religion_invisible }
+		religion:paganism_religion = { set_variable = religion_invisible }
+		religion:qiangic_religion = { set_variable = religion_invisible }
+		religion:siberian_religion = { set_variable = religion_invisible }
+		religion:slavic_religion = { set_variable = religion_invisible }
+		religion:taoism_religion = { set_variable = religion_invisible }
+		religion:tengrism_religion = { set_variable = religion_invisible }
+		religion:waaqism_religion = { set_variable = religion_invisible }
+		religion:west_african_bori_religion = { set_variable = religion_invisible }
+		religion:west_african_orisha_religion = { set_variable = religion_invisible }
+		religion:west_african_roog_religion = { set_variable = religion_invisible }
+		religion:west_african_religion = { set_variable = religion_invisible }
+		religion:yazidi_religion = { set_variable = religion_invisible }
+		religion:zoroastrianism_religion = { set_variable = religion_invisible }
+
 		#Epidemics 3 months grace
 		set_global_variable = {
 			name = start_epidemic_grace

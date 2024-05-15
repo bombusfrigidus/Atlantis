@@ -1,0 +1,11 @@
+﻿l_english:
+
+ atlantite_religion: "Atlantitism"
+ atlantite_religion_adj: "Atlantite"
+ atlantite_religion_desc: "Atlantites worship the Hellenic pantheon, especially Poseidon."
+
+ atlantite: "Atlantitism"
+ atlantite_adj: "Atlantite"
+
+ holy_site_atlantis_name: "Atlantis"
+ holy_site_atlantis_effect_name: "From [holy_site|E] #weak ($holy_site_atlantis_name$)#!"

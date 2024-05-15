@@ -514,8 +514,6 @@ struggle_iberia_ending_conciliation_decision = {
 	ai_will_do = { base = 100 }
 }
 
-
-
 ###################################
 # Secure the Mediterranean
 # By Hugo Cortell
@@ -530,6 +528,9 @@ secure_mediterranean_decision = {
 	sort_order = 50
 
 	is_shown = {
+
+		always = no
+
 		# DLC check
 		has_fp2_dlc_trigger = yes
 		# Standard checks
@@ -553,6 +554,9 @@ secure_mediterranean_decision = {
 	}
 
 	is_valid = {
+
+		always = no
+
 		completely_controls = title:d_mallorca # Reminder: Majorca, Menorca, & Ibiza
 		completely_controls = title:d_sardinia
 		completely_controls = title:d_corsica
