@@ -4,7 +4,10 @@ Introduction
 
 This file duplicates README.md.
 
-Atlantis is a CK3 TC template by BOMBUS_FRIGIDUS (github.com/bombusfrigidus, bombus_frigidus@gmail.com, bombus_frigidus on Discord).
+Atlantis is a CK3 TC template by BOMBUS_FRIGIDUS. Contact:
+ - github.com/bombusfrigidus
+ - bombus_frigidus@gmail.com
+ - bombus_frigidus on Discord
 
 Atlantis is compatible with CK3 1.12.5 as of 2024/05/16.
 
@@ -26,7 +29,8 @@ Atlantis replaces or otherwise masks all provinces, titles, regions, cultures, r
 
 Where previous templates deleted all vanilla titles, cultures, and religions, this template preserves them through a few steps:
  - All duchies, kingdoms, and empires are preserved as landless titles with a shared placeholder capital.
- - All cultures and religions are left untouched but hidden through GUI changes. All holy sites are set to a shared placeholder county.
+ - All cultures and religions are left untouched but hidden through GUI changes. 
+    - All holy sites are set to a shared placeholder county.
 
 Like previous templates, Atlantis eliminates all vanilla provinces and counties. To address scripted references to vanilla provinces and counties, Atlantis replaces those references with placeholders except in cases where eliminating references is simpler.
 
@@ -42,8 +46,8 @@ The upsides of this approach are:
  - Easier restoration of vanilla content, for example in a historical total conversion featuring vanilla religions.
 
 The downsides of this approach are:
- - This template is more opinionated than earlier templates, in that Atlantis contains more than the bare minimum to start the game.
- - A more fragile and less intuitive template, in that preserving titles, cultures, and religions risks unexpected errors later in development.
+ - This template is more opinionated than previous templates.
+ - This template is more fragile and less intuitive than previous templates.
 
 It's worth mentioning that Atlantis replaces whole files, not objects within files. That's inefficient but simpler up front.
 
@@ -62,13 +66,15 @@ Third, even if you're down with all that, the rest of this document assumes you 
  - Some useful image editor, for example GIMP
  - Some useful Git interface, for example GitHub and GitHub Desktop
 
-If you are unfamiliar with one of those things, go develop smaller mods to pick up relevant skills, then revisit a total conversion.
+If you are unfamiliar with one of those things, go develop smaller mods to pick up relevant skills.
 
 Fourth, the first step to a total conversion mod is clearing the world of CK3 out of CK3. This template does that.
 
 With this template, you are only some tens of steps from the first step in developing a total conversion. 
 
-Without this template, you are hundreds of steps from the first step in developing a total conversion. So, take it or leave it.
+Without this template, you are hundreds of steps from the first step in developing a total conversion. 
+
+So, take it or leave it.
 
 The remainder of this document is a sparse guide to repurposing Atlantis for your project.
 
@@ -86,14 +92,16 @@ So, let's suppose your project is called Lemuria (an analogue to the Atlantis my
 
  - Clone Atlantis to your machine, in particular to Paradox Interactive/Crusader Kings III/mod. 
  - Change the folder name from "Atlantis" to "Lemuria" and rename your Git repo while you're at it.
- - Move Atlantis.mod from Paradox Interactive/Crusader Kings III/mod/Lemuria to Paradox Interactive/Crusader Kings III/mod.
- - Rename Atlantis.mod to Lemuria.mod. In Lemuria.mod, change the two occurrences of "Atlantis" to "Lemuria," and correct the path.
- - All subsequent file paths are relative to Paradox Interactive/Crusader Kings III/mod/Lemuria unless an absolute path is given.
+ - Move Atlantis.mod to Paradox Interactive/Crusader Kings III/mod.
+ - Rename Atlantis.mod to Lemuria.mod. 
+ - In Lemuria.mod, change the two occurrences of "Atlantis" to "Lemuria," and correct the path.
+ - All subsequent file paths are relative to Paradox Interactive/Crusader Kings III/mod/Lemuria.
  - In descriptor.mod, change the single occurrence of "Atlantis" to "Lemuria."
  - In Steam, open launch options for CK3 and add -debug_mode and -develop. 
  - Run the CK3 launcher. Add a playset. Add Lemuria to the playset. 
- - Run CK3 through game start. If the game crashes or if errors appear in error.log, revisit the previous steps until the problem is resolved.
-    - "Revisit the previous steps" is implicit for the rest of this guide. If some steps are incorrect or incomplete, good luck!
+ - Run CK3 through game start. 
+ - If the game crashes or if errors appear in error.log, revisit the previous steps until the problem is resolved.
+    - "Revisit the previous steps" applies throughout this guide. If some steps are incorrect, good luck!
  - Close CK3. If you're working in VSC, create a workspace for Lemuria.
 
 --------
@@ -101,20 +109,27 @@ map_data
 --------
 
  - Add your heightmap files and your rivers.png to map_data. Creating those files is outside the scope of this guide.
- - Add your provinces.png to map_data, replacing the provinces.png from Atlantis. Subsequent steps might be easier if you combine province maps instead.
- - Add your provinces to definitions.csv, overwriting the provinces from Atlantis if you've replaced provinces.png instead of combining.
- - Run CK3 through game start. error.log should have a lot of errors involving your provinces, but none should cause crashes.
+ - Add your provinces.png to map_data, replacing the provinces.png from Atlantis. 
+    - Subsequent steps might be easier if you combine province maps instead.
+ - Add your provinces to definitions.csv. 
+    - Overwrite the provinces from Atlantis if you've replaced provinces.png instead of combining.
+ - Run CK3 through game start. 
+    - error.log should have a lot of errors involving your provinces, but none should cause crashes.
 
 -----------------------------------------------------------
 common/landed_titles, common/province_terrain, and map_data
 -----------------------------------------------------------
 
- - Add your provinces to common/landed_titles/00_landed_titles.txt. Overwrite the titles from Atlantis if you've replaced provinces.png instead of combining.
- - Add your provinces to both files in common/province_terrain. It's easiest to just extend the filler entries from Atlantis for now.
- - Add your titles to map_data/geographical_regions/geographical_region.txt. It's easiest to just replace d_atlantis with your duchy or duchies for now.
+ - Add your provinces to common/landed_titles/00_landed_titles.txt. 
+    - Overwrite the titles from Atlantis if you've replaced provinces.png instead of combining.
+ - Add your provinces to both files in common/province_terrain. 
+    - It's easiest to just duplicate filler entries from Atlantis for now.
+ - Add your titles to map_data/geographical_regions/geographical_region.txt. 
+    - It's easiest to just replace d_atlantis with your duchy or duchies for now.
  - Add your titles to map_data/island_region if some are islands. This doesn't seem to matter much.
  - Add your provinces to map_data/default.map. Check for discrepancies involving provinces from Atlantis.
- - Run CK3 through game start. error.log should still have a lot of errors, but different ones, and none should cause crashes.
+ - Run CK3 through game start. 
+    - error.log should still have a lot of errors, but different ones, and none should cause crashes.
 
 --------------------------------------------------------------
 common/culture, common/religion, common/dynasties, and history
@@ -135,9 +150,10 @@ common/bookmarks
 ----------------
 
  - In common/bookmarks, add a bookmark. Follow Atlantis files for a simple implementation.
- - Go back to history/characters and history/titles to update your character's birth date and date of accession to titles.
+ - Go back to history/characters and history/titles to update your character's birth date and date of accession.
  - There are a lot of steps to make a bookmark look done. Those are all fluff and outside the scope of this guide.
- - Run CK3 through game start. Clean up any bookmark-related crashes or substantial errors before proceeding.
+ - Run CK3 through game start. 
+    - Clean up any bookmark-related crashes or substantial errors before proceeding.
 
 ------------
 Housekeeping
@@ -147,8 +163,7 @@ If you replaced Atlantis provinces, etc., instead of adding to them, use your ID
 
  - Search for b_atlantis. Replace b_atlantis with one of your baronies.
  - Search for c_atlantis. Replace c_atlantis with one of your counties.
- - Repeat this step for d_atlantis, k_atlantis, and e_atlantis if you feel paranoid. Shouldn't matter.
- - If you'd like placeholder references to point to a province, character, or dynasty besides "1", search and replace those as well.
+ - If you'd like placeholder references to point to a province, character, or dynasty besides "1", replace those.
  - Run CK3 through game start. Use error.log to check for errors related to replacement of b_atlantis, c_atlantis, etc.
 
 ----------
@@ -159,6 +174,6 @@ Of course there's a lot more to do. Your bookmark could look nicer. Your content
 
 But that's beyond this guide. If things have worked up to this point, you have a total conversion running.
 
-If you opted to combine your provinces, etc. with Atlantis instead of replacing Atlantis, this is a good time to go back and replace Atlantis.
+If you opted to combine your provinces, etc. with Atlantis instead of replacing Atlantis, go back and replace Atlantis.
 
 Good luck with your mod!
