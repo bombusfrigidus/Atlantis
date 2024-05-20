@@ -25,9 +25,9 @@ For more resources on mods, refer to:
 What does this template do?
 ---------------------------
 
-Atlantis replaces or otherwise masks all provinces, titles, regions, cultures, religions, and characters in CK3 and provides a toy TC.
+Atlantis replaces or otherwise masks all provinces, titles, regions, cultures, religions, and characters in CK3.
 
-Where previous templates deleted all vanilla titles, cultures, and religions, this template preserves them through a few steps:
+Where previous templates deleted all vanilla titles, cultures, and religions, this template preserves them:
  - All duchies, kingdoms, and empires are preserved as landless titles with a shared placeholder capital.
  - All cultures and religions are left untouched but hidden through GUI changes. 
     - All holy sites are set to a shared placeholder county.
@@ -117,7 +117,7 @@ map_data
     - error.log should have a lot of errors involving your provinces, but none should cause crashes.
 
 -----------------------------------------------------------
-common/landed_titles, common/province_terrain, and map_data
+common and map_data
 -----------------------------------------------------------
 
  - Add your provinces to common/landed_titles/00_landed_titles.txt. 
@@ -132,7 +132,7 @@ common/landed_titles, common/province_terrain, and map_data
     - error.log should still have a lot of errors, but different ones, and none should cause crashes.
 
 --------------------------------------------------------------
-common/culture, common/religion, common/dynasties, and history
+common and history
 --------------------------------------------------------------
 
 For each of these steps, see Atlantis files for trivial examples. 
@@ -164,7 +164,8 @@ If you replaced Atlantis provinces, etc., instead of adding to them, use your ID
  - Search for b_atlantis. Replace b_atlantis with one of your baronies.
  - Search for c_atlantis. Replace c_atlantis with one of your counties.
  - If you'd like placeholder references to point to a province, character, or dynasty besides "1", replace those.
- - Run CK3 through game start. Use error.log to check for errors related to replacement of b_atlantis, c_atlantis, etc.
+ - Run CK3 through game start. 
+    - Use error.log to check for errors related to replacement of b_atlantis, c_atlantis, etc.
 
 ----------
 Next Steps
