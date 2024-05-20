@@ -19,7 +19,7 @@
 		culture = atlantean
 		religion = atlantite
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_MEDIUM"
-		history_id = 168609
+		history_id = 1
 		position = { 200 400 }
 		animation = personality_bold
 	}
