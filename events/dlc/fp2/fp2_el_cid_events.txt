@@ -7,7 +7,10 @@
 fp2_struggle.2045 = {
 	hidden = yes
 
-	trigger = { has_fp2_dlc_trigger = yes } # DLC Check (follow up events do not need this, as they are otherwise orphaned)
+	trigger = {
+		is_landless_adventurer = no	
+	}
+
 	immediate = {
 		if = { # Startup changes (give the cid his full nickname when he starts adventuring)
 			limit = { NOT = { has_character_flag = has_already_begun_travelling } }

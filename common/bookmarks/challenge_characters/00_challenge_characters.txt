@@ -1,0 +1,18 @@
+﻿challenge_character_atlantis = {
+	start_date = 1.1.1
+	character = {
+		name = "bookmark_atlantis_atlas"
+		dynasty = 1
+		dynasty_splendor_level = 1
+		type = male
+		birth = 1.1.1
+		title = d_atlantis
+		government = tribal_government
+		culture = atlantean
+		religion = atlantite
+		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
+		history_id = 1
+
+		animation = personality_bold
+	}
+}

@@ -1,0 +1,63 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+e_atlantis = {
+	color = { 250 250 250 }
+	capital = c_atlantis
+
+	k_atlantis = {
+		color = { 200 200 200 }
+		capital = c_atlantis
+		d_atlantis = {
+			color = { 150 150 150 }
+			capital = c_atlantis
+			c_atlantis = {
+				color = { 100 100 100 }
+				b_atlantis = {
+					province = 1
+					color = { 50 50 50 }
+				}
+				b_atlantis_2 = {
+					province = 2
+					color = { 50 50 50 }
+				}
+				b_atlantis_3 = {
+					province = 3
+					color = { 50 50 50 }
+				}
+			}
+			c_atlantis_b = {
+				color = { 75 75 75 }
+				b_atlantis_4 = {
+					province = 4
+					color = { 25 25 25 }
+				}
+				b_atlantis_5 = {
+					province = 5
+					color = { 25 25 25 }
+				}
+				b_atlantis_6 = {
+					province = 6
+					color = { 25 25 25 }
+				}
+			}
+			c_atlantis_c = {
+				color = { 50 50 50 }
+				b_atlantis_7 = {
+					province = 7
+					color = { 1 1 1 }
+                }
+				b_atlantis_8 = {
+					province = 8
+					color = { 1 1 1 }
+				}
+				b_atlantis_9 = {
+					province = 9
+					color = { 1 1 1 }
+				}
+			}
+		}
+	}
+}

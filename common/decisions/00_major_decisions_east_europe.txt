@@ -7,8 +7,10 @@
 #revive_magyar_paganism_decision
 
 unite_the_western_slavs_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
 	ai_check_interval = 120
 	desc = unite_the_western_slavs_decision_desc
 
@@ -50,6 +52,10 @@ unite_the_western_slavs_decision = {
 				}
 			}
 		}
+	}
+	
+	is_valid_showing_failures_only = {
+		is_landed = yes
 	}
 
 	effect = {
@@ -95,8 +101,10 @@ unite_the_western_slavs_decision = {
 
 
 unite_the_southern_slavs_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
 	ai_check_interval = 120
 	desc = unite_the_southern_slavs_decision_desc
 
@@ -122,6 +130,10 @@ unite_the_southern_slavs_decision = {
 			has_primary_title = title:k_moldavia
 			has_primary_title = title:k_bosnia
 		}
+	}
+	
+	is_valid_showing_failures_only = {
+		is_landed = yes
 	}
 
 	effect = {
@@ -167,8 +179,10 @@ unite_the_southern_slavs_decision = {
 
 
 unite_the_slavs_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
 	ai_check_interval = 120
 	desc = unite_the_slavs_decision_desc
 
@@ -194,6 +208,10 @@ unite_the_slavs_decision = {
 			culture = { has_cultural_pillar = heritage_south_slavic }
 		}
 		completely_controls_region = custom_slavia
+	}
+	
+	is_valid_showing_failures_only = {
+		is_landed = yes
 	}
 
 	effect = {
@@ -236,8 +254,10 @@ unite_the_slavs_decision = {
 
 
 defenders_of_highgod_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	decision_group_type = major
 	ai_check_interval = 120
 	desc = defenders_of_highgod_decision_desc
 
@@ -327,6 +347,7 @@ defenders_of_highgod_decision = {
 
 	is_valid_showing_failures_only = {
 		is_independent_ruler = yes
+		is_landed = yes
 	}
 
 
@@ -399,16 +420,17 @@ defenders_of_highgod_decision = {
 
 #Hungary: historical re-settlement program.
 promote_hungarian_settlement_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
 	desc = promote_hungarian_settlement_decision_desc
 	selection_tooltip = promote_hungarian_settlement_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		game_start_date < 1066.1.1
 		culture = { has_cultural_pillar = heritage_magyar }
 		NOT = {  #Can only do it once.
@@ -451,6 +473,7 @@ promote_hungarian_settlement_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_capable_adult = yes
 		is_imprisoned = no
 		is_independent_ruler = yes
@@ -495,11 +518,12 @@ promote_hungarian_settlement_decision = {
 # by Flavio Verna & Ewan Cowhig Croft	#
 #########################################
 revive_magyar_paganism_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	}
 	desc = revive_magyar_paganism_decision_desc
 	selection_tooltip = revive_magyar_paganism_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_check_interval = 0
 
 	is_shown = {
@@ -523,7 +547,10 @@ revive_magyar_paganism_decision = {
 			title_province = { geographical_region = custom_hungary }
 		}
 		#Must be feudalised.
-		government_has_flag = government_is_feudal
+		OR = {
+			government_has_flag = government_is_feudal
+			government_allows = administrative
+		}
 		#Must be something other than pagan.
 		NOT = {
 			faith.religion = { is_in_family = rf_pagan }
@@ -599,8 +626,10 @@ revive_magyar_paganism_decision = {
 # by Ewan Cowhig Croft			#
 #################################
 found_kingdom_of_bosnia_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -608,11 +637,8 @@ found_kingdom_of_bosnia_decision = {
 	selection_tooltip = found_kingdom_of_bosnia_decision_tooltip
 
 	is_shown = {
-
-		always = no
-
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		OR = {
 			#Must be a Serb or Croat within the Bosnian highlands.
@@ -634,17 +660,14 @@ found_kingdom_of_bosnia_decision = {
 				target = flag:flag_founded_kingdom_of_bosnia
 			}
 		}
-		OR = {
-			government_has_flag = government_is_feudal
-			government_has_flag = government_is_clan
+		NOR = {
+			government_has_flag = government_is_mercenary
+			government_has_flag = government_is_holy_order
 		}
 		highest_held_title_tier <= tier_duchy
 	}
 
 	is_valid = {
-
-		always = no
-
 		#You must have sufficient clout.
 		is_independent_ruler = yes
 
@@ -661,6 +684,7 @@ found_kingdom_of_bosnia_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_available_adult = yes
 	}
 
@@ -713,8 +737,10 @@ found_kingdom_of_bosnia_decision = {
 # by Ewan Cowhig Croft			#
 #################################
 accuse_krstjani_of_heresy_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_religion.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -723,7 +749,7 @@ accuse_krstjani_of_heresy_decision = {
 
 	is_shown = {
 		is_independent_ruler = yes
-		is_landed = yes
+		is_landed_or_landless_administrative = yes
 		exists = dynasty
 		#Gotta be an ecumenical Christian...
 		faith = {
@@ -748,6 +774,7 @@ accuse_krstjani_of_heresy_decision = {
 		OR = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
+			government_allows = administrative
 		}
 	}
 
@@ -864,8 +891,10 @@ accuse_krstjani_of_heresy_decision = {
 # by Ewan Cowhig Croft				#
 #####################################
 launch_hungarian_migration_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 60
 
@@ -959,8 +988,10 @@ launch_hungarian_migration_decision = {
 # by James Beaumont				#
 #################################
 found_kingdom_of_livonia_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -969,7 +1000,7 @@ found_kingdom_of_livonia_decision = {
 
 	is_shown = {
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		OR = {
 			#Must be a Latvian or Christian in Livonia
@@ -1020,6 +1051,7 @@ found_kingdom_of_livonia_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_available_adult = yes
 	}
 

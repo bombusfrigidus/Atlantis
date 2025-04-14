@@ -1,4 +1,5 @@
-﻿##########
+﻿
+##########
 # Religious Relations
 ##########
 
@@ -308,6 +309,12 @@ court_chaplain_fabricate_claim_tradition_language_scholars_bonus = {
 		}
 		divide = 100
 	}
+}
+
+court_chaplain_fabricate_claim_inspection_reward_bonus = {
+	value = 0
+	add = court_chaplain_fabricate_claim_base_total
+	multiply = 0.25
 }
 
 # Relation impact
@@ -747,6 +754,26 @@ court_chaplain_conversion_contextual_bonuses = {
 	if = {
 		limit = {
 			exists = scope:county
+			scope:county = { has_county_modifier = tougher_to_convert }
+		}
+		add = {
+			value = -0.25
+			desc = COURT_CHAPLAIN_CONVERSION_LOCAL_COUNTY_MODIFIERS
+		}
+	}
+	if = {
+		limit = {
+			exists = scope:county
+			scope:county = { has_county_modifier = easier_to_convert }
+		}
+		add = {
+			value = 0.25
+			desc = COURT_CHAPLAIN_CONVERSION_LOCAL_COUNTY_MODIFIERS
+		}
+	}
+	if = {
+		limit = {
+			exists = scope:county
 			scope:county = { has_county_modifier = governance_1074_local_faith_respected_modifier }
 		}
 		add = {
@@ -804,8 +831,7 @@ court_chaplain_conversion_contextual_bonuses = {
 	}	
 	if = {
 		limit = {
-			exists = scope:county
-			scope:county = { has_county_modifier = petition_liege_county_control_modifier }
+			scope:county ?= { has_county_modifier = petition_liege_county_convert_modifier }
 		}
 		add = {
 			value = scope:councillor.petition_liege_county_convert_modifier_value
@@ -816,9 +842,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	#Conversion bonuses from certain Holy Sites.
 	if = {
 		limit = {
-
-			always = no
-
 			scope:councillor.faith = {
 				controls_holy_site = jerusalem
 			}
@@ -833,9 +856,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	}
 	if = {
 		limit = {
-
-			always = no
-
 			scope:councillor.faith = {
 				controls_holy_site = kerala
 			}
@@ -850,9 +870,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	}
 	if = {
 		limit = {
-
-			always = no
-
 			exists = scope:county
 			scope:councillor.faith = {
 				controls_holy_site = iona
@@ -871,9 +888,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	}
 	if = {
 		limit = {
-
-			always = no
-
 			exists = scope:county
 			scope:county.faith = {
 				controls_holy_site = wadi_el_milk
@@ -889,9 +903,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	}
 	if = {
 		limit = {
-
-			always = no
-
 			scope:councillor.faith = {
 				controls_holy_site = cordoba
 			}
@@ -906,9 +917,6 @@ court_chaplain_conversion_contextual_bonuses = {
 	}
 	if = {
 		limit = {
-
-			always = no
-
 			exists = scope:county
 			scope:county.faith = {
 				controls_holy_site = visoki

@@ -1,7 +1,7 @@
 ﻿### This file contains pop-up lessons about Warfare.
 
 
-# Initial gating/Fallback chain (if you're somehow already holding c_desmond)...
+# Initial gating/Fallback chain (if you're somehow already holding c_atlantis)...
 lesson_safety_gating = {
 	chain = lesson_chain_war
 	shown_in_encyclopedia = no
@@ -9,9 +9,6 @@ lesson_safety_gating = {
 	
 	# NOTE:  Should only trigger INSTEAD of lesson_declare_war...
 	trigger = {
-
-		always = no
-
 		NOT = { is_tutorial_lesson_completed = lesson_safety_gating }
 		NOT = { is_tutorial_lesson_completed = lesson_declare_war }
 		title:c_atlantis.holder.top_liege = root
@@ -89,9 +86,6 @@ lesson_declare_war = {
 		trigger_transition = {
 			target = lesson_finish
 			trigger = {
-
-				always = no
-
 				is_at_war = yes
 				any_character_war = {
 					casus_belli = {
@@ -120,9 +114,6 @@ lesson_declare_war = {
 			button_text = "tutorial_lesson_button_complete"
 			target = lesson_finish
 			enabled = {
-
-				always = no
-
 				custom_description = {
 					text = lesson_declare_war_tt
 					OR = { # Either you are at war with Descmond, or you already own it
@@ -144,9 +135,6 @@ lesson_declare_war = {
 		trigger_transition = { # Auto-transition (to set flag)
 			target = lesson_declare_war_step_2
 			trigger = {
-
-				always = no
-
 				OR = { # Either you are at war with Descmond, or you already own it
 					AND = {
 						is_at_war = yes
@@ -362,7 +350,6 @@ lesson_siege_mechanics = {
 	trigger = {
 		NOT = { is_tutorial_lesson_completed = lesson_siege_mechanics }
 		has_raised_armies = yes
-		has_global_variable = tutorial_completed
 		OR = {
 			any_army = {
 				is_army_in_siege = yes
@@ -399,7 +386,6 @@ lesson_warscore = {
 	# Warscore and War outcomes...
 	trigger = {
 		NOT = { is_tutorial_lesson_completed = lesson_warscore }
-		has_global_variable = tutorial_completed
 		any_character_war = {
 			OR = {
 				attacker_war_score > 5
@@ -452,7 +438,6 @@ lesson_winning_wars = {
 	
 	# Win the War...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_winning_wars }
 		any_character_war = {
 			attacker_war_score > 75
@@ -498,7 +483,6 @@ lesson_losing_wars = {
 	
 	# Lose the War...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_losing_wars }
 		any_character_war = {
 			attacker_war_score < -75
@@ -534,7 +518,6 @@ lesson_war_final_notes_victory = {
 	
 	# End of War Tutorial (VICTORY)...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_war_final_notes_victory }
 		has_war_result_message_with_outcome = victory
 	}
@@ -572,7 +555,6 @@ lesson_war_final_notes_defeat = {
 	
 	# End of War Tutorial (DEFEAT)...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_war_final_notes_defeat }
 		has_war_result_message_with_outcome = defeat
 	}
@@ -610,7 +592,6 @@ lesson_war_final_notes_white_peace = {
 
 	# End of War Tutorial (WHITE PEACE)...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_war_final_notes_white_peace }
 		has_war_result_message_with_outcome = white_peace
 	}
@@ -647,7 +628,6 @@ lesson_war_final_notes_invalidated = {
 
 	# End of War Tutorial...
 	trigger = {
-		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = lesson_war_final_notes_invalidated }
 		has_war_result_message_with_outcome = invalidated
 	}
@@ -685,7 +665,6 @@ lesson_guided_final_notes_mission = {
 
 	# End of War Tutorial...
 	trigger = {
-		has_global_variable = tutorial_completed
 		OR = {
 			is_tutorial_lesson_completed = lesson_war_final_notes_victory
 			is_tutorial_lesson_completed = lesson_war_final_notes_defeat

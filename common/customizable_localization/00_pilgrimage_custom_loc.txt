@@ -5,9 +5,6 @@ PilgrimageName = {
 	# Hajj
 	text = { 
 		trigger = {
-
-			always = no
-
 			OR = {
 				AND = {
 					exists = involved_activity

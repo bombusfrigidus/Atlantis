@@ -4,10 +4,12 @@
 
 # Make it a Pious playthrough that encourage the Caliph to get support from the Muslim world
 struggle_persia_ending_assertion_decision = {
-	major = yes
+	decision_group_type = major
 	title = struggle_persia_ending_assertion
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_supremacy.dds"
-	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp3_decision_strength.dds"
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_supremacy.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decision_buttons/fp3_decision_strength.dds"
 	desc = struggle_persia_ending_assertion_decision_desc
 	selection_tooltip = struggle_persia_ending_assertion_tooltip
 	confirm_click_sound = "event:/DLC/FP2/SFX/UI/fp2_struggle_ending_decision_confirm"
@@ -109,6 +111,15 @@ struggle_persia_ending_assertion_decision = {
 			fp3_ending_effects_assertion = yes
 		}
 		trigger_event = fp3_struggle.0071
+		
+		if = { # If you can adopt admin government, show a tooltip to explain it - Actual effect is executed in the event
+			limit = {
+				has_dlc_feature = roads_to_power
+				fp3_struggle_is_the_caliph = yes
+				NOT = { government_has_flag = government_is_administrative }
+			}
+			custom_tooltip = adopt_admin_government_tt
+		}
 
 		title:d_sunni = { remove_variable = struggle_block_dissolution_faction }
 		title:e_arabia = { remove_variable = struggle_block_dissolution_faction }
@@ -126,10 +137,12 @@ struggle_persia_ending_assertion_decision = {
 ###################################
 
 struggle_persia_ending_foundation_decision = {
-	major = yes
+	decision_group_type = major
 	title = struggle_persia_ending_foundation
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_sunder.dds"
-	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp3_decision_temper.dds"
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_sunder.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decision_buttons/fp3_decision_temper.dds"
 	desc = struggle_persia_ending_foundation_decision_desc
 	selection_tooltip = struggle_persia_ending_foundation_tooltip
 	confirm_click_sound = "event:/DLC/FP2/SFX/UI/fp2_struggle_ending_decision_confirm"
@@ -273,12 +286,7 @@ struggle_persia_ending_foundation_decision = {
 			}
 		}
 		trigger_if = { # VASSALIZE - if you change this, also change the `ai_chance = {}` of the specific widget option below!
-			limit = { 
-				
-				always = no
-
-				scope:struggle_persia_ending_foundation_decision_option_vassalize = yes 
-			}
+			limit = { scope:struggle_persia_ending_foundation_decision_option_vassalize = yes }
 			# Sunni Caliph still holds Arabia
 			custom_tooltip = {
 				text = struggle_persia_ending_decision_caliphate_exists_tt
@@ -400,9 +408,6 @@ struggle_persia_ending_foundation_decision = {
 
 	            if = { # VASSALIZE - if you change this, also change the `is_valid = {}` of the decision!
                     limit = {
-
-						always = no
-
                         # Sunni Caliph still holds Arabia
                         custom_tooltip = {
                             text = struggle_persia_ending_decision_caliphate_exists_tt
@@ -488,10 +493,12 @@ struggle_persia_ending_foundation_decision = {
 ###################################
 
 struggle_persia_ending_rekindle_iran_decision = {
-	major = yes
+	decision_group_type = major
 	title = struggle_persia_ending_rekindle_iran
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_foundation.dds"
-	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp3_decision_foundation.dds"
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_foundation.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decision_buttons/fp3_decision_foundation.dds"
 	desc = struggle_persia_ending_rekindle_iran_decision_desc
 	selection_tooltip = struggle_persia_ending_rekindle_iran_tooltip
 	confirm_click_sound = "event:/DLC/FP2/SFX/UI/fp2_struggle_ending_decision_confirm"
@@ -640,8 +647,11 @@ favour_skilled_outsiders_decision = {
 	desc = favour_skilled_outsiders_decision_desc
 	confirm_text = favour_skilled_outsiders_decision_confirm
 	selection_tooltip = favour_skilled_outsiders_decision_tooltip
-	picture = "gfx/interface/illustrations/decisions/fp3_decision_tax_collector.dds"
-	sort_order = 180
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3_decision_tax_collector.dds"
+	}
+	sort_order = 90
+	decision_group_type = courtier
 	
 	is_shown = {
 		has_fp3_dlc_trigger = yes
@@ -921,15 +931,18 @@ favour_skilled_outsiders_decision = {
 # Sunder Caliphate Ending
 ###################################
 fp3_sunder_the_caliphate_decision = {
-	major = yes
+	decision_group_type = major
 	title = fp3_sunder_the_caliphate_decision
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_strength.dds"
-	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp3_decision_assertion.dds" # Does this need to be updated?
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_strength.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decision_buttons/fp3_decision_assertion.dds" # Does this need to be updated?
 	desc = fp3_sunder_the_caliphate_decision_desc
 	selection_tooltip = fp3_sunder_the_caliphate_decision_tooltip
 	sort_order = 80
 
 	is_shown = {
+		is_landless_adventurer = no
 		exists = title:d_sunni.holder
 		NOR = {
 			this = title:d_sunni.holder
@@ -1013,8 +1026,9 @@ fp3_sunder_the_caliphate_decision = {
 # Become a Clan Government
 ###################################
 fp3_become_clan_government_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp3/friendly.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/friendly.dds"
+	}
 	desc = fp3_become_clan_government_decision_desc
 	selection_tooltip = fp3_become_clan_government_decision_tooltip
 
@@ -1037,7 +1051,10 @@ fp3_become_clan_government_decision = {
 
 	is_valid = {
 		# You are Feudal
-		government_has_flag = government_is_feudal
+		custom_tooltip = {
+			text = government_is_feudal_tt
+			government_has_flag = government_is_feudal
+		}
 		# Religion is Islam (Clan)
 		religion = religion:islam_religion
 		# House head is Clan

@@ -42,6 +42,15 @@
 # 0841 - 0850	From the Ashes - the church council arrives at their final important doctrinal conclusions.
 ##################################################
 
+
+
+
+
+
+
+
+
+
 ##################################################
 # GENERAL SCRIPTED TRIGGERS & EFFECTS
 
@@ -248,8 +257,19 @@ scripted_effect fp2_lyonese_monk_grab_and_update_pope_effect = {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
 ##################################################
 # SETUP & MISC
+
 ##################################################
 # A Storm-Tossed Night
 # by Ewan Cowhig Croft
@@ -272,6 +292,11 @@ fp2_lyonese_monk.0001 = {
 	}
 	override_background = { reference = corridor_night }
 	cooldown = { years = 100 }
+
+	trigger = {
+		#Not for landless
+		is_landed = yes
+	}
 
 	immediate = {
 		play_music_cue = "mx_cue_general_crusade_event_3"
@@ -1058,7 +1083,7 @@ fp2_lyonese_monk.0211 = {
 		}
 		# Now, they resign and become a NunMonk.
 		scope:baron = {
-			depose = yes
+			depose = yes # depose_effect not used for opted abdication
 			add_trait = devoted
 		}
 		# Nab some more converts.
@@ -3037,7 +3062,7 @@ fp2_lyonese_monk.0641 = {
 				add_learning_skill = -2
 				add_prowess_skill = -2
 			}
-			add_trait = heresiarch
+			add_heresiarch_trait_effect = yes
 			# Make this clear too.
 			hidden_effect = { force_character_skill_recalculation = yes }
 			# _Small_ diplo-immunity.
@@ -3061,10 +3086,7 @@ fp2_lyonese_monk.0641 = {
 			days = 1
 		}
 		set_character_faith_with_conversion = faith:adoptionist
-		if = {
-			limit = { NOT = { has_trait = heresiarch } }
-			add_trait = heresiarch
-		}
+		add_heresiarch_trait_effect = yes
 		## The hidden character's list gets used.
 		every_in_list = {
 			list = hidden_converts
@@ -3212,7 +3234,7 @@ fp2_lyonese_monk.0801 = {
 		# Refund the piety levels you lost earlier.
 		add_piety_level = 2
 		# Give you a fun trait because... I mean, well.
-		add_trait = heresiarch
+		add_heresiarch_trait_effect = yes
 		# Sort our locale.
 		## First, whether this is a repeater.
 		scope:council_1_venue = {

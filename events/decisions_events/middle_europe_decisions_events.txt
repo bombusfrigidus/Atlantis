@@ -460,6 +460,9 @@ middle_europe_decisions.0010 = {
 		name = middle_europe_decisions.0010.a
 		trigger = {
 			completely_controls = title:d_sicily
+			title:c_atlantis = {
+				title_province = { has_special_building = no }
+			}
 		}
 		if = { # Nickname
 			limit = {
@@ -543,7 +546,11 @@ middle_europe_decisions.0010 = {
 		name = middle_europe_decisions.0010.b
 		trigger = {
 			completely_controls = title:d_capua
+			title:c_atlantis = {
+				title_province = { has_special_building = no }
+			}
 		}
+		custom_tooltip = middle_europe_decisions.0010.tt_napoli_warning
 		if = { # Nickname
 			limit = {
 				has_title = title:e_hre
@@ -937,7 +944,7 @@ middle_europe_decisions.0017 = {
 							region = custom_polabia
 							holder = root
 						}
-						player_heir = { highest_held_title_tier >= county }
+						player_heir = { highest_held_title_tier >= tier_county }
 					}
 				}
 			}

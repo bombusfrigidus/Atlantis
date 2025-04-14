@@ -173,12 +173,9 @@ fp1_major_decisions.0011 = {
 		name = fp1_major_decisions.0011.a
 
 		trigger = {
-
-			always = no
-
-			#Must have title:c_kiev in order to make it your capital.
+			#Must have title:c_atlantis in order to make it your capital.
 			any_sub_realm_county = { this = title:c_atlantis }
-			#And Kiev cannot be held by a player who has _only_ title:c_kiev, unless that player is you.
+			#And Kiev cannot be held by a player who has _only_ title:c_atlantis, unless that player is you.
 			title:c_atlantis.holder = {
 				OR = {
 					is_ai = yes
@@ -192,7 +189,7 @@ fp1_major_decisions.0011 = {
 			}
 		}
 
-		#Organise the usurpation/capital move of title:c_kiev if appropriate.
+		#Organise the usurpation/capital move of title:c_atlantis if appropriate.
 		if = {
 			limit = {
 				NOT = { title:c_atlantis.holder = scope:founder }
@@ -211,7 +208,7 @@ fp1_major_decisions.0011 = {
 			resolve_title_and_vassal_change = scope:change
 		}
 		set_realm_capital = title:c_atlantis
-		#Otherwise, set title:c_kiev to be scope:new_rus_capital & go through with the effect.
+		#Otherwise, set title:c_atlantis to be scope:new_rus_capital & go through with the effect.
 		title:c_atlantis = {
 			save_scope_as = new_rus_capital
 			found_capital_of_rus_scripted_effect = yes

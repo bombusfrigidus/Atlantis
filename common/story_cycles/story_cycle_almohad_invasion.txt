@@ -120,9 +120,6 @@ story_almohad_invasion = {
 		days = 180
 
 		trigger = {
-
-			always = no
-
 			NOT = { exists = var:fired_marrakesh_event }
 			story_owner = {
 				any_sub_realm_county = {
@@ -147,6 +144,24 @@ story_almohad_invasion = {
 				story_owner = {
 					trigger_event = almohad.1004
 				}
+			}
+		}
+	}
+
+	#Maintenance group
+	effect_group = {
+		days = 1
+		trigger = {
+			story_owner = { is_landed = no }
+		}
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				#You became a landless adventurer/administrative! Ending story prematurely.
+				story_owner = { save_scope_as = story_owner }
+				debug_log = "Almohads invalidated"
+				debug_log_scopes = yes
+				end_story = yes
 			}
 		}
 	}

@@ -35,9 +35,6 @@ hajj.0010 = {
 	hidden = yes 
 	scope = faith
 	trigger = {
-
-		always = no
-
 		has_doctrine = doctrine_pilgrimage_mandatory_hajj
 		any_faith_ruler = {
 			is_landed = yes
@@ -88,7 +85,7 @@ hajj.0011 = {
 			}
 			set_variable = {
 				name = hajj_destination
-				value = title:b_atlantis
+				value = title:b_atlantis.title_province
 			}
 			if = {
 				limit = { exists = var:hajj_destination }
@@ -132,9 +129,6 @@ hajj.0500 = {
 	}
 	cooldown = { years = 10 }
 	trigger = {
-
-		always = no
-
 		any_close_family_member = {
 			OR = {
 				has_any_good_relationship_with_character_trigger = { CHARACTER = root }
@@ -259,6 +253,16 @@ hajj.0500 = {
 					has_trait = zealous
 				}
 				factor = 0
+			}
+		}
+	}
+	after = {
+		scope:hajj_dying_relative ?= {
+			if = {
+				limit = {
+					has_character_flag = use_sickness_clothes
+				}
+				remove_character_flag = use_sickness_clothes
 			}
 		}
 	}

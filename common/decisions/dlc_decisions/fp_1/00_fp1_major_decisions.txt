@@ -15,8 +15,10 @@
 #############################################
 
 secure_high_kingdom_north_sea_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -27,7 +29,7 @@ secure_high_kingdom_north_sea_decision = {
 		#DLC check.
 		has_fp1_dlc_trigger = yes
 		#Standard filter checks.
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		OR = {
 			government_has_flag = government_is_tribal
@@ -160,8 +162,10 @@ secure_high_kingdom_north_sea_decision = {
 #############################################
 
 found_capital_of_the_rus_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_raise_runestone.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -169,13 +173,10 @@ found_capital_of_the_rus_decision = {
 	selection_tooltip = found_capital_of_the_rus_decision_tooltip
 
 	is_shown = {
-
-		always = no
-
 		#DLC check.
 		has_fp1_dlc_trigger = yes
 		#Standard filter checks.
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		#Must be within the North Germanic cultural sphere.
 		OR = {
@@ -208,9 +209,6 @@ found_capital_of_the_rus_decision = {
 	}
 
 	is_valid = {
-
-		always = no
-
 		#Must be independent.
 		is_independent_ruler = yes
 		#Has to be around to organise the construction.
@@ -304,8 +302,10 @@ found_capital_of_the_rus_decision = {
 
 # This decision is intentionally fairly whimsical, and in no way intended to reflect historical reality or possibility, nor is it in any way affiliated with affiliated with the Isle of Mann Tourism Board.
 elevate_mann_and_the_isles_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -313,13 +313,10 @@ elevate_mann_and_the_isles_decision = {
 	selection_tooltip = elevate_mann_and_the_isles_decision_tooltip
 
 	is_shown = {
-
-		always = no
-
 		#DLC check.
 		has_fp1_dlc_trigger = yes
 		#Standard filter checks.
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		OR = {
 			government_has_flag = government_is_tribal
@@ -348,9 +345,6 @@ elevate_mann_and_the_isles_decision = {
 	}
 
 	is_valid = {
-
-		always = no
-
 		#Must be independent.
 		is_independent_ruler = yes
 		#Has to be around for the ceremony.
@@ -427,8 +421,10 @@ elevate_mann_and_the_isles_decision = {
 #############################################
 
 forge_the_jomsvikings_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp1_decision_forge_jomsvikings.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decision_forge_jomsvikings.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -439,7 +435,7 @@ forge_the_jomsvikings_decision = {
 		# DLC check.
 		has_fp1_dlc_trigger = yes
 		# Standard filter checks.
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty
 		OR = {
 			government_has_flag = government_is_tribal

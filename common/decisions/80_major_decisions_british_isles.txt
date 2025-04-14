@@ -1,7 +1,9 @@
 ﻿#The culture of the people both high and low is veering towards Celtic - embrace it?
 reclaim_britannia_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -13,7 +15,7 @@ reclaim_britannia_decision = {
 			culture = { has_cultural_pillar = heritage_brythonic }
 		}
 
-		is_landed = yes
+		is_landed_or_landless_administrative = yes
 		any_sub_realm_county = {
 			title_province = {  geographical_region = world_europe_west_britannia }
 			NOR = {
@@ -99,24 +101,45 @@ reclaim_britannia_decision = {
 }
 
 embrace_english_culture_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 36
 
 	desc = embrace_english_culture_decision_desc
 
 	is_shown = {
-		is_landed = yes
-		culture = { has_cultural_pillar = heritage_frankish }
-		OR = {	
-			title:k_england = {
-				any_in_de_jure_hierarchy = {
-					root.primary_title = this
+		game_start_date < 1178.1.1
+		culture = {
+			OR = {
+				any_parent_culture = {
+					this = culture:norman
 				}
+				has_cultural_pillar = heritage_frankish
 			}
-			root.primary_title = title:e_britannia
+			NOT = {
+				this = culture:english
+			}
 		}
+		OR = {
+			any_claim = {
+				this = title:e_britannia
+			}
+			any_claim = {
+				this = title:k_england
+			}
+			OR = {	
+				title:k_england = {
+					any_in_de_jure_hierarchy = {
+						root.primary_title = this
+					}
+				}
+				root.primary_title = title:e_britannia
+			}
+		}
+		
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -133,11 +156,67 @@ embrace_english_culture_decision = {
 			}
 		}
 		has_title = title:k_england
+		trigger_if = {
+			limit = {
+				has_dlc_feature = roads_to_power
+			}
+			OR = {
+				custom_description = {
+					text = harrying_ended_tooltip
+					NOT = {
+						has_global_variable = harrying_of_the_north
+					}
+				}
+				custom_description = {
+					text = high_pacification_tooltip
+					any_owned_story = {
+						story_type = story_cycle_harrying_of_the_north
+						var:pacification > var:resistance
+						var:pacification > 14
+						var:embrace_culture_decision_counter > 11
+					}
+				}
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					any_realm_county = {
+						culture = culture:english
+					}
+					culture.culture_head = {
+						any_realm_county = {
+							culture = culture:english
+						}
+					}
+					culture:english = {
+						exists = culture_head
+					}
+				}
+			}
+			culture = {
+				cultural_acceptance = {
+					target = culture:english
+					value >= 40
+				}
+			}
+		}
+		trigger_else = {
+			culture = {
+				cultural_acceptance = {
+					target = culture:anglo_saxon
+					value >= 40
+				}
+			}
+		}
 	}
 
 	is_valid_showing_failures_only = {
 		is_imprisoned = no
 		is_available_adult = yes
+		NOT = {
+			government_has_flag = government_is_landless_adventurer
+		}
 	}
 
 	effect = {
@@ -153,12 +232,53 @@ embrace_english_culture_decision = {
 	}
 	
 	ai_potential = {
-		is_landed = yes
-		culture = { has_cultural_pillar = heritage_frankish }
+		is_playable_character = yes
+		culture = {
+			OR = {
+				any_parent_culture = {
+					this = culture:norman
+				}
+				has_cultural_pillar = heritage_frankish
+			}
+			NOT = {
+				this = culture:english
+			}
+		}
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:embrace_english_culture_decision
+			}
+		}
+		trigger_if = {
+			limit = {
+				OR = {
+					any_realm_county = {
+						culture = culture:english
+					}
+					culture.culture_head = {
+						any_realm_county = {
+							culture = culture:english
+						}
+					}
+					culture:english = {
+						exists = culture_head
+					}
+				}
+			}
+			culture = {
+				cultural_acceptance = {
+					target = culture:english
+					value >= 80
+				}
+			}
+		}
+		trigger_else = {
+			culture = {
+				cultural_acceptance = {
+					target = culture:anglo_saxon
+					value >= 80
+				}
 			}
 		}
 	}
@@ -170,16 +290,17 @@ embrace_english_culture_decision = {
 
 # Request Laudabiliter - by Flavio
 england_request_laudabiliter_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_misc.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
 	desc = england_request_laudabiliter_decision_desc
 	selection_tooltip = england_request_laudabiliter_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
 		is_ruler = yes
-		is_landed = yes
+		is_landed_or_landless_administrative = yes
 		root.faith = faith:catholic
 		exists = faith:catholic.religious_head
 		faith:catholic.religious_head = {
@@ -288,8 +409,10 @@ england_request_laudabiliter_decision = {
 # by Linnéa Thimrén & Ewan Cowhig Croft		#
 #############################################
 negotiate_the_danelaw_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -298,6 +421,7 @@ negotiate_the_danelaw_decision = {
 	is_shown = {
 		# Standard filter checks.
 		negotiate_the_danelaw_basic_filter_trigger = yes
+		is_landed_or_landless_administrative = yes
 		# Must be in the vague region.
 		any_held_title = {
 			tier = tier_county
@@ -379,8 +503,9 @@ negotiate_the_danelaw_decision = {
 }
 
 negotiate_the_danelaw_integrate_duchies_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
 	ai_check_interval = 1
 
 	desc = negotiate_the_danelaw_integrate_duchies_decision_desc
@@ -554,7 +679,8 @@ negotiate_the_danelaw_integrate_duchies_decision = {
 					}
 					holder = {
 						hidden_effect = {
-							send_interface_toast = {	
+							send_interface_toast = {
+								type = event_toast_effect_neutral	
 								title = negotiate_the_danelaw_integrate_duchies_decision.inform_minor_players.t
 								left_icon = title:k_england.holder
 								right_icon = title:k_danelaw.holder
@@ -584,8 +710,10 @@ negotiate_the_danelaw_integrate_duchies_decision = {
 }
 
 formalise_the_daneland_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -667,8 +795,10 @@ formalise_the_daneland_decision = {
 # by Ewan Cowhig Croft						#
 #############################################
 restore_dumnonia_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -676,16 +806,12 @@ restore_dumnonia_decision = {
 	selection_tooltip = restore_dumnonia_decision_tooltip
 
 	is_shown = {
-
-		always = no
-
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		exists = dynasty # Everyone should have a dynasty, but in case they don't...
 		OR = {
 			OR = {
 				has_title = title:d_cornwall
-				has_title = title:c_atlantis
 				has_title = title:c_atlantis
 			}
 			dynasty = dynasty:1	#The Cornish royal house is always able to get away with these shenanigans.
@@ -705,6 +831,8 @@ restore_dumnonia_decision = {
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_republic
 			government_has_flag = government_is_clan
+			government_allows = administrative
+			government_has_flag = government_is_landless_adventurer
 		}
 		highest_held_title_tier <= tier_duchy
 	}
@@ -720,6 +848,7 @@ restore_dumnonia_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_available_adult = yes
 	}
 

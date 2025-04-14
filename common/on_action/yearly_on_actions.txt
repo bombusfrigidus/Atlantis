@@ -633,7 +633,6 @@ yearly_playable_pulse = {
 	}
 	events = {
 		adultery.0001 #Suspected spouse/soulmate of cheating (increased chance when there is a lover, but can also trigger otherwise)
-		hold_court.3050 #Warning the ruler that it's been some time since they Held Court
 		court_maintenance.0012 # Dynasty banner improves with renown
 		court_maintenance.0013 # Remove duplicate dynasty banners
 	}
@@ -831,11 +830,11 @@ five_year_playable_pulse = {
 						}
 						5 = {
 							trigger = {
-								can_start_scheme = { type = learn_language target = root }
+								can_start_scheme = { type = learn_language target_character = root }
 							}
 							start_scheme = {
 								type = learn_language
-								target = root
+								target_character = root
 							}
 						}
 					}

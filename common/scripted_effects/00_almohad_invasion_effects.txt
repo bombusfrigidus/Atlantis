@@ -1,9 +1,6 @@
 ﻿find_title_for_almohad_spawn_effect = {
 	if = { # The important thing is to not mess too much with players who can't resist
 		limit = {
-
-			always = no
-
 			title:c_atlantis = {
 				holder = { is_ai = yes }
 				OR = {
@@ -21,9 +18,6 @@
 			random_in_de_jure_hierarchy = {
 				continue = { tier > tier_county }
 				limit = {
-
-					always = no
-
 					tier = tier_county
 					holder = { is_ai = yes } # Let's not murder players
 					NOT = { this = title:c_atlantis }

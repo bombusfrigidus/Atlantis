@@ -1,5977 +1,5419 @@
 ﻿@correct_culture_primary_score = 100
 @better_than_the_alternatives_score = 50
 @always_primary_score = 1000
+@never_primary_score = -1000
 
-# Atlantis
 
-e_atlantis = {
-	color = { 250 250 250 }
-	capital = c_atlantis
-
-	k_atlantis = {
-		color = { 200 200 200 }
-		capital = c_atlantis
-		d_atlantis = {
-			color = { 150 150 150 }
-			capital = c_atlantis
-			c_atlantis = {
-				color = { 100 100 100 }
-				b_atlantis = {
-					province = 1
-					color = { 50 50 50 }
-				}
-				b_atlantis_2 = {
-					province = 2
-					color = { 50 50 50 }
-				}
-				b_atlantis_3 = {
-					province = 3
-					color = { 50 50 50 }
-				}
-			}
-			c_atlantis_b = {
-				color = { 75 75 75 }
-				b_atlantis_4 = {
-					province = 4
-					color = { 25 25 25 }
-				}
-				b_atlantis_5 = {
-					province = 5
-					color = { 25 25 25 }
-				}
-				b_atlantis_6 = {
-					province = 6
-					color = { 25 25 25 }
-				}
-			}
-			c_atlantis_c = {
-				color = { 50 50 50 }
-				b_atlantis_7 = {
-					province = 7
-					color = { 1 1 1 }
-                }
-				b_atlantis_8 = {
-					province = 8
-					color = { 1 1 1 }
-				}
-				b_atlantis_9 = {
-					province = 9
-					color = { 1 1 1 }
-				}
-			}
-		}
-	}
-}
+########################
+#### VANILLA TITLES ####
+########################
 
-# EMPIRES
+# Whenever Vanilla adds new titles, come back here and add them to the bottom of the list.
+# Regex to find non atlantis titles 
+# - \b[X]_(?!atlantis\b)[a-zA-Z0-9_]+\b
+# - Replace the X with bcdke depending on what title you want to find, or just put them all in to find every title
 
-# special titles
-k_papal_state = {
-	color = { 255 249 198 }
+k_papal_state = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_orthodox = {
-	color = { 183 60 155 }
+k_orthodox = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_fashion = { # Kingdom of Fashion from Establish a New Fashion at Court decision
-	color = { 140 45 165 }
+k_fashion = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_iconoclast = {
-	color = { 153 50 125 }
+d_iconoclast = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_patriarchate_in_the_east = {
-	color = { 180 137 97 }
+d_patriarchate_in_the_east = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_coptic_papacy = {
-	color = { 217 155 177 }
+d_coptic_papacy = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_apostolic_church = {
-	color = { 200 115 167 }
+d_apostolic_church = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_conversos = {
-	color = { 0 90 255 }
+d_conversos = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_manichean = {
-	color = { 75 90 255 }
+d_manichean = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_danelaw = {
-	color = { 255 60 15 }
+k_danelaw = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_daneland = {
-	color = { 200 40 15 }
+k_daneland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mediterranean_sea = { # FP2
-	color = { 180 0 0 }
+k_mediterranean_sea = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sunni = {
-	color = { 40 160 40 }
+d_sunni = { 
 	capital = c_atlantis
 	landless = yes
-	can_destroy = {
-		custom_tooltip = {
-			text = persian_struggle.tt.forbid_title_destruction
-			NOT = { exists = struggle:persian_struggle }
-		}
-	}
 }
 
-d_shiite = {
-	color = { 60 190 60 }
+d_shiite = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_imami = {
-	color = { 28 142 62 }
+d_imami = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ismaili = {
-	color = { 28 142 62 }
+d_ismaili = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nizari = {
-	color = { 72 110 72 }
+d_nizari = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zayidi = {
-	color = { 33 110 33 }
+d_zayidi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_masmudi = {
-	color = { 80 160 120 }
+d_masmudi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_muwalladi = {
-	color = { 11 113 11 }
+d_muwalladi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ghulat = {
-	color = { 48 207 48 }
+d_ghulat = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_golden_horde = {
-	color = { 243 180 17 }
+e_golden_horde = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_ilkhanate = {
-	color = { 140 180 20 }
+e_ilkhanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_chagatai = {
-	color = { 200 200 200 }
+e_chagatai = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_black_horde = {
-	color = { 50 50 50 }
+e_black_horde = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_white_horde = {
-	color = { 230 230 230 }
+e_white_horde = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_aarlud_khanate = {
-	color = { 80 152 200 }
+e_aarlud_khanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_togskol_khanate = {
-	color = { 50 150 180 }
+e_togskol_khanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_baruun_khanate = {
-	color = { 100 180 50 }
+e_baruun_khanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_uyghur_khanate = {
-	color = { 90 70 40 }
+e_uyghur_khanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_kirghiz_khanate = {
-	color = { 245 180 100 }
+e_kirghiz_khanate = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_mongol_empire = {
-	color = { 130 180 240 }
+e_mongol_empire = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_kara_khitai = { #aka Western Liao / Great Liao
-	color = { 10 10 10 }
+e_kara_khitai = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_timurids = {
-	color = { 120 20 20 }
+e_timurids = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-#Jewish Religious Heads
-d_karaism = {
-	color = { 0 100 255 }
+k_bosporan_kingdom = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_haymanot = {
-	color = { 0 110 255 }
+d_karaism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_malabarism = {
-	color = { 0 120 255 }
+d_haymanot = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samaritan = {
-	color = { 0 130 255 }
+d_malabarism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kabarism = {
-	color = { 0 140 255 }
+d_samaritan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-#Zoroastrian Religious Heads
-d_mazdayasna = {
-	color = { 180 120 40 }
+d_kabarism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zurvanism = {
-	color = { 180 130 40 }
+d_mazdayasna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gayomarthianism = {
-	color = { 190 130 40 }
+d_zurvanism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khurmazta = {
-	color = { 190 140 40 }
+d_gayomarthianism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mazdakism = {
-	color = { 200 140 40 }
+d_khurmazta = { 
 	capital = c_atlantis
 	landless = yes
 }
-d_khurramism = {
-	color = { 200 150 40 }
+
+d_mazdakism = { 
 	capital = c_atlantis
 	landless = yes
 }
-d_urartuism = {
-	color = { 210 150 40 }
+
+d_khurramism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sakya_trizin = {
-	color = { 52 235 152 }
+d_urartuism = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-#Guiyi Circuit
-k_guiyi = {
-	color = { 181 135 55 }
+k_sakya_trizin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_switzerland = {
-	color = { 255 80 80 }
+k_guiyi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_austria = {
-	color = { 240 240 240 }
+k_switzerland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_visigoths = {
-	color = { 116 135 65 }
+k_austria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_outremer = {
-	color = { 180 180 180 }
+k_visigoths = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-# FP2
-k_toledo = {
-	color = { 99 163 182 }
+e_outremer = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-# HOLY ORDERS
-
-d_knights_templar = {
-	color = { 230 230 230 }
+k_toledo = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_teutonic_order = {
-	color = { 50 50 50 }
+d_knights_templar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_hospitaler = {
-	color = { 180 180 180 }
+d_teutonic_order = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hashshashin = {
-	color = { 100 100 0 }
+d_knights_hospitaler = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bektashi = {
-	color = { 90 150 0 }
+d_hashshashin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_haruriyyah = {
-	color = { 150 200 80 }
+d_bektashi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jomsvikings = {
-	color = { 50 50 50 }
+d_haruriyyah = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_immortals = {
-	color = { 180 205 20 }
+d_jomsvikings = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zealots = {
-	color = { 20 100 255 }
+d_immortals = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holy_sepulchre = {
-	color = { 120 0 145 }
+d_zealots = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saint_anthony = {
-	color = { 180 165 70 }
+d_holy_sepulchre = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saint_addai = {
-	color = { 180 80 140 }
+d_saint_anthony = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sky_lords = {
-	color = { 220 200 140 }
+d_saint_addai = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_spirit_guardians = {
-	color = { 120 120 55 }
+d_sky_lords = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_warriors_perun = {
-	color = { 100 140 100 }
+d_spirit_guardians = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chosen_perkunas = {
-	color = { 200 45 45 }
+d_warriors_perun = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sons_kaleva = {
-	color = { 140 130 105 }
+d_chosen_perkunas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_huitzilopochtli = {
-	color = { 255 200 0 }
+d_sons_kaleva = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_santiago = {
-	color = { 255 130 0 }
+d_huitzilopochtli = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_calatrava = {
-	color = { 230 100 0 }
+d_knights_santiago = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_followers_arjuna = {
-	color = { 255 0 0 }
+d_knights_calatrava = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ashokas_chosen = {
-	color = { 205 100 0 }
+d_followers_arjuna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bulls_rishabha = {
-	color = { 255 100 0 }
+d_ashokas_chosen = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zun_warriors = {
-	color = { 230 255 0 }
+d_bulls_rishabha = { 
 	capital = c_atlantis
 	landless = yes
 }
-
-# TITULAR EMPIRES
 
-e_latin_empire = {
-	color = { 150 105 56 }
+d_zun_warriors = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_slavia = {
-	color = { 39 27 27 }
+e_latin_empire = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_armenia = {
-	color = { 198 29 29 }
+e_slavia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_north_sea = {
-	color = { 0 0 60 }
+e_beth_nahrain = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-# TITULAR KINGDOMS
-
-k_pechenegs = {
-	color = { 132 108 72}
+e_armenia = { 
 	capital = c_atlantis
 	landless = yes
 }
-
-# TITULAR DUCHIES
 
-d_zaragoza = {
-	color = { 80 220 10 }
+e_north_sea = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_erzerum = {
-	color = { 103 84 255 }
+k_pechenegs = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_amalfi = {
-	color = { 140 200 230 }
+d_zaragoza = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_belgrade = {
-	color = { 151 125 62 }
+d_erzerum = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pronsk = {
-	color = { 23 132 81 }
+d_amalfi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sandomiersk = {
-	color = { 253 137 137 }
+d_belgrade = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_swiss = {
-	color = { 255 1 1 }
+d_pronsk = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-#Shen clan leaders of Eternal Bön
-d_yungdrung_bon = {
-	color = { 219 102 96 }
+d_sandomiersk = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_hre = {
-	color = { 255 255 255 }
+d_swiss = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hansa = {
-	color = { 142 142 142 }
+d_yungdrung_bon = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-############################################################################
-e_britannia = {
-	color = { 172 22 22 }
+e_hre = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_england = {
-	color = { 202 26 26 }
+k_hansa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bedford = { # Essex
-	color = { 241 15 15 }
+e_britannia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_northumberland = {
-	color = hsv{ 0.98 0.9 0.9 }
+k_england = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lancaster = {
-	color = { 255 48 0 }
+d_bedford = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_york = {
-	color = { 255 90 15 }
+d_northumberland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_norfolk = { #East Anglia
-	color = { 200 90 0 }
+d_lancaster = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hereford = { # Mercia
-	color = { 200 30 0 }
+d_york = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gloucester = { # Hwicce
-	color = { 241 79 15 }
+d_norfolk = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_canterbury = { # Kent
-	color = { 241 100 15 }
+d_hereford = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_somerset = {
-	color = hsv{ 1 0.9 0.9 }
+d_gloucester = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cornwall = {
-	color = { 181 60 10 }
+d_canterbury = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_wales = {
-	color = { 135 25 3 }
+d_somerset = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gwynedd = {
-	color = { 100 0 0 }
+d_cornwall = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_powys = {
-	color = { 115 30 30 }
+k_wales = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_deheubarth = {
-	color = { 240 167 91 }
+d_gwynedd = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_scotland = {
-	color = { 230 140 0 }
+d_powys = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_albany = {
-	color = { 220 130 0 }
+d_deheubarth = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_the_isles = {
-	color = { 180 90 0 }
+k_scotland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_galloway = {
-	color = { 230 120 65 }
+d_albany = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_western_isles = {
-	color = { 225 120 30 }
+d_the_isles = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lothian = {
-	color = { 195 130 25 }
+d_galloway = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_moray = {
-	color = { 255 180 60 }
+d_western_isles = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ireland = {
-	color = { 6 127 2 }
+d_lothian = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_meath = {
-	color = { 49 249 72 }
+d_moray = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ulster = {
-	color = { 5 222 31 }
+k_ireland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_connacht = {
-	color = { 43 229 108 }
+d_meath = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_leinster = {
-	color = { 85 211 27 }
+d_ulster = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_munster = {
-	color = { 16 157 12 }
+d_connacht = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_cornwall = {
-	color = { 204 153 10 }
+d_leinster = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mann_the_isles = {
-	color = { 124 59 8 }
-		capital = c_atlantis
-		landless = yes
+d_munster = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_germany = {
-	color = { 190 200 190 }
+k_cornwall = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_saxony = {
-	color = { 120 25 25 }
+k_mann_the_isles = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_angria = {
-	color = { 205 105 85 }
+e_germany = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_westfalen = {
-	color = { 240 160 90 }
+k_saxony = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostfalen = {
-	color = { 200 160 125 }
+d_angria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holstein = {
-	color = { 172 112 112 }
+d_westfalen = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_frisia = {
-	color = { 245 100 20 }
+d_ostfalen = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holland = {
-	color = { 235 80 30 }
+d_holstein = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gelre = {
-	color = { 200 60 40 }
+k_frisia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_utrecht = {
-	color = { 170 100 10 }
+d_holland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_frisia = {
-	color = { 190 90 10 }
+d_gelre = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lotharingia = {
-	color = { 110 110 160 }
+d_utrecht = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_luxembourg = {
-	color = { 120 100 155 }
+d_frisia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_brabant = {
-	color = { 110 85 125 }
+k_lotharingia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_julich = {
-	color = { 145 125 195 }
+d_luxembourg = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_upper_lorraine = { # Upper Lotharingia
-	color = { 90 90 125 }
+d_brabant = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_lorraine = { # Lower Lotharingia
-	color = { 150 145 180 }
+d_julich = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bar = {
-	color = { 24 95 226 }
+d_upper_lorraine = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bavaria = {
-	color = { 70 80 80 }
+d_lower_lorraine = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bavaria = {
-	color = { 80 90 90 }
+d_bar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nordgau = {
-	color = { 110 100 85 }
+k_bavaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salzburg = {
-	color = { 110 110 110 }
+d_bavaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_augsburg = {
-	color = { 50 50 50 }
+d_nordgau = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_steyermark = {
-	color = { 120 100 100 }
+d_salzburg = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_osterreich = {
-	color = { 191 182 182 }
+d_augsburg = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tyrol = {
-	color = { 75 65 75 }
+d_steyermark = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_carinthia = {
-	color = { 100 105 120 }
+d_osterreich = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_krain = {
-	color = { 95 120 100 }
+d_tyrol = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_istria = {
-	color = { 75 110 105 }
+d_carinthia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_east_francia = {	#Germany
-	color = { 160 160 160 }
+d_krain = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_west_franconia = {
-	color = { 170 170 170 }
+d_istria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_east_franconia = {
-	color = { 245 245 255 }
+k_east_francia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hesse = {
-	color = { 180 160 160 }
+d_west_franconia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_currezia = {
-	color = { 255 220 220 }
+d_east_franconia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alsace = {
-	color = { 205 205 230 }
+d_hesse = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_swabia = {
-	color = { 210 210 210 }
+d_currezia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anhalt = {
-	color = { 195 105 80 }
+d_alsace = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thuringia = {
-	color = { 200 160 181 }
+d_swabia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_roman_empire = {
-	color = { 167 10 0 }
+d_anhalt = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_byzantium = {
-	color =  hsv{ 0.9 1 0.3 } 
+d_thuringia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_saruhan = {
-	color = { 144 171 225 }
+e_roman_empire = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_trinacria = {
-	color = { 249 232 247 }
+e_byzantium = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tekke = {
-	color = { 244 153 189 }
+k_saruhan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_trebizond = {
-	color = { 100 151 33 }
+k_trinacria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ottoman = {
-	color = { 247 145 30 }
+k_tekke = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_rum = {
-	color = { 144 182 161 }
+k_trebizond = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mentese = {
-	color = { 60 130 20 }
+k_ottoman = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_karaman = {
-	color = { 120 41 92 }
+k_rum = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_germiyan = {
-	color = { 255 180 180 }
+k_mentese = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_eretnid = {
-	color = { 253 182 182 }
+k_karaman = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_aydin = {
-	color = { 238 43 172 }
+k_germiyan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_candar = {
-	color = { 238 79 182 }
+k_eretnid = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_thessalonika = {
-	color = { 175 30 130 }
+k_aydin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thrace = {
-	color = { 180 25 100 }
+k_candar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_strymon = {
-	color = { 49 43 135 }
+k_thessalonika = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aegean_islands = {
-	color = { 220 30 75 }
+d_thrace = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thessalonika = {
-	color = { 189 19 130 }
+d_strymon = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thessaly = {
-	color = { 170 30 165 }
+d_aegean_islands = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_epirus = {
-	color = { 139 68 114 }
+d_thessalonika = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_epirus = {
-	color = { 134 63 109 }
+d_thessaly = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dyrrachion = {
-	color = { 137 27 99 }
+k_epirus = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cephalonia = {
-	color = { 180 110 85 }
+d_epirus = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hellas = {
-	color = { 210 70 165 }
+d_dyrrachion = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_athens = {
-	color = { 206 66 158 }
+d_cephalonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_achaia = {
-	color = { 185 55 200 }
+k_hellas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_krete = {
-	color = { 215 120 45 }
+d_athens = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_krete = {
-	color = { 205 110 35 }
+d_achaia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_croatia = {
-	color = { 122 46 58 }
+k_krete = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dalmatia = {
-	color = { 162 53 53 }
+d_krete = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_croatia = {
-	color = { 115 40 52 }
+k_croatia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_slavonia = {
-	color = { 130 30 60 }
+d_dalmatia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bosna = {	#AKA Upper Bosnia
-	color = { 194 115 115 }
+d_croatia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_bosna = {
-	color = { 180 85 120 }
+d_slavonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_usora = {	#Actually Zachlumia
-	color = { 170 70 100 }
+d_bosna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ragusa = {
-	color = { 170 11 30 }
+d_lower_bosna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_serbia = {
-	color = { 113 98 61 }
+d_usora = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rashka = {
-	color = { 103 88 51 }
+d_ragusa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_macva = {
-	color = { 168 135 57 }
+k_serbia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_duklja = {
-	color = { 129 94 13 }
+d_rashka = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bosnia = {
-	color = { 16 125 74 }
+d_macva = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bulgaria = {
-	color = { 113 88 101 }
+d_duklja = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vidin = {
-	color = { 120 105 85 }
+k_bosnia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_turnovo = { # Moesia / Turnovo / Paristrion
-	color = { 103 78 91 }
+k_bulgaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dobrudja = {
-	color = { 75 100 80 }
+d_vidin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bulgaria = {
-	color = { 120 110 110 }
+d_turnovo = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_philippopolis = {
-	color = { 75 100 110 }
+d_dobrudja = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_cyprus = {
-	color = { 215 215 20 }
+d_bulgaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cyprus = {
-	color = { 215 215 20 }
+d_philippopolis = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_nikaea = {
-	color = { 136 37 120 }
+k_cyprus = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_opsikion = {
-	color = { 146 47 130 }
+d_cyprus = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ephese = {
-	color = { 132 50 173 }
+k_nikaea = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thracesia = {
-	color = { 167 74 151 }
+d_opsikion = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_optimatoi = {
-	color = { 145 56 151 }
+d_ephese = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bucellaria = {
-	color = { 180 62 127 }
+d_thracesia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_anatolia = {
-	color = { 200 50 50 }
+d_optimatoi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cilicia = {
-	color = { 223 117 26 }
+d_bucellaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cibyrrhaeot = {
-	color = { 215 40 30 }
+k_anatolia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anatolia = {
-	color = { 210 40 50 }
+d_cilicia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cappadocia = {
-	color = { 200 77 52 }
+d_cibyrrhaeot = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_charsianon = {
-	color = { 215 120 85 }
+d_anatolia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pontus = {
-	color = { 205 130 85 }
+d_cappadocia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_paphlagonia = {
-	color = { 205 127 158 }
+d_charsianon = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_armeniac = {
-	color = { 150 130 180 }
+k_pontus = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sebasteia = {
-	color = { 197 157 76 }
+d_paphlagonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chaldia = {
-	color = { 150 130 20 }
+d_armeniac = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_armenia = {
-	color = { 203 76 76 }
+d_sebasteia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mesopotamia = {
-	color = { 200 50 50 }
+d_chaldia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vaspurakan = {
-	color = { 172 82 55 }
+k_armenia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_greater_armenia = {
-	color = { 203 86 66 }
+d_mesopotamia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_georgia = {
-	color = { 200 193 193 }
+d_vaspurakan = { 
+	capital = c_atlantis
+	landless = yes
+}
 
+d_greater_armenia = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-	d_tao-klarjeti = {
-		color = { 60 60 60 }
-		capital = c_atlantis
-		landless = yes
-	}
+k_georgia = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-	d_abkhazia = {
-		color = { 70 70 80 }
-		capital = c_atlantis
-		landless = yes
-	}
+d_tao-klarjeti = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-	d_georgia = {
-		color = { 200 185 185 }
-		capital = c_atlantis
-		landless = yes
-	}
+d_abkhazia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_sicily = {
-	color = { 180 160 80 }
+d_georgia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sicily = {
-	color = { 155 254 86 }
+k_sicily = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_benevento = {
-	color = { 209 170 75 }
+d_sicily = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_capua = {
-	color = { 240 209 100 }
+d_benevento = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_apulia = {
-	color = { 167 172 63 }
+d_capua = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salerno = {
-	color = { 245 194 199 }
+d_apulia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_calabria = {
-	color = { 170 142 70 }
+d_salerno = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_venice = {
-	color = { 54 167 156 }
+d_calabria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
+k_venice = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-d_venice = {
-	color = { 34 137 126 }
+d_venice = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_armenian_principality = {
-	color = { 223 96 96 }
+k_armenian_principality = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_old_armenia = {
-	color = { 223 96 96 }
+k_old_armenia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_italy = {
-	color = { 234 217 110 }
+e_italy = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_genoa = {
-	color = { 234 131 110 }
+k_genoa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pisa = {
-	color = { 196 192 140 }
+k_pisa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_naples = {
-	color = { 131 90 158 }
+k_naples = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_italy = {
-	color = { 244 227 160 }
+k_italy = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_friuli = {
-	color = { 170 255 170 }
+d_friuli = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_verona = {
-	color = { 145 240 205 }
+d_verona = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_piedmonte = {
-	color = { 191 158 158 }
+d_piedmonte = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lombardia = {
-	color = { 180 115 200 }
+d_lombardia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_genoa = {
-	color = { 244 141 120 }
+d_genoa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_emilia = {
-	color = { 225 180 180 }
+d_emilia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pisa = {
-	color = { 180 186 30 }
+d_pisa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_toscana = {
-	color = { 222 186 25 }
+d_toscana = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sardinia = {	#Sardinia & Corsica
-	color = { 210 165 255 }
+k_sardinia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_corsica = {
-	color = { 200 200 250 }
+d_corsica = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sardinia = {
-	color = { 217 159 255 }
+d_sardinia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_romagna = {
-	color = { 215 141 152 }
+k_romagna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_romagna = {
-	color = { 244 180 130 }
+d_romagna = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ancona = {
-	color = { 240 240 190 }
+d_ancona = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_spoleto = {
-	color = { 217 182 153 }
+d_spoleto = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_latium = {
-	color = { 254 245 160 }
+d_latium = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_scandinavia = {
-	color = { 62 122 189 }
+e_scandinavia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sweden = {
-	color = { 50 110 165 }
+k_sweden = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_svealand = { # Uppland
-	color = { 20 20 145 }
+d_svealand = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bergslagen = {
-	color = { 60 60 200 }
+d_bergslagen = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vastergotland = { #Västergötland
-	color = { 38 93 163 }
+d_vastergotland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostergotland = { #Östergötland
-	color = { 44 110 225 }
+d_ostergotland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_smaland = {
-	color = { 45 85 245 }
+d_smaland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_norrland = {
-	color = { 40 70 220 }
+d_norrland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gotland = {
-	color = { 0 90 160 }
+d_gotland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sapmi = {
-	color = { 5 5 160 }
+k_sapmi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aarjetje  = { #Åarjetje (sami for "south")
-	color = { 15 15 180 }
+d_aarjetje  = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vuovdisamieana = {
-	color = { 10 10 90 }
+d_vuovdisamieana = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_duortnoseatnu = { #Davvisapmi
-	color = { 46 30 205 }
+d_duortnoseatnu = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_giemajohka = { #(Kemi älv)
-	color = { 20 20 145 }
+d_giemajohka = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_guoldat = { #Guoládat = Kola
-	color = { 44 20 169 }
+d_guoldat = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_denmark = {
-	color = { 247 77 54 }
+k_denmark = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sjaelland = {
-	color = { 206 57 57 }
+d_sjaelland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_skane = {
-	color = { 210 2 2 }
+d_skane = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jylland = { # Jylland
-	color = { 160 25 72 }
+d_jylland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_slesvig = { # Schleswig
-	color = { 242 99 67 }
+d_slesvig = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_norway = {
-	color = { 130 4 40 }
+k_norway = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_viken = {
-	color = { 220 4 40 }
+d_viken = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_agder = {
-	color = { 170 30 30 }
+d_agder = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vestlandi = {
-	color = { 170 100 30 }
+d_vestlandi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_trandalog = {
-	color = { 150 30 80 }
+d_trandalog = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dalir = {
-	color = { 80 30 30 }
+d_dalir = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_halogaland = {
-	color = { 210 150 255 }
+d_halogaland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_iceland = {
-	color = { 255 245 245 }
+d_iceland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_northern_isles = {
-	color = { 195 75 75 }
+d_northern_isles = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jamtland = {
-	color = { 75 20 70 }
+d_jamtland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_finland = {
-	color = { 180 110 0 }
+k_finland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_finland = {
-	color = { 200 160 0 }
+d_finland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_savo  = {
-	color = { 250 100 20 }
+d_savo  = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pohjanmaa = {
-	color = { 140 125 25 }
+d_pohjanmaa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karelia = {
-	color = { 220 160 10 }
+d_karelia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_wendish_empire = {
-	color = { 130 10 0 }
+e_wendish_empire = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pomerania = {
-	color = { 145 130 40 }
+k_pomerania = { 
 	capital = c_atlantis
 	landless = yes
 }
 
 d_pommerania = { 
-	color = { 111 143 51 }
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nordmark = { #Mecklenburg
-	color = { 162 160 110 }
+d_nordmark = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pomerelia = {
-	color = { 80 130 80 }
+d_pomerelia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostmark = { #Nordmark
-	color = { 121 140 121 }
+d_ostmark = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lithuania = {
-	color = { 90 10 0 }
+k_lithuania = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lithuanians = {
-	color = { 81 0 0 }
+d_lithuanians = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_prussia = {
-	color = { 200 100 100 }
+d_prussia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_masuria = {
-	color = { 160 95 105 }
+d_masuria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_courland = {
-	color = { 182 16 16 }
+d_courland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samogitia = {
-	color = { 150 70 70 }
+d_samogitia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_latgalians = {
-	color = { 110 35 35 }
+d_latgalians = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_esthonia = {
-	color = { 130 73 45 }
+k_esthonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_esthonia = {
-	color = { 150 75 75 }
+d_esthonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_livonia = {
-	color = { 110 50 50 }
+d_livonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_livonia = {
-	color = { 110 80 168 }
+k_livonia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_west_slavia = { # West Slavs: Polish, Polabian, Czech, etc.
-	color = { 130 20 50 }
+e_west_slavia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_moravia = {
-    color = { 158 102 36 }
-    capital = c_atlantis
-    landless = yes
+k_moravia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_poland = {
-    color = { 150 23 23 }
+k_poland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lesser_poland = {
-    color = { 137 6 20 }
-    capital = c_atlantis
-    landless = yes
+d_lesser_poland = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wielkopolska = {
-    color = { 140 13 13 }
-    capital = c_atlantis
-    landless = yes
+d_wielkopolska = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mazovia = {
-    color = { 125 46 36 }
-    capital = c_atlantis
-    landless = yes
+d_mazovia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_upper_silesia = {
-    color = { 180 20 100 }
-    capital = c_atlantis
-    landless = yes
+d_upper_silesia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lower_silesia = {
-    color = { 230 60 20 }
-    capital = c_atlantis
-    landless = yes
+d_lower_silesia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kuyavia = {
-    color = { 190 75 50 }
-    capital = c_atlantis
-    landless = yes
+d_kuyavia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_bohemia = {
-    color = { 176 110 32 }
+k_bohemia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bohemia = {
-    color = { 195 110 11 }
-    capital = c_atlantis
-    landless = yes
+d_bohemia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_moravia = {
-    color = { 177 111 25 }
-    capital = c_atlantis
-    landless = yes
+d_moravia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_galicia-volhynia = {
-    color = { 50 150 130 }
+k_galicia-volhynia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_volhynia = {
-    color = { 65 150 145 }
-    capital = c_atlantis
-    landless = yes
+d_volhynia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_halych = {
-    color = { 80 212 60 }
-    capital = c_atlantis
-    landless = yes
-}
-d_cherven_cities = {
-    color = { 70 235 185 }
-    capital = c_atlantis
-    landless = yes
+d_halych = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_sorbia = {
-    color = { 75 15 15 }
+d_cherven_cities = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_meissen = {
-    color = { 215 175 120 }
-    capital = c_atlantis
-    landless = yes
+k_sorbia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lausitz = {
-    color = { 215 150 145 }
-    capital = c_atlantis
-    landless = yes
+d_meissen = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_russia = {	#Kievan Rus
-	color = { 50 150 55 }
+d_lausitz = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ruthenia = {
-    color = { 70 150 90 }
+e_russia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kiev = {
-    color = { 52 120 69 }
-    capital = c_atlantis
-    landless = yes
+k_ruthenia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_turov = {
-    color = { 129 163 28 }
-    capital = c_atlantis
-    landless = yes
+d_kiev = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_pereyaslavl = {
-    color = { 37 143 71 }
-    capital = c_atlantis
-    landless = yes
+d_turov = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chernigov = {
-    color = { 150 235 91 }
-    capital = c_atlantis
-    landless = yes
+d_pereyaslavl = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_karachev = {
-    color = { 96 184 20 }
-    capital = c_atlantis
-    landless = yes
+d_chernigov = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_novosil = {
-    color = { 180 201 36 }
-    capital = c_atlantis
-    landless = yes
+d_karachev = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_novgorod = {
-    color = { 137 194 100 }
+d_novosil = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_novgorod = {
-    color = { 157 194 120 }
-    capital = c_atlantis
-    landless = yes
+k_novgorod = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vepsia = {
-    color = { 147 214 90 }
-    capital = c_atlantis
-    landless = yes
+d_novgorod = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_luki = {
-    color = { 137 174 120 }
-    capital = c_atlantis
-    landless = yes
+d_vepsia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_white_rus = {
-    color = { 180 205 170 }
+d_luki = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_grodno = {
-    color = { 160 205 190 }
-    capital = c_atlantis
-    landless = yes
+k_white_rus = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_pinsk = {
-    color = { 200 185 170 }
-    capital = c_atlantis
-    landless = yes
+d_grodno = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_minsk = {
-    color = { 160 205 150 }
-    capital = c_atlantis
-    landless = yes
+d_pinsk = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_polotsk = {
-    color = { 160 225 225 }
-    capital = c_atlantis
-    landless = yes
+d_minsk = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_smolensk = {
-    color = { 173 147 181 }
-    capital = c_atlantis
-    landless = yes
+d_polotsk = { 
+	capital = c_atlantis
+	landless = yes
 }
-
 
-k_opolye = { #Vladimir
-    color = { 87 144 50 }
+d_smolensk = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_opolye = {
-    color = { 100 168 56 }
-    capital = c_atlantis
-    landless = yes
+k_opolye = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ryazan = {
-    color = { 75 110 41 }
-    capital = c_atlantis
-    landless = yes
+d_opolye = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nizhny_novgorod = {
-    color = { 10 171 90 }
-    capital = c_atlantis
-    landless = yes
+d_ryazan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_bjarmaland = {
-    color = { 188 238 234 }
+d_nizhny_novgorod = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_biarmia = {
-    color = { 158 208 204 }
-    capital = c_atlantis
-    landless = yes
+k_bjarmaland = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chudia = {
-    color = { 70 138 101 }
-    capital = c_atlantis
-    landless = yes
+d_biarmia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vologda = {
-    color = { 57 120 191 }
-    capital = c_atlantis
-    landless = yes
+d_chudia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ustyug = {
-    color = { 132 95 227 }
-    capital = c_atlantis
-    landless = yes
+d_vologda = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_caspian-pontic_steppe = {
-	color = { 230 180 10 }
+d_ustyug = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pontic_steppe = {
-    color = { 85 40 5 }
+e_caspian-pontic_steppe = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yedisan = {
-    color = { 156 82 22 }
-    capital = c_atlantis
-    landless = yes
+k_pontic_steppe = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_levedia = {
-    color = { 196 140 49 }
-    capital = c_atlantis
-    landless = yes
+d_yedisan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_don_valley = {
-    color = { 227 201 98 }
-    capital = c_atlantis
-    landless = yes
+d_levedia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_crimea = {
-    color = { 153 60 74 }
-    capital = c_atlantis
-    landless = yes
+d_don_valley = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_caucasus = {
-    color = { 150 103 38 }
+d_crimea = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khazaria = {
-    color = { 143 92 21 }
-    capital = c_atlantis
-    landless = yes
+k_caucasus = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_azov = {
-    color = { 92 76 12 }
-    capital = c_atlantis
-    landless = yes
+d_khazaria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_alania = {
-    color = { 110 65 29 }
-    capital = c_atlantis
-    landless = yes
+d_azov = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ciscaucasia = {
-    color = { 168 59 34 }
-    capital = c_atlantis
-    landless = yes
+d_alania = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_caspian_steppe = {
-    color = { 166 82 10 }
+d_ciscaucasia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_itil = {
-    color = { 196 118 27 }
-    capital = c_atlantis
-    landless = yes
+k_caspian_steppe = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_pecheneg = {
-    color = { 186 38 11 }
-    capital = c_atlantis
-    landless = yes
+d_itil = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_magyar = {
-    color = { 187 70 70 }
+d_pecheneg = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_volga-ural = {
-	color = { 94 83 70 }
+k_magyar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_volga_bulgaria = {
-    color = { 97 56 55 }
+e_volga-ural = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_volga_bulgaria = {
-    color = { 87 66 55 }
-    capital = c_atlantis
-    landless = yes
+k_volga_bulgaria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kazan = {
-    color = { 97 80 62 }
-    capital = c_atlantis
-    landless = yes
+d_volga_bulgaria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jalmat = {
-    color = { 56 31 56 }
-    capital = c_atlantis
-    landless = yes
+d_kazan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_martyuba = {
-    color = { 56 55 97 }
-    capital = c_atlantis
-    landless = yes
+d_jalmat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_mordvinia = {
-    color = { 38 66 71 }
+d_martyuba = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mordvinia = {
-    color = { 26 46 50 }
-    capital = c_atlantis
-    landless = yes
+k_mordvinia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_voronezh = {
-    color = { 26 52 24 }
-    capital = c_atlantis
-    landless = yes
+d_mordvinia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chuvashia = {
-    color = { 50 40 76 }
-    capital = c_atlantis
-    landless = yes
+d_voronezh = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khopyor = {
-    color = { 46 52 24 }
-    capital = c_atlantis
-    landless = yes
+d_chuvashia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_permia = {
-    color = { 204 188 127 }
+d_khopyor = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_perm = {
-    color = { 214 178 127 }
-    capital = c_atlantis
-    landless = yes
+k_permia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ural = {
-    color = { 204 152 140 }
-    capital = c_atlantis
-    landless = yes
+d_perm = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_udmurtia = {
-    color = { 106 109 119 }
-    capital = c_atlantis
-    landless = yes
+d_ural = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_bashkiria = {
-    color = { 50 65 55 }
+d_udmurtia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bashkiria = {
-    color = { 58 64 62 }
-    capital = c_atlantis
-    landless = yes
+k_bashkiria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_uraltau = {
-    color = { 52 67 95 }
-    capital = c_atlantis
-    landless = yes
+d_bashkiria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vogulia = {
-    color = { 100 120 92 }
-    capital = c_atlantis
-    landless = yes
+d_uraltau = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_siberia = {
-	color = { 205 212 250 }
+d_vogulia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_yugra = {
-    color = { 210 245 210 }
+e_siberia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostyaki = {
-    color = { 101 201 118 }
-    capital = c_atlantis
-    landless = yes
+k_yugra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_konda = {
-    color = { 159 204 133 }
-    capital = c_atlantis
-    landless = yes
+d_ostyaki = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_pelym = {
-    color = { 92 145 51 }
-    capital = c_atlantis
-    landless = yes
+d_konda = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kazym = {
-    color = { 175 230 180 }
-    capital = c_atlantis
-    landless = yes
+d_pelym = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_sibir = {
-    color = { 180 210 245 }
+d_kazym = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sibir = {
-    color = { 151 189 232 }
-    capital = c_atlantis
-    landless = yes
+k_sibir = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ishim = {
-    color = { 150 203 214 }
-    capital = c_atlantis
-    landless = yes
+d_sibir = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tara = {
-    color = { 155 178 224 }
-    capital = c_atlantis
-    landless = yes
+d_ishim = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lanikaz = {
-#AKA Laktan, Nilkaz, Nilkar or Nilqas
-    color = { 116 175 212 }
-    capital = c_atlantis
-    landless = yes
+d_tara = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_ob = {
-    color = { 180 180 250 }
+d_lanikaz = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salair = {
-    color = { 164 164 252 }
-    capital = c_atlantis
-    landless = yes
+k_ob = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ala_tau = {
-    color = { 139 164 176 }
-    capital = c_atlantis
-    landless = yes
+d_salair = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vasyugan_mire = {
-    color = { 200 240 220 }
-    capital = c_atlantis
-    landless = yes
+d_ala_tau = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_baraba_steppe = {
-    color = { 95 165 217 }
-    capital = c_atlantis
-    landless = yes
+d_vasyugan_mire = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kulyndy_steppe = {
-    color = { 128 140 224 }
-    capital = c_atlantis
-    landless = yes
+d_baraba_steppe = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_mongolia = {
-	color = { 90 90 240 }
+d_kulyndy_steppe = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mongolia = {
-    color = { 20 65 25 }
+e_mongolia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_otuken = {
-    color = { 20 115 32 }
-    capital = c_atlantis
-    landless = yes
+k_mongolia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ogrash = {
-    color = { 9 115 62 }
-    capital = c_atlantis
-    landless = yes
+d_otuken = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_selenga_valley = {
-    color = { 10 56 10 }
-    capital = c_atlantis
-    landless = yes
+d_ogrash = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ovorkhangai = {
-    color = { 75 138 18 }
-    capital = c_atlantis
-    landless = yes
+d_selenga_valley = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_arkhangai = {
-    color = { 10 75 15 }
-    capital = c_atlantis
-    landless = yes
+d_ovorkhangai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khovsgol = {
-    color = { 31 77 35 }
-    capital = c_atlantis
-    landless = yes
+d_arkhangai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gobi_altai = {
-    color = { 111 128 22 }
-    capital = c_atlantis
-    landless = yes
+d_khovsgol = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ubsunur_hollow = {
-    color = { 62 128 74 }
-    capital = c_atlantis
-    landless = yes
+d_gobi_altai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khovd = {
-    color = { 106 161 118 }
-    capital = c_atlantis
-    landless = yes
+d_ubsunur_hollow = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_tuva = {
-    color = { 45 112 100 }
+d_khovd = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_togina = {
-    color = { 41 163 163 }
-    capital = c_atlantis
-    landless = yes
+k_tuva = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tannu_ola = {
-    color = { 65 145 128 }
-    capital = c_atlantis
-    landless = yes
+d_togina = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_western_sayan = {
-    color = { 101 181 169 }
-    capital = c_atlantis
-    landless = yes
+d_tannu_ola = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_khakassia = {
-    color = { 140 140 140}
+d_western_sayan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khakass_hollow = {
-    color = { 181 177 177 }
-    capital = c_atlantis
-    landless = yes
+k_khakassia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_shoria = {
-    color = { 165 140 171 }
-    capital = c_atlantis
-    landless = yes
+d_khakass_hollow = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kargassia = {
-    color = { 136 186 136 }
-    capital = c_atlantis
-    landless = yes
+d_shoria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_eastern_sayan = {
-    color = { 132 164 171 }
-    capital = c_atlantis
-    landless = yes
+d_kargassia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_buryatia = {
-    color = { 50 115 160 }
+d_eastern_sayan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_uda_valley = {
-    color = { 53 152 181 }
-    capital = c_atlantis
-    landless = yes
+k_buryatia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dauria = {
-    color = { 72 163 232 }
-    capital = c_atlantis
-    landless = yes
+d_uda_valley = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bargujin_tukum = {
-    color = { 59 97 122 }
-    capital = c_atlantis
-    landless = yes
+d_dauria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_baigaluuls = {
-    color = { 100 150 181 }
-    capital = c_atlantis
-    landless = yes
+d_bargujin_tukum = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tsagaanbaigal = {
-    color = { 80 174 191 }
-    capital = c_atlantis
-    landless = yes
+d_baigaluuls = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_angara = {
-    color = { 55 55 55 }
+d_tsagaanbaigal = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yenisei_kan = {
-    color = { 65 65 65 }
-    capital = c_atlantis
-    landless = yes
+k_angara = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chuna_valley = {
-    color = { 26 51 34 }
-    capital = c_atlantis
-    landless = yes
+d_yenisei_kan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lena = {
-    color = { 71 79 94 }
-    capital = c_atlantis
-    landless = yes
+d_chuna_valley = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_angara = {
-    color = { 64 45 45 }
-    capital = c_atlantis
-    landless = yes
+d_lena = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_tartaria = {
-	color = { 205 5 5 }
+d_angara = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_zhetysu = {
-    color = { 120 20 20 }
+e_tartaria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zhetysu =  {
-    color = { 156 33 33 }
-    capital = c_atlantis
-    landless = yes
+k_zhetysu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_alakol =  {
-    color = { 125 40 10 }
-    capital = c_atlantis
-    landless = yes
+d_zhetysu =  { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tarbagatai = {
-    color = { 148 94 40 }
-    capital = c_atlantis
-    landless = yes
+d_alakol =  { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ili-alatau =  {
-    color = { 94 33 33 }
-    capital = c_atlantis
-    landless = yes
+d_tarbagatai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kimek = {
-    color = { 175 55 40 }
+d_ili-alatau =  { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mugodzhar_hills = {
-    color = { 235 84 84 }
-    capital = c_atlantis
-    landless = yes
+k_kimek = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_aqtobe = {
-    color = { 179 45 29 }
-    capital = c_atlantis
-    landless = yes
+d_mugodzhar_hills = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_atyrau = {
-    color = { 173 54 54 }
-    capital = c_atlantis
-    landless = yes
+d_aqtobe = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_cuman = {
-    color = { 131 84 50 }
+d_atyrau = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_turgay = {
-    color = { 138 78 34 }
-    capital = c_atlantis
-    landless = yes
+k_cuman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kurgan = {
-    color = { 171 105 75 }
-    capital = c_atlantis
-    landless = yes
+d_turgay = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kush-murun = {
-    color = { 201 145 101 }
-    capital = c_atlantis
-    landless = yes
+d_kurgan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_saryarka = {
-    color = { 207 121 72 }
-    capital = c_atlantis
-    landless = yes
+d_kush-murun = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kazakh = {
-    color = { 214 147 141 }
-    capital = c_atlantis
-    landless = yes
+d_saryarka = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kipchak = {
-    color = { 200 150 50 }
+d_kazakh = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_semey = {
-    color = { 212 157 47 }
-    capital = c_atlantis
-    landless = yes
+k_kipchak = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kentarlau = {
-    color = { 181 128 11 }
-    capital = c_atlantis
-    landless = yes
+d_semey = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_karkaraly = {
-    color = { 153 133 24 }
-    capital = c_atlantis
-    landless = yes
+d_kentarlau = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_karabas = {
-    color = { 245 189 78 }
-    capital = c_atlantis
-    landless = yes
+d_karkaraly = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_betpa = {
-    color = { 250 150 50 }
-    capital = c_atlantis
-    landless = yes
+d_karabas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_dzungaria = {
-    color = { 163 46 104 }
+d_betpa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kara_khoja = {
-    color = { 135 54 95 }
-    capital = c_atlantis
-    landless = yes
+k_dzungaria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_altay = {
-    color = { 94 69 150 }
-    capital = c_atlantis
-    landless = yes
+d_kara_khoja = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gurbantunggut = {
-    color = { 150 106 87 }
-    capital = c_atlantis
-    landless = yes
+d_altay = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_naiman_gobi = {
-    color = { 61 66 184 }
-    capital = c_atlantis
-    landless = yes
+d_gurbantunggut = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_turan = {
-	color = { 175 237 135 }
+d_naiman_gobi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_khotan = {
-    color = { 150 120 200 }
+e_turan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khotan = {
-    color = { 100 180 240 }
-    capital = c_atlantis
-    landless = yes
+k_khotan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kashgar = {
-    color = { 80 130 200 }
-    capital = c_atlantis
-    landless = yes
+d_khotan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_karashar = {
-    color = { 90 170 220 }
-    capital = c_atlantis
-    landless = yes
+d_kashgar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_charkliq = {
-    color = { 50 180 200 }
-    capital = c_atlantis
-    landless = yes
+d_karashar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_oghuz_il = {
-    color = { 235 35 35 }
+d_charkliq = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transcaspiana = {
-    color = { 194 27 27 }
-    capital = c_atlantis
-    landless = yes
+k_oghuz_il = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jemba = {
-    color = { 186 13 53 }
-    capital = c_atlantis
-    landless = yes
+d_transcaspiana = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_aral_il = {	#fictional name for "land of Aral"
-    color = { 250 50 50 }
-    capital = c_atlantis
-    landless = yes
+d_jemba = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_barsuki =  {
-    color = { 191 106 15 }
-    capital = c_atlantis
-    landless = yes
+d_aral_il = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_syr_darya = {
-    color = { 194 214 62 }
+d_barsuki =  { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_syr_darya = {
-    color = { 185 180 60 }
-    capital = c_atlantis
-    landless = yes
+k_syr_darya = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chah = {
-    color = { 177 186 45 }
-    capital = c_atlantis
-    landless = yes
+d_syr_darya = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_muyunkum =  {
-    color = { 230 159 55 }
-    capital = c_atlantis
-    landless = yes
-}
-
-k_transoxiana = {
-    color = { 35 175 75 }
+d_chah = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_soghd = {
-    color = { 30 180 80 }
-    capital = c_atlantis
-    landless = yes
+d_muyunkum =  { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_badakhshan = {
-    color = { 116 179 32 }
-    capital = c_atlantis
-    landless = yes
+k_transoxiana = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khuttal = {
-    color = { 55 165 25 }
-    capital = c_atlantis
-    landless = yes
+d_soghd = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_osrushana = {
-    color = { 28 183 124 }
-    capital = c_atlantis
-    landless = yes
+d_badakhshan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ferghana = {
-    color = { 50 160 80 }
-    capital = c_atlantis
-    landless = yes
+d_khuttal = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khorezm = {
-    color = { 70 198 103 }
-    capital = c_atlantis
-    landless = yes
+d_osrushana = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_uzboy = {
-    color = { 90 200 110 }
-    capital = c_atlantis
-    landless = yes
+d_ferghana = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_bactria = {
-	color = { 51 185 206 }
+d_khorezm = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_persia = {
-	color = { 30 240 230 }
+d_uzboy = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_persia = {
-    color = { 60 150 230 }
+e_bactria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_isfahan = {
-    color = { 65 155 255 }
-    capital = c_atlantis
-    landless = yes
+e_persia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kirman = {
-    color = { 35 125 260 }
-    capital = c_atlantis
-    landless = yes
+k_persia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_yazd = {
-    color = { 25 115 175 }
-    capital = c_atlantis
-    landless = yes
+d_isfahan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_rayy = {
-    color = { 45 85 185 }
-    capital = c_atlantis
-    landless = yes
+d_kirman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_hamadan = {
-    color = { 100 180 245 }
-    capital = c_atlantis
-    landless = yes
+d_yazd = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_fars = {
-    color = { 35 65 135 }
-    capital = c_atlantis
-    landless = yes
+d_rayy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_hormuz = {
-    color = { 85 145 255 }
-    capital = c_atlantis
-    landless = yes
+d_hamadan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khuzestan = {
-    color = { 55 115 255 }
-    capital = c_atlantis
-    landless = yes
+d_fars = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kermanshah = {
-    color = { 45 85 205 }
-    capital = c_atlantis
-    landless = yes
+d_hormuz = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_khorasan = {
-    color = { 70 250 250 }
+d_khuzestan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nishapur = {
-    color = { 80 250 255 }
-    capital = c_atlantis
-    landless = yes
-}
-d_merv = {
-    color = { 15 250 225 }
-    capital = c_atlantis
-    landless = yes
-}
-d_ghur = {
-    color = { 15 220 200 }
-    capital = c_atlantis
-    landless = yes
-}
-d_herat = {
-    color = { 10 140 175 }
-    capital = c_atlantis
-    landless = yes
-}
-d_balkh = {
-    color = { 25 180 165 }
-    capital = c_atlantis
-    landless = yes
-}
-d_nasa = {
-    color = { 75 245 245 }
-    capital = c_atlantis
-    landless = yes
-}
-d_kohestan = {
-    color = { 78 248 201 }
-    capital = c_atlantis
-    landless = yes
+d_kermanshah = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_daylam = {
-    color = { 10 175 165 }
+k_khorasan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_daylam = {
-    color = { 5 170 170 }
-    capital = c_atlantis
-    landless = yes
+d_nishapur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tabaristan = {
-    color = { 5 110 130 }
-    capital = c_atlantis
-    landless = yes
-}
-d_gurgan = {
-    color = { 5 130 120 }
-    capital = c_atlantis
-    landless = yes
-}
-d_azerbaijan = {
-    color = { 5 120 80 }
-    capital = c_atlantis
-    landless = yes
-}
-d_shirvan = {
-    color = { 45 190 160 }
-    capital = c_atlantis
-    landless = yes
+d_merv = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_makran = {
-    color = { 25 105 85 }
+d_ghur = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_makran = {
-    color = { 30 100 80 }
-    capital = c_atlantis
-    landless = yes
-}
-d_jabal_kufs = {
-    color = { 60 100 80 }
-    capital = c_atlantis
-    landless = yes
-}
-d_sistan = {
-    color = { 10 70 45 }
-    capital = c_atlantis
-    landless = yes
+d_herat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kabulistan = { #replacement of k_afghanistan
-    color = { 100 120 220 }
+d_balkh = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kabul = {
-    color = { 95 125 215 }
-    capital = c_atlantis
-    landless = yes
-}
-d_zabulistan = {
-    color = { 115 125 205 }
-    capital = c_atlantis
-    landless = yes
+d_nasa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_mesopotamia = {
-    color = { 55 135 90 } 
+d_kohestan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samarra = {
-    color = { 60 130 95 }
-    capital = c_atlantis
-    landless = yes
+k_daylam = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wasit = {
-    color = { 45 175 100 }
-    capital = c_atlantis
-    landless = yes
+d_daylam = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kufa = {
-    color = { 40 135 45 }
-    capital = c_atlantis
-    landless = yes
+d_tabaristan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_basra = {
-    color = { 5 130 40 }
-    capital = c_atlantis
-    landless = yes
+d_gurgan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_baghdad = {
-    color = { 6 100 50 }
-    capital = c_atlantis
-    landless = yes
+d_azerbaijan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_jazira = {
-    color = { 10 205 90 }
+d_shirvan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_diyarrabia = {
-    color = { 15 200 85 }
-    capital = c_atlantis
-    landless = yes
+k_makran = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_diyarmudar = {
-    color = { 10 205 125 }
-    capital = c_atlantis
-    landless = yes
+d_makran = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_diyarbakr = {
-    color = { 70 195 100 }
-    capital = c_atlantis
-    landless = yes
+d_jabal_kufs = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_euphrates = {
-    color = { 30 180 120 }
-    capital = c_atlantis
-    landless = yes
+d_sistan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kurdistan = {
-    color = { 60 210 150 }
-    capital = c_atlantis
-    landless = yes
+k_kabulistan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_carpathia = {
-	color = { 210 115 35 }
+d_kabul = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_dacia = {
-    color = { 237 147 52 }
+d_zabulistan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transylvanian_alps = {
-    color = { 175 86 10 }
-    capital = c_atlantis
-    landless = yes
+k_mesopotamia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_muntenia = {
-    color = { 220 132 40 }
-    capital = c_atlantis
-    landless = yes
+d_samarra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_oltenia = {
-    color = { 222 155 78 }
-    capital = c_atlantis
-    landless = yes
+d_wasit = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_moldavia = {
-    color = { 180 150 20}
+d_kufa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bukovina = {
-    color = { 210 200 70 }
-    capital = c_atlantis
-    landless = yes
-}
-d_moldova = {
-    color = { 190 160 30 }
-    capital = c_atlantis
-    landless = yes
-}
-d_bugeac = {
-    color = { 165 220 30 }
-    capital = c_atlantis
-    landless = yes
+d_basra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_hungary = {
-    color = { 250 120 90 }
+d_baghdad = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_visegrad = {
-    color = { 245 125 95 }
-    capital = c_atlantis
-    landless = yes
+k_jazira = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_somogy = {
-    color = { 170 40 65 }
-    capital = c_atlantis
-    landless = yes
+d_diyarrabia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nyitra = {	#Nitra
-    color = { 228 62 90 }
-    capital = c_atlantis
-    landless = yes
+d_diyarmudar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ungvar = {
-    color = { 156 15 15 }
-    capital = c_atlantis
-    landless = yes
+d_diyarbakr = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_transcarpathia = {
-    color = { 217 11 26 }
-    capital = c_atlantis
-    landless = yes
+d_euphrates = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_transylvania = {
-    color = { 212 112 63 }
-    capital = c_atlantis
-    landless = yes
+d_kurdistan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bihar = {
-    color = { 241 58 58 }
-    capital = c_atlantis
-    landless = yes
+e_carpathia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_temes = {
-    color = { 133 93 38 }
-    capital = c_atlantis
-    landless = yes
+k_dacia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bacs = {
-    color = { 145 90 85 }
-    capital = c_atlantis
-    landless = yes
+d_transylvanian_alps = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gyor = {
-    color = { 208 109 107 }
-    capital = c_atlantis
-    landless = yes
+d_muntenia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_syrmia = {
-    color = { 179 43 111 }
-    capital = c_atlantis
-    landless = yes
+d_oltenia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_france = {
-	color = { 11 22 170 }
+k_moldavia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_france = {
-    color = { 15 27 187 }
+d_bukovina = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_valois = {
-    color = { 24 52 226 }
-    capital = c_atlantis
-    landless = yes
+d_moldova = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_berry = {
-    color = { 30 40 220 }
-    capital = c_atlantis
-    landless = yes
+d_bugeac = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_anjou = {
-    color = { 5 95 235 }
-    capital = c_atlantis
-    landless = yes
+k_hungary = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_normandy = {
-    color = { 7 7 145 }
-    capital = c_atlantis
-    landless = yes
+d_visegrad = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_orleans = {
-    color = { 10 16 243 }
-    capital = c_atlantis
-    landless = yes
+d_somogy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_champagne = {
-    color = { 7 60 160 }
-    capital = c_atlantis
-    landless = yes
+d_nyitra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_burgundy = {
-    color = { 40 85 145 }
-    capital = c_atlantis
-    landless = yes
+d_ungvar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_flanders = {
-    color = { 65 95 180 }
-    capital = c_atlantis
-    landless = yes
+d_transcarpathia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_aquitaine = {
-    color = { 101 50 253 }
+d_transylvania = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gascogne = {
-    color = { 81 30 243 }
-    capital = c_atlantis
-    landless = yes
-}
-d_aquitaine = {
-    color = { 43 24 226 }
-    capital = c_atlantis
-    landless = yes
-}
-d_toulouse = {
-    color = { 95 24 226 }
-    capital = c_atlantis
-    landless = yes
+d_bihar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_languedoc = {
-    color = { 90 80 190 }
-    capital = c_atlantis
-    landless = yes
+d_temes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_armagnac = {
-    color = { 145 30 175 }
-    capital = c_atlantis
-    landless = yes
-}
-d_poitou = {
-    color = { 50 50 130 }
-    capital = c_atlantis
-    landless = yes
-}
-d_auvergne = {
-    color = { 54 10 243 }
-    capital = c_atlantis
-    landless = yes
-}
-d_bourbon = {
-    color = { 26 10 135 }
-    capital = c_atlantis
-    landless = yes
+d_bacs = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_brittany = {
-    color = { 197 215 217 }
+d_gyor = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_brittany = {
-    color = { 166 190 191 }
-    capital = c_atlantis
-    landless = yes
+d_syrmia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_burgundy = {
-    color = { 134 0 37 }
+e_france = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_provence = {
-    color = { 145 37 67 }
-    capital = c_atlantis
-    landless = yes
+k_france = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_savoie = {
-    color = { 101 8 34 }
-    capital = c_atlantis
-    landless = yes
+d_valois = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dauphine = {
-    color = { 115 26 90 }
-    capital = c_atlantis
-    landless = yes
+d_berry = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_upper_burgundy = {
-    color = { 159 20 58 }
-    capital = c_atlantis
-    landless = yes
+d_anjou = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_transjurania = {
-    color = { 159 40 10 }
-    capital = c_atlantis
-    landless = yes
+d_normandy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_spain = {
-	color = { 233 200 20 }
+d_orleans = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_andalusia = {
-    color = { 31 138 40 }
+d_champagne = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cordoba = {
-    color = { 60 180 12 }
-    capital = c_atlantis
-    landless = yes
+d_burgundy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_granada = {
-    color = { 40 150 40 }
-    capital = c_atlantis
-    landless = yes
+d_flanders = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sevilla = {
-    color = { 150 218 21 }
-    capital = c_atlantis
-    landless = yes
+k_aquitaine = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_toledo = {
-    color = { 212 151 12 }
-    capital = c_atlantis
-    landless = yes
+d_gascogne = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_badajoz = {	#Badajoz/Lucitania
-    color = { 138 243 53 }
+d_aquitaine = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_beja = {
-    color = { 156 212 68 }
-    capital = c_atlantis
-    landless = yes
+d_toulouse = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_badajoz = {
-    color = { 118 223 36 }
-    capital = c_atlantis
-    landless = yes
+d_languedoc = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_algarve = {
-    color = { 73 156 8 }
-    capital = c_atlantis
-    landless = yes
+d_armagnac = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_valencia = {	#Valencia
-    color = { 85 201 122 }
+d_poitou = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_valencia = {
-    color = { 54 186 96 }
-    capital = c_atlantis
-    landless = yes
+d_auvergne = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mallorca = {
-    color = { 41 105 61 }
-    capital = c_atlantis
-    landless = yes
+d_bourbon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_murcia = {
-    color = { 27 130 60 }
-    capital = c_atlantis
-    landless = yes
+k_brittany = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_castille = { #Spain
-    color = { 243 209 23 }
+d_brittany = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_castilla = {
-    color = { 242 196 12 }
-    capital = c_atlantis
-    landless = yes
+k_burgundy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_cantabria = {
-    color = { 230 180 20 }
-    capital = c_atlantis
-    landless = yes
+d_provence = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_aragon = {
-    color = { 166 98 22 }
+d_savoie = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aragon = {
-    color = { 160 90 20 }
-    capital = c_atlantis
-    landless = yes
+d_dauphine = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_barcelona = {
-    color = { 166 100 72 }
-    capital = c_atlantis
-    landless = yes
+d_upper_burgundy = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_navarra = {
-    color = { 150 120 5 }
+d_transjurania = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_navarra = {
-    color = { 140 130 0 }
-    capital = c_atlantis
-    landless = yes
+e_spain = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_viscaya = {
-    color = { 115 90 0 }
-    capital = c_atlantis
-    landless = yes
+k_andalusia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_asturias = {
-    color = { 207 104 0 }
+d_cordoba = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_leon = {
-    color = { 253 158 51 }
+d_granada = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_leon = {
-    color = { 223 128 31 }
-    capital = c_atlantis
-    landless = yes
+d_sevilla = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_asturias = {
-    color = { 207 104 0 }
-    capital = c_atlantis
-    landless = yes
+d_toledo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_spanish_galicia = {
-    color = { 255 224 94 }
+k_badajoz = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_galicia = {
-    color = { 235 204 74 }
+d_beja = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_portugal = {
-    color = { 182 88 5 }
+d_badajoz = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_porto = {
-	color = { 192 98 5 }
+d_algarve = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_coimbra = {
-    color = { 182 108 45 }
+k_valencia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_maghreb = {
-	color = { 209 63 44 }
+d_valencia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_maghreb = {
-    color = { 196 36 18 }
+d_mallorca = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_marrakesh = {
-    color = { 161 29 14 }
-    capital = c_atlantis
-    landless = yes
+d_murcia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sous = {
-    color = { 222 124 95 }
-    capital = c_atlantis
-    landless = yes
+k_castille = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tafilalt = {
-    color = { 250 130 130 }
-    capital = c_atlantis
-    landless = yes
+d_castilla = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_fes = {
-    color = { 255 63 20 }
-    capital = c_atlantis
-    landless = yes
+d_cantabria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_rif = {
-    color = { 235 69 47 }
-    capital = c_atlantis
-    landless = yes
+k_aragon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_canarias = {
-    color = { 42 127 201 }
-    capital = c_atlantis
-    landless = yes
+d_aragon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_canarias = {
-    color = { 242 231 125 }
+d_barcelona = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tahert = {
-    color = { 210 235 87 }
+k_navarra = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tlemcen = {
-    color = { 146 235 16 }
-    capital = c_atlantis
-    landless = yes
+d_navarra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tahert = {
-    color = { 180 240 90 }
-    capital = c_atlantis
-    landless = yes
+d_viscaya = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_alger = {
-    color = { 106 171 60 }
-    capital = c_atlantis
-    landless = yes
+k_asturias = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bejaia = {
-    color = { 216 247 59 }
-    capital = c_atlantis
-    landless = yes
+k_leon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_zab = {
-    color = { 88 138 39 }
-    capital = c_atlantis
-    landless = yes
+d_leon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mzab = {
-    color = { 116 196 86 }
-    capital = c_atlantis
-    landless = yes
+d_asturias = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_africa = {
-    color = { 67 96 179 }
+k_spanish_galicia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kairouan = {
-    color = { 60 98 170 }
-    capital = c_atlantis
-    landless = yes
+d_galicia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tunis = {
-    color = { 121 153 247 }
-    capital = c_atlantis
-    landless = yes
+k_portugal = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kroumerie = {
-    color = { 75 80 165 }
-    capital = c_atlantis
-    landless = yes
+d_porto = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gabes = {
-    color = { 25 70 209 }
-    capital = c_atlantis
-    landless = yes
+d_coimbra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jerid = {
-    color = { 66 82 227 }
-    capital = c_atlantis
-    landless = yes
+e_maghreb = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tripolitania = {
-    color = { 52 136 209 }
-    capital = c_atlantis
-    landless = yes
+k_maghreb = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_syrte = {
-    color = { 53 55 189 }
-    capital = c_atlantis
-    landless = yes
+d_marrakesh = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_anbiya = {
-    color = { 102 99 95 }
+d_sous = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zammour = {
-    color = { 171 167 159 }
-    capital = c_atlantis
-    landless = yes
+d_tafilalt = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_adrar = {
-    color = { 84 82 78 }
-    capital = c_atlantis
-    landless = yes
+d_fes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_touat = {
-    color = { 143 150 134 }
-    capital = c_atlantis
-    landless = yes
+d_rif = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_taghaza = {
-    color = { 135 123 100 }
-    capital = c_atlantis
-    landless = yes
+d_canarias = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_sahara = {
-    color = { 199 144 56 }
+k_canarias = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tadmekka = {
-    color = { 212 181 87 }
-    capital = c_atlantis
-    landless = yes
+k_tahert = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ghat = {
-    color = { 215 145 13 }
-    capital = c_atlantis
-    landless = yes
+d_tlemcen = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_air = {
-    color = { 191 143 0 }
-    capital = c_atlantis
-    landless = yes
+d_tahert = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kawar = {
-    color = { 200 129 74 }
-    capital = c_atlantis
-    landless = yes
+d_alger = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tibesti = {
-    color = { 190 120 90 }
-    capital = c_atlantis
-    landless = yes
+d_bejaia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_fezzan = {
-    color = { 173 125 49 }
-    capital = c_atlantis
-    landless = yes
+d_zab = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_arabia = {
-	color = { 32 150 85 }
+d_mzab = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_israel = {
-    color = { 20 138 255 }
+k_africa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_arabia = {
-    color = { 124 199 50 }
+d_kairouan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jawf = {
-    color = { 150 250 50 }
-    capital = c_atlantis
-    landless = yes
+d_tunis = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_amman = {
-    color = { 130 255 10 }
-    capital = c_atlantis
-    landless = yes
+d_kroumerie = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_shammar = {
-    color = { 121 196 2 }
-    capital = c_atlantis
-    landless = yes
+d_gabes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_medina = {
-    color = { 160 250 50 }
-    capital = c_atlantis
-    landless = yes
+d_jerid = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mecca = {
-    color = { 120 200 5 }
-    capital = c_atlantis
-    landless = yes
+d_tripolitania = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_asir = { #Note: Name is little anachronistic, but there's no better
-    color = { 150 210 20 }
-    capital = c_atlantis
-    landless = yes
+d_syrte = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_najd = {
-    color = { 160 200 10 }
-    capital = c_atlantis
-    landless = yes
+k_anbiya = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_yamama = {
-    color = { 150 180 0 }
-    capital = c_atlantis
-    landless = yes
+d_zammour = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_al-hasa = {
-    color = { 32 127 30 }
-    capital = c_atlantis
-    landless = yes
-}
-
-d_bahrain = {
-    color = { 80 120 10 }
-    capital = c_atlantis
-    landless = yes
+d_adrar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_oman = {
-    color = { 235 160 30 }
-    capital = c_atlantis
-    landless = yes
+d_touat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_yemen = {
-    color = { 218 234 33 }
+d_taghaza = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sanaa = {
-    color = { 220 230 30 }
-    capital = c_atlantis
-    landless = yes
+k_sahara = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jawf-al-yamani = {
-    color = { 230 240 40 }
-    capital = c_atlantis
-    landless = yes
+d_tadmekka = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_taizz = {
-    color = { 240 250 50 }
-    capital = c_atlantis
-    landless = yes
+d_ghat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_hadramawt = {
-    color = { 210 240 20 }
-    capital = c_atlantis
-    landless = yes
+d_air = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mahra = {
-    color = { 210 230 40 }
-    capital = c_atlantis
-    landless = yes
+d_kawar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_socotra = {
-    color = { 142 255 85 }
-    capital = c_atlantis
-    landless = yes
+d_tibesti = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_egypt = {
-    color = { 10 255 80 }
+d_fezzan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cyrenaica = {
-    color = { 32 150 63 }
-    capital = c_atlantis
-    landless = yes
+e_arabia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_alexandria = {
-    color = { 100 219 134 }
-    capital = c_atlantis
-    landless = yes
+k_israel = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_delta = {
-    color = { 3 255 74 }
-    capital = c_atlantis
-    landless = yes
+k_arabia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_cairo = {
-    color = { 32 245 138 }
-    capital = c_atlantis
-    landless = yes
+d_jawf = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_al-wahat = {
-    color = { 40 160 140 }
-    capital = c_atlantis
-    landless = yes
+d_amman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_al-said = {
-    color = { 85 217 87 }
-    capital = c_atlantis
-    landless = yes
+d_shammar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_eastern_desert = {
-    color = { 40 200 140 }
-    capital = c_atlantis
-    landless = yes
+d_medina = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sinai = {
-    color = { 88 99 2 }
-    capital = c_atlantis
-    landless = yes
+d_mecca = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_jerusalem = {
-    color = { 180 180 180 }
+d_asir = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_oultrejourdain = {
-    color = { 190 190 180 }
-    capital = c_atlantis
-    landless = yes
+d_najd = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_palestine = {
-    color = { 160 160 200 }
-    capital = c_atlantis
-    landless = yes
+d_yamama = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_urdunn = { #AKA Galilee
-    color = { 225 200 160 }
-    capital = c_atlantis
-    landless = yes
+d_al-hasa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_syria = {
-    color = { 145 130 88 }
+d_bahrain = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aleppo = {
-    color = { 85 232 20 }
-    capital = c_atlantis
-    landless = yes
+d_oman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_edessa = {
-    color = { 182 110 45 }
-    capital = c_atlantis
-    landless = yes
+k_yemen = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_homs = {
-    color = { 90 230 30 }
-    capital = c_atlantis
-    landless = yes
+d_sanaa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_antioch = {
-    color = { 142 63 129 }
-    capital = c_atlantis
-    landless = yes
+d_jawf-al-yamani = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lebanon = {
-    color = { 71 150 32 }
-    capital = c_atlantis
-    landless = yes
+d_taizz = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_damascus = {
-    color = { 122 255 3 }
-    capital = c_atlantis
-    landless = yes
+d_hadramawt = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_palmyra = {
-    color = { 35 232 20 }
-    capital = c_atlantis
-    landless = yes
+d_mahra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_abyssinia = {
-	color = { 181 133 68 }
+d_socotra = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_abyssinia = {
-    color = { 120 62 20 }
+k_egypt = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aksum = {
-    color = { 186 135 70 }
-    capital = c_atlantis
-    landless = yes
+d_cyrenaica = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dahlaks = {
-    color = { 196 146 82 }
-    capital = c_atlantis
-    landless = yes
+d_alexandria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lasta = {
-    color = { 205 155 95 }
-    capital = c_atlantis
-    landless = yes
+d_delta = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gondar = {
-    color = { 123 65 23  }
-    capital = c_atlantis
-    landless = yes
+d_cairo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gojjam = {
-    color = { 133 80 32 }
-    capital = c_atlantis
-    landless = yes
+d_al-wahat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_showa = {
-    color = { 150 50 20 }
-    capital = c_atlantis
-    landless = yes
+d_al-said = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_nubia = {
-    color = { 180 85 39 }
+d_eastern_desert = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nobatia = {
-    color = { 162 133 85 }
-    capital = c_atlantis
-    landless = yes
+d_sinai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_makuria = {
-    color = { 141 162 79 }
-    capital = c_atlantis
-    landless = yes
+k_jerusalem = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_shamir = { # Abu-Hammad
-    color = { 137 123 44 }
-    capital = c_atlantis
-    landless = yes
+d_oultrejourdain = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_alwa = { # Alodia
-    color = { 128 60 20 }
-    capital = c_atlantis
-    landless = yes
+d_palestine = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sennar = { # Alodia
-    color = { 113 53 23 }
-    capital = c_atlantis
-    landless = yes
+d_urdunn = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_blemmyia = { #Maikele Bahr or Bejaland
-    color = { 224 136 93 }
+k_syria = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_naqis = {
-    color = { 225 130 98 }
-    capital = c_atlantis
-    landless = yes
+d_aleppo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bazin = {
-    color = { 253 135 87 }
-    capital = c_atlantis
-    landless = yes
+d_edessa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_baqlin = {
-    color = { 233 155 77 }
-    capital = c_atlantis
-    landless = yes
+d_homs = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_damot = {
-    color = { 166 68 208 }
+d_antioch = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_damot = {
-    color = { 168 70 210 }
-    capital = c_atlantis
-    landless = yes
+d_lebanon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kaffa = {
-    color = { 180 80 190 }
-    capital = c_atlantis
-    landless = yes
+d_damascus = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sharka = {
-    color = { 190 90 200 }
-    capital = c_atlantis
-    landless = yes
+d_palmyra = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_adal = {
-    color = { 136 28 28 }
+e_abyssinia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dawaro = {
-    color = { 138 30 30 }
-    capital = c_atlantis
-    landless = yes
+k_abyssinia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_adal = {
-    color = { 148 20 20 }
-    capital = c_atlantis
-    landless = yes
+d_aksum = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mora = {
-    color = { 160 30 40 }
-    capital = c_atlantis
-    landless = yes
+d_dahlaks = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_danakil = {
-    color = { 165 35 45 }
-    capital = c_atlantis
-    landless = yes
+d_lasta = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_zaila = {
-    color = { 169 19 19 }
-    capital = c_atlantis
-    landless = yes
+d_gondar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sanaag = {
-    color = { 205 29 29 }
-    capital = c_atlantis
-    landless = yes
+d_gojjam = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_ajuraan = {
-	color = { 218 86 25 }
+d_showa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ajuraan = {
-    color = { 225 90 30 }
+k_nubia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hafun = {
-    color = { 209 73 44 }
-    capital = c_atlantis
-    landless = yes
+d_nobatia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mogadishu = {
-    color = { 230 95 35 }
-    capital = c_atlantis
-    landless = yes
+d_makuria = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_west_ajuraan = {
-    color = { 220 120 50 }
-    capital = c_atlantis
-    landless = yes
+d_shamir = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_outer_ajuraan = {
-    color = { 32 116 126 }
+d_alwa = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shabelle = {
-    color = { 36 118 128 }
-    capital = c_atlantis
-    landless = yes
+d_sennar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bali = {
-    color = { 51 131 142 }
-    capital = c_atlantis
-    landless = yes
+k_blemmyia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_samalo = {
-    color = { 70 170 200 }
-    capital = c_atlantis
-    landless = yes
+d_naqis = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_kanem_bornu = {
-	color = { 55 230 250 }
+d_bazin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kanem = {
-    color = { 124 184 124 }
+d_baqlin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kanem = {
-    color = { 120 185 120 }
-    capital = c_atlantis
-    landless = yes
+k_damot = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bornu = {
-    color = { 140 185 120 }
-    capital = c_atlantis
-    landless = yes
+d_damot = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kagha = {
-    color = { 110 195 110 }
-    capital = c_atlantis
-    landless = yes
+d_kaffa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_sao = {
-    color = { 10 200 205 }
+d_sharka = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baguirmi = {
-    color = { 15 205 205 }
-    capital = c_atlantis
-    landless = yes
+k_adal = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_salamat = {
-    color = { 5 215 200 }
-    capital = c_atlantis
-    landless = yes
+d_dawaro = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wandala = {
-    color = { 25 190 215 }
-    capital = c_atlantis
-    landless = yes
+d_adal = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_hausaland = {
-    color = { 240 95 20 }
+d_mora = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kano = {
-    color = { 240 95 0 }
-    capital = c_atlantis
-    landless = yes
+d_danakil = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_katsina = {
-    color = { 250 105 10 }
-    capital = c_atlantis
-    landless = yes
+d_zaila = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kebbi = {
-    color = { 245 80 5 }
-    capital = c_atlantis
-    landless = yes
+d_sanaag = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gobir = {
-    color = { 235 105 5 }
-    capital = c_atlantis
-    landless = yes
+e_ajuraan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_darfur = {
-    color = { 186 52 99 }
+k_ajuraan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_darfur = {
-    color = { 106 62 79 }
-    capital = c_atlantis
-    landless = yes
+d_hafun = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_west_darfur = {
-    color = { 166 32 99 }
-    capital = c_atlantis
-    landless = yes
+d_mogadishu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wadai = {
-    color = { 186 32 79 }
-    capital = c_atlantis
-    landless = yes
+d_west_ajuraan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kordofan = {
-    color = { 186 72 99 }
-    capital = c_atlantis
-    landless = yes
+k_outer_ajuraan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_mali = {
-	color = { 225 223 0 }
+d_shabelle = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_songhay = {
-    color = { 193 42 93 }
+d_bali = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kawkaw = {
-    color = { 190 45 90 }
-    capital = c_atlantis
-    landless = yes
+d_samalo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_timbuktu = {
-    color = { 180 55 100 }
-    capital = c_atlantis
-    landless = yes
+e_kanem_bornu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dendi = {
-    color = { 200 50 80 }
-    capital = c_atlantis
-    landless = yes
+k_kanem = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_gurma = {
-    color = { 172 102 68 }
+d_kanem = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_gurma = {
-    color = { 170 100 65 }
-    capital = c_atlantis
-    landless = yes
+d_bornu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_upper_gurma = {
-    color = { 180 120 70 }
-    capital = c_atlantis
-    landless = yes
+d_kagha = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_yatenga = {
-    color = { 160 110 75 }
-    capital = c_atlantis
-    landless = yes
+k_sao = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_ghana = {
-    color = { 209 144 4 }
+d_baguirmi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wagadu = {
-    color = { 191 131 2 }
-    capital = c_atlantis
-    landless = yes
+d_salamat = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mema = {
-    color = { 230 170 46 }
-    capital = c_atlantis
-    landless = yes
+d_wandala = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tagant = {
-    color = { 173 118 29 }
-    capital = c_atlantis
-    landless = yes
+k_hausaland = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_diafunu = {
-    color = { 189 111 15 }
-    capital = c_atlantis
-    landless = yes
+d_kano = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kaniaga = {
-    color = { 227 118 23 }
-    capital = c_atlantis
-    landless = yes
+d_katsina = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_mali = {
-    color = { 253 225 3 }
+d_kebbi = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_manding = {
-    color = { 250 230 5 }
-    capital = c_atlantis
-    landless = yes
+d_gobir = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bambuk = {
-    color = { 240 220 20 }
-    capital = c_atlantis
-    landless = yes
+k_darfur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_futa_jalon = {
-    color = { 230 230 25 }
-    capital = c_atlantis
-    landless = yes
+d_darfur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_loma = {
-    color = { 148 139 13 }
-    capital = c_atlantis
-    landless = yes
+d_west_darfur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_takrur = {
-    color = { 48 168 135 }
+d_wadai = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_takrur = {
-    color = { 50 170 138 }
-    capital = c_atlantis
-    landless = yes
+d_kordofan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_silla = {
-    color = { 60 180 150 }
-    capital = c_atlantis
-    landless = yes
+e_mali = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_djolof = {
-    color = { 72 162 128 }
-    capital = c_atlantis
-    landless = yes
+k_songhay = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_jenne = {
-    color = { 45 135 220 }
+d_kawkaw = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jenne = {
-    color = { 48 138 223 }
-    capital = c_atlantis
-    landless = yes
+d_timbuktu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bobo = {
-    color = { 68 158 223 }
-    capital = c_atlantis
-    landless = yes
+d_dendi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kaabu = {
-    color = { 214 93 48 }
+k_gurma = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kaabu = {
-    color = { 215 95 50 }
-    capital = c_atlantis
-    landless = yes
+d_lower_gurma = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wuli = {
-    color = { 220 100 58 }
-    capital = c_atlantis
-    landless = yes
+d_upper_gurma = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kasa = {
-    color = { 230 90 55 }
-    capital = c_atlantis
-    landless = yes
+d_yatenga = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_guinea = {
-	color = { 175 173 90 }
+k_ghana = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_guinea = {
-    color = { 155 153 70 }
+d_wagadu = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sapi = {
-    color = { 157 155 75 }
-    capital = c_atlantis
-    landless = yes
+d_mema = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kono = {
-    color = { 160 145 80 }
-    capital = c_atlantis
-    landless = yes
+d_tagant = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bassa = {
-    color = { 165 165 90 }
-    capital = c_atlantis
-    landless = yes
+d_diafunu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_toro = {
-    color = { 153 153 50 }
-    capital = c_atlantis
-    landless = yes
+d_kaniaga = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wenyon = {
-    color = { 173 167 101 }
-    capital = c_atlantis
-    landless = yes
+k_mali = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kru = {
-    color = { 209 188 65 }
-    capital = c_atlantis
-    landless = yes
+d_manding = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kong = {
-    color = { 178 28 0 }
+d_bambuk = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_worodugu = {
-    color = { 198 28 20 }
-    capital = c_atlantis
-    landless = yes
+d_futa_jalon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kong = {
-    color = { 198 48 20 }
-    capital = c_atlantis
-    landless = yes
+d_loma = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lobi = {
-    color = { 198 48 0 }
-    capital = c_atlantis
-    landless = yes
+k_takrur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_akan = {
-    color = { 225 25 25 }
+d_takrur = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ashanti = {
-    color = { 205 45 25 }
-    capital = c_atlantis
-    landless = yes
+d_silla = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_adiukru = {
-    color = { 171 79 56 }
-    capital = c_atlantis
-    landless = yes
+d_djolof = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gyaman = {
-    color = { 205 25 45 }
-    capital = c_atlantis
-    landless = yes
+k_jenne = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_brong = {
-    color = { 225 45 45 }
-    capital = c_atlantis
-    landless = yes
+d_jenne = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_eweland = {
-    color = { 205 45 45 }
-    capital = c_atlantis
-    landless = yes
+d_bobo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_gur = {
-    color = { 146 130 158 }
+k_kaabu = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dagomba = {
-    color = { 146 120 138 }
-    capital = c_atlantis
-    landless = yes
+d_kaabu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wagadugu = {
-    color = { 176 130 138 }
-    capital = c_atlantis
-    landless = yes
+d_wuli = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mamprusi = {
-    color = { 126 160 158 }
-    capital = c_atlantis
-    landless = yes
+d_kasa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_borgu = {
-    color = { 36 148 41 }
+e_guinea = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_borgu = {
-    color = { 38 150 43 }
-    capital = c_atlantis
-    landless = yes
+k_guinea = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_savalu = {
-    color = { 52 162 56 }
-    capital = c_atlantis
-    landless = yes
+d_sapi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_yorubaland = {
-    color = { 38 43 209 }
+d_kono = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ibadan = {
-    color = { 35 45 211 }
-    capital = c_atlantis
-    landless = yes
+d_bassa = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_oyo = {
-    color = { 45 55 222 }
-    capital = c_atlantis
-    landless = yes
+d_toro = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ife = {
-    color = { 176 194 56 }
-    capital = c_atlantis
-    landless = yes
+d_wenyon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_benin = {
-    color = { 226 120 128 }
-    capital = c_atlantis
-    landless = yes
+d_kru = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_igbo-benue = {
-    color = { 58 83 133 }
+k_kong = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_igboland = {
-    color = { 38 63 123 }
-    capital = c_atlantis
-    landless = yes
+d_worodugu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nupe = {
-    color = { 38 93 153 }
-    capital = c_atlantis
-    landless = yes
+d_kong = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kwararafa = {
-    color = { 38 93 193 }
-    capital = c_atlantis
-    landless = yes
+d_lobi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_india = {		# Titular, created by special decision only if entire India is united
-	color = { 255 110 0 }
+k_akan = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_rajastan = {
-	color = { 255 100 0 }
+d_ashanti = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sindh = {
-    color = { 225 135 20 }
+d_adiukru = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sauvira = {
-    color = { 230 135 20 }
-    capital = c_atlantis
-    landless = yes
+d_gyaman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_bhakkar = {
-    color = { 200 105 18 }
-    capital = c_atlantis
-    landless = yes
+d_brong = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_punjab = {
-    color = { 255 90 20 }
+d_eweland = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_multan = {
-    color = { 234 100 21 }
-    capital = c_atlantis
-    landless = yes
-}
-d_lahore = {
-    color = { 180 110 41 }
-    capital = c_atlantis
-    landless = yes
-}
-d_gandhara = {
-    color = { 255 150 31 }
-    capital = c_atlantis
-    landless = yes
+k_gur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_delhi = {
-    color = { 220 150 75 }
+d_dagomba = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kuru = {
-    color = { 210 65 12 }
-    capital = c_atlantis
-    landless = yes
+d_wagadugu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_haritanaka = {
-    color = { 100 25 3 }
-    capital = c_atlantis
-    landless = yes
+d_mamprusi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_mathura = {
-    color = { 150 45 10 }
-    capital = c_atlantis
-    landless = yes
-}
-d_vodamayutja = {
-    color = { 195 90 0 }
-    capital = c_atlantis
-    landless = yes
+k_borgu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_gujarat = {
-    color = { 155 80 28 }
+d_borgu = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gurjara_mandala = {
-    color = { 175 80 20 }
-    capital = c_atlantis
-    landless = yes
+d_savalu = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_anartta = {
-    color = { 195 50 10 }
-    capital = c_atlantis
-    landless = yes
+k_yorubaland = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_saurashtra = {
-    color = { 220 100 50 }
-    capital = c_atlantis
-    landless = yes
-}
+d_ibadan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_oyo = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ife = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_benin = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_igbo-benue = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_igboland = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nupe = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kwararafa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_india = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_hindustan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_rajastan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_sindh = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sauvira = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bhakkar = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_punjab = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_multan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lahore = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gandhara = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_delhi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kuru = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_haritanaka = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_mathura = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vodamayutja = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_gujarat = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gurjara_mandala = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_anartta = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_saurashtra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lata = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_rajputana = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_maru = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jangladesh = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_stravani = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_medapata = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ajmer = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_malwa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_dadhipadra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_akara_dasarna = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_anupa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_kosala = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kanyakubja = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_saryupara = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jejakabhukti = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_himalaya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kurmanchal = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_khasa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nepal = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_limbuwan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_kashmir = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kasmira = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pamir = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_bengal = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_bengal = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gauda = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_varendra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vanga = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nadia = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_suhma = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_kamarupa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kamarupanagara = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sutiya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_para_lauhitya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_bihar = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_magadha = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tirabhukti = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kasi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jharkand = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_gondwana = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_dahala = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ratanpur = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_orissa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tosali = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_daksina_kosala = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kalinga = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_dandakaranya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_pagan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pagan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tagaung  = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sriksetra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_arakan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ramannadesa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_deccan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_bene_israel = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_maharastra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_devagiri = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vidharba = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_konkana = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nasikya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_rattapadi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_karnata = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kalyani = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gangavadi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nulambavadi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_raichur_doab = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_tamilakam = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pandya_nadu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_chola_nadu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_chera_nadu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tondai_nadu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_andhra = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_udayagiri = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vengi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_telingana = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_warangal = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_racakonda = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_lanka = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_dakhina_desa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ruhunu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sinhala = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+e_tibet = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_u = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_yarlung = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lhasa = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nagchu = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_conyi = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_tsang = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_xigaze = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sagya = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ngamring = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-d_lata = {
-    color = { 200 150 90 }
-    capital = c_atlantis
-    landless = yes
+d_nyima = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_rajputana = {
-    color = { 200 70 0 }
+k_kham = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_maru = {
-    color = { 194 67 10 }
-    capital = c_atlantis
-    landless = yes
+d_qamdo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jangladesh = {
-    color = { 144 47 0 }
-    capital = c_atlantis
-    landless = yes
+d_boyul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_stravani = {
-    color = { 150 60 30 }
-    capital = c_atlantis
-    landless = yes
+d_nyingchi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_medapata = {
-    color = { 136 66 32 }
-    capital = c_atlantis
-    landless = yes
+d_nangqen = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ajmer = {
-    color = { 230 190 51 }
-    capital = c_atlantis
-    landless = yes
+d_lhatok = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_malwa = {
-    color = { 255 200 25 }
+d_lingtsang = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dadhipadra = { # Avanti
-    color = { 245 200 20 }
-    capital = c_atlantis
-    landless = yes
+d_dege = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_akara_dasarna = {
-    color = { 210 150 15 }
-    capital = c_atlantis
-    landless = yes
+d_batang = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_anupa = {
-    color = { 150 110 5 }
-    capital = c_atlantis
-    landless = yes
+d_litang = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kosala = {
-    color = { 205 60 10 }
+k_amdo = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kanyakubja = {
-    color = { 225 155 77 }
-    capital = c_atlantis
-    landless = yes
+d_xining = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_saryupara = {
-    color = { 180 110 40 }
-    capital = c_atlantis
-    landless = yes
+d_tuyuhun = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jejakabhukti = {
-    color = { 120 50 10 }
-    capital = c_atlantis
-    landless = yes
+d_nagormo = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_himalaya = {
-    color = { 250 40 0 }
+d_amdo = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kurmanchal = {
-    color = { 255 100 5 }
-    capital = c_atlantis
-    landless = yes
+d_zadoi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_khasa = {
-    color = { 255 20 20 }
-    capital = c_atlantis
-    landless = yes
+d_qumarleb = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nepal = {
-    color = { 255 45 5 }
-    capital = c_atlantis
-    landless = yes
+k_gyalrong = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_limbuwan = {
-    color = { 195 55 5 }
-    capital = c_atlantis
-    landless = yes
+d_gyalrong = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kashmir = {
-    color = { 245 155 31 }
+d_chakla = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kasmira = {
-    color = { 245 160 31 }
-    capital = c_atlantis
-    landless = yes
+d_golog = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_pamir = {
-    color = { 250 60 20 }
-    capital = c_atlantis
-    landless = yes
+d_malho = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_bengal = {
-	color = { 0 120 40 }
+d_gainlho = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bengal = {
-    color = { 40 160 40 }
+k_guge = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gauda = {
-    color = { 60 200 60 }
-    capital = c_atlantis
-    landless = yes
+d_ngari = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_varendra = {
-    color = { 20 125 20 }
-    capital = c_atlantis
-    landless = yes
+d_kinnaur = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vanga = {
-    color = { 35 190 35 }
-    capital = c_atlantis
-    landless = yes
+d_purang = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nadia = {
-    color = { 100 255 100 }
-    capital = c_atlantis
-    landless = yes
+k_maryul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_suhma = {
-    color = { 10 100 10 }
-    capital = c_atlantis
-    landless = yes
+d_ladakh = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kamarupa = {
-    color = { 6 127 80 }
+d_zanskar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kamarupanagara = {
-    color = { 15 140 50 }
-    capital = c_atlantis
-    landless = yes
+d_baltiyul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sutiya = {
-    color = { 40 200 150 }
-    capital = c_atlantis
-    landless = yes
+d_aksai_chin = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_para_lauhitya = {
-    color = { 15 220 80 }
-    capital = c_atlantis
-    landless = yes
+d_rutog = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_bihar = {
-    color = { 68 208 51 }
+k_lhomon = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_magadha = {
-    color = { 15 122 25 }
-    capital = c_atlantis
-    landless = yes
+d_bumthang = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tirabhukti = {
-    color = { 58 178 41 }
-    capital = c_atlantis
-    landless = yes
+d_paro = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kasi = {
-    color = { 123 181 56 }
-    capital = c_atlantis
-    landless = yes
+d_monyul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_jharkand = {
-    color = { 48 138 31 }
-    capital = c_atlantis
-    landless = yes
+d_lhoyul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_gondwana = {
-    color = { 32 128 55 }
+d_dzayul = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dahala = {
-    color = { 30 125 55 }
-    capital = c_atlantis
-    landless = yes
+k_xia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ratanpur = {
-    color = { 36 175 65 }
-    capital = c_atlantis
-    landless = yes
+d_xia = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_orissa = {
-    color = { 110 145 40 }
+d_wuluhai = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tosali = {
-    color = { 115 190 30 }
-    capital = c_atlantis
-    landless = yes
+d_zhenfan = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_daksina_kosala = {
-    color = { 105 150 41 }
-    capital = c_atlantis
-    landless = yes
+d_liangzhou = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kalinga = {
-    color = { 70 220 115 }
-    capital = c_atlantis
-    landless = yes
+d_shanzhou = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dandakaranya = {
-    color = { 38 150 70 }
-    capital = c_atlantis
-    landless = yes
+d_qilin = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_pagan = {
-    color = { 166 40 224 }
+d_ganzhou = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pagan = {
-    color = { 136 20 194 }
-    capital = c_atlantis
-    landless = yes
+d_yijinai = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tagaung  = {
-    color = { 204 67 190 }
-    capital = c_atlantis
-    landless = yes
+d_guiyi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sriksetra = {
-    color = { 156 50 103 }
-    capital = c_atlantis
-    landless = yes
+d_aksay = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_arakan = {
-    color = { 230 37 82 }
-    capital = c_atlantis
-    landless = yes
+d_nf_ampelas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ramannadesa = {
-    color = { 76 30 241 }
-    capital = c_atlantis
-    landless = yes
+d_nf_aplakes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_deccan = {
-	color = { 190 20 50 }
+d_nf_agelastos = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bene_israel = {
-    color = { 255 20 20 }
+d_nf_doukas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_maharastra = {
-    color = { 150 0 20 }
+d_nf_gerontas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_devagiri = {
-    color = { 155 5 30 }
-    capital = c_atlantis
-    landless = yes
+d_nf_hexavoulis = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vidharba = {
-    color = { 205 55 15 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kardias = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_konkana = {
-    color = { 115 20 40 }
-    capital = c_atlantis
-    landless = yes
+d_nf_katakalitzes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nasikya = {
-    color = { 120 50 90 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kourkouas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_rattapadi = {
-    color = { 220 99 85 }
-    capital = c_atlantis
-    landless = yes
+d_nf_krateros = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_karnata = {
-    color = { 150 20 0 }
+d_nf_lachanodrakon = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kalyani = {
-    color = { 110 25 2 }
-    capital = c_atlantis
-    landless = yes
+d_nf_makedon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gangavadi = {
-    color = { 205 140 25 }
-    capital = c_atlantis
-    landless = yes
+d_nf_maleios = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nulambavadi = {
-    color = { 178 93 29 }
-    capital = c_atlantis
-    landless = yes
+d_nf_maleinos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_raichur_doab = {
-    color = { 145 40 5 }
-    capital = c_atlantis
-    landless = yes
+d_nf_maurikios = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_tamilakam = {
-    color = { 200 25 65 }
+d_nf_melissenos = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pandya_nadu = {
-    color = { 190 20 65 }
-    capital = c_atlantis
-    landless = yes
+d_nf_pastillas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chola_nadu = {
-    color = { 180 80 130 }
-    capital = c_atlantis
-    landless = yes
+d_nf_ooryphas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chera_nadu = {
-    color = { 140 75 75 }
-    capital = c_atlantis
-    landless = yes
+d_nf_sellokalas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tondai_nadu = {
-    color = { 200 120 120 }
-    capital = c_atlantis
-    landless = yes
+d_nf_skleros = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_andhra = {
-    color = { 110 0 20 }
+d_nf_arcruni = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_udayagiri = {
-    color = { 110 0 20 }
-    capital = c_atlantis
-    landless = yes
+d_nf_argyros = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_vengi = {
-    color = { 170 25 50 }
-    capital = c_atlantis
-    landless = yes
+d_nf_basiliakos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_telingana = {
-    color = { 185 39 45 }
+d_nf_botaneiates = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_warangal = {
-    color = { 185 39 45 }
-    capital = c_atlantis
-    landless = yes
+d_nf_bryennios = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_racakonda = {
-    color = { 190 60 60 }
-    capital = c_atlantis
-    landless = yes
+d_nf_diogenes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_lanka = {
-    color = { 221 187 80 }
+d_nf_dragosevic = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dakhina_desa = { #Dakhina Desa - or Maya after the 12th century
-    color = { 231 175 85 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kamateros = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ruhunu = {
-    color = { 231 200 105 }
-    capital = c_atlantis
-    landless = yes
+d_nf_karandenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sinhala = {
-    color = { 181 155 55 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kaukadenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-e_tibet = {
-	color = { 250 40 0 }
+d_nf_komnenos = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_u = {
-    color = { 3 144 252 }
+d_nf_makrembolites = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yarlung = {
-    color = { 3 124 232 }
-    capital = c_atlantis
-    landless = yes
+d_nf_murzuphlos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lhasa = {
-    color = { 3 144 212 }
-    capital = c_atlantis
-    landless = yes
+d_nf_ouranos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nagchu = {
-    color = { 30 104 252 }
-    capital = c_atlantis
-    landless = yes
+d_nf_pahlavuni = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_conyi = {
-    color = { 21 144 202 }
-    capital = c_atlantis
-    landless = yes
+d_nf_palaiologos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_tsang = {
-    color = { 10 235 255 }
+d_nf_pegonites = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xigaze = {
-    color = { 10 255 255 }
-    capital = c_atlantis
-    landless = yes
+d_nf_phokas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_sagya = {
-    color = { 10 165 180 }
-    capital = c_atlantis
-    landless = yes
+d_nf_pleustes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ngamring = {
-    color = { 50 180 175 }
-    capital = c_atlantis
-    landless = yes
+d_nf_synadenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nyima = {
-    color = { 40 140 130 }
-    capital = c_atlantis
-    landless = yes
+d_nf_tarchaneiotes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_kham = {
-    color = { 150 10 0 }
+d_nf_taronites = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_qamdo = {
-    color = { 130 10 0 }
-    capital = c_atlantis
-    landless = yes
+d_nf_varajnuni = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_boyul = {
-    color = { 176 48 11 }
-    capital = c_atlantis
-    landless = yes
+d_nf_saronites = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nyingchi = {
-    color = { 150 65 0 }
-    capital = c_atlantis
-    landless = yes
+d_nf_garidas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nangqen = {
-    color = { 171 10 37 }
-    capital = c_atlantis
-    landless = yes
+d_nf_areobindenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lhatok = {
-    color = { 214 11 68 }
-    capital = c_atlantis
-    landless = yes
+d_nf_alopos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lingtsang = {
-    color = { 212 51 51 }
-    capital = c_atlantis
-    landless = yes
+d_nf_durres = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dege = {
-    color = { 135 35 35 }
-    capital = c_atlantis
-    landless = yes
+d_nf_angelos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_batang = {
-    color = { 181 43 101 }
-    capital = c_atlantis
-    landless = yes
+d_nf_batatzes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_litang = {
-    color = { 214 132 84 }
-    capital = c_atlantis
-    landless = yes
+d_nf_branas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_amdo = {
-    color = { 70 40 105 }
+d_nf_gabras = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xining = {
-    color = { 52 31 77 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kamytzes = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_tuyuhun = {
-    color = { 75 11 156 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kantakouzenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_nagormo = { #Golmud/Ge'ermu
-    color = { 97 31 237 }
-    capital = c_atlantis
-    landless = yes
+d_nf_komnenos_doukas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_amdo = {
-    color = { 79 72 217 }
-    capital = c_atlantis
-    landless = yes
+d_nf_kontostephanos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_zadoi = {
-    color = { 54 65 153 }
-    capital = c_atlantis
-    landless = yes
+d_nf_lampardas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_qumarleb = {
-    color = { 8 99 191 }
-    capital = c_atlantis
-    landless = yes
+d_nf_macrodoukas = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_gyalrong = {
-    color = { 42 104 135 }
+d_nf_petraliphas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gyalrong = {
-    color = { 40 105 140 }
-    capital = c_atlantis
-    landless = yes
+d_nf_raoul = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_chakla = {
-    color = { 50 80 130 }
-    capital = c_atlantis
-    landless = yes
+d_nf_rogerios = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_golog = {
-    color = { 40 100 160 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_anangapida = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_malho = {  #Huangnan
-    color = { 75 100 130 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_ziyar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_gainlho = {  #Gannan
-    color = { 50 90 100 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_ahwazi = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_guge = {
-    color = { 197 255 198 }
+d_laamp_guttorm = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ngari = { #Guge
-    color = { 207 255 118 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_hrolfr = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_kinnaur = {
-    color = { 197 235 178 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_ubbe = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_purang = {
-    color = { 217 255 158 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_enian = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_maryul = {
-    color = { 140 140 180 }
+d_laamp_sevener_caliph = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ladakh = {
-    color = { 130 140 180 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_twelver_caliph = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_zanskar = {
-    color = { 150 190 245 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_qutid = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_baltiyul = { # Baltistan
-    color = { 190 210 245 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_sabbah = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_aksai_chin = {
-    color = { 135 179 255 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_wake = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_rutog = {
-    color = { 162 210 235 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_el_cid = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_lhomon = {
-    color = { 150 196 35 }
+d_laamp_crispin = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bumthang = {
-    color = { 134 173 35 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_suleyman = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_paro = {
-    color = { 203 224 63 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_wallada = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_monyul = {
-    color = { 124 222 20 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_danishmend = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_lhoyul = {
-    color = { 146 255 92 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_voiteh = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_dzayul = {
-    color = { 119 138 11 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_aelfwine = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-k_xia = { # Minya/Minyak
-    color = { 110 90 230 }
+d_laamp_karatzas = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xia = {
-    color = { 96 79 201 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_kalbid = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_wuluhai = {
-    color = { 90 115 200 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_du_leon = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_zhenfan = {
-    color = { 90 90 255 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_kizil_buga = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_liangzhou = {
-    color = { 70 75 230 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_ali_ibn_reverter = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_shanzhou = {
-    color = { 135 90 250 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_andronikos_komnenos = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_qilin = {
-    color = { 190 160 250 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_asen = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_ganzhou = {
-    color = { 170 100 210 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_mieszko = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_yijinai = {
-    color = { 100 70 140 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_raimon_brun = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_guiyi = { #Guazhou
-    color = { 90 70 175 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_lalibela = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-d_aksay = {
-    color = { 60 30 215 }
-    capital = c_atlantis
-    landless = yes
+d_laamp_muhammad_bakhtiyar = { 
+	capital = c_atlantis
+	landless = yes
 }
 
-# OBSOLETE TITLES
+d_laamp_raoul = { 
+	capital = c_atlantis
+	landless = yes
+}
 
-k_adiukru = {
-	color = { 180 220 189 }
+k_adiukru = { 
 	capital = c_atlantis
+	landless = yes
 }
 
-k_toro = {
-	color = { 110 40 57 }
+k_toro = { 
 	capital = c_atlantis
+	landless = yes
 }
 
-k_winideheim = {
-	color = { 158 102 36 }
+k_winideheim = { 
 	capital = c_atlantis
+	landless = yes
 }

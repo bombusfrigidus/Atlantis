@@ -12,9 +12,6 @@ is_on_a_pilgrimage_trigger = {
 }
 
 is_on_a_hajj_trigger = {
-
-	always = no
-
 	exists = involved_activity
 	involved_activity = {
 		has_activity_option = {

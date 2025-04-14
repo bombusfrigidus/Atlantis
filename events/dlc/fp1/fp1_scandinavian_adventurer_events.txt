@@ -10,18 +10,7 @@ scripted_trigger valid_scandinavian_adventurer = {
 	is_available_ai_adult = yes
 	is_alive = yes
 	is_ruler = no
-	OR = {
-		any_heir_title = { count = 0 }
-		AND = {
-			save_temporary_scope_as = potential
-			any_heir_title = {
-				place_in_line_of_succession = {
-					target = scope:potential
-					value >= 3
-				}
-			}
-		}
-	}
+	any_heir_title = { count = 0 }
 }
 
 scripted_trigger significant_north_germanic_presence_trigger = {
@@ -92,7 +81,7 @@ scripted_trigger valid_adventurer_target_trigger = {
 			#Or which have already earnt a ceasefire with this particular adventurer. Or any of their liege
 			OR = {
 				any_truce_holder = { this = scope:scandi_adventurer }
-				any_liege_or_above = { 
+				any_liege_or_above = {
 					any_truce_holder = { this = scope:scandi_adventurer }
 				}
 			}
@@ -151,6 +140,7 @@ scripted_effect scandinavian_adventurer_start_war_effect = {
 				desc = VIKING_ARMY_NEUTRAL_NAME
 			}
 		}
+		adj = VIKING_ARMY_adj
 	}
 	create_title_and_vassal_change = {
 		type = created
@@ -1014,7 +1004,7 @@ scripted_effect scandi_adventurers_grab_famous_character_effect = {
 				is_ai = yes
 				# Hasn't got anything dynastic of note going on.
 				is_ruler = no
-				any_heir_to_title = { count = 0 }
+				any_heir_title = { count = 0 }
 				# And is free and clear to go.
 				is_imprisoned = no
 				OR = {
@@ -1080,16 +1070,24 @@ fp1_scandinavian_adventurers.0012 = {
 	scope = none
 
 	trigger = {
-
-		always = no
-
 		# DLC check.
 		has_fp1_dlc_trigger = yes
 		# No point in later starts.
 		game_start_date = 867.1.1
+
+		OR = {
+			exists = character:1
+			exists = character:1
+		}
+
 	}
 
-	immediate = {}
+	immediate = {
+		# Nab Rollo.
+		scandi_adventurers_grab_famous_character_effect = { CHARACTER = character:1 }
+		# Nab Ubbe.
+		scandi_adventurers_grab_famous_character_effect = { CHARACTER = character:1 }
+	}
 }
 
 fp1_scandinavian_adventurers.0021 = {

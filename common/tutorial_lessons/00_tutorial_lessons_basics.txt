@@ -2,7 +2,7 @@
 lesson_basics = {
 	chain = lesson_chain_basics
 	delay = 0
-	
+
 	# Welcome to Crusader Kings...
 	lesson_basics_welcome = {
 		text = "lesson_welcome_desc"
@@ -266,7 +266,7 @@ lesson_basics = {
 				days = 200
 			}
 		}
-	
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -1139,7 +1139,7 @@ lesson_basics_map = {
 		}
 
 		highlight_widget = "realm_info"
-		
+
 		gui_transition = {
 			button_id = "skip"
 			button_text = "tutorial_lesson_button_skip"
@@ -1165,7 +1165,7 @@ lesson_basics_map = {
 		highlight_widget = "tutorial_highlight_bottom_left_portrait_button"
 		#highlight_widget = "realm_shield"
 
-		
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -1187,7 +1187,7 @@ lesson_basics_map = {
 			close_all_views = yes
 			pan_camera_to_title = title:c_atlantis
 		}
-		
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -1219,7 +1219,7 @@ lesson_basics_character = {
 		effect = {
 			close_view = character
 		}
-		
+
 		gui_transition = {
 			button_id = "skip"
 			button_text = "tutorial_lesson_button_skip"
@@ -1315,7 +1315,7 @@ lesson_basics_character = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_traits_2
-		}		
+		}
 		gui_transition = {
 			button_id = "next"
 			button_text = "tutorial_lesson_button_next"
@@ -1333,7 +1333,7 @@ lesson_basics_resources = {
 	lesson_basics_resources_1 = {
 		text = "lesson_basics_resources_1_desc"
 		header_info = "lesson_step_1_of_3"
-		force_pause_game = yes		
+		force_pause_game = yes
 		highlight_widget = "gold"
 
 		effect = {
@@ -1354,7 +1354,7 @@ lesson_basics_resources = {
 	lesson_basics_resources_2 = {
 		text = "lesson_basics_resources_2_desc"
 		header_info = "lesson_step_2_of_3"
-		force_pause_game = yes		
+		force_pause_game = yes
 		highlight_widget = "prestige"
 
 		gui_transition = {
@@ -1372,7 +1372,7 @@ lesson_basics_resources = {
 	lesson_basics_resources_3 = {
 		text = "lesson_basics_resources_3_desc"
 		header_info = "lesson_step_3_of_3"
-		force_pause_game = yes		
+		force_pause_game = yes
 		highlight_widget = "piety"
 
 		gui_transition = {
@@ -1509,7 +1509,7 @@ lesson_basics_lifestyles = {
 		text = "lesson_basics_lifestyles_2_b_desc"
 		header_info = "lesson_step_2_of_2"
 		force_pause_game = yes
-		
+
 		shown_in_encyclopedia = no
 
 		effect = {
@@ -1560,7 +1560,7 @@ lesson_basics_interacting = {
 			button_text = "tutorial_lesson_button_skip"
 			target = lesson_finish # ends current lesson chain
 		}
-		
+
 		trigger_transition = {
 			button_id = "next"
 			button_text = "tutorial_lesson_button_next"
@@ -1602,7 +1602,7 @@ lesson_basics_interacting = {
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_interacting_1
 		}
-		
+
 		trigger_transition = {
 			button_id = "next"
 			button_text = "tutorial_lesson_button_next"
@@ -1674,7 +1674,7 @@ lesson_basics_succession = {
 
 		highlight_widget = "house_frame"
 		#highlight_widget = "vignette" # highlights religion string in character view
-		
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -1698,7 +1698,7 @@ lesson_basics_succession = {
 		header_info = "lesson_step_2_of_4"
 		force_pause_game = yes
 		shown_in_encyclopedia = no
-		
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -1769,7 +1769,7 @@ lesson_basics_succession = {
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_succession_laws
 		}
-		
+
 		gui_transition = {
 			button_id = "repeat"
 			button_text = "tutorial_lesson_button_repeat_step"
@@ -1820,7 +1820,7 @@ lesson_basics_succession = {
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_succession_laws_complete_2
 		}
-		
+
 		gui_transition = {
 			button_id = "next"
 			button_text = "tutorial_lesson_button_complete"
@@ -1857,7 +1857,7 @@ lesson_basics_succession = {
 			target = lesson_basics_renown_no_GUI_highlight_2
 
 			trigger = {
-				is_widgetid_open = dynasty_view # Needs highlight
+				is_widgetid_open = dynasty_legacy_window # Needs highlight
 			}
 		}
 	}
@@ -1872,7 +1872,7 @@ lesson_basics_succession = {
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_succession_laws_complete_2
 		}
-		
+
 		gui_transition = {
 			button_id = "next"
 			button_text = "tutorial_lesson_button_complete"
@@ -1945,7 +1945,7 @@ lesson_basics_marriage = {
 			}
 		}
 	}
-	
+
 	# Open Marriage Window (Prompts opening marriage-window)...
 	lesson_basics_marriage_concept_2 = {
 		text = "lesson_basics_marriage_concept_2_desc"
@@ -2055,7 +2055,7 @@ lesson_basics_marriage = {
 
 		#potential highlights: "clear_characters" "tutorial_highlight_change_left_character" "tutorial_highlight_change_right_character"
 		highlight_widget = "filters"
-		
+
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
@@ -2066,7 +2066,7 @@ lesson_basics_marriage = {
 			button_text = "tutorial_lesson_button_next"
 			target = lesson_basics_marriage_gating_2
 		}
-		
+
 		trigger_transition = { # Next (Automatic)
 			target = lesson_basics_choosing_a_spouse_no_GUI_highlight
 			trigger = {
@@ -2097,7 +2097,7 @@ lesson_basics_marriage = {
 	lesson_basics_marriage_gating_2 = {
 		force_pause_game = yes
 		shown_in_encyclopedia = no
-		
+
 		# This transition happens instantly...
 		trigger_transition = {
 			target = lesson_basics_say_yes #not married yet
@@ -2444,7 +2444,7 @@ lesson_basics_holdings = {
 			target = lesson_basics_buildings
 		}
 	}
-	
+
 	# We have Buildings! Build...?
 	lesson_basics_buildings = {
 		text = "lesson_basics_buildings_desc"
@@ -2599,7 +2599,7 @@ lesson_basics_vassals = {
 			close_view = holding_view
 			close_all_views = yes
 		}
-		
+
 		highlight_widget = "tab_my_realm_tutorial_uses_this"
 		highlight_widget = "tutorial_highlight_vassals_tab"
 
@@ -2804,7 +2804,7 @@ lesson_basics_council = {
 		header_info = "lesson_step_1_of_2"
 		force_pause_game = yes
 		animation = center
-		
+
 		highlight_widget = "tab_council"
 
 		effect = {
@@ -2991,7 +2991,7 @@ lesson_basics_schemes = {
 							exists = root.cp:councillor_court_chaplain
 							any_scheme = {
 								scheme_type = sway
-								scheme_target = root.cp:councillor_court_chaplain
+								scheme_target_character = root.cp:councillor_court_chaplain
 							}
 						}
 					}
@@ -3014,7 +3014,7 @@ lesson_basics_schemes = {
 					exists = root.cp:councillor_court_chaplain
 					any_scheme = {
 						scheme_type = sway
-						scheme_target = root.cp:councillor_court_chaplain
+						scheme_target_character = root.cp:councillor_court_chaplain
 					}
 				}
 			}

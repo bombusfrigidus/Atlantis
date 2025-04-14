@@ -1,0 +1,401 @@
+﻿OrdinalIndicatorPoI = { # the 'nd' in 2nd, 'rd' in 3rd, etc
+	type = province
+
+	text = {
+		trigger = {
+			OR = {
+				var:battle_poi_date_day = 1 
+				var:battle_poi_date_day = 21 
+				var:battle_poi_date_day = 31 
+			}
+		}
+		localization_key = OrdinalIndicatorPoIST
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				var:battle_poi_date_day = 2
+				var:battle_poi_date_day = 22 
+			}
+		}
+		localization_key = OrdinalIndicatorPoIND
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				var:battle_poi_date_day = 3
+				var:battle_poi_date_day = 23 
+			}
+		}
+		localization_key = OrdinalIndicatorPoIRD
+	}
+
+	text = {
+		trigger = { always = yes }
+		localization_key = OrdinalIndicatorPoIFallback
+	}
+}
+
+MonthBattlePoI = { # January, February, etc
+	type = province
+
+	text = {
+		trigger = { var:battle_poi_date_month = 1 }
+		localization_key = MonthBattlePoIJanuary
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 2 }
+		localization_key = MonthBattlePoIFebruary
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 3 }
+		localization_key = MonthBattlePoIMarch
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 4 }
+		localization_key = MonthBattlePoIApril
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 5 }
+		localization_key = MonthBattlePoIMay
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 6 }
+		localization_key = MonthBattlePoIJune
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 7 }
+		localization_key = MonthBattlePoIJuly
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 8 }
+		localization_key = MonthBattlePoIAugust
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 9 }
+		localization_key = MonthBattlePoISeptember
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 10 }
+		localization_key = MonthBattlePoIOctober
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 11 }
+		localization_key = MonthBattlePoINovember
+	}
+
+	text = {
+		trigger = { var:battle_poi_date_month = 12 }
+		localization_key = MonthBattlePoIDecember
+	}
+}
+
+BattlePoIDescriptionLocIntro = {
+	type = province
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_randomizer_1
+		}
+		localization_key = BattlePoiDescriptionIntro1
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_attacker
+			has_variable = battle_poi_randomizer_2
+		}
+		localization_key = BattlePoiDescriptionIntroAttacker2
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_defender
+			has_variable = battle_poi_randomizer_2
+		}
+		localization_key = BattlePoiDescriptionIntroDefender2
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_attacker
+			has_variable = battle_poi_randomizer_3
+		}
+		localization_key = BattlePoiDescriptionIntroAttackerFallback
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_defender
+			has_variable = battle_poi_randomizer_3
+		}
+		localization_key = BattlePoiDescriptionIntroDefenderFallback
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_attacker
+		}
+		localization_key = BattlePoiDescriptionIntroAttackerFallback
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_defender
+		}
+		localization_key = BattlePoiDescriptionIntroDefenderFallback
+	}
+}
+
+BattlePoIDescriptionLocMid = {
+	type = province
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			var:battle_poi_brave_knight = {
+				has_trait = berserker
+			}
+		}
+		localization_key = BattlePoiDescriptionLocBerserker
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			var:battle_poi_brave_knight = {
+				has_trait = varangian
+			}
+		}
+		localization_key = BattlePoiDescriptionLocVarangian
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			has_variable = battle_poi_archers
+			has_variable = battle_poi_brave_knight
+		}
+		localization_key = BattlePoiDescriptionLocArchersKnight
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			has_variable = battle_poi_heavy_infantry
+			has_variable = battle_poi_brave_knight
+		}
+		localization_key = BattlePoiDescriptionLocHeavyInfantryKnight
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			has_variable = battle_poi_light_cavalry
+			has_variable = battle_poi_brave_knight
+		}
+		localization_key = BattlePoiDescriptionLocLightCavalryKnight
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			has_variable = battle_poi_heavy_cavalry
+			has_variable = battle_poi_brave_knight
+		}
+		localization_key = BattlePoiDescriptionLocHeavyCavalryKnight
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			has_variable = battle_poi_pikemen
+			has_variable = battle_poi_brave_knight
+		}
+		localization_key = BattlePoiDescriptionLocPikemenKnight
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_archers
+		}
+		localization_key = BattlePoiDescriptionLocArchers
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_heavy_infantry
+		}
+		localization_key = BattlePoiDescriptionLocHeavyInfantry
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_light_cavalry
+		}
+		localization_key = BattlePoiDescriptionLocLightCavalry
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_heavy_cavalry
+		}
+		localization_key = BattlePoiDescriptionLocHeavyCavalry
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_pikemen
+		}
+		localization_key = BattlePoiDescriptionLocPikemen
+	}
+
+	text = {
+		fallback = yes
+		localization_key = BattlePoiDescriptionLocMidFallback
+	}
+}
+
+BattlePoIDescriptionLocOutcome = {
+	type = province
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			var:battle_poi_brave_knight = {
+				has_trait = berserker
+			}
+			OR = {
+				has_variable = battle_poi_enemy_commander_imprisoned
+				has_variable = battle_poi_enemy_commander_slain
+			}
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeBerserker
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_brave_knight
+			var:battle_poi_brave_knight = {
+				has_trait = varangian
+			}
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeBerserkerFled
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_slain
+			var:battle_poi_slain > 50
+			OR = {
+				has_variable = battle_poi_enemy_commander_imprisoned
+				has_variable = battle_poi_enemy_commander_slain
+			}
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeDevastation
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_slain
+			var:battle_poi_slain > 50
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeDevastationFled
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_slain
+			var:battle_poi_slain > 35
+			OR = {
+				has_variable = battle_poi_enemy_commander_imprisoned
+				has_variable = battle_poi_enemy_commander_slain
+			}
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeChaos
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_slain
+			var:battle_poi_slain > 35
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeChaosFled
+	}
+
+	text = {
+		trigger = {
+			OR = {
+				has_variable = battle_poi_enemy_commander_imprisoned
+				has_variable = battle_poi_enemy_commander_slain
+			}
+		}
+		localization_key = BattlePoiDescriptionLocOutcomeLoss
+	}
+
+	text = {
+		fallback = yes
+		localization_key = BattlePoiDescriptionLocOutcomeLossFled
+	}
+}
+
+BattlePoIDescriptionLocOutro = {
+	type = province
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_enemy_commander_imprisoned
+		}
+		localization_key = BattlePoiDescriptionLocOutroImprisoned
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_enemy_commander_slain
+		}
+		localization_key = BattlePoiDescriptionLocOutroSlain
+	}
+
+	text = {
+		trigger = {
+			has_variable = battle_poi_slain
+			var:battle_poi_slain > 35
+		}
+		localization_key = BattlePoiDescriptionLocOutroFledChaos
+	}
+
+	text = {
+		fallback = yes
+		localization_key = BattlePoiDescriptionLocOutroFledOrganized
+	}
+}
+
+BattlePoiNameHistorical = {
+	type = province
+
+	text = { # Battle of Tours
+		fallback = yes
+		localization_key = BattlePoIHistoricalNameTours
+	}
+}
+
+BattlePoIDescriptionHistorical = {
+	type = province
+
+	text = { # Battle of Tours
+		fallback = yes
+		localization_key = BattlePoIHistoricalDescTours
+	}
+}

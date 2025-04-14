@@ -1,121 +1,11 @@
 ﻿##################################################
 # Islamic Decisions
 
-# Deprecated
-#go_on_hajj_decision = {
-#	picture = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
-#	ai_check_interval = 36
-#	
-#	sort_order = 65
-#
-#	desc = go_on_hajj_decision_desc
-#	selection_tooltip = go_on_hajj_decision_tooltip
-#
-#	cooldown = { years = pilgrimage_cooldown_year_amount }
-#
-#	is_shown = {
-#		NOT = { has_trait = hajjaj }
-#		is_landed = yes
-#		can_perform_the_hajj_trigger = yes
-#		always = no
-#	}
-#
-#	is_valid_showing_failures_only = {
-#		is_available_adult = yes
-#		is_at_war = no
-#	}
-#
-#	effect = {
-#		if = {
-#			limit = {
-#				hajj_actual_cost >= pilgrimage_very_long_extra_cost
-#			}
-#			custom_tooltip = hajj_exceptionally_long_tt
-#			custom_description_no_bullet = {
-#				text = hajj_distance_info_text
-#			}
-#			custom_tooltip = line_break
-#			show_as_tooltip = {
-#				add_trait = hajjaj
-#				very_long_pilgrimage_reward_effect = yes
-#			}
-#		}
-#		else_if = {
-#			limit = {
-#				hajj_actual_cost >= pilgrimage_long_extra_cost
-#			}
-#			custom_tooltip = hajj_very_long_tt
-#			custom_description_no_bullet = {
-#				text = hajj_distance_info_text
-#			}
-#			custom_tooltip = line_break
-#			show_as_tooltip = {
-#				add_trait = hajjaj
-#				long_pilgrimage_reward_effect = yes
-#			}
-#		}
-#		else_if = {
-#			limit = {
-#				hajj_actual_cost >= pilgrimage_medium_extra_cost
-#			}
-#			custom_tooltip = hajj_long_tt
-#			custom_description_no_bullet = {
-#				text = hajj_distance_info_text
-#			}
-#			custom_tooltip = line_break
-#			show_as_tooltip = {
-#				add_trait = hajjaj
-#				medium_pilgrimage_reward_effect = yes
-#			}
-#		}
-#		else = {
-#			custom_tooltip = hajj_short_tt
-#			custom_description_no_bullet = {
-#				text = hajj_distance_info_text
-#			}
-#			custom_tooltip = line_break
-#			show_as_tooltip = {
-#				add_trait = hajjaj
-#				short_pilgrimage_reward_effect = yes
-#			}
-#		}
-#
-#		if = {
-#			limit = { has_trait = ill }
-#			custom_tooltip = line_break
-#			custom_tooltip = pilgrimage_illness_warning
-#		}
-#		trigger_event = hajj.0001
-#	}
-#
-#	cost = {
-#		gold = hajj_actual_cost
-#	}
-#
-#	ai_potential = {
-#		is_landed = yes
-#		is_available_adult = yes
-#		can_perform_the_hajj_trigger = yes
-#		short_term_gold > hajj_actual_cost
-#	}
-#
-#	ai_will_do = {
-#		base = 5
-#		compare_modifier = {
-#			value = age
-#			trigger = {
-#				NOT = {
-#					has_trait = cynical
-#				}
-#			}
-#			max = 70
-#		}
-#	}
-#}
-
 appoint_a_righteous_caliph_decision = { # Appoint a righteous caliph
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 24
 
@@ -156,7 +46,7 @@ appoint_a_righteous_caliph_decision = { # Appoint a righteous caliph
 
 	is_shown = {
 		# Standard filter checks.
-		is_landed = yes
+		is_landed_or_landless_administrative = yes
 		exists = dynasty
 		# Check some religious stuff; namely that you're the correct religion and your existing-HoF doesn't share your faith.
 		religion = religion:islam_religion
@@ -167,6 +57,7 @@ appoint_a_righteous_caliph_decision = { # Appoint a righteous caliph
 			government_has_flag = government_is_tribal
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
+			government_allows = administrative
 		}
 	}
 
@@ -336,8 +227,9 @@ appoint_a_righteous_caliph_decision = { # Appoint a righteous caliph
 # General Religious Decisions
 
 take_vow_of_poverty_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = take_vow_of_poverty_decision_desc
 	selection_tooltip = take_vow_of_poverty_decision_tooltip
 
@@ -383,8 +275,9 @@ take_vow_of_poverty_decision = {
 }
 
 renounce_vow_of_poverty_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_spend_money.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_spend_money.dds"
+	}
 	desc = renounce_vow_of_poverty_decision_desc
 	selection_tooltip = renounce_vow_of_poverty_decision_tooltip
 
@@ -430,8 +323,9 @@ renounce_vow_of_poverty_decision = {
 }
 
 initiate_consolamentum_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	title = {
 		first_valid = {
 			triggered_desc = {
@@ -510,23 +404,44 @@ initiate_consolamentum_decision = {
 }
 
 seek_aid_of_the_spirits_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
-	desc = seek_aid_of_the_spirits_decision_desc
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	desc = {
+		desc = seek_aid_of_the_spirits_decision_desc
+		first_valid = {
+			triggered_desc = {
+				trigger = { is_landless_adventurer = yes }
+				desc = seek_aid_of_the_spirits_decision_desc_landless
+			}
+			desc = seek_aid_of_the_spirits_decision_desc_landed
+		}
+	}
 	selection_tooltip = seek_aid_of_the_spirits_decision_tooltip
 
 	is_shown = {
-		faith = {
-			has_doctrine_parameter = spirit_possession_active
-		}
+		faith = { has_doctrine_parameter = spirit_possession_active }
 	}
 
 	is_valid = {
-		custom_description = {
-			text = decision_has_court_chaplain
-			exists = cp:councillor_court_chaplain
-			cp:councillor_court_chaplain = {
-				is_available_adult = yes
+		trigger_if = {
+			limit = { exists = cp:councillor_court_chaplain }
+			custom_description = {
+				text = decision_has_court_chaplain
+				exists = cp:councillor_court_chaplain
+				cp:councillor_court_chaplain = {
+					is_available_adult = yes
+				}
+			}
+		}
+		#If we're landless, let's see if we're mystic-savy
+		trigger_if = {
+			limit = { is_landless_adventurer = yes }
+			OR = {
+				#We be mystic?
+				has_trait = lifestyle_mystic
+				#Or is this simply a very religious place/place with affinity?
+				location = { county.faith = root.faith }	
 			}
 		}
 		NOT = { has_trait = possessed }
@@ -565,8 +480,9 @@ seek_aid_of_the_spirits_decision = {
 }
 
 select_personal_deity_hinduism_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = select_personal_deity_hinduism_decision_desc
 	selection_tooltip = select_personal_deity_hinduism_decision_tooltip
 
@@ -620,8 +536,9 @@ select_personal_deity_hinduism_decision = {
 }
 
 select_personal_deity_germanic_decision = {
-	picture = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp1_decisons_hold_bolt.dds"
+	}
 	desc = select_personal_deity_germanic_decision_desc
 	selection_tooltip = select_personal_deity_germanic_decision_tooltip
 
@@ -700,8 +617,9 @@ select_personal_deity_germanic_decision = {
 }
 
 meditate_in_seclusion_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = meditate_in_seclusion_decision_desc
 	selection_tooltip = meditate_in_seclusion_decision_tooltip
 
@@ -711,9 +629,9 @@ meditate_in_seclusion_decision = {
 				has_doctrine_parameter = meditation_mechanics_active
 			}
 			has_character_modifier = fp3_sufi_initiate_modifier #FP3 addition
+			has_character_modifier = ep3_refreshed_and_relaxed
 			has_trait = calm 
 		}
-		holds_landed_title = yes
 	}
 
 	is_valid = {
@@ -744,8 +662,9 @@ meditate_in_seclusion_decision = {
 }
 
 give_sky_burial_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-	
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	sort_order = 75
 
 	desc = give_sky_burial_decision_desc
@@ -828,8 +747,9 @@ give_sky_burial_decision = {
 }
 
 raise_runestone_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = raise_runestone_decision_desc
 	selection_tooltip = raise_runestone_decision_tooltip
 
@@ -860,6 +780,7 @@ raise_runestone_decision = {
 				}
 				root = {
 					send_interface_toast = {
+						type = event_toast_effect_good
 						title = raise_runestone_decision_toast
 						left_icon = root
 
@@ -929,8 +850,9 @@ raise_runestone_decision = {
 }
 
 divine_the_stars_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = divine_the_stars_decision_desc
 	selection_tooltip = divine_the_stars_decision_tooltip
 
@@ -976,8 +898,9 @@ divine_the_stars_decision = {
 
 revoke_false_conversion_decision = {	#Reveal yourself as a crypto-religionist.
 	ai_check_interval = 60
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
+	}
 	desc = revoke_false_conversion_decision.desc
 	selection_tooltip = revoke_false_conversion_decision.tt
 
@@ -1028,8 +951,16 @@ revoke_false_conversion_decision = {	#Reveal yourself as a crypto-religionist.
 			}
 		}
 		trigger_event = false_conversion.0020
-		custom_tooltip = revoke_false_conversion_decision.desc.tt
-		custom_tooltip = revoke_false_conversion_decision.desc.tt_own_faith_counties
+		if = {
+			limit = { 
+				this = { is_landless_adventurer = yes } 
+			}
+			custom_tooltip = revoke_false_conversion_decision.desc.tt_landless
+		}
+		else = {
+			custom_tooltip = revoke_false_conversion_decision.desc.tt
+			custom_tooltip = revoke_false_conversion_decision.desc.tt_own_faith_counties
+		}
 	}
 
 	ai_potential = {
@@ -1056,8 +987,9 @@ revoke_false_conversion_decision = {	#Reveal yourself as a crypto-religionist.
 
 encourage_confession_of_false_conversions_decision = {	# Ask that crypto-religionists in your realm start practicing in the open.
 	ai_check_interval = 120
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
+	}
 	desc = encourage_confession_of_false_conversions_decision.desc
 	selection_tooltip = encourage_confession_of_false_conversions_decision.tt
 
@@ -1167,8 +1099,9 @@ encourage_confession_of_false_conversions_decision = {	# Ask that crypto-religio
 
 abandon_crypto_faith_decision = {	#Abandon your secret faith.
 	ai_check_interval = 60
-	picture = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_secret_faith.dds"
+	}
 	desc = abandon_crypto_faith_decision.desc
 	selection_tooltip = abandon_crypto_faith_decision.tt
 
@@ -1230,15 +1163,13 @@ abandon_crypto_faith_decision = {	#Abandon your secret faith.
 }
 
 return_rome_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
 	desc = return_rome_decision_desc
 	selection_tooltip = return_rome_decision_tooltip
 
 	is_shown = {
-
-		always = no
-
 		is_independent_ruler = yes
 		faith = faith:catholic
 		exists = faith.religious_head
@@ -1330,8 +1261,10 @@ return_rome_decision = {
 }
 
 ai_create_head_of_faith_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	decision_group_type = major
 
 	# Never shown, so it doesn't matter what we write here
 	title = placeholder
@@ -1357,6 +1290,7 @@ ai_create_head_of_faith_decision = {
 			government_has_flag = government_is_tribal
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
+			government_allows = administrative
 		}
 	}
 
