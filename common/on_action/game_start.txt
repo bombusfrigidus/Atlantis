@@ -6,9 +6,6 @@ on_game_start = {
 
 	effect = {
 
-		# Atlantis | Select heritages to hide in GUI. (This doesn't work because heritages aren't scopes. Figure it out.)
-		# heritage:heritage_akan = { set_variable = heritage_invisible }
-
 		# Atlantis | Select religions to hide in GUI.
 		religion:akom_religion = { set_variable = religion_invisible }
 		religion:baltic_religion = { set_variable = religion_invisible }

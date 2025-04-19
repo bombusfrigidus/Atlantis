@@ -761,6 +761,8 @@ window = {
 									datacontext = "[CollapsibleReligionListGroup.GetItem]"
 									layoutpolicy_horizontal = expanding
 
+									visible = "[Not(Religion.MakeScope.Var('religion_invisible').IsSet)]" # Atlantis | Hides faiths by religion.
+
 									hbox = {
 										layoutpolicy_horizontal = expanding
 										tooltip = "RULER_DESIGNER_LIST_FAITH_ENTRY_TOOLTIP"
@@ -910,7 +912,7 @@ window = {
 									layoutpolicy_horizontal = expanding
 
 									datacontext = "[CollapsibleCultureListGroup.GetItem]"
-									visible = "[Not(EqualTo_string(CulturePillar.GetNameNoTooltip, 'Hidden'))]"
+									visible = "[Not(EqualTo_string(CulturePillar.GetNameNoTooltip, 'Hidden'))]" # Atlantis | References localization to hide vanilla heritages.
 									
 									button_standard_hover = {
 										layoutpolicy_horizontal = expanding

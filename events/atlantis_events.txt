@@ -1,7 +1,8 @@
 ﻿# Smooth over errors involving orphaned events, variables that are set but not used, and variables that are used but not set.
+
 namespace = atlantis
 
-scripted_effect fix_variable_error = {# ERROR = KEY
+scripted_effect fix_variable_error = { # ERROR = KEY
 	if = {
 		limit = {
 			exists = var:$ERROR$
@@ -13,6 +14,7 @@ scripted_effect fix_variable_error = {# ERROR = KEY
 		}
 	}
 }
+
 scripted_effect fix_scope_error = {
 	if = {
 		limit = {
@@ -117,6 +119,10 @@ atlantis.0001 = {
 
 		#  Miscellaneous
 
+		save_scope_as = background_university_scope
+
+		add_character_flag = major_religious_inspiration
+
 		set_variable = { name = block_conversion_till_nebulous_circumstances }
 		add_character_flag = raiktor
 		add_character_flag = intrigue_duel_on_attack
@@ -125,6 +131,8 @@ atlantis.0001 = {
 		set_variable = { name = block_conversion_till_decision_taken }
 
 		set_variable = { name = university value = yes }
+
+		set_global_variable = deterministic_conquest_of_england_1066
 
 		#  Modifier(s)
 		random_scheme = {
@@ -216,6 +224,24 @@ atlantis.0001 = {
 		}
 
 		# Events
+
+		trigger_event = courtier_guest_management.4001
+		trigger_event = roman_restoration.1200
+		trigger_event = diarchy.8021
+		trigger_event = ep3_emperor_yearly.2000
+		trigger_event = ep3_eparch_event.0001
+		trigger_event = ep3_eparch_event.0005
+		trigger_event = ep3_eparch_event.0010
+		trigger_event = ep3_eparch_event.0015
+		trigger_event = ep3_eparch_event.0020
+		trigger_event = ep3_frankokratia_events.0140
+		trigger_event = ep3_laamps.0050
+		trigger_event = ep3_laamps.5999
+		trigger_event = ep3_story_cycle_violet_poet.0001
+		trigger_event = ep3_yearly.3000
+		trigger_event = cid.0001
+		trigger_event = hasan_sabbah.1000
+		trigger_event = yearly.7050
 		
 		trigger_event = game_rule.1011
 		trigger_event = historical_artifacts.0023

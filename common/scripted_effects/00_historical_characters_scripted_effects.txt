@@ -1,9 +1,3 @@
-﻿spawn_historical_characters_effect = {
-	
-}
-historical_character_finalization_effect = {
-	
-}
-spawn_historical_characters_boilerplate_effect = {
-	
-}
+﻿spawn_historical_characters_effect = {}
+historical_character_finalization_effect = {}
+spawn_historical_characters_boilerplate_effect = {}
