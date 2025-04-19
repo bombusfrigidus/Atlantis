@@ -802,6 +802,14 @@ epidemic_events.2006 = { #Dancing plague
 
 	weight_multiplier = {
 		base = 1
+		modifier = { #Since a big outbreak occurred in Aachen 1374
+			add = 9
+			capital_province = {
+				county = title:c_atlantis
+			}
+			current_date >= 1370.1.1
+			current_date <= 1380.1.1
+		}
 		modifier = { #Since an outbreak occurred in Erfurt 1247
 			add = 9
 			capital_province = {

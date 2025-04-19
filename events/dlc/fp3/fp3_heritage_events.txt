@@ -124,8 +124,8 @@ fp3_yearly.8019 = {
 					has_title = title:k_mesopotamia 
 				}
 				modifier = {
-					factor = 1
-					has_title = title:c_atlantis
+					factor = 20
+					has_title = title:c_atlantis 
 				}
 				modifier = {
 					factor = 20
@@ -251,7 +251,10 @@ fp3_yearly.8019 = {
 		trigger = {
 			faith = { 
 				AND = {
-					has_doctrine = tenet_tax_nonbelievers 
+					OR = {
+						has_doctrine = tenet_tax_nonbelievers
+						has_doctrine = special_doctrine_jizya
+					}
 					NOT = { has_doctrine = special_doctrine_is_gnostic_faith }
 				}
 			}
@@ -415,8 +418,6 @@ fp3_yearly.8020 = {
 
 	trigger = {
 
-		always = no
-
 		#standard sanity checks
 		has_fp3_dlc_trigger = yes
 		is_ruler = yes
@@ -555,7 +556,7 @@ fp3_yearly.8020 = {
 				save_scope_as = pious_woman	
 			}
 		}
-		else = {
+		else_if = {
 			limit = { 
 				any_courtier_or_guest = { 
 					fp3_bibi_shahrbanu_devotee_trigger = yes
@@ -2598,7 +2599,7 @@ fp3_yearly.8033 = {
 				save_scope_as = sorbet_enthusiast
 			}
 		}
-		else = {
+		else_if = {
 			limit = { 
 				any_child = { 
 					fp3_loves_faloodeh_trigger = yes
@@ -3168,7 +3169,7 @@ fp3_yearly.8035 = {
 				save_scope_as = sufi_mystic
 			}
 		}
-		else = {
+		else_if = {
 			limit = { 
 				any_courtier_or_guest = { fp3_sufism_enthusiast_trigger = yes }
 			}
@@ -3350,8 +3351,6 @@ fp3_yearly.8036 = {
 
 	trigger = {
 
-		always = no
-
 		#standard sanity checks
 		has_fp3_dlc_trigger = yes
 		is_available_healthy_adult = yes 
@@ -3382,7 +3381,7 @@ fp3_yearly.8036 = {
 				limit = { this = title:c_atlantis }
 				save_scope_as = spooky_county
 			}
-			else = {
+			else_if = {
 				limit = { 
 					development_level < medium_development_level
 				}

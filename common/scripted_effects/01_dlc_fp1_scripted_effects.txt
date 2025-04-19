@@ -17,12 +17,7 @@ secure_high_kingdom_north_sea_scripted_effect = {
 			}
 			#If it's Norway, we make the capital Steinkjer.
 			if = {
-				limit = { 
-					
-					always = no
-					
-					primary_title = title:k_norway 
-				}
+				limit = { primary_title = title:k_norway }
 				title:e_north_sea = {
 					set_capital_county = title:c_atlantis.title_capital_county
 				}
@@ -441,17 +436,9 @@ forge_the_jomsvikings_scripted_effect = {
 		NEW_HO_SCOPE = new_holy_order
 		FOUNDER = scope:founder
 	}
-	hidden_effect = {
-		scope:leader = {
-			add_trait = order_member
-			add_piety_level = 2
-			add_gold = holy_order_starting_gold
-			every_courtier = { add_trait = order_member }
-		}
-	}
 	# Make the local settlement Jomsberg.
 	## Rename it.
-	scope:leased_barony = { set_title_name = b_jomsberg }
+	scope:leased_barony = { set_title_name = b_atlantis }
 	## Give it some buildings.
 	hidden_effect = {
 		scope:leased_barony.title_province = {
@@ -511,8 +498,6 @@ forge_the_jomsvikings_scripted_effect = {
 		name = jomsvikings_title
 		value = scope:leader.primary_title
 	}
-	# Achievement flag.
-	add_achievement_flag_effect = { FLAG = achievement_non_nobis_domine_flag }
 	# Some minor misc effects.
 	create_holy_order_effect = yes
 	scope:leader.primary_title = { set_coa = ho_jomsvikings }
@@ -1015,6 +1000,35 @@ calculate_authority_cooldown_break_effect = {
 		limit = {
 			has_variable = tribal_authority_cooldown
 			realm_law_use_tribal_authority = yes
+		}
+		# Set it up if it doesn't exist.
+		if = {
+			limit = {
+				NOT = { has_variable = authority_cooldown_break_tally }
+			}
+			set_variable = {
+				name = authority_cooldown_break_tally
+				value = authority_cooldown_breaker_value
+			}
+			# And increment it once, since they've just taken the first use and we give no freebies.
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+		# Otherwise, increment it.
+		else_if = {
+			limit = { has_variable = authority_cooldown_break_tally }
+			change_variable = {
+				name = authority_cooldown_break_tally
+				add = authority_cooldown_breaker_value
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = imperial_bureaucracy_cooldown
+			realm_law_use_imperial_bureaucracy = yes
 		}
 		# Set it up if it doesn't exist.
 		if = {

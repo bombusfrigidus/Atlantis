@@ -300,6 +300,17 @@ historical_artifacts.0023 = {
 				create_artifact_throne_charlemagne_effect = { OWNER = this }
 			}
 		}
+		### Throne of Solomon (the Byzantine one)
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				exists = title:e_byzantium.holder
+				current_date >= 940.1.1
+			}
+			title:e_byzantium.holder = {
+				create_artifact_byz_throne_effect = { OWNER = this }
+			}
+		}
 		## Furniture
 		### Pentapyrgion
 		if = {
@@ -313,11 +324,8 @@ historical_artifacts.0023 = {
 		}
 		### Bells of Santiago
 		if = {
-			# If we're before Almanzor's raid, then the bells go to c_santiago's holder.
+			# If we're before Almanzor's raid, then the bells go to c_atlantis's holder.
 			limit = {
-
-				always = no
-
 				has_fp2_dlc_trigger = yes
 				current_date < 997.1.1
 			}
@@ -335,11 +343,8 @@ historical_artifacts.0023 = {
 		### (Former) Bells of Santiago
 		#### These aren't actually furniture, but we keep 'em here so they're next to the regular bells, which *are*.
 		if = {
-			# If we're after Almanzor's raid, then the bells go to c_toledo's holder.
+			# If we're after Almanzor's raid, then the bells go to c_atlantis's holder.
 			limit = {
-
-				always = no
-
 				has_fp2_dlc_trigger = yes
 				current_date >= 997.1.1
 			}
@@ -377,7 +382,7 @@ historical_artifacts.0023 = {
 			}
 			title:d_bavaria.holder = {
 				create_artifact_wall_sword_attila_effect = { OWNER = this }
-				dynasty:708 = {
+				dynasty:1 = {
 					random_dynasty_member = {
 						house = { add_house_artifact_claim = scope:newly_created_artifact }
 					}
@@ -581,9 +586,6 @@ historical_artifacts.0023 = {
 		### Sassanian Sword
 		if = {
 			limit = {
-
-				always = no
-
 				# Only generated in the earlier bookmarks.
 				current_date < 900.1.1
 				has_dlc_feature = legacy_of_persia
@@ -651,6 +653,97 @@ historical_artifacts.0023 = {
 					modifier = artifact_stress_gain_3_modifier
 					modifier = artifact_monthly_prestige_5_modifier
 					modifier = artifact_court_grandeur_baseline_add_3_modifier
+				}
+			}
+		}
+		### Statue of Constantine the Great
+		### Statue of Roman Woman
+		### Four Tetrarchs Statue
+		### Hydraulic Organ
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				exists = title:e_byzantium.holder
+			}
+			title:e_byzantium.holder = {
+				create_artifact_statue_constantine_effect = { OWNER = this }
+				create_artifact_statue_roman_woman_effect = { OWNER = this }
+				create_artifact_statue_four_tetrarchs_effect = { OWNER = this }
+				create_artifact_hydraulic_organ_effect = { OWNER = this }
+			}
+		}
+		### Tree automa
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+				exists = title:e_byzantium.holder
+				current_date >= 940.1.1
+			}
+			title:e_byzantium.holder = {
+				create_artifact_tree_automa_effect = { OWNER = this }
+			}
+		}
+		### Spread some Orthodox icons
+		every_county_in_region = {
+			region = world_europe_east
+			holder = {
+				if = {
+					limit = {
+						faith = faith:orthodox
+					}
+					add_to_list = potential_icons_holders_list
+				}
+			}
+		}
+		every_county_in_region = {
+			region = world_asia_minor
+			holder = {
+				if = {
+					limit = {
+						faith = faith:orthodox
+					}
+					add_to_list = potential_icons_holders_list
+				}
+			}
+		}
+		every_county_in_region = {
+			region = world_europe_south_east
+			holder = {
+				if = {
+					limit = {
+						faith = faith:orthodox
+					}
+					add_to_list = potential_icons_holders_list
+				}
+			}
+		}
+		every_county_in_region = {
+			region = world_europe_south_italy
+			holder = {
+				if = {
+					limit = {
+						faith = faith:orthodox
+					}
+					add_to_list = potential_icons_holders_list
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_in_list = { list = potential_icons_holders_list }
+			}
+			while = {
+				count = 4
+				random_in_list = {
+					list = potential_icons_holders_list
+					limit = {
+						NOT = { has_character_flag = seeded_relic }
+					}
+					create_artifact_trinket_icon_ancient_effect = { OWNER = this }
+					add_character_flag = {
+						flag = seeded_relic
+						days = 1
+					}
 				}
 			}
 		}

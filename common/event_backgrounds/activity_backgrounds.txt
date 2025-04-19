@@ -1687,7 +1687,6 @@ activity_pilgrimage = {
 	#Unique holy sites
 	background = {
 		trigger = {
-			always = no
 			activity_location.county = title:c_atlantis
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_mecca.dds"
@@ -1696,7 +1695,6 @@ activity_pilgrimage = {
 	}
 	background = {
 		trigger = {
-			always = no
 			activity_location.county = title:c_atlantis
 		}
 		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_jerusalem.dds"
@@ -1709,6 +1707,12 @@ activity_pilgrimage = {
 		reference = "gfx/interface/illustrations/event_scenes/fp3_temple.dds"
 		environment = "environment_event_fp3_temple"
 		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
+	}
+	background = {
+		trigger = { activity_location.faith = faith:orthodox }
+		reference = "gfx/interface/illustrations/event_scenes/ep3_holysite_orthodox.dds"
+		environment = "environment_ep3_holysite_orthodox"
+		ambience = "event:/DLC/EP3/SFX/Events/Event_Images/ep3_evn_eventimage_orthodox_holy_site"
 	}
 	background = {
 		trigger = {

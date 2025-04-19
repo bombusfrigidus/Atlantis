@@ -170,6 +170,7 @@ pilgrimage_arrival_events = {
 		if = {
 			limit = { has_character_flag = pilgrim_group_joined }
 			send_interface_toast = {
+				type = event_toast_effect_good
 				title = grateful_pilgrims_title
 				left_icon = scope:group_leader
 				current_travel_plan = {
@@ -189,6 +190,32 @@ pilgrimage_arrival_events = {
 				}
 			}
 		}
+		if = {
+			limit = {
+				has_variable_list = holy_site_dreams
+				is_target_in_variable_list = {
+					name = holy_site_dreams
+					target = root.location
+				}
+			}
+			send_interface_message = {
+				type = send_interface_message_good
+				title = travel_events_bp3.95.t
+				left_icon = root
+
+				if = {
+					limit = {
+						has_lifestyle = wanderer_lifestyle
+					}
+					add_wanderer_lifestyle_xp = 500
+				}
+				stress_impact = { 
+					base = major_stress_impact_loss 
+					zealous = medium_stress_impact_loss
+				}
+				add_piety = major_piety_gain
+			}
+		}
 	}
 }
 
@@ -201,9 +228,6 @@ burial_arrival_events = {
 
 hajj_arrival_events = {
 	trigger = {
-
-		always = no
-
 		involved_activity = {
 			has_activity_option = {
 				category = special_type
@@ -220,12 +244,14 @@ hajj_arrival_events = {
 
 christian_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:christianity_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Rome
+				county = title:c_atlantis # Jerusalem
+				county = title:c_atlantis # Constantinople
+				county = title:c_atlantis # Alexandria
+			}
 		}
 	}
 
@@ -240,12 +266,12 @@ christian_arrival_events = {
 
 jewish_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:judaism_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Mt. Sinai
+				county = title:c_atlantis # Jerusalem
+			}
 		}
 	}
 
@@ -258,12 +284,13 @@ jewish_arrival_events = {
 
 muslim_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:islam_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Medina
+				county = title:c_atlantis # Mt. Sinai
+				county = title:c_atlantis # Jerusalem
+			}
 		}
 	}
 
@@ -278,12 +305,17 @@ muslim_arrival_events = {
 
 hindu_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:hinduism_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Varanasi
+				county = title:c_atlantis # Ayodhya
+				county = title:c_atlantis # Mathura
+				county = title:c_atlantis # Haridwar
+				county = title:c_atlantis # Kanchipuram
+				county = title:c_atlantis # Ujjayini
+				county = title:c_atlantis # Dwarka
+			}
 		}
 	}
 
@@ -301,12 +333,13 @@ hindu_arrival_events = {
 
 buddhist_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:buddhism_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Bodh Gaya
+				county = title:c_atlantis # Kusinagara
+				county = title:c_atlantis # Sarnath
+			}
 		}
 	}
 
@@ -320,12 +353,11 @@ buddhist_arrival_events = {
 
 jain_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:jainism_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Shikharj
+			}
 		}
 	}
 
@@ -337,12 +369,11 @@ jain_arrival_events = {
 
 zoroastrian_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:zoroastrianism_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Ushi-darena
+			}
 		}
 	}
 
@@ -354,12 +385,11 @@ zoroastrian_arrival_events = {
 
 norse_arrival_events = {
 	trigger = {
-
-		always = no
-
 		religion = religion:germanic_religion
 		involved_activity.activity_location = {
-			county = title:c_atlantis
+			OR = {
+				county = title:c_atlantis # Paderborn
+			}
 		}
 	}
 

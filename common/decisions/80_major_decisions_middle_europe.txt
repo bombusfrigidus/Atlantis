@@ -1,18 +1,15 @@
 ﻿#Creating Switzerland "Kingdom"
 form_switzerland_kingdom_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
 	desc = form_switzerland_kingdom_decision_desc
 	selection_tooltip = form_switzerland_kingdom_decision_tooltip
-	major = yes
+	decision_group_type = major
 
 	ai_check_interval = 120
 
 	is_shown = {
-
-		always = no
-
-		is_landed = yes
 		is_independent_ruler = no
 		NOT = { exists = title:k_switzerland.holder }
 		NOT = {  #Can only do it once.
@@ -34,15 +31,11 @@ form_switzerland_kingdom_decision = {
 			OR = {
 				title_province = { geographical_region = custom_core_switzerland }
 				this = title:c_atlantis
-				this = title:c_atlantis
 			}
 		}
 	}
 
 	is_valid = {
-
-		always = no
-
 		#Must have imperial immediacy.
 		liege = top_liege
 		prestige_level >= high_prestige_level
@@ -51,6 +44,7 @@ form_switzerland_kingdom_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_capable_adult = yes
 		is_imprisoned = no
 		is_independent_ruler = no
@@ -92,15 +86,15 @@ form_switzerland_kingdom_decision = {
 
 #Creating Austrian Archduchy
 form_austria_kingdom_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
 	desc = form_austria_kingdom_decision_desc
 	selection_tooltip = form_austria_kingdom_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
-		is_landed = yes
 		NOT = { exists = title:k_austria.holder }
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
@@ -112,7 +106,7 @@ form_austria_kingdom_decision = {
 		highest_held_title_tier <= tier_duchy
 		is_independent_ruler = no
 		#Must be within the HRE, else the bid & flavour make no sense.
-		top_liege = { has_title = title:e_hre }
+		top_liege ?= { has_title = title:e_hre }
 		#Must hold land within the relevant areas directly.
 		any_held_title = {
 			tier = tier_county
@@ -145,6 +139,7 @@ form_austria_kingdom_decision = {
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_capable_adult = yes
 		is_imprisoned = no
 		is_at_war = no
@@ -198,18 +193,19 @@ form_austria_kingdom_decision = {
 
 #Reform Carolingian Empire
 reform_carolingian_empire_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
 	desc = reform_carolingian_empire_decision_desc
 	selection_tooltip = reform_carolingian_empire_decision_tooltip
-	major = yes
+	decision_group_type = major
 
 	ai_check_interval = 120
 
 	is_shown = {
 		faith.religion = faith:catholic.religion #Christian
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -280,17 +276,18 @@ reform_carolingian_empire_decision = {
 
 #Uniting the Burgundies
 unify_burgundy_kingdom_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
 	desc = unify_burgundy_kingdom_decision_desc
 	selection_tooltip = unify_burgundy_kingdom_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
 		culture = { has_cultural_pillar = heritage_frankish }
 		is_ruler = yes
-		is_landed = yes
+		is_playable_character = yes
 		NOT = {
 			exists = title:k_burgundy.holder
 		}
@@ -368,20 +365,17 @@ unify_burgundy_kingdom_decision = {
 }
 
 empower_sicilian_parliament_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
 	desc = empower_sicilian_parliament_decision_desc
 	selection_tooltip = empower_sicilian_parliament_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
-
-		always = no
-
 		culture = { has_cultural_pillar = heritage_latin }
 		is_ruler = yes
-		is_landed = yes
 		NOT = {  #Can only do it once.
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -395,9 +389,6 @@ empower_sicilian_parliament_decision = {
 	}
 	
 	is_valid = {
-
-		always = no
-
 		prestige_level >= 3
 		learning >= 10
 		NOT = { has_realm_law = crown_authority_0 }
@@ -407,12 +398,23 @@ empower_sicilian_parliament_decision = {
 			has_title = title:k_trinacria
 		}
 		OR = {
-			completely_controls = title:d_sicily # The Island
-			completely_controls = title:d_capua # The Boot
+			AND = {
+				completely_controls = title:d_sicily # The Island
+				title:c_atlantis = {
+					title_province = { has_special_building = no }
+				}
+			}
+			AND = {
+				completely_controls = title:d_capua # The Boot
+				title:c_atlantis = {
+					title_province = { has_special_building = no }
+				}
+			}
 		}
 	}
 
 	is_valid_showing_failures_only = {
+		is_landed = yes
 		is_capable_adult = yes
 		is_imprisoned = no
 		is_independent_ruler = yes
@@ -434,7 +436,7 @@ empower_sicilian_parliament_decision = {
 			}
 			else_if = {
 				limit = { completely_controls = title:d_capua }
-				
+				custom_tooltip = middle_europe_decisions.0010.tt_napoli_warning
 				title:c_atlantis = {
 					sicilian_parliament_building_scripted_effect = yes
 				}
@@ -466,11 +468,12 @@ empower_sicilian_parliament_decision = {
 
 #Little Medieval French Renaissance.
 promote_gothic_innovations_decision = { #12th century Renaissance
-	picture = "gfx/interface/illustrations/decisions/decision_misc.dds"
-
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_misc.dds"
+	}
 	desc = promote_gothic_innovations_decision_desc
 	selection_tooltip = promote_gothic_innovations_decision_tooltip
-	major = yes
+	decision_group_type = major
 	ai_goal = yes
 
 	is_shown = {
@@ -569,8 +572,10 @@ promote_gothic_innovations_decision = { #12th century Renaissance
 # by Ewan Cowhig Croft		#
 #############################
 restore_holy_roman_empire_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 12
 
@@ -578,7 +583,7 @@ restore_holy_roman_empire_decision = {
 	selection_tooltip = restore_holy_roman_empire_decision_tooltip
 
 	is_shown = {
-		is_landed = yes
+		is_landed_or_landless_administrative = yes
 		exists = dynasty # Everyone should have a dynasty, but in case they don't...
 		NOT = { has_global_variable = flag_restored_roman_empire } # Not if Rome already exists (prevent Rome from restoring HRE)
 		NOR = {	#Title existence cnditions.
@@ -604,6 +609,7 @@ restore_holy_roman_empire_decision = {
 		OR = {	#Government conditions.
 			government_has_flag = government_is_feudal
 			government_has_flag = government_is_clan
+			government_allows = administrative
 		}
 		exists = faith.religious_head
 	}
@@ -646,7 +652,7 @@ restore_holy_roman_empire_decision = {
 				}
 			}
 		}
-		sub_realm_size >= 140	#Plus your various kingdoms should be ruling something.
+		sub_realm_size >= 120	#Plus your various kingdoms should be ruling something.
 		#HoF preference conditions.
 		trigger_if = {
 			limit = {
@@ -683,7 +689,7 @@ restore_holy_roman_empire_decision = {
 		faith.religious_head = { save_scope_as = founder_hof }
 		if = {
 			limit = {
-				faith.religious_head = { is_landed = yes }
+				faith.religious_head = { is_playable_character = yes }
 			}
 			faith.religious_head.capital_province = { save_scope_as = ceremony_locale }
 		}
@@ -834,8 +840,10 @@ restore_holy_roman_empire_decision = {
 #############################
 
 establish_norman_culture_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_realm.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 
@@ -1015,8 +1023,10 @@ establish_norman_culture_decision = {
 ######################################
 
 establish_the_electorate_of_saxony_decision = {
-	picture = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
-	major = yes
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
+	}
+	decision_group_type = major
 
 	ai_check_interval = 120
 

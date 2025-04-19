@@ -3,7 +3,7 @@
 ######################################################################
 
 building_requirement_tribal = {
-	scope:holder = {
+	scope:holder ?= {
 		government_has_flag = government_is_tribal
 	}
 }
@@ -114,6 +114,11 @@ building_orchards_requirement_terrain = {
 		terrain = floodplains
 		terrain = oasis
 		has_building_or_higher = qanats_05
+		AND = {
+			culture = {
+				has_cultural_parameter = vegetarian_fruit_orchard_allowed
+			}
+		}
 	}
 }
 
@@ -180,7 +185,10 @@ building_cereal_fields_requirement_terrain = {
 		terrain = drylands
 		terrain = floodplains
 		county = {
-			has_county_modifier = fertile_desert_mountains_modifier
+			OR = {
+				has_county_modifier = fertile_desert_mountains_modifier
+				has_county_modifier = dodekapolis_modifier
+			}
 		}
 		has_building_or_higher = qanats_05
 	}
@@ -252,7 +260,10 @@ building_hill_farms_requirement_terrain = {
 
 building_elephant_pens_requirement_terrain = {
 	terrain = jungle
-	geographical_region = world_innovation_elephants
+	OR = {
+		geographical_region = world_innovation_elephants
+		culture = { has_cultural_parameter = elephant_pens_building_bonuses }
+	}
 }
 
 building_horse_pastures_requirement_terrain = {
@@ -275,22 +286,22 @@ building_quarries_requirement_terrain = {
 	OR = {
 		terrain = mountains
 		terrain = desert_mountains
-		AND = {
-			terrain = hills
-			culture = {
-				has_cultural_parameter = can_build_quarries_in_hills
-			}
-		}
+		culture = { has_cultural_parameter = can_build_quarries_everywhere }
 	}
 }
 
 building_warrior_lodges_requirement_terrain = {
 	OR = {
-		terrain = mountains
-		terrain = desert_mountains
-		terrain = hills
+		AND = {
+			OR = {
+				terrain = mountains
+				terrain = desert_mountains
+				terrain = hills
+			}
+			NOT = { geographical_region = world_horse_buildings_in_hills_and_mountains }
+		}
+		culture = { has_cultural_parameter = warrior_lodges_lift_restrictions }
 	}
-	NOT = { geographical_region = world_horse_buildings_in_hills_and_mountains }
 }
 
 building_hillside_grazing_requirement_terrain = {
@@ -383,8 +394,8 @@ building_caravanserai_requirement_terrain = {
 	}
 }
 
-building_qanat_requirement_terrain = {
-	county ?= {
+building_qanats_requirement_terrain = {
+ 	county ?= {
 		any_county_province = {
 			OR = {
 				terrain = hills
@@ -393,8 +404,13 @@ building_qanat_requirement_terrain = {
 				terrain = desert
 				terrain = drylands
 			}
+			culture = { has_cultural_parameter = unlocks_qanat_building }
 		}
 	}
+}
+
+building_hospices_requirement_terrain = {
+	
 }
 
 has_any_special_mine_trigger = {
@@ -434,7 +450,13 @@ has_any_special_mine_trigger = {
 ######################################################################
 
 barony_cannot_construct_holding = {
-	always = no
+	barony.title_province = {
+		OR = {
+			terrain = desert
+			terrain = desert_mountains
+		}
+		geographical_region = world_africa_sahara
+	}
 }
 
 ######################################################################
@@ -542,22 +564,22 @@ add_random_building_trigger = {
 generic_economic_building_innovation_trigger = {
 	trigger_if = {
 		limit = { has_building_or_higher = $BUILDING$_01 }
-		scope:build_owner.culture = { has_innovation = innovation_motte }
+		scope:build_owner.culture = { has_innovation = innovation_crop_rotation }
 	}
 	trigger_if = {
 		limit = { has_building_or_higher = $BUILDING$_02 }
 		building_requirement_castle_city_church = { LEVEL = 02 }
-		scope:build_owner.culture = { has_innovation = innovation_battlements }
+		scope:build_owner.culture = { has_innovation = innovation_manorialism }
 	}
 	trigger_if = {
 		limit = { has_building_or_higher = $BUILDING$_04 }
 		building_requirement_castle_city_church = { LEVEL = 03 }
-		scope:build_owner.culture = { has_innovation = innovation_hoardings }
+		scope:build_owner.culture = { has_innovation = innovation_guilds }
 	}
 	trigger_if = {
 		limit = { has_building_or_higher = $BUILDING$_06 }
 		building_requirement_castle_city_church = { LEVEL = 04 }
-		scope:build_owner.culture = { has_innovation = innovation_machicolations }
+		scope:build_owner.culture = { has_innovation = innovation_cranes }
 	}
 }
 
@@ -615,6 +637,7 @@ islamic_special_building_trigger = {
 		has_building = hagia_sophia_02
 		has_building = the_friday_mosque_01 # shared zoroastrian
 		has_building = holy_site_great_mosque_of_cordoba_01 # shared christian
+		has_building_or_higher = damascus_mosque_01
 	}
 }
 
@@ -628,6 +651,11 @@ christian_special_building_trigger = {
 		has_building = temple_of_uppsala_02
 		has_building = lund_cathedral_01
 		has_building = holy_site_great_mosque_of_cordoba_01 # shared muslim
+		has_building_or_higher = cluny_abbey_01
+		has_building_or_higher = beta_giyorgis_01
+		has_building_or_higher = holy_wisdom_01
+		has_building_or_higher = duomo_florence_01
+		has_building_or_higher = wawel_cathedral_01
 	}
 }
 
@@ -638,6 +666,9 @@ eastern_special_building_trigger = {
 		has_building = shwedagon_pagoda_01
 		has_building = ananda_temple_01
 		has_building = khajuraho_01
+		has_building_or_higher = jokhang_01
+		has_building_or_higher = konark_temple_01
+		has_building_or_higher = vatapi_caves_01
 	}
 }
 
@@ -692,6 +723,32 @@ religious_special_building_exclusion_trigger = { # checks if any special buildin
 		AND = {
 			NOT = { barony.holder.religion = religion:judaism_religion }
 			has_building = temple_in_jerusalem_01
+		}
+	}
+}
+
+building_murex_farm_requirement_terrain = {
+	is_county_capital = yes
+	is_coastal = yes
+	geographical_region = mediteranean_coast
+	NOR = {
+		this.barony = title:b_atlantis
+		this.barony = title:b_atlantis
+	}
+}
+
+building_breweries_requirement = {
+	OR = {
+		AND = {
+			has_building_or_higher = temple_$NUMBER$
+			OR = {
+				faith = faith:catholic
+				faith = { has_doctrine_parameter = allows_brewery }
+			}
+		}
+		AND = {
+			has_building_or_higher = city_$NUMBER$
+			culture = { has_cultural_parameter = allows_brewery }
 		}
 	}
 }

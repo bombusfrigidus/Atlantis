@@ -224,9 +224,6 @@ coa_leonese_trigger = {
 }
 
 coa_manx_trigger = {
-
-	always = no
-
 	OR = {
 		AND = {
 			exists = scope:title

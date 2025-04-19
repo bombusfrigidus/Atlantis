@@ -1,5 +1,4 @@
-﻿# Atlantis | Brought over a couple laggards from 00_dynasties.txt
-
+﻿## Stragglers
 easteregg_de_belfort = {
 	name = "dynn_Belfort"
 	prefix = "dynnp_de"
@@ -13,7 +12,7 @@ easteregg_andriamasinavalona = { # Andriamasinavalona, Ancestral Royal Family of
 	motto = "dynn_andriamasinavalona_motto"
 }
 
-# End Atlantis
+##
 
 vanity_andersson = {
 	name = "dynn_Andersson"
@@ -594,43 +593,43 @@ vanity_cantalini = {
 }
 
 vanity_melosso = {
-	name = "Melosso"
+	name = "dynn_Melosso"
 	culture = cisalpine
 	motto = dynn_Melosso_motto
 }
 
 vanity_kowalczyk = {
-	name = "Kowalczyk"
+	name = "dynn_Kowalczyk"
 	culture = polish
 	motto = dynn_Kowalczyk_motto
 }
 
 vanity_jorstedt = {
-	name = "Jorstedt"
+	name = "dynn_Jorstedt"
 	culture = swedish
 	motto = dynn_Jorstedt_motto
 }
 
 vanity_pazos = {
-	name = "Pazos"
+	name = "dynn_Pazos"
 	culture = galician
 	motto = dynn_Pazos_motto
 }
 
 vanity_matsdotter = {
-	name = "Matsdotter"
+	name = "dynn_Matsdotter"
 	culture = swedish
 	motto = dynn_Matsdotter_motto
 }
 
 vanity_hermansson = {
-	name = "Hermansson"
+	name = "dynn_Hermansson"
 	culture = swedish
 	#motto = dynn_Hermansson_motto
 }
 
 vanity_broekhof = {
-	name = "Broekhof"
+	name = "dynn_Broekhof"
 	culture = swedish
 	#motto = dynn_Broekhof_motto
 }
@@ -668,6 +667,7 @@ vanity_bean = {
 vanity_dzediti = {
 	name = dynn_dzediti
 	culture = "vlach"
+	motto = dynn_dzediti_motto
 }
 
 vanity_passoni = {
@@ -759,4 +759,91 @@ vanity_bure = {
 	name = dynn_Bure
 	culture = "swedish"
 	motto = dynn_bure_motto
+}
+
+vanity_ronnback = {
+	name = dynn_Ronnback
+	culture = "swedish"
+	motto = dynn_ronnback_motto
+}
+
+vanity_bjurman = {
+	name = dynn_Bjurman
+	culture = "swedish"
+	motto = dynn_bjurman_motto
+}
+
+vanity_lager = {
+	name = dynn_Lager
+	culture = "baranis"
+}
+
+vanity_garcia = {
+	name = dynn_Garcia
+	culture = "castilian"
+}
+
+vanity_ostlund = {
+	name = dynn_Ostlund
+	culture = "swedish"
+}
+
+vanity_boseh = {
+	name = dynn_BoseH
+	culture = "swedish"
+}
+
+vanity_frostewarn = {
+	name = dynn_Frostewarn
+	culture = "swedish"
+	motto = dynn_Frostewarn_motto
+}
+
+vanity_lindkvist = {
+	name = dynn_Lindkvist
+	culture = "polish"
+}
+
+vanity_ender = {
+	name = dynn_Ender
+	culture = "polish"
+}
+
+vanity_mutel = {
+	name = dynn_Mutel
+	culture = "french"
+}
+
+vanity_kopparvall = {
+	name = dynn_Kopparvall
+	culture = "swedish"
+}
+
+vanity_wessman = {
+	name = dynn_Wessman
+	culture = "franconian"
+}
+
+vanity_holmqvist = {
+	name = "dynn_Holmqvist"
+	culture = swedish
+	#motto = dynn_Holmqvist_motto
+}
+
+vanity_atasoy = {
+	name = "dynn_Atasoy"
+	culture = khazar
+	motto = dynn_Atasoy_motto
+}
+
+vanity_tolman = {
+	name = "dynn_tolman"
+	culture = "norman"
+	motto = dynn_tolman_motto
+}
+
+vanity_lilja = {
+	name = "dynn_lilja"
+	culture = "swedish"
+	motto = dynn_lilja_motto
 }

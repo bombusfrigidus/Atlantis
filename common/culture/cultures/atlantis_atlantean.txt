@@ -7,15 +7,12 @@
 	martial_custom = martial_custom_male_only
 	traditions = {
 		tradition_formation_fighting
-		tradition_legalistic
-		tradition_metal_craftsmanship
-		tradition_philosopher_culture
 	}
 	
 	name_list = name_list_greek
 	
-	coa_gfx = { byzantine_group_coa_gfx western_coa_gfx }
-	building_gfx = { mediterranean_building_gfx }
+	coa_gfx = { byzantine_group_coa_gfx }
+	building_gfx = { byzantine_building_gfx }
 	clothing_gfx = { byzantine_clothing_gfx }
 	unit_gfx = { eastern_unit_gfx }
 	

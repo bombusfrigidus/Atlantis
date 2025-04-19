@@ -55,7 +55,7 @@ norman_conquest_cb = {
 		}
 	}
 	
-	on_invalidated = {}
+	on_invalidated = { set_global_variable = norman_conquest_cb_concluded }
 	on_invalidated_desc = msg_claim_war_invalidated_message
 
 	on_victory_desc = {
@@ -87,7 +87,7 @@ norman_conquest_cb = {
 			save_scope_as = change
 			add_claim_on_loss = yes
 		}
-		
+
 		# Transfer landed titles to the attacker.
 		setup_claim_cb = {
 			titles = target_titles
@@ -97,6 +97,41 @@ norman_conquest_cb = {
 			change = scope:change
 		}
 
+		# EP3 Laamp possibility warning
+		scope:defender = { ep3_war_loss_adventurer_tt_effect = yes }
+
+		#Hereward the Wake departs for the Fenlands
+		character:1 = { save_scope_as = hereward }
+
+		if = {
+			limit = {
+				exists = scope:hereward
+			}
+
+			scope:hereward = {
+				trigger_event = {
+					id = ep3_laamps.6000
+					days = { 1 2 }
+				}
+			}
+		}
+
+		#Eadgar becomes a LAAMP
+		character:1 = { save_scope_as = eadgar }
+
+		if = {
+			limit = {
+				exists = scope:eadgar
+			}
+
+			scope:eadgar = {
+				trigger_event = {
+					id = ep3_laamps.7000
+					days = { 1 2 }
+				}
+			}
+		}
+	
 		every_in_list = {
 			list = target_titles
 
@@ -199,7 +234,7 @@ norman_conquest_cb = {
 					}
 				}
 			}
-		}				
+		}
 
 		resolve_title_and_vassal_change = scope:change
 		
@@ -214,9 +249,6 @@ norman_conquest_cb = {
 			}
 			if = {
 				limit = {
-
-					always = no
-
 					is_ai = yes
 					has_title = title:c_atlantis
 				}
@@ -240,6 +272,11 @@ norman_conquest_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		set_global_variable = norman_conquest_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -328,6 +365,11 @@ norman_conquest_cb = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		set_global_variable = norman_conquest_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -408,6 +450,11 @@ norman_conquest_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		set_global_variable = norman_conquest_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -497,8 +544,7 @@ norwegian_invasion_cb = {
 	
 	on_invalidated_desc = msg_claim_war_invalidated_message
 
-	on_invalidated = {
-	}
+	on_invalidated = { set_global_variable = norwegian_invasion_cb_concluded }
 
 	on_victory_desc = {
 		first_valid = {
@@ -530,125 +576,126 @@ norwegian_invasion_cb = {
 		title:d_lancaster = { save_scope_as = lancaster}
 		custom_tooltip = norwegian_invasion_cb_victory_with_tostig_desc
 		# Set land acquisition type to conquest.
-		hidden_effect = {
-			create_title_and_vassal_change = {
-				type = conquest
-				save_scope_as = change
-				add_claim_on_loss = yes
-			}
-			
-			# Transfer landed titles to the attacker.
-			setup_claim_cb = {
-				titles = target_titles
-				attacker = scope:attacker
-				defender = scope:defender
-				claimant = scope:claimant
-				change = scope:change
-			}
-			
-			every_in_list = {
-				list = target_titles
-
-				#Remove elective succession law from k_england.
-				clear_title_laws = yes	
-
-				# Personally seize all duchy titles in Northern England AND all duchy titles personally held by the King of England.
-				every_in_de_jure_hierarchy = {
-					limit = {
-						tier = tier_duchy
-						special_invasion_cb_seize_land_in_region_trigger = {
-							TARGET_REGION = custom_northern_england
-							TARGET_KINGDOM = title:k_england
-						}
-					}
-					if = {
-						limit = {
-							exists = holder
-							holder = {
-								exists = top_liege
-								top_liege = scope:defender
-
-								# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
-								NAND = {
-									NOT = { this = top_liege }
-									is_ai = no
-								}
-							}
-						}
-						custom_description = {
-							text = custom_seize_title_and_below_de_jure
-							subject = scope:attacker
-							object = this
-							change_title_holder = {
-								holder = scope:attacker
-								change = scope:change
-								take_baronies = no
-							}
-						}
-
-						# Grab the counties that go with the duchies, too.
-						every_in_de_jure_hierarchy = {
-							limit = {
-								tier = tier_county
-								exists = holder
-								holder = {
-									top_liege = scope:defender
-
-									# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
-									NAND = {
-										NOT = { this = top_liege }
-										is_ai = no
-									}
-								}
-							}
-							hidden_effect = {
-								change_title_holder = {
-									holder = scope:attacker
-									change = scope:change
-									take_baronies = no
-								}
-							}
-						}
-					}
-				}
-				# Personally seize every county title in the Northern England AND county titles personally held by the King of England.
-				every_in_de_jure_hierarchy = {
-					limit = {
-						tier = tier_county
-						special_invasion_cb_seize_land_in_region_trigger = {
-							TARGET_REGION = custom_northern_england
-							TARGET_KINGDOM = title:k_england
-						}
-					}
-					if = {
-						limit = {
-							exists = holder
-							holder = {
-								exists = top_liege
-								top_liege = scope:defender
-
-								# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
-								NAND = {
-									NOT = { this = top_liege }
-									is_ai = no
-								}
-							}
-						}
-						custom_description = {
-							text = custom_seize_title
-							subject = scope:attacker
-							object = this
-							change_title_holder = {
-								holder = scope:attacker
-								change = scope:change
-								take_baronies = no
-							}
-						}
-					}
-				}
-			}				
-			resolve_title_and_vassal_change = scope:change
+		create_title_and_vassal_change = {
+			type = conquest
+			save_scope_as = change
+			add_claim_on_loss = yes
 		}
+		
+		# Transfer landed titles to the attacker.
+		setup_claim_cb = {
+			titles = target_titles
+			attacker = scope:attacker
+			defender = scope:defender
+			claimant = scope:claimant
+			change = scope:change
+		}
+
+		# EP3 Laamp possibility warning
+		scope:defender = { ep3_war_loss_adventurer_tt_effect = yes }
+		
+		every_in_list = {
+			list = target_titles
+
+			#Remove elective succession law from k_england.
+			clear_title_laws = yes	
+
+			# Personally seize all duchy titles in Northern England AND all duchy titles personally held by the King of England.
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_duchy
+					special_invasion_cb_seize_land_in_region_trigger = {
+						TARGET_REGION = custom_northern_england
+						TARGET_KINGDOM = title:k_england
+					}
+				}
+				if = {
+					limit = {
+						exists = holder
+						holder = {
+							exists = top_liege
+							top_liege = scope:defender
+
+							# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
+							NAND = {
+								NOT = { this = top_liege }
+								is_ai = no
+							}
+						}
+					}
+					custom_description = {
+						text = custom_seize_title_and_below_de_jure
+						subject = scope:attacker
+						object = this
+						change_title_holder = {
+							holder = scope:attacker
+							change = scope:change
+							take_baronies = no
+						}
+					}
+
+					# Grab the counties that go with the duchies, too.
+					every_in_de_jure_hierarchy = {
+						limit = {
+							tier = tier_county
+							exists = holder
+							holder = {
+								top_liege = scope:defender
+
+								# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
+								NAND = {
+									NOT = { this = top_liege }
+									is_ai = no
+								}
+							}
+						}
+						hidden_effect = {
+							change_title_holder = {
+								holder = scope:attacker
+								change = scope:change
+								take_baronies = no
+							}
+						}
+					}
+				}
+			}
+			# Personally seize every county title in the Northern England AND county titles personally held by the King of England.
+			every_in_de_jure_hierarchy = {
+				limit = {
+					tier = tier_county
+					special_invasion_cb_seize_land_in_region_trigger = {
+						TARGET_REGION = custom_northern_england
+						TARGET_KINGDOM = title:k_england
+					}
+				}
+				if = {
+					limit = {
+						exists = holder
+						holder = {
+							exists = top_liege
+							top_liege = scope:defender
+
+							# Vassal players in England get to keep their holdings, so they can play as vassals of the new king instead of game-overing.
+							NAND = {
+								NOT = { this = top_liege }
+								is_ai = no
+							}
+						}
+					}
+					custom_description = {
+						text = custom_seize_title
+						subject = scope:attacker
+						object = this
+						change_title_holder = {
+							holder = scope:attacker
+							change = scope:change
+							take_baronies = no
+						}
+					}
+				}
+			}
+		}				
+		resolve_title_and_vassal_change = scope:change
 
 		#If Tostig is still alive, and in Harold's court, give him back his northern lands, and give Hardrada a reward.
 		scope:attacker = {
@@ -698,17 +745,17 @@ norwegian_invasion_cb = {
 						}
 					}
 					resolve_title_and_vassal_change = scope:change
-				}
 				
-				#A hook for Harold.
-				add_hook = {
-					type = loyalty_hook
-					target = character:1
-				}
-				#And some opinion.
-				reverse_add_opinion = {
-					target = character:1
-					modifier = loyal_servant
+					#A hook for Harold.
+					add_hook = {
+						type = loyalty_hook
+						target = character:1
+					}
+					#And some opinion.
+					reverse_add_opinion = {
+						target = character:1
+						modifier = loyal_servant
+					}
 				}
 			}
 		}
@@ -751,12 +798,7 @@ norwegian_invasion_cb = {
 			}
 			#And give him Maine & Sable too.
 			if = {
-				limit = { 
-					
-					always = no
-
-					title:c_atlantis.holder.liege = scope:attacker
-				}
+				limit = { title:c_atlantis.holder.liege = scope:attacker }
 				create_title_and_vassal_change = {
 					type = revoked
 					save_scope_as = change
@@ -772,9 +814,6 @@ norwegian_invasion_cb = {
 			}
 			if = {
 				limit = {
-
-					always = no
-
 					NOT = { title:c_atlantis.holder = title:c_atlantis.holder }
 					title:c_atlantis.holder.liege = scope:attacker
 				}
@@ -809,6 +848,11 @@ norwegian_invasion_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		set_global_variable = norwegian_invasion_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -898,6 +942,11 @@ norwegian_invasion_cb = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		set_global_variable = norwegian_invasion_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -978,6 +1027,11 @@ norwegian_invasion_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		set_global_variable = norwegian_invasion_cb_concluded
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -1198,6 +1252,9 @@ sons_of_lothbrok_invasion_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -1249,6 +1306,9 @@ sons_of_lothbrok_invasion_cb = {
 		}
 
 		add_truce_white_peace_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -1307,6 +1367,9 @@ sons_of_lothbrok_invasion_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	transfer_behavior = transfer
@@ -1406,9 +1469,9 @@ hungarian_migration_cb = {
 						culture = culture:mogyer
 						faith = { has_doctrine_parameter = unreformed }
 					}
+					#Give scope:attacker back their ability to declare a migration in the event of invalidation.
+					add_character_flag = undertaking_hungarian_migration
 				}
-				#Give scope:attacker back their ability to declare a migration in the event of invalidation.
-				add_character_flag = undertaking_hungarian_migration
 			}
 		}
 	}
@@ -1419,16 +1482,10 @@ hungarian_migration_cb = {
 	
 	on_declaration = {
 		on_declared_war = yes
-		#If this was fired by the AI.
 		hidden_effect = {
-			if = {
-				limit = {
-					##
-				}
-				add_to_global_variable_list = {
-					name = unavailable_unique_decisions
-					target = flag:flag_launched_hungarian_migration
-				}
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_launched_hungarian_migration
 			}
 		}
 		#Give scope:attacker some armies to ensure success & use up their free invasion.
@@ -1654,6 +1711,9 @@ hungarian_migration_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -1690,6 +1750,9 @@ hungarian_migration_cb = {
 		scope:attacker = {
 			add_prestige = mongol_invasion_cb_prestige_white_peace
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -1748,6 +1811,9 @@ hungarian_migration_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	transfer_behavior = transfer
@@ -1902,6 +1968,9 @@ azariqa_rebellion_cb = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -1946,6 +2015,9 @@ azariqa_rebellion_cb = {
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -2009,6 +2081,9 @@ azariqa_rebellion_cb = {
 			TARGET = scope:attacker
 			IMPRISONER = scope:defender
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	transfer_behavior = transfer
@@ -2102,7 +2177,7 @@ raiktor_claim_cb = {
 				every_in_de_jure_hierarchy = {
 					limit = {
 						tier >= tier_county
-						holder = {
+						holder ?= {
 							OR = {
 								this = scope:defender
 								is_vassal_or_below_of = scope:defender
@@ -2234,6 +2309,9 @@ raiktor_claim_cb = {
 				add_gold = 750
 			}
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -2320,6 +2398,9 @@ raiktor_claim_cb = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -2406,6 +2487,9 @@ raiktor_claim_cb = {
 			save_temporary_scope_as = loser
 		}
 		on_lost_aggression_war_discontent_loss = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	transfer_behavior = transfer
@@ -2581,6 +2665,9 @@ raiktor_conquest_cb = {
 				add_gold = 100
 			}
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -2625,6 +2712,9 @@ raiktor_conquest_cb = {
 				arrogant = medium_stress_impact_gain
 			}
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -2685,6 +2775,9 @@ raiktor_conquest_cb = {
 			TARGET = scope:attacker
 			IMPRISONER = scope:defender
 		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	transfer_behavior = transfer
@@ -2908,6 +3001,9 @@ fp1_scandi_adventurer_conquest = {
 
 		# FP1: note the victory for future memorialisation via stele (if applicable).
 		scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -2948,6 +3044,9 @@ fp1_scandi_adventurer_conquest = {
 
 		# Since they failed to win, take away their efficacy loan.
 		scope:attacker = { remove_short_term_gold = scandinavian_adventurer_efficacy_loan_value }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -3061,6 +3160,9 @@ fp1_scandi_adventurer_conquest = {
 
 		# Since they lost, take away their efficacy loan.
 		scope:attacker = { remove_short_term_gold = scandinavian_adventurer_efficacy_loan_value }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	transfer_behavior = transfer
@@ -3178,6 +3280,9 @@ diarch_vassalisation_cb = {
 		
 		# Truce
 		add_truce_attacker_victory_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -3221,6 +3326,9 @@ diarch_vassalisation_cb = {
 
 		# Truce
 		add_truce_white_peace_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -3286,6 +3394,9 @@ diarch_vassalisation_cb = {
 		add_truce_attacker_defeat_effect = yes
 		
 		on_lost_aggression_war_discontent_loss = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 	
 	on_primary_attacker_death = inherit
@@ -3430,6 +3541,9 @@ remove_regent_cb = {
 
 		# Truce
 		add_truce_attacker_victory_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_white_peace_desc = {
@@ -3486,6 +3600,9 @@ remove_regent_cb = {
 		}
 
 		add_truce_white_peace_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	on_defeat_desc = {
@@ -3548,6 +3665,9 @@ remove_regent_cb = {
 		}
 
 		add_truce_attacker_defeat_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
 	}
 
 	transfer_behavior = transfer

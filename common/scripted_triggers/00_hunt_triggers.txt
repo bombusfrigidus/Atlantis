@@ -55,7 +55,7 @@ hunt_animal_antelope_trigger = {
 # Gazelle
 hunt_animal_gazelle_trigger = {
 	geographical_region = hunt_animal_gazelle_region
-	NOT = { geographical_region = world_africa_sahara }
+	NOT = { geographical_region = custom_sahara_proper }
 	hunt_animal_tropical_terrain_trigger = yes
 }
 
@@ -182,10 +182,64 @@ hunt_animal_bear_trigger = {
 	hunt_animal_big_available_trigger = yes
 }
 
+# Caracal
+hunt_animal_caracal_trigger = {
+	OR = {
+		geographical_region = world_middle_east
+		geographical_region = world_india_rajastan
+		geographical_region = world_africa
+		geographical_region = world_asia_minor
+	}
+	OR = {
+		terrain = drylands
+		terrain = hills
+	}
+}
+
+# Crocodile
+hunt_animal_crocodile_trigger = {
+	OR = {
+		geographical_region = world_india
+		geographical_region = world_africa_north_east
+		geographical_region = world_africa_west
+		geographical_region = world_africa_east
+		# Restrict our Mesopotamian crocs preemptively to _only_ floodplains.
+		AND = {
+			terrain = floodplains
+			geographical_region = world_middle_east
+		}
+	}
+	OR = {
+		is_riverside_province = yes
+		terrain = floodplains
+		terrain = jungle
+		AND = {
+			is_coastal = yes
+			# Nile crocodiles  aren't ocean-dwellers.
+			NOT = { geographical_region = world_africa_north_east }
+		}
+	}
+}
+
+# Hippo
+hunt_animal_hippo_trigger = {
+	OR = {
+		geographical_region = world_africa_north_east
+		geographical_region = world_africa_west
+		geographical_region = world_africa_east
+	}
+	is_riverside_province = yes
+}
+
 # Big Cat
 hunt_animal_big_cat_trigger = {
 	geographical_region = hunt_animal_big_cat_region
 	hunt_animal_big_available_trigger = yes
+	OR = {
+		hunt_animal_lion_trigger = yes
+		hunt_animal_tiger_trigger = yes
+		hunt_animal_leopard_trigger = yes
+	}
 }
 
 hunt_animal_lion_trigger = {
@@ -236,6 +290,9 @@ hunt_animal_leopard_trigger = {
 		geographical_region = world_middle_east
 		geographical_region = world_india
 		geographical_region = world_burma
+		geographical_region = world_steppe_east
+		geographical_region = world_tibet
+		geographical_region = world_asia_minor
 	}
 	NOR = {
 		terrain = farmlands
@@ -256,8 +313,35 @@ hunt_animal_steppe_trigger = { # Saiga/etc.
 
 hunt_animal_big_available_trigger = {
 	OR = {
-		has_building_or_higher = hunting_grounds_01
-		has_building_or_higher = royal_forest_01
+		OR = {
+			has_building_or_higher = hunting_grounds_01
+			has_building_or_higher = royal_forest_01
+		}
+		AND = {
+			trigger_if = {
+				limit = { exists = county }
+				NOR = {
+					# Counties
+					county = title:c_atlantis # Not native
+					county = title:c_atlantis # Not native
+					county = title:c_atlantis # Not native
+					county = title:c_atlantis # Extinct
+					county = title:c_atlantis # Not native
+					county = title:c_atlantis # Extinct
+					county = title:c_atlantis # Extinct
+				}
+			}
+			trigger_if = {
+				limit = { exists = duchy }
+				NOR = {
+					duchy = title:d_canarias # Not native
+					duchy = title:d_krete # Extinct
+					duchy = title:d_iceland # Not native
+					duchy = title:d_mallorca # Not native
+					duchy = title:d_socotra # Not native
+				}
+			}
+		}
 	}
 }
 
@@ -266,6 +350,19 @@ hunt_animal_small_available_trigger = {
 		OR = {
 			has_building_or_higher = hunting_grounds_01
 			has_building_or_higher = royal_forest_01
+		}
+		AND = {
+			trigger_if = {
+				limit = { exists = county }
+				NOR = {
+					county = title:c_atlantis # Not native
+					county = title:c_atlantis # Not native
+				}
+			}
+			trigger_if = {
+				limit = { exists = duchy }
+				NOT = { duchy = title:d_canarias } # Not native 
+			}
 		}
 	}
 }
@@ -388,12 +485,14 @@ hunt_activity_recent_hunt_sighting_trigger = {
 
 hunt_sighting_event_trigger = {
 	is_available_adult = yes
-	NOR = {
-		has_character_flag = recent_hunt_sighting
-		any_sub_realm_county = { has_variable = recent_sighting }
+	is_landless_adventurer = no
+	NOT = { has_character_flag = recent_hunt_sighting }
+	trigger_if = {
+		limit = { is_landed = no }
 	}
 	OR = {
 		court_position:master_of_hunt_court_position ?= { is_available_adult = yes }
+		court_position:huntperson_camp_officer ?= { is_available_adult = yes }
 		any_vassal_or_below = {
 			is_available_adult = yes
 			has_trait = lifestyle_hunter
@@ -402,6 +501,25 @@ hunt_sighting_event_trigger = {
 			is_available_adult = yes
 			has_trait = lifestyle_hunter
 		}
+	}
+}
+
+hunt_new_sighting_event_trigger = {
+	trigger_if = {
+		limit = { is_landed = no }
+		domicile.domicile_location.county ?= {
+			NOR = {
+				has_variable = recent_sighting
+				any_neighboring_county = { has_variable = recent_sighting }
+				has_county_modifier = hunt_sighting_$TYPE$_modifier
+				any_neighboring_county = { has_county_modifier = hunt_sighting_$TYPE$_modifier }
+				hunt_activity_recent_hunt_sighting_trigger = yes
+				any_neighboring_county = { hunt_activity_recent_hunt_sighting_trigger = yes }
+			}
+		}
+	}
+	trigger_else = {
+		any_sub_realm_county = { hunt_activity_recent_hunt_sighting_trigger = no }
 	}
 }
 
@@ -579,9 +697,10 @@ hunt_murder_scheme_target_trigger = {
 	scheme_type = murder
 	OR = {
 		scheme_owner = root
-		any_scheme_agent = { this = root }
+		any_scheme_agent_character = { this = root }
 	}
-	scheme_progress > 3
+	save_temporary_scope_as = scheme
+	scheme_progress > scheme_progress_33
 }
 
 hunt_murder_intent_target_trigger = {
@@ -675,7 +794,7 @@ hunt_potential_murder_risk_trigger = {
 	}
 	can_start_scheme = {
 		type = murder
-		target = root
+		target_character = root
 	}
 	trigger_if = {
 		limit = {
@@ -880,7 +999,10 @@ hunt_legendary_animal_custom_loc_trigger = {
 }
 
 hunt_murder_bodyguard_appears_trigger = {
-	has_court_position = bodyguard_court_position
+	OR = {
+		has_court_position = bodyguard_court_position
+		has_court_position = akolouthos_court_position
+	}
 	is_participant_in_activity = scope:activity
 	NOR = {
 		this = scope:murderer
@@ -915,5 +1037,24 @@ hunt_snowy_forest_trigger = {
 	OR = {
 		has_province_modifier = winter_normal_modifier
 		has_province_modifier = winter_harsh_modifier
+	}
+}
+
+hunt_ongoing_sighting_trigger = {
+	OR = {
+		has_county_modifier = hunt_sighting_standard_modifier
+		has_county_modifier = hunt_sighting_dangerous_modifier
+		has_county_modifier = hunt_sighting_legendary_modifier	
+	}
+	exists = var:animal_type
+	var:sighting_owner ?= root
+	any_neighboring_county = {
+		trigger_if = {
+			limit = {
+				root = { is_landed = yes }
+			}
+			holder.top_liege = root.top_liege
+		}
+		hunt_activity_recent_hunt_sighting_trigger = no
 	}
 }

@@ -58,6 +58,7 @@ fp2_yearly.1001 = {
 	trigger = {
 		#Strategy Games Culture Tradition
 		has_fp2_dlc_trigger = yes
+		is_landed_or_landless_administrative = yes
 		capital_province = {
 			geographical_region = world_europe_west_iberia
 		}
@@ -149,6 +150,7 @@ fp2_yearly.1002 = {
 	trigger = {
 		has_fp2_dlc_trigger = yes
 		is_adult = yes
+		is_landed_or_landless_administrative = yes
 		any_courtier = { is_available_healthy_ai_adult = yes }
 
 		NOT = {
@@ -269,6 +271,11 @@ fp2_yearly.1002 = {
 		}
 	}
 
+	after = {
+		scope:deviant_courtier = {
+			remove_character_flag = is_naked
+		}
+	}
 }
 
 ###################################
@@ -398,10 +405,6 @@ fp2_yearly.1004 = {
 
 		dynasty:1 = {
 			save_scope_as = hawk_dynasty
-		}
-
-		dynasty:1 = {
-			save_scope_as = abbasid_dynasty
 		}
 	}
 
@@ -773,12 +776,12 @@ fp2_yearly.1008 = {
 	title = fp2_yearly.1008.t
 	desc = fp2_yearly.1008.desc
 	theme = realm
+	override_background = { reference = bp1_wine_cellar }
 	left_portrait = {
 		character = root
 		animation = ecstasy
 
 	}
-
 
 	trigger = {
 		any_artifact = {
@@ -795,9 +798,6 @@ fp2_yearly.1008 = {
 			}
 			save_scope_as = cheese_artifact
 		}
-
-
-
 
 	}
 
@@ -846,10 +846,8 @@ fp2_yearly.2020 = {
 		}
 	}
 	trigger = {
-
-		always = no
-
 		has_fp2_dlc_trigger = yes
+		is_landed = yes
 		is_ai = no # The AI has no use for narrative-focused events
 		OR = {
 			has_title = title:c_atlantis
@@ -1153,6 +1151,7 @@ fp2_yearly.3000 = {
 	trigger = {
 		# DLC checking
 		has_fp2_dlc_trigger = yes
+		is_landed = yes
 
 		trigger_if = {
 			limit = {
@@ -1500,6 +1499,7 @@ fp2_yearly.3001 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
+		is_landed = yes
 		is_available_even_at_war_adult = yes
 		capital_province = {
 			geographical_region = world_europe_west_iberia
@@ -1654,6 +1654,7 @@ fp2_yearly.3002 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
+		is_playable_character = yes
 		is_available_even_at_war_adult = yes
 		any_relation = { #you have a best friend!
 			type = best_friend
@@ -2148,6 +2149,7 @@ fp2_yearly.4001 = {
 		has_fp2_dlc_trigger = yes
 
 		#Standard check
+		is_playable_character = yes
 		is_available_at_peace_adult = yes
 
 		#is Iberian
@@ -2363,9 +2365,6 @@ fp2_yearly.4003 = {
 	}
 
 	trigger = {
-
-		always = no
-
 		#DLC check
 		has_fp2_dlc_trigger = yes
 
@@ -2387,14 +2386,30 @@ fp2_yearly.4003 = {
 		religion = religion:christianity_religion
 
 		#and owns at least one county on the road to Santiago
-		has_title = title:c_atlantis
+		OR = {
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+		}
 	}
 
 	immediate = {
 		every_county_in_region = {
 			region = world_europe_west_iberia
 				limit = { # all counties on the road to Santiago
-					this = title:c_atlantis
+					OR = {
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+					}
 					OR = {
 						holder = root
 						holder.top_liege = root
@@ -2552,6 +2567,7 @@ fp2_yearly.4004 = {
 		has_fp2_dlc_trigger = yes
 
 		#Standard check
+		is_landed = yes
 		is_available_at_peace_adult = yes
 
 		#Mozarabic exists...
@@ -3250,8 +3266,6 @@ fp2_yearly.4007 = {
 
 	trigger = {
 
-		always = no
-
 		#DLC check
 		has_fp2_dlc_trigger = yes
 
@@ -3270,7 +3284,15 @@ fp2_yearly.4007 = {
 		}
 
 		#You own a county on the road to Santiago
-		has_title = title:c_atlantis
+		OR = {
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+		}
 
 		#and capital is located in Iberia
 		capital_province = {
@@ -3558,6 +3580,7 @@ fp2_yearly.4008 = {
 		has_fp2_dlc_trigger = yes
 
 		#Standard check
+		is_landed_or_landless_administrative = yes
 		is_available_at_peace_adult = yes
 
 		#You are Iberian
@@ -3662,10 +3685,11 @@ fp2_yearly.4008 = {
 			}
 		}
 
-		appoint_court_position = {
-			recipient = scope:old_crone
-			court_position = court_poet_court_position
-		}
+		court_position_grant_effect = {
+	 		EMPLOYER = root
+	 		CANDIDATE = scope:old_crone
+	 		POS = court_poet
+	 	}
 
 		reverse_add_opinion = {
 			modifier = grateful_opinion
@@ -3697,8 +3721,6 @@ fp2_yearly.4009 = {
 	cooldown = { years = 30 }
 
 	trigger = {
-
-		always = no
 
 		#DLC check
 		has_fp2_dlc_trigger = yes
@@ -3870,8 +3892,6 @@ fp2_yearly.4010 = {
 
 	trigger = {
 
-		always = no
-
 		#DLC check
 		has_fp2_dlc_trigger = yes
 
@@ -3879,7 +3899,15 @@ fp2_yearly.4010 = {
 		is_available_at_peace_adult = yes
 
 		#owns land formerly inhabited by the Vettones
-		has_title = title:c_atlantis
+		OR = {
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+		}
 
 		#and capital is located in Iberia
 		capital_province = {
@@ -3891,7 +3919,15 @@ fp2_yearly.4010 = {
 		every_county_in_region = {
 			region = world_europe_west_iberia
 			limit = { # all relevant counties
-				this = title:c_atlantis
+				OR = {
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+				}
 			}
 			add_to_list = verracos_counties
 		}
@@ -4094,10 +4130,9 @@ fp2_yearly.8000 = {
 		character = scope:vinoclast_caliph
 	}
 
+
+
 	trigger = {
-
-		always = no
-
 		has_fp2_dlc_trigger = yes
 
 		OR = {
@@ -4136,6 +4171,7 @@ fp2_yearly.8000 = {
 	cooldown = { years = 50 }
 
 	immediate = {
+
 
 		random_held_county = {
 			limit = { this = title:c_atlantis }
@@ -4785,7 +4821,7 @@ fp2_yearly.8003 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
-
+		is_landed = yes
 		is_ai = no
 		any_child = {
 			is_available_child = yes 
@@ -4800,20 +4836,13 @@ fp2_yearly.8003 = {
 		}
 	}
 
-	weight_multiplier = { #too weight it so that the two historical characters are more likely to trigger! 
+	weight_multiplier = {
 		base = 0.4
 		modifier = {
-			OR = {
-				AND = {
-					current_year > 866
-					current_year < 890
-					NOT = { exists = global_var:ibnfirnas_created }
-				}
-				AND = {
-					current_year > 1175
-					current_year < 1200
-					NOT = { exists = global_var:averroes_created }
-				}
+			AND = {
+				current_year > 866
+				current_year < 890
+				NOT = { exists = global_var:ibnfirnas_created }
 			}
 			add = 0.6
 		}
@@ -4826,14 +4855,14 @@ fp2_yearly.8003 = {
 				is_available_child = yes
   				age >= 6
   				age <= 13
-				NOT = {	has_trait = blind}		
+				NOT = {	has_trait = blind}
 			}
 			save_scope_as = enthusiastic_child 
 		}
 
 		root.capital_province = { save_scope_as = flight_capital }
 
-		if = { #This looks to see if one of the two historical flight enthusiasts will be used in the event
+		if = {
 			limit = { #their rough period of activity
 				AND = {
 					current_year > 866
@@ -4863,41 +4892,6 @@ fp2_yearly.8003 = {
 				save_scope_as = flying_polymath
 			}
 			set_global_variable = ibnfirnas_created
-		}
-
-		else_if = { #This looks to see if one of the two historical flight enthusiasts will be used in the event
-			limit = { #their rough period of activity
-				AND = {
-					current_year > 1175
-					current_year < 1200
-				}
-				NOT = { exists = global_var:averroes_created } #makes sure that he wasn't already spawned by the event elsewhere
-				exists = culture:andalusian
-				exists = faith:muwalladi
-			}
-			create_character = {
-				age = { 49 74 } #their rough age during the period of their flourishing
-				location = root.capital_province
-				name = "Ahmad ibn Rushd" #Averroes
-				gender = male
-				template = scholar_character
-				trait = intellect_good_3 
-				trait = lifestyle_physician
-				trait = scholar 
-				trait = education_learning_4
-				random_traits_list = { #his personality
-					count = 3
-					calm = {}
-					cynical = {}
-					diligent = {}
-					just = {}
-				}
-				culture = culture:andalusian
-				dynasty = none 
-				faith = faith:muwalladi
-				save_scope_as = flying_polymath 	
-			}
-			set_global_variable = averroes_created 	
 		}
 
 		else = { #or it defaults to a random one 
@@ -4945,38 +4939,100 @@ fp2_yearly.8003 = {
    		}
 
    		random_list = {
-   			60 = {
-   				send_interface_toast = {
+	   		30 = {
+	   			trigger = {
+	   				scope:enthusiastic_child = {
+	   					number_of_personality_traits <= 2
+	   					NOT = { has_trait = brave }
+	   				}
+	   			}
+				send_interface_toast = {
 					title = polymath_flight_attempt_toast.success
 					left_icon = scope:enthusiastic_child
 					right_icon = scope:flying_polymath
-   					add_prestige = medium_prestige_gain
-   					add_courtier = scope:flying_polymath
-   					random = {
-   						chance = 20
-   						scope:enthusiastic_child = { add_trait_force_tooltip = brave }
-   					}
-   				}
-   			}
-   			40 = {
-   				send_interface_toast = {
+					add_prestige = medium_prestige_gain
+					add_courtier = scope:flying_polymath
+					scope:enthusiastic_child = { add_trait_force_tooltip = brave }
+				}
+	   		}
+	   		30 = {
+				send_interface_toast = {
+					title = polymath_flight_attempt_toast.success
+					left_icon = scope:enthusiastic_child
+					right_icon = scope:flying_polymath
+					add_prestige = medium_prestige_gain
+					add_courtier = scope:flying_polymath
+				}
+				modifier = {
+					add = 30
+	   				scope:enthusiastic_child = {
+	   					OR = {
+	   						number_of_personality_traits >= 3
+	   						has_trait = brave
+	   					}
+	   				}
+				}
+	   		}
+	   		20 = {
+	   			trigger = {
+	   				scope:enthusiastic_child = {
+	   					number_of_personality_traits <= 2
+	   					NOT = { has_trait = sadistic }
+	   				}
+	   			}
+				send_interface_toast = {
 					title = polymath_flight_attempt_toast.failure
 					left_icon = scope:enthusiastic_child
 					right_icon = scope:flying_polymath
-   					scope:flying_polymath = {
-   						death = { death_reason = death_flight_attempt }
-   					}
-   					random_list = {
-						50 = {
-							scope:enthusiastic_child = { add_trait_force_tooltip = depressed_1 }
-						}
-						50 = {
-							scope:enthusiastic_child = { add_trait_force_tooltip = sadistic}
-						}
+					scope:flying_polymath = {
+						death = { death_reason = death_flight_attempt }
 					}
+					scope:enthusiastic_child = { add_trait_force_tooltip = sadistic}
 				}
 			}
-   		}
+	   		20 = {
+	   			trigger = {
+	   				scope:enthusiastic_child = {
+	   					NOT = { has_trait = depressed }
+	   				}
+	   			}
+				send_interface_toast = {
+					title = polymath_flight_attempt_toast.failure
+					left_icon = scope:enthusiastic_child
+					right_icon = scope:flying_polymath
+					scope:flying_polymath = {
+						death = { death_reason = death_flight_attempt }
+					}
+					scope:enthusiastic_child = { add_trait_force_tooltip = depressed_1 }
+				}
+				modifier = {
+					add = 20
+	   				scope:enthusiastic_child = {
+	   					number_of_personality_traits >= 3
+	   				}
+				}
+	   		}
+	   		40 = {
+	   			trigger = {
+	   				scope:enthusiastic_child = {
+						has_trait = depressed
+			   			OR = {
+			   				has_trait = brave
+			   				has_trait = sadistic
+			   			}
+	   				}
+	   			}
+				send_interface_toast = {
+					title = polymath_flight_attempt_toast.failure
+					left_icon = scope:enthusiastic_child
+					right_icon = scope:flying_polymath
+					scope:flying_polymath = {
+						death = { death_reason = death_flight_attempt }
+					}
+					scope:enthusiastic_child = { add_stress = minor_stress_gain }
+				}
+	   		}
+	   	}
 
    		stress_impact = { #Compassionate people worry about bystanders getting hurt
    			compassionate = minor_stress_impact_gain
@@ -5256,7 +5312,7 @@ fp2_yearly.8004 = {
 					culture = {	has_cultural_tradition = tradition_xenophilic }
 				}
 				modifier = {
-					add = 0
+					add = 60
 					any_held_county = {
 						any_county_province = {
 							barony = title:b_atlantis
@@ -5446,24 +5502,22 @@ fp2_yearly.8005 = {
 			desc = fp2_yearly.8005.desc_pre_troubadours
 		}
 	}
-
-	trigger = {
-		has_fp2_dlc_trigger = yes
-
-		OR = {
-			capital_province = { geographical_region = world_europe_west_iberia }
-			culture = { has_cultural_pillar = heritage_iberian }
-		}
-	}
-
 	theme = love
-
 	left_portrait = {
 		character = root
 		animation = sadness
 	}
 
 	cooldown = { years = 50 }
+
+	trigger = {
+		has_fp2_dlc_trigger = yes
+		is_landed_or_landless_administrative = yes
+		OR = {
+			capital_province = { geographical_region = world_europe_west_iberia }
+			culture = { has_cultural_pillar = heritage_iberian }
+		}
+	}
 
 	immediate = {
 
@@ -5641,7 +5695,7 @@ fp2_yearly.8006 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
-
+		is_landed = yes
 		any_neighboring_top_liege_realm_owner = { fp2_yearly.8006_ruler_trigger = yes }
 		any_held_county = { any_county_province = {	fp2_yearly.8006_province_trigger = yes } }
 
@@ -5701,7 +5755,7 @@ fp2_yearly.8006 = {
 			after_creation = {
 				if = {
  					limit = { is_female = no }
- 					add_trait = eunuch
+ 					add_trait = beardless_eunuch
  				}
 			}
 		}
@@ -6078,6 +6132,7 @@ fp2_yearly.9001 = {
 
 	trigger = {
 		root.religion = religion:christianity_religion
+		is_landed = yes
 		NOT = { faith = faith:conversos }
 	}
 

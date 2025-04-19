@@ -25,8 +25,11 @@ easteregg_johan_andersson = {
 		birth = "1029.8.28"
 	}
 	1066.1.1 = {
-		# employer = 20005 #Dalarna!
+		 #Dalarna!
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -55,6 +58,9 @@ easteregg_thomas_johansson = {
 	}
 	1066.1.1 = {
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -93,9 +99,12 @@ easteregg_martin_anward = {
 			add_character_flag = no_headgear
 		}
 	}
-	# 1066.9.15 = {
-	# 	employer = 100530 # Sweden
-	# }
+	1066.9.15 = {
+		 # Sweden
+		effect = {
+			add_character_flag = easteregg
+		}
+	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -131,8 +140,9 @@ easteregg_henrik_fahraeus = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 100546
+		
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -179,7 +189,10 @@ easteregg_olof_bjork = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 100527
+		effect = {
+			add_character_flag = easteregg
+		}
+		
 		contract_disease_effect = { DISEASE = ill TREATMENT_EVENT = yes }
 		add_trait = lifestyle_blademaster
 		add_trait_xp = {
@@ -216,8 +229,11 @@ easteregg_tobias_bodlund = {
 		birth = "1033.3.3"
 	}
 	1066.1.1 = {
-		# employer = 100546 #Uppsala
+		 #Uppsala
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -257,7 +273,10 @@ easteregg_emil_tisander = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 100546 #Uppland
+		 #Uppland
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -294,7 +313,10 @@ easteregg_alexander_oltner = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -338,7 +360,10 @@ easteregg_linda_tiger = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20015 # Lapland
+		 # Lapland
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -370,9 +395,12 @@ easteregg_charna_frostwhisper = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 762 # Poland
+		 # Poland
 		add_character_modifier = { modifier = prison_pet_stone_modifier } #... D: And now Production hoardes its ill-gotten gains!
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -411,7 +439,10 @@ easteregg_lysann_schlegel = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 30335 # Count of Mansfeld, close to Halle
+		 # Count of Mansfeld, close to Halle
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -442,8 +473,11 @@ easteregg_sara_wendel = {
 		birth = "1041.10.29"
 	}
 	1066.1.1 = {
-		# employer = 102523	#Värmland
+			#Värmland
 		give_nickname = nick_the_savage
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -469,7 +503,10 @@ easteregg_pernilla_sparrhult = {
 		birth = "1033.2.7"
 	}
 	1066.1.1 = {
-		# employer = 145655 #Axum
+		 #Axum
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -500,8 +537,11 @@ easteregg_mathilda_bjarnehed = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525
+		
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -527,7 +567,10 @@ easteregg_matthew_frary = {
 		birth = "1041.01.01"
 	}
 	1066.1.1 = {
-		# employer = 5650 # Norfolk
+		 # Norfolk
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -573,8 +616,9 @@ easteregg_matthew_clohessy = {
 		} 
 	}
 	1066.1.1 = {
-		# employer = 131 # Hertfordshire
+		 # Hertfordshire
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -666,8 +710,9 @@ easteregg_linnea_thimren = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20014
+		
 		effect = {
+			add_character_flag = easteregg
 			give_witch_secret_or_trait_effect = yes
 			if = {
 				limit = {
@@ -702,7 +747,7 @@ easteregg_flavio_verna = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 7757 #Matilda
+		 #Matilda
 		add_trait = lifestyle_blademaster
 		add_trait_xp = {
 			trait = lifestyle_blademaster
@@ -714,6 +759,9 @@ easteregg_flavio_verna = {
 			}
 		}
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -746,8 +794,9 @@ easteregg_sean_hughes = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20251
+		
 		effect = {
+			add_character_flag = easteregg
 			if = {
 				limit = {
 					has_dlc_feature = royal_court
@@ -792,9 +841,10 @@ easteregg_petter_vilberg = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 102553
+		
 		give_nickname = nick_troublemaker
 		effect = {
+			add_character_flag = easteregg
 			add_trait = poet
 		}
 	}
@@ -834,8 +884,11 @@ easteregg_maximilian_olbers = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 102534
+		
 		give_nickname = nick_the_lawgiver
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -874,7 +927,10 @@ easteregg_milla_lankinen = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20618 #Kemi
+		 #Kemi
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -905,8 +961,9 @@ easteregg_jakub_potapczyk = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 762 #Poland
+		 #Poland
 		effect = {
+			add_character_flag = easteregg
 			add_secret = {
 				type = secret_deviant
 			}
@@ -934,7 +991,7 @@ easteregg_ewan_cowhig_croft = {
 	intrigue = 13
 	learning = 12
 	prowess = 0
-	health = 9
+	health = 9.65
 	#Education
 	trait = education_intrigue_1
 	#Personality
@@ -944,6 +1001,8 @@ easteregg_ewan_cowhig_croft = {
 	#Other
 	trait = schemer
 	trait = drunkard
+	trait = depressed_1
+	trait = flagellant
 	#trait = henbane_addict
 	trait = one_eyed
 	trait = one_legged
@@ -963,7 +1022,7 @@ easteregg_ewan_cowhig_croft = {
 	}
 	1066.1.1 = {
 		# Gloucestershire
-		# employer = 82040
+		
 		# Totes.
 		give_nickname = nick_the_trustworthy_ironic
 		add_perk = prepared_for_anything_perk
@@ -971,6 +1030,7 @@ easteregg_ewan_cowhig_croft = {
 		add_perk = a_job_done_right_perk
 		add_perk = twice_schemed_perk
 		effect = {
+			add_character_flag = easteregg
 			# Create Bazcat.
 			add_character_modifier = { modifier = cat_story_modifier }
 			# Send me a-wanderin'. But, y'know, still in Gloucestershire.
@@ -1053,8 +1113,11 @@ easteregg_joacim_carlberg = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20008 #Jarl Faste of Dal
+		 #Jarl Faste of Dal
 		give_nickname = nick_the_eager
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1070,7 +1133,10 @@ easteregg_david_horler = {
 
 	1039.10.03 = {
 		birth = yes
-		# employer = 140 # William the Bastard
+		 # William the Bastard
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1111,10 +1177,11 @@ easteregg_paul_depre = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 #Sweden
+		 #Sweden
 		give_nickname = nick_the_black_sheep
 		move_to_pool = yes
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 		}
 	}
@@ -1168,7 +1235,10 @@ easteregg_debbie_lane = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 132	#Essex
+			#Essex
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1215,11 +1285,6 @@ easteregg_petter_lundh = {
 		}
 	}
 
-	1066.1.1 = {
-		# employer = norwegian.1001	#Trondheim
-		give_nickname = nick_the_philosopher
-	}
-
 	1066.9.16 = {
 		death = yes
 	}
@@ -1256,39 +1321,6 @@ easteregg_nicholas_meredith = {
 	1039.7.5 = {
 		birth = yes
 	}
-	1066.1.1 = {
-		# employer = anglo_saxon.1001	#Middlesex
-		effect = {
-			add_secret = { type = secret_cannibal }
-			give_nickname = nick_the_girthy
-			give_witch_secret_or_trait_effect = yes
-			add_trait_xp = {
-				trait = tourney_participant
-				track = foot
-				value = {
-					integer_range = {
-						min = 1
-						max = 50
-					}
-				}
-			}
-			create_artifact = {
-				name = easteregg_artifact_nicks_redolence
-				description = easteregg_artifact_nicks_redolence_description
-				type = miscellaneous
-				visuals = flask
-				modifier = artifact_attraction_opinion_3_modifier
-				modifier = artifact_spouse_opinion_add_3_modifier
-				modifier = artifact_negate_health_penalty_add_3_modifier
-				creator = root
-				rarity = famed
-				save_scope_as = nicks_redolence
-			}
-			scope:nicks_redolence = {
-				equip_artifact_to_owner = yes
-			}
-		}
-	}
 	1066.9.16 = { death = yes }
 }
 
@@ -1322,8 +1354,11 @@ easteregg_william_riggott = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 2008	#Rome
+			#Rome
 		give_nickname = nick_the_beautiful_beard
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = { death = yes }
 }
@@ -1353,9 +1388,10 @@ easteregg_anna_johansson = {
 
 	1041.10.20 = { birth = yes }
 	1066.1.1 = {
-		# employer = 100544 #Gavle
+		 #Gavle
 		give_nickname = nick_little
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_deviant }
 			add_secret = { type = secret_cannibal }
 			add_secret = { type = secret_witch }
@@ -1391,8 +1427,9 @@ easteregg_arkadiusz_majewski = {
 
 	1037.01.03 = { birth = yes }
 	1066.1.1 = {
-		# employer = 764 # Kuyavia
+		 # Kuyavia
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_witch }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -1446,8 +1483,9 @@ easteregg_artur_kacprzak = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 302036
+		
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 			add_trait = lifestyle_blademaster
 			add_trait_xp = {
@@ -1502,9 +1540,6 @@ easteregg_anton_leirnes = {
 			add_character_flag = no_headgear
 		}
 	}
-	1066.1.1 = {
-		# employer = norwegian.1002	#Stolsheimen
-	}
 	1066.9.16 = { death = yes }
 }
 
@@ -1541,15 +1576,6 @@ easteregg_anton_sorokin = {
 	1034.6.21 = {
 		birth = yes
 	}
-	1066.1.1 = {
-		# employer = 302266
-
-		effect = {
-			add_secret = {
-				type = secret_witch
-			}
-		}
-	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -1585,9 +1611,12 @@ easteregg_joel_hansson = {
 		}
 	}
 	1066.1.1 = {
-		## employer = 168643 #Skåne
+		# #Skåne
 		# No hard feeling Torgils but you kept making me a knight - I'm moving to the King for some peace and quiet.
-		# employer = 101515
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1628,8 +1657,11 @@ easteregg_nikola_stokic = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20499 # Raska
+		 # Raska
 		add_spouse = easteregg_tamara_stokic
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1675,8 +1707,11 @@ easteregg_malin_jonsson = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20006
+		
 		give_nickname = nick_the_inevitable
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1724,9 +1759,10 @@ easteregg_max_weltz = {
 	}
 	1066.1.1 = {
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 		}
-		# employer = 40364
+		
 	}
 	1066.9.16 = {
 		death = yes
@@ -1768,7 +1804,10 @@ easteregg_jonas_wickerstrom = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 1746 #Optimatoi
+		 #Optimatoi
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1795,7 +1834,10 @@ easteregg_arthur_bialecki = {
 	}
 	1066.1.1 = {
 		move_to_pool = yes
-		# employer = 302017 #Poznan
+		 #Poznan
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1826,7 +1868,10 @@ easteregg_patrick_mauffrey = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 40462 # Guigues d'Albon, count of Viennois
+		 # Guigues d'Albon, count of Viennois
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1868,9 +1913,10 @@ easteregg_viktor_stadler = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 100546 #Uppland
+		 #Uppland
 		give_nickname = nick_the_viking
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_incest }
 		}
 		move_to_pool = yes
@@ -1902,9 +1948,6 @@ easteregg_jesse_henning = {
 	1026.1.1 = {
 		birth = yes
 	}
-	1066.1.1 = {
-		# employer = fox_1
-	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -1935,7 +1978,10 @@ easteregg_rodrigue_delrue = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 40406 # Amiens
+		 # Amiens
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1986,7 +2032,10 @@ easteregg_hanna_lohman = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20005 #Ovre Dalarna
+		 #Ovre Dalarna
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2031,8 +2080,11 @@ easteregg_daniel_moore = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 90027 #Closest-ish to Manchester
+		 #Closest-ish to Manchester
 		set_relation_best_friend = { reason = friend_generic_history target = character:easteregg_alexander_windahl }
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2075,8 +2127,9 @@ easteregg_bartosz_byczynski = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 138496 #Aberystwyth (Cardigan, its liege)
+		 #Aberystwyth (Cardigan, its liege)
 		effect = {
+			add_character_flag = easteregg
 			add_secret = {
 				type = secret_witch
 			}
@@ -2123,8 +2176,9 @@ easteregg_joseph_gardener = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 131
+		
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_blademaster
 			add_trait_xp = {
 				trait = lifestyle_blademaster
@@ -2173,8 +2227,9 @@ easteregg_peter_johannesson = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2225,7 +2280,10 @@ easteregg_troy_goodfellow = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 6180 # Ulster
+		 # Ulster
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2274,8 +2332,9 @@ easteregg_katya_boestad = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_witch }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -2335,8 +2394,9 @@ easteregg_bianca_savazzi = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 7757 # Mantova
+		 # Mantova
 		effect = {
+			add_character_flag = easteregg
 			if = {
 				limit = {
 					has_dlc_feature = royal_court
@@ -2402,7 +2462,10 @@ easteregg_steacy_mcilwham = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 131002
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2435,12 +2498,16 @@ easteregg_nils_wadensten = {
 		birth = yes
 		effect = {
 			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
 		}
 	}
 	1066.9.15 = {
-		# employer = 20015 #Umeå
+		 #Umeå
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2487,8 +2554,9 @@ easteregg_andreas_olsson = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 100527 #Halsingland
+		 #Halsingland
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2551,13 +2619,33 @@ easteregg_henrik_lohmander = {
 				track = travel
 				value = 75
 			}
+			create_artifact = {
+				name = easteregg_artifact_map_lohmander
+				description = easteregg_artifact_map_lohmander_description
+				type = journal
+				history = {
+					type = created_before_history
+				}
+				rarity = famed
+				visuals = book
+				modifier = artifact_travel_safety_2
+				save_scope_as = henrik_book
+			}
+			scope:henrik_book = {
+				add_artifact_modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
+				equip_artifact_to_owner = yes
+			}
 		}
 	}
 	1066.1.1 = {
-		# employer = 188185
+		
+		move_to_pool = yes
 		if = {
 			limit = { has_dlc_feature = royal_court }
 			create_inspiration = book_inspiration
+		}
+		effect = {
+			add_character_flag = easteregg
 		}
 	}
 	1066.9.16 = {
@@ -2596,7 +2684,10 @@ easteregg_ismael_serrano = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 107520 # Viscaya
+		 # Viscaya
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death="1066.9.16"
@@ -2623,8 +2714,11 @@ easteregg_fawn_rowe = {
 		birth=yes
 	}
 	1066.1.1 = {
-		# employer = 130 # Kent
+		 # Kent
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death="1066.9.16"
@@ -2655,7 +2749,10 @@ easteregg_lenaic_riedinger = {
 		birth=yes
 	}
 	1066.1.1 = {
-		# employer = 20112 # Rouen
+		 # Rouen
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death="1066.9.16"
@@ -2682,8 +2779,9 @@ easteregg_niall_bird = {
 		birth=yes
 	}
 	1066.1.1 = {
-		# employer = 5660 # West Riding
+		 # West Riding
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2743,7 +2841,10 @@ easteregg_christian_daflos = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 1764
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2791,7 +2892,10 @@ easteregg_max_collin = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 115
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2838,8 +2942,9 @@ easteregg_tegan_harris = {
 		}
 	}
 	1066.1.5 = {	#Slightly later date due to Edgar the Aetheling not receiving his county till five days into 1066.
-		# employer = 112
+		
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_witch }
 		}
 	}
@@ -2881,8 +2986,9 @@ easteregg_wojciech_cywinski = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 28015
+		
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 		}
 	}
@@ -2928,7 +3034,10 @@ easteregg_nikolaos_kaltsogiannis = {
 		add_character_flag = has_scripted_weight
 	}
 	1066.1.1 = {
-		# employer = 20517 #Count Nikephoros of Demetrias.
+		 #Count Nikephoros of Demetrias.
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -2971,8 +3080,9 @@ easteregg_pontus_olofsson = {
 		add_character_flag = no_headgear
 	}
 	1066.1.1 = {
-		# employer = 20544 # Somewhere in the Kingdom of Pontus
+		 # Somewhere in the Kingdom of Pontus
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -3029,8 +3139,9 @@ easteregg_karl_cederslatt = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 168643	#Skane
+			#Skane
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 		}
 		move_to_pool = yes
@@ -3075,8 +3186,11 @@ easteregg_sebastian_borg = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -3084,6 +3198,7 @@ easteregg_sebastian_borg = {
 }
 
 
+# Elisabeth traces her line back through a myriad branch families back to this dynasty. 
 # https://en.wikipedia.org/wiki/Andriamasinavalona?fbclid=IwAR2ECvdC3a__1B9UlpavqiKv7PBqHq3fCKiyBI10Xf8zKkpwPkegFt3drsM
 easteregg_elisabeth_gangenes = { #Programmer
 	name = "Elisabeth"
@@ -3109,7 +3224,7 @@ easteregg_elisabeth_gangenes = { #Programmer
 	trait = scholar
 
 	# Stresscoping Traits
-	trait = comfort_eater
+	#trait = comfort_eater
 
 	# Physical Traits
 	trait = shrewd
@@ -3125,13 +3240,15 @@ easteregg_elisabeth_gangenes = { #Programmer
 		}
 	}
 	1066.1.1 = {
-		# employer = 102568 # Rogaland
-		## employer = 100530 # Sweden
+		 # Rogaland
+		# # Sweden
 
 		give_nickname = nick_the_silly
 		effect = {
+			add_character_flag = easteregg
 			give_witch_secret_or_trait_effect = yes
 
+			# I may have certain biases, my desk certainly did not have several plushies! 
 			create_artifact = {
 				name = easteregg_artifact_elisabeth_plush
 				description = easteregg_artifact_elisabeth_plush_description
@@ -3139,7 +3256,7 @@ easteregg_elisabeth_gangenes = { #Programmer
 					type = created_before_history
 				}
 				type = miscellaneous
-				visuals = pouch #TODO Replace with foxy visual
+				visuals = fox_tail
 				modifier = artifact_stress_gain_1_modifier
 				save_scope_as = elisabeth_fox_plush
 			}
@@ -3158,11 +3275,19 @@ easteregg_elisabeth_gangenes = { #Programmer
 					add_trait = loyal
 				}
 			}
+			if = {
+				limit = {
+					has_ep1_dlc_trigger = yes
+				}
+				# COVID was rough, man
+				add_trait = comfort_eater
+			}
 
 			if = {
 				limit = {
 					has_ep2_dlc_trigger = yes
 				}
+				# Ut på tur, aldri sur!
 				add_trait = lifestyle_traveler
 				add_trait_xp = {
 					trait = lifestyle_traveler
@@ -3170,11 +3295,37 @@ easteregg_elisabeth_gangenes = { #Programmer
 					value = 25
 				}
 			}
+			if = {
+				limit = {
+					has_ce1_dlc_trigger = yes
+				}
+				# Math is cool! Have I told you about all the math I researched for this?!
+				# The SIR-model is fascinating, and knowing how things spread is fascinating! 
+				add_perk = iron_constitution_perk
+			}
+			if = {
+				limit = {
+					has_ep3_dlc_trigger = yes
+				}
+				# Have to test the flavourization changes somehow.
+				add_character_flag = lady_in_shadows
+				# oww, oww, my spine, gotta exercise more to fix it
+				add_trait = athletic 
+			}
+			if = {
+				limit = {
+					has_bp3_dlc_trigger = yes
+				}
+				# Det finnes ikke dårlig vær, bare dårlige klær
+				add_perk = well_prepared_perk
+			}
 		}
 		move_to_pool = yes
 	}
 	1066.9.16 = {
-		death = yes
+		death = {
+			death_reason = death_vanished
+		}
 	}
 }
 
@@ -3213,9 +3364,10 @@ easteregg_isabella_welch = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 1316 #with my absolute fave Kaiser Heinrich
+		 #with my absolute fave Kaiser Heinrich
 		give_nickname = nick_the_cosmic_poet
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -3261,8 +3413,11 @@ easteregg_zack_holmgren = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20015 #Umeå
+		 #Umeå
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -3303,7 +3458,10 @@ easteregg_claudia_baldassi = {
 
 	1034.7.11 = { birth = yes }
 	1066.1.1 = {
-		# employer = 7730	#Monferrato
+			#Monferrato
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -3340,8 +3498,11 @@ easteregg_bjorn_blomberg = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 100546 #Uppland
+		 #Uppland
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -3390,9 +3551,10 @@ easteregg_joe_parkin = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 130 #Kent
+		 #Kent
 		give_nickname = nick_monophthalmos
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_non_believer }
 		}
 	}
@@ -3438,9 +3600,10 @@ easteregg_krzysztof_bochenek = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 20395 #Bytom is owned by the king, so we go to a neighbouring county instead
+		 #Bytom is owned by the king, so we go to a neighbouring county instead
 		give_nickname = nick_the_unrestrained
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_deviant }
 		}
 	}
@@ -3490,9 +3653,10 @@ easteregg_lukasz_opara = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20395 #Bytom is owned by the king, so we go to a neighbouring county instead
+		 #Bytom is owned by the king, so we go to a neighbouring county instead
 		give_nickname = nick_priest_eater
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_cannibal }
 		}
 		move_to_pool = yes
@@ -3538,9 +3702,10 @@ easteregg_mateusz_mierzwa = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 302017 # Poznan
+		 # Poznan
 		give_nickname = nick_the_kind
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_incest }
 		}
 		move_to_pool = yes
@@ -3588,9 +3753,10 @@ easteregg_natalia_lechnata = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 302013 # Krajna
+		 # Krajna
 		give_nickname = nick_the_wary
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -3649,9 +3815,10 @@ easteregg_natalia_poreba = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 96098 # Sącz
+		 # Sącz
 		give_nickname = nick_the_truthseeker
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_cannibal }
 		}
 	}
@@ -3686,7 +3853,7 @@ easteregg_alexander_windahl = {
 	trait = chaste
 
 	#Other Traits
-	trait = eunuch
+	trait = eunuch_1
 	trait = blind
 
 	sexuality = heterosexual
@@ -3701,9 +3868,10 @@ easteregg_alexander_windahl = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 20584 #Duke Krutoj of Veletia
+		 #Duke Krutoj of Veletia
 		give_nickname = nick_the_black_whirlwind
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -3765,7 +3933,13 @@ easteregg_struan_mccallum = {
 	}
 
 	1066.1.1 = {
-		# employer = 994 # Atholl
+		 # Atholl
+		effect = {
+			add_character_flag = easteregg
+		}
+	}
+	1115.1.1 = {
+		death = yes
 	}
 }
 
@@ -3811,7 +3985,10 @@ easteregg_riad_deneche = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 155173 # High Chiefdom of Zab
+		 # High Chiefdom of Zab
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -3858,6 +4035,7 @@ easteregg_fenni_johansson = {
 	}
 	1066.1.1 = {
 		effect = {
+			add_character_flag = easteregg
 			# He knows what he did.
 			attempted_murder_opinion_effect = {
 				VICTIM = character:easteregg_jakub_potapczyk
@@ -3867,7 +4045,7 @@ easteregg_fenni_johansson = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		move_to_pool = yes
 	}
 	1066.9.16 = {
@@ -3899,10 +4077,11 @@ easteregg_james_beaumont = {
 	}
 	1066.1.1 = {
 		# Sheffield
-		# employer = 5660
+		
 		give_nickname = nick_blue_lion
 		move_to_pool = yes
 		effect = {
+			add_character_flag = easteregg
 			# Jag ar Svensk jaha
 			learn_language = language_norse
 			learn_language = language_anglic
@@ -3953,7 +4132,10 @@ easteregg_bahar_shefket = {
 	}
 
 	1066.1.1 = {
-		# employer = 302629 #Mangyshlak
+		 #Mangyshlak
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 
 	1066.9.16 = {
@@ -4027,7 +4209,10 @@ easteregg_ola_jentzsch = { # Content Design
 	}
 
 	1066.1.1 = {
-		# employer = 206651 #the king of Western Xia
+		 #the king of Western Xia
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = {
@@ -4078,27 +4263,6 @@ easteregg_hugo_cortell = { # Game Designer, Paradox Thalassic
 			add_secret = { type = secret_deviant } # Can be added as trait, but secret has more gameplay value
 		}
 	}
-
-	1066.1.1 = { # By game start, I am of the age at which I started working (and I am now)
-		# employer = andalusian0059 # Starting back at home
-		effect = {
-			remove_short_term_gold = { 4 46 }
-			if = { # Book condemning the immorality of board games and their harmful effects on the youth (Source: I made it up)
-				limit = { has_dlc_feature = royal_court }
-				create_inspiration = book_inspiration
-			}
-			add_trait = lifestyle_physician
-			add_trait_xp = { # I can perform the first half of an amputation procedure
-				trait = lifestyle_physician
-				value = {
-					integer_range = {
-						min = small_lifestyle_random_xp_low
-						max = small_lifestyle_random_xp_high
-					}
-				}
-			}
-		}
-	}
 	1066.9.16 = { death = { death_reason = death_beaten_by_mob } }
 }
 
@@ -4132,8 +4296,11 @@ easteregg_alexander_newcombe = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 3934 # Emir al-Muqtadir of Zaragoza
+		 # Emir al-Muqtadir of Zaragoza
 		learn_language = language_arabic
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -4185,9 +4352,10 @@ easteregg_elena_zenko = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 302180 #Lviv
+		 #Lviv
 
 		effect = {
+			add_character_flag = easteregg
 			add_secret = {
 				type = secret_witch
 			}
@@ -4233,8 +4401,9 @@ easteregg_stina_arvidsson_radestig = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 242505
+		
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4302,7 +4471,7 @@ easteregg_sandra_runge_moller = { #QA
 		}
 	}
 	1065.1.1 = {
-		# employer = 168643
+		
 
 		effect = {
 			add_secret = { type = secret_non_believer	}
@@ -4311,6 +4480,9 @@ easteregg_sandra_runge_moller = { #QA
 	}
 	1066.1.1 = {
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 
 	1066.9.16 = {
@@ -4353,7 +4525,10 @@ easteregg_stella_carrick = {
 	}
 
 	1066.1.1 = {
-		# employer = 984 # King Malcolm 3 of Scotland
+		 # King Malcolm 3 of Scotland
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 
 	1066.9.16 = {
@@ -4393,21 +4568,6 @@ easteregg_alessandro_bragalini = {
 		effect = {
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
-		}
-	}
-	1066.9.15 = {
-		# employer = cisalpine0661
-		effect = {
-			add_trait = lifestyle_blademaster
-			add_trait_xp = {
-				trait = lifestyle_blademaster
-				value = {
-					integer_range = {
-						min = medium_lifestyle_random_xp_low
-						max = medium_lifestyle_random_xp_high
-					}
-				}
-			}
 		}
 	}
 	1066.9.16 = {
@@ -4452,6 +4612,7 @@ easteregg_jenny_wickman = {
 	1066.1.1 = {
 		give_nickname = nick_the_mountain_dweller
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -4465,7 +4626,7 @@ easteregg_jenny_wickman = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		move_to_pool = yes
 	}
 	1066.9.16 = {
@@ -4480,6 +4641,7 @@ easteregg_anna_strom = {
 	religion = "catholic"
 	culture = "swedish"
 	female = yes
+	dna = easteregg_anna_strom
 	
 	#Education
 	trait = education_intrigue_2
@@ -4493,6 +4655,7 @@ easteregg_anna_strom = {
 	trait = administrator
 	trait = organizer
 	trait = infertile
+	fertility = 0
 
 	sexuality = bisexual
 	disallow_random_traits = yes
@@ -4506,9 +4669,17 @@ easteregg_anna_strom = {
 			trait = lifestyle_reveler
 			value = 100
 		}
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -4554,8 +4725,9 @@ easteregg_jon_astrup_hallkvist = {
 		}
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4614,8 +4786,9 @@ easteregg_maxence_voleau = { # Game Director
 		}
 	}
 	1066.1.1 = {
-		# employer = 178 #Hoël nab Judhael of Cornouaille
+		 #Hoël nab Judhael of Cornouaille
 		effect = {
+			add_character_flag = easteregg
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4675,8 +4848,9 @@ easteregg_fei_berg_hulthen = { # Technical Animator
 	}
 
 	1066.1.1 = {
-		# employer = 34156 # Denmark, to be Sweden
+		 # Denmark, to be Sweden
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_deviant }
 			add_secret = { type = secret_non_believer }
 		}
@@ -4709,18 +4883,19 @@ easteregg_chad_uhl = {
 	trait = scholar
 	trait = shrewd
 	trait = profligate
-	trait = disfigured
 
 	sexuality = bisexual
 	disallow_random_traits = yes
 
 	1039.2.16 = { birth = yes }
 	1066.1.1 = {
-		# employer = 112600	#Bavaria
+			#Bavaria
 		effect = {
+			add_character_flag = easteregg
 			learn_language = language_latin
 			learn_language = language_greek
 			learn_language = language_norse
+			add_character_flag = no_headgear
 			add_character_flag = has_scripted_appearance
 			add_secret = { type = secret_non_believer }
 
@@ -4730,7 +4905,7 @@ easteregg_chad_uhl = {
 				history = {
 					type = created_before_history
 				}
-				type = miscellaneous
+				type = journal
 				visuals = book
 				modifier = artifact_monthly_piety_gain_mult_6_modifier
 				save_scope_as = chad_book
@@ -4751,7 +4926,7 @@ easteregg_chad_uhl = {
 				set_artifact_description = easteregg_artifact_chad_dagger_description
 
 				add_artifact_modifier = artifact_owned_personal_scheme_success_chance_add_12_modifier
-				add_artifact_modifier = artifact_personal_scheme_power_add_12_modifier
+				add_artifact_modifier = artifact_personal_scheme_phase_duration_add_12_modifier
 				equip_artifact_to_owner = yes
 			}
 		}
@@ -4799,9 +4974,10 @@ easteregg_jason_cantalini = {
 
 	1039.11.19 = { birth = yes }
 	1066.1.1 = {
-		# employer = 7804
+		
 
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			create_artifact = {
@@ -4812,7 +4988,7 @@ easteregg_jason_cantalini = {
 				}
 				type = sword
 				visuals = sword
-				modifier = artifact_personal_scheme_power_add_10_modifier
+				modifier = artifact_personal_scheme_phase_duration_add_10_modifier
 				save_scope_as = jason_sword
 			}
 			scope:jason_sword = {
@@ -4858,7 +5034,10 @@ easteregg_fabian_franzen = {
 
 	1043.9.24 = { birth = yes }
 	1066.1.1 = {
-		# employer = 20352
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -4907,9 +5086,10 @@ easteregg_veronica_pazos = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 109500 #Galicia
+		 #Galicia
 
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_cannibal }
 			add_character_flag = no_headgear
 			add_character_flag = has_scripted_appearance
@@ -4920,7 +5100,7 @@ easteregg_veronica_pazos = {
 				history = {
 					type = created_before_history
 				}
-				type = miscellaneous
+				type = journal
 				visuals = book
 				wealth = 80
 				quality = 80
@@ -4930,7 +5110,7 @@ easteregg_veronica_pazos = {
 			scope:veronica_vanity_book = {
 				add_artifact_modifier = artifact_health_penalty_1_modifier
 				add_artifact_modifier = artifact_monthly_learning_lifestyle_xp_1_modifier
-				add_artifact_modifier = artifact_courting_scheme_power_add_1_modifier
+				add_artifact_modifier = artifact_courting_scheme_phase_duration_add_1_modifier
 				add_artifact_modifier = artifact_attraction_opinion_negative_1_modifier
 				equip_artifact_to_owner = yes
 			}
@@ -4980,8 +5160,9 @@ easteregg_weronika_kowalczyk = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 34156 #Skane
+		 #Skane
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_cannibal }
 		}
 		move_to_pool = yes
@@ -5027,8 +5208,9 @@ easteregg_jakob_jorstedt = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 100546 #Uppland
+		 #Uppland
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_deviant }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -5077,8 +5259,9 @@ easteregg_tess_lindholm = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 100525 #Västergötland
+		 #Västergötland
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = lifestyle_mystic
@@ -5121,11 +5304,14 @@ easteregg_johanna_hermansson = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 20014
+		
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
 		#	add_character_flag = no_headgear
 		#}
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5160,8 +5346,9 @@ easteregg_daan_broekhof = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 106520
+		
 		effect = {
+			add_character_flag = easteregg
 			add_secret = { type = secret_witch }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -5194,12 +5381,15 @@ easteregg_oscar_andersson = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 100525 # Sweden
+		 # Sweden
 		move_to_pool = yes
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
 		#	add_character_flag = no_headgear
 		#}
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5213,6 +5403,7 @@ easteregg_berrak_oz = {
 	religion = "ashari"
 	culture = "turkish"
 	female = yes
+	dna = easteregg_berrak_oz
 
 	diplomacy = 3
 
@@ -5240,12 +5431,15 @@ easteregg_berrak_oz = {
 				}
 			}
 		}
-		# employer = 1732
+		
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
 		#	add_character_flag = no_headgear
 		#}
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5273,10 +5467,9 @@ easteregg_martin_tosta = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 10087
+		
 		effect = {
-			#add_character_flag = has_scripted_appearance
-			#add_character_flag = no_headgear
+			add_character_flag = easteregg
 		}
 	}
 	1066.9.16 = {
@@ -5287,30 +5480,54 @@ easteregg_martin_tosta = {
 # Programmer
 easteregg_jakob_eklund = {
 	name = "Jakob"
+	dna = easteregg_jakob_eklund_dna
 	dynasty = vanity_eklund
 	religion = "catholic"
 	culture = "swedish"
 
 	#Education
-	trait = education_intrigue_1
+	trait = education_learning_2
 
 	#Personality
 	trait = honest
-	trait = arbitrary
-	trait = ambitious
-	trait = pilgrim
+	trait = just
+	trait = eccentric
+	trait = lifestyle_gardener
 
 	disallow_random_traits = yes
 
-	1031.9.15 = {
+	1024.11.21 = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 100536
-		#effect = {
-		#	add_character_flag = has_scripted_appearance
-		#	add_character_flag = no_headgear
-		#}
+		
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_headgear
+
+			if = {
+				limit = {
+					has_dlc_feature = roads_to_power
+				}
+				add_trait = shrewd
+			}
+			else_if = {
+				limit = {
+					has_dlc_feature = legends_of_the_dead
+				}
+				add_trait = irritable
+			}
+			else_if = {
+				limit = {
+					has_dlc_feature = tours_and_tournaments
+				}
+				add_trait = patient
+			}
+			else = {
+				add_trait = trusting
+			}
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5340,8 +5557,9 @@ easteregg_luke_bean = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 929 # Ailech
+		 # Ailech
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5385,7 +5603,10 @@ easteregg_ida_hedberg = {
 		add_character_flag = has_scripted_appearance
 	}
 	1066.1.1 = {
-		# employer = 20014
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5414,8 +5635,9 @@ easteregg_lucas_ribeiro = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 109607 # Duke Nuno II
+		 # Duke Nuno II
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = beauty_good_1
@@ -5460,6 +5682,9 @@ easteregg_tomas_versekys = {
 	}
 	1066.1.1 = {
 		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = "1066.9.16"
@@ -5499,8 +5724,9 @@ easteregg_david_drake = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 5644 #Would have been Lancashire but it's under the Mercian yoke
+		 #Would have been Lancashire but it's under the Mercian yoke
 		effect = {
+			add_character_flag = easteregg
 			give_witch_secret_or_trait_effect = yes
 		}
 		move_to_pool = yes
@@ -5532,8 +5758,9 @@ easteregg_johan_husen = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 100525
+		
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5567,8 +5794,9 @@ easteregg_alva_granholm = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 20005 # Count Tjudmund
+		 # Count Tjudmund
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = shrewd
@@ -5579,6 +5807,9 @@ easteregg_alva_granholm = {
 			}
 		}
 	}
+	1130.1.1 = {
+		death = yes
+	}
 }
 
 # Producer
@@ -5588,6 +5819,7 @@ easteregg_lucia_dzediti = {
 	religion = "orthodox"
 	culture = "vlach"
 	female = yes
+	dna = easteregg_lucia_dzediti
 
 	#Education
 
@@ -5606,7 +5838,18 @@ easteregg_lucia_dzediti = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 302096
+		
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.5.5 = {
+		effect = {
+			set_random_lover_reason = { TARGET = character:easteregg_jason_cantalini }
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5636,8 +5879,9 @@ easteregg_ernesto_lopez = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 107500
+		
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5672,11 +5916,15 @@ easteregg_daniel_velasquez = {
 		birth = yes
 	}
 	1066.9.15 = {
-		# employer = 108512 #Count Rodrigo Díaz of Asturias de Oviedo
+		 #Count Rodrigo Díaz of Asturias de Oviedo
 		effect = {
+			add_character_flag = easteregg
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
+	}
+	1106.1.1 = {
+		death = yes
 	}
 }
 
@@ -5706,9 +5954,6 @@ easteregg_francesca_passoni = {
 	1035.1.1 = {
 		birth = yes
 		give_witch_secret_or_trait_effect = yes
-	}
-	1066.1.1 = {
-		# employer = cisalpine0661
 	}
 	1066.9.16 = {
 		death = yes
@@ -5749,13 +5994,17 @@ easteregg_emelie_verdugo = {
 		birth = yes
 		effect = {
 			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
 		}
 	}
 	1066.1.1 = {
-		# employer = 73221
+		
 		add_character_modifier = {
 			modifier = cat_story_modifier
+		}
+		effect = {
+			add_character_flag = easteregg
 		}
 	}
 	1066.9.16 = {
@@ -5812,7 +6061,10 @@ easteregg_carsten_mannetje = {
 				}
 			}
 		}
-		# employer = 34156
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5852,7 +6104,10 @@ easteregg_celine_jensen = {
 		}
 	}
 	1066.1.1 = {
-		# employer = 40026
+		
+		effect = {
+			add_character_flag = easteregg
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -5890,9 +6145,583 @@ easteregg_johanna_uddstahl = {
 		birth = yes
 	}
 	1066.1.1 = {
-		# employer = 20014
+		
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# 2D Artist
+easteregg_anton_holmqvist = {
+	name = "Anton"
+	dynasty = vanity_holmqvist
+	dna = easteregg_anton_holmqvist_dna
+	religion = catholic
+	culture = swedish
+	female = no
+	#Skills
+	diplomacy = 6
+	martial = 5
+	stewardship = 4
+	intrigue = 6
+	learning = 8
+	prowess = 8
+	#Education
+	trait = education_diplomacy_3 #Charismatic Negotiator
+	#Personality Traits
+	trait = calm
+	trait = patient
+	trait = shy
+	#Other Traits
+	trait = whole_of_body
+	trait = athletic
+	trait = reclusive
+	trait = strong
+	sexuality = homosexual
+	disallow_random_traits = yes
+
+	1036.4.20 = {
+		birth = yes
+	}
+	# Delay a day so our liege uhh. Exists.
+	1066.1.2 = {
+		# Angermanland, as Sodermannland was full.
+		
+		effect = {
+			add_character_flag = easteregg
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Audio Producer
+easteregg_samet_atasoy = {
+	name = "Samet"
+	dynasty = vanity_atasoy
+	dna = easteregg_samet_atasoy_dna
+	religion = orthodox
+	culture = khazar
+	female = no
+
+	trait = education_learning_3
+
+	trait = gregarious
+	trait = arrogant
+	trait = honest
+	trait = lifestyle_mystic
+	
+	sexuality = homosexual
+	disallow_random_traits = yes
+
+	1044.1.1 = {
+		birth = yes
 		effect = {
 			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.1.2 = {
+		
+		effect = {
+			add_character_flag = easteregg
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Game Design
+easteregg_daniel_tolman = {
+	name = "Daniel"
+	dynasty = vanity_tolman
+	dna = easteregg_daniel_tolman_dna
+	religion = "insular_celtic"
+	culture = "norman"
+	female = no
+
+	trait = education_learning_4
+
+	trait = arbitrary
+	trait = arrogant
+	trait = fickle
+	trait = one_eyed
+	trait = reclusive
+	trait = viking
+
+	#Skills 10 4 9 10 13 6
+	diplomacy = 10
+	martial = 2
+	stewardship = 14
+	intrigue = 6
+	learning = 5
+	prowess = 5
+	
+	sexuality = heterosexual
+	disallow_random_traits = yes
+
+	1033.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.1.1 = {
+		
+		effect = {
+			add_character_flag = easteregg
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Office
+easteregg_rebecca_ronnback = {
+	name = "Rebecka"
+	dynasty = vanity_ronnback
+	dna = easteregg_rebecca_ronnback_dna
+	religion = "catholic"
+	culture = "swedish"
+	female = yes
+	#Education
+	trait = education_stewardship_3
+	#Personality Traits
+	trait = just
+	trait = brave
+	trait = stubborn
+	trait = administrator
+	trait = overseer
+	trait = tourney_participant
+	#Other
+	sexuality = heterosexual
+	disallow_random_traits = yes
+	1042.1.1 = {
+		birth = yes
+	}
+	1066.1.1 = {
+		
+		effect = {
+			add_trait_xp = {
+				trait = tourney_participant
+				track = horse
+				value = 100
+			}
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Front Desk
+easteregg_melanie_bjurman = {
+	name = "Melanie"
+	dynasty = vanity_bjurman
+	dna = easteregg_melanie_bjurman_dna
+	religion = "melieism"
+	culture = "mel"
+	female = yes
+	#Education
+	trait = education_intrigue_1
+	#Personality Traits
+	trait = trusting
+	trait = forgiving
+	trait = gregarious
+	trait = diplomat
+	trait = overseer
+	trait = loyal
+	trait = profligate
+	#Other
+	sexuality = heterosexual
+	disallow_random_traits = yes
+	1046.1.1 = {
+		birth = yes
+	}
+	1066.1.1 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_sarah_lager = {
+	name = "Sarah"
+	dynasty = vanity_lager
+	religion = "ashari"
+	culture = "maghrebi"
+	female = yes
+	#Education
+	trait = education_diplomacy_3
+	#Personality Traits
+	trait = just
+	trait = diligent
+	trait = gregarious
+	trait = diplomat
+	trait = shrewd
+	#Other
+	sexuality = heterosexual
+	disallow_random_traits = yes
+	1035.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_modifier = { modifier = cat_story_modifier }
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_david_ostlund = {
+	name = "David"
+	dynasty = vanity_ostlund
+	dna = easteregg_david_ostlund_dna
+	religion = "norse_pagan"
+	culture = "swedish"
+	#Education
+	trait = education_martial_3
+	#Personality Traits
+	trait = patient
+	trait = stubborn
+	trait = brave
+	trait = forder
+	trait = berserker
+	trait = strong
+	#Other
+	sexuality = bisexual
+	disallow_random_traits = yes
+	1032.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_mathias_frostewarn = {
+	name = "Mathias"
+	dynasty = vanity_frostewarn
+	dna = easteregg_mathias_frostewarn_dna
+	religion = "norse_pagan"
+	culture = "swedish"
+	#Education
+	trait = education_intrigue_3
+	#Personality Traits
+	trait = calm
+	trait = lazy
+	trait = cynical
+	trait = seducer
+	trait = flexible_leader
+	trait = winter_soldier
+	trait = adventurer
+	#Other
+	disallow_random_traits = yes
+	1020.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		 # Sweden
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_richard_lindkvist = {
+	name = "Richard"
+	dynasty = vanity_lindkvist
+	dna = easteregg_richard_lindkvist_dna
+	religion = "armenian_apostolic"
+	culture = "franconian"
+	#Education
+	trait = education_diplomacy_1
+	#Personality Traits
+	trait = generous
+	trait = diplomat
+	#Other
+	disallow_random_traits = yes
+	1027.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_tomasz_ender = {
+	name = "Tomasz"
+	dynasty = vanity_ender
+	dna = easteregg_tomasz_ender_dna
+	religion = "catholic"
+	culture = "polish"
+	#Education
+	trait = education_stewardship_1
+	#Personality Traits
+	trait = lazy
+	trait = eccentric
+	trait = forgiving
+	trait = cynical
+	trait = wrathful
+	trait = rakish
+	trait = lifestyle_traveler
+	#Other
+	disallow_random_traits = yes
+	1034.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		 # Poland
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_marcus_bose = {
+	name = "Marcus"
+	dynasty = vanity_boseh
+	dna = easteregg_marcus_bose_dna
+	religion = "norse_pagan"
+	culture = "norse"
+	#Education
+	trait = education_diplomacy_1
+	#Personality Traits
+	trait = wrathful
+	trait = brave
+	trait = stubborn
+	trait = lazy
+	trait = lifestyle_blademaster
+	trait = whole_of_body
+	trait = forest_fighter
+	trait = irritable
+	trait = drunkard
+	trait = disloyal
+	trait = murderer
+	trait = hashishiyah
+	#Other
+	disallow_random_traits = yes
+	1030.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_philip_wessman = {
+	name = "Philip"
+	dynasty = vanity_wessman
+	dna = easteregg_philip_wessman_dna
+	religion = "paulician"
+	culture = "franconian"
+	#Education
+	trait = education_learning_2
+	#Personality Traits
+	trait = shy
+	trait = eccentric
+	trait = paranoid
+	trait = just
+	trait = shrewd
+	trait = bastard
+	trait = depressed_1
+	#Other
+	disallow_random_traits = yes
+	1032.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_neyla_garcia = {
+	name = "Neyla"
+	dynasty = vanity_garcia
+	dna = easteregg_neyla_garcia_dna
+	religion = "catholic"
+	culture = "castilian"
+	female = yes
+	#Education
+	trait = education_diplomacy_2
+	#Personality Traits
+	trait = shy
+	trait = diligent
+	trait = calm
+	#Other
+	disallow_random_traits = yes
+	1039.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# IT
+easteregg_jesse_kopparvall = {
+	name = "Jesse"
+	dynasty = vanity_kopparvall
+	dna = easteregg_jesse_kopparvall_dna
+	religion = "catholic"
+	culture = "swedish"
+	#Education
+	trait = education_martial_4
+	
+	#Personality
+	trait = ambitious
+	trait = brave
+	trait = aggressive_attacker
+	trait = berserker
+	trait = lifestyle_blademaster
+	disallow_random_traits = yes
+	1031.10.09 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Release Manager
+easteregg_louise_mutel = {
+	name = "Louise"
+	dynasty = vanity_mutel
+	religion = "catholic"
+	culture = "french"
+	female = yes
+	#Education
+	trait = education_stewardship_3
+	#Personality Traits
+	trait = patient
+	trait = diligent
+	trait = calm
+	#Other
+	disallow_random_traits = yes
+	1035.1.1 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
 		}
 	}
