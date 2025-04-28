@@ -585,6 +585,12 @@ ep3_story_cycle_harrying.1005 = {
 		}
 		OR = { #Ensure owns at least one county on the route
 			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
+			has_title = title:c_atlantis
 		}
 		exists = cp:councillor_marshal
 	}
@@ -594,6 +600,12 @@ ep3_story_cycle_harrying.1005 = {
 			region = world_europe_west_britannia
 			limit = { # All counties along the Great North Road...ish
 				OR = {
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
+					this = title:c_atlantis
 					this = title:c_atlantis
 				}
 				OR = {

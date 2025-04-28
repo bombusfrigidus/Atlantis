@@ -1926,7 +1926,7 @@ aswan = { # For Philae, site of some of the last great Kemetic building projects
 }
 
 wadi_el_milk = { # Historic traces of Kushitic cults have actually been found here.
-	county = c_atlantis-milk
+	county = c_atlantis
 
 	flag = wadi_el_milk_conversion_resistance_bonus # 50% County Conversion Resistance
 }

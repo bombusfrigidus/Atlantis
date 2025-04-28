@@ -37,8 +37,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_isabella_welch
-				this = character:easteregg_isabella_welch
+				exists = character:1
+				this = character:1
 			}
 		}
 	}   
@@ -82,8 +82,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_elisabeth_gangenes
-				this = character:easteregg_elisabeth_gangenes
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -108,8 +108,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_henrik_fahraeus
-				this = character:easteregg_henrik_fahraeus
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -134,8 +134,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alexander_oltner
-				this = character:easteregg_alexander_oltner
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -160,8 +160,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jakub_potapczyk
-				this = character:easteregg_jakub_potapczyk
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -192,8 +192,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_joacim_carlberg
-				this = character:easteregg_joacim_carlberg
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -218,8 +218,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_olof_bjork
-				this = character:easteregg_olof_bjork
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -244,8 +244,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_petter_lundh
-				this = character:easteregg_petter_lundh
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -264,8 +264,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_linnea_thimren
-				this = character:easteregg_linnea_thimren
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -290,8 +290,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_matthew_clohessy
-				this = character:easteregg_matthew_clohessy
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -310,8 +310,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_steacy_mcilwham
-				this = character:easteregg_steacy_mcilwham
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -330,8 +330,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_rebecca_ronnback
-				this = character:easteregg_rebecca_ronnback
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -362,8 +362,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_nils_wadensten
-				this = character:easteregg_nils_wadensten
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -388,8 +388,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_emil_tisander
-				this = character:easteregg_emil_tisander
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -414,8 +414,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_joel_hansson
-				this = character:easteregg_joel_hansson
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -440,8 +440,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_peter_johannesson
-				this = character:easteregg_peter_johannesson
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -460,8 +460,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_malin_jonsson
-				this = character:easteregg_malin_jonsson
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -480,8 +480,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_linda_tiger
-				this = character:easteregg_linda_tiger
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -500,8 +500,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_katya_boestad
-				this = character:easteregg_katya_boestad
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -520,8 +520,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_mathilda_bjarnehed
-				this = character:easteregg_mathilda_bjarnehed
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -540,8 +540,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_milla_lankinen
-				this = character:easteregg_milla_lankinen
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -566,8 +566,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_petter_vilberg
-				this = character:easteregg_petter_vilberg
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -592,8 +592,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_henrik_lohmander
-				this = character:easteregg_henrik_lohmander
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -618,8 +618,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_max_weltz
-				this = character:easteregg_max_weltz
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -638,8 +638,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_lysann_schlegel
-				this = character:easteregg_lysann_schlegel
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -664,8 +664,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_sean_hughes
-				this = character:easteregg_sean_hughes
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -690,8 +690,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_ismael_serrano
-				this = character:easteregg_ismael_serrano
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -710,8 +710,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_bianca_savazzi
-				this = character:easteregg_bianca_savazzi
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -736,8 +736,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_christian_daflos
-				this = character:easteregg_christian_daflos
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -756,8 +756,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_max_collin
-				this = character:easteregg_max_collin
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -782,8 +782,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jonas_wickerstrom
-				this = character:easteregg_jonas_wickerstrom
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -802,8 +802,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_tegan_harris
-				this = character:easteregg_tegan_harris
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -828,8 +828,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_paul_depre
-				this = character:easteregg_paul_depre
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -854,8 +854,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_maximilian_olbers
-				this = character:easteregg_maximilian_olbers
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -874,8 +874,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_debbie_lane
-				this = character:easteregg_debbie_lane
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -894,14 +894,14 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_hanna_lohman
-				this = character:easteregg_hanna_lohman
+				exists = character:1
+				this = character:1
 			}
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_anna_strom
-				this = character:easteregg_anna_strom
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -926,8 +926,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_nikolaos_kaltsogiannis
-				this = character:easteregg_nikolaos_kaltsogiannis
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -952,8 +952,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_pontus_olofsson
-				this = character:easteregg_pontus_olofsson
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -978,8 +978,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_martin_anward
-				this = character:easteregg_martin_anward
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1004,8 +1004,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_zack_holmgren
-				this = character:easteregg_zack_holmgren
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1024,8 +1024,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_claudia_baldassi
-				this = character:easteregg_claudia_baldassi
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1050,14 +1050,14 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_joe_parkin
-				this = character:easteregg_joe_parkin
+				exists = character:1
+				this = character:1
 			}
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_mathias_frostewarn
-				this = character:easteregg_mathias_frostewarn
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1082,8 +1082,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_marcus_bose
-				this = character:easteregg_marcus_bose
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1108,8 +1108,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jesse_kopparvall
-				this = character:easteregg_jesse_kopparvall
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1122,8 +1122,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_lukasz_opara
-				this = character:easteregg_lukasz_opara
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1136,8 +1136,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_mateusz_mierzwa
-				this = character:easteregg_mateusz_mierzwa
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1150,8 +1150,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_natalia_lechnata
-				this = character:easteregg_natalia_lechnata
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1164,8 +1164,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_natalia_poreba
-				this = character:easteregg_natalia_poreba
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1190,8 +1190,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_struan_mccallum
-				this = character:easteregg_struan_mccallum
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1204,8 +1204,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_riad_deneche
-				this = character:easteregg_riad_deneche
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1236,8 +1236,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_anton_leirnes
-				this = character:easteregg_anton_leirnes
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1262,8 +1262,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_tomasz_ender
-				this = character:easteregg_tomasz_ender
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1288,8 +1288,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_stella_carrick
-				this = character:easteregg_stella_carrick
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1308,8 +1308,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_fenni_johansson
-				this = character:easteregg_fenni_johansson
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1334,8 +1334,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_james_beaumont
-				this = character:easteregg_james_beaumont
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1354,8 +1354,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_bahar_shefket
-				this = character:easteregg_bahar_shefket
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1380,8 +1380,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_hugo_cortell
-				this = character:easteregg_hugo_cortell
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1406,8 +1406,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alexander_newcombe
-				this = character:easteregg_alexander_newcombe
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1426,8 +1426,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_elena_zenko
-				this = character:easteregg_elena_zenko
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1452,8 +1452,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_fei_berg_hulthen
-				this = character:easteregg_fei_berg_hulthen
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1472,8 +1472,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_stina_arvidsson_radestig
-				this = character:easteregg_stina_arvidsson_radestig
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1504,8 +1504,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_ola_jentzsch
-				this = character:easteregg_ola_jentzsch
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1524,8 +1524,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_nikola_stokic
-				this = character:easteregg_nikola_stokic
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1544,8 +1544,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_tamara_stokic
-				this = character:easteregg_tamara_stokic
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1563,8 +1563,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_sandra_runge_moller
-				this = character:easteregg_sandra_runge_moller
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1589,8 +1589,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alessandro_bragalini
-				this = character:easteregg_alessandro_bragalini
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1615,8 +1615,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jon_astrup_hallkvist
-				this = character:easteregg_jon_astrup_hallkvist
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1641,8 +1641,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_maxence_voleau
-				this = character:easteregg_maxence_voleau
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1667,8 +1667,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jason_cantalini
-				this = character:easteregg_jason_cantalini
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1693,8 +1693,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_chad_uhl
-				this = character:easteregg_chad_uhl
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1707,8 +1707,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_fabian_franzen
-				this = character:easteregg_fabian_franzen
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1727,8 +1727,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_veronica_pazos
-				this = character:easteregg_veronica_pazos
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1741,8 +1741,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_weronika_kowalczyk
-				this = character:easteregg_weronika_kowalczyk
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1767,8 +1767,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jakob_jorstedt
-				this = character:easteregg_jakob_jorstedt
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1787,14 +1787,14 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_berrak_oz
-				this = character:easteregg_berrak_oz
+				exists = character:1
+				this = character:1
 			}
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_tess_lindholm
-				this = character:easteregg_tess_lindholm
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1819,8 +1819,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_luke_bean
-				this = character:easteregg_luke_bean
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1845,8 +1845,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_artur_kacprzak
-				this = character:easteregg_artur_kacprzak
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1871,8 +1871,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_tomas_versekys
-				this = character:easteregg_tomas_versekys
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1891,8 +1891,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_ida_hedberg
-				this = character:easteregg_ida_hedberg
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1917,8 +1917,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alexander_windahl
-				this = character:easteregg_alexander_windahl
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1943,8 +1943,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_johan_husen
-				this = character:easteregg_johan_husen
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1969,8 +1969,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_daan_broekhof
-				this = character:easteregg_daan_broekhof
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -1989,8 +1989,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alexia_belfort
-				this = character:easteregg_alexia_belfort
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2015,8 +2015,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_david_drake
-				this = character:easteregg_david_drake
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2041,8 +2041,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_ernesto_lopez
-				this = character:easteregg_ernesto_lopez
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2067,8 +2067,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_lucas_ribeiro
-				this = character:easteregg_lucas_ribeiro
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2093,8 +2093,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_daniel_velasquez
-				this = character:easteregg_daniel_velasquez
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2119,8 +2119,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_jakob_eklund
-				this = character:easteregg_jakob_eklund
+				exists = character:1
+				this = character:1
 			}
 		}
 	} # jakob_eklund
@@ -2139,8 +2139,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_emelie_verdugo
-				this = character:easteregg_emelie_verdugo
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2165,8 +2165,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_anton_holmqvist
-				this = character:easteregg_anton_holmqvist
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2191,8 +2191,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_samet_atasoy
-				this = character:easteregg_samet_atasoy
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2217,8 +2217,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_richard_lindkvist
-				this = character:easteregg_richard_lindkvist
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2243,8 +2243,40 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_daniel_tolman
-				this = character:easteregg_daniel_tolman
+				exists = character:1
+				this = character:1
+			}
+		}
+	}
+
+	jacopo_freddi = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = beards
+				template = fp2_beards_straight
+				accessory = male_beard_fp2_iberian_christian_01
+			}
+			accessory = {
+				mode = add
+				gene = cloaks
+				template = fp4_cloak_western
+				accessory = m_cloaks_sec_fp4_western_era3_nob_02
+			}
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = all_hairstyles
+				accessory = male_hair_indian_01
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 999
+				exists = this
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2295,14 +2327,14 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_ida_hedberg
-				this = character:easteregg_ida_hedberg
+				exists = character:1
+				this = character:1
 			}
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_francesca_passoni
-				this = character:easteregg_francesca_passoni
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2392,8 +2424,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_melanie_bjurman
-				this = character:easteregg_melanie_bjurman
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2508,8 +2540,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_alva_granholm
-				this = character:easteregg_alva_granholm
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2634,8 +2666,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_david_ostlund
-				this = character:easteregg_david_ostlund
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2660,8 +2692,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_philip_wessman
-				this = character:easteregg_philip_wessman
+				exists = character:1
+				this = character:1
 			}
 		}
 	}
@@ -2680,8 +2712,8 @@
 			modifier = {
 				add = 999
 				exists = this
-				exists = character:easteregg_neyla_garcia
-				this = character:easteregg_neyla_garcia
+				exists = character:1
+				this = character:1
 			}
 		}
 	}

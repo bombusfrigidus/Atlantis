@@ -2534,7 +2534,7 @@
 			NOT = { exists = global_var:hchar_saadia }
 		}
 		set_global_variable = { name = hchar_saadia value = yes }
-		title:b_atlantis-fayyum = {
+		title:b_atlantis = {
 			save_scope_as = birth_location
 			create_character = {
 				age = 20

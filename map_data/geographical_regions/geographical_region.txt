@@ -87,38 +87,6 @@
 # > sea_caspian_sea
 # > sea_aral_sea
 
-###########################
-#### GRAPHICAL REGIONS ####
-###########################
-
-graphical_western = {
-	graphical = yes
-	color = { 255 0 0 }
-	regions = {
-		world_europe_south
-	}
-}
-
-graphical_mena = {
-	graphical = yes
-	color = { 255 255 0 }
-}
-
-graphical_india = {
-	graphical = yes
-	color = { 0 255 0 }
-}
-
-graphical_mediterranean = {
-	graphical = yes
-	color = { 0 0 255 }
-}
-
-graphical_steppe = {
-	graphical = yes
-	color = { 0 255 255 }
-}
-
 #########################
 #### VANILLA REGIONS ####
 #########################
@@ -182,6 +150,38 @@ hunt_animal_deer_region = {
 		# Europe
 		world_europe
 	}
+}
+
+###########################
+#### GRAPHICAL REGIONS ####
+###########################
+
+graphical_western = {
+	graphical = yes
+	color = { 255 0 0 }
+	regions = {
+		world_europe_south
+	}
+}
+
+graphical_mena = {
+	graphical = yes
+	color = { 255 255 0 }
+}
+
+graphical_india = {
+	graphical = yes
+	color = { 0 255 0 }
+}
+
+graphical_mediterranean = {
+	graphical = yes
+	color = { 0 0 255 }
+}
+
+graphical_steppe = {
+	graphical = yes
+	color = { 0 255 255 }
 }
 
 ################################

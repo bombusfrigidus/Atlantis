@@ -1698,7 +1698,7 @@ d_moravia = {
 	landless = yes
 }
 
-k_galicia = { 
+k_galicia-volhynia = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1868,7 +1868,7 @@ d_ustyug = {
 	landless = yes
 }
 
-e_caspian = { 
+e_caspian-pontic_steppe = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -3528,7 +3528,7 @@ d_yamama = {
 	landless = yes
 }
 
-d_al = { 
+d_al-hasa = { 
 	capital = c_atlantis
 	landless = yes
 }

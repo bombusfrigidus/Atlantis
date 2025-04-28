@@ -685,7 +685,11 @@ ep3_story_cycle_admin_eunuch.2010 = {
 	}
 	right_portrait = {
 		character = scope:eunuch
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_center_portrait = {
 		character = scope:diarch_successor
@@ -875,10 +879,10 @@ ep3_story_cycle_admin_eunuch.2015 = {
 					left_icon = scope:eunuch
 					right_icon = scope:emperor
 				}
-				scope:emperor = { start_diarchy = regency }
+				scope:emperor = { try_start_diarchy = regency }
 			}
 		}
-		else = { start_diarchy = regency }
+		else = { try_start_diarchy = regency }
 		ep3_story_cycle_admin_eunuch_upgrade_effect = yes
 		if = {
 			limit = { exists = scope:title_heir }
@@ -2900,7 +2904,11 @@ ep3_story_cycle_admin_eunuch.2050 = {
 	}
 	right_portrait = {
 		character = scope:eunuch
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_left_portrait = scope:boon_target
 	lower_right_portrait = scope:boon_victim

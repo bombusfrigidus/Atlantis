@@ -1052,7 +1052,10 @@ ep3_laamps.0030 = {
 		# Transfer landed titles
 		every_held_title = {
 			limit = {
-				is_landless_type_title = no
+				OR = {
+					is_landless_type_title = no
+					is_nomad_title = yes
+				}
 				tier > tier_barony
 			}
 			add_to_list = target_titles
@@ -6689,6 +6692,7 @@ ep3_laamps.5045 = {
 					highest_held_title_tier > tier_duchy
 					any_held_title = {
 						tier = tier_county
+						is_landless_type_title = no
 						count >= 1
 					}
 				}
@@ -6698,6 +6702,7 @@ ep3_laamps.5045 = {
 					limit = {
 						tier = tier_county
 						holder = scope:local_lord
+						is_landless_type_title = no
 					}
 					#Least developed county as a rough approximation of backwaters
 					order_by = {
@@ -8433,7 +8438,149 @@ ep3_laamps.7003 = {
 
 scripted_effect new_england_holding_names_effect = {
 	random_list = {
-	    100 = { set_title_name = b_atlantis }
+	    100 = { set_title_name = b_london }
+	    100 = { set_title_name = b_southwark }
+	    100 = { set_title_name = b_woxbrigge }
+	    100 = { set_title_name = b_gore }
+	    100 = { set_title_name = b_brentford }
+	    100 = { set_title_name = b_colchester }
+	    100 = { set_title_name = b_maldon }
+	    100 = { set_title_name = b_chelmsford }
+	    100 = { set_title_name = b_dunmow }
+	    100 = { set_title_name = b_bedford }
+	    100 = { set_title_name = b_ampthill }
+	    100 = { set_title_name = b_luton }
+	    100 = { set_title_name = b_berkhamsted }
+	    100 = { set_title_name = b_saint_albans }
+	    100 = { set_title_name = b_hertford }
+	    100 = { set_title_name = b_buckingham }
+	    100 = { set_title_name = b_aylesbury }
+	    100 = { set_title_name = b_newport }
+	    100 = { set_title_name = b_wycombe }
+	    100 = { set_title_name = b_bamburgh }
+	    100 = { set_title_name = b_rothbury }
+	    100 = { set_title_name = b_lindisfarne }
+	    100 = { set_title_name = b_hexham }
+	    100 = { set_title_name = b_durham }
+	    100 = { set_title_name = b_hartlepool }
+	    100 = { set_title_name = b_darlington }
+	    100 = { set_title_name = b_carlisle }
+	    100 = { set_title_name = b_whitehaven }
+	    100 = { set_title_name = b_furness }
+	    100 = { set_title_name = b_wigton }
+	    100 = { set_title_name = b_lancaster }
+	    100 = { set_title_name = b_salford }
+	    100 = { set_title_name = b_west_derby }
+	    100 = { set_title_name = b_kendal }
+	    100 = { set_title_name = b_appleby }
+	    100 = { set_title_name = b_chester }
+	    100 = { set_title_name = b_northwich }
+	    100 = { set_title_name = b_macclesfield }
+	    100 = { set_title_name = b_derby }
+	    100 = { set_title_name = b_chesterfield }
+	    100 = { set_title_name = b_castleton }
+	    100 = { set_title_name = b_york }
+	    100 = { set_title_name = b_scarborough }
+	    100 = { set_title_name = b_whitby }
+	    100 = { set_title_name = b_richmond }
+	    100 = { set_title_name = b_yarlestre }
+	    100 = { set_title_name = b_pockington }
+	    100 = { set_title_name = b_cottingham }
+	    100 = { set_title_name = b_bridlington }
+	    100 = { set_title_name = b_leeds }
+	    100 = { set_title_name = b_doncaster }
+	    100 = { set_title_name = b_halifax }
+	    100 = { set_title_name = b_sheffield }
+	    100 = { set_title_name = b_bolton }
+	    100 = { set_title_name = b_ripon }
+	    100 = { set_title_name = b_lincoln }
+	    100 = { set_title_name = b_stamford }
+	    100 = { set_title_name = b_boston }
+	    100 = { set_title_name = b_bolingsbroke }
+	    100 = { set_title_name = b_grimsby }
+	    100 = { set_title_name = b_norwich }
+	    100 = { set_title_name = b_thetford }
+	    100 = { set_title_name = b_walsingham }
+	    100 = { set_title_name = b_lynn }
+	    100 = { set_title_name = b_ipswich }
+	    100 = { set_title_name = b_sudbury }
+	    100 = { set_title_name = b_blything }
+	    100 = { set_title_name = b_beodericsworth }
+	    100 = { set_title_name = b_cambridge }
+	    100 = { set_title_name = b_radfield }
+	    100 = { set_title_name = b_papworth }
+	    100 = { set_title_name = b_ely }
+	    100 = { set_title_name = b_warwick }
+	    100 = { set_title_name = b_coventry }
+	    100 = { set_title_name = b_birmingham }
+	    100 = { set_title_name = b_leicester }
+	    100 = { set_title_name = b_melton }
+	    100 = { set_title_name = b_bosworth }
+	    100 = { set_title_name = b_rutland }
+	    100 = { set_title_name = b_nottingham }
+	    100 = { set_title_name = b_newark }
+	    100 = { set_title_name = b_retford }
+	    100 = { set_title_name = b_stafford }
+	    100 = { set_title_name = b_wolverhampton }
+	    100 = { set_title_name = b_stoke_on_trent }
+	    100 = { set_title_name = b_worcester }
+	    100 = { set_title_name = b_evesham }
+	    100 = { set_title_name = b_kidderminster }
+	    100 = { set_title_name = b_hurstingstone }
+	    100 = { set_title_name = b_norman_cross }
+	    100 = { set_title_name = b_leightonstone }
+	    100 = { set_title_name = b_northampton }
+	    100 = { set_title_name = b_peterborough }
+	    100 = { set_title_name = b_kettering }
+	    100 = { set_title_name = b_shrewsbury }
+	    100 = { set_title_name = b_ludlow }
+	    100 = { set_title_name = b_bishops_castle }
+	    100 = { set_title_name = b_gloucester }
+	    100 = { set_title_name = b_bristol }
+	    100 = { set_title_name = b_winchcombe }
+	    100 = { set_title_name = b_salisbury }
+	    100 = { set_title_name = b_wilton }
+	    100 = { set_title_name = b_ramsbury }
+	    100 = { set_title_name = b_malmesbury }
+	    100 = { set_title_name = b_oxford }
+	    100 = { set_title_name = b_banbury }
+	    100 = { set_title_name = b_witney }
+	    100 = { set_title_name = b_reading }
+	    100 = { set_title_name = b_newbury }
+	    100 = { set_title_name = b_abingdon }
+	    100 = { set_title_name = b_dover }
+	    100 = { set_title_name = b_canterbury }
+	    100 = { set_title_name = b_rochester }
+	    100 = { set_title_name = b_tonbridge }
+	    100 = { set_title_name = b_chertsey }
+	    100 = { set_title_name = b_guildford }
+	    100 = { set_title_name = b_kingston }
+	    100 = { set_title_name = b_tandbridge }
+	    100 = { set_title_name = b_lewes }
+	    100 = { set_title_name = b_chichester }
+	    100 = { set_title_name = b_arun }
+	    100 = { set_title_name = b_hastings }
+	    100 = { set_title_name = b_winchester }
+	    100 = { set_title_name = b_southampton }
+	    100 = { set_title_name = b_portsmouth }
+	    100 = { set_title_name = b_basingstoke }
+	    100 = { set_title_name = b_christchurch }
+	    100 = { set_title_name = b_carisbrooke }
+	    100 = { set_title_name = b_wareham }
+	    100 = { set_title_name = b_poole }
+	    100 = { set_title_name = b_shaftesbury }
+	    100 = { set_title_name = b_lyme }
+	    100 = { set_title_name = b_bath }
+	    100 = { set_title_name = b_winterstoke }
+	    100 = { set_title_name = b_ilchester }
+	    100 = { set_title_name = b_taunton }
+	    100 = { set_title_name = b_exeter }
+	    100 = { set_title_name = b_totnes }
+	    100 = { set_title_name = b_okehampton }
+	    100 = { set_title_name = b_barnstaple }
+	    100 = { set_title_name = b_launceston }
+	    100 = { set_title_name = b_tintagel }
+	    100 = { set_title_name = b_helston }
 	}
 }
 
@@ -8507,8 +8654,25 @@ ep3_laamps.7004 = {
 				modifier = ep3_ennobled_adventurer_modifier_1
 				years = 10
 			}
-			## Administrative.
+			## Nomad.
 			if = {
+				limit = {
+					OR = {
+						government_has_flag = government_is_nomadic
+						scope:new_liege ?= { government_has_flag = government_is_nomadic }
+						scope:old_government ?= flag:nomad
+						scope:new_capital.capital_province = {
+							OR = {
+								has_holding_type = nomad_holding
+								has_holding_type = herder_holding
+							}
+						}
+					}
+				}
+				change_government = nomad_government
+			}
+			## Administrative.
+			else_if = {
 				limit = {
 					scope:new_liege ?= { government_has_flag = government_is_administrative }
 				}
@@ -8533,8 +8697,25 @@ ep3_laamps.7004 = {
 		}
 
 		hidden_effect = {
-			## Administrative.
+			## Nomad.
 			if = {
+				limit = {
+					OR = {
+						government_has_flag = government_is_nomadic
+						scope:new_liege ?= { government_has_flag = government_is_nomadic }
+						scope:old_government ?= flag:nomad
+						scope:new_capital.capital_province = {
+							OR = {
+								has_holding_type = nomad_holding
+								has_holding_type = herder_holding
+							}
+						}
+					}
+				}
+				change_government = nomad_government
+			}
+			## Administrative.
+			else_if = {
 				limit = {
 					scope:new_liege ?= { government_has_flag = government_is_administrative }
 				}
@@ -8559,7 +8740,7 @@ ep3_laamps.7004 = {
 		}
 
 		scope:zichia = {
-			set_title_name = c_atlantis
+			set_title_name = c_new_england
 			set_color_from_title = title:k_england
 		}
 

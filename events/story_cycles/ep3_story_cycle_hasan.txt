@@ -405,7 +405,7 @@ hasan_sabbah.1022 = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { character:1.faith = faith:nizari } }
+					limit = { NOT = { character:1 = faith:nizari } }
 					character:1 = {
 						set_character_faith = faith:nizari
 					}

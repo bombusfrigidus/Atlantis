@@ -145,7 +145,8 @@ travel_events_cities.1010 = {
 	}
 
 	trigger = {
-		always = no
+		location = province:1 #Baghdad
+		city_event_check = yes
 	}
 
 	immediate = {
@@ -1220,7 +1221,8 @@ travel_events_cities.1020 = {
 	}
 
 	trigger = {
-		always = no
+		location = province:1 #Rome
+		city_event_check = yes
 	}
 
 	immediate = {
@@ -2347,6 +2349,12 @@ travel_events_cities.1030 = {
 		first_valid = { #Entering Constantinople - Loc depends on if you come overland, over sea, or through Calchedon.
 			triggered_desc = {
 				trigger = {
+					scope:last_visited_location = province:1 #Chalcedon
+				}
+				desc = travel_city_constantinople_intro_chalcedon
+			}
+			triggered_desc = {
+				trigger = {
 					scope:last_visited_location = {
 						is_sea_province = yes
 					}
@@ -2450,7 +2458,11 @@ travel_events_cities.1030 = {
 	}
 
 	trigger = {
-		always = no
+		location = province:1 #Constantinople
+		city_event_check = yes
+		NOT = {
+			has_title = title:e_byzantium #This just does not work for a byzantine emperor, even if they moved their capital out of the city
+		}
 	}
 
 	immediate = {

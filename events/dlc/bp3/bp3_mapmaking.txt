@@ -322,10 +322,25 @@ mapmaking.0030 = {
 	override_background = {
 		trigger = {
 			scope:background_terrain_scope.barony = {
+				is_holy_site = no
+			}
+			NOT = { scope:background_terrain_scope = province:1 }
+		}
+		reference = terrain_scope
+	}
+	override_background = {
+		trigger = {
+			scope:background_terrain_scope.barony = {
 				is_holy_site = yes
 			}
 		}
 		reference = holy_site_scope
+	}
+	override_background = {
+		trigger = {
+			scope:background_terrain_scope = province:1 #Baghdad
+		}
+		reference = ep2_holy_site_mena
 	}
 	
 	left_portrait = {
@@ -838,10 +853,25 @@ mapmaking.1000 = {
 	override_background = {
 		trigger = {
 			scope:background_terrain_scope.barony = {
+				is_holy_site = no
+			}
+			NOT = { scope:background_terrain_scope = province:1 }
+		}
+		reference = terrain_scope
+	}
+	override_background = {
+		trigger = {
+			scope:background_terrain_scope.barony = {
 				is_holy_site = yes
 			}
 		}
 		reference = holy_site_scope
+	}
+	override_background = {
+		trigger = {
+			scope:background_terrain_scope = province:1 #Baghdad
+		}
+		reference = ep2_holy_site_mena
 	}
 	
 	left_portrait = {

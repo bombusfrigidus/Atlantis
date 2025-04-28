@@ -92,6 +92,16 @@ ep3_decisions_event.0001 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
+					# In Constantinople
+					location = province:1
+				}
+				desc = ep3_decisions_event.0001.desc_const
+			}
+			desc = ep3_decisions_event.0001.desc_other
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
 					exists = var:ep3_valid_triumph_victory
 				}
 				desc = ep3_decisions_event.0001.desc
@@ -509,8 +519,12 @@ ep3_decisions_event.0003 = {
 	theme = emperor
 	override_background = { reference = ep3_hagia_sophia }
 	left_portrait = {
-		character = root
-		animation = scepter
+		character = scope:actor
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	right_portrait = {
 		trigger = {
@@ -2724,7 +2738,11 @@ ep3_decisions_event.3001 = {
 	}
 	right_portrait = {
 		character = scope:interlocutor
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 
 	trigger = {
@@ -2842,7 +2860,11 @@ ep3_decisions_event.3100 = {
 	}
 	right_portrait = {
 		character = scope:aide
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 
 	immediate = {
@@ -3280,7 +3302,11 @@ ep3_decisions_event.3201 = {
 	}
 	right_portrait = {
 		character = root
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	
 	trigger = {
@@ -4918,7 +4944,11 @@ ep3_decisions_event.4030 = {
 	}
 	left_portrait = {
 		character = root
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 
 	immediate = {
@@ -5003,7 +5033,11 @@ ep3_decisions_event.4050 = {
 			}
 			animation = obsequious_bow
 		}
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	
 	right_portrait = {
@@ -5125,7 +5159,11 @@ ep3_decisions_event.4060 = {
 	override_background = { reference = throne_room }
 	left_portrait = {
 		character = root
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_right_portrait = {
 		character = scope:obstinate_vassal
@@ -5234,7 +5272,11 @@ ep3_decisions_event.4065 = {
 	desc = ep3_decisions_event.4065.desc
 	sender = {
 		character = scope:actor
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	option = {
 		name = ep3_decisions_event.4065.a
@@ -5957,6 +5999,12 @@ ep3_decisions_event.4080 = {
 	desc = {
 		desc = ep3_decisions_event.4080.desc.intro
 		first_valid = {
+			triggered_desc = {
+				trigger = {
+					root = character:1
+				}
+				desc = ep3_decisions_event.4080.wallada
+			}
 			desc = ep3_decisions_event.4080.heir
 		}
 		desc = ep3_decisions_event.4080.desc.outro

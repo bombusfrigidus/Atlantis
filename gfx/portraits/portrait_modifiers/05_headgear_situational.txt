@@ -79,7 +79,7 @@
 					portrait_jester_trigger = { CULTURE_INPUT = western }
 					portrait_jester_trigger = { CULTURE_INPUT = byzantine }
 					portrait_jester_trigger = { CULTURE_INPUT = northern }
-				}				
+				}
 			}
 			modifier = {
 				factor = 0
@@ -90,7 +90,7 @@
 			}
 		}
 	}
-	
+
 	hajj_headgear = {
 		dna_modifiers = {
 			accessory = {
@@ -99,7 +99,7 @@
 				template = mena_common
 				range = { 0 1 } # For the randomness to work correctly
 			}
-		}	
+		}
 		weight = {
 			base = 0
 			modifier = {
@@ -123,7 +123,7 @@
 				template = western_wedding
 				range = { 0 1 } # For the randomness to work correctly
 			}
-		}	
+		}
 		outfit_tags = { spouse_outfit }
 		weight = {
 			base = 0
@@ -147,7 +147,7 @@
 				template = mena_wedding
 				range = { 0 1 } # For the randomness to work correctly
 			}
-		}	
+		}
 		outfit_tags = { spouse_outfit }
 		weight = {
 			base = 0
@@ -185,7 +185,7 @@
 			}
 		}
 	}
-	
+
 
 	# BP2
 	university_teacher_headgear = {
@@ -225,6 +225,7 @@
 					this = character:1
 					has_trait = blind
 					has_trait = disfigured
+					government_has_flag = government_is_nomadic
 				}
 				OR = {
 					has_realm_law_flag = nerd_camp_purpose

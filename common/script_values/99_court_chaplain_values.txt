@@ -892,7 +892,7 @@ court_chaplain_conversion_contextual_bonuses = {
 			scope:county.faith = {
 				controls_holy_site = wadi_el_milk
 			}
-			title:b_atlantis-milk = {
+			title:b_atlantis = {
 				is_holy_site_of = scope:councillor.faith
 			}
 		}

@@ -225,7 +225,40 @@ atlantis.0001 = {
 		trigger_event = fp1_scandinavian_adventurers.0011
 		trigger_event = fp1_scandinavian_adventurers.0021
 		trigger_event = debug_portraits.1
+		trigger_event = mpo_misc.0002
+		trigger_event = roman_restoration.1200
+		trigger_event = diarchy.8021
+		trigger_event = game_rule.1151
+		trigger_event = game_rule.1152
+		trigger_event = bookmark.0001
+		trigger_event = bookmark.0003
+		trigger_event = bookmark.0101
+		trigger_event = bookmark.0200
+		trigger_event = bookmark.0211
+		trigger_event = bookmark.0300
+		trigger_event = bookmark.1066
+		trigger_event = bookmark.1067
+		trigger_event = bookmark.1068
+		trigger_event = bookmark.1069
+		trigger_event = bookmark.1070
+		trigger_event = bookmark.1072
+		trigger_event = bookmark.1073
+		trigger_event = ep3_emperor_yearly.2000
+		trigger_event = ep3_laamps.5999
+		trigger_event = ep3_story_cycle_violet_poet.0001
+		trigger_event = cid.0001
+		trigger_event = hasan_sabbah.1000
 
+		fix_scope_error = { ERROR = nickname_override }
+		fix_variable_error = { ERROR = game_has_started }
+		fix_variable_error = { ERROR = fully_landlocked_nomad_cultures }
+		fix_variable_error = { ERROR = deterministic_conquest_of_england_1066 }
+		fix_variable_error = { ERROR = started_steppe_by_steppe_achievement }
+		fix_variable_error = { ERROR = steppe_game_start_var }
+		fix_variable_error = { ERROR = mpo_nobodys_business_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_steppe_by_steppe_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_shut_up_nerge_achievement_unlocked }
+		fix_variable_error = { ERROR = mpo_settling_in_achievement_unlocked }
 		fix_variable_error = { ERROR = neglected_dungeon }
 		fix_variable_error = { ERROR = ramanuja }
 		fix_variable_error = { ERROR = ezra }
