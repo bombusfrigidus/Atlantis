@@ -386,8 +386,80 @@ BattlePoiNameHistorical = {
 	type = province
 
 	text = { # Battle of Tours
-		fallback = yes
+		trigger = {
+			this = province:1
+		}
 		localization_key = BattlePoIHistoricalNameTours
+	}
+
+	text = { # Battle of Lechfeld
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameLechfeld
+	}
+
+	text = { # Battle of Hastings
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameHastings
+	}
+
+	text = { # Battle of Stamford Bridge
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameStamfordBridge
+	}
+
+	text = { # Battle of Manzikert
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameManzikert
+	}
+
+	text = { # Battle of Yarmuk
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameYarmuk
+	}
+
+	text = { # Battle of Dandanaqan
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameDandanaqan
+	}
+
+	text = { # Battle of Aror
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameAror
+	}
+
+	text = { # Battle of Svolder
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameSvolder
+	}
+
+	text = { # Battle of Civitate
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameCivitate
+	}
+
+	text = { # Battle of Talas
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameTalas
 	}
 }
 
@@ -395,7 +467,79 @@ BattlePoIDescriptionHistorical = {
 	type = province
 
 	text = { # Battle of Tours
-		fallback = yes
+		trigger = {
+			this = province:1
+		}
 		localization_key = BattlePoIHistoricalDescTours
+	}
+
+	text = { # Battle of Lechfeld
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescLechfeld
+	}
+
+	text = { # Battle of Hastings
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescHastings
+	}
+
+	text = { # Battle of Stamford Bridge
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescStamfordBridge
+	}
+
+	text = { # Battle of Manzikert
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescManzikert
+	}
+
+	text = { # Battle of Yarmuk
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescYarmuk
+	}
+
+	text = { # Battle of Dandanaqan
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescDandanaqan
+	}
+
+	text = { # Battle of Aror
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescAror
+	}
+
+	text = { # Battle of Svolder
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescSvolder
+	}
+
+	text = { # Battle of Civitate
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescCivitate
+	}
+
+	text = { # Battle of Talas
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescTalas
 	}
 }

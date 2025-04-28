@@ -39,24 +39,40 @@ spawn_temujin_character_effect = {
 			exists = character:1
 			character:1 = {
 				is_ai = no
-				is_landed = yes
 			}
 		}
 		character:1 = {
 			save_scope_as = temujin
 		}
-		scope:temujin = {
-			# Make temporarily immune to disease
-			add_character_flag = {
-				flag = immune_to_disease
-				years = 15
+		if = {
+			limit = {
+				#The DLC has our own BECOME GENGHIS stuff for players
+				has_mpo_dlc_trigger = no
 			}
+			scope:temujin = {
+				give_temujin_land_effect = yes
+				# Make temporarily immune to disease
+				add_character_flag = {
+					flag = immune_to_disease
+					years = 15
+				}
 
-			add_trait = greatest_of_khans
-			form_the_mongol_empire_effect = yes
-			add_prestige = 25000
-			give_nickname = nick_genghis_khan
-			trigger_event = conqueror.0001
+				add_trait = greatest_of_khans
+				form_the_mongol_empire_effect = yes
+				add_prestige = 25000
+				give_nickname = nick_genghis_khan
+				trigger_event = conqueror.0001
+			}
+		}
+		else = {
+			scope:temujin = {
+				# Make temporarily immune to disease
+				add_character_flag = {
+					flag = immune_to_disease
+					years = 15
+				}
+				trigger_event = conqueror.0001
+			}
 		}
 	}
 	else_if = {
@@ -82,7 +98,10 @@ spawn_temujin_character_effect = {
 			form_the_mongol_empire_effect = yes
 			add_prestige = 25000
 			if = {
-				limit = { NOT = { has_perk = peacemaker_perk } }
+				limit = {
+					has_mpo_dlc_trigger = no
+					NOT = { has_perk = peacemaker_perk }
+				}
 				add_perk = peacemaker_perk
 			}
 			remove_trait = education_diplomacy_1
@@ -154,15 +173,15 @@ spawn_temujin_character_effect = {
 	}
 	else_if = {
 		limit = {
-			exists = character:1.dynasty
-			character:1.dynasty = {
+			exists = character:1
+			character:1 = {
 				any_dynasty_member = {
 					is_ai = no
 					is_landed = yes
 				}
 			}
 		}
-		character:1.dynasty = {
+		character:1 = {
 			random_dynasty_member = {
 				limit = {
 					is_ai = no
@@ -171,30 +190,43 @@ spawn_temujin_character_effect = {
 				save_scope_as = temujin
 			}
 		}
-		scope:temujin = {
-			# Make temporarily immune to disease
-			add_character_flag = {
-				flag = immune_to_disease
-				years = 15
-			}
+		if = {
+			limit = { has_mpo_dlc_trigger = no }
+			scope:temujin = {
+				# Make temporarily immune to disease
+				add_character_flag = {
+					flag = immune_to_disease
+					years = 15
+				}
 
-			add_trait = greatest_of_khans
-			form_the_mongol_empire_effect = yes
-			add_prestige = 25000
-			give_nickname = nick_genghis_khan
-			trigger_event = conqueror.0001
+				add_trait = greatest_of_khans
+				form_the_mongol_empire_effect = yes
+				add_prestige = 25000
+				give_nickname = nick_genghis_khan
+				trigger_event = conqueror.0001
+			}
+		}
+		else = {
+			scope:temujin = {
+				# Make temporarily immune to disease
+				add_character_flag = {
+					flag = immune_to_disease
+					years = 15
+				}
+				trigger_event = conqueror.0001
+			}
 		}
 	}
 	else_if = {
 		limit = {
-			exists = character:1.dynasty
-			character:1.dynasty = {
+			exists = character:1
+			character:1 = {
 				any_dynasty_member = {
 					is_physically_able_ai_adult = yes
 				}
 			}
 		}
-		character:1.dynasty = {
+		character:1 = {
 			random_dynasty_member = {
 				limit = {
 					is_physically_able_ai_adult = yes
@@ -221,7 +253,10 @@ spawn_temujin_character_effect = {
 			form_the_mongol_empire_effect = yes
 			add_prestige = 25000
 			if = {
-				limit = { NOT = { has_perk = peacemaker_perk } }
+				limit = {
+					has_mpo_dlc_trigger = no
+					NOT = { has_perk = peacemaker_perk }
+				}
 				add_perk = peacemaker_perk
 			}
 			remove_trait = education_diplomacy_1
@@ -291,7 +326,13 @@ spawn_temujin_character_effect = {
 			give_nickname = nick_genghis_khan
 		}
 	}
-	else = {
+	else_if = {
+		limit = {
+			#Generate Temujin if there has BEEN NO Temujin
+			NOT = {
+				has_global_variable = temujin_was_born
+			}
+		}
 		if = {
 			limit = { has_game_rule = inversed_gender_equality }
 			create_character = {
@@ -317,7 +358,10 @@ spawn_temujin_character_effect = {
 				add_prestige = 25000
 				give_nickname = nick_genghis_khan
 				if = {
-					limit = { NOT = { has_perk = peacemaker_perk } }
+					limit = {
+						has_mpo_dlc_trigger = no
+						NOT = { has_perk = peacemaker_perk }
+					}
 					add_perk = peacemaker_perk
 				}
 				dynasty = {
@@ -365,7 +409,10 @@ spawn_temujin_character_effect = {
 						add_prestige = 25000
 						give_nickname = nick_genghis_khan
 						if = {
-							limit = { NOT = { has_perk = peacemaker_perk } }
+							limit = {
+								has_mpo_dlc_trigger = no
+								NOT = { has_perk = peacemaker_perk }
+							}
 							add_perk = peacemaker_perk
 						}
 						dynasty = {
@@ -409,7 +456,10 @@ spawn_temujin_character_effect = {
 						add_prestige = 25000
 						give_nickname = nick_genghis_khan
 						if = {
-							limit = { NOT = { has_perk = peacemaker_perk } }
+							limit = {
+								has_mpo_dlc_trigger = no
+								NOT = { has_perk = peacemaker_perk }
+							}
 							add_perk = peacemaker_perk
 						}
 						dynasty = {
@@ -454,7 +504,10 @@ spawn_temujin_character_effect = {
 				add_prestige = 25000
 				give_nickname = nick_genghis_khan
 				if = {
-					limit = { NOT = { has_perk = peacemaker_perk } }
+					limit = {
+						has_mpo_dlc_trigger = no
+						NOT = { has_perk = peacemaker_perk }
+					}
 					add_perk = peacemaker_perk
 				}
 				dynasty = {
@@ -474,10 +527,83 @@ spawn_temujin_character_effect = {
 				}
 			}
 		}
+		set_global_variable = {
+			name =  temujin_was_born
+			value = scope:temujin
+		}
 	}
-
-	every_player = {
-		trigger_event = mongol_invasion.1002 # Mongol Empire spawned notification
+	#Create a character... but they're random, not Temujin
+	else = {
+		create_character = {
+			location = scope:temujins_birthplace
+			template = dynamic_genghis_character_template
+			save_scope_as = temujin
+		}
+		scope:temujin = {
+			# Make temporarily immune to disease
+			add_character_flag = {
+				flag = immune_to_disease
+				years = 15
+			}
+			add_trait = greatest_of_khans
+			give_temujin_land_effect = yes
+			add_gold = 5000
+			add_dread = high_dread
+			spawn_dynamic_mongol_court_effect = yes
+			form_the_mongol_empire_effect = yes
+			add_prestige = 25000
+			give_nickname = nick_genghis_khan
+			if = {
+				limit = {
+					has_mpo_dlc_trigger = no
+					NOT = { has_perk = peacemaker_perk }
+				}
+				add_perk = peacemaker_perk
+			}
+			dynasty = {
+				add_dynasty_prestige_level = 5
+				add_dynasty_prestige = 10000
+				add_dynasty_perk = warfare_legacy_1
+				add_dynasty_perk = warfare_legacy_2
+				add_dynasty_perk = warfare_legacy_3
+				add_dynasty_perk = warfare_legacy_4
+				add_dynasty_perk = warfare_legacy_5
+				if = {
+					limit = {
+						has_dlc_feature = hybridize_culture
+					}
+					add_dynasty_perk = ep1_culture_legacy_1
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			scope:temujin = {
+				is_ai = yes 
+			}
+		}
+		#Event for MPO dlc owners
+		if = {
+			limit = {
+				has_mpo_dlc_trigger = yes
+			}
+			every_player = {
+				trigger_event = mpo_greatest_of_khans.1001 #Genghis notification event
+			}
+		}
+		else = {
+			#Normal event
+			every_player = {
+				limit = {
+					NOT = {
+						this = scope:temujin
+					}
+				}
+				trigger_event = mongol_invasion.1002 # Mongol Empire spawned notification
+			}
+		}
 	}
 }
 
@@ -485,6 +611,29 @@ spawn_temujin_character_effect = {
 # Form the actual Mongol Empire...
 form_the_mongol_empire_effect = {
 	save_scope_as = mongol_founder
+
+	if = {
+		limit = {
+			is_tributary = yes
+		}
+		end_tributary = yes
+	}
+	if = {
+		limit = {
+			is_confederation_member = yes
+		}
+		scope:mongol_founder.confederation = {
+			remove_confederation_member = scope:mongol_founder
+		}
+		if = {
+			limit = {
+				government_has_flag = government_is_nomadic
+			}
+			show_as_tooltip = {
+				remove_character_modifier = mpo_confederation_member_modifier
+			}
+		}
+	}
 
 	#Create the title
 	create_title_and_vassal_change = {
@@ -499,31 +648,135 @@ form_the_mongol_empire_effect = {
 		}
 	}
 	resolve_title_and_vassal_change = scope:title_change
+
+
+	if = {
+		limit = {
+			is_independent_ruler = no
+		}
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = indpendence_change
+			add_claim_on_loss = no
+		}
+		becomes_independent = {
+			change = scope:indpendence_change
+		}
+		resolve_title_and_vassal_change = scope:indpendence_change
+	}
 	
 	if = {
 		limit = {
+			capital_county = {
+				title_province = {
+					has_holding_type = herder_holding
+				}
+			}
+		}
+		capital_county = {
+			title_province = {
+				set_holding_type = nomad_holding
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_mpo_dlc_trigger = yes
+			NOT = {
+				government_has_flag = government_is_nomadic
+			}
+		}
+		change_government = nomad_government
+		add_trait_force_tooltip = nomadic_philosophy
+	}
+	else_if = {
+		limit = {
+			has_mpo_dlc_trigger = no
 			NOT = {
 				government_has_flag = government_is_tribal
 			}
 		}
 		change_government = tribal_government
 	}
+	if = {
+		limit = {
+			government_has_flag = government_is_tribal
+		}
+		if = {
+			limit = { has_realm_law = tribal_authority_0 }
+			remove_realm_law = tribal_authority_0
+		}
+		if = {
+			limit = { has_realm_law = tribal_authority_1 }
+			remove_realm_law = tribal_authority_1
+		}
+		if = {
+			limit = { has_realm_law = tribal_authority_3 }
+			remove_realm_law = tribal_authority_3
+		}
+		add_realm_law_skip_effects = tribal_authority_2
 	
-	if = {
-		limit = { has_realm_law = tribal_authority_0 }
-		remove_realm_law = tribal_authority_0
+		add_realm_law_skip_effects = high_partition_succession_law
 	}
 	if = {
-		limit = { has_realm_law = tribal_authority_1 }
-		remove_realm_law = tribal_authority_1
+		limit = {
+			government_has_flag = government_is_nomadic
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_1 }
+			remove_realm_law = nomadic_authority_1
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_2 }
+			remove_realm_law = nomadic_authority_2
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_3 }
+			remove_realm_law = nomadic_authority_3
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_4 }
+			remove_realm_law = nomadic_authority_4
+		}
+		add_realm_law_skip_effects = nomadic_authority_5
+		if = {
+			limit = {
+				exists = domicile
+				domicile = {
+					free_external_domicile_building_slots >= 1
+					NOT = {
+						has_domicile_building_or_higher = mass_warfare_yurt_01
+					}
+				}
+			}
+			domicile = {
+				add_domicile_building = mass_warfare_yurt_01
+				add_domicile_building = mass_warfare_yurt_02
+				add_domicile_building = mass_warfare_yurt_03
+			}
+		}
+		if = {
+			limit = {
+				exists = domicile
+				domicile = {
+					free_external_domicile_building_slots >= 1
+					NOT = {
+						has_domicile_building_or_higher = character_warfare_yurt_03
+					}
+				}
+			}
+			domicile = {
+				add_domicile_building = character_warfare_yurt_01
+				add_domicile_building = character_warfare_yurt_02
+				add_domicile_building = character_warfare_yurt_03
+			}
+		}
+		domicile = {
+			change_herd = {
+				add = nomadic_authority_level_5_requirement
+			}
+		}
 	}
-	if = {
-		limit = { has_realm_law = tribal_authority_3 }
-		remove_realm_law = tribal_authority_3
-	}
-	add_realm_law_skip_effects = tribal_authority_2
-
-	add_realm_law_skip_effects = high_partition_succession_law
 
 	assert_if = {
 		limit = { NOT = { exists = title:e_mongol_empire } }
@@ -552,241 +805,529 @@ form_the_mongol_empire_effect = {
 
 # Make sure the Empire has troops...
 spawn_mongol_troops_effect = {
-	spawn_army = {
-		uses_supply = no
-		inheritable = no
-		name = mongol_event_troops
-		men_at_arms = {
-			type = horse_archers
-			stacks = 14
+	if = {
+		limit = {
+			has_mpo_dlc_trigger = yes
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = mangudai
+				stacks = 14
+			}
+			men_at_arms = {
+				type = heavy_horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = mangudai
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = armored_horsemen
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = mangudai
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = mangudai
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = heavy_horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 10
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 20
+			}
+			men_at_arms = {
+				type = torch_bearers
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		location = capital_province
-		origin = capital_province
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 20
+			}
+			men_at_arms = {
+				type = torch_bearers
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
+		}
 	}
-	spawn_army = {
-		uses_supply = no
-		inheritable = no
-		name = mongol_event_troops
-		levies = {
-			value = 5000
+	else = {
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			men_at_arms = {
+				type = horse_archers
+				stacks = 14
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = armored_horsemen
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			levies = {
+				value = 5000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = armored_horsemen
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			levies = {
+				value = 5000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = armored_horsemen
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			levies = {
+				value = 5000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = armored_horsemen
+				stacks = 3
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 5
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			stacks = 3
-		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 5
-		}
-		location = capital_province
-		origin = capital_province
-	}
-	spawn_army = {
-		uses_supply = no
-		inheritable = no
-		name = mongol_event_troops
-		levies = {
-			value = 5000
-		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
-		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
-		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			stacks = 3
-		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 5
-		}
-		location = capital_province
-		origin = capital_province
-	}
-	spawn_army = {
-		uses_supply = no
-		inheritable = no
-		name = mongol_event_troops
-		levies = {
-			value = 5000
-		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
-		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 10
-		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			stacks = 3
-		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 5
-		}
-		location = capital_province
-		origin = capital_province
 	}
 }
 
 spawn_mongol_troops_condensed_effect = {
-	spawn_army = {
-		uses_supply = no
-		inheritable = no
-		name = mongol_event_troops
-		levies = {
-			value = 15000
+	if = {
+		limit = {
+			has_mpo_dlc_trigger = yes
 		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 74
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			men_at_arms = {
+				type = horse_archers
+				stacks = 40
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 100
+			}
+			men_at_arms = {
+				type = heavy_horse_archers
+				stacks = 20
+			}
+			men_at_arms = {
+				type = mangudai
+				stacks = 44
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 14
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 25
+			}
+			men_at_arms = {
+				type = torch_bearers
+				stacks = 10
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 70
+	}
+	else = {
+		spawn_army = {
+			uses_supply = no
+			inheritable = no
+			name = mongol_event_troops
+			levies = {
+				value = 15000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 74
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 70
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 10
+			}
+			men_at_arms = {
+				type = armored_horsemen
+				stacks = 14
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 25
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 10
-		}
-		men_at_arms = {
-			type = armored_horsemen
-			stacks = 14
-		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 25
-		}
-		location = capital_province
-		origin = capital_province
 	}
 }
 
 spawn_mongol_successor_state_troops_effect = {
-	spawn_army = {
-		uses_supply = no
-		inheritable = yes
-		name = mongol_event_troops
-		levies = {
-			value = 1000
+	if = {
+		limit = {
+			has_mpo_dlc_trigger = yes
 		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = nomadic_riders
+				stacks = 7
+			}
+			men_at_arms = {
+				type = mangudai
+				stacks = 5
+			}
+			men_at_arms = {
+				type = steppe_raiders
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = nomadic_riders
+				stacks = 7
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = nomad_lancers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 3
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			men_at_arms = {
+				type = nomadic_riders
+				stacks = 7
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = heavy_horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		location = capital_province
-		origin = capital_province
 	}
-	spawn_army = {
-		uses_supply = no
-		inheritable = yes
-		name = mongol_event_troops
-		levies = {
-			value = 1000
+	else = {
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			levies = {
+				value = 1000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			levies = {
+				value = 1000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 5
+		spawn_army = {
+			uses_supply = no
+			inheritable = yes
+			name = mongol_event_troops
+			levies = {
+				value = 1000
+			}
+			men_at_arms = {
+				type = horse_archers
+				stacks = 5
+			}
+			men_at_arms = {
+				type = light_horsemen
+				stacks = 5
+			}
+			men_at_arms = {
+				type = trebuchet
+				stacks = 3
+			}
+			location = capital_province
+			origin = capital_province
 		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 3
-		}
-		location = capital_province
-		origin = capital_province
 	}
-	spawn_army = {
-		uses_supply = no
-		inheritable = yes
-		name = mongol_event_troops
-		levies = {
-			value = 1000
-		}
-		men_at_arms = {
-			type = horse_archers
-			stacks = 5
-		}
-		men_at_arms = {
-			type = light_horsemen
-			stacks = 5
-		}
-		men_at_arms = {
-			type = trebuchet
-			stacks = 3
-		}
-		location = capital_province
-		origin = capital_province
-	}
+	
 }
 
 ### Populating the life of Temujin...
@@ -1047,6 +1588,223 @@ spawn_temujins_court_effect = {
 	}
 }
 
+### Populating the life of Temujin...
+spawn_dynamic_mongol_court_effect = {
+	add_character_flag = is_temujin
+
+	if = {
+		limit = {
+			scope:temujin = {
+				is_female = no
+			}
+		}
+		save_scope_as = great_khan_family_father
+	}
+	else = {
+		save_scope_as = great_khan_family_mother
+	}
+	if = {
+		limit = {
+			exists = scope:great_khan_family_father
+		}
+		create_character = {
+			template = dynamic_genghis_spouse_template
+			gender = female
+			employer = scope:temujin
+			save_scope_as = genghis_spouse
+		}
+		scope:genghis_spouse = {
+			save_scope_as = great_khan_family_mother
+		}
+	}
+	else = {
+		create_character = {
+			template = dynamic_genghis_spouse_template
+			gender = male
+			employer = scope:temujin
+			save_scope_as = genghis_spouse
+		}
+		scope:genghis_spouse = {
+			save_scope_as = great_khan_family_father
+		}
+	}
+	scope:genghis_spouse = {
+		marry = scope:temujin
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+	create_character = {
+		template = dynamic_genghis_child_template
+		employer = scope:temujin
+		father = scope:great_khan_family_father
+		mother = scope:great_khan_family_mother
+		dynasty = inherit
+		save_scope_as = genghis_child_1
+	}
+	scope:genghis_child_1 = {
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+	create_character = {
+		template = dynamic_genghis_child_template
+		employer = scope:temujin
+		father = scope:great_khan_family_father
+		mother = scope:great_khan_family_mother
+		dynasty = inherit
+		save_scope_as = genghis_child_2
+	}
+	scope:genghis_child_2 = {
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+	create_character = {
+		template = dynamic_genghis_child_template
+		employer = scope:temujin
+		father = scope:great_khan_family_father
+		mother = scope:great_khan_family_mother
+		dynasty = inherit
+		save_scope_as = genghis_child_3
+	}
+	scope:genghis_child_3 = {
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+	create_character = {
+		template = dynamic_genghis_child_template
+		employer = scope:temujin
+		father = scope:great_khan_family_father
+		mother = scope:great_khan_family_mother
+		dynasty = inherit
+		save_scope_as = genghis_child_4
+	}
+	scope:genghis_child_4 = {
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+	create_character = {
+		template = dynamic_genghis_child_template
+		employer = scope:temujin
+		father = scope:great_khan_family_father
+		mother = scope:great_khan_family_mother
+		dynasty = inherit
+		save_scope_as = genghis_child_5
+	}
+	scope:genghis_child_5 = {
+		# Make temporarily immune to disease
+		add_character_flag = {
+			flag = immune_to_disease
+			years = 10
+		}
+	}
+
+	recruit_three_nomadic_capital_characters_effect = {
+		NOMAD_TEMPLATE_CHARACTER = nomadic_commander_template
+	}
+	
+	# Spawn some generic Bagathurs
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_warrior_character
+		faith = scope:temujin.faith
+		culture = scope:temujin.culture
+	}
+	
+	# Spawn some captured Han siege engineers
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_siege_engineer
+		faith = faith:shangqing
+		culture = culture:han
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_siege_engineer
+		faith = faith:shangqing
+		culture = culture:han
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_siege_engineer
+		faith = faith:shangqing
+		culture = culture:han
+	}
+	create_character = {
+		gender_female_chance = temujin_soldier_female_chance
+		employer = scope:temujin
+		template = new_siege_engineer
+		faith = faith:shangqing
+		culture = culture:han
+	}
+}
+
 ### Start war of conquest for the Mongolian heartland
 start_wars_for_mongolia_effect = {
 	save_temporary_scope_as = mongol_conqueror
@@ -1054,8 +1812,10 @@ start_wars_for_mongolia_effect = {
 	every_neighboring_top_liege_realm_owner = {
 		limit = {
 			any_sub_realm_county = {
+				is_landless_type_title = no
 				title_province = { geographical_region = special_mongol_empire_start_region }
 			}
+			is_landed = yes
 		}
 		if = {
 			limit = { NOT = { is_in_list = top_liege_targets } }
@@ -1064,14 +1824,31 @@ start_wars_for_mongolia_effect = {
 	}
 	every_in_list = {
 		list = top_liege_targets
-		save_temporary_scope_as = new_war_target
-		primary_title.empire = { save_temporary_scope_as = war_target_title }
-		# Declare the war
-		scope:mongol_conqueror = {
-			start_war = {
-				cb = mongol_realm_invasion_war
-				target = scope:new_war_target.top_liege
-				target_title = scope:war_target_title.empire
+		if = {
+			limit = {
+				government_has_flag = government_is_herder
+			}
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = scope:mongol_conqueror
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+		}
+		else = {
+			save_temporary_scope_as = new_war_target
+			capital_county.empire = { save_temporary_scope_as = war_target_title }
+			# Declare the war
+			scope:mongol_conqueror = {
+				start_war = {
+					cb = mongol_realm_invasion_war
+					target = scope:new_war_target.top_liege
+					target_title = scope:war_target_title
+				}
 			}
 		}
 	}
@@ -1286,6 +2063,17 @@ mongols_devastate_county_effect = {
 		multiply = 0.5
 		floor = yes
 	}
+	random = {
+		chance = 25
+		random_county_province = {
+			limit = {
+				has_holding = yes
+				num_buildings >= 2
+			}
+			destroy_random_building_variable_effect = yes
+			destroy_random_building_effect = yes
+		}
+	}
 }
 
 
@@ -1395,10 +2183,142 @@ assign_core_mongol_titles_to_heir_effect = {
 		}
 		set_realm_capital = title:e_mongolia.title_capital_county
 	}
-	spawn_mongol_successor_state_troops_effect = yes
+	#The primary heir of the Mongol emperor will likely be inheriting big special armies if MPO is active
+	if = {
+		limit = {
+			has_mpo_dlc_trigger = no
+			NOT = {
+				is_primary_heir_of = scope:old_mongol_emperor
+			}
+		}
+		spawn_mongol_successor_state_troops_effect = yes
+	}
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	if = {
+		limit = {
+			government_has_flag = government_is_nomadic
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_1 }
+			remove_realm_law = nomadic_authority_1
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_2 }
+			remove_realm_law = nomadic_authority_2
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_3 }
+			remove_realm_law = nomadic_authority_3
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_5 }
+			remove_realm_law = nomadic_authority_5
+		}
+		add_realm_law = nomadic_authority_4
+		if = {
+			limit = {
+				exists = domicile
+				domicile = {
+					free_external_domicile_building_slots >= 1
+					NOT = {
+						has_domicile_building_or_higher = mass_warfare_yurt_01
+					}
+				}
+			}
+			domicile = {
+					add_domicile_building = mass_warfare_yurt_01
+					add_domicile_building = mass_warfare_yurt_02
+					add_domicile_building = mass_warfare_yurt_03
+			}
+		}
+		domicile = {
+			change_herd = monumental_herd_value
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_held_title = {
+						is_nomad_title = yes
+					}
+				}
+			}
+			save_scope_as = holder
+			create_nomad_title = {
+				name = nomad_title_name
+				holder = scope:holder
+				government = nomad_government
+				save_scope_as = new_nomad_title
+			}
+		}
+	}
+}
+
+grant_mongol_successor_nomadic_bonuses_effect = {
+	if = {
+		limit = {
+			government_has_flag = government_is_nomadic
+		}
+		#They might not have a nomadic camp title, create if needed
+		if = {
+			limit = {
+				NOT = {
+					any_held_title = {
+						is_nomad_title = yes
+					}
+				}
+			}
+			save_scope_as = holder
+			create_nomad_title = {
+				name = nomad_title_name
+				holder = scope:holder
+				government = nomad_government
+				save_scope_as = new_nomad_title
+			}
+		}
+		if = {
+			limit = {
+				government_has_flag = government_is_nomadic
+			}
+			if = {
+				limit = { has_realm_law = nomadic_authority_1 }
+				remove_realm_law = nomadic_authority_1
+			}
+			if = {
+				limit = { has_realm_law = nomadic_authority_2 }
+				remove_realm_law = nomadic_authority_2
+			}
+			if = {
+				limit = { has_realm_law = nomadic_authority_3 }
+				remove_realm_law = nomadic_authority_3
+			}
+			if = {
+				limit = { has_realm_law = nomadic_authority_5 }
+				remove_realm_law = nomadic_authority_5
+			}
+			add_realm_law = nomadic_authority_4
+			if = {
+				limit = {
+					exists = domicile
+					domicile = {
+						free_external_domicile_building_slots >= 1
+						NOT = {
+							has_domicile_building_or_higher = mass_warfare_yurt_01
+						}
+					}
+				}
+				domicile = {
+					add_domicile_building = mass_warfare_yurt_01
+					add_domicile_building = mass_warfare_yurt_02
+					add_domicile_building = mass_warfare_yurt_03
+				}
+			}
+			domicile = {
+				change_herd = monumental_herd_value
+			}
+		}
+	}
 }
 
 grant_ilkhanate_effect = {
@@ -1548,6 +2468,7 @@ grant_ilkhanate_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_golden_horde_effect = {
@@ -1850,6 +2771,7 @@ grant_chagatai_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_black_horde_effect = {
@@ -2000,6 +2922,7 @@ grant_black_horde_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_white_horde_effect = {
@@ -2150,6 +3073,7 @@ grant_white_horde_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_aarlud_khanate_effect = {
@@ -2300,6 +3224,7 @@ grant_aarlud_khanate_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_togskol_khanate_effect = {
@@ -2450,6 +3375,7 @@ grant_togskol_khanate_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
 
 grant_baruun_khanate_effect = {
@@ -2600,8 +3526,8 @@ grant_baruun_khanate_effect = {
 	add_gold = 1000
 	add_dread = 100
 	create_story = story_conqueror
+	grant_mongol_successor_nomadic_bonuses_effect = yes
 }
-
 
 # Effect to clean up borders a little
 pick_up_remaining_counties_effect = {
@@ -6516,6 +7442,10 @@ grant_suitable_title_to_candidate_effect = {
 
 break_up_mongol_empire_effect = { # Intended to run in the Mongol Emperor's scope
 	save_scope_as = old_mongol_emperor
+
+	every_tributary = {
+		add_to_list = mongol_tributaries
+	}
 	
 	every_held_title = { # Clean up excess kingdoms
 		limit = {
@@ -7228,4 +8158,73 @@ break_up_mongol_empire_effect = { # Intended to run in the Mongol Emperor's scop
 			}
 		}
 	}
+	scope:mongolia_ruler = {
+		#Allocate tributaries of mongol empire or give them independence
+		trigger_event = {
+			id = mongol_invasion.3000
+			days = 1
+		}
+	}
+	
+}
+
+# Special stuff for player Temüjin, disbursed in event conqueror.0001
+form_the_mongol_empire_player_effect = {
+	if = {
+		limit = {
+			is_independent_ruler = no
+		}
+		create_title_and_vassal_change = {
+			type = independency
+			save_scope_as = indpendence_change
+			add_claim_on_loss = no
+		}
+		becomes_independent = {
+			change = scope:indpendence_change
+		}
+		resolve_title_and_vassal_change = scope:indpendence_change
+	}
+	#Create the title
+	create_title_and_vassal_change = {
+		type = created
+		save_scope_as = title_change
+		add_claim_on_loss = no
+	}
+	title:e_mongol_empire = {
+		change_title_holder = {
+			holder = root
+			change = scope:title_change
+		}
+	}
+	resolve_title_and_vassal_change = scope:title_change
+	capital_county.kingdom = {
+		set_de_jure_liege_title = title:e_mongol_empire
+	}
+	add_gold = 5000
+	add_dread = high_dread
+	add_prestige = 25000
+	domicile = {
+		change_herd = {
+			add = nomadic_authority_level_5_requirement
+		}
+	}
+	hidden_effect = {
+		if = {
+			limit = { has_realm_law = nomadic_authority_1 }
+			remove_realm_law = nomadic_authority_1
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_2 }
+			remove_realm_law = nomadic_authority_2
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_3 }
+			remove_realm_law = nomadic_authority_3
+		}
+		if = {
+			limit = { has_realm_law = nomadic_authority_4 }
+			remove_realm_law = nomadic_authority_4
+		}
+	}
+	add_realm_law_skip_effects = nomadic_authority_5
 }

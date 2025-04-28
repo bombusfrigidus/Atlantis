@@ -32,6 +32,29 @@ on_game_start_with_tutorial = {
 				add_building = curtain_walls_01
 			}
 		}
+		title:b_atlantis.title_province = {
+			add_building = common_tradeport_01
+			add_building = peat_quarries_01
+			if = {
+				limit = {
+					building_slots >= 1
+					NOT = {
+						has_building = curtain_walls_01
+					}
+				}
+				add_building = curtain_walls_01
+			}
+			else_if = {
+				limit = {
+					building_slots <= 0
+					NOT = {
+						has_building = curtain_walls_01
+					}
+				}
+				add_province_modifier = extra_building_slot
+				add_building = curtain_walls_01
+			}
+		}
 		title:d_normandy.holder = {
 			every_close_or_extended_family_member = {
 				limit = {
