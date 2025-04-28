@@ -122,6 +122,71 @@ graphical_steppe = {
 #########################
 #### VANILLA REGIONS ####
 #########################
+world_europe_south = {
+	duchies = {
+		d_atlantis
+	}
+}
+world_europe = { 
+	regions = {
+		world_europe_south
+	}
+}
+material_wood_walnut = {
+	regions = {
+		world_europe_south
+	}
+}
+material_wood_maple = {
+	regions = {
+		world_europe_south
+	}
+}
+material_woods_dogwood = {
+	regions = {
+		world_europe_south
+	}
+}
+material_woods_hazel = {
+	regions = {
+		world_europe_south
+	}
+}
+material_cloth_linen = {
+	regions = {
+		world_europe_south
+	}
+}
+material_hsb_deer_antler = {
+	regions = {
+		world_europe_south
+	}
+}
+material_hsb_boar_tusk = {
+	regions = {
+		world_europe_south
+	}
+}
+sea_atlantic_ocean = {
+	regions = {
+		sea_south_atlantic
+	}
+}
+sea_south_atlantic = {
+	provinces = {
+		10 11 12 13
+	}
+}
+hunt_animal_deer_region = {
+	regions = {
+		# Europe
+		world_europe
+	}
+}
+
+################################
+#### UNUSED VANILLA REGIONS ####
+################################
 world_europe_west_britannia = { }
 world_europe_west_germania = { }
 world_europe_west_francia = { }
@@ -130,11 +195,6 @@ world_europe_west = { }
 world_europe_north = { }
 world_europe_south_east = { }
 world_europe_south_italy = { }
-world_europe_south = {
-	duchies = {
-		d_atlantis
-	}
-}
 world_europe_east = { }
 world_asia_minor = { }
 world_middle_east_jerusalem = { }
@@ -153,30 +213,17 @@ world_africa_east = { }
 world_africa = { }
 world_steppe_tarim = { }
 world_steppe_west = { }
+world_steppe_central = { }
 world_steppe_east = { }
+world_siberia = { }
 world_tibet = { }
 world_himalaya = { }
 world_burma = { }
 custom_arakan_mountains = { }
 world_steppe = { generate_modifiers = yes }
-world_europe = { 
-	regions = {
-		world_europe_south
-	}
-}
 world_middle_east = { }
 world_india = { }
 material_wood_elm = { }
-material_wood_walnut = {
-	regions = {
-		world_europe_south
-	}
-}
-material_wood_maple = {
-	regions = {
-		world_europe_south
-	}
-}
 material_woods_pine_and_fir = { }
 material_woods_subsaharan = { }
 material_woods_padauk = { }
@@ -186,42 +233,18 @@ material_woods_ebony = { }
 material_woods_yew = { }
 material_woods_bamboo = { }
 material_woods_cherry = { }
-material_woods_dogwood = {
-	regions = {
-		world_europe_south
-	}
-}
-material_woods_hazel = {
-	regions = {
-		world_europe_south
-	}
-}
+material_woods_dogwood = { }
 material_woods_hickory = { }
 material_woods_palm = { }
 material_woods_mulberry = { }
 material_woods_mediterranean = { }
 material_woods_sri_lanka = { }
 material_cloth_no_silk = { }
-material_cloth_linen = {
-	regions = {
-		world_europe_south
-	}
-}
 material_cloth_cotton = { }
 material_metal_wootz = { }
 material_metal_damascus = { }
 material_metal_bulat = { }
 material_hsb_camel_bone = { }
-material_hsb_deer_antler = {
-	regions = {
-		world_europe_south
-	}
-}
-material_hsb_boar_tusk = {
-	regions = {
-		world_europe_south
-	}
-}
 material_hsb_ivory_imported = { }
 material_hsb_ivory_native = { }
 material_hsb_mother_of_pearl = { }
@@ -302,6 +325,12 @@ custom_iceland = { }
 custom_gotland = { }
 custom_polabia = { }
 custom_beth_nahrain = { }
+graphical_western = { }
+graphical_mena = { }
+graphical_india = { }
+graphical_mediterranean = { }
+graphical_steppe = { }
+graphical_siberia = { }
 world_innovation_elephants = { generate_modifiers = yes }
 world_innovation_camels = { generate_modifiers = yes }
 world_horse_buildings_in_hills_and_mountains = { }
@@ -388,6 +417,7 @@ ghw_region_hungary = { }
 ghw_region_wendish_lands = { }
 ghw_region_mainland_greece = { }
 ghw_region_italy = { }
+ghw_region_finland_&_estonia = { }
 ghw_region_northern_russia = { }
 ghw_region_southern_russia = { }
 ghw_region_siberia = { }
@@ -401,7 +431,9 @@ ghw_region_southern_india = { }
 ghw_region_southwestern_india = { }
 ghw_region_the_ganges = { }
 ghw_region_non_ganges_india = { }
+ghw_region_gujarat_&_rajputana = { }
 ghw_region_non_gujarat_or_rajputana_india = { }
+ghw_region_lanka_&_bengal = { }
 ghw_region_middle_india = { }
 ghw_region_north_eastern_india = { }
 islamic_heartlands = { }
@@ -456,12 +488,24 @@ dlc_ep1_west_africa_trade_region = { }
 dlc_ep1_indian_trade_region = { }
 dlc_ep1_southwest_silk_road_trade_region = { }
 dlc_ep1_arthurian_heartlands_region = { }
+dlc_mpo_867_herders = { }
+dlc_mpo_1066_herders = { }
+dlc_mpo_1178_herders = { }
+dlc_mpo_867_nomads = { }
+dlc_mpo_1066_nomads = { }
+dlc_mpo_1178_nomads = { }
+kirghiz_homelands = { }
+dlc_mpo_steppe_east_buryatia_addon = { }
+dlc_mpo_steppe_central_siberia_addon = { }
+dlc_mpo_steppe_caucasus_expansion = { }
+dlc_mpo_steppe_persia_expansion = { }
+dlc_mpo_steppe_siberia_further_expansion = { }
+heritage_area_pontic_steppe = { }
+heritage_area_volga_bulgaria = { }
+heritage_area_perm = { }
+heritage_area_turkestan = { }
+heritage_area_cumania = { }
 divergence_island_regions = { }
-sea_atlantic_ocean = {
-	regions = {
-		sea_south_atlantic
-	}
-}
 sea_north_atlantic = { }
 sea_baltic_sea = { }
 sea_north_sea = { }
@@ -476,11 +520,6 @@ sea_ionian_sea = { }
 sea_adriatic_sea = { }
 sea_aegean_sea = { }
 sea_black_sea = { }
-sea_south_atlantic = {
-	provinces = {
-		10 11 12 13
-	}
-}
 sea_gulf_of_guinea = { }
 sea_indian_ocean = { }
 sea_bay_of_somalia = { }
@@ -492,12 +531,6 @@ sea_bay_of_bengal = { }
 sea_inland_steppe_seas = { }
 sea_caspian_sea = { }
 sea_aral_sea = { }
-hunt_animal_deer_region = {
-	regions = {
-		# Europe
-		world_europe
-	}
-}
 hunt_animal_antelope_region = { }
 hunt_animal_gazelle_region = { }
 hunt_animal_boar_region = { }
@@ -522,4 +555,14 @@ seasonal_region_bengal = { }
 seasonal_region_burma = { }
 seasonal_region_east_africa = { }
 seasonal_region_west_africa = { }
+mpo_region_permafrost = { }
 cp4_music_area = { }
+sami_nomad_area = { }
+karelia_nomad_area = { }
+arab_nomad_area = { }
+egypt_nomad_area = { }
+sahel_desert_nomad_area = { }
+sahel_north_africa_nomad_area = { }
+sahel_sub_saharan_africa_nomad_area = { }
+horn_of_africa_nomad_area = { }
+nubia_nomad_area = { }
