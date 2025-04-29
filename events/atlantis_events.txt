@@ -226,6 +226,8 @@ atlantis.0001 = {
 		trigger_event = fp1_scandinavian_adventurers.0021
 		trigger_event = debug_portraits.1
 		trigger_event = mpo_misc.0002
+		trigger_event = mpo_greatest_of_khans.1001
+		trigger_event = mongol_invasion.1002
 		trigger_event = roman_restoration.1200
 		trigger_event = diarchy.8021
 		trigger_event = game_rule.1151
@@ -249,7 +251,7 @@ atlantis.0001 = {
 		trigger_event = cid.0001
 		trigger_event = hasan_sabbah.1000
 
-		fix_scope_error = { ERROR = nickname_override }
+		save_scope_as = nickname_override 
 		fix_variable_error = { ERROR = game_has_started }
 		fix_variable_error = { ERROR = fully_landlocked_nomad_cultures }
 		fix_variable_error = { ERROR = deterministic_conquest_of_england_1066 }
