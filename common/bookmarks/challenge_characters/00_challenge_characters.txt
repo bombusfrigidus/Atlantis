@@ -7,7 +7,7 @@
 		type = male
 		birth = 1.1.1
 		title = d_atlantis
-		government = tribal_government
+		government = feudal_government
 		culture = atlantean
 		religion = atlantite
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"

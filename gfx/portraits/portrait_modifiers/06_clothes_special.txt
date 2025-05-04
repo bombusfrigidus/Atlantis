@@ -193,14 +193,7 @@
             }
         }
         weight = {
-            base = 0 
-            modifier = {
-                add = 1000
-				exists = character:1
-                this = character:1
-            }
+            base = 0
         }
     }
-
 }
-

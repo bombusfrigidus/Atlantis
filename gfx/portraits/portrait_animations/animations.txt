@@ -221,7 +221,7 @@ idle = {
 			weight = {
 				base = 0
 				modifier = {
-					add = 5000
+					add = 0
 					this = character:1
 				}
 			}
@@ -249,7 +249,7 @@ idle = {
 			weight = {
 				base = 0
 				modifier = {
-					add = 5000
+					add = 0
 					this = character:1
 				}
 			}
@@ -268,7 +268,7 @@ idle = {
 			weight = {
 				base = 0
 				modifier = {
-					add = 5000
+					add = 0
 					this = character:1
 				}
 			}
@@ -1128,7 +1128,7 @@ idle = {
 					NOT = { has_trait = pregnant }
 				}
 				modifier = {
-					add = 5000
+					add = 0
 					OR = {
 						this = character:1
 						this = character:1
