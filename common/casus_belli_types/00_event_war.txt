@@ -1492,33 +1492,31 @@ hungarian_migration_cb = {
 		scope:attacker = {
 			remove_character_flag = undertaking_hungarian_migration
 			#One army to conquer.
-			spawn_army = {
-				name = event_troop_default_name
-				levies = 2000
-				men_at_arms = {
-					type = horse_archers
-					stacks = 10
-				}
-				location = scope:attacker.capital_province
-				uses_supply = no
-				war = scope:war
-				inheritable = no
-			}
-			#And one army to hold.
-			spawn_army = {
-				name = event_troop_default_name
-				levies = 1000
-				men_at_arms = {
-					type = horse_archers
-					stacks = 10
-				}
-				location = scope:attacker.capital_province
-				uses_supply = no
-				inheritable = no
-			}
-			#If we're a few decades in, beef the Mogyers a bit with another temporary army.
 			if = {
-				limit = { current_date >= 890.1.1 }
+				limit = {
+					has_mpo_dlc_trigger = yes
+				}
+				spawn_army = {
+					name = event_troop_default_name
+					men_at_arms = {
+						type = nomadic_riders
+						stacks = 20
+					}
+					men_at_arms = {
+						type = heavy_horse_archers
+						stacks = 5
+					}
+					men_at_arms = {
+						type = steppe_raiders
+						stacks = 5
+					}
+					location = scope:attacker.capital_province
+					uses_supply = no
+					war = scope:war
+					inheritable = no
+				}
+			}
+			else = {
 				spawn_army = {
 					name = event_troop_default_name
 					levies = 2000
@@ -1532,9 +1530,27 @@ hungarian_migration_cb = {
 					inheritable = no
 				}
 			}
-			#And if we're almost out of the valid time-frame, add another holding army.
+			#And one army to hold.
 			if = {
-				limit = { current_date >= 905.1.1 }
+				limit = {
+					has_mpo_dlc_trigger = yes
+				}
+				spawn_army = {
+					name = event_troop_default_name
+					men_at_arms = {
+						type = nomadic_riders
+						stacks = 10
+					}
+					men_at_arms = {
+						type = horse_archers
+						stacks = 10
+					}
+					location = scope:attacker.capital_province
+					uses_supply = no
+					inheritable = no
+				}
+			}
+			else = {
 				spawn_army = {
 					name = event_troop_default_name
 					levies = 1000
@@ -1545,6 +1561,85 @@ hungarian_migration_cb = {
 					location = scope:attacker.capital_province
 					uses_supply = no
 					inheritable = no
+				}
+			}
+			
+			#If we're a few decades in, beef the Mogyers a bit with another temporary army.
+			if = {
+				limit = { current_date >= 890.1.1 }
+				if = {
+					limit = {
+						has_mpo_dlc_trigger = yes
+					}
+					spawn_army = {
+						name = event_troop_default_name
+						men_at_arms = {
+							type = nomadic_riders
+							stacks = 20
+						}
+						men_at_arms = {
+							type = heavy_horse_archers
+							stacks = 5
+						}
+						men_at_arms = {
+							type = steppe_raiders
+							stacks = 5
+						}
+						location = scope:attacker.capital_province
+						uses_supply = no
+						war = scope:war
+						inheritable = no
+					}
+				}
+				else = {
+					spawn_army = {
+						name = event_troop_default_name
+						levies = 2000
+						men_at_arms = {
+							type = horse_archers
+							stacks = 10
+						}
+						location = scope:attacker.capital_province
+						uses_supply = no
+						war = scope:war
+						inheritable = no
+					}
+				}
+			}
+			#And if we're almost out of the valid time-frame, add another holding army.
+			if = {
+				limit = { current_date >= 905.1.1 }
+				if = {
+					limit = {
+						has_mpo_dlc_trigger = yes
+					}
+					spawn_army = {
+						name = event_troop_default_name
+						men_at_arms = {
+							type = nomadic_riders
+							stacks = 10
+						}
+						men_at_arms = {
+							type = horse_archers
+							stacks = 10
+						}
+						location = scope:attacker.capital_province
+						uses_supply = no
+						inheritable = no
+					}
+				}
+				else = {
+					spawn_army = {
+						name = event_troop_default_name
+						levies = 1000
+						men_at_arms = {
+							type = horse_archers
+							stacks = 10
+						}
+						location = scope:attacker.capital_province
+						uses_supply = no
+						inheritable = no
+					}
 				}
 			}
 		}

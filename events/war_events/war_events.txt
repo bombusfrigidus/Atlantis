@@ -84,7 +84,7 @@ war_event.2001 = {
 				factor = 0
 				scope:defender = {
 					is_ai = yes
-					has_title = title:e_mongol_empire
+					mpo_has_gok_mongol_empire_trigger = yes
 				}
 			}
 		}
@@ -109,7 +109,7 @@ war_event.2001 = {
 				add = 100
 				scope:defender = {
 					is_ai = yes
-					has_title = title:e_mongol_empire
+					mpo_has_gok_mongol_empire_trigger = yes
 				}
 			}
 		}

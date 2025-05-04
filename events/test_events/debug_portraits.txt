@@ -6,6 +6,18 @@ debug_portraits.1 = {
 
 	immediate = {
 		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
+		character:1 = { make_unprunable = yes }
 	}
 }
 

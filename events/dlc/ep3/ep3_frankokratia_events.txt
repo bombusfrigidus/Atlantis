@@ -1877,7 +1877,11 @@ ep3_frankokratia_events.0031 = {
 	}
 	right_portrait = {
 		character = scope:byz_claimant
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 		camera = camera_event_right_forward
 	}
 	lower_right_portrait = {
@@ -2797,18 +2801,14 @@ ep3_frankokratia_events.0042 = {
 	}
 
 	lower_left_portrait = {
-		character = scope:emp_beneficiary_3
-	}
-	lower_center_portrait = {
 		character = scope:emp_beneficiary_2
 	}
-	lower_right_portrait = {
+	lower_center_portrait = {
 		character = scope:emp_beneficiary
 	}
 	
 	immediate = {
 		play_music_cue = "mx_cue_combat_2"
-		#TODO_CD_EP3_JC are we getting new byzantine music cue?
 		add_character_flag = need_military_outfit
 		#Save beneficiaries
 		hidden_effect_new_object = {
@@ -4270,8 +4270,7 @@ ep3_frankokratia_events.0046 = {
 				}
 			}
 		}
-	}
-	after = {
+		
 		if = {
 			limit = { root = scope:latin_emperor }
 			trigger_event = {
@@ -4621,7 +4620,11 @@ ep3_frankokratia_events.0060 = {
 
 	left_portrait = {
 		character = scope:latin_emperor
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 
 	right_portrait = {
@@ -4636,12 +4639,14 @@ ep3_frankokratia_events.0060 = {
 		}
 		triggered_animation = {
 			trigger = {
+				religion = religion:christianity_religion
 				root = {
 					NOT = { has_character_flag = frankokratia_crusaders_lose_outcome }
 				}
 			}
-			animation = scepter
+			animation = scepter # anim uses crucifix scepter
 		}
+		animation = war_over_tie
 		camera = camera_event_right_forward
 	}
 
@@ -7116,7 +7121,11 @@ ep3_frankokratia_events.0110 = {
 	}
 	left_portrait = {
 		character = scope:emperor
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	right_portrait = {
 		character = scope:financier
@@ -8532,7 +8541,11 @@ ep3_frankokratia_events.0130 = {
 	}
 	left_portrait = {
 		character = scope:byz_emperor
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_right_portrait = scope:latin_emperor
 	immediate = {

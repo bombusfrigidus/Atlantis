@@ -1598,6 +1598,7 @@ fp2_lyonese_monk.0401 = {
 
 scripted_trigger fp2_lyonese_monk_0411_county_to_give_trigger = {
 	tier = tier_county
+	is_landless_type_title = no
 	NOT = { this = scope:acolyte_host.capital_county }
 	# Within the prime region.
 	title_province = { geographical_region = dlc_fp2_lyonese_monk_region }

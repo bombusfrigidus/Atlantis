@@ -1327,6 +1327,7 @@ create_rum_scripted_effect = {
 			change = scope:new_rum
 		}
 		set_can_be_named_after_dynasty = no
+		set_can_use_nomadic_naming = no
 	}
 	resolve_title_and_vassal_change = scope:new_rum
 	if = {
@@ -3233,7 +3234,7 @@ found_empire_of_hindustan_scripted_effect = {
 		}
 	}
 	if = {
-		limit = { has_dlc_feature = landless_playable }
+		limit = { has_dlc_feature = admin_gov }
 		convert_to_administrative_from_feudalism_effect = yes
 	}
 	hidden_effect = {

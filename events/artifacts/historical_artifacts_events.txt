@@ -324,7 +324,7 @@ historical_artifacts.0023 = {
 		}
 		### Bells of Santiago
 		if = {
-			# If we're before Almanzor's raid, then the bells go to c_atlantis's holder.
+			# If we're before Almanzor's raid, then the bells go to c_santiago's holder.
 			limit = {
 				has_fp2_dlc_trigger = yes
 				current_date < 997.1.1
@@ -343,7 +343,7 @@ historical_artifacts.0023 = {
 		### (Former) Bells of Santiago
 		#### These aren't actually furniture, but we keep 'em here so they're next to the regular bells, which *are*.
 		if = {
-			# If we're after Almanzor's raid, then the bells go to c_atlantis's holder.
+			# If we're after Almanzor's raid, then the bells go to c_toledo's holder.
 			limit = {
 				has_fp2_dlc_trigger = yes
 				current_date >= 997.1.1

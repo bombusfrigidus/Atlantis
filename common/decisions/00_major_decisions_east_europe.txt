@@ -648,7 +648,19 @@ found_kingdom_of_bosnia_decision = {
 					culture = culture:croatian
 				}
 				capital_county = {
-					this = title:c_atlantis
+					OR = {
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+						this = title:c_atlantis
+					}
 				}
 			}
 			#Or just be Bosnian.

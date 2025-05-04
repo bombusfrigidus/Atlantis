@@ -22,6 +22,22 @@ chariot_race.0001 = {
 		}
 	}
 	theme = chariot_race
+	override_background = {
+		trigger = {
+			scope:activity.activity_location = {
+				this = province:1
+			}
+		}
+		reference = ep3_constantinople
+	}
+	override_background = {
+		trigger = {
+			scope:activity.activity_location = {
+				NOT = { this = province:1 }
+			}
+		}
+		reference = tour_arrival
+	}
 	left_portrait = {
 		character = root
 		triggered_animation = {
@@ -4338,7 +4354,7 @@ chariot_race.0600 = {
 	override_background = { reference = ep3_hippodrome_track }
 
 	# Pivotal Moment Illustrations
-	override_transition = { # Your charioteer loses
+	override_transition = { # Your charioteer loses - Blue Loses
 		trigger = {
 			AND = {
 				has_variable = wager_value
@@ -4350,9 +4366,61 @@ chariot_race.0600 = {
 					this = scope:activity.var:second_place
 					this = scope:activity.var:third_place
 				}
+				has_trait = charioteer_blue
 			}
 		}
-		reference = pivotal_chariots_fail
+		reference = pivotal_chariots_fail_blue
+	}
+	override_transition = { # Your charioteer loses - Green Loses
+		trigger = {
+			AND = {
+				has_variable = wager_value
+				NOT = { has_character_flag = successful_bet }
+			}
+			court_position:charioteer_court_position ?= {
+				NOR = {
+					this = scope:activity.var:first_place
+					this = scope:activity.var:second_place
+					this = scope:activity.var:third_place
+				}
+				has_trait = charioteer_green
+			}
+		}
+		reference = pivotal_chariots_fail_green
+	}
+	override_transition = { # Your charioteer loses - Red Loses
+		trigger = {
+			AND = {
+				has_variable = wager_value
+				NOT = { has_character_flag = successful_bet }
+			}
+			court_position:charioteer_court_position ?= {
+				NOR = {
+					this = scope:activity.var:first_place
+					this = scope:activity.var:second_place
+					this = scope:activity.var:third_place
+				}
+				has_trait = charioteer_red
+			}
+		}
+		reference = pivotal_chariots_fail_red
+	}
+	override_transition = { # Your charioteer loses - White Loses
+		trigger = {
+			AND = {
+				has_variable = wager_value
+				NOT = { has_character_flag = successful_bet }
+			}
+			court_position:charioteer_court_position ?= {
+				NOR = {
+					this = scope:activity.var:first_place
+					this = scope:activity.var:second_place
+					this = scope:activity.var:third_place
+				}
+				has_trait = charioteer_white
+			}
+		}
+		reference = pivotal_chariots_fail_white
 	}
 	override_transition = { # Blue Wins
 		trigger = {

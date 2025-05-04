@@ -17,6 +17,7 @@ become_greatest_of_khans_decision = {
 	desc = become_greatest_of_khans_decision_desc
 
 	ai_check_interval = 0
+	sort_order = 200
 
 	is_shown = {
 		highest_held_title_tier >= tier_duchy
@@ -28,13 +29,14 @@ become_greatest_of_khans_decision = {
 				target = flag:become_greatest_of_khans_decision
 			}
 		}
+		#TRUE DLC-OWNING NOMADS HAVE THEIR OWN PATH
+		has_mpo_dlc_trigger = no
 	}
 
 	is_valid = {
 		prestige_level >= 4
 		highest_held_title_tier = tier_empire
 		sub_realm_size >= greatest_of_khans_target_counties
-		government_has_flag = government_is_tribal
 		capital_province = {
 			geographical_region = world_steppe
 		}

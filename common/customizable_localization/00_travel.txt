@@ -4,7 +4,7 @@
 	text = { # Mahabodhi Temple
 		trigger = {
 			has_special_building = yes
-			#this = province:1276 # Gaya
+			#this = province:1 # Gaya
 			has_building_or_higher = holy_site_mahabodhi_temple_01
 		}
 		localization_key = building_holy_site_mahabodhi_temple_destination_desc
@@ -13,7 +13,7 @@
 	text = { # Imam Ali Mosque
 		trigger = {
 			has_special_building = yes
-			#this = province:5993 # An-Najaf
+			#this = province:1 # An-Najaf
 			has_building_or_higher = holy_site_imam_ali_mosque_01
 		}
 		setup_scope = {
@@ -25,7 +25,7 @@
 	text = { # Great Mosque of Mecca
 		trigger = {
 			has_special_building = yes
-			#this = province:6223 # Mecca
+			#this = province:1 # Mecca
 			has_building_or_higher = holy_site_great_mosque_of_mecca_01
 		}
 		localization_key = building_holy_site_great_mosque_of_mecca_destination_desc
@@ -34,7 +34,7 @@
 	text = { # Great Mosque of Cordoba
 		trigger = {
 			has_special_building = yes
-			#this = province:1995 # Cordoba
+			#this = province:1 # Cordoba
 			has_building_or_higher = holy_site_great_mosque_of_cordoba_01
 		}
 		setup_scope = {
@@ -46,7 +46,7 @@
 	text = { # Great Mosque of Djenne
 		trigger = {
 			has_special_building = yes
-			#this = province:6711 # Jenne-Jeno
+			#this = province:1 # Jenne-Jeno
 			has_building_or_higher = holy_site_great_mosque_of_djenne_01
 		}
 		localization_key = building_holy_site_great_mosque_of_djenne_destination_desc
@@ -55,7 +55,7 @@
 	text = { # Great Mosque of Samarra
 		trigger = {
 			has_special_building = yes
-			#this = province:4805 # Jenne-Jeno
+			#this = province:1 # Jenne-Jeno
 			has_building_or_higher = holy_site_great_mosque_of_samarra_01
 		}
 		localization_key = building_holy_site_great_mosque_of_samarra_destination_desc
@@ -64,7 +64,7 @@
 	text = { # Cologne Cathedral
 		trigger = {
 			has_special_building = yes
-			#this = province:2088 # Cologne
+			#this = province:1 # Cologne
 			has_building_or_higher = holy_site_cologne_cathedral_01
 		}
 		localization_key = building_holy_site_cologne_cathedral_destination_desc
@@ -73,7 +73,7 @@
 	text = { # Canterbury Cathedral 1
 		trigger = {
 			has_special_building = yes
-			#this = province:1503 # Canterbury
+			#this = province:1 # Canterbury
 			has_building_or_higher = holy_site_canterbury_cathedral_01
 		}
 		localization_key = building_holy_site_canterbury_cathedral_destination_desc
@@ -82,7 +82,7 @@
 	text = { # Canterbury Cathedral 2
 		trigger = {
 			has_special_building = yes
-			#this = province:1503 # Canterbury
+			#this = province:1 # Canterbury
 			has_building_or_higher = holy_site_canterbury_cathedral_02
 		}
 		localization_key = building_holy_site_canterbury_cathedral_destination_desc
@@ -91,7 +91,7 @@
 	text = { # Canterbury Cathedral 3
 		trigger = {
 			has_special_building = yes
-			#this = province:1503 # Canterbury
+			#this = province:1 # Canterbury
 			has_building_or_higher = holy_site_canterbury_cathedral_03
 		}
 		localization_key = building_holy_site_canterbury_cathedral_destination_desc
@@ -100,7 +100,7 @@
 	text = { # Prophetic Mosque
 		trigger = {
 			has_special_building = yes
-			#this = province:6212 # Medina
+			#this = province:1 # Medina
 			has_building_or_higher = holy_site_prophetic_mosque_01
 		}
 		localization_key = building_holy_site_prophetic_mosque_destination_desc
@@ -109,7 +109,7 @@
 	text = { # Doge's Palace
 		trigger = {
 			has_special_building = yes
-			#this = province:2517 # Venice
+			#this = province:1 # Venice
 			has_building_or_higher = doges_palace_01
 		}
 		localization_key = building_doges_palace_destination_desc
@@ -118,7 +118,7 @@
 	text = { # Walls of Genoa
 		trigger = {
 			has_special_building = yes
-			#this = province:2466 # Genoa
+			#this = province:1 # Genoa
 			has_building_or_higher = walls_of_genoa_01
 		}
 		localization_key = building_walls_of_genoa_destination_desc
@@ -127,7 +127,7 @@
 	text = { # Visby Ringmur
 		trigger = {
 			has_special_building = yes
-			#this = province:369 # Visby
+			#this = province:1 # Visby
 			has_building_or_higher = visby_ringmur_01
 		}
 		localization_key = building_visby_ringmur_destination_desc
@@ -136,7 +136,7 @@
 	text = { # Walls of Benin
 		trigger = {
 			has_special_building = yes
-			#this = province:8072 # Benin City
+			#this = province:1 # Benin City
 			has_building_or_higher = walls_of_benin_01
 		}
 		localization_key = building_walls_of_benin_destination_desc
@@ -145,7 +145,7 @@
 	#text = { # Theodosian Walls - Duchy Capital Building
 	#	trigger = {
 	#		has_special_building = yes
-	#		#this = province:496 # Constantinople
+	#		#this = province:1 # Constantinople
 	#		has_building_or_higher = theodosian_walls_01
 	#	}
 	#	localization_key = building_theodosian_walls_destination_desc
@@ -154,7 +154,7 @@
 	#text = { # Aurelian Walls - Duchy Capital Building
 	#	trigger = {
 	#		has_special_building = yes
-	#		#this = province:2575 # Rome
+	#		#this = province:1 # Rome
 	#		has_building_or_higher = aurelian_walls_01
 	#	}
 	#	localization_key = building_aurelian_walls_destination_desc
@@ -163,7 +163,7 @@
 	text = { # The Colosseum
 		trigger = {
 			has_special_building = yes
-			#this = province:2575 # Rome
+			#this = province:1 # Rome
 			has_building_or_higher = the_colosseum_01
 		}
 		localization_key = building_the_colosseum_destination_desc
@@ -172,7 +172,7 @@
 	text = { # The Iron Pillar of Delhi
 		trigger = {
 			has_special_building = yes
-			#this = province:1365 # Indraprastha
+			#this = province:1 # Indraprastha
 			has_building_or_higher = iron_pillar_of_delhi_01
 		}
 		localization_key = building_iron_pillar_of_delhi_destination_desc
@@ -181,7 +181,7 @@
 	text = { # The Iron Pillar of Dhar
 		trigger = {
 			has_special_building = yes
-			#this = province:1149 # Dhara
+			#this = province:1 # Dhara
 			has_building_or_higher = iron_pillar_of_dhar_01
 		}
 		localization_key = building_iron_pillar_of_dhar_destination_desc
@@ -190,7 +190,7 @@
 	text = { # The Pyramids
 		trigger = {
 			has_special_building = yes
-			#this = province:6057 # Giza
+			#this = province:1 # Giza
 			has_building_or_higher = the_pyramids_01
 		}
 		localization_key = building_the_pyramids_destination_desc
@@ -199,7 +199,7 @@
 	text = { # Stonehenge
 		trigger = {
 			has_special_building = yes
-			#this = province:1561
+			#this = province:1
 			has_building_or_higher = stonehenge_01
 		}
 		localization_key = building_stonehenge_destination_desc
@@ -209,13 +209,13 @@
 		trigger = {
 			has_special_building = yes
 			#OR = {
-			#	this = province:1643 # Cheshire
-			#	this = province:1646 # Shropshire
-			#	this = province:1648 # Bishop's Castle
-			#	this = province:1580 # Gloucester
-			#	this = province:1632 # Hereford
-			#	this = province:1633 # Wigmore
-			#	this = province:1634 # Clifford
+			#	this = province:1 # Cheshire
+			#	this = province:1 # Shropshire
+			#	this = province:1 # Bishop's Castle
+			#	this = province:1 # Gloucester
+			#	this = province:1 # Hereford
+			#	this = province:1 # Wigmore
+			#	this = province:1 # Clifford
 			#}
 			has_building_or_higher = offas_dyke_01
 		}
@@ -229,10 +229,10 @@
 		trigger = {
 			has_special_building = yes
 			#OR = {
-			#	this = province:1609 # Bamburgh
-			#	this = province:1611 # Hexham
-			#	this = province:1635 # Carlisle
-			#	this = province:8780 # Wigton
+			#	this = province:1 # Bamburgh
+			#	this = province:1 # Hexham
+			#	this = province:1 # Carlisle
+			#	this = province:1 # Wigton
 			#}
 			has_building_or_higher = hadrians_wall_01
 		}
@@ -245,7 +245,7 @@
 	text = { # Petra
 		trigger = {
 			has_special_building = yes
-			#this = province:5971 # Baidha-Petra
+			#this = province:1 # Baidha-Petra
 			has_building_or_higher = petra_01
 		}
 		localization_key = building_petra_destination_desc
@@ -254,7 +254,7 @@
 	text = { # Bamian Buddhas
 		trigger = {
 			has_special_building = yes
-			#this = province:4343 # Kabul
+			#this = province:1 # Kabul
 			has_building_or_higher = buddhas_of_bamian_01
 		}
 		localization_key = building_buddhas_of_bamian_destination_desc
@@ -263,7 +263,7 @@
 	text = { # Alhambra
 		trigger = {
 			has_special_building = yes
-			#this = province:1978 # Granada
+			#this = province:1 # Granada
 			has_building_or_higher = alhambra_01
 		}
 		localization_key = building_alhambra_destination_desc
@@ -272,7 +272,7 @@
 	text = { # Alhambra
 		trigger = {
 			has_special_building = yes
-			#this = province:1978 # Granada
+			#this = province:1 # Granada
 			has_building_or_higher = alhambra_02
 		}
 		localization_key = building_alhambra_destination_desc
@@ -281,7 +281,7 @@
 	text = { # Citadel of Aleppo
 		trigger = {
 			has_special_building = yes
-			#this = province:5934 # Halab
+			#this = province:1 # Halab
 			has_building_or_higher = citadel_of_aleppo_01
 		}
 		localization_key = building_citadel_of_aleppo_destination_desc
@@ -290,7 +290,7 @@
 	text = { # Citadel of Aleppo
 		trigger = {
 			has_special_building = yes
-			#this = province:5934 # Halab
+			#this = province:1 # Halab
 			has_building_or_higher = citadel_of_aleppo_02
 		}
 		localization_key = building_citadel_of_aleppo_destination_desc
@@ -299,7 +299,7 @@
 	text = { # House of Wisdom
 		trigger = {
 			has_special_building = yes
-			#this = province:4828 # Baghdad
+			#this = province:1 # Baghdad
 			has_building_or_higher = house_of_wisdom_01
 		}
 		localization_key = building_house_of_wisdom_destination_desc
@@ -308,7 +308,7 @@
 	text = { # Tower of London
 		trigger = {
 			has_special_building = yes
-			#this = province:1527 # London
+			#this = province:1 # London
 			has_building_or_higher = the_tower_of_london_01
 		}
 		localization_key = building_the_tower_of_london_destination_desc
@@ -317,7 +317,7 @@
 	text = { # London Bridge
 		trigger = {
 			has_special_building = yes
-			#this = province:1526 # Southwark
+			#this = province:1 # Southwark
 			has_building_or_higher = london_bridge_01
 		}
 		localization_key = building_london_bridge_destination_desc
@@ -326,7 +326,7 @@
 	text = { # Notre Dame
 		trigger = {
 			has_special_building = yes
-			#this = province:2333 # Paris
+			#this = province:1 # Paris
 			has_building_or_higher = notre_dame_01
 		}
 		localization_key = building_notre_dame_destination_desc
@@ -335,7 +335,7 @@
 	text = { # Brihadeeswarar Temple
 		trigger = {
 			has_special_building = yes
-			#this = province:1115 # Cholamandalam
+			#this = province:1 # Cholamandalam
 			has_building_or_higher = brihadeeswarar_temple_01
 		}
 		localization_key = building_brihadeeswarar_temple_destination_desc
@@ -347,7 +347,7 @@
 	text = { # Shwedagon Pagoda
 		trigger = {
 			has_special_building = yes
-			#this = province:9598 # Dagon
+			#this = province:1 # Dagon
 			has_building_or_higher = shwedagon_pagoda_01
 		}
 		localization_key = building_shwedagon_pagoda_destination_desc
@@ -356,7 +356,7 @@
 	text = { # Ananda Temple
 		trigger = {
 			has_special_building = yes
-			#this = province:9550 # Pagan
+			#this = province:1 # Pagan
 			has_building_or_higher = ananda_temple_01
 		}
 		localization_key = building_ananda_temple_destination_desc
@@ -368,7 +368,7 @@
 	text = { # The Friday Mosque
 		trigger = {
 			has_special_building = yes
-			#this = province:4106 # Isfahan
+			#this = province:1 # Isfahan
 			has_building_or_higher = the_friday_mosque_01
 		}
 		localization_key = building_the_friday_mosque_destination_desc
@@ -377,7 +377,7 @@
 	text = { # Kjajuraho
 		trigger = {
 			has_special_building = yes
-			#this = province:1298 # Chanderi
+			#this = province:1 # Chanderi
 			has_building_or_higher = khajuraho_01
 		}
 		localization_key = building_khajuraho_destination_desc
@@ -386,7 +386,7 @@
 	text = { # Palace of Aachen
 		trigger = {
 			has_special_building = yes
-			#this = province:2092 # Aachen
+			#this = province:1 # Aachen
 			has_building_or_higher = palace_of_aachen_01
 		}
 		localization_key = building_palace_of_aachen_destination_desc
@@ -398,7 +398,7 @@
 	text = { # Hagia Sophia
 		trigger = {
 			has_special_building = yes
-			#this = province:496 # Constantinople
+			#this = province:1 # Constantinople
 			has_building_or_higher = hagia_sophia_01
 		}
 		localization_key = building_hagia_sophia_christian_destination_desc
@@ -407,7 +407,7 @@
 	text = { # Hagia Sophia
 		trigger = {
 			has_special_building = yes
-			#this = province:496 # Constantinople
+			#this = province:1 # Constantinople
 			has_building_or_higher = hagia_sophia_02
 		}
 		localization_key = building_hagia_sophia_islamic_destination_desc
@@ -416,7 +416,7 @@
 	text = { # Dome of the Rock
 		trigger = {
 			has_special_building = yes
-			#this = province:5965 # Jerusalem
+			#this = province:1 # Jerusalem
 			has_building_or_higher = dome_of_the_rock_01
 		}
 		localization_key = building_dome_of_the_rock_destination_desc
@@ -425,7 +425,7 @@
 	text = { # Temple in Jerusalem
 		trigger = {
 			has_special_building = yes
-			#this = province:5965 # Jerusalem
+			#this = province:1 # Jerusalem
 			has_building_or_higher = temple_in_jerusalem_01
 		}
 		localization_key = building_temple_in_jerusalem_destination_desc
@@ -433,7 +433,7 @@
 
 	text = { # Rammelsberg Mines 1
 		trigger = {
-			#this = province:2918 # Goslar
+			#this = province:1 # Goslar
 			has_special_building = yes
 			has_building_or_higher = rammelsberg_mines_01
 		}
@@ -442,7 +442,7 @@
 
 	text = { # Rammelsberg Mines 2
 		trigger = {
-			#this = province:2918 # Goslar
+			#this = province:1 # Goslar
 			has_special_building = yes
 			has_building_or_higher = rammelsberg_mines_02
 		}
@@ -451,7 +451,7 @@
 
 	text = { # Rammelsberg Mines 3
 		trigger = {
-			#this = province:2918 # Goslar
+			#this = province:1 # Goslar
 			has_special_building = yes
 			has_building_or_higher = rammelsberg_mines_03
 		}
@@ -460,7 +460,7 @@
 
 	text = { # Rammelsberg Mines 4
 		trigger = {
-			#this = province:2918 # Goslar
+			#this = province:1 # Goslar
 			has_special_building = yes
 			has_building_or_higher = rammelsberg_mines_04
 		}
@@ -469,7 +469,7 @@
 
 	text = { # Kutna Hora Mines 1
 		trigger = {
-			#this = province:4161 # Caslav
+			#this = province:1 # Caslav
 			has_special_building = yes
 			has_building_or_higher = kutna_hora_mines_01
 		}
@@ -478,7 +478,7 @@
 
 	text = { # Kutna Hora Mines 2
 		trigger = {
-			#this = province:4161 # Caslav
+			#this = province:1 # Caslav
 			has_special_building = yes
 			has_building_or_higher = kutna_hora_mines_02
 		}
@@ -487,7 +487,7 @@
 
 	text = { # Kutna Hora Mines 3
 		trigger = {
-			#this = province:4161 # Caslav
+			#this = province:1 # Caslav
 			has_special_building = yes
 			has_building_or_higher = kutna_hora_mines_03
 		}
@@ -496,7 +496,7 @@
 
 	text = { # Kutna Hora Mines 4
 		trigger = {
-			#this = province:4161 # Caslav
+			#this = province:1 # Caslav
 			has_special_building = yes
 			has_building_or_higher = kutna_hora_mines_04
 		}
@@ -505,7 +505,7 @@
 
 	text = { # Kremnica Mines 1
 		trigger = {
-			#this = province:3814 # Turoc
+			#this = province:1 # Turoc
 			has_special_building = yes
 			has_building_or_higher = kremnica_mines_01
 		}
@@ -514,7 +514,7 @@
 
 	text = { # Kremnica Mines 2
 		trigger = {
-			#this = province:3814 # Turoc
+			#this = province:1 # Turoc
 			has_special_building = yes
 			has_building_or_higher = kremnica_mines_02
 		}
@@ -523,7 +523,7 @@
 
 	text = { # Kremnica Mines 3
 		trigger = {
-			#this = province:3814 # Turoc
+			#this = province:1 # Turoc
 			has_special_building = yes
 			has_building_or_higher = kremnica_mines_03
 		}
@@ -532,7 +532,7 @@
 
 	text = { # Kremnica Mines 4
 		trigger = {
-			#this = province:3814 # Turoc
+			#this = province:1 # Turoc
 			has_special_building = yes
 			has_building_or_higher = kremnica_mines_04
 		}
@@ -541,7 +541,7 @@
 
 	text = { # Falun Mines 1
 		trigger = {
-			#this = province:350 # Falun
+			#this = province:1 # Falun
 			has_special_building = yes
 			has_building_or_higher = falun_mines_01
 		}
@@ -550,7 +550,7 @@
 
 	text = { # Falun Mines 2
 		trigger = {
-			#this = province:350 # Falun
+			#this = province:1 # Falun
 			has_special_building = yes
 			has_building_or_higher = falun_mines_02
 		}
@@ -559,7 +559,7 @@
 
 	text = { # Falun Mines 3
 		trigger = {
-			#this = province:350 # Falun
+			#this = province:1 # Falun
 			has_special_building = yes
 			has_building_or_higher = falun_mines_03
 		}
@@ -568,7 +568,7 @@
 
 	text = { # Falun Mines 4
 		trigger = {
-			#this = province:350 # Falun
+			#this = province:1 # Falun
 			has_special_building = yes
 			has_building_or_higher = falun_mines_04
 		}
@@ -641,7 +641,7 @@
 
 	text = { # Schwarz Mines 1
 		trigger = {
-			#this = province:2950 # Innsbruck
+			#this = province:1 # Innsbruck
 			has_special_building = yes
 			has_building_or_higher = schwaz_mines_01
 		}
@@ -650,7 +650,7 @@
 
 	text = { # Schwarz Mines 2
 		trigger = {
-			#this = province:2950 # Innsbruck
+			#this = province:1 # Innsbruck
 			has_special_building = yes
 			has_building_or_higher = schwaz_mines_02
 		}
@@ -659,7 +659,7 @@
 
 	text = { # Schwarz Mines 3
 		trigger = {
-			#this = province:2950 # Innsbruck
+			#this = province:1 # Innsbruck
 			has_special_building = yes
 			has_building_or_higher = schwaz_mines_03
 		}
@@ -668,7 +668,7 @@
 
 	text = { # Schwarz Mines 4
 		trigger = {
-			#this = province:2950 # Innsbruck
+			#this = province:1 # Innsbruck
 			has_special_building = yes
 			has_building_or_higher = schwaz_mines_04
 		}
@@ -677,7 +677,7 @@
 
 	text = { # Argentiera Mines 1
 		trigger = {
-			#this = province:2653 # Cagliari
+			#this = province:1 # Cagliari
 			has_special_building = yes
 			has_building_or_higher = argentiera_mines_01
 		}
@@ -686,7 +686,7 @@
 
 	text = { # Argentiera Mines 2
 		trigger = {
-			#this = province:2653 # Cagliari
+			#this = province:1 # Cagliari
 			has_special_building = yes
 			has_building_or_higher = argentiera_mines_02
 		}
@@ -695,7 +695,7 @@
 
 	text = { # Argentiera Mines 3
 		trigger = {
-			#this = province:2653 # Cagliari
+			#this = province:1 # Cagliari
 			has_special_building = yes
 			has_building_or_higher = argentiera_mines_03
 		}
@@ -704,7 +704,7 @@
 
 	text = { # Argentiera Mines 4
 		trigger = {
-			#this = province:2653 # Cagliari
+			#this = province:1 # Cagliari
 			has_special_building = yes
 			has_building_or_higher = argentiera_mines_04
 		}
@@ -745,7 +745,7 @@
 
 	text = { # Kollur Diamond Mines 1
 		trigger = {
-			#this = province:7912 # Ellur
+			#this = province:1 # Ellur
 			has_special_building = yes
 			has_building_or_higher = kollur_mines_01
 		}
@@ -754,7 +754,7 @@
 
 	text = { # Kollur Diamond Mines 2
 		trigger = {
-			#this = province:7912 # Ellur
+			#this = province:1 # Ellur
 			has_special_building = yes
 			has_building_or_higher = kollur_mines_02
 		}
@@ -763,7 +763,7 @@
 
 	text = { # Kollur Diamond Mines 3
 		trigger = {
-			#this = province:7912 # Ellur
+			#this = province:1 # Ellur
 			has_special_building = yes
 			has_building_or_higher = kollur_mines_03
 		}
@@ -772,7 +772,7 @@
 
 	text = { # Kollur Diamond Mines 4
 		trigger = {
-			#this = province:7912 # Ellur
+			#this = province:1 # Ellur
 			has_special_building = yes
 			has_building_or_higher = kollur_mines_04
 		}
@@ -781,7 +781,7 @@
 
 	text = { # Siderokausia Mines 1
 		trigger = {
-			#this = province:491 # Polygyros
+			#this = province:1 # Polygyros
 			has_special_building = yes
 			has_building_or_higher = siderokausia_mines_01
 		}
@@ -790,7 +790,7 @@
 
 	text = { # Siderokausia Mines 2
 		trigger = {
-			#this = province:491 # Polygyros
+			#this = province:1 # Polygyros
 			has_special_building = yes
 			has_building_or_higher = siderokausia_mines_02
 		}
@@ -799,7 +799,7 @@
 
 	text = { # Siderokausia Mines 3
 		trigger = {
-			#this = province:491 # Polygyros
+			#this = province:1 # Polygyros
 			has_special_building = yes
 			has_building_or_higher = siderokausia_mines_03
 		}
@@ -808,7 +808,7 @@
 
 	text = { # Siderokausia Mines 4
 		trigger = {
-			#this = province:491 # Polygyros
+			#this = province:1 # Polygyros
 			has_special_building = yes
 			has_building_or_higher = siderokausia_mines_04
 		}
@@ -1301,12 +1301,12 @@
 	text = { # Malinese Gold Mines 1
 		trigger = {
 			#OR = {
-			#	this = province:6729 # Niani
-			#	this = province:6730 # Wasulu
-			#	this = province:6739 # Siguiri
-			#	this = province:6742 # Diakha
-			#	this = province:6744 # Goundafa
-			#	this = province:6747 # Yaresna
+			#	this = province:1 # Niani
+			#	this = province:1 # Wasulu
+			#	this = province:1 # Siguiri
+			#	this = province:1 # Diakha
+			#	this = province:1 # Goundafa
+			#	this = province:1 # Yaresna
 			#}
 			has_special_building = yes
 			has_building_or_higher = mali_mines_01
@@ -1317,12 +1317,12 @@
 	text = { # Malinese Gold Mines 2
 		trigger = {
 			#OR = {
-			#	this = province:6729 # Niani
-			#	this = province:6730 # Wasulu
-			#	this = province:6739 # Siguiri
-			#	this = province:6742 # Diakha
-			#	this = province:6744 # Goundafa
-			#	this = province:6747 # Yaresna
+			#	this = province:1 # Niani
+			#	this = province:1 # Wasulu
+			#	this = province:1 # Siguiri
+			#	this = province:1 # Diakha
+			#	this = province:1 # Goundafa
+			#	this = province:1 # Yaresna
 			#}
 			has_special_building = yes
 			has_building_or_higher = mali_mines_02
@@ -1333,12 +1333,12 @@
 	text = { # Malinese Gold Mines 3
 		trigger = {
 			#OR = {
-			#	this = province:6729 # Niani
-			#	this = province:6730 # Wasulu
-			#	this = province:6739 # Siguiri
-			#	this = province:6742 # Diakha
-			#	this = province:6744 # Goundafa
-			#	this = province:6747 # Yaresna
+			#	this = province:1 # Niani
+			#	this = province:1 # Wasulu
+			#	this = province:1 # Siguiri
+			#	this = province:1 # Diakha
+			#	this = province:1 # Goundafa
+			#	this = province:1 # Yaresna
 			#}
 			has_special_building = yes
 			has_building_or_higher = mali_mines_03
@@ -1349,12 +1349,12 @@
 	text = { # Malinese Gold Mines 4
 		trigger = {
 			#OR = {
-			#	this = province:6729 # Niani
-			#	this = province:6730 # Wasulu
-			#	this = province:6739 # Siguiri
-			#	this = province:6742 # Diakha
-			#	this = province:6744 # Goundafa
-			#	this = province:6747 # Yaresna
+			#	this = province:1 # Niani
+			#	this = province:1 # Wasulu
+			#	this = province:1 # Siguiri
+			#	this = province:1 # Diakha
+			#	this = province:1 # Goundafa
+			#	this = province:1 # Yaresna
 			#}
 			has_special_building = yes
 			has_building_or_higher = mali_mines_04
@@ -1410,7 +1410,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = hotin_fort_01
-			#this = province:5040
+			#this = province:1
 		}
 		localization_key = building_hotin_fort_destination_desc
 	}
@@ -1419,7 +1419,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = hotin_fort_02
-			#this = province:5040
+			#this = province:1
 		}
 		localization_key = building_hotin_fort_destination_desc
 	}
@@ -1428,7 +1428,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = heddal_stave_church_01
-			#this = province:286 # Tunsberg
+			#this = province:1 # Tunsberg
 		}
 		localization_key = building_heddal_stave_church_destination_desc
 	}
@@ -1437,7 +1437,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = temple_of_uppsala_01
-			#this = province:341 # Sigtuna
+			#this = province:1 # Sigtuna
 		}
 		localization_key = building_temple_of_uppsala_destination_desc
 	}
@@ -1446,7 +1446,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = temple_of_uppsala_02
-			#this = province:341 # Sigtuna
+			#this = province:1 # Sigtuna
 		}
 		localization_key = building_temple_of_uppsala_destination_desc
 	}
@@ -1455,7 +1455,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = lund_cathedral_01
-			#this = province:70 # Lund
+			#this = province:1 # Lund
 		}
 		localization_key = building_lund_cathedral_destination_desc
 	}
@@ -1464,7 +1464,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = danevirke_01
-			#this = province:62 # Hedeby
+			#this = province:1 # Hedeby
 		}
 		localization_key = building_danevirke_destination_desc
 	}
@@ -1473,7 +1473,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = roman_wall_of_lugo_01
-			#this = province:1792 # Lugo
+			#this = province:1 # Lugo
 		}
 		setup_scope = {
 			culture:roman = { save_scope_as = roman_culture }
@@ -1485,7 +1485,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = rock_of_gibraltar_01
-			#this = province:1845 # Algeciras
+			#this = province:1 # Algeciras
 		}
 		localization_key = building_rock_of_gibraltar_destination_desc
 	}
@@ -1494,7 +1494,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = aljaferia_palace_01
-			#this = province:1887 # Zaragoza
+			#this = province:1 # Zaragoza
 		}
 		localization_key = building_aljaferia_palace_destination_desc
 	}
@@ -1503,7 +1503,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = tower_of_hercules_01
-			#this = province:1787 # Coruna
+			#this = province:1 # Coruna
 		}
 		setup_scope = {
 			culture:roman = { save_scope_as = roman_culture }
@@ -1515,7 +1515,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = city_wall_of_toledo_01
-			#this = province:1919 # Toledo
+			#this = province:1 # Toledo
 		}
 		setup_scope = {
 			culture:visigothic = { save_scope_as = visigothic_culture }
@@ -1528,7 +1528,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = alcazar_of_segovia_01
-			#this = province:1924 # Segovia
+			#this = province:1 # Segovia
 		}
 		localization_key = building_alcazar_of_segovia_destination_desc
 	}
@@ -1537,7 +1537,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = holy_site_basilica_santiago_01
-			#this = province:1785 # Santiago
+			#this = province:1 # Santiago
 		}
 		localization_key = building_holy_site_basilica_santiago_destination_desc
 	}
@@ -1546,7 +1546,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = imam_reza_shrine_01
-			#this = province:4012 # Tus
+			#this = province:1 # Tus
 		}
 		localization_key = building_imam_reza_shrine_destination_desc
 	}
@@ -1555,7 +1555,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = soltaniyeh_01
-			#this = province:4325 # Zanjan
+			#this = province:1 # Zanjan
 		}
 		localization_key = building_soltaniyeh_destination_desc
 	}
@@ -1565,7 +1565,7 @@
 			has_special_building = yes
 			has_building_or_higher = palace_of_ctesiphon_01
 			NOT = { has_building_or_higher = palace_of_ctesiphon_02 }
-			#this = province:4796 # An-Nahrawan
+			#this = province:1 # An-Nahrawan
 		}
 		localization_key = building_palace_of_ctesiphon_destination_desc
 	}
@@ -1574,7 +1574,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = palace_of_ctesiphon_02
-			#this = province:4796 # An-Nahrawan
+			#this = province:1 # An-Nahrawan
 		}
 		localization_key = building_palace_of_ctesiphon_destination_desc
 	}
@@ -1583,7 +1583,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = falak_ol_aflak_citadel_01
-			#this = province:4261 # Saburkhawasht #actually Khorramabad, Saburkhawasht or Shapurkhast
+			#this = province:1 # Saburkhawasht #actually Khorramabad, Saburkhawasht or Shapurkhast
 		}
 		localization_key = building_falak_ol_aflak_citadel_destination_desc
 	}
@@ -1592,7 +1592,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = minarets_and_remains_of_jam_01
-			#this = province:4225 # Firuzkuh	#AKA Chagcharan
+			#this = province:1 # Firuzkuh	#AKA Chagcharan
 		}
 		localization_key = building_minarets_and_remains_of_jam_destination_desc
 	}
@@ -1601,7 +1601,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = great_wall_of_gorgan_01
-			#this = province:4030 # Bakrabad and 4031 #Abaskun
+			#this = province:1 # Bakrabad and 4031 #Abaskun
 		}
 		localization_key = building_great_wall_of_gorgan_destination_desc
 	}
@@ -1610,7 +1610,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = maharloo_lake_01
-			#this = province:4177 # Shiraz-farsi
+			#this = province:1 # Shiraz-farsi
 		}
 		localization_key = building_maharloo_lake_destination_desc
 	}
@@ -1619,7 +1619,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = rainbow_mountains_01
-			#this = province:4540 # Ahar
+			#this = province:1 # Ahar
 		}
 		localization_key = building_rainbow_mountains_destination_desc
 	}
@@ -1628,7 +1628,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = mount_damavand_01
-			#this = province:4316 # Firrim
+			#this = province:1 # Firrim
 		}
 		localization_key = building_mount_damavand_destination_desc
 	}
@@ -1637,7 +1637,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = tomb_of_cyrus_01
-			#this = province:4118 # Istakhr
+			#this = province:1 # Istakhr
 		}
 		localization_key = building_tomb_of_cyrus_destination_desc
 	}
@@ -1646,7 +1646,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = ark_of_bukhara_01
-			#this = province:4394 # Bukhara
+			#this = province:1 # Bukhara
 		}
 		localization_key = building_ark_of_bukhara_destination_desc
 	}
@@ -1655,7 +1655,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = shah_i_zinda_01
-			#this = province:4404 # Samarqand / Samarkand
+			#this = province:1 # Samarqand / Samarkand
 		}
 		localization_key = building_shah_i_zinda_destination_desc
 	}
@@ -1664,7 +1664,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = shah_i_zinda_02
-			#this = province:4404 # Samarqand / Samarkand
+			#this = province:1 # Samarqand / Samarkand
 		}
 		localization_key = building_shah_i_zinda_destination_desc
 	}
@@ -1673,7 +1673,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = alamut_castle_01
-			#this = province:4323 # Qazwin / Qazvin
+			#this = province:1 # Qazwin / Qazvin
 		}
 		localization_key = building_alamut_castle_destination_desc
 	}
@@ -1682,7 +1682,7 @@
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = alamut_castle_02
-			#this = province:4323 # Qazwin / Qazvin
+			#this = province:1 # Qazwin / Qazvin
 		}
 		localization_key = building_alamut_castle_destination_desc
 	}
@@ -2072,7 +2072,24 @@
 		localization_key = building_jaisalmer_fort_01_destination_desc
 	}
 	#CCP3 End
-	
+	#CE2 
+	text = { # Pleasure Dome
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pleasure_dome
+		}
+		localization_key = building_pleasure_dome_01_destination_desc
+	}
+
+	text = { # Burkhan Khaldun
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = burkhan_khaldun_01
+		}
+		localization_key = building_burkhan_khaldun_01_destination_desc
+	}
+
+	#CE2 End
 	text = { # legendary_shrine
 		trigger = {
 			has_special_building = yes

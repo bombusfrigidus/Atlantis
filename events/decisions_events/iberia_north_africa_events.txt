@@ -1815,7 +1815,7 @@ scripted_effect convert_aragonese_counties_to_aragonese_effect = {
 					convert_random_aragonese_counties_in_d_aragon_basic_reqs_trigger = yes
 					this = scope:founder.capital_county
 				}
-				# Otherwise, go for c_atlantis, but we want it to *look* random.
+				# Otherwise, go for c_alto_aragon, but we want it to *look* random.
 				alternative_limit = {
 					convert_random_aragonese_counties_in_d_aragon_basic_reqs_trigger = yes
 					this = title:c_atlantis

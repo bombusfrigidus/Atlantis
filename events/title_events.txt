@@ -126,6 +126,8 @@ title_event.0011 = {
 			}
 		}
 		title:k_leon = { save_scope_as = leon }
+		## Plus one for backgrounds; we take this one to get the hilly backdrops of northern Iberia.
+		province:1 = { save_scope_as = background_terrain_scope }
 		# Then fire off relevant notifications to scope:leon_char & scope:castille_char.
 		## If Asturias doesn't exist when Leon is created, we just send Castille one.
 		if = {
@@ -135,7 +137,7 @@ title_event.0011 = {
 			scope:castille_char = { trigger_event = title_event.0012 }
 		}
 		## & if Leon & Castille are now held by the same char, they get another.
-		if = {
+		else_if = {
 			limit = { scope:leon_char = scope:castille_char }
 			scope:castille_char = { trigger_event = title_event.0013 }
 		}

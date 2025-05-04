@@ -86,9 +86,7 @@ fp3_struggle.0001 = {
 				}
 			}
 		}
-	}
-
-	after = {
+		
 		# Cue this event up again for the next time around.
 		trigger_event = {
 			id = fp3_struggle.0001
@@ -210,7 +208,7 @@ fp3_struggle.0051 = { # BOOKMARK EVENT
 					triggered_desc = {
 						trigger = {
 							any_character_struggle = { is_struggle_type = persian_struggle }
-							has_title = character:1.primary_title
+							has_title = title:c_atlantis
 						}
 						desc = fp3_struggle.0051.b
 					}
@@ -580,7 +578,7 @@ fp3_struggle.0091 = { # Rekindle Iran
 
 		play_music_cue = struggleend_cue
 
-		dynasty:1029100 = { save_scope_as = sassanid_dynasty }
+		dynasty:1 = { save_scope_as = sassanid_dynasty }
 	}
 
 	option = {

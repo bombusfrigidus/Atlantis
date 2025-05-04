@@ -101,6 +101,36 @@ TriumphReligiousLocation = {
 
 	random_valid = yes
 
+	text = {
+		trigger = {
+			# Constantinople
+			location = province:1
+			# Christian
+			faith.religion = religion:christianity_religion
+		}
+		localization_key = building_type_hagia_sophia_01
+	}
+
+	text = {
+		trigger = {
+			# not Constantinople
+			NOT = { location = province:1 }
+			# Christian
+			faith.religion = religion:christianity_religion
+		}
+		localization_key = cathedral
+	}
+
+	text = {
+		trigger = {
+			# Constantinople
+			location = province:1
+			# Muslim
+			faith.religion = religion:islam_religion
+		}
+		localization_key = building_hagia_sophia_02
+	}
+
 
 
 	text = {
@@ -117,6 +147,36 @@ TriumphReligiousLocation = {
 
 TriumphReligiousLocationCapitalized = {
 	type = character
+
+	text = {
+		trigger = {
+			# Constantinople
+			location = province:1
+			# Christian
+			faith.religion = religion:christianity_religion
+		}
+		localization_key = building_type_hagia_sophia_01
+	}
+
+	text = {
+		trigger = {
+			# not Constantinople
+			NOT = { location = province:1 }
+			# Christian
+			faith.religion = religion:christianity_religion
+		}
+		localization_key = cathedral_capital
+	}
+
+	text = {
+		trigger = {
+			# Constantinople
+			location = province:1
+			# Muslim
+			faith.religion = religion:islam_religion
+		}
+		localization_key = building_hagia_sophia_02
+	}
 
 	text = {
 		trigger = {
@@ -1159,6 +1219,13 @@ GetChariotMiddlingLapCount = {
 GetThroneRoom = {
 	type = character
 	text = {
+		trigger = {
+			has_title = title:e_byzantium
+			capital_province = province:1
+		}
+		localization_key = throne_room_chrysotriklinos
+	}
+	text = {
 		trigger = { always = no }
 		fallback = yes
 		localization_key = throne_room_default
@@ -1858,6 +1925,13 @@ GetContractOrIssue = {
 	}
 
 	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+		}
+		localization_key = TASK_CONTRACT_SETTLEMENT_ISSUE
+	}
+
+	text = {
 		trigger = { always = no }
 		fallback = yes
 		localization_key = TASK_CONTRACT_CONTRACT
@@ -1887,6 +1961,13 @@ GetContractOrIssueGameConcept = {
 			government_has_flag = government_is_administrative
 		}
 		localization_key = GOVERNANCE_ISSUE
+	}
+
+	text = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+		}
+		localization_key = SETTLEMENT_ISSUE
 	}
 
 	text = {

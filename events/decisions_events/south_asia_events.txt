@@ -1811,7 +1811,7 @@ south_asia.0050 = {
 			}
 		}
 		title:b_atlantis = {
-			set_title_name = c_atlantis
+			set_title_name = c_delhi
 		}
 		set_realm_capital = title:c_atlantis
 		title:e_hindustan = {

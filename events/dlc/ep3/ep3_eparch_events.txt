@@ -367,6 +367,10 @@ ep3_eparch_event.0005 = {
 	title = ep3_eparch_event.0005.t
 	desc = ep3_eparch_event.0005.desc
 	theme = administrative
+	override_background = {
+		trigger = { scope:capital = province:1 }
+		reference = ep3_constantinople
+	}
 	override_background = { reference = market }
 	left_portrait = {
 		character = root
@@ -663,6 +667,10 @@ ep3_eparch_event.0010 = {
 	title = ep3_eparch_event.0010.t
 	desc = ep3_eparch_event.0010.desc
 	theme = administrative
+	override_background = {
+		trigger = { scope:capital = province:1 }
+		reference = ep3_constantinople
+	}
 	override_background = { reference = market }
 	left_portrait = {
 		character = root
@@ -925,6 +933,10 @@ ep3_eparch_event.0015 = {
 	title = ep3_eparch_event.0015.t
 	desc = ep3_eparch_event.0015.desc
 	theme = administrative
+	override_background = {
+		trigger = { scope:capital = province:1 }
+		reference = ep3_constantinople
+	}
 	override_background = { reference = bp2_university }
 	left_portrait = {
 		character = root
@@ -1365,7 +1377,11 @@ ep3_eparch_event.0020 = {
 			}
 			animation = toast
 		}
-		animation = acknowledging
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = acknowledging # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_right_portrait = scope:peer_with_hook
 	artifact = {

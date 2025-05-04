@@ -3118,7 +3118,7 @@ legitimize_latin_dominion_decision = {
 	ai_check_interval = 6
 	
 	ai_potential = {
-		primary_title = {
+		primary_title ?= {
 			this = title:e_latin_empire
 		}
 		title:e_byzantium = {

@@ -4018,7 +4018,11 @@ ep3_emperor_yearly.2151 = {
 	}
 	right_portrait = {
 		character = scope:chaplain
-		animation = scepter
+		triggered_animation = {
+			trigger = { religion = religion:christianity_religion }
+			animation = scepter # anim uses crucifix scepter
+		}
+		animation = war_over_tie
 	}
 	lower_right_portrait = scope:saint
 
@@ -5526,6 +5530,11 @@ scripted_trigger ep3_2220_valid_county_trigger = {
 scripted_trigger ep3_2220_famous_monastery_trigger = {
 	OR = {
 		this = province:1 #Sumela
+		this = province:1 #Meteora
+		this = province:1 #Mt.Athos
+		this = province:1 #St.Catherine
+		this = province:1 #Jvari
+		this = province:1 #Hosios Loukas
 	}
 }
 

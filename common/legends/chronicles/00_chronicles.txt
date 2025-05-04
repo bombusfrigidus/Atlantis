@@ -49,6 +49,91 @@ beast_slayer = {
 ancestral_glory = {
 	name = {
 		first_valid = {
+			# Triggered seeds
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_king_arthur
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_carolingian
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_the_wheelwright
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_cadell
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_sons_of_rurik
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_el_cid
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_peasant_emperor
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_premysl
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_borjigin
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_the_red_hand
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_yazdagird_iii
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_bahram_gur
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_saman_khudah
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_ragnarr
+			}
 			# Dynamic
 			triggered_desc = {
 				trigger = {
@@ -87,6 +172,90 @@ ancestral_glory = {
 	description = {
 		first_valid = {
 			# Triggered seeds
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_king_arthur_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_carolingian_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_the_wheelwright_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_cadell_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_sons_of_rurik_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_el_cid_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_peasant_emperor_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_premysl_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_borjigin_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_the_red_hand_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_yazdagird_iii_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_bahram_gur_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_saman_khudah_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_ragnarr_desc
+			}
 			random_valid = {
 				desc = legend_chronicle_ancestral_glory_desc
 			}
@@ -349,6 +518,24 @@ saintly_deed = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_alfred_of_wessex
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_william_gellones
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_edward_the_martyr
+			}
+			triggered_desc = {
+				trigger = {
 					scope:ancestor = {
 						has_trait_xp = {
 							trait = pilgrim
@@ -364,6 +551,24 @@ saintly_deed = {
 	}
 	description = {
 		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_alfred_of_wessex_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_william_gellones_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor = character:1
+				}
+				desc = legend_edward_the_martyr_desc
+			}
 			triggered_desc = {
 				trigger = {
 					scope:ancestor = {
@@ -508,7 +713,13 @@ saintly_descent = {
 				}
 				desc = legend_shibi_chakravarti
 			}
-			desc = legend_saintly_descent_name
+			triggered_desc = {
+				trigger = {
+					scope:ancestor_flag = flag:magi
+				}
+				desc = legend_magi
+			}
+			desc = legend_saintly_descent_name		
 		}
 	}
 	description = {
@@ -524,6 +735,12 @@ saintly_descent = {
 					scope:ancestor_flag = flag:shibi_chakravarti
 				}
 				desc = legend_shibi_chakravarti_desc
+			}
+			triggered_desc = {
+				trigger = {
+					scope:ancestor_flag = flag:magi
+				}
+				desc = legend_magi_desc
 			}
 			desc = legend_saintly_descent_desc
 		}
@@ -703,7 +920,15 @@ new_title = {
 			}
 			triggered_desc = {
 				trigger = {
-					scope:title = title:e_mongol_empire
+					scope:title = {
+						OR = {
+							this = title:e_mongol_empire
+							AND = {
+								exists = global_var:greatest_of_khans_title
+								this = global_var:greatest_of_khans_title
+							}
+						}
+					}
 				}
 				desc = legend_of_genghis_name
 			}
@@ -744,7 +969,15 @@ new_title = {
 			}
 			triggered_desc = {
 				trigger = {
-					scope:title = title:e_mongol_empire
+					scope:title = {
+						OR = {
+							this = title:e_mongol_empire
+							AND = {
+								exists = global_var:greatest_of_khans_title
+								this = global_var:greatest_of_khans_title
+							}
+						}
+					}
 				}
 				desc = legend_of_genghis_desc
 			}
@@ -1179,7 +1412,7 @@ legendary_battle = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					scope:loser = { has_nickname = nick_genghis_khan }
+					scope:loser = { mpo_has_greatest_of_khans_nickname_trigger = yes }
 				}
 				desc = khan_beater_name
 			}
@@ -1190,7 +1423,7 @@ legendary_battle = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					scope:loser = { has_nickname = nick_genghis_khan }
+					scope:loser = { mpo_has_greatest_of_khans_nickname_trigger = yes }
 				}
 				desc = khan_beater_desc
 			}

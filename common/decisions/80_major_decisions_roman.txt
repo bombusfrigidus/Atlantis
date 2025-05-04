@@ -428,6 +428,30 @@ mend_the_great_schism_decision = {
 	is_valid = {
 		piety_level >= max_piety_level
 		completely_controls = title:c_atlantis
+		completely_controls = title:c_atlantis
+		completely_controls = title:c_atlantis
+		completely_controls = title:c_atlantis
+		completely_controls = title:c_atlantis
+		custom_description = {
+			text = "mend_schism_byzantion_bishop"
+			title:c_atlantis.holder.faith = root.faith  #Either own County directly, or have a vassal of same religion.
+		}
+		custom_description = {
+			text = "mend_schism_antiocheia_bishop"
+			title:c_atlantis.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+		}
+		custom_description = {
+			text = "mend_schism_jerusalem_bishop"
+			title:c_atlantis.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+		}
+		custom_description = {
+			text = "mend_schism_alexandria_bishop"
+			title:c_atlantis.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+		}
+		custom_description = {
+			text = "mend_schism_roma_bishop"
+			title:c_atlantis.holder.faith = root.faith #Either own County directly, or have a vassal of same religion.
+		}
 		custom_description = {
 			text = "mend_schism_no_rite"
 			root.faith = { NOT = { has_doctrine_parameter = maintains_head_of_faith_on_creation } }

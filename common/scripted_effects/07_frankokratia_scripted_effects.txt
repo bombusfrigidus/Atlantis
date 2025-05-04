@@ -1015,7 +1015,33 @@ ep3_frankokratia_capital_sacking_effect = {
 	
 	scope:claimant.capital_county = {
 		change_county_control = -100
-		change_development_level = -5
+		if = {
+			limit = {
+				scope:claimant.capital_county = {
+					development_level >= 90
+				}
+			}
+			change_development_level = -20
+		}
+		else_if = {
+			limit = {
+				scope:claimant.capital_county = {
+					development_level >= 60
+				}
+			}
+			change_development_level = -15
+		}
+		else_if = {
+			limit = {
+				scope:claimant.capital_county = {
+					development_level >= 40
+				}
+			}
+			change_development_level = -10
+		}
+		else = {
+			change_development_level = -5
+		}
 		custom_tooltip = byz_capital_building_destroyed_tooltip
 	}
 	scope:claimant.primary_title = {
@@ -1028,6 +1054,10 @@ ep3_frankokratia_capital_sacking_effect = {
 	}
 	
 	hidden_effect = {
+		scope:claimant.capital_province = {
+			destroy_random_building_variable_effect = yes
+			destroy_random_building_effect = yes
+		}
 		scope:claimant.capital_province = {
 			destroy_random_building_variable_effect = yes
 			destroy_random_building_effect = yes
@@ -5511,6 +5541,75 @@ greek_anarchy_army_spawn_effect = {
 				location = scope:attacker.capital_province
 			}
 		}
+		#Cataphract archers
+		10 = {
+			trigger = {
+				OR = {
+					culture = {
+						has_cultural_parameter = unlock_maa_cataphract_archers
+					}
+					scope:defender = {
+						culture = {
+							has_cultural_parameter = unlock_maa_cataphract_archers
+						}
+					}
+					scope:defender = {
+						any_realm_county = {
+							culture = {
+								has_cultural_parameter = unlock_maa_cataphract_archers
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					scope:defender = {
+						culture = {
+							has_cultural_parameter = unlock_maa_cataphract_archers
+						}
+					}
+				}
+				scope:defender.culture = { save_scope_as = army_culture }
+			}
+			else_if = {
+				limit = {
+					scope:defender = {
+						any_realm_county = {
+							culture = {
+								has_cultural_parameter = unlock_maa_cataphract_archers
+							}
+						}
+					}
+				}
+				scope:defender = {
+					random_realm_county = {
+						limit = {
+							culture = {
+								has_cultural_parameter = unlock_maa_cataphract_archers
+							}
+						}
+						culture = { save_scope_as = army_culture }
+					}
+				}
+			}
+			else = {
+				culture = {
+					save_scope_as = army_culture
+				}
+			}
+			spawn_army = {
+				name = greek_anarchy_war_neighbor_army_name
+				uses_supply = yes
+				inheritable = no
+				levies = greek_anarchy_army_levy_value
+				men_at_arms = {
+					type = cataphract_archers
+					stacks = greek_anarchy_army_heavy_cav_value
+				}
+				location = scope:attacker.capital_province
+			}
+		}
 		#Konni folk get konni
 		10 = {
 			trigger = {
@@ -5640,25 +5739,27 @@ greek_anarchy_army_spawn_effect = {
 			trigger = {
 				OR = {
 					culture = {
-						has_cultural_parameter = unlock_maa_horse_archers
+						culture_has_archer_cavalry_maa = yes
 					}
 					scope:defender = {
 						any_realm_county = {
 							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+								culture_has_archer_cavalry_maa = yes
 							}
 						}
 					}
 					scope:defender = {
 						any_vassal = {
-							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+							OR = {
+								culture = { culture_has_archer_cavalry_maa = yes }
+								mpo_can_recruit_nomad_maa_trigger = yes
 							}
 						}
 					}
 					scope:defender = {
-						culture = {
-							has_cultural_parameter = unlock_maa_horse_archers
+						OR = {
+							culture = { culture_has_archer_cavalry_maa = yes }
+							mpo_can_recruit_nomad_maa_trigger = yes
 						}
 					}
 				}
@@ -5668,7 +5769,7 @@ greek_anarchy_army_spawn_effect = {
 					scope:defender = {
 						any_realm_county = {
 							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+								culture_has_archer_cavalry_maa = yes
 							}
 						}
 					}
@@ -5677,7 +5778,7 @@ greek_anarchy_army_spawn_effect = {
 					random_realm_county = {
 						limit = {
 							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+								culture_has_archer_cavalry_maa = yes
 							}
 						}
 						culture = { save_scope_as = army_culture }
@@ -5687,8 +5788,9 @@ greek_anarchy_army_spawn_effect = {
 			else_if = {
 				limit = {
 					scope:defender = {
-						culture = {
-							has_cultural_parameter = unlock_maa_horse_archers
+						OR = {
+							culture = { culture_has_archer_cavalry_maa = yes }
+							mpo_can_recruit_nomad_maa_trigger = yes
 						}
 					}
 				}
@@ -5702,8 +5804,9 @@ greek_anarchy_army_spawn_effect = {
 				limit = {
 					scope:defender = {
 						any_vassal = {
-							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+							OR = {
+								culture = { culture_has_archer_cavalry_maa = yes }
+								mpo_can_recruit_nomad_maa_trigger = yes
 							}
 						}
 					}
@@ -5711,8 +5814,9 @@ greek_anarchy_army_spawn_effect = {
 				scope:defender = {
 					random_vassal = {
 						limit = {
-							culture = {
-								has_cultural_parameter = unlock_maa_horse_archers
+							OR = {
+								culture = { culture_has_archer_cavalry_maa = yes }
+								mpo_can_recruit_nomad_maa_trigger = yes
 							}
 						}
 						culture = { save_scope_as = army_culture }

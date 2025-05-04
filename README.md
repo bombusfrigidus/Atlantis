@@ -5,9 +5,9 @@ Atlantis is a CK3 TC template. Contact:
  - bombus_frigidus@gmail.com
  - bombus_frigidus on Discord
 
-Atlantis is compatible with CK3 1.15.0.2 as of 2025/04/18. 
+Atlantis is compatible with CK3 1.16.0.1 as of 2025/05/03. 
 
-The update from 1.12.5 is wholly by Striped Honey (stripedhoney on Discord, BiggDeer on GitHub). Cheers!
+The update from 1.15.0.2 is wholly by Striped Honey (stripedhoney on Discord, BiggDeer on GitHub). Cheers!
 
 For more resources on mods, refer to:
  - Crusader Kings III - User Mods | Paradox Interactive Forums

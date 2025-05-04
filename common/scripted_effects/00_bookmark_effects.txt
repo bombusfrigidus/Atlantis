@@ -5,9 +5,6 @@
 bookmark_867_northmen_aellas_capture_war_imprisonment_effect = {
 	if = {
 		limit = {
-
-			always = no
-
 			scope:defender_loser = {
 				this = character:1 #Aella
 				is_ai = yes

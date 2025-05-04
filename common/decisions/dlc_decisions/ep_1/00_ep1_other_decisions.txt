@@ -145,6 +145,7 @@ introduce_a_new_fashion_at_court_decision = {
 			NOR = {
 				government_has_flag = government_is_tribal
 				government_has_flag = government_is_theocracy
+				government_has_flag = government_is_nomadic
 				top_liege ?= { government_has_flag = government_is_tribal }
 				top_liege ?= { government_has_flag = government_is_theocracy }
 			}
@@ -161,6 +162,12 @@ introduce_a_new_fashion_at_court_decision = {
 			}
 		}
 		reference = "gfx/interface/illustrations/decisions/ep3_cerimonial_decision.dds"
+	}
+	picture = {
+		trigger = {
+			government_has_flag = government_is_nomadic
+		}
+		reference = "gfx/interface/illustrations/event_scenes/mpo_tent_interior_mongol.dds"
 	}
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"

@@ -173,6 +173,11 @@ e_mongol_empire = {
 	landless = yes
 }
 
+e_great_liao = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 e_kara_khitai = { 
 	capital = c_atlantis
 	landless = yes
@@ -184,6 +189,11 @@ e_timurids = {
 }
 
 k_bosporan_kingdom = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_naiman = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1188,7 +1198,7 @@ k_georgia = {
 	landless = yes
 }
 
-d_tao-klarjeti = { 
+d_tao = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1413,7 +1423,7 @@ k_sapmi = {
 	landless = yes
 }
 
-d_aarjetje  = { 
+d_aarjetje = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1523,7 +1533,7 @@ d_finland = {
 	landless = yes
 }
 
-d_savo  = { 
+d_savo = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1629,6 +1639,11 @@ e_west_slavia = {
 }
 
 k_moravia = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_bohemia = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1868,12 +1883,27 @@ d_yedisan = {
 	landless = yes
 }
 
+d_kizilyedisan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_levedia = { 
 	capital = c_atlantis
 	landless = yes
 }
 
+d_red_levedia = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_don_valley = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tana = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1923,12 +1953,32 @@ d_pecheneg = {
 	landless = yes
 }
 
+d_mugodzhar_hills = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_aqtobe = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_atyrau = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_manatau = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 k_magyar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-e_volga-ural = { 
+e_volga = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -1953,6 +2003,11 @@ d_jalmat = {
 	landless = yes
 }
 
+d_bugurslan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_martyuba = { 
 	capital = c_atlantis
 	landless = yes
@@ -1968,6 +2023,11 @@ d_mordvinia = {
 	landless = yes
 }
 
+d_saran = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_voronezh = { 
 	capital = c_atlantis
 	landless = yes
@@ -1979,6 +2039,11 @@ d_chuvashia = {
 }
 
 d_khopyor = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tambov = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2009,6 +2074,11 @@ k_bashkiria = {
 }
 
 d_bashkiria = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sakmara = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2088,6 +2158,16 @@ d_salair = {
 	landless = yes
 }
 
+d_aley = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_altaishan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_ala_tau = { 
 	capital = c_atlantis
 	landless = yes
@@ -2113,12 +2193,12 @@ e_mongolia = {
 	landless = yes
 }
 
-k_mongolia = { 
+k_otuken = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_otuken = { 
+d_orkhon = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2158,6 +2238,11 @@ d_ubsunur_hollow = {
 	landless = yes
 }
 
+d_zavkhan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_khovd = { 
 	capital = c_atlantis
 	landless = yes
@@ -2178,6 +2263,11 @@ d_tannu_ola = {
 	landless = yes
 }
 
+d_katu_yaryk = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_western_sayan = { 
 	capital = c_atlantis
 	landless = yes
@@ -2189,6 +2279,11 @@ k_khakassia = {
 }
 
 d_khakass_hollow = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_blue_khakassia = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2273,12 +2368,12 @@ k_zhetysu = {
 	landless = yes
 }
 
-d_zhetysu =  { 
+d_zhetysu = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alakol =  { 
+d_alakol = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2288,27 +2383,7 @@ d_tarbagatai = {
 	landless = yes
 }
 
-d_ili-alatau =  { 
-	capital = c_atlantis
-	landless = yes
-}
-
-k_kimek = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_mugodzhar_hills = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_aqtobe = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_atyrau = { 
+d_ili = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2323,12 +2398,7 @@ d_turgay = {
 	landless = yes
 }
 
-d_kurgan = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_kush-murun = { 
+d_kokturgay = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2338,27 +2408,52 @@ d_saryarka = {
 	landless = yes
 }
 
+d_qyzylsaryarka = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_kazakh = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kipchak = { 
+k_qara_dala = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_semey = { 
+d_atbasar = { 
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kentarlau = { 
+d_kurgan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kush = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tobol = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_saryarka = { 
 	capital = c_atlantis
 	landless = yes
 }
 
 d_karkaraly = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tokumbay = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2373,6 +2468,31 @@ d_betpa = {
 	landless = yes
 }
 
+k_kipchak = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_semey = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jinghiz = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_degelen = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kentarlau = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 k_dzungaria = { 
 	capital = c_atlantis
 	landless = yes
@@ -2383,7 +2503,17 @@ d_kara_khoja = {
 	landless = yes
 }
 
+d_beshbalik = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 d_altay = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_akaltay = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2428,12 +2558,22 @@ d_charkliq = {
 	landless = yes
 }
 
+d_loulan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
 k_oghuz_il = { 
 	capital = c_atlantis
 	landless = yes
 }
 
 d_transcaspiana = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_garabogazkol = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2448,7 +2588,12 @@ d_aral_il = {
 	landless = yes
 }
 
-d_barsuki =  { 
+d_barsuki = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_aral_karakum = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2468,7 +2613,12 @@ d_chah = {
 	landless = yes
 }
 
-d_muyunkum =  { 
+d_muyunkum = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+d_talas_alatau = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -2664,6 +2814,11 @@ d_sistan = {
 }
 
 k_kabulistan = { 
+	capital = c_atlantis
+	landless = yes
+}
+
+k_afghanistan = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -3398,11 +3553,6 @@ d_sanaa = {
 	landless = yes
 }
 
-d_jawf-al-yamani = { 
-	capital = c_atlantis
-	landless = yes
-}
-
 d_taizz = { 
 	capital = c_atlantis
 	landless = yes
@@ -3444,16 +3594,6 @@ d_delta = {
 }
 
 d_cairo = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_al-wahat = { 
-	capital = c_atlantis
-	landless = yes
-}
-
-d_al-said = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -4118,7 +4258,7 @@ d_benin = {
 	landless = yes
 }
 
-k_igbo-benue = { 
+k_igbo = { 
 	capital = c_atlantis
 	landless = yes
 }
@@ -4478,7 +4618,7 @@ d_pagan = {
 	landless = yes
 }
 
-d_tagaung  = { 
+d_tagaung = { 
 	capital = c_atlantis
 	landless = yes
 }

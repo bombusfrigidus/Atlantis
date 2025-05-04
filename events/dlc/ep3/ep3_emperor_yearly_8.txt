@@ -94,7 +94,31 @@ ep3_emperor_yearly.8000 = {
 	cooldown = { years = 10 }
 
 	trigger = {
-		always = no
+		has_ep3_dlc_trigger = yes
+		# Ensure you are l'empereur
+		highest_held_title_tier = tier_empire
+		# Ensure there are people to annoy
+		any_vassal = {
+			count >= 3
+			is_governor = yes
+		}
+		# Ensure this has not happened already
+		NOT = {
+			capital_county = { has_county_modifier = ep3_development_waning_modifier }
+		}
+		# Recent conflict
+		OR = {
+			any_truce_holder = { count >= 1 }
+			any_truce_target = { count >= 1 }
+			is_at_war = yes
+		}
+		# Be nice
+		NOR = {
+			any_character_epidemic = { count >= 1 }
+			capital_province = {
+				any_province_epidemic = { count >= 1 }
+			}
+		}
 	}
 
 	weight_multiplier = {
@@ -1006,9 +1030,9 @@ ep3_emperor_yearly.8030 = {
 	immediate = {
 		add_character_flag = ep3_porphyrios_cooldown
 		# Sea provinces scopes
-		province:8668 = { add_to_list = sea_provinces }
-		province:947 = { add_to_list = sea_provinces }
-		province:8665 = { add_to_list = sea_provinces }
+		province:1 = { add_to_list = sea_provinces }
+		province:1 = { add_to_list = sea_provinces }
+		province:1 = { add_to_list = sea_provinces }
 		# Coastal counties scopes
 		title:c_atlantis = { add_to_list = coast_counties }
 		title:d_thrace = {

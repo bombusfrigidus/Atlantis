@@ -2,7 +2,6 @@
 
 historical_char_creation_events.1 = {	
 	hidden = yes
-	orphan = yes
 }
 
 # Major religious inspiration outcome

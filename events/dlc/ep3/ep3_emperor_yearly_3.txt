@@ -1199,6 +1199,11 @@ ep3_emperor_yearly.3010 = {
 		scope:army.location = {
 			OR = {
 				this = province:1
+				this = province:1
+				this = province:1
+				this = province:1
+				this = province:1
+				this = province:1
 			}
 		}
 		#A lot of jank would be introduced by multiplayer and armies continuing to move, unpaused
@@ -1496,6 +1501,54 @@ ep3_emperor_yearly.3011 = {
 						}
 						add = 10
 					}
+					modifier = {
+						province:1 = {
+							has_building_or_higher = curtain_walls_01
+						}
+						add = 5
+					}
+					modifier = {
+						province:1 = {
+							has_building_or_higher = curtain_walls_03
+						}
+						add = 5
+					}
+					modifier = {
+						province:1  = {
+							has_building_or_higher = curtain_walls_05
+						}
+						add = 5
+					}
+					modifier = {
+						province:1  = {
+							has_building_or_higher = curtain_walls_07
+						}
+						add = 5
+					}
+					modifier = {
+						province:1  = {
+							has_building_or_higher = common_tradeport_01
+						}
+						add = 5
+					}
+					modifier = {
+						province:1  = {
+							has_building_or_higher = common_tradeport_03
+						}
+						add = 5
+					}
+					modifier = {
+						province:1  = {
+							has_building_or_higher = common_tradeport_05
+						}
+						add = 5
+					}
+					modifier = {
+						province:1 = {
+							has_building_or_higher = common_tradeport_07
+						}
+						add = 5
+					}
 					show_as_tooltip = { ep3_greek_fire_success_effect = yes }
 					root = { add_character_flag = successful_greek_fire_attack }
 				}
@@ -1544,49 +1597,49 @@ ep3_emperor_yearly.3011 = {
 						add = 20
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = curtain_walls_01
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = curtain_walls_03
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = curtain_walls_05
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = curtain_walls_07
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = common_tradeport_01
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = common_tradeport_03
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = common_tradeport_05
 						}
 						add = 10
 					}
 					modifier = {
-						province:496 = {
+						province:1 = {
 							has_building_or_higher = common_tradeport_07
 						}
 						add = 10
