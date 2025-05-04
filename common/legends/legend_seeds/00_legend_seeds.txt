@@ -533,7 +533,7 @@ edward_the_martyr = {
 		NOT = {
 			has_global_variable = edward_the_martyr_legend
 		}
-		dynasty = character:1  # Ol' Eddy
+		dynasty = dynasty:1 # Ol' Eddy
 		religion = religion:christianity_religion
 	}
 	is_valid = {
@@ -615,7 +615,7 @@ sceafa = { # Claims to be descended from Noah
 		NOT = {
 			has_global_variable = sceafa_legend
 		}
-		dynasty = character:1
+		dynasty = dynasty:1
 		religion = { is_in_family = rf_abrahamic }
 	}
 	is_valid = {

@@ -7330,7 +7330,6 @@ scripted_trigger game_rule_1151_no_player_vision_on_wars_trigger = {
 #	Stamford Bridge teleport.
 game_rule.1151 = {
 
-	orphan = yes
 	hidden = yes
 	scope = none
 
@@ -7369,7 +7368,6 @@ game_rule.1151 = {
 #	Hastings teleport.
 game_rule.1152 = {
 
-	orphan = yes
 	hidden = yes
 	scope = none
 
