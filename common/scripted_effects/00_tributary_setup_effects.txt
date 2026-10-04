@@ -7,33 +7,13 @@
 setup_tributaries_effect = {
 	if = {
 		limit = { has_mpo_dlc_trigger = yes	}
-		if = {
-    		limit = { current_date < 1066.9.15 } # so, 867
-        	mpo_867_tributary_setup_effect = yes
-    	}
-    	else_if = {
-    		limit = { current_date = 1066.9.15 }
-        	mpo_1066_tributary_setup_effect = yes
-    	}
-    	else_if = {
-    		limit = { current_date > 1066.9.15 } # so, 1178
-        	mpo_1178_tributary_setup_effect = yes
-    	}
-    }
+		mpo_tributary_setup_effect = yes
+	}
 	if = {
-		if = {
-    		limit = { current_date < 1066.9.15 } # so, 867
-    		base_867_tributary_setup_effect = yes
-    	}
-    	else_if = {
-    		limit = { current_date = 1066.9.15 }
-        	base_1066_tributary_setup_effect = yes
-    	}
-    	else_if = {
-    		limit = { current_date > 1066.9.15 } # so, 1178
-        	base_1178_tributary_setup_effect = yes
-    	}
-    }
+		limit = { has_tgp_dlc_trigger = yes	}
+		tgp_tributary_setup_effect = yes
+	}
+	base_tributary_setup_effect = yes
 }
 
 # $TRIBUTARY$ = the new tributary
@@ -58,309 +38,363 @@ break_subject_contract_and_establish_tributary_effect = {
 	}
 }
 
+mpo_tributary_setup_effect = {
+	if = {
+		limit = { current_date >= 1178.1.1 }
+		mpo_1178_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 1066.1.1 }
+		mpo_1066_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 867.1.1 }
+		mpo_867_tributary_setup_effect = yes
+	}
+}
+
 mpo_867_tributary_setup_effect = {
 
 	#### k_magyar
-	character:1 = { # Almos Árpád of k_magyar
+	character:1 ?= { # Almos Árpád of k_magyar
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### k_zhetysu
-	character:1 = { # Bilge Karakhanid of k_zhetysu
+	character:1 ?= { # Bilge Karakhanid of k_zhetysu
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### k_oghuz_il
-	character:1 = { # Kurush Yoishta of k_oghuz_il
+	character:1 ?= { # Kurush Yoishta of k_oghuz_il
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Cuneyd of c_atlantis
+	character:1 ?= { # Cuneyd of c_atlantis
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Cuneyd of c_atlantis
+	character:1 ?= { # Cuneyd of c_atlantis
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	### e_caspian-pontic_steppe
-	character:1 = { # Manasseh Bulanid of e_caspian-pontic_steppe
+	character:1 ?= { # Manasseh Bulanid of e_caspian-pontic_steppe
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1= {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### e_kirghiz_khanate
-	character:1 = { # Uzur Enisey Kyrgyz of e_kirghiz_khanate
+	character:1 ?= { # Uzur Enisey Kyrgyz of e_kirghiz_khanate
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 
 
 		# herders
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-	}
-	character:1 = {
-		save_scope_as = suzerain
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Bodonchar Munkhag of c_atlantis
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Jakha Kereyid of d_ovorkhangai
+	character:1 ?= { # Bodonchar Munkhag of c_atlantis
 		save_scope_as = suzerain
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Menggei Mergid of d_selenga_valley
+	character:1 ?= { # Jakha Kereyid of d_ovorkhangai
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = { # Qatarqa Güchügüd of d_gobi_altai
+	character:1 ?= { # Menggei Mergid of d_selenga_valley
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+	}
+	character:1 ?= { # Qatarqa Güchügüd of d_gobi_altai
+		save_scope_as = suzerain
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	### k_balhae
+	character:1 ?= { # King Geon_hwang of k_balhae
+		save_scope_as = suzerain
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	
+	### d_BAL_hoewon
+	character:1 ?= {
+		save_scope_as = suzerain
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	### k_silla
+	character:1 ?= { # King Eung-nyeom of k_silla
+		save_scope_as = suzerain
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
@@ -369,320 +403,401 @@ mpo_867_tributary_setup_effect = {
 mpo_1066_tributary_setup_effect = {
 
 	#### e_great_liao
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		#Eastern tributaries, mostly Jurchens
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		#Tribs in k_amur
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	
 
 	#### k_zhetysu
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+	}
+
+	character:1 ?= {
+		save_scope_as = suzerain
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### k_pechenegs
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 	
 
 	#### k_caspian_steppe
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
 
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_kargassia
 
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+
+	#### e_goryeo
+
+	character:1 ?= {
+		save_scope_as = suzerain
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
@@ -691,232 +806,645 @@ mpo_1066_tributary_setup_effect = {
 mpo_1178_tributary_setup_effect = {
 
 	#### k_caspian_steppe
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 
 		# herders
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-	}
-	character:1 = {
-		save_scope_as = suzerain
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
-			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
-		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+	}
+	character:1 ?= {
+		save_scope_as = suzerain
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### e_kara_khitai
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= { # Khan Ibrahim III Karakhanid of Syr Darya
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= { # Idiqut Bilga Kutan of Qocho
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= { # Khan Muhammad Karakhanid of Khotan
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= { # Prince Muhammad II Karakhanid of Ferghana
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		# Herders
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-	}
-
-	character:1 = {
-		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### k_naiman
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_degelen
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_khakass_hollow
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_ovorkhangai
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_khovsgol
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
 	}
 
 	#### d_selenga_valley
-	character:1 = {
+	character:1 ?= {
 		save_scope_as = suzerain
-		character:1 = {
+		character:1 ?= {
 			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
 		}
+	}
+
+	#### e_andong
+	character:1 ?= {
+		save_scope_as = suzerain
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		#Tribs in k_amur
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		character:1 ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+}
+
+tgp_tributary_setup_effect = {
+	title:h_china.holder ?= {
+		save_scope_as = suzerain
+
+		if = {
+			limit = { current_date >= 851.1.1 current_date <= 1036.1.1 }
+			title:k_hexi.holder ?= {
+				break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+			}
+		}
+		if = {
+			limit = { current_date >= 705.1.1 current_date <= 926.1.1 }
+			title:k_balhae.holder ?= {
+				break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+			}
+		}
+		if = {
+			limit = { current_date >= 337.1.1 current_date <= 935.1.1 }
+			title:k_silla.holder ?= {
+				break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+			}
+		}
+		if = {
+			limit = { current_date >= 866.1.1 current_date <= 1132.1.1 }
+			title:k_dzungaria.holder ?= {
+				break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+			}
+		}
+	}
+
+	if = {
+		limit = { current_date >= 1178.1.1 }
+		tgp_1178_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 1066.1.1 }
+		tgp_1066_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 867.1.1 }
+		tgp_867_tributary_setup_effect = yes
+	}
+}
+
+tgp_867_tributary_setup_effect = {
+	title:h_china.holder ?= {
+		save_scope_as = suzerain
+		title:k_champa.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_luoshi.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_shimen.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_luodian.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_zangke.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_xiyuan.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Srivijaya 867
+	title:e_srivijaya.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_MAL_langkasuka.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Borneo
+	title:d_BOR_tanjungpura.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Silla
+	title:k_silla.holder ?= {
+		save_scope_as = suzerain
+		title:d_tamna.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+}
+
+tgp_1066_tributary_setup_effect = {
+	title:h_china.holder ?= {
+		save_scope_as = suzerain
+		title:k_dali.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:k_viet.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_shimen.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_luoshi.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_luodian.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_zangke.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:d_xiyuan.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	title:k_viet.holder ?= {
+		save_scope_as = suzerain
+		title:k_champa.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Srivijaya 1066
+	title:k_malayadvipa.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Melayu kingdom 1066
+	title:d_SUM_jambi.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Chola tribs in Sumatra/Malaysia 1066
+	title:k_tamilakam.holder ?= {
+		save_scope_as = suzerain
+		title:k_malayadvipa.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		#
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Borneo
+	title:d_BOR_tanjungpura.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+}
+
+tgp_1178_tributary_setup_effect = {
+	title:h_china.holder ?= {
+		save_scope_as = suzerain
+		title:k_dali.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:k_viet.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Melayu kingdom/new Sanfoqi in Sumatra/Malaysia 1178
+	title:d_SUM_jambi.holder ?= {
+		save_scope_as = suzerain
+		title:d_SUM_palembang.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Tribs in Sumatra 1178
+	title:d_SUM_riau.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Tribs of Kediri 1178
+	title:d_JAV_mataram.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	#Borneo
+	title:d_BOR_tanjungpura.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+	title:d_BOR_nan_sarunai.holder ?= {
+		save_scope_as = suzerain
+		title:c_atlantis.holder ?= {
+			break_subject_contract_and_establish_tributary_effect = { SUZERAIN = scope:suzerain TRIBUTARY = this }
+		}
+	}
+}
+
+base_tributary_setup_effect = {
+	if = {
+		limit = { current_date >= 1178.1.1 }
+		base_1178_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 1066.1.1 }
+		base_1066_tributary_setup_effect = yes
+	}
+	else_if = {
+		limit = { current_date >= 867.1.1 }
+		base_867_tributary_setup_effect = yes
 	}
 }
 

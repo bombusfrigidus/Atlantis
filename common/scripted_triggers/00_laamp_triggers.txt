@@ -26,10 +26,10 @@ maa_regiments_valid_to_refill_trigger = {
 	maa_current_troops_count < maa_max_troops_count
 	trigger_if = {
 		limit = {
-			scope:actor = { government_has_flag = government_is_landless_adventurer }
+			regiment_owner ?= { government_has_flag = government_is_landless_adventurer }
 			is_unit_type = elephant_cavalry
 		}
-		scope:actor.domicile ?= { has_domicile_parameter = camp_reinforce_elephant_regiments_anywhere }
+		regiment_owner.domicile ?= { has_domicile_parameter = camp_reinforce_elephant_regiments_anywhere }
 	}
 }
 
@@ -115,7 +115,7 @@ disable_interaction_for_hereward_trigger = {
 		limit = { scope:recipient = character:1 }
 		custom_tooltip = {
 			text = owns_a_story_trigger
-			scope:actor = {
+			scope:puppet_or_actor = {
 				NOR = {
 					owns_story_of_type = story_cycle_harrying_of_the_north
 					any_liege_or_above = { owns_story_of_type = story_cycle_harrying_of_the_north }
@@ -136,14 +136,18 @@ disable_interaction_for_hasan_trigger = {
 }
 
 laamp_request_likely_marriable_woman_trigger = {
-	is_female = yes
-	is_adult = yes
+	is_available_quick = {
+		female = yes
+		adult = yes
+	}
 	can_marry_trigger = yes
 }
 
 laamp_request_likely_marriable_man_trigger = {
-	is_male = yes
-	is_adult = yes
+	is_available_quick = {
+		female = no
+		adult = yes
+	}
 	can_marry_trigger = yes
 }
 
@@ -151,14 +155,38 @@ laamp_request_likely_marriable_man_trigger = {
 # Transition Triggers
 
 is_valid_for_laampdom = {
-	custom_tooltip = {
-		text = adventurer_not_nf_head_trigger_tt
-		NOT = {
-			any_held_title = { is_noble_family_title = yes }
+	save_temporary_scope_as = potential_laamp_temp
+	trigger_if = {
+		limit = {
+			NAND = {
+				is_ai = no
+				government_has_mechanic = administrative
+				top_liege = this
+				is_landed = no
+			}
+		}
+		custom_tooltip = {
+			text = adventurer_not_nf_head_trigger_tt
+			NOT = {
+				any_held_title = { is_noble_family_title = yes }
+			}
+		}
+		is_landless_ruler = no # Admin gov vassals should not become laamps
+	}
+	trigger_if = {
+		limit = { tgp_realm_has_ceremonial_liege_trigger = yes }
+		custom_tooltip = {
+			text = tgp_japan_imperial_branch_decision_imperial_heir_trigger
+			NOT = {
+				top_liege.primary_title.var:administrative_ui_special_title = {
+					place_in_line_of_succession = {
+						target = scope:potential_laamp_temp
+						value <= 4
+					}
+				}
+			}
 		}
 	}
-	save_temporary_scope_as = potential_laamp_temp
-	is_landless_ruler = no # Admin gov vassals should not become laamps
 	trigger_if = {
 		limit = { is_ai = yes }
 		trigger_if = {
@@ -231,20 +259,24 @@ ep3_laamp_interesting_enough_to_be_a_laamp_trigger = {
 }
 
 playable_relative_trigger = {
-	is_playable_character = yes
-	is_ai = yes
+	is_available_quick = {
+		ai = yes
+		advanced_ruler = yes
+	}
 	house = root.house
 }
 
 ep3_laamp_interesting_sibling_trigger = {
-	is_ai = yes # Not already played
-	is_landed = no # Landless enough to venture forth
+	is_available_quick = {
+		ai = yes
+		landed = no
+		advanced_ruler = no
+	}
 	NOT = {
 		any_consort = {
 			is_ruler = yes
 		}
 	}
-	is_playable_character = no # Not already playable
 	is_valid_for_laampdom = yes # Age, health, personality
 	ep3_laamp_interesting_enough_to_be_a_laamp_trigger = { COMPARISON = $COMPARISON$ }
 }
@@ -262,7 +294,7 @@ ep3_negotiate_settlement_valid_county_trigger = {
 		holder = scope:actor
 		trigger_if = {
 			limit = {
-				scope:actor = { government_has_flag = government_is_administrative }
+				scope:actor = { government_has_mechanic = administrative }
 			}
 			holder = { target_is_liege_or_above = scope:actor }
 		}
@@ -303,7 +335,7 @@ ep3_adventurer_landless_allowed_against_character_trigger = {
 	}
 	# Scope:defender cannot be liege of attacker.
 	scope:defender = {
-		NOT = { this = scope:attacker.liege }
+		this != scope:attacker.liege
 	}
 }
 
@@ -319,9 +351,8 @@ ep3_adventurer_landless_should_invalidate_trigger = {
 				list = target_titles
 				any_in_de_jure_hierarchy = {
 					tier = tier_county
-					holder = {
-						target_is_same_character_or_above = scope:defender
-					}
+					is_landless_type_title = no
+					holder = { target_is_same_character_or_above = scope:defender }
 				}
 			}
 		}
@@ -367,6 +398,10 @@ valid_laamp_basic_trigger = {
 		value = $EMPLOYER$.highest_held_title_tier
 		OR = {
 			$EMPLOYER$.highest_held_title_tier <= tier_county
+			AND = {
+				$EMPLOYER$.highest_held_title_tier <= tier_duchy
+				$EMPLOYER$ = { government_has_flag = government_is_nomadic }
+			}
 			$EMPLOYER$.highest_held_title_tier <= $LAAMP$.prestige_level
 			$EMPLOYER$ = { is_contact_of = $LAAMP$ }
 		}
@@ -377,6 +412,7 @@ valid_laamp_basic_trigger = {
 		# Plus some standard stuff.
 		is_alive = yes
 		is_adult = yes
+		NOT = { government_has_flag = government_is_herder }
 	}
 	$EMPLOYER$ = { is_incapable = no }
 	# Laamps shouldn't offer contracts in their local area, ever.
@@ -444,7 +480,23 @@ valid_laamp_basic_accept_only_trigger = {
 employer_has_treasury_to_offer_job_trigger = {
 	trigger_if = {
 		limit = { is_ai = no }
-		scope:employer.gold >= 50
+		scope:employer = {
+			OR = {
+				treasury_or_gold >= {
+					value = 50
+					multiply = task_contract_employer_tier_gold_multiplier_value
+				}
+				trigger_if = {
+					limit = { government_allows = barter }
+					barter_goods >= {
+						value = 50
+						multiply = task_contract_employer_tier_gold_multiplier_value
+						# wanua rulers start with lower than 100 barter goods
+						# divide = define:NBarter|BARTER_GOODS_TO_LOOT_MULT
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -452,15 +504,17 @@ employer_has_treasury_to_offer_job_trigger = {
 ## So we don't penalise you if their circumstances change beyond your control, but _also_ so that there aren't local job listings going up in Middlesex for someone currently pilgrimaging in Jerusalem.
 valid_laamp_sensible_start_trigger = {
 	scope:employer = {
-		is_travelling = no
-		is_in_army = no
-		is_imprisoned = no
+		is_available_quick = {
+			travel = no
+			in_army = no
+			imprisoned = no
+		}
 	}
 	trigger_if = {
 		limit = {
 			any_character_task_contract = {
 				count >= 1
-				task_contract_employer = scope:employer
+				task_contract_employer ?= scope:employer
 			}
 		}
 		always = no
@@ -618,7 +672,7 @@ council_task_contract_valid_employer_trigger = {
 						EMPLOYER = scope:employer.cp:$COUNCILLOR_TYPE$
 						LAAMP = scope:laamp
 					}
-				}	
+				}
 				AND = {
 					is_performing_council_task = $COUNCIL_TASK_TYPE$
 					valid_laamp_basic_trigger = {
@@ -635,7 +689,8 @@ council_task_contract_valid_employer_trigger = {
 # Travel Triggers
 
 is_laamp_exiled_from_province_trigger = {
-	$PROVINCE$.county.holder = {
+	# Sea provinces have no county and a county can sit unheld; nobody there can have exiled us
+	$PROVINCE$.county.holder ?= {
 		is_laamp_exiled_from_holder_or_liege_trigger = { LAAMP = $LAAMP$ }
 	}
 }
@@ -721,7 +776,7 @@ valid_laamp_contract_foe_trigger = {
 		# Which means making sure that they're not located too far away from our contractor.
 		"squared_distance(root.task_contract_taker.location)" <= squared_distance_large
 		# And that they're not located in the exact same province, else travel logic'll break.
-		NOT = { this = scope:employer_ref.location }
+		this != scope:employer_ref.location
 	}
 }
 
@@ -783,7 +838,7 @@ can_access_reject_inheritance_decision_trigger = {
 	OR = {
 		has_trait = content
 		has_perk = carefree_perk
-		is_landless_adventurer = yes
+		has_government = landless_adventurer_government
 	}
 }
 
@@ -923,8 +978,6 @@ laamp_youth_cultural_tradition_trigger = {
 		}
 	}
 	NOT = {
-		any_heir_title = {
-			count >= 1
-		}
+		any_heir_title = { }
 	}
 }

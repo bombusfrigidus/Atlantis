@@ -12,6 +12,7 @@ namespace = yearly
 # yearly.4081 - Sponsor the translation of a book from Greek
 # yearly.4091 - Your ward and you visit scholars
 # by Linnéa Thimrén
+#yearly.4095 - Congestion in the Capitol
 #######################
 
 
@@ -320,10 +321,7 @@ yearly.4001 = {
 									is_ai = yes
 									can_set_relation_lover_trigger = { CHARACTER = scope:neighboring_ruler }
 									NOR = {
-										any_relation = {
-											type = lover
-											count >= 1
-										}
+										any_relation = { type = lover }
 										has_trait = chaste
 										has_trait = celibate 
 									}
@@ -336,8 +334,8 @@ yearly.4001 = {
 								set_random_lover_reason = { TARGET = scope:vassal }
 								scope:vassal = {
 									random_secret = {
+										type = secret_lover
 										limit = {
-											secret_type = secret_lover
 											secret_target = scope:neighboring_ruler_secondary
 										}
 										reveal_to = root
@@ -421,8 +419,8 @@ yearly.4001 = {
 				}
 				scope:vassal = {
 					random_secret = {
+						type = secret_lover
 						limit = {
-							secret_type = secret_lover
 							secret_target = scope:neighboring_ruler_secondary
 						}
 						reveal_to = root
@@ -501,7 +499,7 @@ yearly.4001 = {
 				set_relation_potential_rival = scope:vassal
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 		}
 		ai_chance = {
@@ -538,7 +536,7 @@ yearly.4001 = {
 				set_relation_potential_rival = scope:vassal
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arbitrary = minor_stress_impact_gain
 			just = minor_stress_impact_loss
 		}
@@ -580,7 +578,7 @@ yearly.4001 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			just = minor_stress_impact_gain
 			arbitrary = minor_stress_impact_loss
 		}
@@ -618,7 +616,7 @@ scripted_trigger yearly_4011_vassal_trigger = {
 		has_relation_lover = root
 		has_relation_friend = root
 		any_scheme = {
-			scheme_type = murder
+			type = murder
 			scheme_target_character = root
 		}
 	}
@@ -684,13 +682,12 @@ yearly.4011 = {
 	right_portrait = scope:vassal
 	
 	trigger = {
-		exists = player_heir
-		player_heir = {
+		player_heir ?= {
 			basic_is_available_ai = yes
 			is_adult = yes
 			NOT = {
 				any_scheme = {
-					scheme_type = murder
+					type = murder
 					scheme_target_character = root
 				}
 			}
@@ -720,6 +717,15 @@ yearly.4011 = {
 					}
 				}
 				20 = { #lovers
+					trigger = { #If none of them are lustful this can't happen if they're not into the other's gender
+						scope:heir = {
+							can_set_relation_lover_trigger = { CHARACTER = scope:vassal }
+							might_cheat_on_every_partner_trigger = yes
+						}
+						scope:vassal = {
+							might_cheat_on_every_partner_trigger = yes
+						}
+					}
 					save_scope_value_as = {
 						name = lovers
 						value = yes
@@ -740,17 +746,6 @@ yearly.4011 = {
 						add = 100
 						scope:heir = {
 							has_relation_potential_lover = scope:vassal
-						}
-					}
-					modifier = { #If none of them are lustful this can't happen if they're not into the other's gender
-						add = -20
-						NOT = {
-							scope:heir = {
-								is_attracted_to_gender_of = scope:vassal
-							}
-							scope:vassal = {
-								is_attracted_to_gender_of = scope:heir
-							}
 						}
 					}
 				}
@@ -911,7 +906,7 @@ yearly.4011 = {
 				opinion = 20
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_gain
 			paranoid = medium_stress_impact_gain
 		}
@@ -939,7 +934,7 @@ yearly.4011 = {
 				opinion = -20
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = medium_stress_impact_gain
 			paranoid = medium_stress_impact_loss
 		}
@@ -1142,8 +1137,8 @@ yearly.4014 = {
 					target_character = root
 				}
 				random_scheme = {
+					type = murder
 					limit = {
-						scheme_type = murder
 						scheme_target_character = root
 					}
 					save_scope_as = murder_friends_scheme
@@ -1180,8 +1175,8 @@ yearly.4014 = {
 					target_character = root
 				}
 				random_scheme = {
+					type = murder
 					limit = {
-						scheme_type = murder
 						scheme_target_character = root
 					}
 					save_scope_as = murder_friends_scheme
@@ -1204,6 +1199,7 @@ yearly.4014 = {
 			}
 		}
 		scope:murder_friends_scheme = {
+			save_scope_as = scheme
 			add_scheme_progress = scheme_progress_gain
 		}
 	}
@@ -1288,7 +1284,7 @@ yearly.4021 = {
 				limit = {
 					has_personality_malicious_trigger = no
 				}
-				stress_impact = {
+				stress_and_fulfillment_impact = {
 					base = medium_stress_impact_gain
 				}
 			}
@@ -1462,7 +1458,7 @@ yearly.4021 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arbitrary = medium_stress_impact_gain
 			just = medium_stress_impact_loss
 		}
@@ -1656,7 +1652,7 @@ yearly.4021 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			just = medium_stress_impact_gain
 			arbitrary = medium_stress_impact_loss
 		}
@@ -1760,7 +1756,7 @@ scripted_trigger yearly_4031_courtier_trigger = {
 		is_of_minor_interest_to_root_trigger = yes
 		is_cannibal_trigger = yes
 		AND = {
-			faith = { NOT = { has_doctrine_parameter = witchcraft_accepted } }
+			NOT = { rite = { rite_has_parameter = witchcraft_accepted } }
 			is_witch_trigger = yes
 		}
 	}
@@ -1772,7 +1768,7 @@ scripted_trigger yearly_4031_murderous_trigger = {
 		has_trait = callous
 		has_trait = murderer
 		any_secret = {
-			secret_type = secret_murder
+			type = secret_murder
 		}
 	}
 }
@@ -1801,11 +1797,10 @@ yearly.4031 = {
 		is_landed = yes # Thematically landed
 		OR = {
 			any_owned_story = {
-				story_type = story_cycle_murders_at_court
+				type = story_cycle_murders_at_court
 			}
 			AND = {
-				exists = player_heir
-				player_heir = {
+				player_heir ?= {
 					yearly_4031_basic_check_trigger = yes
 				}
 			}
@@ -1824,8 +1819,7 @@ yearly.4031 = {
 		modifier = { #More likely if they've already shown these tendencies
 			add = 1.5
 			AND = {
-				exists = player_heir
-				player_heir = {
+				player_heir ?= {
 					yearly_4031_basic_check_trigger = yes
 					has_personality_malicious_trigger = yes
 				}
@@ -1834,8 +1828,7 @@ yearly.4031 = {
 		modifier = { #More likely if they're at the same court
 			add = 1.5
 			AND = {
-				exists = player_heir
-				player_heir = {
+				player_heir ?= {
 					yearly_4031_basic_check_trigger = yes
 					is_in_the_same_court_as = root
 				}
@@ -1859,15 +1852,15 @@ yearly.4031 = {
 		if = {
 			limit = {
 				any_owned_story = {
-					story_type = story_cycle_murders_at_court
+					type = story_cycle_murders_at_court
 					var:murderer = {
 						is_alive = yes
 					}
 				}
 			}
 			random_owned_story = {
+				type = story_cycle_murders_at_court
 				limit = {
-					story_type = story_cycle_murders_at_court
 					var:murderer = {
 						is_alive = yes
 					}
@@ -1882,8 +1875,7 @@ yearly.4031 = {
 				random_list = {
 					40 = {
 						trigger = {
-							exists = player_heir
-							player_heir = {
+							player_heir ?= {
 								yearly_4031_basic_check_trigger = yes
 							}
 						}
@@ -2002,7 +1994,7 @@ yearly.4031 = {
 				opinion = -15
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = medium_stress_impact_gain
 			paranoid = medium_stress_impact_gain
 			callous = medium_stress_impact_loss
@@ -2196,6 +2188,7 @@ yearly.4061 = {
 			location = root.capital_province
 			template = scholar_character
 			faith = root.faith
+			rite = root.rite
 			culture = root.culture
 			gender_female_chance = 0
 			save_scope_as = hodja
@@ -2387,7 +2380,7 @@ yearly.4071 = {
 			modifier = useful_insights_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -2551,6 +2544,9 @@ yearly.4081 = {
 			physician_lifestyle_rank_up_effect = yes
 		}
 		create_translated_arabic_book_effect = { NAME = de_materia_medica MODIFIER = artifact_health_gain_1_modifier }
+		hidden_effect_new_object = {
+			scope:book = { set_variable = de_materia_medica }
+		}
 		ai_chance = {
 			base = 100
 			modifier = {

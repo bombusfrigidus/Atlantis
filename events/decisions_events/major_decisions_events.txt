@@ -40,7 +40,7 @@ major_decisions.0001 = { #by Mathilda Bjarnehed
 		hidden_effect = {
 			every_liege_or_above = {
 				limit = {
-					NOT = { is_independent_ruler = yes }
+					NOT = { top_liege = this }
 				}
 				send_interface_message = {
 					type = event_stewardship_neutral_with_text
@@ -68,11 +68,7 @@ major_decisions.0002 = { #by Linnéa Thimrén
 
 	immediate = {
 		show_as_tooltip = {
-			if = {
-				limit = { government_has_flag = government_is_clan }
-				change_government = clan_government
-			}
-			else = { change_government = feudal_government }
+			change_government = government_type
 		}
 	}
 
@@ -121,7 +117,7 @@ major_decisions.0100 = {
 			if = {
 				limit = {
 					exists = root.faith.religious_head
-					NOT = { root = root.faith.religious_head }
+					root != root.faith.religious_head
 				}
 				root.faith.religious_head = { save_scope_as = scoped_pope }
 			}
@@ -143,7 +139,7 @@ major_decisions.0100 = {
 		}
 		name = { #Spiritual.
 			trigger = {
-				NOT = { root.faith.religious_head = root }
+				root.faith.religious_head != root
 			}
 			text = major_decisions.0100.b
 		}
@@ -157,7 +153,8 @@ major_decisions.0100 = {
 		}
 		if = { #Spiritual.
 			limit = {
-				NOT = { root.faith.religious_head = root }
+				root.faith.religious_head != root
+				has_ach_dlc_trigger = no
 			}
 			set_nickname_effect = { NICKNAME = nick_the_anointed }
 		}
@@ -177,7 +174,7 @@ major_decisions.0100 = {
 		every_player = {
 			limit = {
 				this.dynasty = root.dynasty
-				NOT = { this = root }
+				this != root
 			}
 			trigger_event = major_decisions.0103 #Notify dynasty members.
 		}
@@ -192,8 +189,7 @@ major_decisions.0101 = {
 	trigger = {
 		OR = {
 			AND = {
-				exists = mother
-				mother = {
+				mother ?= {
 					OR = {
 						has_trait = savior
 						has_trait = paragon
@@ -203,8 +199,7 @@ major_decisions.0101 = {
 				}
 			}
 			AND = {
-				exists = father
-				father = {
+				father ?= {
 					OR = {
 						has_trait = savior
 						has_trait = paragon
@@ -234,8 +229,7 @@ major_decisions.0101 = {
 			limit = {
 				OR = {
 					AND = {
-						exists = mother
-						mother = {
+						mother ?= {
 							OR = {
 								has_trait = savior
 								has_trait = divine_blood
@@ -243,8 +237,7 @@ major_decisions.0101 = {
 						}
 					}
 					AND = {
-						exists = father
-						father = {
+						father ?= {
 							OR = {
 								has_trait = savior
 								has_trait = divine_blood
@@ -301,7 +294,7 @@ major_decisions.0102 = {
 		}
 		name = { #Spiritual.
 			trigger = {
-				NOT = { scope:scoped_ruler.faith.religious_head = scope:scoped_ruler }
+				scope:scoped_ruler.faith.religious_head != scope:scoped_ruler
 			}
 			text = major_decisions.0102.b
 		}
@@ -369,7 +362,7 @@ major_decisions.0103 = {
 		}
 		name = { #Other Faith.
 			trigger = {
-				NOT = { faith = scope:scoped_ruler.faith }
+				faith != scope:scoped_ruler.faith
 			}
 			text = major_decisions.0103.b
 		}
@@ -446,8 +439,8 @@ major_decisions.0501 = { #by Mathilda Bjarnehed
 			dynasty = {
 				every_dynasty_member = {
 					limit = {
-						NOT = { this = root }
-						is_independent_ruler = yes
+						this != root
+						top_liege = this
 						highest_held_title_tier >= tier_kingdom
 					}
 					primary_title = { add_to_list = dynasty_realms }
@@ -456,7 +449,7 @@ major_decisions.0501 = { #by Mathilda Bjarnehed
 
 			random_in_list = {
 				list = dynasty_realms
-				limit = { tier = tier_empire }
+				limit = { tier >= tier_empire }
 				alternative_limit = { always = yes }
 				save_scope_as = realm_2
 			}
@@ -464,11 +457,11 @@ major_decisions.0501 = { #by Mathilda Bjarnehed
 			random_in_list = {
 				list = dynasty_realms
 				limit = {
-					tier = tier_empire
-					NOT = { this = scope:realm_2 }
+					tier >= tier_empire
+					this != scope:realm_2
 				}
 				alternative_limit = {
-					NOT = { this = scope:realm_2 }
+					this != scope:realm_2
 				}
 				save_scope_as = realm_3
 			}
@@ -476,7 +469,7 @@ major_decisions.0501 = { #by Mathilda Bjarnehed
 			random_in_list = {
 				list = dynasty_realms
 				limit = {
-					tier = tier_empire
+					tier >= tier_empire
 					NOR = {
 						this = scope:realm_2
 						this = scope:realm_3
@@ -512,7 +505,7 @@ major_decisions.1001 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { is_landless_adventurer = yes }
+				trigger = { has_government = landless_adventurer_government }
 				desc = major_decisions.1001.desc_landless
 			}
 			desc = major_decisions.1001.desc
@@ -534,7 +527,7 @@ major_decisions.1001 = {
 		reference = feast 
 	}
 	override_background = { 
-		trigger = { is_landless_adventurer = yes }
+		trigger = { has_government = landless_adventurer_government }
 		reference = bp1_bonfire
 	}
 	immediate = {
@@ -563,14 +556,14 @@ major_decisions.1002 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					scope:cannibal = { is_landless_adventurer = yes }
+					scope:cannibal = { has_government = landless_adventurer_government }
 					is_cannibal_trigger = yes
 				}
 				desc = major_decisions.1002.desc_cannibal_landless
 			}
 			triggered_desc = {
 				trigger = {
-					scope:cannibal = { is_landless_adventurer = yes }
+					scope:cannibal = { has_government = landless_adventurer_government }
 				}
 				desc = major_decisions.1002.desc_landless
 			}
@@ -590,13 +583,13 @@ major_decisions.1002 = {
 	}
 	override_background = { 
 		trigger = { 
-			scope:cannibal = { is_landed_or_landless_administrative = yes }
+			scope:cannibal = { is_landed_or_landless_administrative_or_theocratic = yes }
 		}
 		reference = feast 
 	}
 	override_background = { 
 		trigger = { 
-			scope:cannibal = { is_landless_adventurer = yes }
+			scope:cannibal = { has_government = landless_adventurer_government }
 		}
 		reference = army_camp
 	}
@@ -637,7 +630,7 @@ major_decisions.1101 = {
 		}
 		desc = major_decisions.1101.desc
 	}
-	theme = realm
+	theme = coronation
 	left_portrait = {
 		character = root
 		animation = personality_greedy
@@ -649,7 +642,7 @@ major_decisions.1101 = {
 		if = {
 			limit = {
 				any_held_title = {
-					tier = tier_duchy
+					title_tier = duchy
 					count >= 3
 				}
 			}
@@ -657,15 +650,15 @@ major_decisions.1101 = {
 				save_scope_as = duchy_1
 			}
 			random_held_title = {
+				title_tier = duchy
 				limit = {
-					tier = tier_duchy
-					NOT = { this = scope:duchy_1 }
+					this != scope:duchy_1
 				}
 				save_scope_as = duchy_2
 			}
 			random_held_title = {
+				title_tier = duchy
 				limit = {
-					tier = tier_duchy
 					NOR = {
 						this = scope:duchy_1
 						this = scope:duchy_2
@@ -701,7 +694,7 @@ major_decisions.1102 = {
 	type = character_event
 	title = major_decisions.1101.t
 	desc = major_decisions.1102.desc
-	theme = realm
+	theme = coronation
 	left_portrait = {
 		character = root
 		animation = personality_greedy
@@ -763,7 +756,7 @@ major_decisions.1103 = {
 			desc = major_decisions.1103.i_am_religious_head
 		}
 	}
-	theme = realm
+	theme = coronation
 	left_portrait = {
 		character = root
 		animation = personality_greedy
@@ -775,7 +768,7 @@ major_decisions.1103 = {
 		if = {
 			limit = {
 				any_held_title = {
-					tier = tier_kingdom
+					title_tier = kingdom
 					count >= 3
 				}
 			}
@@ -783,15 +776,15 @@ major_decisions.1103 = {
 				save_scope_as = kingdom_1
 			}
 			random_held_title = {
+				title_tier = kingdom
 				limit = {
-					tier = tier_kingdom
-					NOT = { this = scope:kingdom_1 }
+					this != scope:kingdom_1
 				}
 				save_scope_as = kingdom_2
 			}
 			random_held_title = {
+				title_tier = kingdom
 				limit = {
-					tier = tier_kingdom
 					NOR = {
 						this = scope:kingdom_1
 						this = scope:kingdom_2
@@ -861,7 +854,7 @@ major_decisions.1104 = {
 		}
 		desc = major_decisions.1104.end
 	}
-	theme = realm
+	theme = coronation
 	left_portrait = {
 		character = root
 		animation = personality_greedy
@@ -889,15 +882,53 @@ major_decisions.1104 = {
 }
 
 
-#I have lost de jure territory to a new Kingdom
+#I have lost de jure territory to a new title
 major_decisions.1105 = {
 	type = character_event
 	title = major_decisions.1105.t
-	desc = major_decisions.1105.desc
-	theme = realm
+	desc = {
+		desc = major_decisions.1105.desc
+		triggered_desc = {
+			trigger = {
+				exists = scope:religious_interceder
+			}
+			desc = major_decisions.1105.desc_authority
+		}
+	}
+	theme = coronation
 	left_portrait = {
 		character = scope:founder
-		animation = personality_greedy
+		triggered_animation = {
+			trigger = {
+				scope:founder.faith.religion = religion:christianity_religion
+			}
+			animation = scepter
+		}
+		animation = personality_callous
+		camera = camera_event_right_wedding
+	}
+	right_portrait = {
+		character = scope:religious_interceder
+		animation = zealous_superior
+	}
+	trigger = {
+		NOT = {
+			scope:religious_authority ?= root
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				scope:religious_authority ?= {
+					NOT = {
+						this = root
+					}
+				}
+			}
+			scope:religious_authority = {
+				save_scope_as = religious_interceder
+			}
+		}
 	}
 	
 	option = {
@@ -967,7 +998,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -997,7 +1028,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1027,7 +1058,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1057,7 +1088,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1087,7 +1118,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1117,7 +1148,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1147,7 +1178,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1177,7 +1208,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1207,7 +1238,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1237,7 +1268,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1267,7 +1298,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1297,7 +1328,7 @@ major_decisions.2001 = {
 			}
 			title:b_atlantis = {
 				if = {
-					limit = { NOT = { holder = root } }
+					limit = { holder != root }
 					holder = {
 						add_opinion = {
 							target = root
@@ -1508,7 +1539,7 @@ major_decisions.3200 = {
 	theme = realm
 	left_portrait =	{
 		trigger = {
-			NOT = { this = scope:rightful_liege }
+			this != scope:rightful_liege
 		}
 		character = root
 		triggered_animation = {
@@ -1581,5 +1612,152 @@ major_decisions.3200 = {
 				culture = { any_parent_culture_or_above = { this = scope:rightful_liege.culture } }
 			}
 		}
+	}
+}
+#Restore Carthage 
+major_decisions.3300 = { 
+	type = character_event
+	title = major_decisions.3300.t
+	desc = major_decisions.3300.desc
+	theme = crown
+
+	override_effect_2d = { reference = legend_glow }
+
+	left_portrait = {
+		character = root 
+		animation = sword_coup_degrace
+		camera = camera_torso_scheme_right_look_right
+	}
+
+	immediate = {
+		restore_carthage_scripted_effect = yes
+
+		culture = { save_scope_as = founder_culture }
+	}
+
+	option = {
+		name = major_decisions.3300.a
+
+		hidden_effect = {
+			culture:carthaginian = {
+				get_all_innovations_from = scope:founder_culture
+			}
+		}
+
+		#convert people to your new culture
+		convert_family_culture_and_notify_vassals_effect = {
+			OLD_CULTURE = root.culture
+			NEW_CULTURE = culture:carthaginian
+			CONVERTER = root
+		}
+		
+		#convert capital counties to carthaginian
+		title:c_atlantis = {
+			set_county_culture = culture:carthaginian
+		}
+		title:c_atlantis = {
+			set_county_culture = culture:carthaginian
+		}
+		title:c_atlantis = {
+			set_county_culture = culture:carthaginian		
+		}
+		title:c_atlantis = {
+			set_county_culture = culture:carthaginian
+		}
+	}
+
+	option = {
+		name = major_decisions.3300.b
+	}
+}
+
+##############
+# Carantania #
+##############
+major_decisions.3400 = {
+	type = character_event
+	title = major_decisions.3400.t
+	desc = major_decisions.3400.desc
+	theme = crown
+	override_background = ce1_legendary_spring
+	left_portrait =	{
+		character = root
+		animation = pondering
+	}
+	window = big_event_window
+
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
+
+	immediate = {
+		decision_restore_carantania_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3400.a
+	}
+}
+
+###########
+# Cumbria #
+###########
+major_decisions.3500 = {
+	type = character_event
+	title = major_decisions.3500.t
+	desc = major_decisions.3500.desc
+	theme = crown
+	override_background = council_chamber
+	left_portrait =	{
+		character = root
+		animation = pondering
+	}
+	window = big_event_window
+
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
+
+	immediate = {
+		form_cumbria_decision_scripted_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3500.a
+	}
+}
+
+###################
+# Cossack Kingdom #
+###################
+
+#Create Cossack Kingdom
+major_decisions.3600 = { 
+	type = character_event
+	title = major_decisions.3600.t
+	desc = major_decisions.3600.desc
+	theme = crown
+	override_background = council_chamber
+
+	window = big_event_window
+
+	override_effect_2d = { reference = legend_glow }
+
+	left_portrait = {
+		character = root 
+		animation = sword_coup_degrace
+		camera = camera_torso_scheme_right_look_right
+	}
+
+	immediate = {
+		create_cossack_scripted_effect = yes
+	}
+
+	option = {
+		name = major_decisions.3600.a
+		convert_family_culture_and_notify_vassals_effect = {
+			OLD_CULTURE = scope:founder_culture
+			NEW_CULTURE = scope:new_culture
+			CONVERTER = root
+		}
+	}
+	option = {
+		name = major_decisions.3600.b
 	}
 }

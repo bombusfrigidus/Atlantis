@@ -18,7 +18,7 @@
 	scripted_animation = { 
 		triggered_animation = {
 			trigger = {
-				has_title = title:e_byzantium
+				is_roman_emperor_trigger = yes
 				religion = religion:christianity_religion
 			}
 			animation = { scepter } # anim uses crucifix scepter
@@ -240,7 +240,7 @@ adviser = {
  		triggered_animation = { # advisor leaning in to ruler when they're available
  			trigger = {
 				scope:ruler = {
-					has_title = title:e_byzantium
+					is_roman_emperor_trigger = yes
 				}
  				court_event_ongoing_trigger = no
 			}
@@ -1130,10 +1130,7 @@ low_prio_warriors = {
 								has_court_type = court_warlike
 								has_court_type = court_nomadic
 							}
-							NOR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = no
 							OR = {
 								any_knight = {
 									exists = location
@@ -1179,10 +1176,7 @@ low_prio_warriors = {
 					}
 					if = {
 						limit = {
-							OR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = yes
 							OR = {
 								any_knight = {
 									exists = location
@@ -1308,12 +1302,13 @@ low_prio_clergy = {
 					value = 0
 					if = {
 						limit = {
-							has_court_type = court_scholarly
-							NOR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
 							OR = {
+								has_court_type = court_scholarly
+								pam_is_clergy_ruler_trigger = yes
+							}
+							is_roman_emperor_trigger = no
+							OR = {
+								any_subordinate = { pam_court_scene_resident_subordinate_trigger = yes }
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
 									NOT = { has_short_disease_trigger = yes }
@@ -1321,7 +1316,7 @@ low_prio_clergy = {
 									OR = {
 										is_clergy = yes
 										has_education_learning_trigger = yes
-										has_trait = scholar
+										has_trait = erudite
 										has_trait = theologian
 										has_trait = lifestyle_herbalist
 										has_trait = lifestyle_physician
@@ -1343,7 +1338,7 @@ low_prio_clergy = {
 									OR = {
 										is_clergy = yes
 										has_education_learning_trigger = yes
-										has_trait = scholar
+										has_trait = erudite
 										has_trait = theologian
 										has_trait = lifestyle_herbalist
 										has_trait = lifestyle_physician
@@ -1363,10 +1358,7 @@ low_prio_clergy = {
 					}
 					if = {
 						limit = {
-							OR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = yes
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1375,7 +1367,7 @@ low_prio_clergy = {
 									OR = {
 										is_clergy = yes
 										has_education_learning_trigger = yes
-										has_trait = scholar
+										has_trait = erudite
 										has_trait = theologian
 										has_trait = lifestyle_herbalist
 										has_trait = lifestyle_physician
@@ -1397,7 +1389,7 @@ low_prio_clergy = {
 									OR = {
 										is_clergy = yes
 										has_education_learning_trigger = yes
-										has_trait = scholar
+										has_trait = erudite
 										has_trait = theologian
 										has_trait = lifestyle_herbalist
 										has_trait = lifestyle_physician
@@ -1417,6 +1409,10 @@ low_prio_clergy = {
 					}
 				}
 				scope:ruler = {
+					every_subordinate = {
+						limit = { pam_court_scene_resident_subordinate_trigger = yes }
+						add_to_list = characters
+					}
 					every_courtier_or_guest = {
 						limit = {
 							is_available_healthy_ai_adult = yes
@@ -1425,7 +1421,7 @@ low_prio_clergy = {
 							OR = {
 								is_clergy = yes
 								has_education_learning_trigger = yes
-								has_trait = scholar
+								has_trait = erudite
 								has_trait = theologian
 								has_trait = lifestyle_herbalist
 								has_trait = lifestyle_physician
@@ -1451,7 +1447,7 @@ low_prio_clergy = {
 							OR = {
 								is_clergy = yes
 								has_education_learning_trigger = yes
-								has_trait = scholar
+								has_trait = erudite
 								has_trait = theologian
 								has_trait = lifestyle_herbalist
 								has_trait = lifestyle_physician
@@ -1492,10 +1488,7 @@ low_prio_diplomats = {
 					if = {
 						limit = {
 							has_court_type = court_diplomatic
-							NOR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = no
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1535,10 +1528,7 @@ low_prio_diplomats = {
 					}
 					if = {
 						limit = {
-							OR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = yes
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1641,10 +1631,7 @@ low_prio_stewards = {
 					if = {
 						limit = {
 							has_court_type = court_administrative
-							NOR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = no
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1693,10 +1680,7 @@ low_prio_stewards = {
 					if = {
 						limit = {
 							has_court_type = court_administrative
-							OR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = yes
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1816,10 +1800,7 @@ low_prio_intriguers = {
 					if = {
 						limit = {
 							has_court_type = court_intrigue
-							NOR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = no
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -1860,10 +1841,7 @@ low_prio_intriguers = {
 					if = {
 						limit = {
 							has_court_type = court_intrigue
-							OR = {
-								has_title = title:e_byzantium
-								has_title = title:e_roman_empire
-							}
+							is_roman_emperor_trigger = yes
 							OR = {
 								any_courtier_or_guest = {
 									is_available_healthy_ai_adult = yes
@@ -2045,4 +2023,148 @@ low_prio_lone_courtier = {
 	}
 
 	is_low_priority = yes
+}
+
+celestial_ministers = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_councillor = {
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }					
+					}
+				}
+				every_councillor = {
+					limit = {
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }	
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { holding_hu }
+		}
+	}
+}
+
+# Historically, civil officials stood at the emperor's left hand (the right column) and military officials at the emperor's right hand (the left column), but since it's inappropriate for military governors to be present, we fill the remaining roles with court position holders roughly segregated by importance
+
+celestial_court_position_holders = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_court_position_holder = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						is_councillor = no
+						is_faith_dominant_gender = yes
+					}
+				}
+				every_court_position_holder = {
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						is_councillor = no
+						is_faith_dominant_gender = yes	
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { holding_hu }
+		}
+	}
+}
+
+celestial_courtiers = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_courtier = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						is_councillor = no
+						has_any_court_position = no
+						is_faith_dominant_gender = yes
+					}
+				}
+				every_courtier = {
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }
+						is_councillor = no
+						has_any_court_position = no
+						is_faith_dominant_gender = yes
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = { 
+		triggered_animation = {
+	 		trigger = {
+	 			scope:character = {
+		 			has_trait = devoted
+		 		}
+	 		}
+	 		animation = { chaplain personality_zealous interested }
+	 	}
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { holding_hu }
+		}
+	}
+	is_low_priority = yes
+}
+japanese_courtiers = {
+	effect = {
+		scope:ruler = {
+			if = {
+				limit = {
+					any_courtier = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }					
+					}
+				}
+				every_courtier = {
+					limit = {
+						exists = location
+						location = scope:ruler.capital_province
+						is_available_healthy_ai_adult = yes
+						NOT = { has_short_disease_trigger = yes }	
+					}
+					add_to_list = characters
+				}
+			}
+		}
+	}
+	scripted_animation = {
+		triggered_animation = {
+			trigger = { always = yes }
+			animation = { sitting }
+		}
+	}
 }

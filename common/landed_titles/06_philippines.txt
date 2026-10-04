@@ -1,0 +1,154 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+e_nusantara = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_lusung = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_tondo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_ilocana = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_cagayan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_sandao = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_visayas = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_maguindanao = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_PHI_butuan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_liuqiu = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_liuqiu = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_tanjungnagara = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_BOR_tanjungpura = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_BOR_barune = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_BOR_santubong = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_BOR_nan_sarunai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_BOR_kutai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_sulawesi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_luwu = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_konawe = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_minahasa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_tompotika = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_maluku = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_halmahera = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_SuMa_maluku = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_IDO_lesser_sunda = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_IDO_timor = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_papua = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_ruucuu = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ruucuu = {
+	capital = c_atlantis
+	landless = yes
+}

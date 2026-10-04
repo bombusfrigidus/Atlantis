@@ -429,6 +429,21 @@ set_adventure_location_effect = {
 						}
 					}
 					5 = {
+						# Siberia
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_siberia
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:siberia
+						}
+					}
+					5 = {
 						# The Steppe
 						trigger = {
 							trigger_if = {
@@ -477,6 +492,21 @@ set_adventure_location_effect = {
 						}
 					}
 					5 = {
+						# The Steppe - Central
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_steppe_central
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:steppe_central
+						}
+					}
+					5 = {
 						# The Steppe - Tarim
 						trigger = {
 							trigger_if = {
@@ -507,21 +537,6 @@ set_adventure_location_effect = {
 						}
 					}
 					10 = {
-						# Burma
-						trigger = {
-							trigger_if = {
-								limit = { exists = location }
-								adventurer_potential_destination_distance_check = {
-									REGION = world_burma
-								}
-							}
-						}
-						set_variable = {
-							name = adventure_destination
-							value = flag:burma
-						}
-					}
-					10 = {
 						# Tibet
 						trigger = {
 							trigger_if = {
@@ -536,7 +551,148 @@ set_adventure_location_effect = {
 							value = flag:tibet
 						}
 					}
-					85 = { #Very skillde adventurers are often going to let you decide!
+					10 = {
+						# East Asia
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								location = {
+									NOT = { geographical_region = world_asia_east }
+								}
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_east
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:east_asia
+						}
+					}
+					5 = {
+						# East Asia - China
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_china
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:china
+						}
+					}
+					5 = {
+						# East Asia - Korea
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_korea
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:korea
+						}
+					}
+					5 = {
+						# East Asia - Japan
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_japan
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:japan
+						}
+					}
+					2 = {
+						# East Asia - Sakhalin-Hokkaido
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_sakhalin_hokkaido
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:sakhalin_hokkaido
+						}
+					}
+					10 = {
+						# Southeast Asia
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								location = {
+									NOT = { geographical_region = world_asia_southeast }
+								}
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_southeast
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:southeast_asia
+						}
+					}
+					5 = {
+						# Southeast Asia - Maritime
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_southeast_islands
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:southeast_asia_islands
+						}
+					}
+					5 = {
+						# Southeast Asia - Mainland
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_southeast_mainland
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:southeast_asia_mainland
+						}
+					}
+					5 = {
+						# North East Asia
+						trigger = {
+							trigger_if = {
+								limit = { exists = location }
+								adventurer_potential_destination_distance_check = {
+									REGION = world_asia_north_east
+								}
+							}
+						}
+						set_variable = {
+							name = adventure_destination
+							value = flag:north_east_asia
+						}
+					}
+					85 = { #Very skilled adventurers are often going to let you decide!
 						trigger = {
 							scope:allow_no_destination_option = yes
 						}
@@ -664,6 +820,12 @@ get_adventure_inspiration_start_location = {
 						title_province = { save_scope_as = location }
 					}
 				}
+				flag:siberia = { # Siberia
+					random_county_in_region = {
+						region = world_siberia
+						title_province = { save_scope_as = location }
+					}
+				}
 				flag:steppe = { # The Steppe
 					random_county_in_region = {
 						region = world_steppe
@@ -673,6 +835,12 @@ get_adventure_inspiration_start_location = {
 				flag:steppe_west = { # The Steppe - West
 					random_county_in_region = {
 						region = world_steppe_west
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:steppe_central = { # The Steppe - Central
+					random_county_in_region = {
+						region = world_steppe_central
 						title_province = { save_scope_as = location }
 					}
 				}
@@ -694,19 +862,79 @@ get_adventure_inspiration_start_location = {
 						title_province = { save_scope_as = location }
 					}
 				}
-				flag:burma = { # Burma
-					random_county_in_region = {
-						region = world_burma
-						title_province = { save_scope_as = location }
-					}
-				}
 				flag:tibet = { # Tibet
 					random_county_in_region = {
 						region = world_tibet
 						title_province = { save_scope_as = location }
 					}
 				}
+				flag:china = { #China
+					random_county_in_region = {
+						region = world_asia_china
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:korea = { #Korea
+					random_county_in_region = {
+						region = world_asia_korea
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:sakhalin_hokkaido = { #Sakhalin-Hokkaido
+					random_county_in_region = {
+						region = world_asia_sakhalin_hokkaido
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:japan = { #Japan
+					random_county_in_region = {
+						region = world_asia_japan
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:east_asia = { #East Asia
+					random_county_in_region = {
+						region = world_asia_east
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:southeast_asia = { #Southeast Asia
+					random_county_in_region = {
+						region = world_asia_southeast
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:southeast_asia_islands = { #Maritime Southeast Asia
+					random_county_in_region = {
+						region = world_asia_southeast_islands
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:southeast_asia_mainland = { #Mainland Southeast Asia
+					random_county_in_region = {
+						region = world_asia_southeast_mainland
+						title_province = { save_scope_as = location }
+					}
+				}
+				flag:north_east_asia = { # North East Asia
+					random_county_in_region = {
+						region = world_asia_north_east
+						title_province = { save_scope_as = location }
+					}
+				}
 			}
+		}
+	}
+}
+
+save_adventurer_location_effect = {
+	if = {
+		limit = {
+			exists = scope:adventurer
+			NOT = { exists = scope:location }
+		}
+		scope:adventurer.location = {
+			save_temporary_scope_as = location
 		}
 	}
 }
@@ -743,6 +971,7 @@ inspiration_adventure_create_artifact_effect = {
 				template = local_artisan_template
 				culture = scope:location.culture
 				faith = scope:location.faith
+				rite = scope:location.rite
 				gender = scope:adventurer
 				dynasty = none
 				save_scope_as = artifact_origin #Fictional maker of artifact
@@ -800,10 +1029,10 @@ inspiration_adventure_create_artifact_effect = {
 												}
 											}
 											10 = {
-												create_artifact_pedestal_crucifix_effect = { OWNER = root }
+												create_artifact_pedestal_crucifix_effect = { OWNER = root CREATOR = root }
 											}
 											10 = {
-												create_artifact_pedestal_cross_effect = { OWNER = root }
+												create_artifact_pedestal_cross_effect = { OWNER = root CREATOR = root }
 											}
 										}
 									}
@@ -830,8 +1059,11 @@ inspiration_adventure_create_artifact_effect = {
 													religion = religion:buddhism_religion
 													geographical_region = world_india
 													geographical_region = world_tibet
-													geographical_region = world_burma
 													geographical_region = world_himalaya
+													geographical_region = world_asia_china
+													geographical_region = world_asia_japan
+													geographical_region = world_asia_korea
+													geographical_region = world_asia_southeast
 												}
 											}
 										}
@@ -984,6 +1216,7 @@ inspiration_adventure_create_artifact_effect = {
 													religion = religion:hinduism_religion
 													geographical_region = world_india
 													geographical_region = world_himalaya
+													geographical_region = world_asia_southeast
 												}
 											}
 										}
@@ -1019,6 +1252,7 @@ inspiration_adventure_create_artifact_effect = {
 														OR = {
 															geographical_region = world_india
 															geographical_region = world_tibet
+															geographical_region = world_asia_southeast
 															religion = religion:hinduism_religion
 														}
 													}
@@ -1045,7 +1279,7 @@ inspiration_adventure_create_artifact_effect = {
 											10 = { #Cintamani stone
 												trigger = {
 													any_artifact = {
-														count < 3
+														count < 5
 														has_variable = cintamani_hindu
 													}
 													scope:location ?= {
@@ -1376,6 +1610,28 @@ inspiration_adventure_create_artifact_effect = {
 								}
 								trigger = {
 									any_artifact = {
+										count < 4
+										has_variable = sword_of_goujian
+									}
+									scope:location ?= {
+										geographical_region = world_asia_east
+									}
+								}
+								create_artifact_sword_goujian_effect = { OWNER = root }
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= medium_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > medium_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									any_artifact = {
 										count < 9
 										has_variable = sword_of_muhammad
 									}
@@ -1566,6 +1822,10 @@ inspiration_adventure_create_artifact_effect = {
 											geographical_region = world_tibet
 											geographical_region = ghw_region_afghanistan
 											religion = religion:buddhism_religion
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -1593,6 +1853,10 @@ inspiration_adventure_create_artifact_effect = {
 											geographical_region = world_tibet
 											geographical_region = ghw_region_afghanistan
 											religion = religion:buddhism_religion
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -1620,6 +1884,10 @@ inspiration_adventure_create_artifact_effect = {
 											geographical_region = world_tibet
 											geographical_region = ghw_region_afghanistan
 											religion = religion:buddhism_religion
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -1647,6 +1915,10 @@ inspiration_adventure_create_artifact_effect = {
 											geographical_region = world_tibet
 											geographical_region = ghw_region_afghanistan
 											religion = religion:buddhism_religion
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -2508,6 +2780,9 @@ inspiration_adventure_create_artifact_effect = {
 							}
 							2 = { #Chinese Caligraphy
 								trigger = {
+									root.culture = {
+										has_graphical_east_asia_culture_group_trigger = no
+									} #This is not a notable artifact if you are already from the region
 									any_artifact = {
 										count < 15
 										has_variable = chinese_caligraphy
@@ -2515,8 +2790,11 @@ inspiration_adventure_create_artifact_effect = {
 									scope:location ?= {
 										OR = {
 											geographical_region = world_india
-											geographical_region = world_burma
 											geographical_region = world_tibet
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -2534,6 +2812,9 @@ inspiration_adventure_create_artifact_effect = {
 									add = 5
 								}
 								trigger = {
+									root.culture = {
+										has_graphical_east_asia_culture_group_trigger = no
+									} #This is not a notable artifact if you are already from the region
 									any_artifact = {
 										count < 15
 										has_variable = ruyi
@@ -2541,8 +2822,11 @@ inspiration_adventure_create_artifact_effect = {
 									scope:location ?= {
 										OR = {
 											geographical_region = world_india
-											geographical_region = world_burma
 											geographical_region = world_tibet
+											geographical_region = world_asia_china
+											geographical_region = world_asia_japan
+											geographical_region = world_asia_korea
+											geographical_region = world_asia_southeast
 										}
 									}
 								}
@@ -2720,6 +3004,150 @@ inspiration_adventure_create_artifact_effect = {
 									}
 								}
 								create_artifact_statue_constantine_effect = { OWNER = root }
+							}
+							5 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = heirloom_seal
+									}
+									scope:location ?= {
+										geographical_region = world_asia_china
+									}
+								}
+								create_artifact_heirloom_seal_effect = { OWNER = root }
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = statue_amitabha_buddha
+									}
+									scope:location ?= {
+										geographical_region = world_asia_southeast
+									}
+									current_date >= 1080.1.1
+								}
+								create_artifact_statue_viet_green_amitabha_buddha_effect = { OWNER = root }
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = chinese_armillary_sphere
+									}
+									scope:location ?= {
+										geographical_region = world_asia_china
+									}
+								}
+								create_artifact_chinese_armillary_sphere_effect = { OWNER = root }
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = eight_fold_chest
+									}
+									scope:location ?= {
+										geographical_region = world_asia_china
+									}
+								}
+								create_artifact_eight_fold_chest_effect = {
+									OWNER = root
+								}
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									current_date > 1150.1.1 #Needs to be long past creation date for this to make sense
+									any_artifact = {
+										count < 1
+										has_variable = military_classics
+									}
+									scope:location ?= {
+										geographical_region = world_asia_china
+									}
+								}
+								create_artifact_military_classics_effect = {
+									OWNER = root
+								}
+							}
+							10 = {
+								modifier = {
+									OR = {
+										scope:adventurer.adventure_inspiration_average_skill_value >= high_inspiration_skill
+										AND = {
+											exists = scope:inspiration_owner.var:artifact_quality
+											scope:inspiration_owner.var:artifact_quality > high_adventurer_epic_quality_level #Cumulative event choices
+										}
+									}
+									add = 5
+								}
+								trigger = {
+									has_tgp_dlc_trigger = yes
+									any_artifact = {
+										count < 1
+										has_variable = baekje_incense_burner
+									}
+									scope:location ?= {
+										geographical_region = world_asia_korea
+									}
+								}
+								create_artifact_pedestal_baekje_incense_burner_effect = { OWNER = root }
 							}
 						}
 					}

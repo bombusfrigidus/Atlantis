@@ -14,7 +14,7 @@
 #Your newly bought lands and the poor local governor inspire you to... avarice
 ep3_governor_yearly.3001 = {
 	type = character_event
-	title = ep3_governor_yearly.3001.t #TODO_CD_EP3_JC this loc needs to scope to the domicile building, once we have that
+	title = ep3_governor_yearly.3001.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
@@ -98,35 +98,41 @@ ep3_governor_yearly.3001 = {
 				}
 				desc = ep3_governor_yearly.3001.desc_silk
 			}
+			triggered_desc = {
+				trigger = {
+					has_character_flag = domicile_new_built_tea
+				}
+				desc = ep3_governor_yearly.3001.desc_tea
+			}
 		}
 	}
 	theme = administrative
 	override_background = {
 		trigger = {
-			OR = {
-				has_character_flag = domicile_new_built_garden
-				has_character_flag = domicile_new_built_garden_leisure
-				has_character_flag = domicile_new_built_garden_fruit
+			has_variable = {
+				name = domicile_new_built_garden
+				name = domicile_new_built_garden_leisure
+				name = domicile_new_built_garden_fruit
 			}
 		}
 		reference = garden
 	}
 	override_background = {
 		trigger = {
-			OR = {
-				has_character_flag = domicile_new_built_garden
-				has_character_flag = domicile_new_built_garden_leisure
-				has_character_flag = domicile_new_built_garden_fruit
+			has_variable = {
+				name = domicile_new_built_garden
+				name = domicile_new_built_garden_leisure
+				name = domicile_new_built_garden_fruit
 			}
 		}
 		reference = garden
 	}
 	override_background = {
 		trigger = {
-			OR = {
-				has_character_flag = domicile_new_built_grazing_land
-				has_character_flag = domicile_new_built_horse_pasture
-				has_character_flag = domicile_new_built_camel_pasture
+			has_variable = {
+				name = domicile_new_built_grazing_land
+				name = domicile_new_built_horse_pasture
+				name = domicile_new_built_camel_pasture
 			}
 			scope:root_domicile_province = {
 				OR = {
@@ -142,10 +148,10 @@ ep3_governor_yearly.3001 = {
 	}
 	override_background = {
 		trigger = {
-			OR = {
-				has_character_flag = domicile_new_built_grazing_land
-				has_character_flag = domicile_new_built_horse_pasture
-				has_character_flag = domicile_new_built_camel_pasture
+			has_variable = {
+				name = domicile_new_built_grazing_land
+				name = domicile_new_built_horse_pasture
+				name = domicile_new_built_camel_pasture
 			}
 			scope:root_domicile_province = {
 				OR = {
@@ -160,10 +166,10 @@ ep3_governor_yearly.3001 = {
 	}
 	override_background = {
 		trigger = {
-			OR = {
-				has_character_flag = domicile_new_built_grazing_land
-				has_character_flag = domicile_new_built_horse_pasture
-				has_character_flag = domicile_new_built_camel_pasture
+			has_variable = {
+				name = domicile_new_built_grazing_land
+				name = domicile_new_built_horse_pasture
+				name = domicile_new_built_camel_pasture
 			}
 			scope:root_domicile_province = {
 				OR = {
@@ -179,13 +185,13 @@ ep3_governor_yearly.3001 = {
 	#Farm/orchard type ones
 	override_background = {
 		trigger = {
-			NOR = {
-				has_character_flag = domicile_new_built_grazing_land
-				has_character_flag = domicile_new_built_horse_pasture
-				has_character_flag = domicile_new_built_camel_pasture
-				has_character_flag = domicile_new_built_garden
-				has_character_flag = domicile_new_built_garden_leisure
-				has_character_flag = domicile_new_built_garden_fruit
+			has_none_of_variables = {
+				name = domicile_new_built_grazing_land
+				name = domicile_new_built_horse_pasture
+				name = domicile_new_built_camel_pasture
+				name = domicile_new_built_garden
+				name = domicile_new_built_garden_leisure
+				name = domicile_new_built_garden_fruit
 			}
 			scope:root_domicile_province = {
 				OR = {
@@ -201,13 +207,13 @@ ep3_governor_yearly.3001 = {
 	}
 	override_background = {
 		trigger = {
-			NOR = {
-				has_character_flag = domicile_new_built_grazing_land
-				has_character_flag = domicile_new_built_horse_pasture
-				has_character_flag = domicile_new_built_camel_pasture
-				has_character_flag = domicile_new_built_garden
-				has_character_flag = domicile_new_built_garden_leisure
-				has_character_flag = domicile_new_built_garden_fruit
+			has_none_of_variables = {
+				name = domicile_new_built_grazing_land
+				name = domicile_new_built_horse_pasture
+				name = domicile_new_built_camel_pasture
+				name = domicile_new_built_garden
+				name = domicile_new_built_garden_leisure
+				name = domicile_new_built_garden_fruit
 			}
 			scope:root_domicile_province = {
 				NOR = {
@@ -236,12 +242,12 @@ ep3_governor_yearly.3001 = {
 
 	trigger = {
 		has_ep3_dlc_trigger = yes
-		government_has_flag = government_is_administrative
+		government_has_mechanic = administrative
 		any_held_title = {
 			is_noble_family_title = yes
 		}
 		domicile.domicile_location.county.holder = {
-			government_has_flag = government_is_administrative
+			government_has_mechanic = administrative
 			governor_efficiency <= 0.75
 			NOR = {
 				this = root
@@ -283,7 +289,7 @@ ep3_governor_yearly.3001 = {
 
 		custom_tooltip = ep3_governor_yearly.3001.a_govs_low
 		change_influence = minor_influence_loss
-		
+
 		remove_short_term_gold = medium_gold_value
 
 		#Gotta be a shark if you want hella real domicile
@@ -309,7 +315,7 @@ ep3_governor_yearly.3001 = {
 					governor_efficiency >= 1.25
 					add = 20
 				}
-				
+
 				send_interface_toast = {
 					title = ep3_governor_yearly.3001.a_success
 					left_icon = root
@@ -364,8 +370,8 @@ ep3_governor_yearly.3001 = {
 				add_character_flag = vast_lands_stolen
 			}
 		}
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_loss
 			content = major_stress_impact_gain
 			humble = medium_stress_impact_gain
@@ -475,8 +481,8 @@ ep3_governor_yearly.3001 = {
 				days = 30
 			}
 		}
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			content = medium_stress_impact_gain
 			humble = medium_stress_impact_gain
 			just = medium_stress_impact_gain
@@ -517,7 +523,7 @@ ep3_governor_yearly.3001 = {
 			opinion = 20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			arbitrary = minor_stress_impact_gain
 			ambitious = minor_stress_impact_gain
@@ -598,7 +604,7 @@ ep3_governor_yearly.3002 = {
 		}
 		desc = ep3_governor_yearly.3002.desc_outro
 	}
-			
+
 	theme = administrative
 	override_background = {
 		reference = study
@@ -681,9 +687,7 @@ ep3_governor_yearly.3002 = {
 						is_landless_administrative = yes
 						age >= 18
 						is_available = yes
-						NOT = {
-							this = scope:landlord
-						}
+						this != scope:landlord
 						domicile.domicile_location.duchy = {
 							this = scope:target_theme
 						}
@@ -822,9 +826,9 @@ ep3_governor_yearly.3002 = {
 			}
 		}
 		add_character_flag = governor_accuses_crime
-		
-		
-		stress_impact = {
+
+
+		stress_and_fulfillment_impact = {
 			vengeful = minor_stress_impact_loss
 			just = medium_stress_impact_gain
 			honest = medium_stress_impact_gain
@@ -905,7 +909,7 @@ ep3_governor_yearly.3002 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = medium_stress_impact_gain
 			content = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
@@ -935,7 +939,7 @@ ep3_governor_yearly.3002 = {
 	option = {
 		name = ep3_governor_yearly.3002.c
 		flavor = ep3_governor_yearly.3002.c.flavor
-		
+
 		#governor loses more or less governor efficiency based on scale of lands
 		#Show correct amount of lands that landlord got
 		if = {
@@ -986,7 +990,7 @@ ep3_governor_yearly.3002 = {
 		}
 		add_character_flag = governor_scandalizes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			forgiving = minor_stress_impact_gain
 			generous = miniscule_stress_impact_gain
 			arbitrary = miniscule_stress_impact_gain
@@ -1060,7 +1064,7 @@ ep3_governor_yearly.3002 = {
 		}
 		add_character_flag = governor_backs_down
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			vengeful = medium_stress_impact_gain
 			diligent = minor_stress_impact_gain
 			greedy = miniscule_stress_impact_gain
@@ -1145,14 +1149,14 @@ ep3_governor_yearly.3003 = {
 		}
 	}
 	sender = scope:governor
-	
+
 	trigger = {
 		scope:governor = {
-			OR = {
-				has_character_flag = governor_accuses_crime
-				has_character_flag = governor_uses_force
-				has_character_flag = governor_scandalizes
-				has_character_flag = governor_backs_down
+			has_variable = {
+				name = governor_accuses_crime
+				name = governor_uses_force
+				name = governor_scandalizes
+				name = governor_backs_down
 			}
 			is_alive = yes
 		}
@@ -1443,13 +1447,13 @@ ep3_governor_yearly.3010 = {
 			desc = ep3_governor_yearly.3010.desc_middling
 		}
 	}
-			
+
 	theme = emperor
 	override_background = {
 		reference = battlefield
 	}
 	override_effect_2d = {
-   		reference = flies	
+   		reference = flies
    	}
 	left_portrait = {
 		character = scope:emperor
@@ -1493,12 +1497,10 @@ ep3_governor_yearly.3010 = {
 	}
 
 	trigger = {
-		has_ep3_dlc_trigger = yes
 		is_governor = yes
 		is_imprisoned = no
 		exists = scope:war
-		exists = liege
-		liege = {
+		liege ?= {
 			any_character_war = {
 				this = scope:war
 				attacker_war_score < 80
@@ -1548,7 +1550,7 @@ ep3_governor_yearly.3010 = {
 			add_character_flag = need_military_outfit
 		}
 	}
-	
+
 	#Join the emperor in this war
 	option = {
 		name = ep3_governor_yearly.3010.a
@@ -1562,7 +1564,7 @@ ep3_governor_yearly.3010 = {
 			random_list = {
 				50 = { #Emperor accepts your help
 					desc = ep3_governor_yearly.3010.a.success
-					
+
 					modifier = {
 						ep3_emperors_war_strength_value < ep3_emperors_foe_war_strength_value
 						add = 25
@@ -1722,7 +1724,7 @@ ep3_governor_yearly.3010 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = miniscule_stress_impact_loss
 			diligent = minor_stress_impact_loss
 			craven = medium_stress_impact_gain
@@ -1790,7 +1792,7 @@ ep3_governor_yearly.3010 = {
 		if = {
 			limit = {
 				is_powerful_vassal = yes
-				
+
 				scope:emperor = {
 					has_realm_law = acclamation_succession_law
 				}
@@ -1844,14 +1846,14 @@ ep3_governor_yearly.3010 = {
 			else = {
 				change_influence = major_influence_loss
 			}
-			
+
 			scope:emperor = {
 				send_interface_message = {
 					type = msg_governor_challenges_weakness
 					title = msg_claimed_weak_emperors_title.t
 					desc = msg_claimed_weak_emperors_title.flavor
 					right_icon = root
-					
+
 					root = {
 						add_unpressed_claim = scope:emperor.primary_title
 						progress_towards_rival_effect = {
@@ -1889,7 +1891,7 @@ ep3_governor_yearly.3010 = {
 					}
 					NOT = {
 						has_character_flag = decried_weakness_score
-						
+
 					}
 				}
 				custom_tooltip = governor_challenges_weakness_candidate_score
@@ -1905,7 +1907,7 @@ ep3_governor_yearly.3010 = {
 				opinion = -25
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = miniscule_stress_impact_loss
 			forgiving = medium_stress_impact_gain
 			content = major_stress_impact_gain
@@ -1995,7 +1997,7 @@ ep3_governor_yearly.3010 = {
 			modifier = ep3_exploited_weak_master_modifier
 			years = 10
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_loss
 			just = major_stress_impact_gain
 			diligent = major_stress_impact_gain
@@ -2024,7 +2026,7 @@ ep3_governor_yearly.3010 = {
 		name = ep3_governor_yearly.3010.d
 		add_piety = medium_piety_gain
 		remove_short_term_gold = minor_gold_value
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_loss
 			greedy = minor_stress_impact_gain
 			ambitious = minor_stress_impact_gain
@@ -2073,7 +2075,7 @@ ep3_governor_yearly.3011 = {
 				ep3_governor_yearly_3010_war_aid_effect = yes
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = miniscule_stress_impact_loss
 			trusting = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
@@ -2086,7 +2088,7 @@ ep3_governor_yearly.3011 = {
 	option = {
 		name = ep3_governor_yearly.3011.b
 		scope:governor = { add_character_flag = governor_war_aid_deal_failed }
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = medium_stress_impact_gain
 			trusting = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
@@ -2121,10 +2123,10 @@ ep3_governor_yearly.3012 = {
 	}
 	sender = scope:emperor
 
-	
+
 	#Alright then
 	option = {
-		
+
 		name = {
 			trigger = {
 				knows_language = language_greek
@@ -2195,7 +2197,7 @@ ep3_governor_yearly.3020 = {
 			desc = ep3_governor_yearly.3020.desc_crime
 		}
 	}
-			
+
 	theme = emperor
 	override_background = {
 		reference = throne_room
@@ -2222,10 +2224,11 @@ ep3_governor_yearly.3020 = {
 				has_character_flag = had_ep3_governor_yearly_3020
 				has_character_modifier = emperor_repented_for_flaws_modifier
 			}
+			valid_for_byz_emperor_content_trigger = yes
 			save_temporary_scope_as = emperor_temp
 			legitimacy_level < 5
-			government_has_flag = government_is_administrative
-			is_independent_ruler = yes
+			government_has_mechanic = administrative
+			top_liege = this
 			OR = {
 				#Emperor has criminal trait
 				AND = {
@@ -2233,8 +2236,8 @@ ep3_governor_yearly.3020 = {
 					NOT = {
 						root = { is_incestuous_trigger = yes }
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:incestuous RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:incestuous RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = kinslayer
@@ -2247,8 +2250,8 @@ ep3_governor_yearly.3020 = {
 					NOT = {
 						root = { has_trait = adulterer }
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:adulterer RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:adulterer RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = fornicator
@@ -2260,24 +2263,24 @@ ep3_governor_yearly.3020 = {
 							}
 						}
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:fornicator RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:fornicator RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = deviant
 					NOT = {
 						root = { is_deviant_trigger = yes }
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:deviant RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:deviant RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = witch
 					NOT = {
 						root = { is_witch_trigger = yes }
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:witch RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:witch RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = sodomite
@@ -2285,28 +2288,27 @@ ep3_governor_yearly.3020 = {
 						NOR = {
 							has_trait = sodomite
 							any_secret = {
-								secret_type = secret_homosexual
+								type = secret_homosexual
 							}
 						}
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:sodomite RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:sodomite RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					has_trait = cannibal
 					NOT = {
 						root = { is_cannibal_trigger = yes }
 					}
-					trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = scope:emperor_temp.faith GENDER_CHARACTER = scope:emperor_temp }
-					trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = root.faith GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:cannibal RITE = scope:emperor_temp.rite GENDER_CHARACTER = scope:emperor_temp }
+					trait_is_criminal_in_rite_trigger = { TRAIT = trait:cannibal RITE = root.rite GENDER_CHARACTER = scope:emperor_temp }
 				}
 				AND = {
 					root.culture = {
 						has_cultural_parameter = physical_disfigurement_blocks_inheritance
 					}
 					OR = {
-						has_trait = eunuch_1
-						has_trait = beardless_eunuch
+						is_eunuch_trigger = yes
 						has_trait = blind
 						has_trait = maimed
 						has_trait = one_eyed
@@ -2343,8 +2345,8 @@ ep3_governor_yearly.3020 = {
 						NOT = {
 							root = { is_incestuous_trigger = yes }
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = incestuous FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:incestuous RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:incestuous RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2377,8 +2379,8 @@ ep3_governor_yearly.3020 = {
 						NOT = {
 							root = { has_trait = adulterer }
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = adulterer FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:adulterer RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:adulterer RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2398,8 +2400,8 @@ ep3_governor_yearly.3020 = {
 								}
 							}
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = fornicator FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:fornicator RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:fornicator RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2414,8 +2416,8 @@ ep3_governor_yearly.3020 = {
 						NOT = {
 							root = { is_deviant_trigger = yes }
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = deviant FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:deviant RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:deviant RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2430,8 +2432,8 @@ ep3_governor_yearly.3020 = {
 						NOT = {
 							root = { is_witch_trigger = yes }
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = witch FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:witch RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:witch RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2447,12 +2449,12 @@ ep3_governor_yearly.3020 = {
 							NOR = {
 								has_trait = sodomite
 								any_secret = {
-									secret_type = secret_homosexual
+									type = secret_homosexual
 								}
 							}
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = sodomite FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:sodomite RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:sodomite RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2467,8 +2469,8 @@ ep3_governor_yearly.3020 = {
 						NOT = {
 							root = { is_cannibal_trigger = yes }
 						}
-						trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = scope:emperor.faith GENDER_CHARACTER = scope:emperor }
-						trait_is_criminal_in_faith_trigger = { TRAIT = cannibal FAITH = root.faith GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:cannibal RITE = scope:emperor.rite GENDER_CHARACTER = scope:emperor }
+						trait_is_criminal_in_rite_trigger = { TRAIT = trait:cannibal RITE = root.rite GENDER_CHARACTER = scope:emperor }
 					}
 					random_character_trait = {
 						limit = {
@@ -2557,7 +2559,7 @@ ep3_governor_yearly.3020 = {
 						}
 					}
 				}
-				
+
 			}
 			45 = { #No one pays you any heed
 				desc = ep3_governor_yearly.3020.a.fail
@@ -2586,7 +2588,7 @@ ep3_governor_yearly.3020 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			honest = medium_stress_impact_gain
 			trusting = minor_stress_impact_gain
 			compassionate = minor_stress_impact_gain
@@ -2659,7 +2661,7 @@ ep3_governor_yearly.3020 = {
 					has_trait = clubfooted
 					has_trait = disfigured
 					has_character_flag = insulted_trait_candidate_score
-					
+
 				}
 				is_candidate_for_title_trigger = {
 					TITLE = scope:emperor.primary_title
@@ -2695,7 +2697,7 @@ ep3_governor_yearly.3020 = {
 				days = 1
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			just = miniscule_stress_impact_loss
 			craven = medium_stress_impact_gain
@@ -2764,7 +2766,7 @@ ep3_governor_yearly.3020 = {
 		else = {
 			add_gold = tiny_gold_value
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			vengeful = minor_stress_impact_gain
 			paranoid = minor_stress_impact_gain
 			sadistic = minor_stress_impact_gain
@@ -2854,7 +2856,7 @@ ep3_governor_yearly.3021 = {
 		add_legitimacy = minor_legitimacy_loss
 		custom_tooltip = ep3_governor_yearly.3021.bad_trait
 	}
-	
+
 	#I suppose I should seek God's favor
 	option = {
 		name = ep3_governor_yearly.3021.a
@@ -2865,7 +2867,7 @@ ep3_governor_yearly.3021 = {
 		}
 		custom_tooltip = ep3_governor_yearly.3021.blocker
 		add_prestige = medium_prestige_loss
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			humble = miniscule_stress_impact_loss
 			arrogant = major_stress_impact_gain
@@ -2895,7 +2897,7 @@ ep3_governor_yearly.3021 = {
 	#Impertinence!
 	option = {
 		name = ep3_governor_yearly.3021.b
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = miniscule_stress_impact_gain
 			zealous = miniscule_stress_impact_gain
 			trusting = miniscule_stress_impact_gain
@@ -2952,13 +2954,13 @@ ep3_governor_yearly.3030 = {
 			desc = ep3_governor_yearly.3030.desc_generic
 		}
 		desc = ep3_governor_yearly.3030.desc
-	}	
+	}
 	theme = administrative
 	override_background = {
 		trigger = {
 			location.culture ?= { has_graphical_mediterranean_culture_group_trigger = yes }
 		}
-		reference = ep3_mediterranean_estate
+		reference = estate
 	}
 	override_background = {
 		trigger = {
@@ -2975,11 +2977,10 @@ ep3_governor_yearly.3030 = {
 	lower_right_portrait = scope:emperor
 
 	trigger = {
-		has_ep3_dlc_trigger = yes
 		basic_is_valid_for_yearly_events_trigger = yes
 		is_landed = yes
-		government_allows = administrative
-		is_independent_ruler = no
+		government_has_mechanic = administrative
+		top_liege != this
 		years_from_game_start >= 4
 		is_at_war = no
 		age >= 12
@@ -3016,9 +3017,7 @@ ep3_governor_yearly.3030 = {
 		NOT = {
 			any_sub_realm_county = {
 				any_province = {
-					any_province_epidemic = {
-						count >= 1
-					}
+					any_province_epidemic = { }
 				}
 			}
 		}
@@ -3107,7 +3106,7 @@ ep3_governor_yearly.3030 = {
 		else = {
 			add_martial_lifestyle_xp = medium_lifestyle_xp
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = major_stress_impact_gain
 			compassionate = medium_stress_impact_gain
 			content = major_stress_impact_gain
@@ -3153,7 +3152,7 @@ ep3_governor_yearly.3030 = {
 			modifier = ep3_peaceful_administrator_modifier
 			years = 10
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = minor_stress_impact_gain
 			paranoid = major_stress_impact_gain
 			wrathful = medium_stress_impact_gain
@@ -3179,7 +3178,7 @@ ep3_governor_yearly.3030 = {
 	#We are free to relish a cozy life with our families!
 	option = {
 		name = ep3_governor_yearly.3030.c
-		
+
 		#Some kind of estate bonus
 		#New estate sub-building type?
 		if = {
@@ -3203,9 +3202,7 @@ ep3_governor_yearly.3030 = {
 							has_relation_rival = root
 						}
 						is_imprisoned = no
-						NOT = {
-							this = root
-						}
+						this != root
 					}
 					add_stress = major_stress_loss
 				}
@@ -3221,9 +3218,7 @@ ep3_governor_yearly.3030 = {
 							has_relation_rival = root
 						}
 						is_imprisoned = no
-						NOT = {
-							this = root
-						}
+						this != root
 					}
 					add_stress = major_stress_loss
 					add_opinion = {
@@ -3234,7 +3229,7 @@ ep3_governor_yearly.3030 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = minor_stress_impact_gain
 			impatient = minor_stress_impact_gain
 			callous = medium_stress_impact_gain
@@ -3325,6 +3320,7 @@ ep3_governor_yearly.3040 = {
 		top_liege = {
 		 	is_imprisoned = no
 		 	legitimacy_level >= 4
+			government_has_flag = government_is_administrative
 		}
 		age >= 12
 	}
@@ -3349,9 +3345,7 @@ ep3_governor_yearly.3040 = {
 			limit = {
 				scope:emperor.house = {
 					any_house_member = {
-						NOT = {
-							this = scope:emperor
-						}
+						this != scope:emperor
 						is_ai = yes
 						save_temporary_scope_as = aspirant
 						is_candidate_for_title_trigger = {
@@ -3378,9 +3372,7 @@ ep3_governor_yearly.3040 = {
 			scope:emperor.house = {
 				every_house_member = {
 					limit = {
-						NOT = {
-							this = scope:emperor
-						}
+						this != scope:emperor
 						is_ai = yes
 						save_temporary_scope_as = aspirant
 						is_candidate_for_title_trigger = {
@@ -3419,13 +3411,11 @@ ep3_governor_yearly.3040 = {
 	option = {
 		trigger = {
 			exists = house
-			NOT = {
-				house = scope:emperor.house
-			}
+			house != scope:emperor.house
 		}
 		name = ep3_governor_yearly.3040.a
 		flavor = ep3_governor_yearly.3040.a.flavor
-		
+
 		root = {
 			if = {
 				limit = {
@@ -3458,7 +3448,7 @@ ep3_governor_yearly.3040 = {
 					flag = ep3_intermarrying_gov
 					days = 5
 				}
-				
+
 			}
 		}
 		scope:emperor.house = {
@@ -3482,7 +3472,7 @@ ep3_governor_yearly.3040 = {
 					type = msg_governor_compliments_legitimacy
 					title = msg_governor_compliments_legitimacy.t
 					right_icon = root
-					
+
 					dynasty = { add_dynasty_prestige = miniscule_dynasty_prestige_gain }
 					reverse_add_opinion = {
 						target = root
@@ -3493,7 +3483,7 @@ ep3_governor_yearly.3040 = {
 						limit = {
 							root = {
 								has_character_flag = ep3_intermarrying_gov
-								
+
 							}
 						}
 						custom_tooltip = ep3_governor_yearly_3040_marriage_tooltip
@@ -3513,10 +3503,10 @@ ep3_governor_yearly.3040 = {
 				}
 			}
 		}
-		
+
 		dynasty = { add_dynasty_prestige = 25 }
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			paranoid = minor_stress_impact_gain
 			shy = minor_stress_impact_gain
 			content = minor_stress_impact_gain
@@ -3591,7 +3581,7 @@ ep3_governor_yearly.3040 = {
 		}
 		change_influence = minor_influence_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			impatient = medium_stress_impact_gain
 			just = minor_stress_impact_gain
 			honest = minor_stress_impact_gain
@@ -3792,7 +3782,7 @@ ep3_governor_yearly.3040 = {
 				OR = {
 					culture = { culture_has_archer_cavalry_maa = yes }
 					has_trait = nomadic_philosophy
-				}	
+				}
 			}
 			create_maa_regiment = {
 				type = horse_archers
@@ -3957,7 +3947,7 @@ ep3_governor_yearly.3040 = {
 		}
 		remove_short_term_gold = minor_gold_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
@@ -4375,7 +4365,7 @@ ep3_governor_yearly.3040 = {
 				size = 2
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			arrogant = minor_stress_impact_gain
 		}
@@ -4418,6 +4408,22 @@ ep3_governor_yearly.3040 = {
 	}
 }
 
+scripted_trigger ep3_governor_yearly_3050_emperor_trigger = {
+	OR = {
+		has_trait = lunatic
+		has_trait = possessed
+		has_trait = eccentric
+		AND = {
+			has_trait = witch
+			NOT = {
+				root.rite = {
+					rite_has_parameter = witchcraft_accepted
+				}
+			}
+		}
+	}
+}
+
 #####################################
 # God Appointed... Him?				#
 # by Jason Cantalini				#
@@ -4429,7 +4435,18 @@ ep3_governor_yearly.3050 = {
 	type = character_event
 	title = ep3_governor_yearly.3050.t
 	desc = {
-		desc = ep3_governor_yearly.3050.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:emperor = {
+						ep3_governor_yearly_3050_emperor_trigger = yes
+					}
+				}
+				desc = ep3_governor_yearly.3050.desc_strange_intro
+			}
+			desc = ep3_governor_yearly.3050.desc
+		}
+		
 		first_valid = {
 			#Emperor is a mess
 			triggered_desc = {
@@ -4475,12 +4492,12 @@ ep3_governor_yearly.3050 = {
 					has_cultural_pillar = heritage_byzantine
 					has_cultural_pillar = heritage_caucasian
 					has_cultural_pillar = heritage_latin
-					has_graphical_mediterranean_culture_group_trigger = yes 
+					has_graphical_mediterranean_culture_group_trigger = yes
 				}
 			}
-			NOR = {
-				has_character_flag = demon_emperor_cruel
-				has_character_flag = demon_emperor_generic
+			has_none_of_variables = {
+				name = demon_emperor_cruel
+				name = demon_emperor_generic
 			}
 		}
 		reference = ep3_byzantine_feast
@@ -4492,12 +4509,12 @@ ep3_governor_yearly.3050 = {
 					has_cultural_pillar = heritage_byzantine
 					has_cultural_pillar = heritage_caucasian
 					has_cultural_pillar = heritage_latin
-					has_graphical_mediterranean_culture_group_trigger = yes 
+					has_graphical_mediterranean_culture_group_trigger = yes
 				}
 			}
-			NOR = {
-				has_character_flag = demon_emperor_cruel
-				has_character_flag = demon_emperor_generic
+			has_none_of_variables = {
+				name = demon_emperor_cruel
+				name = demon_emperor_generic
 			}
 		}
 		reference = corridor_night
@@ -4523,6 +4540,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 			animation = aggressive_unarmed
+			camera = camera_event_table_left_forward
 		}
 		triggered_animation = {
 			trigger = {
@@ -4539,6 +4557,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 			animation = paranoia
+			camera = camera_event_table_left_forward
 		}
 		triggered_animation = {
 			trigger = {
@@ -4547,6 +4566,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 			animation = manic
+			camera = camera_event_table_left_forward
 		}
 		triggered_animation = {
 			trigger = {
@@ -4555,6 +4575,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 			animation = eccentric
+			camera = camera_event_table_left_forward
 		}
 	}
 	lower_right_portrait = scope:faith_head
@@ -4568,7 +4589,16 @@ ep3_governor_yearly.3050 = {
 		}
 		is_at_war = no
 		top_liege = {
-		 	legitimacy_level < 2
+			is_imprisoned = no
+			has_legitimacy = yes
+			#Either quite illegitimate for an emperor... or people do actually speak already of their strangeness
+			OR = {
+				legitimacy_level < 2
+				AND = {
+					legitimacy_level < 5
+					ep3_governor_yearly_3050_emperor_trigger = yes 
+				}
+			}
 		 	age >= 8
 		}
 		age >= 12
@@ -4579,8 +4609,16 @@ ep3_governor_yearly.3050 = {
 		modifier = {
 			factor = 3
 			top_liege = {
-			 	is_imprisoned = no
+			 	has_legitimacy = yes
 			 	legitimacy_level < 1
+			}
+		}
+		modifier = {
+			factor = 3
+			top_liege = {
+			 	has_legitimacy = yes
+			 	legitimacy_level < 3
+			 	ep3_governor_yearly_3050_emperor_trigger = yes
 			}
 		}
 	}
@@ -4691,6 +4729,9 @@ ep3_governor_yearly.3050 = {
 						scope:emperor = {
 							is_adult = yes
 						}
+						root = {
+							is_ai = no
+						}
 					}
 					scope:emperor = { add_character_flag = is_naked }
 				}
@@ -4762,7 +4803,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = minor_stress_impact_loss
 			eccentric = minor_stress_impact_loss
 			cynical = major_stress_impact_gain
@@ -4803,12 +4844,12 @@ ep3_governor_yearly.3050 = {
 				title = msg_governor_challenging_illegitimacy.t
 				desc = msg_governor_challenging_illegitimacy.desc
 				right_icon = scope:root_scope
-				
+
 				custom_tooltip = ep3_governor_yearly_3050_factions_emp_tooltip
 				add_legitimacy = miniscule_legitimacy_loss
 			}
 		}
-		
+
 		if = {
 			limit = {
 				exists = scope:regiment
@@ -4994,8 +5035,8 @@ ep3_governor_yearly.3050 = {
 			change_influence = minor_influence_gain
 		}
 		add_trait = disloyal
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			disloyal = minor_stress_impact_loss
 			loyal = medium_stress_impact_gain
 			just = major_stress_impact_gain
@@ -5004,7 +5045,7 @@ ep3_governor_yearly.3050 = {
 			content = medium_stress_impact_gain
 		}
 		ai_chance = {
-			base = 150
+			base = 100
 			ai_value_modifier = {
 				ai_greed = 1
 				ai_boldness = 1
@@ -5058,14 +5099,14 @@ ep3_governor_yearly.3050 = {
 				opinion = 20
 			}
 		}
-		
+
 		scope:emperor = {
 			send_interface_message = {
 				type = msg_governor_supports_rule
 				title = msg_governor_supports_rule.t
 				desc = msg_governor_supports_rule.desc
 				right_icon = scope:root_scope
-				
+
 				add_legitimacy = miniscule_legitimacy_gain
 				random = {
 					chance = 20
@@ -5073,7 +5114,7 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			loyal = miniscule_stress_impact_loss
 			arbitrary = major_stress_impact_gain
 			paranoid = medium_stress_impact_gain
@@ -5081,7 +5122,7 @@ ep3_governor_yearly.3050 = {
 			deceitful = minor_stress_impact_gain
 		}
 		ai_chance = {
-			base = 100
+			base = 50
 			ai_value_modifier = {
 				ai_honor = 2
 				ai_compassion = 0.5
@@ -5108,6 +5149,12 @@ ep3_governor_yearly.3050 = {
 				}
 			}
 			modifier = {
+				add = -50
+				scope:emperor = {
+					ep3_governor_yearly_3050_emperor_trigger = yes
+				}
+			}
+			modifier = {
 				factor = 0
 				OR = {
 					has_trait = arbitrary
@@ -5125,7 +5172,7 @@ ep3_governor_yearly.3050 = {
 	#A perfect time to get involved in imperial politics... and neglect my other duties
 	option = {
 		name = ep3_governor_yearly.3050.d
-		
+
 		if = {
 			limit = {
 				is_governor = yes
@@ -5156,7 +5203,7 @@ ep3_governor_yearly.3050 = {
 			add_prestige = minor_prestige_loss
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = medium_stress_impact_gain
 			just = minor_stress_impact_gain
 			honest = minor_stress_impact_gain
@@ -5196,10 +5243,11 @@ ep3_governor_yearly.3050 = {
 					has_trait = just
 					has_trait = honest
 					has_trait = humble
-				}
-				opinion = {
-					target = scope:emperor
-					value >= 80
+					has_trait = diligent
+					opinion = {
+						target = scope:emperor
+						value >= 80
+					}
 				}
 			}
 		}
@@ -5223,14 +5271,29 @@ ep3_governor_yearly.3050 = {
 # by Jason Cantalini				#
 # 3060	 							#
 #####################################
-
 #Admin Imperial Succession event
 ep3_governor_yearly.3060 = {
 	type = character_event
-	title = ep3_governor_yearly.3060.t
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:new_holder = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+				}
+				desc = ep3_governor_yearly.3060.t_regent
+			}
+			desc = ep3_governor_yearly.3060.t
+		}
+	}
 	desc = {
 		#The old Basileus is dead or usurped
 		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:new_holder = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+				}
+				desc = ep3_governor_yearly.3060.intro_regent
+			}
 			triggered_desc = {
 				trigger = {
 					scope:previous_holder = {
@@ -5248,6 +5311,12 @@ ep3_governor_yearly.3060 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
+					scope:new_holder = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+				}
+				desc = ep3_governor_yearly.3060.desc_regent
+			}
+			triggered_desc = {
+				trigger = {
 					scope:emperor = {
 						has_character_flag = ep3_new_emperor_afield
 					}
@@ -5258,6 +5327,12 @@ ep3_governor_yearly.3060 = {
 		}
 		#Is it Byzantine or nah?
 		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:new_holder = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+				}
+				desc = ep3_governor_yearly.3060.desc_regent_acclaim
+			}
 			triggered_desc = {
 				trigger = {
 					scope:emperor = {
@@ -5337,6 +5412,12 @@ ep3_governor_yearly.3060 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
+					scope:new_holder = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+				}
+				desc = ep3_governor_yearly.3060.desc_regent_legit
+			}
+			triggered_desc = {
+				trigger = {
 					scope:emperor = {
 						legitimacy_level >= 4
 					}
@@ -5377,6 +5458,7 @@ ep3_governor_yearly.3060 = {
 				}
 			}
 			scope:emperor = {
+				tgp_is_ceremonial_regent_trigger = no # Not 'actual' ruler
 				NOT = {
 					has_character_flag = ep3_new_emperor_afield
 				}
@@ -5418,26 +5500,37 @@ ep3_governor_yearly.3060 = {
 		}
 		reference = ce1_legendary_spring
 	}
+	override_background = {
+		trigger = {
+			exists = scope:background_throne_room_scope
+			scope:emperor = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+		}
+		reference = throne_room_scope
+	}
 	left_portrait = {
 		character = scope:emperor
 		triggered_animation = {
 			trigger = { religion = religion:christianity_religion }
 			animation = acknowledging # anim uses crucifix scepter
 		}
-		animation = war_over_tie
+		animation = war_over_win
+	}
+	right_portrait = {
+		character = scope:ceremonial_liege
+		animation = holding_hu
+		camera = camera_event_right_forward
 	}
 	lower_right_portrait = scope:previous_holder
-	trigger = {
-		exists = scope:emperor
-		scope:emperor = {
-			is_alive = yes
-		}
-		top_liege = {
-			this = scope:emperor
-		}
-	}
 	immediate = {
 		play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Byzantine_Flavor/ep3_mx_sting_byzantineflavor_become_emperor"
+		tgp_save_realm_ceremonial_liege_effect = yes
+		if = {
+			limit = {
+				scope:ceremonial_liege ?= scope:emperor
+			}
+			clear_saved_scope = ceremonial_liege
+		}
+		scope:ceremonial_liege ?= { save_scope_as = background_throne_room_scope }
 		save_scope_as = root_scope
 		if = {
 			limit = {
@@ -5447,7 +5540,7 @@ ep3_governor_yearly.3060 = {
 						is_in_army = yes
 					}
 					#Is not at sea
-					location = {
+					location.county = {
 						exists = holder
 					}
 				}
@@ -5463,6 +5556,15 @@ ep3_governor_yearly.3060 = {
 			location = {
 				save_scope_as = emp_location
 			}
+		}
+		if = {
+			limit = {
+				has_ach_dlc_trigger = yes
+				scope:emperor = {
+					has_realm_law = uncrowned
+				}
+			}
+			custom_tooltip = admin_coronation_still_req_tt
 		}
 	}
 	#My positive relation? This is amazing news!
@@ -5576,18 +5678,18 @@ ep3_governor_yearly.3060 = {
 					legitimacy_level <= 1
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = minor_stress_impact_loss
 				greedy = miniscule_stress_impact_loss
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = medium_stress_impact_loss
 				greedy = miniscule_stress_impact_loss
 			}
 		}
-		
+
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -5730,9 +5832,7 @@ ep3_governor_yearly.3060 = {
 					scope:previous_holder = {
 						every_traveling_family_member = {
 							limit = {
-								NOT = {
-									this = scope:previous_holder
-								}
+								this != scope:previous_holder
 							}
 							root = { add_courtier = prev }
 							hidden_effect = {
@@ -5795,9 +5895,7 @@ ep3_governor_yearly.3060 = {
 					scope:previous_holder = {
 						every_traveling_family_member = {
 							limit = {
-								NOT = {
-									this = scope:previous_holder
-								}
+								this != scope:previous_holder
 							}
 							root = { add_courtier = prev }
 							hidden_effect = {
@@ -5971,7 +6069,7 @@ ep3_governor_yearly.3060 = {
 					legitimacy_level >= 4
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				trusting = medium_stress_impact_gain
 				content = medium_stress_impact_gain
 				paranoid = medium_stress_impact_gain
@@ -5981,7 +6079,7 @@ ep3_governor_yearly.3060 = {
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				loyal = medium_stress_impact_gain
 			}
 		}
@@ -6121,6 +6219,12 @@ ep3_governor_yearly.3060 = {
 			first_valid = {
 				triggered_desc = {
 					trigger = {
+						scope:emperor = { tgp_is_ceremonial_regent_trigger = yes }
+					}
+					desc = ep3_governor_yearly.3060.c.flavor_regent
+				}
+				triggered_desc = {
+					trigger = {
 						scope:emperor = {
 							legitimacy_level >= 4
 						}
@@ -6140,7 +6244,7 @@ ep3_governor_yearly.3060 = {
 		}
 		#High legitimacy: gain influence and a little opinion with emp
 		#Low legitimacy: lose opinion and gain big opinion with emp
-		
+
 		if = {
 			limit = {
 				scope:emperor = {
@@ -6232,7 +6336,7 @@ ep3_governor_yearly.3060 = {
 					legitimacy_level <= 1
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				arrogant = medium_stress_impact_gain
 				paranoid = medium_stress_impact_gain
 				craven = medium_stress_impact_gain
@@ -6242,11 +6346,11 @@ ep3_governor_yearly.3060 = {
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				disloyal = medium_stress_impact_gain
 			}
 		}
-		
+
 		ai_chance = {
 			base = 0
 			ai_value_modifier = {
@@ -6379,7 +6483,18 @@ ep3_governor_yearly.3060 = {
 	}
 	#No opinion...
 	option = {
-		name = ep3_governor_yearly.3060.d
+		name = {
+			trigger = {
+				scope:emperor = { tgp_is_ceremonial_regent_trigger = yes } # Not 'actual' ruler
+			}
+			text = ep3_governor_yearly.3060.d.regent
+		}
+		name = {
+			trigger = {
+				scope:emperor = { tgp_is_ceremonial_regent_trigger = no } # Not 'actual' ruler
+			}
+			text = ep3_governor_yearly.3060.d
+		}
 		ai_chance = {
 			base = 50
 			ai_value_modifier = {
@@ -6471,10 +6586,10 @@ ep3_governor_yearly.3070 = {
 	}
 
 	lower_right_portrait = scope:close_governor
-	
+
 	trigger = {
-		is_independent_ruler = no
-		government_allows = administrative
+		top_liege != this
+		government_has_mechanic = administrative
 		OR = {
 			AND = {
 				is_landed = yes
@@ -6490,17 +6605,15 @@ ep3_governor_yearly.3070 = {
 				is_landless_administrative = yes
 				#This will make absolutely no sense if landless root's domicile is in liege's capital province
 				domicile.domicile_location = {
-					NOT = {
-						this = root.top_liege.capital_province
-					}
+					this != root.top_liege.capital_province
 				}
 				#Either liege is top liege or root's domicile is in liege's sub realm
 				OR = {
 					liege = {
-						is_independent_ruler = yes
+						top_liege = this
 					}
 					liege = {
-						is_independent_ruler = no
+						top_liege != this
 						any_sub_realm_county = {
 							this = root.domicile.domicile_location.county
 						}
@@ -6617,7 +6730,7 @@ ep3_governor_yearly.3070 = {
 		}
 		liege = {
 			save_temporary_scope_as = temp_liege
-			
+
 			any_courtier_or_guest = {
 				NOT = {
 					is_foreign_court_guest = yes
@@ -6743,17 +6856,21 @@ ep3_governor_yearly.3070 = {
 				}
 				else_if = {
 					limit = {
-						any_house_member = {
-							is_courtier_of = scope:liege
-							ep3_governor_yearly_3070_racer_trigger = yes
+						house ?= {
+							any_house_member = {
+								is_courtier_of = scope:liege
+								ep3_governor_yearly_3070_racer_trigger = yes
+							}
 						}
 					}
-					random_house_member = {
-						limit = {
-							is_courtier_of = scope:liege
-							ep3_governor_yearly_3070_racer_trigger = yes
+					house = {
+						random_house_member = {
+							limit = {
+								is_courtier_of = scope:liege
+								ep3_governor_yearly_3070_racer_trigger = yes
+							}
+							save_scope_as = rider
 						}
-						save_scope_as = rider
 					}
 				}
 				else_if = {
@@ -6817,7 +6934,7 @@ ep3_governor_yearly.3070 = {
 						save_temporary_scope_as = temp_vassal
 						"scope:liege.capital_province.squared_distance(scope:temp_vassal.capital_province)" < 25000
 					}
-					
+
 				}
 			}
 			scope:liege = {
@@ -6825,7 +6942,6 @@ ep3_governor_yearly.3070 = {
 					limit = {
 						ep3_governor_yearly_3070_close_governor_trigger = yes
 						save_temporary_scope_as = temp_vassal
-						ep3_governor_yearly_3070_close_governor_trigger = yes
 						"scope:liege.capital_province.squared_distance(scope:temp_vassal.capital_province)" < 25000
 					}
 					save_scope_as = close_governor
@@ -6860,7 +6976,7 @@ ep3_governor_yearly.3070 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			fickle = minor_stress_impact_gain
 			ambitious = minor_stress_impact_gain
 			arrogant = minor_stress_impact_gain
@@ -6888,10 +7004,16 @@ ep3_governor_yearly.3070 = {
 		trigger = {
 			is_landed = no
 		}
-		change_influence = medium_influence_gain
-		domicile = {
-			move_domicile = scope:liege.capital_province
+		custom_tooltip = {
+			text = domicile_move_to_province.tt
 		}
+		change_influence = medium_influence_gain
+		hidden_effect = {
+			domicile = {
+				move_domicile = scope:liege.capital_province
+			}
+		}
+
 		house = {
 			every_house_member = {
 				custom = custom.every_house_member
@@ -6910,7 +7032,7 @@ ep3_governor_yearly.3070 = {
 				}
 			}
 		}
-		
+
 		every_spouse = {
 			change_influence = miniscule_influence_gain
 			add_opinion = {
@@ -6920,7 +7042,7 @@ ep3_governor_yearly.3070 = {
 			}
 		}
 		remove_short_term_gold = minor_gold_value
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = minor_stress_impact_gain
 			lazy = medium_stress_impact_gain
 			content = medium_stress_impact_gain
@@ -6931,7 +7053,7 @@ ep3_governor_yearly.3070 = {
 			ai_value_modifier = {
 				ai_energy = 1
 				ai_sociability = 1
-				
+
 			}
 			modifier = {
 				factor = 0
@@ -6964,9 +7086,8 @@ ep3_governor_yearly.3070 = {
 				target = root
 			}
 		}
-		#TODO_CD_EP3 we're making an appointment-stealing scheme - have this begin the scheme against the close governor's title
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			content = medium_stress_impact_gain
 			patient = medium_stress_impact_gain
@@ -6976,7 +7097,7 @@ ep3_governor_yearly.3070 = {
 			ai_value_modifier = {
 				ai_energy = 1
 				ai_greed = 1
-				
+
 			}
 			modifier = {
 				factor = 0
@@ -6994,7 +7115,7 @@ ep3_governor_yearly.3070 = {
 		trigger = {
 			is_landed = yes
 		}
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 		duel = {
 			skills = { stewardship learning }
 			value = medium_skill_rating
@@ -7031,7 +7152,7 @@ ep3_governor_yearly.3070 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 		}
 		ai_chance = {
@@ -7066,7 +7187,7 @@ ep3_governor_yearly.3070 = {
 				factor = 0
 				OR = {
 					has_trait = greedy
-					short_term_gold < medium_gold_value
+					short_term_treasury_or_gold < medium_treasury_or_gold_value
 					stewardship < low_skill_rating
 					learning < low_skill_rating
 				}
@@ -7078,9 +7199,7 @@ ep3_governor_yearly.3070 = {
 		name = ep3_governor_yearly.3070.e
 		if = {
 			limit = {
-				NOT = {
-					culture = capital_county.culture
-				}
+				culture != capital_county.culture
 			}
 			culture = {
 				change_cultural_acceptance = {
@@ -7118,13 +7237,11 @@ ep3_governor_yearly.3070 = {
 		if = {
 			limit = {
 				OR = {
-					NOT = {
-						culture = capital_county.culture
-					}
+					culture != capital_county.culture
 					culture = scope:liege.culture
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = medium_stress_impact_loss
 				impatient = minor_stress_impact_gain
 				ambitious = medium_stress_impact_gain
@@ -7133,7 +7250,7 @@ ep3_governor_yearly.3070 = {
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = minor_stress_impact_loss
 				impatient = minor_stress_impact_gain
 				ambitious = medium_stress_impact_gain
@@ -7269,11 +7386,11 @@ ep3_governor_yearly.3080 = {
 		camera = camera_event_right_pointing_left
 	}
 	lower_right_portrait = scope:liege
-	
+
 	trigger = {
 		is_landed = yes
-		government_allows = administrative
-		is_independent_ruler = no
+		government_has_flag = government_is_administrative
+		top_liege != this
 		has_ep3_dlc_trigger = yes
 		basic_is_valid_for_yearly_events_trigger = yes
 		is_at_war = no
@@ -7485,7 +7602,7 @@ ep3_governor_yearly.3080 = {
 			}
 		}
 		increase_governance_effect = { VALUE = 5 }
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 			impatient = medium_stress_impact_gain
 			fickle = minor_stress_impact_gain
@@ -7516,7 +7633,7 @@ ep3_governor_yearly.3080 = {
 			desc = ep3_anxious_for_new_assignment_desc
 		}
 		custom_tooltip = ep3_anxious_for_new_assignment_tooltip
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = medium_stress_impact_gain
 			just = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
@@ -7560,17 +7677,7 @@ ep3_governor_yearly.3080 = {
 				send_interface_toast = {
 					type = event_toast_effect_good
 					title = ep3_governor_yearly.3080.c.success
-					if = {
-						limit = {
-							NOT = {
-								has_trait = governor
-							}
-						}
-						add_trait = governor
-					}
-					else = {
-						increase_governance_effect = { VALUE = 10 }
-					}
+					increase_governance_effect = { VALUE = 10 }
 					if = {
 						limit = {
 							scope:captain = {
@@ -7619,7 +7726,7 @@ ep3_governor_yearly.3080 = {
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = ep3_governor_yearly.3080.c.crit_fail
-					
+
 					scope:captain = {
 						death = {
 							death_reason = death_disappearance
@@ -7634,7 +7741,7 @@ ep3_governor_yearly.3080 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = medium_stress_impact_gain
 			lazy = medium_stress_impact_gain
 		}
@@ -7701,17 +7808,7 @@ ep3_governor_yearly.3080 = {
 				send_interface_toast = {
 					type = event_toast_effect_good
 					title = ep3_governor_yearly.3080.d.success
-					if = {
-						limit = {
-							NOT = {
-								has_trait = governor
-							}
-						}
-						add_trait = governor
-					}
-					else = {
-						increase_governance_effect = { VALUE = 10 }
-					}
+					increase_governance_effect = { VALUE = 10 }
 					remove_character_flag = ep3_governor_ignored_isolation
 					custom_tooltip = ep3_governor_ignored_isolation_removal_tooltip
 				}
@@ -7738,14 +7835,14 @@ ep3_governor_yearly.3080 = {
 				send_interface_toast = {
 					type = event_toast_effect_bad
 					title = ep3_governor_yearly.3080.d.crit_fail
-					
+
 					capital_county = {
 						change_development_progress = medium_development_progress_loss
 					}
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = minor_stress_impact_gain
 			lazy = medium_stress_impact_gain
 		}
@@ -7792,11 +7889,11 @@ ep3_governor_yearly.3080 = {
 			}
 		}
 	}
-	
+
 	#Whaddaya gonna do *shrug*
 	option = {
 		name = ep3_governor_yearly.3080.e
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 			diligent = minor_stress_impact_gain
 			paranoid = minor_stress_impact_gain
@@ -7858,7 +7955,7 @@ ep3_governor_yearly.3090 = {
 			desc = ep3_governor_yearly.3090.unlanded
 		}
 	}
-				
+
 	theme = administrative
 	override_background = {
 		trigger = {
@@ -7877,12 +7974,21 @@ ep3_governor_yearly.3090 = {
 	override_background = {
 		trigger = {
 			scope:root_capital.county = {
+				culture_has_east_asian_heritage_pillar_trigger = yes
+			}
+		}
+		reference = market
+	}
+	override_background = {
+		trigger = {
+			scope:root_capital.county = {
 				culture = {
 					NOR = {
 						has_graphical_mediterranean_culture_group_trigger = yes
 						has_graphical_mena_culture_group_trigger = yes
 						has_graphical_african_culture_group_trigger = yes
 					}
+					culture_has_east_asian_heritage_pillar_trigger = no
 				}
 			}
 		}
@@ -7895,11 +8001,12 @@ ep3_governor_yearly.3090 = {
 		camera = camera_event_horse_left
 	}
 	lower_right_portrait = scope:liege
-	
+
 	trigger = {
 		age >= 8
-		is_independent_ruler = no
-		government_allows = administrative
+		top_liege != this
+		government_has_mechanic = administrative
+		exists = domicile
 		trigger_if = {
 			limit = {
 				is_landed = yes
@@ -7922,15 +8029,13 @@ ep3_governor_yearly.3090 = {
 		has_ep3_dlc_trigger = yes
 		basic_is_valid_for_yearly_events_trigger = yes
 		is_at_war = no
-		
+
 		#Capital is not a border province
 		NOT = {
 			scope:root_capital_temp.county = {
 				any_neighboring_county = {
 					holder = {
-						NOT = {
-							top_liege = root.top_liege
-						}
+						top_liege != root.top_liege
 					}
 				}
 			}
@@ -7938,7 +8043,7 @@ ep3_governor_yearly.3090 = {
 		scope:root_capital_temp.county = {
 			culture = root.top_liege.capital_county.culture
 		}
-		
+
 		OR = {
 			scope:root_capital_temp = {
 				this = root.top_liege.capital_province
@@ -8077,8 +8182,8 @@ ep3_governor_yearly.3090 = {
 		flavor = ep3_governor_yearly.3090.a.flavor
 		add_gold = major_gold_value
 		change_influence = miniscule_influence_loss
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			generous = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 			compassionate = minor_stress_impact_gain
@@ -8099,7 +8204,7 @@ ep3_governor_yearly.3090 = {
 			}
 		}
 	}
-	
+
 
 	#Expand your local investments
 	option = {
@@ -8149,7 +8254,7 @@ ep3_governor_yearly.3090 = {
 		}
 		remove_short_term_gold = minor_gold_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			impatient = minor_stress_impact_gain
 			fickle = minor_stress_impact_gain
 		}
@@ -8193,7 +8298,7 @@ ep3_governor_yearly.3090 = {
 								}
 							}
 						}
-						NOT = { this = root }
+						this != root
 					}
 					add_opinion = {
 						modifier = friendliness_opinion
@@ -8209,7 +8314,7 @@ ep3_governor_yearly.3090 = {
 					target = root
 					opinion = 10
 				}
-	
+
 			}
 		}
 		else = {
@@ -8218,7 +8323,7 @@ ep3_governor_yearly.3090 = {
 					custom = custom.every_vassal_same_domicile_location
 					limit = {
 						domicile.domicile_location ?= scope:root_capital
-						NOT = { this = root }
+						this != root
 					}
 					add_opinion = {
 						modifier = friendliness_opinion
@@ -8243,7 +8348,7 @@ ep3_governor_yearly.3090 = {
 						any_close_family_member = {
 							is_adult = yes
 							location = scope:root_capital
-							NOT = { this = root }
+							this != root
 						}
 					}
 				}
@@ -8252,7 +8357,7 @@ ep3_governor_yearly.3090 = {
 						limit = {
 							is_adult = yes
 							location = scope:root_capital
-							NOT = { this = root }
+							this != root
 						}
 						add_opinion = {
 							target = root
@@ -8268,7 +8373,7 @@ ep3_governor_yearly.3090 = {
 						any_councillor = {
 							is_adult = yes
 							location = scope:root_capital
-							NOT = { this = root }
+							this != root
 						}
 					}
 				}
@@ -8277,7 +8382,7 @@ ep3_governor_yearly.3090 = {
 						limit = {
 							is_adult = yes
 							location = scope:root_capital
-							NOT = { this = root }
+							this != root
 						}
 						add_opinion = {
 							target = root
@@ -8288,7 +8393,7 @@ ep3_governor_yearly.3090 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			shy = minor_stress_impact_gain
 			temperate = minor_stress_impact_gain
 		}
@@ -8345,7 +8450,7 @@ scripted_trigger ep3_governor_yearly_3100_messenger_trigger = {
 			is_spouse_of = scope:liege
 		}
 	}
-	
+
 }
 
 scripted_trigger ep3_governor_yearly_3100_crappy_liege_trigger = {
@@ -8406,7 +8511,7 @@ ep3_governor_yearly.3100 = {
 			desc = ep3_governor_yearly.3100.desc_governors
 		}
 	}
-				
+
 	theme = administrative
 
 	left_portrait = {
@@ -8418,11 +8523,14 @@ ep3_governor_yearly.3100 = {
 		animation = obsequious_bow
 	}
 	lower_right_portrait = scope:liege
-	
+
 	trigger = {
+		NOT = {
+			government_has_flag = government_is_celestial
+		}
 		age >= 12
-		is_independent_ruler = no
-		government_allows = administrative
+		top_liege != this
+		government_has_mechanic = administrative
 		OR = {
 			is_landed = yes
 			is_landless_administrative = yes
@@ -8439,7 +8547,7 @@ ep3_governor_yearly.3100 = {
 			#Governors of empire suck
 			liege = {
 				any_vassal = {
-					government_allows = administrative
+					government_has_mechanic = administrative
 					is_landed = yes
 					add_to_temporary_list = admin_vassals
 				}
@@ -8700,7 +8808,7 @@ ep3_governor_yearly.3100 = {
 		reason = governor_efficiency
 		change_influence = major_influence_gain
 		add_prestige = medium_prestige_gain
-		
+
 		custom_tooltip = ep3_following_governorship_example_tooltip
 		if = {
 			limit = {
@@ -8750,7 +8858,7 @@ ep3_governor_yearly.3100 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_impact_gain
 			diligent = major_stress_impact_loss
 			just = minor_stress_impact_loss
@@ -8833,8 +8941,8 @@ ep3_governor_yearly.3100 = {
 			if = {
 				limit = {
 					ep3_governor_yearly_3100_crappy_liege_trigger = yes
-					is_independent_ruler = yes
-					
+					top_liege = this
+
 				}
 				scope:liege = {
 					send_interface_message = {
@@ -8842,7 +8950,7 @@ ep3_governor_yearly.3100 = {
 						title = msg_governor_upset_about_skill.t
 						desc = msg_governor_upset_about_skill.desc
 						right_icon = scope:root_scope
-						
+
 						reverse_add_opinion = {
 							modifier = frustrated_opinion
 							target = scope:root_scope
@@ -8854,8 +8962,8 @@ ep3_governor_yearly.3100 = {
 			else_if = {
 				limit = {
 					ep3_governor_yearly_3100_crappy_liege_trigger = yes
-					is_independent_ruler = no
-					
+					top_liege != this
+
 				}
 				scope:liege = {
 					send_interface_message = {
@@ -8863,7 +8971,7 @@ ep3_governor_yearly.3100 = {
 						title = msg_governor_upset_about_governance.t
 						desc = msg_governor_upset_about_governance.desc
 						right_icon = scope:root_scope
-						
+
 						reverse_add_opinion = {
 							modifier = frustrated_opinion
 							target = scope:root_scope
@@ -8884,7 +8992,7 @@ ep3_governor_yearly.3100 = {
 						title = msg_governor_upset_about_insolvency.t
 						desc = msg_governor_upset_about_insolvency.desc
 						right_icon = scope:root_scope
-						
+
 						reverse_add_opinion = {
 							modifier = frustrated_opinion
 							target = scope:root_scope
@@ -8900,7 +9008,7 @@ ep3_governor_yearly.3100 = {
 						title = msg_governor_upset_about_bad_govs.t
 						desc = msg_governor_upset_about_bad_govs.desc
 						right_icon = scope:root_scope
-						
+
 						reverse_add_opinion = {
 							modifier = frustrated_opinion
 							target = scope:root_scope
@@ -8910,7 +9018,7 @@ ep3_governor_yearly.3100 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = miniscule_stress_impact_loss
 			shy = miniscule_stress_impact_gain
 			craven = minor_stress_impact_gain
@@ -8963,7 +9071,7 @@ ep3_governor_yearly.3100 = {
 			add_gold = minor_gold_value
 			add_prestige = medium_prestige_loss
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = miniscule_stress_impact_loss
 			just = medium_stress_impact_gain
 			generous = medium_stress_impact_gain
@@ -9009,7 +9117,7 @@ ep3_governor_yearly.3100 = {
 			5 = {
 				trigger = {
 					has_character_flag = ep3_governor_yearly_3100_reclusive
-					
+
 				}
 				add_trait = reclusive
 			}
@@ -9086,7 +9194,7 @@ ep3_governor_yearly.3100 = {
 				add_trait = depressed_1
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = miniscule_stress_impact_loss
 			content = miniscule_stress_impact_loss
 			depressed_1 = miniscule_stress_impact_loss
@@ -9118,4 +9226,4 @@ ep3_governor_yearly.3100 = {
 		}
 	}
 }
-		
+

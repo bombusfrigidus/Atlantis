@@ -19,28 +19,22 @@ scripted_trigger significant_north_germanic_presence_trigger = {
 			culture = { has_cultural_pillar = heritage_north_germanic }
 			has_culture = culture:norman
 			has_character_modifier = embraced_local_traditions_modifier
-			AND = {
-				exists = dynasty
-				dynasty = {
+			dynasty ?= {
 					has_dynasty_modifier = settled_norse_dynasty_modifier
 				}
-			}
 		}
 		OR = {
 			AND = {
 				highest_held_title_tier >= tier_duchy
 				any_held_title = {
 					count >= 3
-					tier = tier_county
+					title_tier = county
 					title_province = { geographical_region = $SCANDI_ADV_TARGET_REGION$ }
 				}
 			}
-			AND = {
-				exists = dynasty
-				dynasty = {
+			dynasty ?= {
 					has_dynasty_modifier = settled_norse_dynasty_modifier
 				}
-			}
 		}
 	}
 }
@@ -51,12 +45,9 @@ scripted_trigger scattered_north_germanic_presence_trigger = {
 			culture = { has_cultural_pillar = heritage_north_germanic }
 			has_culture = culture:norman
 			has_character_modifier = embraced_local_traditions_modifier
-			AND = {
-				exists = dynasty
-				dynasty = {
+			dynasty ?= {
 					has_dynasty_modifier = settled_norse_dynasty_modifier
 				}
-			}
 		}
 	}
 }
@@ -68,12 +59,9 @@ scripted_trigger valid_adventurer_target_trigger = {
 			culture = { has_cultural_pillar = heritage_north_germanic }
 			has_culture = culture:norman
 			has_character_modifier = embraced_local_traditions_modifier
-			AND = {
-				exists = dynasty
-				dynasty = {
+			dynasty ?= {
 					has_dynasty_modifier = settled_norse_dynasty_modifier
 				}
-			}
 			#Plus any places already being attacked.
 			top_liege = {
 				any_character_war = { using_cb = fp1_scandi_adventurer_conquest }
@@ -120,19 +108,19 @@ scripted_effect scandinavian_adventurer_start_war_effect = {
 			first_valid = {
 				triggered_desc = {
 					trigger = {
-						faith = { has_doctrine = doctrine_gender_male_dominated }
+						rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 					}
 					desc = VIKING_ARMY_MEN_NAME
 				}
 				triggered_desc = {
 					trigger = {
-						faith = { has_doctrine = doctrine_gender_female_dominated }
+						rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 					}
 					desc = VIKING_ARMY_WOMEN_NAME
 				}
 				triggered_desc = {
 					trigger = {
-						faith = { has_doctrine = doctrine_gender_equal }
+						rite = { rite_has_doctrine = doctrine_gender_equal }
 					}
 					desc = VIKING_ARMY_NEUTRAL_NAME
 				}

@@ -1,0 +1,24 @@
+﻿atlantis_faith = {
+	main_rite = atlantis_rite
+	faith_details = {
+		religion = atlantite_religion
+		color = { 0.9 0.7 0.3 }
+		icon = akanism
+		reformed_icon = akanism_reformed
+		graphical_faith = "pagan_gfx"
+	}
+
+	eminent_holy_sites = {
+		atlantis
+	}
+	
+	tenets = {
+		tenet_adorcism
+		tenet_ritual_celebrations
+		tenet_ancestor_worship
+	}
+
+	doctrines = {
+		west_african_unreformed_faith_doctrine
+	}
+}

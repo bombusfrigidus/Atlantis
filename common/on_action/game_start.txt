@@ -5,7 +5,6 @@ on_game_start = {
 	}
 
 	effect = {
-
 		# Atlantis | Select religions to hide in GUI.
 		religion:akom_religion = { set_variable = religion_invisible }
 		religion:baltic_religion = { set_variable = religion_invisible }
@@ -41,39 +40,36 @@ on_game_start = {
 		religion:yazidi_religion = { set_variable = religion_invisible }
 		religion:zoroastrianism_religion = { set_variable = religion_invisible }
 
-		#Epidemics 3 months grace
+		set_global_variable = { name = is_game_start_date days = 1 }
+
+		# Set up bookmark-aware Permitted/Prohibited tenet statuses for faiths whose main rite intends spiritual or temporal head of faith.
+		setup_rite_tenet_permissions_effect = yes
+
+		#Epidemics 10 years grace
 		set_global_variable = {
 			name = start_epidemic_grace
 			value = yes
-			months = 3
+			years = 10
 		}
 
 		### RELIGIOUS THINGS ###
 		# Set up Holy Site Buildings to be buildable in Holy Sites
 		every_religion_global = {
 			every_faith = {
-				every_holy_site = {
+				save_scope_as = holy_site_faith
+				every_holy_site_barony = {
 					limit = {
-						NOT = {
-							title_province = {
-								this = province:1 # Atlantis | Watch out for hard-coding.
-							}
-						}
 						title_province = {
 							has_special_building_slot = no
 						}
 					}
 					title_province = {
-						add_special_building_slot = holy_site_other_grand_temple_01
+						add_holy_site_fallback_special_building_slot_effect = { FAITH = scope:holy_site_faith }
 					}
 				}
 			}
 		}
-		
-		### UNIVERSITIES ###
 
-		### COA ###
-		
 		### GRANDEUR ###
 		#Royal Court: Set starting Grandeur to be the same as Expected
 		if = {
@@ -91,226 +87,586 @@ on_game_start = {
 			}
 		}
 
-		### STRUGGLES ###
-
-		### REGENCIES ###
-		# Pre-defined historic regencies setup.
-		## NOTE: we do these first to avoid feed messages getting weird due to regents being replaced immediately after getting their position.
-
-		# Set up anyone who should be in a regency at start whether we have sources or not.
-		## If you start as a child, incapable, or imprisoned, you get a regency.
-		every_ruler = {
-			limit = {
-				OR = {
-					is_adult = no
-					is_incapable = yes
-					is_imprisoned = yes
-					government_has_flag = government_is_clan
+		every_ruler = { # PUT EVERY_RULER TYPE STUFF HERE FOR PERFORMANCE REASONS
+			# Set up anyone who should be in a regency at start whether we have sources or not.
+			## If you start as a child, incapable, or imprisoned, you get a regency.
+			if = {
+				limit = {
+					OR = {
+						is_adult = no
+						is_incapable = yes
+						is_imprisoned = yes
+					}
+				}
+				# We don't want to check over so many characters *twice*, so we check again inside the block to determine what type of regency to put 'em in.
+				## Temporary Regencies.
+				if = {
+					limit = { is_imprisoned = yes }
+					trigger_event = {
+						id = diarchy.0001
+						delayed = yes
+					}
+				}
+				## Entrenched Regencies.
+				else = {
+					trigger_event = {
+						id = diarchy.0011
+						delayed = yes
+					}
 				}
 			}
-			# We don't want to check over so many characters *twice*, so we check again inside the block to determine what type of regency to put 'em in.
-			## Temporary Regencies.
 			if = {
-				limit = { is_imprisoned = yes }
-				trigger_event = {
-					id = diarchy.0001
-					delayed = yes
+				limit = {
+					has_mpo_dlc_trigger = no
+				}
+				if = {
+					limit = {
+						has_government = nomad_government
+					}
+					change_government = tribal_government
+				}
+				else_if = {
+					limit = {
+						has_government = herder_government
+					}
+					change_government = tribal_government
+				}
+			}
+
+			# Set Coronation laws for everyone
+			if = {
+				limit = {
+					coronation_trigger = yes
+				}
+				if = {
+					limit = {
+						highest_held_title_tier = tier_kingdom
+					}
+					add_realm_law_skip_effects = crowned_king
+					set_variable = crowned_king_var
+				}
+			}
+
+			# Admin - Let's give existing governors the Governor trait on game start
+			if = {
+				limit = {
+					is_governor = yes
+					NOT = { has_trait = governor }
+				}
+				add_trait = governor
+				add_trait_xp = {
+					trait = governor
+					value = {
+						add = primary_title.title_held_years
+						multiply = 2
+						if = {
+							limit = {
+								age >= 50
+								has_government = japan_administrative_government
+							}
+							add = {
+								value = age
+								divide = 4
+							}
+						}
+					}
 				}
 			}
 			if = {
-				limit = { government_has_flag = government_is_clan }
+				limit = {
+					exists = clerical_elector_title
+					NOT = { has_character_flag = cardinal_flag }
+				}
+				add_character_flag = cardinal_flag
 			}
-			## Entrenched Regencies.
-			else = {
-				trigger_event = {
-					id = diarchy.0011
-					delayed = yes
+			# Clean up TGP governments is the Expansion is not enabled
+			if = {
+				limit = { has_tgp_dlc_trigger = no }
+				# TGP: Clean up maritime tribal govs and revert them to non-dlc tribals
+				if = {
+					limit = {
+						has_government = wanua_government
+					}
+					change_government = tribal_government
+				}
+				# TGP: Clean up mandala govs and revert them to non-dlc feudals
+				else_if = {
+					limit = {
+						has_government = mandala_government
+					}
+					change_government = feudal_government
+				}
+				### Every Celestial/Meritocratic/Japanese Government becomes feudal if DLC not enabled, pre-lobby history setup ###
+				else_if = {
+					limit = {
+						OR = {
+							has_government = celestial_government
+							has_government = meritocratic_government
+							has_government = steppe_admin_government
+							has_government = japan_administrative_government
+							has_government = japan_feudal_government
+						}
+					}
+					empty_treasury_when_abandoning_landed_life_effect = yes
+					change_government = feudal_government
+				}
+				if = {
+					limit = {
+						any_held_title = {
+							is_noble_family_title = yes
+						}
+					}
+					every_held_title = {
+						limit = {
+							is_noble_family_title = yes
+							title_domicile ?= {
+								OR = {
+									is_domicile_type = japanese_manor
+									is_domicile_type = east_asian_estate
+								}
+							}
+						}
+						save_temporary_scope_as = family_title
+						prev = { destroy_title = scope:family_title }
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_domicile = yes
+					any_held_title = {
+						is_noble_family_title = yes
+					}
+				}
+				if = {
+					limit = {
+						is_landed = yes
+						domicile.domicile_location != this.capital_province
+					}
+					random_held_title = {
+						limit = {
+							is_noble_family_title = yes
+						}
+						set_capital_county = prev.capital_county
+					}
+					domicile ?= {
+						move_domicile = prev.capital_province
+					}
+				}
+				if = {
+					limit = {
+						tgp_is_any_minister = yes
+					}
+					every_held_title = {
+						limit = {
+							tgp_is_minister_title = yes
+						}
+						set_capital_county = prev.top_liege.capital_county
+					}
+					random_held_title = {
+						limit = {
+							is_noble_family_title = yes
+						}
+						set_capital_county = prev.top_liege.capital_county
+					}
+					domicile ?= {
+						move_domicile = prev.top_liege.capital_province
+					}
 				}
 			}
 		}
+
+		setup_tributaries_effect = yes # defined in 00_tributary_setup_effect.txt
 		# Sort custom regencies.
-		
-		### FERTILE LANDS ###
-		# For deserts that are supposed to be very fertile
 
 		### DEBUG GLOBAL VARIABLES ###
 		# We set these here so that they present nicely and you can see when some variables register zero.
 
 		# FP3 Struggle.
+		if = {
+			limit = { gather_debug_variables_for_persian_struggle_trigger = yes }
+			# ENDING
+			set_global_variable = {
+				name = sp_end_date
+				value = 0
+			}
+			# There's also fp3_struggle_ending; we don't track that here because it has functional usage that depends on it existing or not, so it's not a debug variable.
 
-		# UNITY CONFIG
+			# PHASES
+			set_global_variable = {
+				name = sp_phase_unrest
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_phase_stabil
+				value = 0
+			}
 
-		# LEGITIMACY CONFIG
+			# UNREST
+			set_global_variable = {
+				name = sp_unrest_catalyst_yearly_influential_house_is_antagonistic_major
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_yearly_influential_house_is_antagonistic_medium
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_yearly_influential_house_is_antagonistic_minor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_yearly_influential_house_is_antagonistic_minimal
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_becomes_rival_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_gain_claim_on_title_fp3
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_usurp_title_fp3
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_cadet_branch_created
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_supporter_forced_conversion
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_execute_supporter
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_imprison_supporter
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_unnatural_death_supporter
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_reveal_secret_supporter
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_turn_supporter_into_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_forming_alliance_between_detractor_uninvolved_rulers
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_detractor_win_unfair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_detractor_win_fair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_detractor_declare_unfair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_detractor_declare_fair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_unrest_catalyst_became_detractor_fp3
+				value = 0
+			}
+			# STABILISATION
+			set_global_variable = {
+				name = sp_stabil_catalyst_yearly_influential_house_is_harmonious_major
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_yearly_influential_house_is_harmonious_medium
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_yearly_influential_house_is_harmonious_minor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_yearly_influential_house_is_harmonious_minimal
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_learned_new_language_important
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_vassalize_independent_ruler
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_invite_involved_as_honorary_guests_to_feast_hunt
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_supporter_win_unfair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_supporter_win_fair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_supporter_declare_unfair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_supporter_declare_fair_war_within_the_region
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_install_loyalist_cb
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_imprison_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_execute_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_unnatural_death_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_reveal_secret_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_detractor_forced_conversion
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_turn_detractor_into_supporter
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_gain_struggle_titles_from_interlopers_uninvolved
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_stabil_catalyst_became_supporter_fp3
+				value = 0
+			}
+			# CONCESSION
+			set_global_variable = {
+				name = sp_concession_catalyst_missing_caliphate_or_arabian_empire
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_caliph_or_emperor_loses_revolt_war
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_caliph_or_emperor_accepts_faction_demands
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_caliph_died_violently
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_caliph_died_naturally
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_war_ends_in_white_peace_between_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_became_best_friend_soulmate_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_became_friend_lover_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_forming_alliance_between_supporter_detractor_rulers
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_abandon_hook_on_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_grants_pardon_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_release_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_ransom_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_grants_vassal_to_de_jure_liege_supporter_detractor
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_gift_supporter_detractor_ruler
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_interloper_uninvolved_gain_struggle_titles
+				value = 0
+			}
+			set_global_variable = {
+				name = sp_concession_catalyst_raided_involved
+				value = 0
+			}
+		}
 
+		# Remove Coronation Doctrine if you don't have the DLC
+		if = {
+			limit = {
+				has_ach_dlc_trigger = no
+			}
+			every_religion_global = {
+				every_faith = {
+					every_faith_rite = {
+						switch = {
+							trigger = rite_has_doctrine
+							doctrine_no_anointment = { remove_rite_doctrine = doctrine_no_anointment }
+							doctrine_anointment_permitted = { remove_rite_doctrine = doctrine_anointment_permitted }
+							doctrine_imperial_anointment = { remove_rite_doctrine = doctrine_imperial_anointment }
+						}
+					}
+				}
+			}
+		}
+
+		# Set Coronation laws for everyone
+		if = {
+			limit = {
+				has_ach_dlc_trigger = yes
+			}
+			every_ruler = {
+				limit = {
+					coronation_trigger = yes
+					age >= 12
+					NOT = { this = character:1 } # Heinrich IV was coronated in 1084
+				}
+				save_temporary_scope_as = ruler
+				if = {
+					limit = {
+						highest_held_title_tier > tier_kingdom
+						NOT = {
+							has_any_shunned_or_criminal_trait_in_rite_trigger = {
+								CHARACTER = scope:ruler
+								RITE = scope:ruler.rite
+							}
+							rite = { rite_has_doctrine = doctrine_no_anointment }
+						}
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_game_rule = coronation_laws_off
+								has_realm_law = crowned_emperor
+							}
+						}
+						add_realm_law_skip_effects = crowned_emperor
+					}
+					set_variable = crowned_emperor_var
+				}
+				else = {
+					if = {
+						limit = {
+							NOT = {
+								has_game_rule = coronation_laws_off
+								has_realm_law = crowned_king
+							}
+						}
+						add_realm_law_skip_effects = crowned_king
+					}
+					set_variable = crowned_king_var
+				}
+			}
+		}
+
+		### TGP SILK ROAD INNOVATIONS
+		tgp_silk_road_innovation_setup_effect = yes
+
+		### FP1 culture innovations (Varangian / All Things — DLC-gated; see culture history comments)
+		fp1_culture_innovation_setup_effect = yes
+
+		set_global_variable = {
+			name = natural_disaster_initial_grace_period
+			years = natural_disaster_initial_grace_period_years
+		}
+
+		## PAM ##
+		
+		# We put Christian faiths on conditional appointment in 1066 so the Investiture Crisis can happen
+		# 867 is too early for it and by 1178 it is over
+		if = {
+			limit = {
+				has_pam_dlc_trigger = yes
+				current_date >= 1066.1.1
+				NOT = { current_date >= 1178.1.1 }
+			}
+			religion:christianity_religion = {
+				every_faith = {
+					limit = { has_doctrine_parameter = has_clerical_regions }
+					change_doctrine = doctrine_clerical_succession_conditional
+					# Faith-level doctrine changes only hit the main rite
+					every_faith_rite = {
+						limit = { NOT = { rite_has_doctrine = doctrine_clerical_succession_conditional } }
+						change_rite_doctrine = doctrine_clerical_succession_conditional
+					}
+				}
+			}
+		}
+		# PAM tenet popularity: seed Christian faiths' starting tenet popularity from tenet statuses
+		# TODO_PAM_JF TIT-72446 replace with faith history
+		pam_tenet_popularity_on_game_start_effect = yes
+		# Schism already happened
+		if = {
+			limit = { game_start_date >= 1054.7.16 }
+			set_global_variable = pam_great_schism_decision_taken
+		}
+
+		### PAM Cardinalates
+		setup_cardinalate_list_effect = yes
+		# Post-schism starts: top the College up if history left it under the vacancy floor
+		if = {
+			limit = { has_global_variable = pam_great_schism_decision_taken }
+			faith:christian_faith = { remove_doctrine = special_doctrine_has_clerical_electors }
+			faith:catholic = { pam_seed_cardinals_effect = yes }
+		}
+		else_if = {
+			limit = {
+				has_pam_dlc_trigger = yes
+				exists = title:k_papal_state.holder
+			}
+			title:k_papal_state.holder = { add_realm_law_skip_effects = theocratic_elective_succession_law }
+			pam_seed_867_college_effect = yes
+		}
 	}
 }
 
 # Like on_game_start, except it is called once the host (or player, in single player) exits the lobby. Good for anything where you need to know who the players are, or what the game rules are
 on_game_start_after_lobby = {
 	effect = {
-		# Make sure that Realm Priests are landed theocrats where it makes sense
-		every_ruler = {
-			limit = {
-				highest_held_title_tier >= tier_duchy
-			}
-			if = {
-				limit = {
-					exists = cp:councillor_court_chaplain
-					cp:councillor_court_chaplain = {
-						is_ruler = no
-					}
-					faith = { has_doctrine = doctrine_clerical_succession_spiritual_fixed_appointment }
-					any_vassal = {
-						is_physically_able_adult = yes
-						is_councillor = no
-						government_has_flag = government_is_theocracy
-						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
-						faith = liege.faith
-					}
-				}
-				random_vassal = {
-					limit = {
-						is_physically_able_adult = yes
-						is_councillor = no
-						government_has_flag = government_is_theocracy
-						can_be_court_chaplain_trigger = { COURT_OWNER = liege }
-						faith = liege.faith
-					}
-					weight = {
-						base = 1
-						modifier = {
-							add = 1000
-							faith.religious_head ?= this
-						}
-						modifier = {
-							add = learning
-						}
-						modifier = {
-							add = primary_title.tier
-						}
-					}
-					liege = {
-						assign_councillor_type = {
-							type = councillor_court_chaplain
-							remove_existing_councillor = yes
-							target = prev
-						}
-					}
-				}
-			}
-		}
-	
-		### GAME RULE: VIEW ON SAME-SEX RELATIONS
-		if = {
-			limit = { has_game_rule = accepted_same_sex_relations }
-			game_rule_accepted_same_sex_relations_effect = yes
-		}
-
-		### GAME RULE: RANDOM RULER PLACEMENT
-		if = {
-			limit = { NOT = { has_game_rule = random_ruler_placement_off } }
-			game_rule_random_ruler_placement_effect = yes
-		}
-
-		### GAME RULE: RANDOMIZE FAITH
-		if = {
-			limit = { has_game_rule = randomized_faiths_on }
-			game_rule_randomize_faith_effect = yes
-		}
-
-		### GAME RULE: FAITH ACCEPTANCE
-		if = {
-			limit = { has_game_rule = full_faith_acceptance }
-			game_rule_faith_acceptance_effect = yes
-		}
-
-		### GAME RULE: GENDER EQUALITY ###
-		if = {
-			limit = { has_game_rule = full_gender_equality }
-			game_rule_full_gender_equality_effect = yes
-		}
-		else_if = {
-			limit = { has_game_rule = inversed_gender_equality }
-			game_rule_inversed_gender_equality_effect = yes
-		}
-
-		### GAME RULE: SEXUALITY DISTRIBUTION ###
-		if = {
-			limit = { NOT = { has_game_rule = sexuality_distribution_default } }
-			game_rule_sexuality_distribution_effect = yes
-		}
-		else = { # So that children 10+ starts with a sexuality
-			child_sexuality_distribution_effect = yes
-		}
-
-		# Give Ruler Designer characters regencies.
-		every_in_global_list = {
-			variable = rd_chars_needing_regencies
-			trigger_event = diarchy.0011
-			# Aaaand clean the list.
-			save_temporary_scope_as = char_temp
-			remove_list_global_variable = {
-				name = rd_chars_needing_regencies
-				target = scope:char_temp
-			}
-		}
-
-		### HOLD COURT STARTING GRACE
-		every_character_with_royal_court = {
-			set_variable = {
-				name = hold_court_cooldown
-	 			days = standard_hold_court_cooldown_time
-	 		}
-		}
-		
-		#Set starting cultural acceptance
-
-		# Specific innovation unlock
-		if = {
-			limit = {
-				game_start_date >= 1066.1.1
-			}
-			every_culture_global = {
-				limit = {
-					OR = {
-						has_cultural_pillar = heritage_arabic
-						this = culture:yemeni
-					}
-				}
-				add_innovation = innovation_ghilman
-			}
-		}
-		# Custom ruler under the HRE should have lowered feudal obligations
-		if = {
-			limit = { exists = title:e_hre.holder }
-			title:e_hre.holder = {
-				every_vassal = {
-					limit = {
-						is_ai = no
-						vassal_contract_has_modifiable_obligations = yes
-					}
-					vassal_contract_decrease_obligation_level = feudal_government_taxes
-					vassal_contract_decrease_obligation_level = feudal_government_levies
-					set_vassal_contract_modification_blocked = no
-				}
-			}
-		}
-		### CE1 LEGITIMACY SETUP ###
-		every_ruler = {
-			limit = {
-				exists = dynasty
-				highest_held_title_tier >= tier_county
-				# Exclude unplayable for now
-				NOR = {
-					government_has_flag = government_is_republic
-					government_has_flag = government_is_theocracy
-				}
-				is_landed = yes
-			}
-			add_legitimacy = base_legitimacy_value
-		}
-	}
-	events = {
-		game_rule.1000	#Autopopulate families.
+		disable_succession_calculation = yes
 	}
 }

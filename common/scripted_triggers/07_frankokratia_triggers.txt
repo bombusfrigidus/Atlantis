@@ -8,20 +8,21 @@ ep3_frankokratia_ghw_trigger = {
 	NOT = { exists = title:e_latin_empire.holder }
 	#Byzantine emperor is Christian, but not Catholic
 	title:e_byzantium.holder.faith = {
-		NOT = { this = faith:catholic }
 		religion = religion:christianity_religion
+	}
+	title:e_byzantium.holder.rite = {
+		rite_has_doctrine = special_doctrine_is_eastern_christian_faith
 	}
 	trigger_if = {
 		limit = {
 			title:e_byzantium.holder = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 		}
-		#Byzantine state faith is not Catholic
+		#Byzantine state rite is still Eastern Christian (not Latin)
 		title:e_byzantium.holder.primary_title = {
-			state_faith = {
-				NOT = { this = faith:catholic }
-				religion = religion:christianity_religion
+			state_rite = {
+				rite_has_doctrine = special_doctrine_is_eastern_christian_faith
 			}
 		}
 	}
@@ -130,13 +131,18 @@ ep3_frankokratia_ghw_trigger = {
 ep3_frankokratia_transiting_relative_trigger = {
 	OR = {
 		is_ruler = no
+		# Prefer char_temp; root is a faith in great_holy_war.0001, so do not evaluate root.highest_held_title_tier there.
 		AND = {
-			exists = scope:char_temp
-			highest_held_title_tier <= scope:char_temp.highest_held_title_tier
-		}
-		AND = {
-			exists = root
-			highest_held_title_tier <= root.highest_held_title_tier
+			trigger_if = {
+				limit = {
+					exists = scope:char_temp
+				}
+				highest_held_title_tier <= scope:char_temp.highest_held_title_tier
+			}
+			trigger_else = {
+				exists = root
+				highest_held_title_tier <= root.highest_held_title_tier
+			}
 		}
 		highest_held_title_tier < tier_county
 		NOT = {
@@ -170,7 +176,7 @@ ep3_frankokratia_story_owner_trigger = {
 	highest_held_title_tier <= tier_kingdom
 	exists = faith.religious_head
 	faith.religious_head = { is_ai = yes }
-	NOT = { scope:char_temp = faith.religious_head }
+	scope:char_temp != faith.religious_head
 	exists = scope:char_temp.faith.great_holy_war
 	#Not pals with the Byzantine emperor
 	exists = title:e_byzantium.holder
@@ -208,9 +214,8 @@ ep3_frankokratia_story_owner_trigger = {
 		#Close family claimant
 		any_close_or_extended_family_member = {
 			OR = {
-				AND = {
-					ep3_frankokratia_claimant_trigger = yes
-				}
+				ep3_frankokratia_claimant_trigger = yes
+
 				AND = {
 					ep3_frankokratia_transiting_relative_trigger = yes
 					#In-law claimant
@@ -430,8 +435,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:e_italy = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -439,8 +443,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_sicily = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -448,8 +451,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_croatia = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -457,8 +459,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_burgundy = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -466,8 +467,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_aquitaine = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -475,8 +475,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:e_spain = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					ep3_frankokratia_financier_sub_trigger = yes
 				}
 			}
@@ -484,8 +483,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:e_italy = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					highest_held_title_tier >= tier_county
 					highest_held_title_tier < tier_empire
 					ep3_frankokratia_financier_trigger = yes
@@ -495,8 +493,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_sicily = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					highest_held_title_tier >= tier_county
 					highest_held_title_tier < tier_empire
 					ep3_frankokratia_financier_trigger = yes
@@ -506,8 +503,7 @@ ep3_frankokratia_financier_exists_trigger = {
 		title:k_croatia = {
 			any_in_de_jure_hierarchy = {
 				count >= 1
-				exists = holder
-				holder = {
+				holder ?= {
 					highest_held_title_tier >= tier_county
 					highest_held_title_tier < tier_empire
 					ep3_frankokratia_financier_trigger = yes
@@ -529,7 +525,7 @@ ep3_frankokratia_valid_joiner_trigger = {
 		has_truce = title:e_byzantium.holder
 		has_relation_friend = title:e_byzantium.holder
 		any_owned_story = {
-			story_type = frankokratia_story
+			type = frankokratia_story
 		}
 	}
 }
@@ -567,6 +563,7 @@ ep3_frankokratia_latin_kingdom_available_trigger = {
 ep3_frankokratia_discard_old_lands_trigger = {
 	NAND = {
 		primary_title = {
+			tier <= tier_empire
 			empire = title:e_byzantium
 		}
 		any_sub_realm_county = {
@@ -582,14 +579,12 @@ ep3_frankokratia_beneficiary_trigger = {
 	faith = scope:frankokratia_crusader.faith
 	NOR = {
 		this = scope:financier
-		any_heir_title = {
-			count >= 1
-		}
+		any_heir_title = { }
 		has_trait = incapable
 		has_trait = devoted
 		AND = {
-			scope:frankokratia_crusader.faith = {
-				has_doctrine = doctrine_theocracy_temporal
+			scope:frankokratia_crusader.rite = {
+				rite_has_doctrine = doctrine_theocracy_temporal
 			}
 			has_council_position = councillor_court_chaplain
 		}
@@ -688,6 +683,7 @@ ep3_frankokratia_notification_recipient_trigger = {
 		#Most affected Christians
 		faith = faith:catholic
 		faith = faith:orthodox
+		faith = faith:miaphysitism
 		faith = faith:armenian_apostolic
 		#Target faith of crusade
 		faith = scope:defender.faith
@@ -710,7 +706,7 @@ ep3_frankokratia_notification_recipient_trigger = {
 ep3_orthodox_faith_trigger = {
 	OR = {
 		faith = faith:orthodox
-		faith = faith:coptic
+		faith = faith:miaphysitism
 		faith = faith:armenian_apostolic
 		faith = faith:iconoclast
 		faith = faith:bogomilist

@@ -1,0 +1,6 @@
+﻿# Kingdom of Heaven — Christian hegemony from PAM decision (see pam_kingdom_of_heaven_decision)
+
+h_kingdom_of_heaven = {
+	capital = c_atlantis
+	landless = yes
+}

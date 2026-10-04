@@ -111,6 +111,19 @@ atlantis.0001 = {
 		has_character_flag = achievement_death_did_us_part_flag
 		exists = global_var:finished_hunting_accident_achievement
 		exists = global_var:fp2_iberian_compromise_achievement_unlocked
+
+		# Global variable lists reported as set but unused.
+		is_target_in_global_variable_list = {
+			name = easteregg_characters_list
+			target = root
+		}
+		is_target_in_global_variable_list = {
+			name = rd_chars_needing_regencies
+			target = root
+		}
+
+		exists = var:dynasty_legend_used
+		exists = global_var:magi_descendant_legend
 	}
 	
 	immediate = {
@@ -155,6 +168,8 @@ atlantis.0001 = {
 		set_variable = { name = mythical_ancestor_var value = flag:afrasiyab }
 		set_variable = { name = mythical_ancestor_var value = flag:noah }
 		set_variable = { name = mythical_ancestor_var value = flag:shibi_chakravarti }
+		set_variable = { name = mythical_ancestor_var value = flag:magi }
+
 
 		#  Achievements		
 
@@ -239,19 +254,31 @@ atlantis.0001 = {
 		trigger_event = ep3_laamps.5999
 		trigger_event = ep3_story_cycle_violet_poet.0001
 		trigger_event = ep3_yearly.3000
+		trigger_event = tgp_genpei_character.1000
+		trigger_event = tgp_genpei_character.1090
+		trigger_event = tgp_genpei_character.1100
+		trigger_event = tgp_genpei_character.2000
+		trigger_event = tgp_genpei_character.2010
+		trigger_event = tgp_genpei_character.3000
+		trigger_event = tgp_genpei_character.3100
+		trigger_event = tgp_genpei_character.4000
+		trigger_event = tgp_japan_career.0001
 		trigger_event = cid.0001
 		trigger_event = hasan_sabbah.1000
 		trigger_event = yearly.7050
 		
 		trigger_event = game_rule.1011
 		trigger_event = historical_artifacts.0023
+		trigger_event = historical_artifacts.0050
+		trigger_event = coronation_events.0302
+		trigger_event = bookmark.0400
+		trigger_event = bookmark.0500
 		trigger_event = major_decisions.2001
 		trigger_event = diarchy.0012
 		trigger_event = fp1_scandinavian_adventurers.0004
 		trigger_event = fp1_scandinavian_adventurers.0011
 		trigger_event = fp1_scandinavian_adventurers.0021
 		trigger_event = debug_portraits.1
-		trigger_event = mpo_misc.0002
 		trigger_event = mpo_greatest_of_khans.1001
 		trigger_event = mongol_invasion.1002
 		trigger_event = roman_restoration.1200
@@ -446,6 +473,106 @@ atlantis.0001 = {
 		fix_variable_error = { ERROR = battle_poi_list }
 		fix_variable_error = { ERROR = vercingetorix_legend }
 		fix_variable_error = { ERROR = achieved_i_got_a_permit_achievement }
+
+		# Variables added by newer game versions that are reported as used but never set.
+		add_to_variable_list = {
+			name = unavailable_achievements
+			target = flag:rd_character_blocked_el_cid_achievement
+		}
+		add_to_variable_list = {
+			name = unavailable_achievements
+			target = flag:rd_character_blocked_far_from_home_achievement
+		}
+		add_to_variable_list = {
+			name = unavailable_achievements
+			target = flag:rd_character_blocked_faster_than_the_fox_achievement
+		}
+		add_to_variable_list = {
+			name = unavailable_achievements
+			target = flag:rd_character_blocked_iberia_or_iberia_achievement
+		}
+		add_to_variable_list = {
+			name = unavailable_achievements
+			target = flag:rd_character_blocked_miklagardariki_achievement
+		}
+
+
+		set_variable = { name = achievement_rags_to_riches_to_rags_to_riches_valid value = yes }
+		set_variable = { name = achievement_rags_to_riches_valid value = yes }
+		set_variable = { name = any_ruler_designed_character_achievement value = yes }
+		set_variable = { name = ce3_11_servus_servorum_dei_achievement_start value = yes }
+		set_variable = { name = earthquake_region_list value = yes }
+		set_variable = { name = flood_region_list value = yes }
+		set_variable = { name = fp3_the_umma_strikes_back_achievement_tracker value = yes }
+		set_variable = { name = num_catholic_crusades value = yes }
+		set_variable = { name = qiu_chuji value = yes }
+		set_variable = { name = rd_character_blocked_keeping_it_in_the_family_achievement_flag value = yes }
+		set_variable = { name = rd_character_blocked_paragon_of_virtue_achievement_flag value = yes }
+		set_variable = { name = rd_character_blocked_the_emperors_new_clothes_achievement_flag value = yes }
+		set_variable = { name = rd_character_blocked_the_succession_is_safe_achievement_flag value = yes }
+		set_variable = { name = tai_migration_target_counties value = yes }
+		set_variable = { name = unavailable_achievements value = yes }
+
+		# Achievement start markers are global variables.
+		add_achievement_global_variable_effect = { VARIABLE = started_a_dangerous_business_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_a_true_and_perfect_knight_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_al_andalus_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_almost_there_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_beta_israel_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_blood_eagle_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_bod_chen_po_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_brave_and_bold_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_canute_the_greater_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ce3_15_cardinal_sin_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_changing_course_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_converging_paths_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_creme_de_la_creme_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_delusions_of_grandeur_achievement_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_03_sword_of_japan_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_05_grand_governor_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_15_humble_beginnings_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_16_flying_colors_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_17_highway_of_ideas_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_ep4_19_stamp_of_approval_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_far_from_home_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_faster_than_the_fox_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_first_of_the_crusader_kings_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_fly_my_pretty_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_going_places_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_hoarder_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_i_made_this_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_im_in_my_elements_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_inspirational_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_king_of_all_the_isles_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_kings_to_the_seventh_generation_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_land_of_the_rus_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_last_count_first_king_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_like_no_one_ever_was_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_lingua_franca_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_lions_and_tigers_and_bears_oh_my_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_miklagardariki_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_mother_of_us_all_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_nobody_comes_to_fika_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_one_of_a_kind_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_patronage_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_polyglot_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_reconquista_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_rise_of_the_ghurids_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_royal_dignity_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_saga_in_stone_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_sibling_rivalry_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_the_emerald_isle_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_the_iron_and_golden_king_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_the_stallion_that_mounts_the_world_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_the_true_royal_court_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_the_very_best_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_there_and_back_again_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_they_belong_in_a_museum_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_true_tolerance_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_turkish_eagle_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_vladimirs_second_choice_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_volva_achievement VALUE = yes }
+		add_achievement_global_variable_effect = { VARIABLE = started_wily_as_the_fox_achievement VALUE = yes }
 		
 		add_character_modifier = infinite_hostile_schemes_modifier
 		add_character_modifier = infinite_contract_schemes_modifier

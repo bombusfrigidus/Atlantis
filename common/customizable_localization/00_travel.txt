@@ -142,23 +142,23 @@
 		localization_key = building_walls_of_benin_destination_desc
 	}
 
-	#text = { # Theodosian Walls - Duchy Capital Building
-	#	trigger = {
-	#		has_special_building = yes
-	#		#this = province:1 # Constantinople
-	#		has_building_or_higher = theodosian_walls_01
-	#	}
-	#	localization_key = building_theodosian_walls_destination_desc
-	#}
+	text = { # Theodosian Walls - Duchy Capital Building
+		trigger = {
+			has_special_building = yes
+			#this = province:1 # Constantinople
+			has_building_or_higher = theodosian_walls_01
+		}
+		localization_key = building_theodosian_walls_destination_desc
+	}
 
-	#text = { # Aurelian Walls - Duchy Capital Building
-	#	trigger = {
-	#		has_special_building = yes
-	#		#this = province:1 # Rome
-	#		has_building_or_higher = aurelian_walls_01
-	#	}
-	#	localization_key = building_aurelian_walls_destination_desc
-	#}
+	text = { # Aurelian Walls - Duchy Capital Building
+		trigger = {
+			has_special_building = yes
+			#this = province:1 # Rome
+			has_building_or_higher = aurelian_walls_01
+		}
+		localization_key = building_aurelian_walls_destination_desc
+	}
 
 	text = { # The Colosseum
 		trigger = {
@@ -172,8 +172,10 @@
 	text = { # The Iron Pillar of Delhi
 		trigger = {
 			has_special_building = yes
-			#this = province:1 # Indraprastha
-			has_building_or_higher = iron_pillar_of_delhi_01
+			OR = {
+				has_building_or_higher = iron_pillar_of_delhi_01
+				has_building_or_higher = qutb_minar_01
+			}
 		}
 		localization_key = building_iron_pillar_of_delhi_destination_desc
 	}
@@ -208,15 +210,6 @@
 	text = { # Offa's Dyke
 		trigger = {
 			has_special_building = yes
-			#OR = {
-			#	this = province:1 # Cheshire
-			#	this = province:1 # Shropshire
-			#	this = province:1 # Bishop's Castle
-			#	this = province:1 # Gloucester
-			#	this = province:1 # Hereford
-			#	this = province:1 # Wigmore
-			#	this = province:1 # Clifford
-			#}
 			has_building_or_higher = offas_dyke_01
 		}
 		setup_scope = {
@@ -228,12 +221,6 @@
 	text = { # Hadrian's Wall
 		trigger = {
 			has_special_building = yes
-			#OR = {
-			#	this = province:1 # Bamburgh
-			#	this = province:1 # Hexham
-			#	this = province:1 # Carlisle
-			#	this = province:1 # Wigton
-			#}
 			has_building_or_higher = hadrians_wall_01
 		}
 		setup_scope = {
@@ -245,7 +232,6 @@
 	text = { # Petra
 		trigger = {
 			has_special_building = yes
-			#this = province:1 # Baidha-Petra
 			has_building_or_higher = petra_01
 		}
 		localization_key = building_petra_destination_desc
@@ -340,7 +326,7 @@
 		}
 		localization_key = building_brihadeeswarar_temple_destination_desc
 		setup_scope = {
-			dynasty:1 = { save_scope_as = chola_dynasty }
+			dynasty:1043008 = { save_scope_as = chola_dynasty }
 		}
 	}
 
@@ -361,7 +347,7 @@
 		}
 		localization_key = building_ananda_temple_destination_desc
 		setup_scope = {
-			dynasty:1 = { save_scope_as = pagan_dynasty }
+			dynasty:2000000 = { save_scope_as = pagan_dynasty }
 		}
 	}
 
@@ -469,74 +455,50 @@
 
 	text = { # Kutna Hora Mines 1
 		trigger = {
-			#this = province:1 # Caslav
 			has_special_building = yes
 			has_building_or_higher = kutna_hora_mines_01
 		}
 		localization_key = building_kutna_hora_mines_destination_desc
 	}
 
-	text = { # Kutna Hora Mines 2
-		trigger = {
-			#this = province:1 # Caslav
-			has_special_building = yes
-			has_building_or_higher = kutna_hora_mines_02
-		}
-		localization_key = building_kutna_hora_mines_destination_desc
-	}
-
-	text = { # Kutna Hora Mines 3
-		trigger = {
-			#this = province:1 # Caslav
-			has_special_building = yes
-			has_building_or_higher = kutna_hora_mines_03
-		}
-		localization_key = building_kutna_hora_mines_destination_desc
-	}
-
-	text = { # Kutna Hora Mines 4
-		trigger = {
-			#this = province:1 # Caslav
-			has_special_building = yes
-			has_building_or_higher = kutna_hora_mines_04
-		}
-		localization_key = building_kutna_hora_mines_destination_desc
-	}
-
 	text = { # Kremnica Mines 1
 		trigger = {
-			#this = province:1 # Turoc
 			has_special_building = yes
 			has_building_or_higher = kremnica_mines_01
 		}
 		localization_key = building_kremnica_mines_destination_desc
 	}
 
-	text = { # Kremnica Mines 2
+	text = { # Zijinshan Mines 1
 		trigger = {
-			#this = province:1 # Turoc
 			has_special_building = yes
-			has_building_or_higher = kremnica_mines_02
+			has_building_or_higher = zijinshan_mines_01
 		}
-		localization_key = building_kremnica_mines_destination_desc
+		localization_key = building_zijinshan_mines_destination_desc
 	}
 
-	text = { # Kremnica Mines 3
+	text = { # Liangzhe Mines 1
 		trigger = {
-			#this = province:1 # Turoc
 			has_special_building = yes
-			has_building_or_higher = kremnica_mines_03
+			has_building_or_higher = liangzhe_mines_01
 		}
-		localization_key = building_kremnica_mines_destination_desc
+		localization_key = building_liangzhe_mines_destination_desc
 	}
 
-	text = { # Kremnica Mines 4
+	text = { # Baofeng Mines 1
 		trigger = {
-			#this = province:1 # Turoc
 			has_special_building = yes
-			has_building_or_higher = kremnica_mines_04
+			has_building_or_higher = baofeng_mines_01
 		}
-		localization_key = building_kremnica_mines_destination_desc
+		localization_key = building_baofeng_mines_destination_desc
+	}
+
+	text = { # Jiaodong Mines 1
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = jiaodong_mines_01
+		}
+		localization_key = building_jiaodong_mines_destination_desc
 	}
 
 	text = { # Falun Mines 1
@@ -544,33 +506,6 @@
 			#this = province:1 # Falun
 			has_special_building = yes
 			has_building_or_higher = falun_mines_01
-		}
-		localization_key = building_falun_mines_destination_desc
-	}
-
-	text = { # Falun Mines 2
-		trigger = {
-			#this = province:1 # Falun
-			has_special_building = yes
-			has_building_or_higher = falun_mines_02
-		}
-		localization_key = building_falun_mines_destination_desc
-	}
-
-	text = { # Falun Mines 3
-		trigger = {
-			#this = province:1 # Falun
-			has_special_building = yes
-			has_building_or_higher = falun_mines_03
-		}
-		localization_key = building_falun_mines_destination_desc
-	}
-
-	text = { # Falun Mines 4
-		trigger = {
-			#this = province:1 # Falun
-			has_special_building = yes
-			has_building_or_higher = falun_mines_04
 		}
 		localization_key = building_falun_mines_destination_desc
 	}
@@ -583,30 +518,6 @@
 		localization_key = building_konasamudram_mines_destination_desc
 	}
 
-	text = { # Konasamudram Mines 2
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = konasamudram_mines_02
-		}
-		localization_key = building_konasamudram_mines_destination_desc
-	}
-
-	text = { # Konasamudram Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = konasamudram_mines_03
-		}
-		localization_key = building_konasamudram_mines_destination_desc
-	}
-
-	text = { # Konasamudram Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = konasamudram_mines_04
-		}
-		localization_key = building_konasamudram_mines_destination_desc
-	}
-
 	text = { # Forest of Dean Mines 1
 		trigger = {
 			has_special_building = yes
@@ -615,28 +526,28 @@
 		localization_key = building_dean_mines_destination_desc
 	}
 
-	text = { # Forest of Dean Mines 2
+	text = { # Phnom Dek Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = dean_mines_02
+			has_building_or_higher = phnom_dek_mines_01
 		}
-		localization_key = building_dean_mines_destination_desc
+		localization_key = building_phnom_dek_mines_destination_desc
 	}
 
-	text = { # Forest of Dean Mines 3
+	text = { # Hanxing Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = dean_mines_03
+			has_building_or_higher = hanxing_mines_01
 		}
-		localization_key = building_dean_mines_destination_desc
+		localization_key = building_hanxing_mines_destination_desc
 	}
 
-	text = { # Forest of Dean Mines 4
+	text = { # Chihu Mines
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = dean_mines_04
+			has_building_or_higher = chihu_mines_01
 		}
-		localization_key = building_dean_mines_destination_desc
+		localization_key = building_chihu_mines_destination_desc
 	}
 
 	text = { # Schwarz Mines 1
@@ -644,33 +555,6 @@
 			#this = province:1 # Innsbruck
 			has_special_building = yes
 			has_building_or_higher = schwaz_mines_01
-		}
-		localization_key = building_schwaz_mines_destination_desc
-	}
-
-	text = { # Schwarz Mines 2
-		trigger = {
-			#this = province:1 # Innsbruck
-			has_special_building = yes
-			has_building_or_higher = schwaz_mines_02
-		}
-		localization_key = building_schwaz_mines_destination_desc
-	}
-
-	text = { # Schwarz Mines 3
-		trigger = {
-			#this = province:1 # Innsbruck
-			has_special_building = yes
-			has_building_or_higher = schwaz_mines_03
-		}
-		localization_key = building_schwaz_mines_destination_desc
-	}
-
-	text = { # Schwarz Mines 4
-		trigger = {
-			#this = province:1 # Innsbruck
-			has_special_building = yes
-			has_building_or_higher = schwaz_mines_04
 		}
 		localization_key = building_schwaz_mines_destination_desc
 	}
@@ -684,61 +568,10 @@
 		localization_key = building_argentiera_mines_destination_desc
 	}
 
-	text = { # Argentiera Mines 2
-		trigger = {
-			#this = province:1 # Cagliari
-			has_special_building = yes
-			has_building_or_higher = argentiera_mines_02
-		}
-		localization_key = building_argentiera_mines_destination_desc
-	}
-
-	text = { # Argentiera Mines 3
-		trigger = {
-			#this = province:1 # Cagliari
-			has_special_building = yes
-			has_building_or_higher = argentiera_mines_03
-		}
-		localization_key = building_argentiera_mines_destination_desc
-	}
-
-	text = { # Argentiera Mines 4
-		trigger = {
-			#this = province:1 # Cagliari
-			has_special_building = yes
-			has_building_or_higher = argentiera_mines_04
-		}
-		localization_key = building_argentiera_mines_destination_desc
-	}
-
 	text = { # Srebrenica Mines 1
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = srebrenica_mines_01
-		}
-		localization_key = building_srebrenica_mines_destination_desc
-	}
-
-	text = { # Srebrenica Mines 2
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = srebrenica_mines_02
-		}
-		localization_key = building_srebrenica_mines_destination_desc
-	}
-
-	text = { # Srebrenica Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = srebrenica_mines_03
-		}
-		localization_key = building_srebrenica_mines_destination_desc
-	}
-
-	text = { # Srebrenica Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = srebrenica_mines_04
 		}
 		localization_key = building_srebrenica_mines_destination_desc
 	}
@@ -748,33 +581,6 @@
 			#this = province:1 # Ellur
 			has_special_building = yes
 			has_building_or_higher = kollur_mines_01
-		}
-		localization_key = building_kollur_mines_destination_desc
-	}
-
-	text = { # Kollur Diamond Mines 2
-		trigger = {
-			#this = province:1 # Ellur
-			has_special_building = yes
-			has_building_or_higher = kollur_mines_02
-		}
-		localization_key = building_kollur_mines_destination_desc
-	}
-
-	text = { # Kollur Diamond Mines 3
-		trigger = {
-			#this = province:1 # Ellur
-			has_special_building = yes
-			has_building_or_higher = kollur_mines_03
-		}
-		localization_key = building_kollur_mines_destination_desc
-	}
-
-	text = { # Kollur Diamond Mines 4
-		trigger = {
-			#this = province:1 # Ellur
-			has_special_building = yes
-			has_building_or_higher = kollur_mines_04
 		}
 		localization_key = building_kollur_mines_destination_desc
 	}
@@ -933,9 +739,9 @@
 	text = { # Ratnapura Mines 3
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = pansjhir_mines_03
+			has_building_or_higher = ratnapura_mines_04
 		}
-		localization_key = building_pansjhir_mines_destination_desc
+		localization_key = building_ratnapura_mines_destination_desc
 	}
 
 	text = { # Ratnapura Mines 4
@@ -944,6 +750,38 @@
 			has_building_or_higher = ratnapura_mines_04
 		}
 		localization_key = building_ratnapura_mines_destination_desc
+	}
+
+	text = { # Mogok Mines 1
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mogok_mines_01
+		}
+		localization_key = building_mogok_mines_destination_desc
+	}
+
+	text = { # Mogok Mines 2
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mogok_mines_02
+		}
+		localization_key = building_mogok_mines_destination_desc
+	}
+
+	text = { # Mogok Mines 3
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mogok_mines_03
+		}
+		localization_key = building_mogok_mines_destination_desc
+	}
+
+	text = { # Mogok Mines 4
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mogok_mines_04
+		}
+		localization_key = building_mogok_mines_destination_desc
 	}
 
 	text = { # Wadi Al-Allaq Mines 1
@@ -1018,28 +856,12 @@
 		localization_key = building_turda_mines_destination_desc
 	}
 
-	text = { # Turda Mines 2
+	text = { # Zigong Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = turda_mines_02
+			has_building_or_higher = zigong_mines_01
 		}
-		localization_key = building_turda_mines_destination_desc
-	}
-
-	text = { # Turda Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = turda_mines_03
-		}
-		localization_key = building_turda_mines_destination_desc
-	}
-
-	text = { # Turda Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = turda_mines_04
-		}
-		localization_key = building_turda_mines_destination_desc
+		localization_key = building_zigong_mines_destination_desc
 	}
 
 	text = { # Taghaza Mines 1
@@ -1050,58 +872,10 @@
 		localization_key = building_taghaza_mines_destination_desc
 	}
 
-	text = { # Taghaza Mines 2
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = taghaza_mines_02
-		}
-		localization_key = building_taghaza_mines_destination_desc
-	}
-
-	text = { # Taghaza Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = taghaza_mines_03
-		}
-		localization_key = building_taghaza_mines_destination_desc
-	}
-
-	text = { # Taghaza Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = taghaza_mines_04
-		}
-		localization_key = building_taghaza_mines_destination_desc
-	}
-
 	text = { # Phocaea Mines 1
 		trigger = {
 			has_special_building = yes
 			has_building_or_higher = phocaea_mines_01
-		}
-		localization_key = building_phocaea_mines_destination_desc
-	}
-
-	text = { # Phocaea Mines 2
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = phocaea_mines_02
-		}
-		localization_key = building_phocaea_mines_destination_desc
-	}
-
-	text = { # Phocaea Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = phocaea_mines_03
-		}
-		localization_key = building_phocaea_mines_destination_desc
-	}
-
-	text = { # Phocaea Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = phocaea_mines_04
 		}
 		localization_key = building_phocaea_mines_destination_desc
 	}
@@ -1136,6 +910,19 @@
 			has_building_or_higher = verespatak_mines_04
 		}
 		localization_key = building_verespatak_mines_destination_desc
+	}
+
+	text = { # Suvarnadvipa Mines
+		trigger = {
+			has_special_building = yes
+			OR = {
+				has_building_or_higher = suvarnadvipa_mines_01
+				has_building_or_higher = suvarnadvipa_mines_02
+				has_building_or_higher = suvarnadvipa_mines_03
+				has_building_or_higher = suvarnadvipa_mines_04
+			}
+		}
+		localization_key = building_suvarnadvipa_mines_destination_desc
 	}
 
 	text = { # Khetri Mines 1
@@ -1242,30 +1029,6 @@
 		localization_key = building_ijil_mines_destination_desc
 	}
 
-	text = { # Ijil Mines 2
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = ijil_mines_02
-		}
-		localization_key = building_ijil_mines_destination_desc
-	}
-
-	text = { # Ijil Mines 3
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = ijil_mines_03
-		}
-		localization_key = building_ijil_mines_destination_desc
-	}
-
-	text = { # Ijil Mines 4
-		trigger = {
-			has_special_building = yes
-			has_building_or_higher = ijil_mines_04
-		}
-		localization_key = building_ijil_mines_destination_desc
-	}
-
 	text = { # Cevennes Mines 1
 		trigger = {
 			has_special_building = yes
@@ -1274,92 +1037,116 @@
 		localization_key = building_cevennes_mines_destination_desc
 	}
 
-	text = { # Cevennes Mines 2
+	text = { # Guiyang Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = cevennes_mines_02
+			has_building_or_higher = guiyang_mines_01
 		}
-		localization_key = building_cevennes_mines_destination_desc
+		localization_key = building_guiyang_mines_destination_desc
 	}
 
-	text = { # Cevennes Mines 3
+	text = { # Kaibao Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = cevennes_mines_03
+			has_building_or_higher = kaibao_mines_01
 		}
-		localization_key = building_cevennes_mines_destination_desc
+		localization_key = building_kaibao_mines_destination_desc
 	}
 
-	text = { # Cevennes Mines 4
+	text = { # Khotan Mines 1
 		trigger = {
 			has_special_building = yes
-			has_building_or_higher = cevennes_mines_04
+			has_building_or_higher = hetian_mines_01
 		}
-		localization_key = building_cevennes_mines_destination_desc
+		localization_key = building_hetian_mines_destination_desc
+	}
+
+	text = { # Xiuyan Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = xiuyan_mines_01
+		}
+		localization_key = building_xiuyan_mines_destination_desc
+	}
+
+	text = { # Itoigawa Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = itoigawa_mines_01
+		}
+		localization_key = building_itoigawa_mines_destination_desc
+	}
+
+	text = { # Lantian Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = lantian_mines_01
+		}
+		localization_key = building_lantian_mines_destination_desc
+	}
+
+	text = { # Fengtian Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = fengtian_mines_01
+		}
+		localization_key = building_fengtian_mines_destination_desc
+	}
+
+	text = { # Hpakant Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hpakant_mines_01
+		}
+		localization_key = building_hpakant_mines_destination_desc
+	}
+
+	text = { # Dushan Mines 1
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dushan_mines_01
+		}
+		localization_key = building_dushan_mines_destination_desc
 	}
 
 	text = { # Malinese Gold Mines 1
 		trigger = {
-			#OR = {
-			#	this = province:1 # Niani
-			#	this = province:1 # Wasulu
-			#	this = province:1 # Siguiri
-			#	this = province:1 # Diakha
-			#	this = province:1 # Goundafa
-			#	this = province:1 # Yaresna
-			#}
 			has_special_building = yes
 			has_building_or_higher = mali_mines_01
 		}
 		localization_key = building_mali_mines_destination_desc
 	}
 
-	text = { # Malinese Gold Mines 2
+	text = { # Koganeyama Mines
 		trigger = {
-			#OR = {
-			#	this = province:1 # Niani
-			#	this = province:1 # Wasulu
-			#	this = province:1 # Siguiri
-			#	this = province:1 # Diakha
-			#	this = province:1 # Goundafa
-			#	this = province:1 # Yaresna
-			#}
 			has_special_building = yes
-			has_building_or_higher = mali_mines_02
+			has_building_or_higher = koganeyama_mines_01
 		}
-		localization_key = building_mali_mines_destination_desc
+		localization_key = building_koganeyama_mines_destination_desc
 	}
 
-	text = { # Malinese Gold Mines 3
+	text = { # Tsushima Mines
 		trigger = {
-			#OR = {
-			#	this = province:1 # Niani
-			#	this = province:1 # Wasulu
-			#	this = province:1 # Siguiri
-			#	this = province:1 # Diakha
-			#	this = province:1 # Goundafa
-			#	this = province:1 # Yaresna
-			#}
 			has_special_building = yes
-			has_building_or_higher = mali_mines_03
+			has_building_or_higher = tsushima_mines_01
 		}
-		localization_key = building_mali_mines_destination_desc
+		localization_key = building_tsushima_mines_destination_desc
 	}
 
-	text = { # Malinese Gold Mines 4
+	text = { # Sado Mines
 		trigger = {
-			#OR = {
-			#	this = province:1 # Niani
-			#	this = province:1 # Wasulu
-			#	this = province:1 # Siguiri
-			#	this = province:1 # Diakha
-			#	this = province:1 # Goundafa
-			#	this = province:1 # Yaresna
-			#}
 			has_special_building = yes
-			has_building_or_higher = mali_mines_04
+			has_building_or_higher = sado_mines_01
 		}
-		localization_key = building_mali_mines_destination_desc
+		localization_key = building_sado_mines_destination_desc
+	}
+
+	text = { # Tada Mines
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = tada_mines_01
+		}
+		localization_key = building_tada_mines_destination_desc
 	}
 
 	### UNIVERSITIES
@@ -1912,6 +1699,38 @@
 		localization_key = building_cluny_abbey_02_destination_desc
 	}
 	
+	text = { # pam_abbey_of_st_gall_01
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pam_abbey_of_st_gall_01
+		}
+		localization_key = building_pam_abbey_of_st_gall_01_destination_desc
+	}
+	
+	text = { # pam_palais_de_papes_01
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pam_palais_de_papes_01
+		}
+		localization_key = building_pam_palais_de_papes_01_destination_desc
+	}
+	
+	text = { # pam_lateran_basilica_01
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pam_lateran_basilica_01
+		}
+		localization_key = building_pam_lateran_basilica_01_destination_desc
+	}
+	
+	text = { # pam_reims_cathedral_01
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pam_reims_cathedral_01
+		}
+		localization_key = building_pam_reims_cathedral_01_destination_desc
+	}
+	
 	text = { # york_walls_01
 		trigger = {
 			has_special_building = yes
@@ -2090,6 +1909,523 @@
 	}
 
 	#CE2 End
+	#EP4
+	text = { # Nanhua Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = nanhua_temple_01
+		}
+		localization_key = building_nanhua_temple_01_destination_desc
+	}
+
+	text = { # Jizu Shan Temples
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = jizu_shan_temples_01
+		}
+		localization_key = building_jizu_shan_temples_01_destination_desc
+	}
+
+	text = { # Tiantai Monasteries
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = tiantai_monasteries_01
+		}
+		localization_key = building_tiantai_monasteries_01_destination_desc
+	}
+
+	text = { # Mozu Tombs
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mozu_tombs
+		}
+		localization_key = building_mozu_tombs_destination_desc
+	}
+
+	text = { # Trosky Castle
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = trosky_castle_01
+		}
+		localization_key = building_trosky_castle_01_destination_desc
+	}
+
+	text = { # Maoshan Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = maoshan_academy_01
+		}
+		localization_key = building_maoshan_academy_01_destination_desc
+	}
+
+	text = { # Lize Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = lize_academy_01
+		}
+		localization_key = building_lize_academy_01_destination_desc
+	}
+
+	text = { # Culai Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = culai_academy_01
+		}
+		localization_key = building_culai_academy_01_destination_desc
+	}
+
+	text = { # Shigu Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = shigu_academy_01
+		}
+		localization_key = building_shigu_academy_01_destination_desc
+	}
+
+	text = { # White Deer Grotto Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = white_deer_grotto_academy_01
+		}
+		localization_key = building_white_deer_grotto_academy_01_destination_desc
+	}
+
+	text = { # Gongsanseong Fortress
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = gongsanseong_fortress_01
+		}
+		localization_key = building_gongsanseong_fortress_01_destination_desc
+	}
+
+	text = { # Besakih Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = besakih_temple_01
+		}
+		localization_key = building_besakih_temple_01_destination_desc
+	}
+
+	text = { # Mount Apo
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mount_apo_01
+		}
+		localization_key = building_mount_apo_01_destination_desc
+	}
+
+	text = { # Dieng Plateau
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dieng_plateau_01
+		}
+		localization_key = building_dieng_plateau_01_destination_desc
+	}
+
+	text = { # Plain of Jars
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = plain_of_jars_01
+		}
+		localization_key = building_plain_of_jars_01_destination_desc
+	}
+
+	text = { # Pagoda of Fogong Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pagoda_of_fogong_temple_01
+		}
+		localization_key = building_pagoda_of_fogong_temple_01_destination_desc
+	}
+
+	text = { # Hanging Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hanging_temple_01
+		}
+		localization_key = building_hanging_temple_01_destination_desc
+	}
+
+	text = { # Muaro Jambi Temple Compounds
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = muaro_jambi_01
+		}
+		localization_key = building_muaro_jambi_01_destination_desc
+	}
+
+	text = { # Liuhe Pagoda
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = liuhe_pagoda_01
+		}
+		localization_key = building_liuhe_pagoda_01_destination_desc
+	}
+
+	text = { # Dâu Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dau_temple_01
+		}
+		localization_key = building_dau_temple_01_destination_desc
+	}
+
+	text = { # Mount Baekdu
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mount_baekdu_01
+		}
+		localization_key = building_mount_baekdu_01_destination_desc
+	}
+
+	text = { # Byeok-ran Port
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = byeokran_port_01
+		}
+		localization_key = building_byeokran_port_01_destination_desc
+	}
+
+	text = { # Hwangnyongsa Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hwangnyongsa_01
+		}
+		localization_key = building_hwangnyongsa_01_destination_desc
+	}
+	
+	text = { # Hakata Port
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hakata_port_01
+		}
+		localization_key = building_hakata_port_01_destination_desc
+	}
+
+	text = { # Chinjufu District
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = chinjufu_01
+		}
+		localization_key = building_chinjufu_01_destination_desc
+	}
+
+	text = { # Dazaifu Office
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dazaifu_01
+		}
+		localization_key = building_dazaifu_01_destination_desc
+	}
+
+	text = { # Enryaku-ji Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = enryaku_ji_01
+		}
+		localization_key = building_enryaku_ji_01_destination_desc
+	}
+
+	text = { # Kofuku-ji Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = kofuku_ji_01
+		}
+		localization_key = building_kofuku_ji_01_destination_desc
+	}
+
+	text = { # Ise Shrine
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = ise_jingu_01
+		}
+		localization_key = building_ise_jingu_01_destination_desc
+	}
+
+	text = { # Heian Palace
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = heian_palace_01
+		}
+		localization_key = building_heian_palace_01_destination_desc
+	}
+
+	text = { # Itsukushima Shrine
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = itsukushima_jinja_01
+		}
+		localization_key = building_itsukushima_jinja_01_destination_desc
+	}
+
+	text = { # Mount Fuji
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mount_fuji_01
+		}
+		localization_key = building_mount_fuji_01_destination_desc
+	}
+
+	text = { # Sunday Bazaar (of Kashgar)
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = sunday_bazaar_01
+		}
+		localization_key = building_sunday_bazaar_01_destination_desc
+	}
+
+	text = { # Marketplace of Dūnhuáng
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dunhuang_market_01
+		}
+		localization_key = building_dunhuang_market_01_destination_desc
+	}
+
+	text = { # Hamadan Bazaar
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hamadan_bazaar_01
+		}
+		localization_key = building_hamadan_bazaar_01_destination_desc
+	}
+
+	text = { # Bazaar of Lahur (Lahore)
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = lahur_bazaar_01
+		}
+		localization_key = building_lahur_bazaar_01_destination_desc
+	}
+
+	text = { # Marketplace of Chang'an
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = changan_market_01
+		}
+		localization_key = building_changan_market_01_destination_desc
+	}
+
+	text = { # Marketplace of Dūnhuáng
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dunhuang_market_01
+		}
+		localization_key = building_dunhuang_market_01_destination_desc
+	}
+
+	text = { # Bazaar of Khiva
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = khiva_bazaar_01
+		}
+		localization_key = building_khiva_bazaar_01_destination_desc
+	}
+
+	text = { # Khrom of Lhasa
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = lhasa_market_01
+		}
+		localization_key = building_lhasa_market_01_destination_desc
+	}
+
+	text = { # Shuka of Dvin
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dvin_shuka_01
+		}
+		localization_key = building_dvin_shuka_01_destination_desc
+	}
+
+	text = { # Bazaar of Herat
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = herat_bazaar_01
+		}
+		localization_key = building_herat_bazaar_01_destination_desc
+	}
+
+	text = { # Hōshi Ryokan
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = hoshi_ryokan_01
+		}
+		localization_key = building_hoshi_ryokan_01_destination_desc
+	}
+
+	text = { # Borobudur
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = borobudur_01
+		}
+		localization_key = building_borobudur_01_destination_desc
+	}
+
+	text = { # Krakatoa
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = krakatoa_01
+		}
+		localization_key = building_krakatoa_01_destination_desc
+	}
+
+	text = { # Po Klong Garai Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = po_klong_garai_01
+		}
+		localization_key = building_po_klong_garai_01_destination_desc
+	}
+
+	text = { # Đai La Citadel
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = citadel_thang_long_01
+		}
+		localization_key = building_citadel_thang_long_01_destination_desc
+	}
+
+	text = { # Imperial Citadel of Thăng Long
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = citadel_thang_long_02
+		}
+		localization_key = building_citadel_thang_long_02_destination_desc
+	}
+
+	text = { # Angkor Wat
+		trigger = {
+			has_special_building = yes
+			OR = {
+				has_building_or_higher = angkor_wat_01
+				has_building_or_higher = temples_angkor_01
+			}
+		}
+		localization_key = building_angkor_wat_01_destination_desc
+	}
+
+	text = { # Quanzhou Seaport
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = quanzhou_seaport_01
+		}
+		localization_key = building_quanzhou_seaport_01_destination_desc
+	}
+
+	text = { # Qianling Mausoleum
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = qianling_mausoleum_01
+		}
+		localization_key = building_qianling_mausoleum_01_destination_desc
+	}
+
+	text = { # The Forbidden City
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = forbidden_city_01
+		}
+		localization_key = building_forbidden_city_01_destination_desc
+	}
+
+	text = { # Kaifeng Imperial Palace
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = kaifeng_palace_01
+		}
+		localization_key = building_kaifeng_palace_01_destination_desc
+	}
+
+	text = { # Giant Wild Goose Pagoda
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = giant_wild_goose_pagoda_01
+		}
+		localization_key = building_giant_wild_goose_pagoda_01_destination_desc
+	}
+
+	text = { # Lingyin Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = lingyin_temple_01
+		}
+		localization_key = building_lingyin_temple_01_destination_desc
+	}
+
+	text = { # Shaolin Monastery
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = shaolin_monastery_01
+		}
+		localization_key = building_shaolin_monastery_01_destination_desc
+	}
+
+	text = { # Wudang Mountain Temples
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = wudang_mountain_temples_01
+		}
+		localization_key = building_wudang_mountain_temples_01_destination_desc
+	}
+
+	text = { # Leshan Giant Buddha
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = leshan_giant_buddha_01
+		}
+		localization_key = building_leshan_giant_buddha_01_destination_desc
+	}
+
+	text = { # Wulingyuan
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = wulingyuan_01
+		}
+		localization_key = building_wulingyuan_01_destination_desc
+	}
+
+	text = { # Lamu Trade Ports
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = swahili_port_lamu
+		}
+		localization_key = building_swahili_port_lamu_destination_desc
+	}
+
+	text = { # Pate Island Trade Ports
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = swahili_port_pate
+		}
+		localization_key = building_swahili_port_pate_destination_desc
+	}
+
+	text = { # Port of Mombasa
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = swahili_port_mombasa
+		}
+		localization_key = building_swahili_port_mombasa_destination_desc
+	}
+
+	text = { # Zanzibar Trade Ports
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = swahili_port_zanzibar
+		}
+		localization_key = building_swahili_port_zanzibar_destination_desc
+	}
+
+	text = { # Pemba Trade Ports
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = swahili_port_pemba
+		}
+		localization_key = building_swahili_port_pemba_destination_desc
+	}
+	
+	#EP4 End
 	text = { # legendary_shrine
 		trigger = {
 			has_special_building = yes
@@ -2136,6 +2472,214 @@
 		}
 		fallback = yes
 		localization_key = building_generic_destination_desc
+	}
+
+	text = { # Saint Peter's Basilica
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = holy_site_st_peters_basilica_01
+		}
+		localization_key = building_holy_site_st_peters_basilica_destination_desc
+	}
+
+	text = { # Mont-Saint-Michel
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = mont_st_michel_01
+		}
+		localization_key = building_mont_st_michel_destination_desc
+	}
+
+	text = { # Sanchi Stupa
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = sanchi_stupa_01
+		}
+		localization_key = building_sanchi_stupa_destination_desc
+	}
+
+	text = { # Boudhanath
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = boudhanath_01
+		}
+		localization_key = building_boudhanath_destination_desc
+	}
+
+	text = { # Grand Mosque of Yazd
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = yazd_mosque_01
+		}
+		localization_key = building_yazd_mosque_destination_desc
+	}
+
+	text = { # Tomb of a Gogouryeo King
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = goguryeo_tomb_01
+		}
+		localization_key = building_goguryeo_tomb_destination_desc
+	}
+
+	text = { # Kamakura Buddha
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = buddha_kamakura_01
+		}
+		localization_key = building_buddha_kamakura_destination_desc
+	}
+
+	text = { # Lingapura Pyramid
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = pyramid_lingapura_01
+		}
+		localization_key = building_pyramid_lingapura_destination_desc
+	}
+
+	text = { # Maijishan Grottoes
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = maijishan_grottoes_01
+		}
+		localization_key = building_maijishan_grottoes_destination_desc
+	}
+
+	text = { # Three Pagodas
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = three_pagodas_dali_01
+		}
+		localization_key = building_three_pagodas_dali_destination_desc
+	}
+
+	text = { # Iron Lion
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = iron_lion_cangzhou_01
+		}
+		localization_key = building_iron_lion_cangzhou_destination_desc
+	}
+
+	text = { # Dengfeng Observatory
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = dengfeng_observatory_01
+		}
+		localization_key = building_dengfeng_observatory_destination_desc
+	}
+
+	text = { # Muara Takus
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = muara_takus_01
+		}
+		localization_key = building_muara_takus_destination_desc
+	}
+
+	text = { # Stone Pagoda
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = stone_pagoda_01
+		}
+		localization_key = building_stone_pagoda_destination_desc
+	}
+
+	text = { # Thuriang Kilns
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = thuriang_kilns_01
+		}
+		localization_key = building_thuriang_kilns_destination_desc
+	}
+
+	text = { # Yuelu Academy
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = yuelu_academy_01
+		}
+		localization_key = building_yuelu_academy_destination_desc
+	}
+
+	text = { # Chocolate Hills
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = chocolate_hills_01
+		}
+		localization_key = building_chocolate_hills_destination_desc
+	}
+
+	text = { # Fanfang of Guangzhou
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = fanfang_guangzhou_01
+		}
+		localization_key = building_fanfang_guangzhou_destination_desc
+	}
+
+	text = { # Wilwatikta Palace
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = wilwatikta_palace_01
+		}
+		localization_key = building_wilwatikta_palace_destination_desc
+	}
+
+	text = { # Ha Long Bay
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = ha_long_bay_01
+		}
+		localization_key = building_ha_long_bay_destination_desc
+	}
+
+	text = { # My son
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = my_son_sanctuary_01
+		}
+		localization_key = building_my_son_sanctuary_destination_desc
+	}
+
+	text = { # Gunung Api
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = gunung_api_01
+		}
+		localization_key = building_gunung_api_destination_desc
+	}
+
+	text = { # Sulawesi Megaliths
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = suwalesi_megaliths_01
+		}
+		localization_key = building_suwalesi_megaliths_destination_desc
+	}
+
+	text = { # Izumo Taisha
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = izumo_taisha_01
+		}
+		localization_key = building_izumo_taisha_destination_desc
+	}
+
+	text = { # Confucius Temple
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = confucius_temple_01
+		}
+		localization_key = building_confucius_temple_destination_desc
+	}
+
+	text = { # Citadel of Linan
+		trigger = {
+			has_special_building = yes
+			has_building_or_higher = citadel_linan_01
+		}
+		localization_key = building_citadel_linan_destination_desc
 	}
 }
 
@@ -2702,6 +3246,7 @@ GetSpecialBuildingPrefix = {
 				has_building = offas_dyke_01
 				has_building = maharloo_lake_01
 				has_building = duomo_florence_04
+				has_building = holy_site_st_peters_basilica_01
 			}
 		}
 		localization_key = blank_line
@@ -4470,8 +5015,7 @@ FormerJob = {
 			if = {
 				limit = {
 					location.county.holder = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}
@@ -4490,8 +5034,7 @@ FormerJob = {
 				limit = {
 					is_ai = no
 					any_ruler = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}
@@ -4510,8 +5053,7 @@ FormerJob = {
 				}
 				random_ruler = {
 					limit = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}
@@ -4534,8 +5076,7 @@ FormerJob = {
 				limit = {
 					is_ai = no
 					any_ruler = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}
@@ -4554,8 +5095,7 @@ FormerJob = {
 				}
 				random_ruler = {
 					limit = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}
@@ -4577,8 +5117,7 @@ FormerJob = {
 			else = {
 				random_ruler = {
 					limit = {
-						exists = dynasty
-						dynasty = {
+						dynasty ?= {
 							any_dynasty_member = {
 								count >= 3
 							}

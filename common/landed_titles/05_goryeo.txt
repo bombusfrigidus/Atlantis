@@ -1,0 +1,94 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+e_goryeo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_goguryeo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gaeseong = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_haeju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gyoju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_yukju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bukgye = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gwangju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_silla = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gyeongju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jinju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_donggye = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_baekje = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_chungju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_naju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tamna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jeonju = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_yongson_throne = {
+	capital = c_atlantis
+	landless = yes
+}

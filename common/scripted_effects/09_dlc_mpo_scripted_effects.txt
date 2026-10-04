@@ -29,7 +29,7 @@ creating_kingdom_empire_title_effect = {
 		save_scope_as = change
 		add_claim_on_loss = no
 	}
-	
+
 	scope:new_title = {
 		add_to_list = creating_new_titles
 	}
@@ -41,7 +41,7 @@ creating_kingdom_empire_title_effect = {
 			change = scope:change
 		}
 	}
-	
+
 	resolve_title_and_vassal_change = scope:change
 
 	scope:new_title = {
@@ -227,8 +227,8 @@ migration_settle_down_obedient_vassal_effect = {
 	scope:actor = {
 		ordered_in_list = {
 			variable = obedient_vassals
-			order_by = { 
-				value = 1 
+			order_by = {
+				value = 1
 				domicile ?= {
 					add = herd
 				}
@@ -408,8 +408,8 @@ migration_message_effect = {
 		limit = { is_vassal_of = scope:old_holder }
 		send_interface_message = {
 			type = msg_migration_into_realm
-			title = msg_migration_into_realm_tributary_title
-			desc = msg_migration_into_realm_tributary_desc
+			title = msg_migration_into_liege_title
+			desc = msg_migration_into_liege_desc
 			left_icon = scope:actor
 			right_icon = scope:old_holder
 		}
@@ -530,19 +530,24 @@ migration_title_and_vassal_change_effect = {
 			scope:target_title.tier >= tier_kingdom
 		}
 		scope:target_title ?= {
-			every_de_jure_county_holder = {
+			every_in_de_jure_hierarchy = {
+				continue = {
+					tier >= tier_duchy
+				}
 				limit = {
-					OR = {
-						any_in_list = {
-							list = old_holder
-							this = prev
-						}
-						this = scope:recipient
-						AND = {
-							scope:recipient = this.liege
-							any_held_county = {
-								exists = duchy
-								NOT = { target_is_de_jure_liege_or_above = scope:target_title }
+					holder ?= {
+						OR = {
+							any_in_list = {
+								list = old_holder
+								this = prev
+							}
+							this = scope:recipient
+							AND = {
+								scope:recipient = this.liege
+								any_held_county = {
+									is_landless_type_title = no
+									NOT = { target_is_de_jure_liege_or_above = scope:target_title }
+								}
 							}
 						}
 					}
@@ -559,15 +564,15 @@ migration_title_and_vassal_change_effect = {
 					OR = {
 						any_in_list = {
 							list = old_holder
-							NOT = { this = prev }
+							this != prev
 							this = prev.liege
 						}
 						AND = {
-							NOT = { this = scope:recipient }
+							this != scope:recipient
 							scope:recipient = this.liege
 						}
 					}
-					NOT = { this = scope:actor }
+					this != scope:actor
 				}
 				add_to_list = new_vassals
 			}
@@ -675,7 +680,7 @@ migration_title_and_vassal_change_effect = {
 						save_scope_as = change4
 					}
 					ordered_held_county = {
-						limit = { 
+						limit = {
 							exists = duchy
 							NOT = { this = scope:actor.capital_province.county }
 						}
@@ -755,7 +760,7 @@ migration_title_and_vassal_change_effect = {
 	# Change 8: If for some reason you have any vassals who are still your subjects, but don't hold land, they will become independent
 	scope:actor = {
 		every_vassal = {
-			limit = { 
+			limit = {
 				NOT = {
 					any_held_county = {
 						exists = duchy
@@ -792,6 +797,44 @@ migration_title_and_vassal_change_effect = {
 		limit = { debug_only = yes }
 		debug_log = "Migration completed"
 		debug_log_scopes = yes
+	}
+
+	# Safeguard: Make sure everyone follow you instead of staying at the previous location
+	hidden_effect = {
+		scope:actor = {
+			update_domicile_and_courtier_location_effect = yes
+		}
+		scope:recipient ?= {
+			update_domicile_and_courtier_location_effect = yes
+		}
+		every_in_list = {
+			list = settled_vassal
+			update_domicile_and_courtier_location_effect = yes
+		}
+	}
+}
+
+update_domicile_and_courtier_location_effect = {
+	if = {
+		limit = {
+			exists = capital_province
+			is_ruler = yes
+		}
+		every_courtier_or_guest = {
+			limit = {
+				location != prev.capital_province
+				should_in_default_location_trigger = yes
+			}
+			debug_log = "Courtier not updated in migration"
+			debug_log_scopes = no
+			set_location_to_default = yes
+		}
+		every_prisoner = {
+			limit = { location != prev.capital_province }
+			debug_log = "Prisoner not updated in migration"
+			debug_log_scopes = no
+			set_location_to_default = yes
+		}
 	}
 }
 
@@ -896,7 +939,7 @@ confederation_realm_transfer_effect = {
 		}
 	}
 	resolve_title_and_vassal_change = scope:change_3
-	
+
 	every_in_list = {
 		custom = custom.every_non_de_jure_vassal
 		list = vassals_to_transfer
@@ -916,12 +959,14 @@ mpo_mongol_recovered_head_content_effect = {
 	if = {
 		limit = {
 			any_side_participant = {
+				is_alive = yes
 				has_variable = beheaded_warrior
 				is_ruler = yes
 			}
 		}
 		every_side_participant = {
 			limit = {
+				is_alive = yes
 				has_variable = beheaded_warrior
 				is_ruler = yes
 			}
@@ -929,7 +974,6 @@ mpo_mongol_recovered_head_content_effect = {
 			random_list = {
 				1 = {
 					trigger = {
-						is_alive = yes
 						is_imprisoned = no
 					}
 					modifier = {
@@ -1343,7 +1387,7 @@ mpo_execution_head_artifact_creation_effect = {
 			set_owner = root
 		}
 	}
-	
+
 	random_list = {
 		4 = {
 			trigger = {
@@ -1472,7 +1516,7 @@ ai_paiza_giveaway_effect = {
 		limit = {
 			NOT = {
 				any_character_artifact = {
-					scope:artifact.var:paiza_patron ?= root
+					var:paiza_patron ?= root
 				}
 			}
 		}
@@ -1485,7 +1529,7 @@ ai_paiza_giveaway_effect = {
 		limit = {
 			NOT = {
 				any_character_artifact = {
-					scope:artifact.var:paiza_patron ?= root
+					var:paiza_patron ?= root
 				}
 			}
 		}
@@ -1501,10 +1545,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Merv
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1519,10 +1563,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Nishapur
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1537,10 +1581,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Khotan
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1555,10 +1599,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Wroclaw
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1573,10 +1617,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Krakow
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1591,10 +1635,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Novgorod
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1609,10 +1653,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Kyiv
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1627,10 +1671,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Baghdad
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1645,10 +1689,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Pisa
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1663,10 +1707,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Venice
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1674,17 +1718,17 @@ mpo_find_suitable_merchant_effect = {
 			modifier = {
 				add = title:c_atlantis.development_level
 			}
-			title:b_atlantis = {
+			title:c_atlantis = {
 				save_scope_as = merchant_origin
 			}
 		}
 		1 = { #Cairo
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1699,10 +1743,10 @@ mpo_find_suitable_merchant_effect = {
 		1 = { #Genua
 			trigger = {
 				title:c_atlantis = {
-					development_level >= 30
+					development_level >= 10
 					NOT = {
 						holder.top_liege = {
-							government_has_flag = nomadic_government
+							government_has_flag = government_is_nomadic
 						}
 					}
 				}
@@ -1739,7 +1783,7 @@ mpo_find_suitable_merchant_effect = {
 				multiply = 21.37
 			}
 		}
-	}	
+	}
 }
 
 #scope:patron is the creator
@@ -1756,7 +1800,7 @@ mpo_create_paiza_artifact_effect = {
 		value = {
 			value = 20
 			multiply = {
-				value = scope:patron.primary_title.tier 
+				value = scope:patron.primary_title.tier
 				add = scope:patron.dominance_value
 			}
 		}
@@ -1766,7 +1810,7 @@ mpo_create_paiza_artifact_effect = {
 		value = {
 			value = 20
 			multiply = {
-				value = scope:patron.primary_title.tier 
+				value = scope:patron.primary_title.tier
 				add = scope:patron.dominance_value
 			}
 		}
@@ -1777,7 +1821,7 @@ mpo_create_paiza_artifact_effect = {
 			type = miscellaneous
 			template = paiza_artifact_template
 			creator = scope:patron
-			description = paiza_artifact_desc 
+			description = paiza_artifact_desc
 			visuals = paiza
 			wealth = scope:wealth
 			quality = scope:quality
@@ -1804,7 +1848,7 @@ mpo_paiza_innovation_reward_effect = {
 					modifier = mpo_fascination_leap_modifier
 					years = 4
 				}
-			}			
+			}
 		}
 		nomad_yurt_increased_innovation_paiza_lvl_2 = {
 			root = {
@@ -1867,7 +1911,7 @@ mpo_paiza_innovation_reward_effect = {
 			}
 		}
 	}
-	
+
 }
 
 
@@ -1893,10 +1937,10 @@ mpo_paiza_deal_grade_effect = {
 			}
 		}
 	}
-	
+
 	set_variable = {
 		name = trade_gold_percent
-		value = 1	
+		value = 1
 	}
 	change_variable = {
 		name = trade_gold_percent
@@ -1928,7 +1972,7 @@ mpo_paiza_deal_grade_effect = {
 						add = 0.1
 					}
 				}
-			} 
+			}
 			nomad_yurt_paiza_more_gold_lvl_3 = {
 				custom_tooltip = paiza_yurt_gold_percent_3
 				root = {
@@ -1962,7 +2006,7 @@ mpo_yurts_paiza_bonuses_tooltip_effect = {
 		}
 		custom_tooltip = yurt_paiza_bonuses_generic
 	}
-	
+
 	domicile ?= {
 		if = {
 			limit = {
@@ -2022,225 +2066,6 @@ mpo_yurts_paiza_bonuses_tooltip_effect = {
 	}
 }
 
-mpo_yurts_paiza_bonuses_effect = {
-	if = {
-		limit = {
-			domicile ?= {
-				OR = {
-					has_domicile_building_or_higher = fertility_trade_yurt_01
-					has_domicile_building_or_higher = herd_trade_yurt_01
-					has_domicile_building_or_higher = knight_trade_yurt_01
-					has_domicile_building_or_higher = merchant_yurt_01
-					has_domicile_building_or_higher = char_trade_yurt_01
-				}
-			}
-		}
-		custom_tooltip = yurt_paiza_bonuses_generic
-	}
-	domicile ?= {
-		if = {
-			limit = {
-				has_domicile_building_or_higher = fertility_trade_yurt_01
-			}
-			switch = {
-				trigger = has_domicile_parameter
-				nomad_yurt_paiza_fertility_gain_lvl_1 = {
-					root = {
-						every_held_county = {
-							limit = {
-								uses_county_fertility = yes
-							}
-							add_county_modifier = {
-								modifier = paiza_fertility_modifier_1
-								years = 2
-							}
-						}
-					}
-				}
-				nomad_yurt_paiza_fertility_gain_lvl_2 = {
-					root = {
-						every_held_county = {
-							limit = {
-								uses_county_fertility = yes
-							}
-							add_county_modifier = {
-								modifier = paiza_fertility_modifier_2
-								years = 4
-							}
-						}
-					}
-				}
-				nomad_yurt_paiza_fertility_gain_lvl_3 = {
-					root = {
-						every_held_county = {
-							limit = {
-								uses_county_fertility = yes
-							}
-							add_county_modifier = {
-								modifier = paiza_fertility_modifier_3
-								years = 6
-							}
-						}
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				has_domicile_building_or_higher = herd_trade_yurt_01
-			}
-			switch = {
-				trigger = has_domicile_parameter
-				nomad_yurt_paiza_herd_gain_lvl_1= {
-					change_herd = {
-						value = root.var:trade_gold_value
-						multiply = 0.05
-					}
-				}
-				nomad_yurt_paiza_herd_gain_lvl_2 = {
-					change_herd = {
-						value = root.var:trade_gold_value
-						multiply = 0.05
-					}
-				}
-				nomad_yurt_paiza_herd_gain_lvl_3 = {
-					change_herd = {
-						value = root.var:trade_gold_value
-						multiply = 0.2
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				has_domicile_building_or_higher = knight_trade_yurt_01
-			}
-			switch = {
-				trigger = has_domicile_parameter
-				nomad_yurt_paiza_maa_gain_lvl_1 = {
-					root = {
-						spawn_army = {
-							name = paiza_troops
-							men_at_arms = {
-								type = accolade_maa_archers
-								stacks = 1
-							}
-							location = root.location
-							origin = scope:merchant_origin
-							inheritable = yes
-						}
-					}
-				}
-				nomad_yurt_paiza_maa_gain_lvl_2 = {
-					root = {
-						spawn_army = {
-							name = paiza_troops
-							men_at_arms = {
-								type = accolade_maa_archers
-								stacks = 4
-							}
-							location = root.location
-							origin = scope:merchant_origin
-							inheritable = yes
-						}
-					}
-				}
-				nomad_yurt_paiza_maa_gain_lvl_3 = {
-					root = {
-						spawn_army = {
-							name = paiza_troops
-							men_at_arms = {
-								type = accolade_maa_archers
-								stacks = 4
-							}
-							men_at_arms = {
-								type = accolade_maa_vanguards
-								stacks = 4
-							}
-							location = root.location
-							origin = scope:merchant_origin
-							inheritable = yes
-						}
-					}
-				}
-			}
-		}
-		if = {
-			limit = {
-				has_domicile_building_or_higher = char_trade_yurt_01
-			}
-			switch = {
-				trigger = has_domicile_parameter
-				nomad_yurt_paiza_char_gain_lvl_1 = {
-					root = {
-						hidden_effect = {
-							create_character = {
-								location = root.location
-								culture = scope:merchant_origin.county.culture
-								faith = scope:merchant_origin.county.faith
-								gender_female_chance = 50
-								template = peasant_character
-								save_scope_as = yurt_merchant_char
-							}
-							scope:yurt_merchant_char = {
-								add_trait = lifestyle_traveler
-							}
-						}
-						add_courtier = scope:yurt_merchant_char
-					}
-				}
-				nomad_yurt_paiza_char_gain_lvl_2 = {
-					root = {
-						hidden_effect = {
-							create_character = {
-								location = root.location
-								culture = scope:merchant_origin.county.culture
-								faith = scope:merchant_origin.county.faith
-								gender_female_chance = 50
-								template = merchant_template
-								save_scope_as = yurt_merchant_char
-							}
-							scope:yurt_merchant_char = {
-								add_trait = lifestyle_traveler
-							}
-						}
-						add_courtier = scope:yurt_merchant_char
-					}
-				}
-				nomad_yurt_paiza_char_gain_lvl_3 = {
-					root = {
-						hidden_effect = {
-							create_character = {
-								location = root.location
-								culture = scope:merchant_origin.county.culture
-								faith = scope:merchant_origin.county.faith
-								gender_female_chance = 50
-								template = merchant_template
-								save_scope_as = yurt_merchant_char
-							}
-							scope:yurt_merchant_char = {
-								add_random_skill_point_effect = yes
-								add_random_skill_point_effect = yes
-								add_random_skill_point_effect = yes
-								add_random_skill_point_effect = yes
-								add_random_skill_point_effect = yes
-								add_random_skill_point_effect = yes
-								random_list = {
-									1 = { add_trait = avaricious }
-									1 = { add_trait = diplomat }
-									1 = { add_trait = overseer }
-								}
-								add_trait = lifestyle_traveler
-							}
-						}
-						add_courtier = scope:yurt_merchant_char
-					}
-				}
-			}
-		}
-	}
-}
-
 mpo_paiza_improve_maa_smol_effect = {
 	add_character_modifier = mpo_paiza_improve_maa_modifier
 	add_character_flag = paiza_metal_trade_yurt_flag
@@ -2251,7 +2076,7 @@ mpo_paiza_improve_maa_smol_effect = {
 				add_domicile_building = paiza_metal_trade_yurt_02
 			}
 			paiza_metal_trade_yurt_02 = {
-				add_domicile_building = paiza_metal_trade_yurt_02
+				add_domicile_building = paiza_metal_trade_yurt_03
 			}
 			paiza_metal_trade_yurt_03 = {
 				custom_tooltip = paiza_metal_yurt_smol_block
@@ -2266,7 +2091,7 @@ mpo_paiza_improve_maa_smol_effect = {
 			add_domicile_building = paiza_metal_trade_yurt_01
 		}
 	}
-	remove_character_flag = paiza_metal_trade_yurt_flag	
+	remove_character_flag = paiza_metal_trade_yurt_flag
 }
 
 mpo_paiza_improve_maa_effect = {
@@ -2279,7 +2104,7 @@ mpo_paiza_improve_maa_effect = {
 				add_domicile_building = paiza_metal_trade_yurt_02
 			}
 			paiza_metal_trade_yurt_02 = {
-				add_domicile_building = paiza_metal_trade_yurt_02
+				add_domicile_building = paiza_metal_trade_yurt_03
 			}
 			paiza_metal_trade_yurt_03 = {
 				add_domicile_building = paiza_metal_trade_yurt_04
@@ -2310,7 +2135,7 @@ mpo_paiza_abuse_counter_effect = {
 		limit = {
 			scope:paiza_patron = {
 				is_ai = no
-			}	
+			}
 		}
 		custom_tooltip = mpo_paiza_abuse_counter_effect.random
 		scope:paiza_patron = {
@@ -2358,7 +2183,7 @@ mpo_paiza_abuse_counter_effect = {
 					}
 				}
 				flag:annoyed = {
-					custom_tooltip = mpo_paiza_abuse_counter_effect.annoyed			
+					custom_tooltip = mpo_paiza_abuse_counter_effect.annoyed
 					random_list = {
 						40 = {
 							modifier = {
@@ -2581,7 +2406,7 @@ mpo_decisions_events_friend_fail_effect = {
 				}
 				scope:friendship_target = {
 					short_term_gold >= minor_gold_value
-					
+
 				}
 			}
 			scope:friendship_target = {
@@ -2604,7 +2429,7 @@ mpo_decisions_events_friend_fail_effect = {
 					is_ai = yes
 					government_has_flag = government_is_nomadic
 					exists = domicile
-					domicile.herd >= minor_herd_value
+					domicile.herd >= domicile.minor_herd_value
 				}
 				government_has_flag = government_is_nomadic
 			}
@@ -2785,7 +2610,7 @@ mpo_heir_lifestyle_xp_gain_effect = {
 	else_if = {
 		limit = {
 			scope:lifestyle_trait = {
-				this = trait:poet
+				this = trait:lifestyle_poet
 			}
 		}
 		scope:heir = {
@@ -3082,7 +2907,7 @@ mpo_target_lifestyle_xp_gain_effect = {
 	else_if = {
 		limit = {
 			scope:lifestyle_trait = {
-				this = trait:poet
+				this = trait:lifestyle_poet
 			}
 		}
 		scope:friendship_target = {
@@ -3275,7 +3100,7 @@ nomad_domicile_refund_effect = {
 
 nomad_convert_people_to_tribe_effect = {
 	change_government = tribal_government
-	
+
 	#Winning a cool war to get this government should mean high authority
 	if = {
 		limit = {
@@ -3585,7 +3410,7 @@ mpo_overrunning_vassal_title_distribution_effect = {
 						mpo_overrunning_willing_vassal_trigger = yes
 					}
 					save_scope_as = undervassal
-					
+
 					#Give up nomadic titles
 					if = {
 						limit = {
@@ -3638,25 +3463,11 @@ mpo_overrunning_vassal_title_distribution_effect = {
 								scope:undervassal = {
 									OR = {
 										#Personal reasons to go clan
-										faith.religion = religion:islam_religion
-										culture ?= {
-											OR = {
-												has_cultural_pillar = heritage_arabic
-												has_cultural_pillar = heritage_iranian
-											}
-										}
+										ep3_is_clan_inclined_trigger = yes
 										#county and liege are clan
 										AND = {
 											scope:title_to_grant = {
-												OR = {
-													faith.religion = religion:islam_religion
-													culture = {
-														OR = {
-															has_cultural_pillar = heritage_arabic
-															has_cultural_pillar = heritage_iranian
-														}
-													}
-												}
+												ep3_is_clan_inclined_trigger = yes
 											}
 											scope:attacker = {
 												government_has_flag = government_is_clan
@@ -3730,25 +3541,11 @@ mpo_overrunning_vassal_title_distribution_effect = {
 					scope:title_gainer = {
 						OR = {
 							#Personal reasons to go clan
-							faith.religion = religion:islam_religion
-							culture = {
-								OR = {
-									has_cultural_pillar = heritage_arabic
-									has_cultural_pillar = heritage_iranian
-								}
-							}
+							ep3_is_clan_inclined_trigger = yes
 							#county and liege are clan
 							AND = {
 								scope:title_to_grant = {
-									OR = {
-										faith.religion = religion:islam_religion
-										culture = {
-											OR = {
-												has_cultural_pillar = heritage_arabic
-												has_cultural_pillar = heritage_iranian
-											}
-										}
-									}
+									ep3_is_clan_inclined_trigger = yes
 								}
 								scope:attacker = {
 									government_has_flag = government_is_clan
@@ -3767,7 +3564,7 @@ mpo_overrunning_vassal_title_distribution_effect = {
 				}
 			}
 		}
-		
+
 		#Have to re-add them as a vassal probably
 		scope:title_gainer = {
 			if = {
@@ -3788,7 +3585,7 @@ mpo_overrunning_vassal_title_distribution_effect = {
 				resolve_title_and_vassal_change = scope:change
 			}
 		}
-		
+
 		#Remove chosen titles from list
 		scope:duchy_to_grant ?= {
 			remove_from_list = overrun_duchies
@@ -3834,7 +3631,7 @@ mpo_overrunning_vassal_title_distribution_effect = {
 		}
 		resolve_title_and_vassal_change = scope:change
 	}
-	
+
 	#GIVE DUKES THE REST OF THEIR COUNTIES FROM ATTACKER
 	every_held_title = {
 		limit = {
@@ -3863,6 +3660,204 @@ mpo_overrunning_vassal_title_distribution_effect = {
 		}
 		scope:attacker = {
 			resolve_title_and_vassal_change = scope:title_change
+		}
+	}
+	#Get rid of this now-useless flag
+	every_vassal = {
+		limit = {
+			has_character_flag = got_overrun_title
+		}
+		remove_character_flag = got_overrun_title
+	}
+}
+
+mpo_duchy_overrunning_vassal_title_distribution_effect = {
+	#All counties but capital county are up for grabs
+	every_held_title = {
+		limit = {
+			tier = tier_county
+			NOT = {
+				this = scope:attacker.capital_county
+			}
+		}
+		add_to_list = overrun_counties
+	}
+	#Distribute all counties
+	while = {
+		limit = {
+			any_in_list = {
+				list = overrun_counties
+				holder = scope:attacker
+			}
+			any_in_list = {
+				list = potential_overrunning_vassals
+				NOT = {
+					has_character_flag = got_overrun_title
+				}
+			}
+		}
+		ordered_in_list = {
+			order_by = development_level
+			list = overrun_counties
+			save_scope_as = title_to_grant
+		}
+		#Choose a vassal
+		ordered_in_list = {
+			list = potential_overrunning_vassals
+			limit = {
+				NOT = {
+					has_character_flag = got_overrun_title
+				}
+			}
+			order_by = max_military_strength
+			save_scope_as = title_gainer
+			#Add character flag - they should be done
+			add_character_flag = got_overrun_title
+
+			#tributaries go
+			hidden_effect = {
+				every_tributary = {
+					custom = custom.every_tributary
+					end_tributary = yes
+				}
+			}
+
+			#Give up nomadic titles
+			if = {
+				limit = {
+					NOT = {
+						scope:title_to_grant = {
+							any_county_province = {
+								OR = {
+									has_holding_type = nomad_holding
+									has_holding_type = herder_holding
+								}
+							}
+						}
+					}
+				}
+				mpo_overrunning_ending_nomadism_effect = yes
+			}
+			#Nomads should still move
+			else = {
+				hidden_effect = {
+					give_domain_to_herders = yes
+				}
+			}
+		}
+		scope:title_gainer = {
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = title_change
+			}
+			scope:title_to_grant = {
+				change_title_holder = {
+					holder = scope:title_gainer
+					change = scope:title_change
+				}
+			}
+			resolve_title_and_vassal_change = scope:title_change
+			#Add duchy if they're getting one
+			if = {
+				limit = {
+					exists = scope:duchy_to_grant
+				}
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = title_change
+				}
+				scope:duchy_to_grant = {
+					change_title_holder = {
+						holder = scope:title_gainer
+						change = scope:title_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:title_change
+			}
+		}
+		#Change government
+		scope:attacker = {
+			if = {
+				limit = {
+					scope:title_to_grant = {
+						any_county_province = {
+							OR = {
+								has_holding_type = nomad_holding
+								has_holding_type = herder_holding
+							}
+						}
+					}
+				}
+				#Do nothing, they're still nomadic
+			}
+			else_if = {
+				limit = {
+					scope:title_to_grant = {
+						any_county_province = {
+							has_holding_type = tribal_holding
+						}
+					}
+				}
+				scope:title_gainer = {
+					nomad_convert_people_to_tribe_effect = yes
+				}
+			}
+			else_if = {
+				limit = {
+					scope:title_gainer = {
+						OR = {
+							#Personal reasons to go clan
+							ep3_is_clan_inclined_trigger = yes
+							#county and liege are clan
+							AND = {
+								scope:title_to_grant = {
+									ep3_is_clan_inclined_trigger = yes
+								}
+								scope:attacker = {
+									government_has_flag = government_is_clan
+								}
+							}
+						}
+					}
+				}
+				scope:title_gainer = {
+					nomad_convert_people_to_clan_effect = yes
+				}
+			}
+			else = {
+				scope:title_gainer = {
+					nomad_convert_people_to_feudal_effect = yes
+				}
+			}
+		}
+
+		#Have to re-add them as a vassal probably
+		scope:title_gainer = {
+			if = {
+				limit = {
+					NOT = {
+						liege = scope:attacker
+					}
+				}
+				create_title_and_vassal_change = {
+					type = granted
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				change_liege = {
+					liege = scope:attacker
+					change = scope:change
+				}
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
+
+		#Remove chosen titles from list
+		scope:title_to_grant = {
+			remove_from_list = overrun_counties
+		}
+		scope:undervassal_county ?= {
+			remove_from_list = overrun_counties
 		}
 	}
 	#Get rid of this now-useless flag
@@ -3923,6 +3918,39 @@ nomad_convert_herds_to_gold_special_troops_effect = {
 			}
 		}
 	}
+}
+
+
+settle_the_people_vassal_effect = {
+	nomad_domicile_refund_effect = yes
+	nomad_convert_herds_to_gold_special_troops_effect = yes
+	if = {
+		limit = {
+			any_held_title = {
+				is_nomad_title = yes
+			}
+		}
+		every_held_title = {
+			limit = {
+				is_nomad_title = yes
+			}
+			root = {
+				destroy_title = prev
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:new_capital.title_province = {
+				has_holding_type = tribal_holding
+			}
+		}
+		assign_tribal_governments_effect = yes
+	}
+	else = {
+		assign_feudal_governments_effect = yes
+	}
+	change_authority_effect = { CHANGE = 1 }
 }
 
 set_throatsinging_style_effect = {
@@ -4067,7 +4095,7 @@ mpo_save_potential_blood_brother_war_allies_effect = {
 					mpo_valid_for_blood_brotherhood_trigger = yes
 				}
 				add_to_list = attacker_war_allies_list
-				
+
 			}
 			while = {
 				limit = {
@@ -4305,27 +4333,37 @@ make_blood_brother_save_common_enemy_effect = {
 			NOT = {
 				house = scope:recipient.house
 			}
-			house.house_head = {
-				any_owned_story = {
-					story_type = story_cycle_house_feud
-					var:house_feud_house.house_head ?= {
-						mpo_blood_brother_common_enemy_sub_trigger = yes
-						mpo_ideal_common_foe_trigger = yes
+			house = {
+				any_house_relation = {
+					has_house_relation_level = feud
+					any_relation_house = {
+						house_head = {
+							mpo_blood_brother_common_enemy_sub_trigger = yes
+							mpo_ideal_common_foe_trigger = yes
+						}
 					}
 				}
 			}
 		}
-		house.house_head = {
-			random_owned_story = {
+		house = {
+			random_house_relation = {
 				limit = {
-					story_type = story_cycle_house_feud
-					var:house_feud_house.house_head ?= {
-						mpo_blood_brother_common_enemy_sub_trigger = yes
-						mpo_ideal_common_foe_trigger = yes
+					has_house_relation_level = feud
+					any_relation_house = {
+						house_head = {
+							mpo_blood_brother_common_enemy_sub_trigger = yes
+							mpo_ideal_common_foe_trigger = yes
+						}
 					}
 				}
-				var:house_feud_house.house_head = {
-						save_scope_as = shared_foe
+				random_relation_house = {
+					limit = {
+						house_head = {
+							mpo_blood_brother_common_enemy_sub_trigger = yes
+							mpo_ideal_common_foe_trigger = yes
+						}
+					}
+					house_head = { save_scope_as = shared_foe }
 				}
 			}
 		}
@@ -4499,31 +4537,34 @@ make_blood_brother_save_common_enemy_effect = {
 	#You have a house feud against someone recipient is also opposed to
 	else_if = {
 		limit = {
-			
+
 			exists = house.house_head
 			exists = scope:recipient.house
 			NOT = {
 				house = scope:recipient.house
 			}
-			house.house_head = {
-				any_owned_story = {
-					story_type = story_cycle_house_feud
-					var:house_feud_house.house_head ?= {
-						mpo_blood_brother_common_enemy_sub_trigger = yes
+			house = {
+				any_house_relation = {
+					has_house_relation_level = feud
+					any_relation_house = {
+						house_head = { mpo_blood_brother_common_enemy_sub_trigger = yes }
 					}
 				}
 			}
 		}
-		house.house_head = {
-			random_owned_story = {
+		house = {
+			random_house_relation = {
 				limit = {
-					story_type = story_cycle_house_feud
-					var:house_feud_house.house_head ?= {
-						mpo_blood_brother_common_enemy_sub_trigger = yes
+					has_house_relation_level = feud
+					any_relation_house = {
+						house_head = { mpo_blood_brother_common_enemy_sub_trigger = yes }
 					}
 				}
-				var:house_feud_house.house_head = {
-						save_scope_as = shared_foe
+				random_relation_house = {
+					limit = {
+						house_head = { mpo_blood_brother_common_enemy_sub_trigger = yes }
+					}
+					house_head = { save_scope_as = shared_foe }
 				}
 			}
 		}
@@ -4780,16 +4821,6 @@ lower_dominance_level_effect = {
 }
 
 adopt_nomadic_ways_decision_effect = {
-	if = {
-		limit = {
-			NOT = {
-				culture = { has_same_culture_heritage = root.location.culture }
-			}
-		}
-		custom_tooltip = {
-			text = adopt_nomadic_ways_decision_culture_tt
-		}
-	}
 	change_government = nomad_government
 	custom_tooltip = adopt_nomadic_ways_decision_title_tt
 	custom_tooltip = adopt_nomadic_ways_decision_herd_tt
@@ -4801,16 +4832,9 @@ adopt_nomadic_ways_decision_effect = {
 
 # Different effect as we cannot access the Herder scope in the preview
 adopt_nomadic_ways_decision_event_effect = {
-	if = {
-		limit = {
-			NOT = {
-				culture = { has_same_culture_heritage = scope:herder.culture }
-			}
-		}
-		custom_tooltip = {
-			text = adopt_nomadic_ways_decision_culture_tt_past
-			create_hybrid_culture = scope:herder.culture
-		}
+	add_character_flag = {
+		flag = domicile_culture_and_faith_check
+		days = 1
 	}
 	set_variable = {
 		name = previous_provisions
@@ -4885,7 +4909,6 @@ confederation_migration_notification_effect = {
 		type = msg_broken_confederation
 		title = msg_broken_confederation_migration_root
 		desc = msg_broken_confederation_migration_root_desc
-		left_icon = confederation
 	}
 	add_character_flag = {
 		flag = migrating_from_confederation
@@ -4899,34 +4922,63 @@ summon_three_fair_courtiers_effect = {
 		employer = scope:root_scope
 		template = $NOMAD_TEMPLATE_CHARACTER$
 		faith = root.location.faith
+		rite = root.location.rite
 		culture = root.location.culture
-		save_scope_as = new_commander
+		after_creation = {
+			add_to_list = three_fair_courtiers_list
+		}
+	}
+	create_character = {
+		employer = scope:root_scope
+		template = $NOMAD_TEMPLATE_CHARACTER$
+		faith = root.location.faith
+		rite = root.location.rite
+		culture = root.location.culture
+		after_creation = {
+			add_to_list = three_fair_courtiers_list
+		}
+	}
+	create_character = {
+		employer = scope:root_scope
+		template = $NOMAD_TEMPLATE_CHARACTER$
+		faith = root.location.faith
+		rite = root.location.rite
+		culture = root.location.culture
+		after_creation = {
+			add_to_list = three_fair_courtiers_list
+		}
 	}
 	if = { # Error suppression
 		limit = {
-			exists = scope:new_commander
-		}
-		scope:new_commander = {
-			assign_random_nickname_effect = yes
-			add_character_flag = {
-				flag = blocked_from_leaving
-				years = 25
+			any_in_list = {
+				list = three_fair_courtiers_list
 			}
 		}
-		if = {
-			limit = {
-				scope:new_commander = {
+		every_in_list = {
+			list = three_fair_courtiers_list
+			save_scope_as = new_commander
+			assign_random_nickname_effect = yes
+			if = {
+				limit = {
 					NOT = {
 						is_courtier_of = scope:root_scope
 					}
 				}
+				scope:root_scope = {
+					add_courtier = scope:new_commander
+				}
 			}
-			add_courtier = scope:new_commander
-		}
-		send_interface_message = {
-			title = nomad_character_recruited.t
-			left_icon = scope:new_commander
-			custom_tooltip = commander_recruited.desc
+			add_character_flag = {
+				flag = blocked_from_leaving
+				years = 25
+			}
+			scope:root_scope = {
+				send_interface_message = {
+					title = nomad_character_recruited.t
+					left_icon = prev
+					custom_tooltip = commander_recruited.desc
+				}
+			}
 		}
 	}
 }
@@ -4957,24 +5009,24 @@ mpo_war_vassal_tributary_effect = {
 				holder ?= {
 					add_to_list = target_holder
 				}
-				add_to_list = target_titles
+				add_to_list = titles_taken
 			}
 		}
 
-		holder ?= { 
+		holder ?= {
 			add_to_list = target_holder
-			save_scope_as = temp_de_jure_liege 
+			save_scope_as = temp_de_jure_liege
 		}
 		add_hook_from_temp_de_jure_liege_to_attacker = yes
 	}
 
 	every_in_list = {
-		list = target_titles
+		list = titles_taken
 		add_to_list = prestige_gain_list
 	}
 
 	ordered_in_list = {
-		list = target_titles
+		list = titles_taken
 		order_by = tier
 		max = 1
 		save_scope_as = war_goal_title
@@ -4987,8 +5039,8 @@ mpo_war_vassal_tributary_effect = {
 			limit = {
 				NOT = {
 					any_held_county = {
-						exists = duchy
-						NOT = { is_in_list = target_titles }
+						is_landless_type_title = no
+						NOT = { is_in_list = titles_taken }
 					}
 				}
 				NOR = {
@@ -5000,14 +5052,7 @@ mpo_war_vassal_tributary_effect = {
 			}
 			if = {
 				limit = {
-					NOR = {
-						this = scope:attacker
-						top_liege = scope:attacker
-						top_suzerain ?= scope:attacker
-					}
-					scope:attacker = {
-						vassal_count >= vassal_limit
-					}
+					scope:attacker.vassal_count >= vassal_limit
 				}
 				start_tributary_from_war_effect = {
 					TRIBUTARY = scope:defender
@@ -5026,40 +5071,30 @@ mpo_war_vassal_tributary_effect = {
 					}
 				}
 			}
-			else_if = {
-				limit = {
-					NOR = {
-						this = scope:attacker
-						top_liege = scope:attacker
-						top_suzerain ?= scope:attacker
-					}
-				}
+			else = {
 				change_liege = {
 					liege = scope:attacker
 					change = scope:change
 				}
 			}
 			every_in_list = {
-				list = target_titles
+				list = titles_taken
 				limit = {
-					holder ?= { this = scope:current_target_holder }
+					holder ?= scope:current_target_holder
 				}
-				remove_from_list = target_titles
+				remove_from_list = titles_taken
 			}
 		}
 	}
 
 	every_in_list = {
-		list = target_titles
+		list = titles_taken
 		limit = {
-			OR = {
-				NOT = { exists = holder }
-				holder ?= {
-					NOR = {
-						this = scope:attacker
-						any_liege_or_above = { this = scope:attacker }
-						top_suzerain ?= scope:attacker
-					}
+			holder ?= {
+				NOR = {
+					this = scope:attacker
+					any_liege_or_above = { this = scope:attacker }
+					top_suzerain ?= scope:attacker
 				}
 			}
 		}
@@ -5069,7 +5104,7 @@ mpo_war_vassal_tributary_effect = {
 		}
 		remove_from_list = target_titles
 	}
-	
+
 	save_scope_value_as = {
 		name = cb_prestige_factor
 		value = {
@@ -5307,8 +5342,8 @@ mpo_yearly_dynasty_of_many_khans_effect = {
 				}
 				add_dynasty_prestige = root.var:temp_dynn_prestige
 			}
-			remove_variable = temp_dynn_prestige 	
-		}	
+			remove_variable = temp_dynn_prestige
+		}
 	}
 }
 
@@ -5597,7 +5632,7 @@ language_yurt_effect = {
 			multiply = $CHANCE$
 			min = 0
 		}
-		root = {		
+		root = {
 			send_interface_message = {
 				title = language_yurt_effect_tt
 				desc = language_yurt_effect_desc
@@ -5665,14 +5700,15 @@ de_jure_shifting_effect = {
 				type = msg_mpo_de_jure_shifting
 				title = msg_mpo_de_jure_shifting
 				left_icon = root
-				ordered_in_list = { 
+				ordered_in_list = {
 					order_by = {
 						value = 1
 					}
 					max = 3
+					check_range_bounds = no
 					list = de_jure_shifted_title
 					show_as_tooltip = {
-						set_de_jure_liege_title = root.primary_title 
+						set_de_jure_liege_title = root.primary_title
 					}
 					remove_from_list = de_jure_shifted_title
 				}
@@ -5695,12 +5731,12 @@ omen_yurt_effect = {
 			if = {
 				limit = {
 					exists = scope:improved_child
-				}			
+				}
 				send_interface_message = {
 					title = omen_yurt_effect_tt
 					desc = omen_yurt_effect_desc
 					left_icon = scope:improved_child
-					scope:improved_knight = {
+					scope:improved_child = {
 						random_list = {
 							1 = { add_diplomacy_skill = 1 }
 							1 = { add_stewardship_skill = 1 }
@@ -5710,7 +5746,7 @@ omen_yurt_effect = {
 						}
 					}
 				}
-			}	
+			}
 		}
 	}
 }
@@ -5774,18 +5810,18 @@ better_children_yurt_effect = {
 				limit = {
 					exists = scope:yurt_heir
 				}
-			}
-			send_interface_message = {
-				title = better_children_yurt_effect_tt
-				desc = better_children_yurt_effect_desc
-				left_icon = scope:yurt_heir
-				scope:yurt_heir = {
-					random_list = {
-						1 = { add_diplomacy_skill = 1 }
-						1 = { add_stewardship_skill = 1 }
-						1 = { add_intrigue_skill = 1 }
-						1 = { add_learning_skill = 1 }
-						1 = { add_martial_skill = 1 }
+				send_interface_message = {
+					title = better_children_yurt_effect_tt
+					desc = better_children_yurt_effect_desc
+					left_icon = scope:yurt_heir
+					scope:yurt_heir = {
+						random_list = {
+							1 = { add_diplomacy_skill = 1 }
+							1 = { add_stewardship_skill = 1 }
+							1 = { add_intrigue_skill = 1 }
+							1 = { add_learning_skill = 1 }
+							1 = { add_martial_skill = 1 }
+						}
 					}
 				}
 			}
@@ -5836,7 +5872,7 @@ culture_court_yurt_effect = {
 
 	random = {
 		chance = {
-			value = "list_size(culture_list)"
+			value = "list_size(yurt_culture_list)"
 			multiply = $CHANCE$
 			min = 0
 		}
@@ -5870,7 +5906,7 @@ knight_mystical_yurt_effect = {
 			if = {
 				limit = {
 					exists = scope:improved_knight
-				}			
+				}
 				send_interface_message = {
 					title = knight_mystical_yurt_effect_tt
 					desc = knight_mystical_yurt_effect_desc
@@ -5879,7 +5915,7 @@ knight_mystical_yurt_effect = {
 						add_prowess_skill = $PROWESS$
 					}
 				}
-			}	
+			}
 		}
 	}
 }
@@ -5925,7 +5961,7 @@ clean_up_ai_nomad_effect = {
 				liege ?= { is_ai = yes }
 			}
 			is_migrating = no
-			NOT = { exists = involved_activity }
+			is_in_activity = no
 		}
 		domicile.domicile_location = { save_scope_as = place_to_stay }
 		if = {
@@ -5958,7 +5994,7 @@ clean_up_ai_nomad_effect = {
 			}
 			move_to_pool_at = scope:place_to_stay
 		}
-		
+
 		random = {
 			chance = {
 				value = 20
@@ -6019,7 +6055,7 @@ clean_up_ai_nomad_effect = {
 				}
 			}
 		}
-		
+
 		if = {
 			limit = {
 				scope:nomad_capital_ruler = {
@@ -6050,6 +6086,7 @@ expanding_steppe_effect = {
 				SUB_REGION = west
 				REGION = ghw_region_anatolia
 			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
 		}
 		scope:custom_eastern_balkans = {
 			expanding_steppe_add_region_effect = {
@@ -6092,6 +6129,8 @@ expanding_steppe_effect = {
 				SUB_REGION = west
 				REGION = dlc_mpo_steppe_caucasus_expansion
 			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = transcaspia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
 		}
 		# Central
 		scope:world_transoxiana = {
@@ -6099,18 +6138,24 @@ expanding_steppe_effect = {
 				SUB_REGION = central
 				REGION = world_transoxiana
 			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = transcaspia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = central_asia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
 		}
 		scope:world_khorasan = {
 			expanding_steppe_add_region_effect = {
 				SUB_REGION = central
 				REGION = world_khorasan
 			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = central_asia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
 		}
 		scope:dlc_mpo_steppe_persia_expansion = {
 			expanding_steppe_add_region_effect = {
 				SUB_REGION = central
 				REGION = dlc_mpo_steppe_persia_expansion
 			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
 		}
 		scope:dlc_mpo_steppe_siberia_further_expansion = {
 			expanding_steppe_add_region_effect = {
@@ -6119,10 +6164,43 @@ expanding_steppe_effect = {
 			}
 		}
 		# East
-		scope:world_steppe_tarim = {
+		scope:dlc_mpo_steppe_hexi_tarim_expansion = {
 			expanding_steppe_add_region_effect = {
 				SUB_REGION = east
-				REGION = world_steppe_tarim
+				REGION = dlc_mpo_steppe_hexi_tarim_expansion
+			}
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = central_asia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = transcaspia }
+			tgp_silk_road_expand_steppe_effect = { SUB_REGION = occident }
+		}
+		scope:dlc_mpo_steppe_north_china_expansion = {
+			expanding_steppe_add_region_effect = {
+				SUB_REGION = east
+				REGION = dlc_mpo_steppe_north_china_expansion
+			}
+		}
+		scope:dlc_mpo_steppe_central_china_expansion = {
+			expanding_steppe_add_region_effect = {
+				SUB_REGION = east
+				REGION = dlc_mpo_steppe_central_china_expansion
+			}
+		}
+		scope:dlc_mpo_steppe_north_east_asia_expansion = {
+			expanding_steppe_add_region_effect = {
+				SUB_REGION = east
+				REGION = dlc_mpo_steppe_north_east_asia_expansion
+			}
+		}
+		scope:world_asia_korea = {
+			expanding_steppe_add_region_effect = {
+				SUB_REGION = east
+				REGION = world_asia_korea
+			}
+		}
+		scope:world_asia_japan = {
+			expanding_steppe_add_region_effect = {
+				SUB_REGION = east
+				REGION = world_asia_japan
 			}
 		}
 	}
@@ -6159,6 +6237,7 @@ nomadic_heir_cleanup_realm_effect = {
 			save_scope_as = inheritor_char
 		}
 		every_held_title = {
+			title_tier > barony
 			limit = {
 				is_landless_type_title = no
 			}
@@ -6177,11 +6256,9 @@ nomadic_heir_cleanup_realm_effect = {
 					type = swear_fealty
 					save_scope_as = change
 				}
-				scope:recipient = {
-					change_liege = {
-						liege = scope:old_liege
-						change = scope:change
-					}
+				change_liege = {
+					liege = scope:old_liege
+					change = scope:change
 				}
 				resolve_title_and_vassal_change = scope:change
 			}
@@ -6255,9 +6332,9 @@ nomadic_realm_split_effect = {
 		}
 		save_scope_as = new_capital
 	}
-	
+
 	# Mark the capital duchy
-	scope:new_ruler_scope = { 
+	scope:new_ruler_scope = {
 		scope:new_capital = {
 			add_to_list = counties_given_to_sibling
 		}
@@ -6319,7 +6396,7 @@ nomadic_realm_split_effect = {
 					add_to_list = duchies_given_to_sibling
 					if = {
 						limit = {
-							holder = {
+							holder ?= {
 								top_liege = scope:root_scope
 								primary_title.tier < tier_kingdom
 								NOT = { is_in_list = rulers_transferred }
@@ -6336,7 +6413,7 @@ nomadic_realm_split_effect = {
 						add_to_list = counties_given_to_sibling
 						if = {
 							limit = {
-								holder = {
+								holder ?= {
 									top_liege = scope:root_scope
 									primary_title.tier < tier_kingdom
 									NOT = { is_in_list = rulers_transferred }
@@ -6393,7 +6470,7 @@ nomadic_realm_split_effect = {
 						add_to_list = duchies_given_to_sibling
 						if = {
 							limit = {
-								holder = {
+								holder ?= {
 									top_liege = scope:root_scope
 									primary_title.tier < tier_kingdom
 									NOT = { is_in_list = rulers_transferred }
@@ -6410,7 +6487,7 @@ nomadic_realm_split_effect = {
 							add_to_list = counties_given_to_sibling
 							if = {
 								limit = {
-									holder = {
+									holder ?= {
 										top_liege = scope:root_scope
 										primary_title.tier < tier_kingdom
 										NOT = { is_in_list = rulers_transferred }
@@ -6431,14 +6508,14 @@ nomadic_realm_split_effect = {
 				}
 			}
 		}
-		
+
 		# Hand out the titles properly
 		create_title_and_vassal_change = {
 			type = swear_fealty
 			add_claim_on_loss = yes
 			save_scope_as = change
 		}
-		
+
 		# Give capital + capital duchy
 		scope:capital_duchy = {
 			change_title_holder = {
@@ -6453,7 +6530,7 @@ nomadic_realm_split_effect = {
 				change = scope:change
 			}
 		}
-		
+
 		# Form a new kingdom
 		save_scope_as = founder
 		scope:capital_duchy = {
@@ -6472,7 +6549,7 @@ nomadic_realm_split_effect = {
 			generate_coa = yes
 			set_de_jure_liege_title = scope:root_scope.primary_title.empire
 		}
-		
+
 		# Do everything else
 		every_in_list = {
 			list = counties_given_to_sibling
@@ -6495,10 +6572,8 @@ nomadic_realm_split_effect = {
 			}
 			if = {
 				limit = {
-					NOT = {
-						this = scope:new_ruler_scope
-					}
 					holder = {
+						this != scope:new_ruler_scope
 						liege = scope:root_scope
 						primary_title.tier < tier_kingdom
 					}
@@ -6511,9 +6586,9 @@ nomadic_realm_split_effect = {
 				}
 			}
 		}
-		
+
 		resolve_title_and_vassal_change = scope:change
-			
+
 		every_in_list = {
 			list = duchies_to_de_jure_shift
 			set_de_jure_liege_title = scope:new_kingdom_title
@@ -6527,7 +6602,6 @@ mpo_abuse_authority_county_effect = {
 	        limit = {
 	            county_ready_for_abuse_trigger = yes
 	        }
-	        custom = custom.every_county_near_location
 	        change_county_fertility = -100
 	        change_county_control = -40
 	        add_county_modifier = {
@@ -6552,14 +6626,95 @@ mpo_abuse_authority_county_effect = {
 			limit = {
 	            county_ready_for_abuse_trigger = yes
 	        }
-			custom = custom.every_county_near_location
+			custom = custom.mpo_resources_gained_abuse
 			root.domicile ?= {
 	            change_herd = medium_herd_value
 	        }
 	        root = {
 	            add_gold = medium_gold_value
-	            add_prestige = medium_prestige_value         
+	            add_prestige = medium_prestige_value
 	        }
-		}           
+		}
+	}
+}
+
+mpo_release_herder_land_effect = {
+	# Save scope of character triggering the effect
+	save_scope_as = trigger_character
+	every_top_realm_border_county = {
+		limit = {
+			title_province = {
+				this != scope:trigger_character.capital_province
+			}
+		}
+		add_to_list = target_titles
+	}
+	while = {
+		limit = { # Loop over list of target titles until there are no more titles to grant
+			list_size = {
+				name = target_titles
+				value >= 1
+			}
+		}
+		random_in_list = {
+			list = target_titles
+			if = {
+				limit = {
+					title_province = { has_holding_type = nomad_holding }
+				}
+				title_province = { set_holding_type = herder_holding }
+			}
+
+			save_scope_as = county_of_origin
+
+			create_character = {
+				template = herder_character
+				dynasty = none
+				location = scope:county_of_origin.title_province
+				culture = scope:county_of_origin.culture
+				faith = scope:county_of_origin.faith
+				rite = scope:county_of_origin.rite
+				gender_female_chance = {
+					if = {
+						limit = { scope:county_of_origin.rite = { rite_has_doctrine = doctrine_gender_male_dominated } }
+						add = 20
+					}
+					else_if = {
+						limit = { scope:county_of_origin.rite = { rite_has_doctrine = doctrine_gender_female_dominated } }
+						add = 80
+					}
+					else = {
+						add = 50
+					}
+				}
+				save_scope_as = new_herder
+			}
+
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_title_holder_include_vassals = {
+				holder = scope:new_herder
+				change = scope:change
+			}
+			resolve_title_and_vassal_change = scope:change
+			remove_from_list = target_titles
+		}
+		scope:new_herder = {
+			change_government = herder_government
+			if = {
+				limit = { is_independent_ruler = no }
+				#De-vassalise him.
+				create_title_and_vassal_change = {
+					type = independency
+					save_scope_as = change
+					add_claim_on_loss = no
+				}
+				becomes_independent = { change = scope:change }
+				resolve_title_and_vassal_change = scope:change
+			}
+		}
 	}
 }

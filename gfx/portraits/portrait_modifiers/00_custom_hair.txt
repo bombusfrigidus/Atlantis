@@ -31,6 +31,97 @@ custom_hair = {
 		}
 	}
 
+	### SP5 - Crowns of Authority ###
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = sp5_hairstyles
+		is_valid_custom = {
+			has_sp5_dlc_triggers = yes
+		}
+	}
+	#ccp9
+	
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = ccp9_uighur_hairstyles
+		is_valid_custom = {
+			has_cp9_dlc_trigger = yes
+		}
+	}
+
+	### PAM ###
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = pam_christian_hairstyles
+		is_valid_custom = {
+			has_pam_dlc_trigger = yes
+		}
+	}
+
+	### TGP - Asia ###
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = tgp_chinese_hairstyles
+		is_valid_custom = {
+			has_tgp_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_chinese_clothing_trigger = yes
+			}
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = tgp_japanese_hairstyles
+		is_valid_custom = {
+			has_tgp_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_japanese_clothing_trigger = yes
+			}
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = tgp_japanese_royal_hairstyles
+		is_valid_custom = {
+			has_tgp_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_japanese_clothing_trigger = yes
+			}
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = tgp_southeast_hairstyles
+		is_valid_custom = {
+			has_tgp_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_southeast_asian_clothing_trigger = yes
+			}
+		}
+	}
+
 	### MPO - Khans of the Steppe ###
 
 	add_accessory_modifiers = {
@@ -38,6 +129,13 @@ custom_hair = {
 		template = mpo_mongol_hairstyles
 		is_valid_custom = {
 			has_mpo_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_steppe_clothing_trigger = yes
+			}
 		}
 	}
 
@@ -49,6 +147,13 @@ custom_hair = {
 		is_valid_custom = {
 			has_sp4_dlc_trigger = yes
 		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_western_clothing_trigger = yes
+			}
+		}
 	}
 
 	add_accessory_modifiers = {
@@ -56,6 +161,13 @@ custom_hair = {
 		template = sp4_mena_hairstyles
 		is_valid_custom = {
 			has_sp4_dlc_trigger = yes
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_mena_clothing_trigger = yes
+			}
 		}
 	}
 
@@ -67,16 +179,30 @@ custom_hair = {
 		is_valid_custom = {
 			has_dlc_feature = couture_of_the_capets
 		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_byzantine_clothing_trigger = yes
+			}
+		}
 	}
 
 	### Ep3 Hair ###
 	#byzantine
 	add_accessory_modifiers = {
 		gene = hairstyles
+		template = ep3_byzantine_hairstyle
 		is_valid_custom = {
 			has_ep3_dlc_trigger = yes
 		}
-		template = ep3_byzantine_hairstyle
+		weight = {
+			base = 0
+			modifier = {
+				add = 50
+		        portrait_byzantine_clothing_trigger = yes
+			}
+		}
 	}
 
 	add_accessory_modifiers = {
@@ -143,6 +269,32 @@ custom_hair = {
 		}
 	}
 
+	add_accessory_modifiers = {
+		gene = hairstyles
+		is_valid_custom = {
+			has_fp3_dlc_trigger = yes
+		}
+		template = fp3_hairstyles_iranian_straight_common
+
+		weight = {
+			base = 0
+			portrait_fp3_iranian_clothing_modifier = yes
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		is_valid_custom = {
+			has_fp3_dlc_trigger = yes
+		}
+		template = fp3_hairstyles_iranian_wavy_common
+
+		weight = {
+			base = 0
+			portrait_fp3_iranian_clothing_modifier = yes
+		}
+	}
+
 	#turkic
 	add_accessory_modifiers = {
 		gene = hairstyles
@@ -169,6 +321,32 @@ custom_hair = {
 			}
 		}
 		template = fp3_hairstyles_turkic_wavy
+
+		weight = {
+			base = 0
+			portrait_fp3_turkic_clothing_modifier = yes
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		is_valid_custom = {
+			has_fp3_dlc_trigger = yes
+		}
+		template = fp3_hairstyles_turkic_straight_common
+
+		weight = {
+			base = 0
+			portrait_fp3_turkic_clothing_modifier = yes
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		is_valid_custom = {
+			has_fp3_dlc_trigger = yes
+		}
+		template = fp3_hairstyles_turkic_wavy_common
 
 		weight = {
 			base = 0
@@ -458,7 +636,7 @@ custom_hair = {
 
 	add_accessory_modifiers = {
 		gene = hairstyles
-		template = byzantine_hairstyles
+		template = byzantine_hairstyles_afro
 
 		weight = {
 			base = 0
@@ -468,7 +646,7 @@ custom_hair = {
 
 	add_accessory_modifiers = {
 		gene = hairstyles
-		template = sub_saharan_hairstyles
+		template = sub_saharan_hairstyles_wavy
 
 		weight = {
 			base = 0
@@ -478,7 +656,27 @@ custom_hair = {
 
 	add_accessory_modifiers = {
 		gene = hairstyles
-		template = indian_hairstyles
+		template = sub_saharan_hairstyles_curly
+
+		weight = {
+			base = 0
+			portrait_african_clothing_modifier = yes
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = sub_saharan_hairstyles_straight
+
+		weight = {
+			base = 0
+			portrait_african_clothing_modifier = yes
+		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = indian_hairstyles_afro
 
 		weight = {
 			base = 0
@@ -488,7 +686,7 @@ custom_hair = {
 
 	add_accessory_modifiers = {
 		gene = hairstyles
-		template = northern_hairstyles
+		template = northern_hairstyles_afro
 
 		weight = {
 			base = 0
@@ -498,7 +696,7 @@ custom_hair = {
 
 	add_accessory_modifiers = {
 		gene = hairstyles
-		template = steppe_hairstyles
+		template = steppe_hairstyles_afro
 
 		weight = {
 			base = 0
@@ -515,6 +713,11 @@ custom_hair = {
 			portrait_scottish_unique_haircut = yes
 			portrait_frankish_unique_haircut = yes
 		}
+	}
+
+	add_accessory_modifiers = {
+		gene = hairstyles
+		template = catholic_devoted_hairstyles
 	}
 
 	add_accessory_modifiers = {

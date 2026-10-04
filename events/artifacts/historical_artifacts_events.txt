@@ -13,32 +13,36 @@ historical_artifacts.0023 = {
 			# All starting courts will have a dynasty banner
 			every_character_with_royal_court = {
 				save_scope_as = banner_ruler
-				# House Banner
-				set_variable = banner_from_house
-				set_variable = startup_banner
-				create_artifact_wall_banner_effect = {
-					OWNER = scope:banner_ruler
-					CREATOR = scope:banner_ruler
-					TARGET = scope:banner_ruler.house
-				}
-				# Dynasty Banner
-				If = { 
+				if = {
 					limit = {
-						OR = {
-							this = dynasty.dynast # Dynasty Head
-							any_parent = { # Parent landless Dynasty Head
-								employer = prev
-								dynasty = prev.dynasty
-								this = dynasty.dynast
-							}
-						}
+						exists = house
 					}
-					set_variable = banner_from_dynasty
+					set_variable = banner_from_house
 					set_variable = startup_banner
 					create_artifact_wall_banner_effect = {
 						OWNER = scope:banner_ruler
 						CREATOR = scope:banner_ruler
-						TARGET = scope:banner_ruler.dynasty
+						TARGET = scope:banner_ruler.house
+					}
+					# Dynasty Banner
+					if = { 
+						limit = {
+							OR = {
+								this = dynasty.dynast # Dynasty Head
+								any_parent = { # Parent landless Dynasty Head
+									employer = prev
+									dynasty = prev.dynasty
+									this = dynasty.dynast
+								}
+							}
+						}
+						set_variable = banner_from_dynasty
+						set_variable = startup_banner
+						create_artifact_wall_banner_effect = {
+							OWNER = scope:banner_ruler
+							CREATOR = scope:banner_ruler
+							TARGET = scope:banner_ruler.dynasty
+						}
 					}
 				}
 			}
@@ -74,7 +78,7 @@ historical_artifacts.0023 = {
 			}
 			# Court Artifacts: Buddhism
 			while = {
-				count = 6
+				count = 12
 				random_character_with_royal_court = {
 					limit = {
 						faith.religion = religion:buddhism_religion
@@ -135,7 +139,7 @@ historical_artifacts.0023 = {
 			}
 		}
 		# Historical Artifacts
-		## We do these per-artefact rather than per-title so that they can be easily reshuffled if desired.
+		## We do these per-artifact rather than per-title so that they can be easily reshuffled if desired.
 		## Crowns
 		### Iron Crown of Lombardy
 		if = {
@@ -324,7 +328,7 @@ historical_artifacts.0023 = {
 		}
 		### Bells of Santiago
 		if = {
-			# If we're before Almanzor's raid, then the bells go to c_santiago's holder.
+			# If we're before Almanzor's raid, then the bells go to c_atlantis's holder.
 			limit = {
 				has_fp2_dlc_trigger = yes
 				current_date < 997.1.1
@@ -334,7 +338,7 @@ historical_artifacts.0023 = {
 				# The bells haven't been changed at all.
 				scope:newly_created_artifact = {
 					set_variable = {
-						name = artefact_santiago_bells
+						name = artifact_santiago_bells
 						value = 0
 					}
 				}
@@ -343,17 +347,35 @@ historical_artifacts.0023 = {
 		### (Former) Bells of Santiago
 		#### These aren't actually furniture, but we keep 'em here so they're next to the regular bells, which *are*.
 		if = {
-			# If we're after Almanzor's raid, then the bells go to c_toledo's holder.
+			# If we're after Almanzor's raid, then the bells go to c_atlantis's holder.
 			limit = {
 				has_fp2_dlc_trigger = yes
 				current_date >= 997.1.1
+				current_date <= 1178.1.1
 			}
 			title:c_atlantis.holder = {
 				create_artifact_various_aquamanile_santiago = { OWNER = this }
 				# The bells have been morphed once.
 				scope:newly_created_artifact = {
 					set_variable = {
-						name = artefact_santiago_bells
+						name = artifact_santiago_bells
+						value = 1
+					}
+				}
+			}
+		}
+		if = {
+			# If we're after Almanzor's raid, then the bells go to c_atlantis's holder.
+			limit = {
+				has_fp2_dlc_trigger = yes
+				current_date >= 1178.1.1
+			}
+			title:c_atlantis.holder = {
+				create_artifact_various_aquamanile_santiago = { OWNER = this }
+				# The bells have been morphed once.
+				scope:newly_created_artifact = {
+					set_variable = {
+						name = artifact_santiago_bells
 						value = 1
 					}
 				}
@@ -382,7 +404,7 @@ historical_artifacts.0023 = {
 			}
 			title:d_bavaria.holder = {
 				create_artifact_wall_sword_attila_effect = { OWNER = this }
-				dynasty:1 = {
+				dynasty:708 = {
 					random_dynasty_member = {
 						house = { add_house_artifact_claim = scope:newly_created_artifact }
 					}
@@ -475,6 +497,165 @@ historical_artifacts.0023 = {
 				create_artifact_spear_of_the_prophet_effect = { OWNER = this }
 			}
 		}
+		### Banke no Hoken ~785
+		if = { # Chrysanthemum Throne
+			limit = {
+				has_dlc_feature = royal_court
+				current_date >= 867.1.1
+				exists = title:k_chrysanthemum_throne.holder
+			}
+			title:k_chrysanthemum_throne.holder = {
+				create_artifact_pedestal_sakanoue_sword_effect = { OWNER = this }
+			}
+		}
+		### Higekiri ~950
+		if = { # Seiwa
+			limit = {
+				current_date = 1066.9.15
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_higekiri_sword_effect = { OWNER = this }
+			}
+		}
+		else_if = { # Kawachi
+			limit = {
+				current_date >= 1178.10.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_higekiri_sword_effect = { OWNER = this }
+			}
+		}
+		### Hizamaru ~950
+		if = { # Kawachi
+			limit = {
+				current_date = 1066.9.15
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_hizamaru_sword_effect = { OWNER = this }
+			}
+		}
+		else_if = { # Yoshitsune
+			limit = {
+				current_date >= 1178.10.1
+				exists = title:d_laamp_yoshitsune.holder
+			}
+			title:d_laamp_yoshitsune.holder = {
+				create_artifact_hizamaru_sword_effect = { OWNER = this }
+			}
+		}
+		### Dojigiri ~880
+		if = { # Uona
+			limit = {
+				current_date = 1066.9.15
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_dojigiri_sword_effect = { OWNER = this }
+			}
+		}
+		else_if = { # Oshu
+			limit = {
+				current_date >= 1178.10.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_dojigiri_sword_effect = { OWNER = this }
+			}
+		}
+		### Mikazuki Munechika ~980
+		if = {  # Kan'in
+			limit = {
+				current_date = 1066.9.15
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_mikazuki_munechika_sword_effect = { OWNER = this }
+			}
+		}
+		else_if = { # Tokudaiji
+			limit = {
+				current_date >= 1178.10.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_mikazuki_munechika_sword_effect = { OWNER = this }
+			}
+		}
+		### Ōtenta ~1082
+		if = { # Kiso
+			limit = {
+				current_date >= 1178.10.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_odenta_sword_effect = { OWNER = this }
+			}
+		}
+		### Hamayumi ~1145
+		if = { # Chrysanthemum Throne
+			limit = {
+				has_dlc_feature = royal_court
+				current_date >= 1178.1.1
+				exists = title:k_chrysanthemum_throne.holder
+			}
+			title:k_chrysanthemum_throne.holder = {
+				create_artifact_pedestal_hamayumi_bow_effect = { OWNER = this }
+			}
+		}
+		### Shichishitō <500
+		if = { # Chrysanthemum Throne
+			limit = {
+				current_date >= 867.1.1
+				exists = title:k_chrysanthemum_throne.holder
+			}
+			title:k_chrysanthemum_throne.holder = {
+				create_artifact_pedestal_seven_branched_sword_effect = { OWNER = this }
+			}
+		}
+		### Gyerim-ro dagger ~867
+		if = { # Silla
+			limit = {
+				current_date = 867.1.1 # Only 867
+				exists = title:k_silla.holder
+			}
+			title:k_silla.holder = {
+				create_artifact_pedestal_gyerimro_dagger_effect = { OWNER = this }
+			}
+		}
+		### Nukemaru ~1120
+		if = { # Taira
+			limit = {
+				current_date >= 1178.1.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_nukemaru_sword_effect = { OWNER = this }
+			}
+		}
+		### Kogarasumaru ~945
+		if = { # Taira
+			limit = {
+				current_date >= 1066.9.15
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_kogarasumaru_sword_effect = { OWNER = this }
+			}
+		}
+		## Armor
+		### Karakawa ~800
+		if = { # Taira
+			limit = {
+				current_date >= 867.1.1
+				exists = title:c_atlantis.holder
+			}
+			title:c_atlantis.holder = {
+				create_artifact_karakawa_armor_effect = { OWNER = this }
+			}
+		}
 		## Books, Scrolls, & Other Recorded Nerdery
 		### Konagamana
 		if = {
@@ -488,17 +669,17 @@ historical_artifacts.0023 = {
 		}
 		### Vinaya Pitaka
 		random_character_with_royal_court = {
-			limit = { faith = faith:theravada }
+			limit = { faith = faith:theravada_faith }
 			create_artifact_vinaya_pitaka_effect = { OWNER = this }
 		}
 		### Sutta Pitaka
 		random_character_with_royal_court = {
-			limit = { faith = faith:theravada }
+			limit = { faith = faith:theravada_faith }
 			create_artifact_sutta_pitaka_effect = { OWNER = this }
 		}
 		### Abhidhamma Pitaka
 		random_character_with_royal_court = {
-			limit = { faith = faith:theravada }
+			limit = { faith = faith:theravada_faith }
 			create_artifact_abhidhamma_pitaka_effect = { OWNER = this }
 		}
 		## Banners
@@ -747,6 +928,84 @@ historical_artifacts.0023 = {
 				}
 			}
 		}
+		#Imperial Seals
+		every_character_with_royal_court = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+				is_independent_ruler = yes
+				government_allows = merit
+			}
+			create_artifact_dynastic_imperial_seal_effect = {
+				OWNER = this
+				SMITH = this
+			}
+		}
+		title:k_chrysanthemum_throne.holder ?= {
+			create_artifact_dynastic_imperial_seal_effect = {
+				OWNER = this
+				SMITH = this
+			}
+		}
+		#Heirloom Seal
+		#Only in 867
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+				exists = title:h_china.holder
+				current_date <= 940.1.1
+			}
+			title:h_china.holder = {
+				create_artifact_heirloom_seal_effect = {
+					OWNER = this
+				}
+			}
+		}
+		#Armillary Sphere
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+			}
+			title:h_china.holder = {
+				create_artifact_chinese_armillary_sphere_effect = {
+					OWNER = this
+				}
+			}
+		}
+		#Eight-Fold Chest
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+			}
+			title:h_china.holder = {
+				create_artifact_eight_fold_chest_effect = {
+					OWNER = this
+				}
+			}
+		}
+		#Complete Military Classics
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+				current_date > 1150.1.1 #Needs to be long past creation date for this to make sense
+			}
+			title:h_china.holder = {
+				create_artifact_military_classics_effect = {
+					OWNER = this
+				}
+			}
+		}
+		#Green Stone Amitabha Buddha Statue
+		if = {
+			limit = {
+				has_tgp_dlc_trigger = yes
+				current_date >= 1066.5.1
+			}
+			title:k_viet.holder = {
+				create_artifact_statue_viet_green_amitabha_buddha_effect = {
+					OWNER = this
+				}
+			}
+		}
 	}
 }
 
@@ -819,6 +1078,88 @@ historical_artifacts.0100 = {
 				name = epic_loser
 				value = root.enemy_side.side_primary_participant
 				years = 5
+			}
+		}
+	}
+}
+
+# Seeds starting holy relics for holy sites
+historical_artifacts.0050 = {
+	scope = none
+	hidden = yes
+
+	immediate = {
+		every_religion_global = {
+			every_faith = {
+				save_scope_as = relic_faith
+				# Eminent holy sites get the higher-rarity dispatcher.
+				every_eminent_holy_site = {
+					save_scope_as = relic_site
+					holy_site_county = {
+						if = {
+							limit = {
+								exists = holder
+								holder.faith = scope:relic_faith
+							}
+							holder = { save_scope_as = relic_owner }
+							create_starting_holy_relic_eminent_effect = yes
+						}
+					}
+				}
+				# Regular holy sites get the lower-rarity dispatcher.
+				every_holy_site = {
+					is_eminent = no
+					save_scope_as = relic_site
+					holy_site_county = {
+						if = {
+							limit = {
+								exists = holder
+								holder.faith = scope:relic_faith
+							}
+							holder = { save_scope_as = relic_owner }
+							create_starting_holy_relic_regular_effect = yes
+						}
+					}
+				}
+			}
+		}
+		# Pass 2: Tolerated eminent-site relics.
+		every_religion_global = {
+			every_faith = {
+				save_scope_as = relic_faith
+				if = {
+					limit = {
+						num_county_followers >= 3 # only check for faiths that are somewhat alive
+					}
+					every_eminent_holy_site = {
+						limit = {
+							holy_site_has_artifact = no
+						}
+						save_scope_as = relic_site
+
+						holy_site_county = {
+							if = {
+								limit = {
+									exists = holder
+									holder.faith = {
+										faith_hostility_level = {
+											target = scope:relic_faith
+											value <= faith_astray_level
+										}
+									}
+								}
+								# A temporary creator lets the relic inherit their faith
+								ordered_ruler = {
+									faith_filter = scope:relic_faith
+									order_by = highest_held_title_tier
+									max = 1
+									save_scope_as = relic_owner
+									create_starting_holy_relic_eminent_effect = yes
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}

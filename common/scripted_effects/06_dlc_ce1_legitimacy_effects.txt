@@ -38,6 +38,31 @@ standard_activity_participation_legitimacy_effect = {
 	}
 }
 
+# LEGITIMACY GAIN FOR PILGRIMAGE ACTIVITY PARTICIPATION
+pilgrimage_activity_participation_legitimacy_effect = {
+	if = {
+		limit = { is_valid_for_legitimacy_change = yes }
+		if = {
+			limit = {
+				this = scope:host
+				dynasty ?= {
+					has_dynasty_perk = tgp_sea_legacy_1
+				}
+			}
+			add_legitimacy = tgp_legitimacy_from_pilgrimage
+		}
+		else_if = {
+			limit = {
+				this = scope:host
+			}
+			add_legitimacy = minor_legitimacy_gain
+		}
+		else = {
+			add_legitimacy = miniscule_legitimacy_gain
+		}
+	}
+}
+
 # LEGITIMACY GAIN FOR LEGENDARY HUNT PARTICIPATION
 legendary_hunt_participation_legitimacy_effect = {
 	if = {
@@ -151,52 +176,13 @@ war_end_legitimacy_effect = {
 					
 					add_legitimacy = {
 						value = {
-							value = 0
-							
-							if = { # You get a lot of Legitimacy for punching above your weight
-								limit = { # Specially if you are a Duke/Count against an Emperor
-									OR = {
-										primary_title.tier = tier_county
-										primary_title.tier = tier_duchy
-									}
-									$LOSER$.primary_title.tier = tier_empire
-								}
-								value = 200
-							}
-							else_if = { # Or a Count against a King
-								limit = {
-									primary_title.tier = tier_county
-									$LOSER$.primary_title.tier = tier_kingdom
-								}
-								value = 150
-							}
-							else_if = { # Or a Count vs a Duke
-								limit = {
-									primary_title.tier = tier_county
-									$LOSER$.primary_title.tier = tier_duchy
-								}
-								value = 100
-							}
-							else_if = { # Or a Duke vs a King
-								limit = {
-									primary_title.tier = tier_duchy
-									$LOSER$.primary_title.tier = tier_kingdom
-								}
-								value = 100
-							}
-							else_if = { # Or King vs Emperor
-								limit = {
-									primary_title.tier = tier_kingdom
-									$LOSER$.primary_title.tier = tier_empire
-								}
-								value = 100
-							}
-							else_if = { # Special Legitimacy gain for same tier
-								limit = {
-									primary_title.tier = $LOSER$.primary_title.tier
-								}
-								value = 50
-							}
+							value = 1
+
+							# You get a lot of Legitimacy for punching above your weight
+							add = $LOSER$.primary_title.tier
+							subtract = primary_title.tier
+
+							multiply = 50
 						}
 						
 						if = { # We give you extra Legitimacy for Religious Wars
@@ -276,7 +262,16 @@ faction_war_end_defeat_legitimacy_effect = {
 	}
 	scope:defender = {
 		if = {
-			limit = { is_valid_for_legitimacy_change = yes }
+			limit = {
+				is_valid_for_legitimacy_change = yes
+				#prevent China from falling into Chaos when the Hegemony is claimed by not removing the legitimacy
+				scope:attacker = {
+					NAND = {
+						is_leading_faction_type = claimant_faction
+						joined_faction.special_title = title:h_china
+					}
+				}
+			}
 			if = {
 				limit = {
 					scope:attacker = {
@@ -441,7 +436,7 @@ disburse_legend_protagonist_legitimacy_effect = {
 	if = {
 		limit = {
 			scope:protagonist = {
-				NOT = { this = root } # The legend owner
+				this != root # The legend owner
 				num_virtuous_traits >= 3
 			}
 		}
@@ -453,7 +448,7 @@ disburse_legend_protagonist_legitimacy_effect = {
 	else_if = {
 		limit = {
 			scope:protagonist = {
-				NOT = { this = root } # The legend owner
+				this != root # The legend owner
 				num_virtuous_traits >= 2
 			}
 		}
@@ -465,7 +460,7 @@ disburse_legend_protagonist_legitimacy_effect = {
 	else_if = {
 		limit = {
 			scope:protagonist = {
-				NOT = { this = root } # The legend owner
+				this != root # The legend owner
 				num_virtuous_traits >= 1
 			}
 		}
@@ -477,12 +472,46 @@ disburse_legend_protagonist_legitimacy_effect = {
 	else_if = { # No Virtuous traits but at least you didn't choose yourself
 		limit = {
 			scope:protagonist = {
-				NOT = { this = root }
+				this != root
 			}
 		}
 		custom_tooltip = {
 			text = legend_protagonist_legitimacy_miniscule_tt
 			add_legitimacy = miniscule_legitimacy_gain
 		}
+	}
+}
+
+
+#Add legitimacy sans displaying levels
+add_minor_legitimacy_no_tier_effect = {
+	save_scope_as = legitimacy_gainer
+	custom_tooltip = {
+		text = minor_legitimacy_gain_no_tier_tt
+		add_legitimacy = minor_legitimacy_gain
+	}
+}
+
+add_medium_legitimacy_no_tier_effect = {
+	save_scope_as = legitimacy_gainer
+	custom_tooltip = {
+		text = medium_legitimacy_gain_no_tier_tt
+		add_legitimacy = medium_legitimacy_gain
+	}
+}
+
+add_major_legitimacy_no_tier_effect = {
+	save_scope_as = legitimacy_gainer
+	custom_tooltip = {
+		text = major_legitimacy_gain_no_tier_tt
+		add_legitimacy = major_legitimacy_gain
+	}
+}
+
+add_massive_legitimacy_no_tier_effect = {
+	save_scope_as = legitimacy_gainer
+	custom_tooltip = {
+		text = massive_legitimacy_gain_no_tier_tt
+		add_legitimacy = massive_legitimacy_gain
 	}
 }

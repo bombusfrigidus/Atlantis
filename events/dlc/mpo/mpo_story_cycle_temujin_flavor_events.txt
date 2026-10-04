@@ -27,10 +27,10 @@ mpo_temujin_flavor.0001 = {
 	}
 	
 	trigger = {
-		NOR = {
-			has_variable = had_mpo_temujin_flavor_0001
-			has_variable = had_mpo_temujin_flavor_0010
-			has_variable = had_mpo_temujin_flavor_0020
+		has_none_of_variables = {
+			name = had_mpo_temujin_flavor_0001
+			name = had_mpo_temujin_flavor_0010
+			name = had_mpo_temujin_flavor_0020
 		}
 		is_physically_able = yes
 		character:1 = {
@@ -130,7 +130,7 @@ mpo_temujin_flavor.0001 = {
 		custom_tooltip = blood_brother_gains_hook_tt
 		custom_tooltip = blood_brother_gains_hook_other_tt
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			callous = medium_stress_impact_gain
 		}
@@ -152,7 +152,7 @@ mpo_temujin_flavor.0001 = {
 				opinion = -25
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 			callous = medium_stress_impact_loss
 			gregarious = medium_stress_impact_gain
@@ -274,9 +274,9 @@ mpo_temujin_flavor.0010 = {
 	
 	trigger = {
 		has_variable = had_mpo_temujin_flavor_0001
-		NOR = {
-			has_variable = had_mpo_temujin_flavor_0010
-			has_variable = had_mpo_temujin_flavor_0020
+		has_none_of_variables = {
+			name = had_mpo_temujin_flavor_0010
+			name = had_mpo_temujin_flavor_0020
 		}
 		is_alive = yes
 		is_ruler = yes
@@ -290,6 +290,7 @@ mpo_temujin_flavor.0010 = {
 	}
 
 	immediate = {
+		save_scope_as = temujin
 		set_variable = {
 			name = had_mpo_temujin_flavor_0010
 			value = character:1
@@ -341,7 +342,7 @@ mpo_temujin_flavor.0010 = {
 				target = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			callous = medium_stress_impact_gain
 		}
@@ -387,7 +388,7 @@ mpo_temujin_flavor.0010 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			callous = medium_stress_impact_gain
 		}
@@ -407,7 +408,7 @@ mpo_temujin_flavor.0010 = {
 				opinion = -30
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_loss
 			gregarious = medium_stress_impact_gain
 		}
@@ -425,7 +426,7 @@ mpo_temujin_flavor.0010 = {
 				opinion = 20
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = medium_stress_impact_loss
 			callous = major_stress_impact_gain
 		}
@@ -485,7 +486,7 @@ mpo_temujin_flavor.0020 = {
 		animation = horse_conversing_left
 		camera = camera_event_horse_right
 	}
-	window = scheme_successful_event_no_text
+	window = scheme_conclusion_event_no_header
 	
 	trigger = {
 		NOT = { has_variable = had_mpo_temujin_flavor_0020 }
@@ -496,7 +497,7 @@ mpo_temujin_flavor.0020 = {
 				character:1 = {
 					NOR = {
 						is_vassal_of = root
-						is_tributary = root
+						is_tributary_of = root
 					}
 				}
 			}
@@ -559,7 +560,7 @@ mpo_temujin_flavor.0020 = {
 			modifier = temujin_jamukha_war_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -576,7 +577,7 @@ mpo_temujin_flavor.0020 = {
 				value = scope:jamukha
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deceitful = massive_stress_impact_loss
 			sadistic = massive_stress_impact_loss
 		}
@@ -594,7 +595,7 @@ mpo_temujin_flavor.0020 = {
 			modifier = temujin_jamukha_war_smaller_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = massive_stress_impact_loss
 			vengeful = massive_stress_impact_loss
 		}
@@ -702,10 +703,20 @@ mpo_temujin_flavor.0030 = {
 		character:1 = {
 			is_alive = yes
 			is_spouse_of = root
-			is_pregnant = no
 		}
-		any_neighboring_top_liege_realm_owner = {
-			NOT = { has_relation_rival = root }
+		OR = {
+			dynasty:2001144 = {
+				any_dynasty_member = {
+					is_male = yes
+					is_adult = yes
+					is_ruler = yes
+				}
+			}
+			any_neighboring_top_liege_realm_owner = {
+				is_male = yes
+				is_adult = yes
+				is_ai = yes
+			}
 		}
 	}
 
@@ -714,12 +725,19 @@ mpo_temujin_flavor.0030 = {
 		set_variable = had_mpo_temujin_flavor_0030
 		character:1 = {
 			save_scope_as = borte
+			if = {
+				limit = {
+					is_pregnant = yes
+				}
+				hidden_effect = {
+					end_pregnancy = yes
+				}
+			}
 		}
 		if = {
 			limit = {
 				character:1 = {
 					is_alive = yes
-					NOT = { has_relation_rival = root }
 				}
 			}
 			character:1 = {
@@ -728,22 +746,32 @@ mpo_temujin_flavor.0030 = {
 		}
 		else_if = {
 			limit = {
-				any_ruler = {
-					dynasty = dynasty:1
-					NOT = { has_relation_rival = root }
+				dynasty:2001144 = {
+					any_dynasty_member = {
+						is_male = yes
+						is_adult = yes
+						is_ruler = yes
+					}
 				}
 			}
-			random_ruler = {
-				limit = {
-					dynasty = dynasty:1
-					NOT = { has_relation_rival = root }
+			dynasty:2001144 = {
+				random_dynasty_member = {
+					limit = {
+						is_male = yes
+						is_adult = yes
+						is_ruler = yes
+					}
+					save_scope_as = mergid
 				}
-				save_scope_as = mergid
 			}
 		}
 		else = {
 			random_neighboring_top_liege_realm_owner = {
-				limit = { NOT = { has_relation_rival = root } }
+				limit = {
+					is_ai = yes
+					is_male = yes
+					is_adult = yes
+				}
 				save_scope_as = mergid
 			}
 		}
@@ -752,17 +780,32 @@ mpo_temujin_flavor.0030 = {
 			hidden_effect = {
 				make_pregnant = {
 					father = scope:mergid
+					known_bastard = yes
 				}
 			}
-			set_variable = borte_first_child_var
+			set_variable = suppress_bastardy
 		}
 	}
 
 	option = { # I hate those guys
 		name = mpo_temujin_flavor.0030.a
-		set_relation_rival = {
-			target = scope:mergid
-			reason = rival_temujin_mergid
+		if = {
+			limit = {
+				NOT = { has_relation_rival = scope:mergid }
+			}
+			set_relation_rival = {
+				target = scope:mergid
+				reason = rival_temujin_mergid
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { has_relation_nemesis = scope:mergid }
+			}
+			set_relation_nemesis = {
+				target = scope:mergid
+				reason = rival_temujin_mergid
+			}
 		}
 		custom_tooltip = {
 			text = mpo_temujin_flavor.0030.a.tt
@@ -772,7 +815,7 @@ mpo_temujin_flavor.0030 = {
 			}
 		}
 		add_dread = medium_dread_gain
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			vengeful = major_stress_impact_loss
 			compassionate = medium_stress_impact_gain
 		}
@@ -803,7 +846,7 @@ mpo_temujin_flavor.0030 = {
 			}
 		}
 		set_relation_wedding_very_good_fertility = scope:borte
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_loss
 			vengeful = medium_stress_impact_gain
 		}
@@ -822,7 +865,7 @@ mpo_temujin_flavor.0030 = {
 				opinion = -25
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = major_stress_impact_loss
 			compassionate = major_stress_impact_gain
 			vengeful = major_stress_impact_gain

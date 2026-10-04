@@ -39,24 +39,18 @@ fp2_character_uninvolved_in_struggle_trigger = {
 
 eligible_for_fp2_dynasty_legacies_trigger = {
 	has_fp2_dlc_trigger = yes
-	dynasty = {
+	dynasty.dynast = {
 		OR = {
-			dynast = {
-				OR = {
-					any_character_struggle = {
-						involvement = involved
-						is_struggle_type = iberian_struggle
-					}
-					culture = {
-						has_cultural_pillar = heritage_iberian
-					}
-					AND = {
-						exists = capital_province
-						capital_province = {
-							geographical_region = world_europe_west_iberia
-						}
-					}
-				}
+			game_rule_unrestricted_dynasty_legacies_trigger = yes
+			any_character_struggle = {
+				involvement = involved
+				is_struggle_type = iberian_struggle
+			}
+			culture = {
+				has_cultural_pillar = heritage_iberian
+			}
+			capital_province ?= {
+				geographical_region = world_europe_west_iberia
 			}
 		}
 	}
@@ -65,14 +59,8 @@ eligible_for_fp2_dynasty_legacies_trigger = {
 
 is_toledo_ownership_valid_trigger = {
 	title:c_atlantis.holder = {
-		OR = {
-			this = root
-			liege = root
-			top_liege = root
-		}
-		faith = {
-			portrait_religious_faith_or_foundational_trigger = { FAITH = faith:mozarabic_church }
-		}
+		target_is_same_character_or_above = root
+		rite = rite:mozarabic_church
 	}
 }
 
@@ -104,7 +92,6 @@ valid_ritualised_best_friendship_one_way_trigger = {
 		# ... and that they've got a best friend...
 		any_relation = {
 			type = best_friend
-			count >= 1
 			# ... who also still has the cultural parameter.
 			culture_valid_for_ritualised_best_friends_trigger = yes
 		}
@@ -279,8 +266,8 @@ fp2_struggle_ending_other_percent_iberia_trigger = {
 		NOT = {
 			any_involved_ruler = {
 				exists = primary_title # Max figured out that is_independent_ruler causes errors if you are unlanded
-				NOT = { this = root }
-				is_independent_ruler = yes
+				this != root
+				top_liege = this
 				primary_title = { is_mercenary_company = no }
 				any_county_in_region = {
 					region = world_europe_west_iberia
@@ -299,16 +286,16 @@ fp2_struggle_ending_compromise_independent_duchy_trigger = {
 	exists = holder
 	OR = {
 		# Is not the heartland of an existing kingdom
-		NOT = { title_capital_county = de_jure_liege.title_capital_county }
+		title_capital_county != de_jure_liege.title_capital_county
 		# Capital duke doesn't control kingdom, edge case
 		AND = {
 			exists = de_jure_liege.holder
-			NOT = { holder = de_jure_liege.holder }
+			holder != de_jure_liege.holder
 		}
 	}
 	# Is ruled by an independent duke
 	holder = {
-		is_independent_ruler = yes
+		top_liege = this
 		save_temporary_scope_as = duchy_holder
 		primary_title = {
 			is_mercenary_company = no
@@ -337,7 +324,7 @@ fp2_struggle_ending_compromise_split_duchy_trigger = {
 	# Is not created
 	NOT = { exists = holder } 
 	# Is not heartland of an existing kingdom
-	NOT = { title_capital_county = de_jure_liege.title_capital_county } 
+	title_capital_county != de_jure_liege.title_capital_county 
 	save_temporary_scope_as = duchy
 	# Less than half is owned by de jure kingdom, if created
 	trigger_if = { 
@@ -358,7 +345,7 @@ fp2_struggle_ending_compromise_titular_trigger = {
 	exists = holder
 	# Is ruled by an independent duke
 	holder = {
-		is_independent_ruler = yes
+		top_liege = this
 		primary_title = {
 			is_mercenary_company = no
 			tier = tier_duchy
@@ -385,7 +372,7 @@ fp2_struggle_ending_compromise_create_title_trigger = {
 		# Only if no other same rank rulers in title (e.g. multiple kings under empire)
 		any_direct_de_jure_vassal_title = {
 			exists = holder
-			NOT = { holder = scope:new_owner_temp }
+			holder != scope:new_owner_temp
 		}
 	}
 }
@@ -476,7 +463,7 @@ fp2_struggle_compromise_transfer_duchy_trigger = {
 	# De jure liege does not control duchy
 	trigger_if = {
 		limit = { exists = kingdom.holder }
-		NOT = { kingdom = scope:transfer_duchy.title_capital_county.holder.top_liege.capital_county.kingdom }
+		kingdom != scope:transfer_duchy.title_capital_county.holder.top_liege.capital_county.kingdom
 	}
 	# Is controlled by a kingdom tier
 	trigger_else = { title_capital_county.holder.top_liege.primary_title.tier >= tier_kingdom }
@@ -514,10 +501,15 @@ fp2_struggle_secure_iberian_foothold_faith_trigger = {
 }
 
 fp2_struggle_secure_iberian_foothold_outsider_kingdom_trigger = {
+	exists = empire
+	empire != title:e_spain
+	kingdom.holder.top_liege = root
+}
+
+fp2_struggle_secure_iberian_foothold_neighbor_with_outsider_kingdom_trigger = {
 	any_de_jure_county = {
 		any_title_to_title_neighboring_and_across_water_county = {
-			NOT = { empire = title:e_spain }
-			kingdom.holder = root
+			fp2_struggle_secure_iberian_foothold_outsider_kingdom_trigger = yes
 		}
 	}
 }
@@ -544,7 +536,7 @@ fp2_iberian_reclamation_vassalize_iberian_trigger = {
 			is_struggle_type = iberian_struggle
 		}
 		liege = scope:defender
-		NOT = { this = scope:defender }
+		this != scope:defender
 		capital_county = {
 			any_county_struggle = { is_struggle_type = iberian_struggle }
 		}
@@ -592,9 +584,9 @@ fp2_struggle_enforce_truce_war_leader_trigger = {
 	custom_tooltip = {
 		text = fp2_enforce_truce_liege_or_independent_tt
 		OR = {
-			scope:recipient = { is_independent_ruler = yes }
+			scope:recipient = { top_liege = this }
 			scope:recipient.top_liege = scope:actor.top_liege
-			is_independent_ruler = yes
+			top_liege = this
 			top_liege = scope:actor.top_liege
 		}
 	}
@@ -619,13 +611,13 @@ struggle_can_access_unlocks_bargain_fealty_interaction_trigger = {
 
 fp2_lyonese_monk_0002_papal_hof_trigger = {
 	religion = religion:christianity_religion
-	exists = faith.religious_head
-	faith.religious_head_title = title:k_papal_state
+	exists = faith.main_rite.head_of_rite
 }
 
 fp2_lyonese_monk_0002_valid_character_configuration_trigger = {
 	OR = {
-		has_trait = scholar
+		has_trait = erudite
+		has_trait = lifestyle_scholar
 		has_trait = theologian
 		has_trait = lifestyle_mystic
 		AND = {
@@ -669,7 +661,7 @@ fp2_lyonese_monk_0000_out_of_realm_trigger = {
 			is_alive = no
 			is_imprisoned = yes
 			AND = {
-				is_landed_or_landless_administrative = no
+				is_landed_or_landless_administrative_or_theocratic = no
 				NOT = {
 					host = scope:acolyte_host
 					# Make an exception if you're in prison, since that should give a different event.
@@ -677,7 +669,7 @@ fp2_lyonese_monk_0000_out_of_realm_trigger = {
 				}
 			}
 			AND = {
-				is_landed_or_landless_administrative = yes
+				is_landed_or_landless_administrative_or_theocratic = yes
 				NOT = {
 					any_liege_or_above = { this = scope:acolyte_host }
 				}
@@ -689,18 +681,18 @@ fp2_lyonese_monk_0000_out_of_realm_trigger = {
 fp2_lyonese_monk_0000_out_of_freedom_trigger = { is_imprisoned = yes }
 
 fp2_lyonese_monk_0000_out_of_popes_trigger = {
-	NOT = { exists = scope:story.var:base_faith.religious_head }
+	NOT = { exists = faith.main_rite.head_of_rite }
 }
 
 fp2_lyonese_monk_0000_out_of_faith_trigger = {
 	OR = {
-		NOT = { scope:acolyte.faith.religious_head = scope:story.var:base_faith.religious_head }
-		NOT = { scope:acolyte_host.faith.religious_head = scope:story.var:base_faith.religious_head }
+		scope:acolyte.faith.main_rite.head_of_rite != scope:story.var:base_faith.main_rite.head_of_rite
+		scope:acolyte_host.faith.main_rite.head_of_rite != scope:story.var:base_faith.main_rite.head_of_rite
 	}
 }
 
 fp2_does_this_player_care_about_the_fate_of_iberia = {
-	NOT = { this = root }
+	this != root
 	OR = {
 		location = {
 			OR = { # Is in region
@@ -718,15 +710,13 @@ fp2_eligible_for_yearly_events_trigger = {
 	OR = {
 		any_character_struggle = {
 			involvement = involved
+			is_struggle_type = iberian_struggle
 		}
 		culture = {
 			has_cultural_pillar = heritage_iberian
 		}
-		AND = {
-			exists = capital_province
-			capital_province = {
-				geographical_region = world_europe_west_iberia
-			}
+		capital_province ?= {
+			geographical_region = world_europe_west_iberia
 		}
 	}
 }
@@ -740,5 +730,6 @@ fp2_purchase_truce_interaction_soft_requirements_trigger = {
 		}
 		has_perk = defensive_negotiations_perk
 		culture = { has_cultural_parameter = unlocks_purchase_truce }
+		has_personal_tenet_flag = tenet_peace_of_god_personal_truce
 	}
 }

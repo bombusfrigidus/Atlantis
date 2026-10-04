@@ -1,1 +1,776 @@
-﻿
+﻿e_scandinavia = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = e_scandinavia_norse
+	}
+}
+k_sweden = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = k_sweden_norse
+	}
+}
+d_svealand = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_svealand_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_bergslagen = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_bergslagen_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}			
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_vastergotland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_vastergotland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_ostergotland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_ostergotland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_smaland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_smaland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_norrland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_norrland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_gotland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_gotland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+k_norway = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = k_norway_norse
+	}
+}
+d_viken = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_viken_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_agder = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_agder_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_vestlandi = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_vestlandi_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_trandalog = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_trandalog_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_dalir = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_dalir_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_halogaland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_halogaland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_iceland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_iceland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_northern_isles = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_northern_isles_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}	
+}
+d_jamtland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_jamtland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+k_denmark = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = k_denmark_norse
+	}
+}
+d_sjaelland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_sjaelland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_skane = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_skane_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_jylland = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_jylland_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}		
+}
+d_slesvig = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_slesvig_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}				
+}
+d_western_isles = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_western_isles_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}				
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}			
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}

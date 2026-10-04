@@ -4,17 +4,31 @@ namespace = conqueror
 # Become a Conqueror
 conqueror.0001 = {
 	type = character_event
+	window = big_event_window
 	title = conqueror.0001.t
-	desc = conqueror.0001.desc
+	desc = {
+		desc = conqueror.0001.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					is_ai = no
+					this = character:1
+					has_mpo_dlc_trigger = yes
+				}
+				desc = conqueror.0001.desc.temujin
+			}
+		}
+	}
 	theme = war
 	override_background = { reference = courtyard }
+	widget = { gui = event_window_widget_vfx_godray container = foreground_shader_vfx_container }
 	left_portrait = {
 		character = root
 		animation = sword_coup_degrace
 	}
 	
 	trigger = {
-		is_independent_ruler = yes
+		top_liege = this
 		is_landed = yes
 		NOR = {
 			has_trait = conqueror
@@ -42,7 +56,7 @@ conqueror.0001 = {
 			limit = {
 				is_ai = yes
 			}
-			add_gold = 500
+			add_treasury_or_gold = 500
 			add_prestige = 800
 		}
 	}
@@ -70,10 +84,10 @@ conqueror.0001 = {
 		create_story = story_conqueror
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = belligerent }
+				any_vassal = { vassal_stance = belligerent }
 			}
 			every_vassal = {
-				limit = { has_vassal_stance = belligerent }
+				vassal_stance = belligerent
 				custom = every_belligerent_vassal
 				add_opinion = {
 					modifier = approving_opinion
@@ -84,10 +98,10 @@ conqueror.0001 = {
 		}
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = glory_hound }
+				any_vassal = { vassal_stance = glory_hound }
 			}
 			every_vassal = {
-				limit = { has_vassal_stance = glory_hound }
+				vassal_stance = glory_hound
 				custom = every_glory_hound_vassal
 				add_opinion = {
 					modifier = approving_opinion
@@ -98,7 +112,7 @@ conqueror.0001 = {
 		}
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = parochial }
+				any_vassal = { vassal_stance = parochial }
 			}
 			every_vassal = {
 				custom = every_parochial_vassal
@@ -116,7 +130,7 @@ conqueror.0001 = {
 				this = character:1
 				has_mpo_dlc_trigger = yes
 			}
-			form_the_mongol_empire_player_effect = yes
+			temujin_conqueror_bonuses_effect = yes
 		}
 		ai_chance = {
 			base = 100 
@@ -128,10 +142,10 @@ conqueror.0001 = {
 		add_prestige = minor_prestige_loss
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = belligerent }
+				any_vassal = { vassal_stance = belligerent }
 			}
 			every_vassal = {
-				limit = { has_vassal_stance = belligerent }
+				vassal_stance = belligerent
 				custom = every_belligerent_vassal
 				add_opinion = {
 					modifier = approving_opinion
@@ -142,10 +156,10 @@ conqueror.0001 = {
 		}
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = glory_hound }
+				any_vassal = { vassal_stance = glory_hound }
 			}
 			every_vassal = {
-				limit = { has_vassal_stance = glory_hound }
+				vassal_stance = glory_hound
 				custom = every_glory_hound_vassal
 				add_opinion = {
 					modifier = disapproving_opinion
@@ -156,7 +170,7 @@ conqueror.0001 = {
 		}
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = parochial }
+				any_vassal = { vassal_stance = parochial }
 			}
 			every_vassal = {
 				custom = every_parochial_vassal
@@ -211,7 +225,7 @@ conqueror.0002 = {
 			triggered_desc = {
 				trigger = {
 					OR = {
-						is_independent_ruler = no
+						top_liege != this
 						is_tributary = yes
 					}
 				}
@@ -245,9 +259,7 @@ conqueror.0002 = {
 	immediate = {
 		save_scope_as = root_scope
 		every_owned_story = {
-			limit = {
-				story_type = story_conqueror
-			}
+			type = story_conqueror
 			end_story = yes
 		}
 		add_character_flag = used_to_be_conqueror
@@ -262,10 +274,10 @@ conqueror.0002 = {
 		add_prestige_level = -2
 		if = {
 			limit = {
-				any_vassal = { has_vassal_stance = glory_hound }
+				any_vassal = { vassal_stance = glory_hound }
 			}
 			every_vassal = {
-				limit = { has_vassal_stance = glory_hound }
+				vassal_stance = glory_hound
 				custom = every_glory_hound_vassal
 				add_opinion = {
 					modifier = disappointed_opinion
@@ -323,13 +335,33 @@ conqueror.0100 = {
 			}
 			save_scope_as = county_target
 		}
-		
-		send_interface_message = {
-			type = event_diplomacy_good_with_text
-			title = conqueror_feed_county_gift
-			desc = conqueror_feed_county_gift_desc
-			left_icon = scope:county_target
-			add_gold = scope:county_target.title_province.available_loot
+		if = {
+			limit = {
+				government_has_flag = government_is_nomadic
+				scope:county_target = {
+					any_county_province = {
+						has_holding_type = nomad_holding
+					}
+				}
+			}
+			send_interface_message = {
+				type = event_diplomacy_good_with_text
+				title = conqueror_feed_county_gift_herd
+				desc = conqueror_feed_county_gift_desc_herd
+				left_icon = scope:county_target
+				domicile = {
+					change_herd = medium_herd_gain
+				}
+			}
+		}
+		else = {
+			send_interface_message = {
+				type = event_diplomacy_good_with_text
+				title = conqueror_feed_county_gift
+				desc = conqueror_feed_county_gift_desc
+				left_icon = scope:county_target
+				add_gold = scope:county_target.title_province.available_loot
+			}
 		}
 	}
 }
@@ -740,6 +772,7 @@ conqueror.1100 = {
 				location = root.location
 				culture = scope:generous_vassal.culture
 				faith = scope:generous_vassal.faith
+				rite = scope:generous_vassal.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = maa_leader
 			}
@@ -937,11 +970,11 @@ conqueror.1200 = {
 	trigger = {
 		any_vassal = {
 			is_physically_able_ai_adult = yes
-			has_vassal_stance = glory_hound
+			vassal_stance = glory_hound
 		}
 		any_vassal = {
 			is_physically_able_ai_adult = yes
-			has_vassal_stance = belligerent
+			vassal_stance = belligerent
 		}
 		NOT = {
 			days_of_continuous_peace >= 730 # 2 years
@@ -951,17 +984,17 @@ conqueror.1200 = {
 	immediate = {
 		save_scope_as = root_scope
 		random_vassal = {
+			vassal_stance = glory_hound
 			limit = {
 				is_physically_able_ai_adult = yes
-				has_vassal_stance = glory_hound
 			}
 			save_scope_as = vassal_1
 		}
 		random_vassal = {
+			vassal_stance = glory_hound
 			limit = {
 				is_physically_able_ai_adult = yes
-				has_vassal_stance = belligerent
-				NOT = { this = scope:vassal_1 }
+				this != scope:vassal_1
 			}
 			save_scope_as = vassal_2
 		}
@@ -971,7 +1004,7 @@ conqueror.1200 = {
 		name = conqueror.1200.a
 		
 		every_vassal = {
-			limit = { has_vassal_stance = glory_hound }
+			vassal_stance = glory_hound
 			custom = every_glory_hound_vassal
 			add_opinion = {
 				modifier = war_war_war_opinion
@@ -1009,7 +1042,7 @@ conqueror.1200 = {
 		}
 		
 		every_vassal = {
-			limit = { has_vassal_stance = glory_hound }
+			vassal_stance = glory_hound
 			custom = every_glory_hound_vassal
 			add_opinion = {
 				modifier = war_war_war_opinion
@@ -1106,8 +1139,12 @@ conqueror.1300 = {
 					location = scope:peasant_barony.title_province
 					culture = scope:peasant_barony.title_province.culture
 					faith = scope:peasant_barony.title_province.faith
+					rite = scope:peasant_barony.title_province.rite
 					gender_female_chance = root_soldier_female_chance
 					save_scope_as = portrait_peasant
+					after_creation = {
+						add_character_flag = created
+					}
 				}
 			}
 		}
@@ -1116,10 +1153,28 @@ conqueror.1300 = {
 	option = {
 		name = conqueror.1300.a
 		
-		add_gold = {
-			value = scope:peasant_barony.title_province.available_loot
-			multiply = 3
+		if = {
+			limit = {
+				scope:peasant_barony.title_province = {
+					has_holding_type = nomad_holding
+				}
+				government_has_flag = government_is_nomadic
+			}
+			add_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+				multiply = 1
+			}
+			domicile = {
+				change_herd = major_herd_gain
+			}
 		}
+		else = {
+			add_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+				multiply = 3
+			}
+		}
+		
 		
 		ai_chance = {
 			base = 100
@@ -1135,7 +1190,26 @@ conqueror.1300 = {
 			}
 		}
 		
-		add_gold = scope:peasant_barony.title_province.available_loot
+		if = {
+			limit = {
+				scope:peasant_barony.title_province = {
+					has_holding_type = nomad_holding
+				}
+				government_has_flag = government_is_nomadic
+			}
+			add_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+				multiply = 0.25
+			}
+			domicile = {
+				change_herd = medium_herd_gain
+			}
+		}
+		else = {
+			add_treasury_or_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+			}
+		}
 		
 		add_character_modifier = {
 			modifier = peasant_supplies
@@ -1156,7 +1230,26 @@ conqueror.1300 = {
 			}
 		}
 		
-		add_gold = scope:peasant_barony.title_province.available_loot
+		if = {
+			limit = {
+				scope:peasant_barony.title_province = {
+					has_holding_type = nomad_holding
+				}
+				government_has_flag = government_is_nomadic
+			}
+			add_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+				multiply = 0.25
+			}
+			domicile = {
+				change_herd = medium_herd_gain
+			}
+		}
+		else = {
+			add_treasury_or_gold = {
+				value = scope:peasant_barony.title_province.available_loot
+			}
+		}
 		
 		add_character_modifier = {
 			modifier = peasant_draft
@@ -1165,6 +1258,11 @@ conqueror.1300 = {
 		
 		ai_chance = {
 			base = 100
+		}
+	}
+	after = {
+		scope:portrait_peasant = {
+			silent_disappearance_ai_if_created_effect = yes
 		}
 	}
 }

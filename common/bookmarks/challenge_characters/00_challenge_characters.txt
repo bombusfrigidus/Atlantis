@@ -9,7 +9,7 @@
 		title = d_atlantis
 		government = feudal_government
 		culture = atlantean
-		religion = atlantite
+		religion = roman_rite
 		difficulty = "BOOKMARK_CHARACTER_DIFFICULTY_HARD"
 		history_id = 1
 

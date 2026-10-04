@@ -269,11 +269,11 @@ dynamic_genghis_character_template = {
 	age = { 30 42 } # Temujin's age around 1198
 	gender_female_chance = {
 		if = {
-			limit = { faith:tengri_pagan = { has_doctrine = doctrine_gender_male_dominated } }
+			limit = { faith:tengri_pagan = { main_rite = { rite_has_doctrine = doctrine_gender_male_dominated } } }
 			add = 0
 		}
 		else_if = {
-			limit = { faith:tengri_pagan = { has_doctrine = doctrine_gender_female_dominated } }
+			limit = { faith:tengri_pagan = { main_rite = { rite_has_doctrine = doctrine_gender_female_dominated } } }
 			add = 100
 		}
 		else = {

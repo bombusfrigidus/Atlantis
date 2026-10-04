@@ -98,9 +98,7 @@ yearly_persian.1002 = {
 			add_to_list = friends_and_neighbors
 		}
 		every_held_title = {
-			limit = {
-				tier = tier_county
-			}
+			title_tier = county
 			every_neighboring_county = {
 				limit = {
 					holder = {
@@ -151,7 +149,7 @@ yearly_persian.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = major_stress_impact_gain
 		}
 
@@ -178,7 +176,7 @@ yearly_persian.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			shy = medium_stress_impact_gain
 		}
 
@@ -223,7 +221,7 @@ yearly_persian.1002 = {
 			years = 5
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 			lazy = minor_stress_impact_gain
 			diligent = minor_stress_impact_loss
@@ -253,7 +251,7 @@ yearly_persian.1101 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					dynasty = dynasty:1 # Seljuk
+					dynasty = dynasty:613 # Seljuk
 					culture = { has_cultural_pillar = heritage_turkic }
 				}
 				desc = yearly_persian.1101.desc.seljuk
@@ -270,7 +268,7 @@ yearly_persian.1101 = {
 		highest_held_title_tier >= tier_kingdom
 		OR = {
 			AND = {
-				dynasty = dynasty:1 # Seljuk
+				dynasty = dynasty:613 # Seljuk
 				culture = { has_cultural_pillar = heritage_turkic }
 			}
 			culture = { has_cultural_pillar = heritage_arabic }
@@ -330,7 +328,7 @@ yearly_persian.1101 = {
 	option = {
 		name = yearly_persian.1101.b.seljuk
 		trigger = {
-			dynasty = dynasty:1 # Seljuk
+			dynasty = dynasty:613 # Seljuk
 			culture = { has_cultural_pillar = heritage_turkic }
 		}
 

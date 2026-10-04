@@ -20,7 +20,7 @@ ep3_frankokratia_events.0001 = {
 		}
 		desc = ep3_frankokratia_events.0001.desc
 	}
-			
+
 	theme = byzantine
 	override_background = {
 		trigger = {
@@ -42,10 +42,10 @@ ep3_frankokratia_events.0001 = {
 				}
 			}
 		}
-		reference = holy_site_generic
+		reference = temple
 	}
 	override_effect_2d = {
-		reference = rain	
+		reference = rain
 	}
 	left_portrait = {
 		character = root
@@ -67,7 +67,6 @@ ep3_frankokratia_events.0001 = {
 	}
 
 	trigger = {
-		has_ep3_dlc_trigger = yes
 		exists = root.faith.great_holy_war
 		exists = root.faith.religious_head
 		exists = title:e_byzantium.holder
@@ -324,9 +323,7 @@ ep3_frankokratia_events.0001 = {
 		custom_tooltip = crusaders_may_be_paid_tooltip
 		create_story = frankokratia_story
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			ep3_frankokratia_story_setup_save_vars_effect = yes
 		}
 		if = {
@@ -337,7 +334,7 @@ ep3_frankokratia_events.0001 = {
 						is_ruler = yes
 						any_spouse = {
 							is_ai = no
-							NOT = { this = root }
+							this != root
 						}
 					}
 				}
@@ -354,7 +351,7 @@ ep3_frankokratia_events.0001 = {
 			}
 			add_unpressed_claim = title:e_byzantium
 		}
-		
+
 		add_character_modifier = {
 			modifier = prepared_for_daring_deeds_modifier
 			years = 3
@@ -367,7 +364,7 @@ ep3_frankokratia_events.0001 = {
 				}
 			}
 		}
-		
+
 		#Pope eventually finds out and is annoyed at you
 		trigger_event = {
 			id = ep3_frankokratia_events.0002
@@ -379,7 +376,7 @@ ep3_frankokratia_events.0001 = {
 			months = { 1 3 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_impact_gain
 			trusting = medium_stress_impact_gain
 			just = major_stress_impact_gain
@@ -423,7 +420,7 @@ ep3_frankokratia_events.0001 = {
 		name = ep3_frankokratia_events.0001.a
 		flavor = ep3_frankokratia_events.0001.a.flavor
 
-		
+
 		custom_tooltip = abandon_crusade_tooltip
 		custom_tooltip = byz_claimant_crusade_tooltip
 		custom_tooltip = may_form_latin_empire_tooltip
@@ -436,7 +433,7 @@ ep3_frankokratia_events.0001 = {
 						is_ruler = yes
 						any_spouse = {
 							is_ai = no
-							NOT = { this = root }
+							this != root
 						}
 					}
 				}
@@ -561,14 +558,14 @@ ep3_frankokratia_events.0001 = {
 				}
 			}
 		}
-		
+
 		add_character_modifier = {
 			modifier = prepared_for_daring_deeds_modifier
 			years = 3
 		}
-		
 
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			just = minor_stress_impact_gain
 			content = medium_stress_impact_gain
 			cynical = major_stress_impact_gain
@@ -640,7 +637,7 @@ ep3_frankokratia_events.0001 = {
 			}
 		}
 	}
-	
+
 	#This is a disastrously bad plan
 	option = {
 		name = ep3_frankokratia_events.0001.c
@@ -681,7 +678,7 @@ ep3_frankokratia_events.0001 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = major_stress_impact_gain
 			ambitious = major_stress_impact_gain
 			fickle = medium_stress_impact_gain
@@ -732,7 +729,7 @@ ep3_frankokratia_events.0002 = {
 			desc = ep3_frankokratia_events.0002.desc_wasnt_asked
 		}
 	}
-		
+
 	sender = scope:ghw_sponsor
 
 	trigger = {
@@ -742,7 +739,7 @@ ep3_frankokratia_events.0002 = {
 	immediate = {
 		title:e_byzantium.holder = {
 			save_scope_as = byz_emperor
-		}	
+		}
 	}
 	#Whatever, Popey
 	option = {
@@ -751,16 +748,14 @@ ep3_frankokratia_events.0002 = {
 		#Begin the story cycle if you asked for pope's approval
 		if = {
 			limit = {
-				OR = {
-					has_character_flag = pope_condemned_crusader_claim
-					has_character_flag = pope_endorsed_crusader_claim
+				has_variable = {
+					name = pope_condemned_crusader_claim
+					name = pope_endorsed_crusader_claim
 				}
 			}
 			create_story = frankokratia_story
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				ep3_frankokratia_story_setup_save_vars_effect = yes
 			}
 			#Financier gets on board
@@ -810,7 +805,7 @@ ep3_frankokratia_events.0002 = {
 			limit = {
 				has_character_flag = pope_condemned_crusader_claim
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				zealous = medium_stress_impact_gain
 				trusting = minor_stress_impact_gain
 				just = medium_stress_impact_gain
@@ -818,7 +813,7 @@ ep3_frankokratia_events.0002 = {
 				humble = minor_stress_impact_gain
 			}
 		}
-		
+
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -893,7 +888,7 @@ ep3_frankokratia_events.0002 = {
 			}
 		}
 		remove_character_flag = pope_condemned_crusader_claim
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = medium_stress_impact_gain
 			eccentric = minor_stress_impact_gain
 			brave = minor_stress_impact_gain
@@ -935,27 +930,25 @@ ep3_frankokratia_events.0003 = {
 		desc = ep3_frankokratia_events.0003.opening
 	}
 	desc = ep3_frankokratia_events.0003.desc
-		
+
 	sender = scope:financier
 
 	immediate = {
 		title:e_byzantium.holder = {
 			save_scope_as = byz_emperor
-		}	
+		}
 	}
 	#Alright, let's do this thing
 	option = {
 		name = ep3_frankokratia_events.0003.a
-		
+
 		custom_tooltip = financier_will_join_claim_war_tooltip
 		custom_tooltip = will_give_byz_lands_tooltip
 		custom_tooltip = every_ally_will_gain_modifier_tooltip
-		
+
 		scope:financier = { add_character_flag = joining_frankokratia }
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			add_to_variable_list = {
  				name = frankokratia_leaders
  				target = scope:financier
@@ -973,7 +966,7 @@ ep3_frankokratia_events.0003 = {
 				months = 1
 			}
 		}
-		
+
 		ai_chance = {
 			base = 100
 		}
@@ -1015,7 +1008,7 @@ ep3_frankokratia_events.0004 = {
 		exists = global_var:byz_claimant_champion
 		global_var:byz_claimant_champion = {
 			any_owned_story = {
-				story_type = frankokratia_story
+				type = frankokratia_story
 			}
 		}
 	}
@@ -1026,7 +1019,7 @@ ep3_frankokratia_events.0004 = {
 				exists = global_var:byz_claimant_champion
 				global_var:byz_claimant_champion = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 			}
@@ -1064,7 +1057,7 @@ ep3_frankokratia_events.0004 = {
 		custom_tooltip = abandon_crusade_emp_tooltip
 		custom_tooltip = franko_emp_crusade_tooltip
 		custom_tooltip = byz_empire__destroyed_tooltip
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			just = medium_stress_impact_gain
 			honest = medium_stress_impact_gain
 			compassionate = major_stress_impact_gain
@@ -1076,7 +1069,7 @@ ep3_frankokratia_events.0004 = {
 		custom_tooltip = abandon_crusade_emp_tooltip
 		custom_tooltip = franko_emp_crusade_tooltip
 		custom_tooltip = byz_empire__destroyed_tooltip
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = medium_stress_impact_gain
 			paranoid = medium_stress_impact_gain
 		}
@@ -1092,7 +1085,7 @@ ep3_frankokratia_events.0005 = {
 		desc = ep3_frankokratia_events.0005.opening
 	}
 	desc = ep3_frankokratia_events.0005.desc
-		
+
 	sender = scope:invalidation_sender
 
 	immediate = {
@@ -1101,24 +1094,22 @@ ep3_frankokratia_events.0005 = {
 		}
 		global_var:byz_claimant_champion = {
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				var:byz_claimant = {
 					save_scope_as = claimant
 				}
 			}
-		}	
+		}
 	}
 	#Alright, it's over
 	option = {
 		name = ep3_frankokratia_events.0005.a
-		
+
 		custom_tooltip = frankokratia_story_ends_tooltip
 		if = {
 			limit = {
 				any_owned_story = {
-					story_type = frankokratia_story
+					type = frankokratia_story
 				}
 			}
 			ep3_frankokratia_end_story_effect = yes
@@ -1187,14 +1178,12 @@ ep3_frankokratia_events.0020 = {
 			random_faith_ruler = {
 				limit = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 				save_scope_as = redirecter
 				random_owned_story = {
-					limit = {
-						story_type = frankokratia_story
-					}
+					type = frankokratia_story
 					var:byz_claimant = { save_scope_as = byz_claimant }
 					var:financier_title.holder = { save_scope_as = financier }
 				}
@@ -1234,9 +1223,7 @@ ep3_frankokratia_events.0020 = {
 		scope:redirecter = {
 			add_character_flag = joining_frankokratia
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				make_story_owner = root
 				set_variable = {
 					name = byz_claimant_champion
@@ -1276,7 +1263,7 @@ ep3_frankokratia_events.0020 = {
 						is_ruler = yes
 						any_spouse = {
 							is_ai = no
-							NOT = { this = root }
+							this != root
 						}
 					}
 				}
@@ -1295,7 +1282,7 @@ ep3_frankokratia_events.0020 = {
 				target = scope:pope
 				opinion = -50
 			}
-			
+
 		}
 		else_if = {
 			limit = {
@@ -1323,10 +1310,10 @@ ep3_frankokratia_events.0020 = {
 					has_character_flag = pope_condemned_crusader_claim
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				ambitious = medium_stress_impact_loss
 				greedy = medium_stress_impact_loss
-	
+
 				zealous = massive_stress_impact_gain
 				just = major_stress_impact_gain
 				humble = major_stress_impact_gain
@@ -1335,10 +1322,10 @@ ep3_frankokratia_events.0020 = {
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				ambitious = medium_stress_impact_loss
 				greedy = medium_stress_impact_loss
-	
+
 				just = medium_stress_impact_gain
 				humble = medium_stress_impact_gain
 				content = medium_stress_impact_gain
@@ -1357,9 +1344,7 @@ ep3_frankokratia_events.0020 = {
 		custom_tooltip = crusaders_may_be_paid_tooltip
 		scope:redirecter = {
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				add_to_variable_list = {
  					name = frankokratia_leaders
  					target = root
@@ -1373,10 +1358,10 @@ ep3_frankokratia_events.0020 = {
 							limit = { this != global_var:byz_claimant_champion }
 							add = 1
 						}
-						
+
 					}
 				}
-				
+
 				every_in_list = {
 					variable = frankokratia_leaders
 					limit = {
@@ -1403,7 +1388,7 @@ ep3_frankokratia_events.0020 = {
 				target = scope:pope
 				opinion = -25
 			}
-			
+
 		}
 		else_if = {
 			limit = {
@@ -1425,7 +1410,7 @@ ep3_frankokratia_events.0020 = {
 					has_character_flag = pope_condemned_crusader_claim
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				zealous = major_stress_impact_gain
 				just = medium_stress_impact_gain
 				humble = minor_stress_impact_gain
@@ -1433,7 +1418,7 @@ ep3_frankokratia_events.0020 = {
 			}
 		}
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				just = medium_stress_impact_gain
 				content = medium_stress_impact_gain
 			}
@@ -1527,8 +1512,8 @@ ep3_frankokratia_events.0020 = {
 			target = scope:redirecter
 			opinion = -25
 		}
-		
-		stress_impact = {
+
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
 			arbitrary = medium_stress_impact_gain
@@ -1620,7 +1605,7 @@ ep3_frankokratia_events.0021 = {
 				is_alive = yes
 				is_ruler = yes
 				any_owned_story = {
-					story_type = frankokratia_story
+					type = frankokratia_story
 					is_target_in_variable_list = {
 						name = frankokratia_leaders
 						target = root
@@ -1661,7 +1646,7 @@ ep3_frankokratia_events.0021 = {
 					is_alive = yes
 					is_ruler = yes
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 						is_target_in_variable_list = {
 							name = frankokratia_leaders
 							target = root
@@ -1678,9 +1663,7 @@ ep3_frankokratia_events.0021 = {
 				}
 				global_var:byz_claimant_champion = {
 					random_owned_story = {
-						limit = {
-							story_type = frankokratia_story
-						}
+						type = frankokratia_story
 						add_to_variable_list = {
 							name = frankokratia_leaders
 							target = root.player_heir
@@ -1698,9 +1681,7 @@ ep3_frankokratia_events.0021 = {
 				}
 				global_var:byz_claimant_champion = {
 					random_owned_story = {
-						limit = {
-							story_type = frankokratia_story
-						}
+						type = frankokratia_story
 						add_to_variable_list = {
 							name = frankokratia_leaders
 							target = root.primary_heir
@@ -1717,7 +1698,7 @@ ep3_frankokratia_events.0030 = {
 	type = character_event
 	title = ep3_frankokratia_events.0030.t
 	desc = ep3_frankokratia_events.0030.desc
-			
+
 	theme = byzantine
 	override_background = {
 		trigger = {
@@ -1729,7 +1710,7 @@ ep3_frankokratia_events.0030 = {
 					}
 				}
 				capital_county = {
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 				}
 			}
 		}
@@ -1745,7 +1726,7 @@ ep3_frankokratia_events.0030 = {
 			}
 			NOT = {
 				capital_county = {
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 				}
 			}
 		}
@@ -1780,9 +1761,7 @@ ep3_frankokratia_events.0030 = {
 		global_var:byz_claimant_champion = {
 			save_scope_as = byz_claimant_champion
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				var:financier_title.holder ?= { save_scope_as = financier }
 				save_scope_as = frankokratia_story
 			}
@@ -1806,9 +1785,7 @@ ep3_frankokratia_events.0030 = {
 		custom_tooltip = frankokratia_war_begins_tooltip
 		if = {
 			limit = {
-				NOT = {
-					this = scope:byz_claimant_champion
-				}
+				this != scope:byz_claimant_champion
 			}
 			custom_tooltip = frankokratia_war_join_tooltip
 		}
@@ -1821,7 +1798,7 @@ ep3_frankokratia_events.0030 = {
 
 	option = {
 		name = ep3_frankokratia_events.0030.a
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = minor_stress_impact_loss
 			ambitious = minor_stress_impact_loss
 			zealous = miniscule_stress_impact_loss
@@ -1894,9 +1871,7 @@ ep3_frankokratia_events.0031 = {
 		global_var:byz_claimant_champion = {
 			save_scope_as = byz_claimant_champion
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				var:financier_title.holder = {
 					save_scope_as = financier
 				}
@@ -1945,28 +1920,26 @@ ep3_frankokratia_events.0040 = {
 	trigger = {
 		NOT = { has_character_flag = had_frankokratia_events_0040 }
 	}
-	
+
 	immediate = {
 		random_ruler = {
 			limit = {
 				any_owned_story = {
-					story_type = frankokratia_story
+					type = frankokratia_story
 				}
 			}
 			save_scope_as = byz_claimant_champion
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story
-				}
+				type = frankokratia_story
 				var:financier_title.holder ?= { save_scope_as = financier }
 				save_scope_as = frankokratia_story
 			}
 		}
 		#Previous emperor needs to take the treasury
 		scope:claimant = {
-			pay_short_term_gold = {
+			pay_treasury_or_gold = {
 				target = scope:defender
-				gold = 325
+				value = 325
 			}
 		}
 		title:e_byzantium.holder = { ep3_frankokratia_save_financier_sate_lands_effect = yes }
@@ -1994,14 +1967,14 @@ ep3_frankokratia_events.0040 = {
 			limit = {
 				any_maa_regiment = {
 					is_title_maa_regiment = yes
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 					NOT = { is_maa_type = varangian_guards }
 				}
 			}
 			random_maa_regiment = {
 				limit = {
 					is_title_maa_regiment = yes
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 					NOT = { is_maa_type = varangian_guards }
 				}
 				save_scope_as = regiment_2
@@ -2012,13 +1985,13 @@ ep3_frankokratia_events.0040 = {
 				any_maa_regiment = {
 					is_title_maa_regiment = yes
 					is_maa_type = cataphract
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 				}
 			}
 			random_maa_regiment = {
 				limit = {
 					is_title_maa_regiment = yes
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 					is_maa_type = cataphract
 				}
 				save_scope_as = regiment_2
@@ -2028,14 +2001,14 @@ ep3_frankokratia_events.0040 = {
 			limit = {
 				any_maa_regiment = {
 					is_title_maa_regiment = yes
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 					NOT = { is_maa_type = varangian_guards }
 				}
 			}
 			random_maa_regiment = {
 				limit = {
 					is_title_maa_regiment = yes
-					NOT = { this = scope:regiment_1 }
+					this != scope:regiment_1
 					NOT = { is_maa_type = varangian_guards }
 				}
 				save_scope_as = regiment_2
@@ -2047,7 +2020,7 @@ ep3_frankokratia_events.0040 = {
 		show_as_tooltip = {
 			ep3_frankokratia_paying_off_latins_effect = yes
 		}
-		
+
 		scope:attacker = {
 			trigger_event = ep3_frankokratia_events.0041
 		}
@@ -2095,13 +2068,13 @@ ep3_frankokratia_events.0040 = {
 	#There simply ISN'T any money
 	option = {
 		show_as_tooltip = {
-			pay_short_term_gold = {
+			pay_treasury_or_gold = {
 				target = scope:attacker
-				gold = minor_gold_value
+				value = minor_treasury_or_gold_value
 			}
-			pay_short_term_gold = {
+			pay_treasury_or_gold = {
 				target = scope:financier
-				gold = minor_gold_value
+				value = minor_treasury_or_gold_value
 			}
 		}
 		scope:attacker = {
@@ -2147,10 +2120,10 @@ ep3_frankokratia_events.0041 = {
 			}
 			desc = ep3_frankokratia_events.0041.not_trying_to_pay
 		}
-	} 
-			
+	}
+
 	theme = byzantine
-	
+
 	override_background = {
 		reference = ep3_byzantium_throneroom
 	}
@@ -2235,7 +2208,7 @@ ep3_frankokratia_events.0041 = {
     		}
     	}
     }
-	
+
 	immediate = {
 		add_character_flag = need_military_outfit
 		#Get those dead guys and nobodies and heathens outta here
@@ -2335,10 +2308,10 @@ ep3_frankokratia_events.0041 = {
 	option = {
 		name = ep3_frankokratia_events.0041.a
 		flavor = ep3_frankokratia_events.0041.a.flavor
-		
+
 		ep3_frankokratia_capital_sacking_effect = yes
 		custom_tooltip = frankokratia_latin_emp_army_tooltip
-		
+
 		#Stress if choice is between sacking or not being paid
 		if = {
 			limit = {
@@ -2346,7 +2319,7 @@ ep3_frankokratia_events.0041 = {
 					NOT = { has_character_flag = paying_off_latins }
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				compassionate = major_stress_impact_gain
 				forgiving = major_stress_impact_gain
 				content = major_stress_impact_gain
@@ -2354,14 +2327,14 @@ ep3_frankokratia_events.0041 = {
 		}
 		#Stress if you could choose payment
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				compassionate = massive_stress_impact_gain
 				forgiving = massive_stress_impact_gain
 				zealous = medium_stress_impact_gain
 				content = massive_stress_impact_gain
 			}
 		}
-		
+
 		ai_chance = {
 			base = 200
 			ai_value_modifier = {
@@ -2422,7 +2395,7 @@ ep3_frankokratia_events.0041 = {
 			}
 		}
 	}
-	
+
 	#Even without being paid... I'll try to send the men home
 	option = {
 		name = ep3_frankokratia_events.0041.b
@@ -2456,13 +2429,13 @@ ep3_frankokratia_events.0041 = {
 					dread >= 75
 					add = 20
 				}
-				
+
 				send_interface_toast = {
 					title = ep3_frankokratia_events.0041.b_success
 					type = event_toast_effect_good
 					left_icon = root
 					right_icon = scope:claimant
-					
+
 					if = {
 						limit = {
 							has_lifestyle = martial_lifestyle
@@ -2533,7 +2506,7 @@ ep3_frankokratia_events.0041 = {
 					limit = {
 						global_var:byz_claimant_champion ?= {
 							any_owned_story = {
-								story_type = frankokratia_story
+								type = frankokratia_story
 							}
 						}
 					}
@@ -2565,7 +2538,7 @@ ep3_frankokratia_events.0041 = {
 					type = event_toast_effect_bad
 					left_icon = root
 					right_icon = scope:claimant
-					
+
 					add_stress = massive_stress_impact_gain
 					custom_tooltip = ep3_frankokratia.0041_effects_from_a_tooltip
 					hidden_effect = {
@@ -2574,7 +2547,7 @@ ep3_frankokratia_events.0041 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = major_stress_impact_gain
 			ambitious = major_stress_impact_gain
 			sadistic = major_stress_impact_gain
@@ -2683,7 +2656,7 @@ ep3_frankokratia_events.0041 = {
 			limit = {
 				global_var:byz_claimant_champion ?= {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 			}
@@ -2694,7 +2667,7 @@ ep3_frankokratia_events.0041 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = major_stress_impact_gain
 			ambitious = major_stress_impact_gain
 			vengeful = major_stress_impact_gain
@@ -2718,7 +2691,7 @@ ep3_frankokratia_events.0041 = {
 			}
 		}
 	}
-	
+
 	after = {
 		every_player = {
 			limit = {
@@ -2767,8 +2740,8 @@ ep3_frankokratia_events.0042 = {
 			desc = ep3_frankokratia_events.0042.constantinople
 		}
 		desc = ep3_frankokratia_events.0042.desc_outro
-	} 
-			
+	}
+
 	theme = byzantine
 	window = visit_settlement_window
 	override_background = {
@@ -2806,7 +2779,7 @@ ep3_frankokratia_events.0042 = {
 	lower_center_portrait = {
 		character = scope:emp_beneficiary
 	}
-	
+
 	immediate = {
 		play_music_cue = "mx_cue_combat_2"
 		add_character_flag = need_military_outfit
@@ -2862,7 +2835,7 @@ ep3_frankokratia_events.0042 = {
 			}
 			if = {
 				limit = {
-					is_independent_ruler = no
+					top_liege != this
 				}
 				set_variable = {
 					name = old_liege
@@ -2870,14 +2843,12 @@ ep3_frankokratia_events.0042 = {
 				}
 			}
 		}
-		
+
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			save_scope_as = frankokratia_story
 		}
-		
+
 		#Save player crusaders in order of strength
 		if = {
 			limit = {
@@ -2885,7 +2856,7 @@ ep3_frankokratia_events.0042 = {
 					any_in_list = {
 						variable = frankokratia_leaders
 						is_ai = no
-						NOT = { this = root }
+						this != root
 						has_character_flag = frankokratia_sufficient_warscore
 					}
 				}
@@ -2896,7 +2867,7 @@ ep3_frankokratia_events.0042 = {
 					order_by = max_military_strength
 					limit = {
 						is_ai = no
-						NOT = { this = root }
+						this != root
 						has_character_flag = frankokratia_sufficient_warscore
 					}
 					save_scope_as = player_1
@@ -2955,7 +2926,7 @@ ep3_frankokratia_events.0042 = {
 		add_to_list = gained_latin_emp_titles
 		ep3_frankokratia_grant_latin_empire_effect = yes
 		ep3_frankokratia_clear_old_lands_change_capital_effect = yes
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_loss
 			zealous = minor_stress_impact_loss
 			humble = medium_stress_impact_gain
@@ -2986,18 +2957,16 @@ ep3_frankokratia_events.0042 = {
 				factor = 0
 				OR = {
 					AND = {
-						exists = scope:player_1
-						scope:player_1 = {
+						scope:player_1 ?= {
 							has_character_flag = frankokratia_high_warscore
 						}
 					}
 					AND = {
-						exists = scope:player_2
-						scope:player_2 = {
+						scope:player_2 ?= {
 							has_character_flag = frankokratia_high_warscore
 						}
 					}
-					highest_held_title_tier = tier_empire
+					highest_held_title_tier >= tier_empire
 				}
 			}
 		}
@@ -3013,7 +2982,7 @@ ep3_frankokratia_events.0042 = {
 
 		add_character_flag = franko_granting_to_player
 		scope:player_1 = { trigger_event = ep3_frankokratia_events.0044 }
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			ambitious = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -3044,7 +3013,7 @@ ep3_frankokratia_events.0042 = {
 		scope:player_2 = { save_scope_as = latin_empire_receiver }
 		add_character_flag = franko_granting_to_player
 		scope:player_2 = { trigger_event = ep3_frankokratia_events.0044 }
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			ambitious = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -3080,7 +3049,7 @@ ep3_frankokratia_events.0042 = {
 		}
 
 		ep3_frankokratia_grant_latin_empire_effect = yes
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			just = minor_stress_impact_loss
 			paranoid = minor_stress_impact_gain
@@ -3141,7 +3110,7 @@ ep3_frankokratia_events.0042 = {
 			add_trait = despoiler_of_byzantium
 		}
 		ep3_frankokratia_grant_latin_empire_effect = yes
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			ambitious = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -3161,7 +3130,7 @@ ep3_frankokratia_events.0042 = {
 		scope:latin_emperor = {
 			add_trait = despoiler_of_byzantium
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			ambitious = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -3179,7 +3148,7 @@ ep3_frankokratia_events.0042 = {
 			add_trait = despoiler_of_byzantium
 		}
 		ep3_frankokratia_grant_latin_empire_effect = yes
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = minor_stress_impact_loss
 			ambitious = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -3214,7 +3183,7 @@ ep3_frankokratia_events.0042 = {
 			}
 		}
 	}
-	
+
 	after = {
 		remove_character_flag = need_military_outfit
 		#trigger hidden event that distributes lands when latin emp is chosen
@@ -3239,7 +3208,7 @@ ep3_frankokratia_events.0043 = {
 			ep3_latin_empire_grant_financier_lands_effect = yes
 		}
 		ep3_frankokratia_distribute_lands_to_crusaders_effect = yes
-		
+
 		#If latin emperor only has one county, just shatter byzantine empire
 		if = {
 			limit = {
@@ -3247,9 +3216,7 @@ ep3_frankokratia_events.0043 = {
 				scope:latin_emperor = {
 					NOT = {
 						any_realm_county = {
-							NOT = {
-								this = scope:latin_emperor.capital_county
-							}
+							this != scope:latin_emperor.capital_county
 						}
 					}
 				}
@@ -3290,7 +3257,7 @@ ep3_frankokratia_events.0044 = {
 			triggered_desc = {
 				trigger = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 				desc = ep3_frankokratia_events.0044.desc_past_tense
@@ -3307,7 +3274,7 @@ ep3_frankokratia_events.0044 = {
 			desc = ep3_frankokratia_events.0044.outro_lord
 		}
 	}
-			
+
 	theme = byzantine
 	override_background = {
 		trigger = {
@@ -3322,7 +3289,7 @@ ep3_frankokratia_events.0044 = {
 		reference = burning_building
 	}
 	override_effect_2d = {
-		reference = smoke	
+		reference = smoke
 	}
 	left_portrait = {
 		character = root
@@ -3341,7 +3308,7 @@ ep3_frankokratia_events.0044 = {
 
 	trigger = {
 	}
-	
+
 	immediate = {
 		add_dread = major_dread_gain
 		#Clear last character's list entries
@@ -3474,7 +3441,7 @@ ep3_frankokratia_events.0044 = {
 				limit = {
 					NOR = {
 						tier = tier_barony
-						tier = tier_empire
+						tier >= tier_empire
 					}
 					NOR = {
 						this = scope:latin_capital.kingdom
@@ -3492,15 +3459,15 @@ ep3_frankokratia_events.0044 = {
 				add_to_list = root_old_titles
 			}
 			every_held_title = {
+				title_tier = empire
 				limit = {
-					tier = tier_empire
 					NOT = {
 						this = title:e_latin_empire
 					}
 				}
 				add_to_list = root_old_titles
 			}
-			
+
 			every_vassal = {
 				limit = {
 					primary_title = {
@@ -3522,7 +3489,7 @@ ep3_frankokratia_events.0044 = {
 			}
 			if = {
 				limit = {
-					is_independent_ruler = no
+					top_liege != this
 				}
 				set_variable = {
 					name = old_liege
@@ -3532,9 +3499,7 @@ ep3_frankokratia_events.0044 = {
 		}
 		if = {
 			limit = {
-				NOT = {
-					this = scope:attacker
-				}
+				this != scope:attacker
 			}
 			add_short_term_gold = ep3_sacking_byz_capital_payoff_value
 		}
@@ -3558,20 +3523,20 @@ ep3_frankokratia_events.0044 = {
 		}
 		name = {
 			trigger = {
-				NOT = { this = scope:latin_empire_receiver }
+				this != scope:latin_empire_receiver
 			}
 			text = ep3_frankokratia_events.0044.a
 		}
 		#Add flag to track whether the granting process is complete
 		add_to_list = gained_latin_emp_titles
-		
+
 		if = {
 			limit = {
 				this = scope:latin_empire_receiver
 			}
 			save_scope_as = latin_emperor
 			ep3_frankokratia_grant_latin_empire_effect = yes
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				arrogant = minor_stress_impact_loss
 				zealous = minor_stress_impact_loss
 				humble = medium_stress_impact_gain
@@ -3584,7 +3549,7 @@ ep3_frankokratia_events.0044 = {
 		else = {
 			save_scope_as = latin_title_gainer
 			ep3_frankokratia_grant_latin_lands_effect = yes
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				zealous = minor_stress_impact_loss
 				content = medium_stress_impact_gain
 				lazy = minor_stress_impact_gain
@@ -3593,7 +3558,7 @@ ep3_frankokratia_events.0044 = {
 			}
 		}
 		ep3_frankokratia_clear_old_lands_change_capital_effect = yes
-		
+
 		ai_chance = {
 			base = 50
 			ai_value_modifier = {
@@ -3630,9 +3595,9 @@ ep3_frankokratia_events.0044 = {
 	#I choose beneficiary 3
 	option = {
 		trigger = {
-			OR = {
-				has_variable = emp_beneficiary_3
-				has_variable = beneficiary_3
+			has_variable = {
+				name = emp_beneficiary_3
+				name = beneficiary_3
 			}
 			is_ai = no
 		}
@@ -3644,7 +3609,7 @@ ep3_frankokratia_events.0044 = {
 		}
 		name = {
 			trigger = {
-				NOT = { this = scope:latin_empire_receiver }
+				this != scope:latin_empire_receiver
 			}
 			text = ep3_frankokratia_events.0044.b
 		}
@@ -3659,7 +3624,7 @@ ep3_frankokratia_events.0044 = {
 				add_trait = despoiler_of_byzantium
 			}
 			ep3_frankokratia_grant_latin_empire_effect = yes
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				trusting = minor_stress_impact_loss
 				ambitious = minor_stress_impact_gain
 				greedy = minor_stress_impact_gain
@@ -3679,9 +3644,9 @@ ep3_frankokratia_events.0044 = {
 	#I choose beneficiary 2
 	option = {
 		trigger = {
-			OR = {
-				has_variable = emp_beneficiary_2
-				has_variable = beneficiary_2
+			has_variable = {
+				name = emp_beneficiary_2
+				name = beneficiary_2
 			}
 			is_ai = no
 		}
@@ -3693,7 +3658,7 @@ ep3_frankokratia_events.0044 = {
 		}
 		name = {
 			trigger = {
-				NOT = { this = scope:latin_empire_receiver }
+				this != scope:latin_empire_receiver
 			}
 			text = ep3_frankokratia_events.0044.c
 		}
@@ -3708,7 +3673,7 @@ ep3_frankokratia_events.0044 = {
 				add_trait = despoiler_of_byzantium
 			}
 			ep3_frankokratia_grant_latin_empire_effect = yes
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				trusting = minor_stress_impact_loss
 				ambitious = minor_stress_impact_gain
 				greedy = minor_stress_impact_gain
@@ -3735,7 +3700,7 @@ ep3_frankokratia_events.0044 = {
 		}
 		name = {
 			trigger = {
-				NOT = { this = scope:latin_empire_receiver }
+				this != scope:latin_empire_receiver
 			}
 			text = ep3_frankokratia_events.0044.d
 		}
@@ -3750,7 +3715,7 @@ ep3_frankokratia_events.0044 = {
 				add_trait = despoiler_of_byzantium
 			}
 			ep3_frankokratia_grant_latin_empire_effect = yes
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				trusting = minor_stress_impact_loss
 				ambitious = minor_stress_impact_gain
 				greedy = minor_stress_impact_gain
@@ -3786,7 +3751,7 @@ ep3_frankokratia_events.0044 = {
 			}
 		}
 	}
-	
+
 	after = {
 		clear_saved_scope = beneficiary
 		if = {
@@ -3801,7 +3766,7 @@ ep3_frankokratia_events.0044 = {
 			}
 			clear_saved_scope = beneficiary_3
 		}
-	
+
 		#If this is the empire receiver, fire title distribution event
 		if = {
 			limit = {
@@ -3917,7 +3882,7 @@ ep3_frankokratia_events.0045 = {
 		#Show leaving unpaid effects to non-story owner players
 		if = {
 			limit = {
-				NOT = { this = scope:attacker }
+				this != scope:attacker
 				scope:claimant = {
 					NOT = {
 						has_character_modifier = bent_before_crusaders_modifier
@@ -3948,7 +3913,7 @@ ep3_frankokratia_events.0045 = {
 		#Show payoff effects to non-story owner players
 		else_if = {
 			limit = {
-				NOT = { this = scope:attacker }
+				this != scope:attacker
 				scope:claimant = {
 					has_character_modifier = bent_before_crusaders_modifier
 				}
@@ -4016,7 +3981,7 @@ ep3_frankokratia_events.0045 = {
 				claimant = scope:claimant
 			}
 		}
-		
+
 	}
 
 	#join the crusade, if it's still happening
@@ -4027,7 +3992,7 @@ ep3_frankokratia_events.0045 = {
 				any_character_war = {
 					using_cb = undirected_great_holy_war
 					is_attacker = prev
-					
+
 				}
 			}
 			faith = faith:catholic
@@ -4042,7 +4007,7 @@ ep3_frankokratia_events.0045 = {
 				add_attacker = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			lazy = minor_stress_impact_gain
 			fickle = minor_stress_impact_gain
@@ -4081,7 +4046,7 @@ ep3_frankokratia_events.0045 = {
 				faith = scope:attacker.faith
 			}
 			add_piety = major_piety_loss
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				zealous = major_stress_impact_gain
 				diligent = minor_stress_impact_gain
 				honest = minor_stress_impact_gain
@@ -4270,7 +4235,7 @@ ep3_frankokratia_events.0046 = {
 				}
 			}
 		}
-		
+
 		if = {
 			limit = { root = scope:latin_emperor }
 			trigger_event = {
@@ -4379,9 +4344,7 @@ ep3_frankokratia_events.0050 = {
 		}
 		#Bye bye Byzantium... and equivalents
 		every_held_title = {
-			limit = {
-				tier = tier_empire
-			}
+			title_tier = empire
 			root = {
 				destroy_title = prev
 			}
@@ -4397,27 +4360,10 @@ ep3_frankokratia_events.0050 = {
 					}
 				}
 				highest_held_title_tier >= tier_county
+				highest_held_title_tier < tier_kingdom
+				government_has_mechanic = administrative
 			}
-			if = {
-				limit = {
-					OR = {
-						religion = religion:islam_religion
-						culture = { has_cultural_pillar = heritage_iranian }
-						culture = { has_cultural_pillar = heritage_turkic }
-						culture = { has_cultural_pillar = heritage_arabic }
-					}
-					highest_held_title_tier < tier_kingdom
-					government_has_flag = government_is_administrative
-				}
-				change_government = clan_government
-			}
-			else_if = {
-				limit = {
-					highest_held_title_tier < tier_kingdom
-					government_has_flag = government_is_administrative
-				}
-				change_government = feudal_government
-			}
+			assign_feudal_governments_effect = yes
 			create_character_memory = {
 				type = frankokratia_byz_independent_memory
 			}
@@ -4428,7 +4374,7 @@ ep3_frankokratia_events.0050 = {
 			becomes_independent = { change = scope:change }
 			resolve_title_and_vassal_change = scope:change
 		}
-		
+
 		#If the emperor is independent and below king make him and his vassals switch from admin
 		if = {
 			limit = {
@@ -4440,46 +4386,20 @@ ep3_frankokratia_events.0050 = {
 					}
 				}
 			}
-			if = {
-				limit = {
-					OR = {
-						religion = religion:islam_religion
-						culture = { has_cultural_pillar = heritage_iranian }
-						culture = { has_cultural_pillar = heritage_turkic }
-						culture = { has_cultural_pillar = heritage_arabic }
-					}
-				}
-				change_government = clan_government
-			}
-			else = {
-				change_government = feudal_government
-			}
+			assign_feudal_governments_effect = yes
 			if = {
 				limit = {
 					any_vassal = {
 						is_landed = yes
-						government_has_flag = government_is_administrative
+						government_has_mechanic = administrative
 					}
 				}
 				every_vassal_or_below = {
 					limit = {
 						is_landed = yes
-						government_has_flag = government_is_administrative
+						government_has_mechanic = administrative
 					}
-					if = {
-						limit = {
-							OR = {
-								religion = religion:islam_religion
-								culture = { has_cultural_pillar = heritage_iranian }
-								culture = { has_cultural_pillar = heritage_turkic }
-								culture = { has_cultural_pillar = heritage_arabic }
-							}
-						}
-						change_government = clan_government
-					}
-					else = {
-						change_government = feudal_government
-					}
+					assign_feudal_governments_effect = yes
 				}
 			}
 		}
@@ -4525,7 +4445,7 @@ ep3_frankokratia_events.0050 = {
 			limit = {
 				global_var:byz_claimant_champion ?= {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 			}
@@ -4577,7 +4497,7 @@ ep3_frankokratia_events.0060 = {
 			desc = ep3_frankokratia_events.0060.desc_loss
 		}
 	}
-			
+
 	theme = byzantine
 	override_background = {
 		trigger = {
@@ -4859,11 +4779,11 @@ ep3_frankokratia_events.0060 = {
 			}
 			remove_character_flag = frankokratia_crusaders_paid_outcome
 		}
-		
+
 		if = {
 			limit = {
 				any_owned_story = {
-					story_type = frankokratia_story
+					type = frankokratia_story
 				}
 			}
 			ep3_frankokratia_end_story_effect = yes
@@ -4878,7 +4798,7 @@ ep3_frankokratia_events.0061 = {
 		if = {
 			limit = {
 				any_owned_story = {
-					story_type = frankokratia_story
+					type = frankokratia_story
 				}
 			}
 			ep3_frankokratia_end_story_effect = yes
@@ -4896,9 +4816,7 @@ ep3_frankokratia_events.0070 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					NOT = {
-						this = scope:byz_claimant_champion
-					}
+					this != scope:byz_claimant_champion
 				}
 				desc = ep3_frankokratia_events.0070.rando_emp
 			}
@@ -5231,9 +5149,7 @@ ep3_frankokratia_events.0070 = {
 		else_if = {
 			limit = {
 				any_realm_county = {
-					any_county_province = {
-						is_coastal = yes
-					}
+					has_coastal_province = yes
 					NOT = {
 						scope:financier = {
 							has_claim_on = prev
@@ -5243,9 +5159,7 @@ ep3_frankokratia_events.0070 = {
 			}
 			random_realm_county = {
 				limit = {
-					any_county_province = {
-						is_coastal = yes
-					}
+					has_coastal_province = yes
 					NOT = {
 						scope:financier = {
 							has_claim_on = prev
@@ -5285,7 +5199,7 @@ ep3_frankokratia_events.0070 = {
 				years = 30
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = minor_stress_impact_loss
 			greedy = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -5360,7 +5274,7 @@ ep3_frankokratia_events.0070 = {
 				add_pressed_claim = scope:financier_claim
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = medium_stress_impact_gain
 			craven = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
@@ -5485,22 +5399,18 @@ ep3_frankokratia_events.0080 = {
 					save_scope_as = kingdom_1
 				}
 			}
-			
+
 			if = {
 				limit = {
 					any_in_de_jure_hierarchy = {
 						ep3_frankokratia_events_0080_kingdom_trigger = yes
-						NOT = {
-							this = scope:kingdom_1
-						}
+						this != scope:kingdom_1
 					}
 				}
 				random_in_de_jure_hierarchy = {
 					limit = {
 						ep3_frankokratia_events_0080_kingdom_trigger = yes
-						NOT = {
-							this = scope:kingdom_1
-						}
+						this != scope:kingdom_1
 					}
 					save_scope_as = kingdom_2
 				}
@@ -5663,9 +5573,7 @@ ep3_frankokratia_events.0080 = {
 		if = {
 			limit = {
 				scope:kingdom_1.holder = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 			}
 			reverse_add_opinion = {
@@ -5676,7 +5584,7 @@ ep3_frankokratia_events.0080 = {
 		}
 		else_if = {
 			limit = {
-				government_allows = administrative
+				government_has_flag = government_has_influence
 			}
 			change_influence = major_influence_gain
 		}
@@ -5735,9 +5643,7 @@ ep3_frankokratia_events.0080 = {
 		if = {
 			limit = {
 				scope:kingdom_2.holder = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 			}
 			reverse_add_opinion = {
@@ -5748,7 +5654,7 @@ ep3_frankokratia_events.0080 = {
 		}
 		else_if = {
 			limit = {
-				government_allows = administrative
+				government_has_flag = government_has_influence
 			}
 			change_influence = major_influence_gain
 		}
@@ -5808,9 +5714,7 @@ ep3_frankokratia_events.0080 = {
 		if = {
 			limit = {
 				scope:kingdom_3.holder = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 			}
 			reverse_add_opinion = {
@@ -5821,7 +5725,7 @@ ep3_frankokratia_events.0080 = {
 		}
 		else_if = {
 			limit = {
-				government_allows = administrative
+				government_has_flag = government_has_influence
 			}
 			change_influence = major_influence_gain
 		}
@@ -5881,9 +5785,7 @@ ep3_frankokratia_events.0080 = {
 		if = {
 			limit = {
 				scope:kingdom_4.holder = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 			}
 			reverse_add_opinion = {
@@ -5894,7 +5796,7 @@ ep3_frankokratia_events.0080 = {
 		}
 		else_if = {
 			limit = {
-				government_allows = administrative
+				government_has_flag = government_has_influence
 			}
 			change_influence = major_influence_gain
 		}
@@ -5954,9 +5856,7 @@ ep3_frankokratia_events.0080 = {
 		if = {
 			limit = {
 				scope:kingdom_5.holder = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 			}
 			reverse_add_opinion = {
@@ -5967,7 +5867,7 @@ ep3_frankokratia_events.0080 = {
 		}
 		else_if = {
 			limit = {
-				government_allows = administrative
+				government_has_flag = government_has_influence
 			}
 			change_influence = major_influence_gain
 		}
@@ -5994,9 +5894,7 @@ ep3_frankokratia_events.0080 = {
 					any_in_de_jure_hierarchy = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 				}
@@ -6006,9 +5904,7 @@ ep3_frankokratia_events.0080 = {
 					limit = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 					if = {
@@ -6030,9 +5926,7 @@ ep3_frankokratia_events.0080 = {
 					any_in_de_jure_hierarchy = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 				}
@@ -6042,9 +5936,7 @@ ep3_frankokratia_events.0080 = {
 					limit = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 					if = {
@@ -6089,7 +5981,7 @@ ep3_frankokratia_events.0081 = {
 
 scripted_trigger ep3_frankokratia_events_0090_kingdom_trigger = {
 	tier = tier_kingdom
-	
+
 	NOT = { this = title:e_latin_empire }
 	OR = {
 		#Controls entire kingdom
@@ -6101,8 +5993,7 @@ scripted_trigger ep3_frankokratia_events_0090_kingdom_trigger = {
 		}
 		#Controls half and has de jure title
 		AND = {
-			exists = holder
-			holder = {
+			holder ?= {
 				top_liege = root
 			}
 			OR = {
@@ -6354,22 +6245,18 @@ ep3_frankokratia_events.0090 = {
 					save_scope_as = kingdom_1
 				}
 			}
-			
+
 			if = {
 				limit = {
 					any_in_de_jure_hierarchy = {
 						ep3_frankokratia_events_0090_kingdom_trigger = yes
-						NOT = {
-							this = scope:kingdom_1
-						}
+						this != scope:kingdom_1
 					}
 				}
 				random_in_de_jure_hierarchy = {
 					limit = {
 						ep3_frankokratia_events_0090_kingdom_trigger = yes
-						NOT = {
-							this = scope:kingdom_1
-						}
+						this != scope:kingdom_1
 					}
 					save_scope_as = kingdom_2
 				}
@@ -6687,9 +6574,7 @@ ep3_frankokratia_events.0090 = {
 					any_in_de_jure_hierarchy = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 				}
@@ -6699,9 +6584,7 @@ ep3_frankokratia_events.0090 = {
 					limit = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 					if = {
@@ -6723,9 +6606,7 @@ ep3_frankokratia_events.0090 = {
 					any_in_de_jure_hierarchy = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 				}
@@ -6735,9 +6616,7 @@ ep3_frankokratia_events.0090 = {
 					limit = {
 						holder ?= {
 							is_ai = no
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 					}
 					if = {
@@ -7045,7 +6924,12 @@ scripted_trigger ep3_frankokratia_events_0110_potential_king_trigger = {
 			}
 			OR = {
 				is_powerful_vassal_of = title:e_byzantium.holder
-				house ?= { is_powerful_family = yes }
+				trigger_if = {
+					limit = {
+						government_allows = noble_families
+					}
+					house ?= { is_powerful_family = yes }
+				}
 				#Let's just always let Nikaea do this, they special
 				capital_county = {
 					kingdom = title:k_nikaea
@@ -7097,7 +6981,7 @@ scripted_trigger ep3_frankokratia_events_0110_daddy_neighbor_trigger = {
 	trigger_if = {
 		limit = {
 			root = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 			OR = {
 				root = {
@@ -7106,7 +6990,7 @@ scripted_trigger ep3_frankokratia_events_0110_daddy_neighbor_trigger = {
 				exists = scope:daddy
 			}
 		}
-		government_has_flag = government_is_administrative
+		government_has_mechanic = administrative
 	}
 }
 
@@ -7137,9 +7021,7 @@ ep3_frankokratia_events.0110 = {
 	immediate = {
 		global_var:byz_claimant_champion = {
 			random_owned_story = {
-				limit = {
-					story_type = frankokratia_story	
-				}
+				type = frankokratia_story
 				var:financier_title.holder = {
 					save_scope_as = financier
 				}
@@ -7156,9 +7038,7 @@ ep3_frankokratia_events.0110 = {
 			scope:emperor = {
 				every_vassal = {
 					limit = {
-						NOT = {
-							this = root
-						}
+						this != root
 						ep3_frankokratia_events_0110_daddy_neighbor_trigger = yes
 					}
 					add_to_list = potential_daddies
@@ -7199,9 +7079,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7226,9 +7104,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7252,9 +7128,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7281,9 +7155,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7313,9 +7185,7 @@ ep3_frankokratia_events.0110 = {
 					order_by = realm_size
 					limit = {
 						highest_held_title_tier >= tier_kingdom
-						NOT = {
-							this = scope:daddy
-						}
+						this != scope:daddy
 					}
 					save_scope_as = daddy_2
 				}
@@ -7325,9 +7195,7 @@ ep3_frankokratia_events.0110 = {
 					list = potential_daddies
 					order_by = realm_size
 					limit = {
-						NOT = {
-							this = scope:daddy
-						}
+						this != scope:daddy
 					}
 					save_scope_as = daddy_2
 				}
@@ -7459,9 +7327,7 @@ ep3_frankokratia_events.0110 = {
 			limit = {
 				liege.liege ?= {
 					highest_held_title_tier < tier_empire
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 				is_landed = yes
 			}
@@ -7472,11 +7338,8 @@ ep3_frankokratia_events.0110 = {
 		else_if = {
 			limit = {
 				is_landed = yes
-				exists = liege
-				liege = {
-					NOT = {
-						this = root
-					}
+				liege ?= {
+					this != root
 					highest_held_title_tier <= tier_kingdom
 				}
 			}
@@ -7487,16 +7350,14 @@ ep3_frankokratia_events.0110 = {
 		#Save daddies for landless
 		if = {
 			limit = {
-				is_landless_ruler = yes
+				is_landless_administrative = yes
 			}
 			#Relatives first
-			if = {	
+			if = {
 				limit = {
 					scope:emperor = {
 						any_vassal = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7512,9 +7373,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7529,13 +7388,11 @@ ep3_frankokratia_events.0110 = {
 				}
 			}
 			#Vassals in same kingdom as estate
-			else_if = {	
+			else_if = {
 				limit = {
 					scope:emperor = {
 						any_vassal = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7551,9 +7408,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7572,9 +7427,7 @@ ep3_frankokratia_events.0110 = {
 					ordered_vassal = {
 						order_by = max_military_strength
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 							ep3_frankokratia_events_0110_potential_king_trigger = yes
 							NOT = {
 								government_has_flag = government_is_theocracy
@@ -7589,7 +7442,7 @@ ep3_frankokratia_events.0110 = {
 					exists = scope:daddy
 				}
 				#Relatives first for daddy 2
-				if = {	
+				if = {
 					limit = {
 						scope:emperor = {
 							any_vassal = {
@@ -7626,7 +7479,7 @@ ep3_frankokratia_events.0110 = {
 					}
 				}
 				#Vassals in same kingdom as estate
-				else_if = {	
+				else_if = {
 					limit = {
 						scope:emperor = {
 							any_vassal = {
@@ -7718,7 +7571,7 @@ ep3_frankokratia_events.0110 = {
 		}
 		if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 			custom_tooltip = byz_remain_admin_tt
 		}
@@ -7740,7 +7593,7 @@ ep3_frankokratia_events.0110 = {
 			limit = {
 				exists = scope:daddy
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				humble = medium_stress_impact_gain
 				craven = medium_stress_impact_gain
 				content = minor_stress_impact_gain
@@ -7785,9 +7638,9 @@ ep3_frankokratia_events.0110 = {
 		}
 		if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 				scope:daddy = {
-					government_has_flag = government_is_administrative
+					government_has_mechanic = administrative
 					ep3_frankokratia_events_0110_potential_king_trigger = yes
 				}
 			}
@@ -7795,7 +7648,7 @@ ep3_frankokratia_events.0110 = {
 		}
 		else_if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 			custom_tooltip = byz_become_feudal_or_clan_tt
 			custom_tooltip = frankokratia_lose_domicile_tt
@@ -7811,7 +7664,7 @@ ep3_frankokratia_events.0110 = {
 			limit = {
 				is_landed = yes
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				ambitious = minor_stress_impact_gain
 				arrogant = medium_stress_impact_gain
 				fickle = minor_stress_impact_gain
@@ -7864,9 +7717,9 @@ ep3_frankokratia_events.0110 = {
 		}
 		if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 				scope:daddy_2 = {
-					government_has_flag = government_is_administrative
+					government_has_mechanic = administrative
 					ep3_frankokratia_events_0110_potential_king_trigger = yes
 				}
 			}
@@ -7874,7 +7727,7 @@ ep3_frankokratia_events.0110 = {
 		}
 		else_if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 			custom_tooltip = byz_become_feudal_or_clan_tt
 			custom_tooltip = frankokratia_lose_domicile_tt
@@ -7890,7 +7743,7 @@ ep3_frankokratia_events.0110 = {
 			limit = {
 				is_landed = yes
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				ambitious = minor_stress_impact_gain
 				arrogant = medium_stress_impact_gain
 				fickle = minor_stress_impact_gain
@@ -7931,7 +7784,7 @@ ep3_frankokratia_events.0110 = {
 		custom_tooltip = byz_become_independent_tt
 		if = {
 			limit = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 			custom_tooltip = byz_become_feudal_or_clan_tt
 			custom_tooltip = frankokratia_lose_domicile_tt
@@ -7945,7 +7798,7 @@ ep3_frankokratia_events.0110 = {
 			limit = {
 				exists = scope:daddy
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				trusting = minor_stress_impact_gain
 				humble = minor_stress_impact_gain
 				craven = medium_stress_impact_gain
@@ -8053,7 +7906,7 @@ ep3_frankokratia_events.0120 = {
 		trigger = {
 			NOT = { capital_county = title:c_atlantis }
 		}
-		reference = ep3_mediterranean_estate
+		reference = estate
 	}
 	left_portrait = {
 		character = root
@@ -8066,23 +7919,20 @@ ep3_frankokratia_events.0120 = {
 		camera = camera_event_right_pointing_right
 	}
 	trigger = {
+		has_ep3_dlc_trigger = yes
 		government_has_flag = government_is_feudal
-		any_held_title = {
-			this = title:e_latin_empire
-		}
+		title:e_latin_empire.holder ?= this
 		is_alive = yes
 		is_imprisoned = no
 	}
 	on_trigger_fail = {
-		if = {
-			limit = {
-				exists = title:e_latin_empire.holder
-				title:e_latin_empire.holder = {
-					government_has_flag = government_is_feudal
+		title:e_latin_empire.holder ?= {
+			if = {
+				limit = { government_has_flag = government_is_feudal }
+				trigger_event = {
+					id = ep3_frankokratia_events.0120
+					days = 90
 				}
-			}
-			title:e_latin_empire.holder = {
-				trigger_event = ep3_frankokratia_events.0120
 			}
 		}
 	}
@@ -8091,7 +7941,7 @@ ep3_frankokratia_events.0120 = {
 			flag = latin_emp_force_admin_flag
 			days = 30
 		}
-		
+
 		#find a eunuch to present this whole thing
 		if = {
 			limit = {
@@ -8229,6 +8079,7 @@ ep3_frankokratia_events.0120 = {
 				location = root.capital_province
 				culture = root.capital_province.culture
 				faith = root.capital_province.faith
+				rite = root.capital_province.rite
 				template = random_learned_eunuch_character
 				save_scope_as = eunuch
 			}
@@ -8273,7 +8124,7 @@ ep3_frankokratia_events.0120 = {
 		}
 		every_vassal_or_below = {
 			limit = {
-				highest_held_title_tier >= tier_county	
+				highest_held_title_tier >= tier_county
 				NOT = {
 					is_at_war_with = root
 				}
@@ -8281,7 +8132,7 @@ ep3_frankokratia_events.0120 = {
 			save_scope_as = latin_vassal
 			trigger_event = ep3_frankokratia_events.0121
 		}
-		
+
 		scope:eunuch = {
 			if = {
 				limit = {
@@ -8305,9 +8156,7 @@ ep3_frankokratia_events.0120 = {
 			every_close_family_member = {
 				custom = all_close_family_and_spouses
 				limit = {
-					NOT = {
-						this = root
-					}
+					this != root
 				}
 				add_opinion = {
 					target = root
@@ -8318,9 +8167,7 @@ ep3_frankokratia_events.0120 = {
 				scope:eunuch = {
 					every_spouse = {
 						limit = {
-							NOT = {
-								this = root
-							}
+							this != root
 						}
 						add_opinion = {
 							target = root
@@ -8333,7 +8180,7 @@ ep3_frankokratia_events.0120 = {
 		add_dread = major_dread_gain
 		add_prestige = medium_prestige_gain
 		add_gold = monumental_gold_value
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_gain
 			forgiving = major_stress_impact_gain
 			trusting = minor_stress_impact_gain
@@ -8363,16 +8210,45 @@ ep3_frankokratia_events.0120 = {
 		}
 		custom_tooltip = greeks_more_likely_to_vassalize_tt
 		# Give Acclamation succession
-		add_realm_law_skip_effects = acclamation_succession_law
-		convert_to_administrative_from_feudalism_effect = yes
+		if = {
+			limit = {
+				has_dlc_feature = admin_gov
+			}
+			add_realm_law_skip_effects = acclamation_succession_law
+			convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:administrative }
+
+			create_character_memory = {
+				type = frankokratia_latin_admin_memory
+			}
+			#Letter event for the vassals
+			trigger_event = ep3_decisions_event.4060 #Also sends information event to human vassals
+		}
+		else_if = {
+			limit = {
+				has_realm_law = crown_authority_0
+			}
+			add_realm_law = crown_authority_1
+		}
+		else_if = {
+			limit = {
+				has_realm_law = crown_authority_1
+			}
+			add_realm_law = crown_authority_2
+		}
+		else_if = {
+			limit = {
+				has_realm_law = crown_authority_2
+			}
+			add_realm_law = crown_authority_3
+		}
+		
 		if = {
 			limit = {
 				is_independent_ruler = yes
 			}
 			add_legitimacy_effect = { LEGITIMACY = admin_convert_legitimacy_value } #One Time Legitimacy Boost
 		}
-		trigger_event = ep3_decisions_event.4060 #Also sends information event to human vassals
-		#Letter event for the vassals
+		
 		if = {
 			limit = {
 				scope:eunuch = {
@@ -8390,16 +8266,13 @@ ep3_frankokratia_events.0120 = {
 			modifier = latin_emp_simp_modifier
 			years = 10
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = medium_stress_impact_gain
 			paranoid = minor_stress_impact_gain
 			arbitrary = minor_stress_impact_gain
 			content = minor_stress_impact_gain
 		}
-		create_character_memory = {
-			type = frankokratia_latin_admin_memory
-		}
-		
+
 		ai_chance = {
 			base = 50
 			ai_value_modifier = {
@@ -8474,7 +8347,7 @@ ep3_frankokratia_events.0121 = {
 			desc = ep3_frankokratia_events.0121.desc
 		}
 	}
-		
+
 	sender = scope:latin_emp
 
 	immediate = {
@@ -8552,8 +8425,7 @@ ep3_frankokratia_events.0130 = {
 		if = {
 			limit = {
 				title:e_latin_empire = {
-					exists = holder
-					holder = {
+					holder ?= {
 						NOT = {
 							any_held_title = {
 								this = title:e_byzantium

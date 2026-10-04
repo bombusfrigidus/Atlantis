@@ -45,12 +45,8 @@ fp3_decision.0001 = {
 			OR = {
 				has_faith = faith:mazdakism 
 				has_faith = faith:zurvanism #Behafaridism
-				faith = {
-					OR = { 
-						has_doctrine_parameter = vows_of_poverty_active
-						has_doctrine = tenet_gnosticism
-					}
-				}
+				rite = { rite_has_parameter = vows_of_poverty_active }
+				rite = { rite_has_tenet = tenet_gnosticism }
 			}
 		}
 
@@ -64,7 +60,7 @@ fp3_decision.0001 = {
 			}
 		}
 
-		stress_impact = { 
+		stress_and_fulfillment_impact = { 
 			zealous = major_stress_loss 
 			ambitious = minor_stress_loss 
 		}
@@ -85,7 +81,7 @@ fp3_decision.0001 = {
 
 		add_piety = massive_piety_loss
 
-		dynasty = { add_dynasty_prestige = medium_dynasty_prestige_value }
+		dynasty ?= { add_dynasty_prestige = medium_dynasty_prestige_value }
 
 		add_character_modifier = {
 			modifier = fp3_royal_fire_modifier 
@@ -100,8 +96,8 @@ fp3_decision.0001 = {
 							has_religion = religion:zoroastrianism_religion 
 						}
 						OR = {
-							faith = { has_doctrine = doctrine_pluralism_fundamentalist }
-							faith = {	has_doctrine = doctrine_pluralism_righteous }	
+							rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist }
+							rite = { rite_has_doctrine = doctrine_pluralism_righteous }
 						}	
 					}
 					add_opinion = {
@@ -125,8 +121,8 @@ fp3_decision.0001 = {
 							has_religion = religion:zoroastrianism_religion 
 						}
 						OR = {
-							faith = { has_doctrine = doctrine_pluralism_fundamentalist }
-							faith = {	has_doctrine = doctrine_pluralism_righteous }	
+							rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist }
+							rite = { rite_has_doctrine = doctrine_pluralism_righteous }
 						}	
 					}
 					add_opinion = {
@@ -153,7 +149,7 @@ fp3_decision.0001 = {
         	}
    		}  	
 
-   		stress_impact = { #Ambitious rulers of course like this, but paranoid ones are worried about offending people. 
+   		stress_and_fulfillment_impact = { #Ambitious rulers of course like this, but paranoid ones are worried about offending people. 
 			ambitious = medium_stress_impact_loss
 			arrogant = medium_stress_impact_loss
 			zealous = medium_stress_impact_loss 
@@ -186,8 +182,8 @@ fp3_decision.0001 = {
 							has_religion = religion:zoroastrianism_religion 
 						}
 						OR = {
-							faith = { has_doctrine = doctrine_pluralism_fundamentalist }
-							faith = {	has_doctrine = doctrine_pluralism_righteous }	
+							rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist }
+							rite = { rite_has_doctrine = doctrine_pluralism_righteous }
 						}	
 					}
 					add_opinion = {
@@ -211,8 +207,8 @@ fp3_decision.0001 = {
 							has_religion = religion:zoroastrianism_religion 
 						}
 						OR = {
-							faith = { has_doctrine = doctrine_pluralism_fundamentalist }
-							faith = {	has_doctrine = doctrine_pluralism_righteous }	
+							rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist }
+							rite = { rite_has_doctrine = doctrine_pluralism_righteous }
 						}	
 					}
 					add_opinion = {
@@ -239,7 +235,7 @@ fp3_decision.0001 = {
         	}
    		}  	
 
-   		stress_impact = { #Wasteful or ambitious rulers loathe this more moderate option, but temperate and content rulers love it. 
+   		stress_and_fulfillment_impact = { #Wasteful or ambitious rulers loathe this more moderate option, but temperate and content rulers love it. 
 			ambitious = minor_stress_impact_gain
 			zealous = miniscule_stress_impact_gain
 			august = minor_stress_impact_gain
@@ -420,7 +416,7 @@ fp3_decision.0003 = { #This is triggered from the restore_badd_fortress_decision
 			}
 			triggered_desc = {
 				trigger = { 
-					faith = { has_doctrine = doctrine_heretic_branch_zandik }
+					rite = { rite_has_doctrine = doctrine_heretic_branch_zandik }
 				}
 				desc = fp3_decision.0003.desc_zandik 
 			}
@@ -456,7 +452,7 @@ fp3_decision.0003 = { #This is triggered from the restore_badd_fortress_decision
 		# Add a unique nickname.
 		give_nickname = nick_the_fortress_builder 
 
-		stress_impact = { 
+		stress_and_fulfillment_impact = { 
 			ambitious = minor_stress_loss 
 			diligent = minor_stress_loss 
 			greedy = minor_stress_loss 
@@ -556,7 +552,7 @@ fp3_decision.0004 = { #This is triggered from the destroy_the_magi_decision, and
 
 		give_nickname = nick_the_reformer
 
-		stress_impact = { 
+		stress_and_fulfillment_impact = { 
 			ambitious = minor_stress_loss 
 			arrogant = minor_stress_loss 
 			vengeful = minor_stress_loss 
@@ -610,12 +606,14 @@ fp3_decision.0011 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith = {
-						OR = {
-							has_doctrine = tenet_fp3_fedayeen
-							has_doctrine = tenet_warmonger 
-							has_doctrine_parameter = pluralism_fundamentalist_proselytization_bonus
+					OR = {
+						rite = {
+							OR = {
+								rite_has_tenet = tenet_fp3_fedayeen
+								rite_has_tenet = tenet_warmonger
+							}
 						}
+						rite = { rite_has_parameter = pluralism_fundamentalist_proselytization_bonus }
 					}
 				}
 				desc = fp3_decision.0011_fanatic_murderer.desc
@@ -645,7 +643,7 @@ fp3_decision.0011 = {
 
 		avenge_the_battle_of_nahrawan_scripted_effect = yes	
 
-		stress_impact = {  
+		stress_and_fulfillment_impact = {  
 			zealous = major_stress_impact_loss
 			vengeful = major_stress_impact_loss
 			ambitious = medium_stress_impact_loss
@@ -735,6 +733,7 @@ fp3_decision.0013 = {
 			age = { 25 75 } 
 			location = root.capital_province
 			faith = root.faith.religious_head.faith
+			rite = root.faith.religious_head.rite
 			gender_female_chance = root_faith_dominant_gender_female_chance #could be female, if given the right context.  
 			trait = diplomat  
 			template = priest_character_template
@@ -765,7 +764,7 @@ fp3_decision.0013 = {
 			}
 		}
 
-		stress_impact = {  
+		stress_and_fulfillment_impact = {  
 			zealous = minor_stress_impact_loss
 			arrogant = minor_stress_impact_loss
 			craven = medium_stress_impact_gain
@@ -804,7 +803,7 @@ fp3_decision.0013 = {
   			target = flag:promote_persian_scripture_decision
   		}
 
-		stress_impact = {  
+		stress_and_fulfillment_impact = {  
 			trusting = medium_stress_impact_loss
 			craven = medium_stress_impact_loss
 			arrogant = medium_stress_impact_gain
@@ -834,7 +833,7 @@ fp3_decision.0014 = {
 			triggered_desc = {
 				trigger = { 
 					exists = root.faith.religious_head 
-					NOT = { this = root.faith.religious_head }
+					this != root.faith.religious_head
 				}
 				desc = fp3_decision.0014_there_is_caliph.desc
 			}
@@ -865,6 +864,7 @@ fp3_decision.0014 = {
 			age = { 40 75 } 
 			location = root.capital_province
 			faith = root.faith
+			rite = root.rite
 			gender_female_chance = root_faith_dominant_gender_female_chance #could be female, if given the right context.  
 			trait = shrewd
 			trait = theologian 
@@ -922,7 +922,7 @@ fp3_decision.0014 = {
 ##################################################
 
 scripted_effect fp3_decision_0015_apply_rebellious_stress_effect = {
-	stress_impact = {
+	stress_and_fulfillment_impact = {
 		arrogant = miniscule_stress_impact_loss
 		ambitious = minor_stress_impact_loss
 		disloyal = minor_stress_impact_loss
@@ -986,7 +986,7 @@ fp3_decision.0015 = {
 						has_trait = fp3_struggle_detractor
 					}
 					liege ?= {
-						NOT = { this = root }
+						this != root
 						OR = {
 							has_trait = fp3_struggle_supporter
 							has_trait = fp3_struggle_detractor
@@ -1090,7 +1090,7 @@ fp3_decision.0015 = {
 		## Do we have a suitable liege?
 		if = {
 			limit = {
-				is_independent_ruler = no
+				top_liege != this
 				liege = {
 					OR = {
 						has_trait = fp3_struggle_supporter
@@ -1104,7 +1104,7 @@ fp3_decision.0015 = {
 			title:d_sunni.holder = {
 				if = {
 					limit = {
-						NOT = { this = root.liege }
+						this != root.liege
 					}
 					save_scope_as = lower_centre_portrait
 				}
@@ -1115,7 +1115,7 @@ fp3_decision.0015 = {
 			title:d_sunni.holder = { save_scope_as = right_portrait }
 			# If we still have a liege, we put them in the bottom slot as they're mentioned in the copy — even though it's for not much caring.
 			if = {
-				limit = { is_independent_ruler = no }
+				limit = { top_liege != this }
 				liege = { save_scope_as = lower_centre_portrait }
 			}
 		}

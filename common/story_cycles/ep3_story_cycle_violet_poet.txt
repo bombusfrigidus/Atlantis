@@ -1,5 +1,20 @@
 ﻿story_cycle_violet_poet = {
 	# by Nick Meredith
+	visible = yes
+
+	icon = {
+		trigger = {
+			always = yes
+		}
+		reference = "gfx/interface/icons/artifact/artifact_chronicle.dds"
+	}
+
+	visualization = {
+		traits = {
+			violet_poet
+		}
+		artifact = { variable_name = "artifact" label = "POETRY_BOOK_LABEL" }
+	}
 
 	on_setup = {
 		set_variable = {
@@ -29,8 +44,8 @@
 		}
 		# Or destroy
 		else = {
-			end_story = yes
 			remove_variable = violet_poet
+			end_story = yes
 		}
 	}
 

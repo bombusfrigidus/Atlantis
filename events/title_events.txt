@@ -21,9 +21,9 @@ title_event.0001 = {
 			this = title:k_france
 		}
 		NOR = {
-			dynasty = { this = dynasty:1 } # Not held by a Karling
+			dynasty = { this = dynasty:25061 } # Not held by a Karling
 			any_liege_or_above = {
-				dynasty = { this = dynasty:1 } # And does not have a liege that is a Karling
+				dynasty = { this = dynasty:25061 } # And does not have a liege that is a Karling
 			}
 			has_global_variable = west_francia_renamed
 		}
@@ -64,9 +64,9 @@ title_event.0002 = {
 			this = title:k_east_francia
 		}
 		NOR = {
-			dynasty = { this = dynasty:1 }  # Not held by a Karling
+			dynasty = { this = dynasty:25061 }  # Not held by a Karling
 			any_liege_or_above = {
-				dynasty = { this = dynasty:1 } # And does not have a liege that is a Karling
+				dynasty = { this = dynasty:25061 } # And does not have a liege that is a Karling
 			}
 			has_global_variable = east_francia_renamed
 		}
@@ -250,7 +250,7 @@ title_event.0014 = {
 			OPINION = default_rival_opinion
 		}
 
-		stress_impact = { forgiving  = minor_stress_impact_gain }
+		stress_and_fulfillment_impact = { forgiving  = minor_stress_impact_gain }
 		ai_chance = {
 			# No fine tweaking needed for the AI chance on a notification event.
 			base = 100
@@ -269,7 +269,7 @@ title_event.0014 = {
 			OPINION = default_friend_opinion
 		}
 
-		stress_impact = { vengeful = minor_stress_impact_gain }
+		stress_and_fulfillment_impact = { vengeful = minor_stress_impact_gain }
 		ai_chance = {
 			# No fine tweaking needed for the AI chance on a notification event.
 			base = 100
@@ -320,7 +320,7 @@ title_event.0015 = {
 				OPINION = default_rival_opinion
 			}
 		}
-		stress_impact = { forgiving  = minor_stress_impact_gain }
+		stress_and_fulfillment_impact = { forgiving  = minor_stress_impact_gain }
 		ai_chance = {
 			# No fine tweaking needed for the AI chance on a notification event.
 			base = 100
@@ -339,13 +339,74 @@ title_event.0015 = {
 				OPINION = default_friend_opinion
 			}
 		}
-		stress_impact = { vengeful = minor_stress_impact_gain }
+		stress_and_fulfillment_impact = { vengeful = minor_stress_impact_gain }
 		ai_chance = {
 			# No fine tweaking needed for the AI chance on a notification event.
 			base = 100
 		}
 	}
 }
+
+#	Rename/recolor the Empire of Britannia based on which culture forms it.
+title_event.0021 = {
+	hidden = yes
+
+	trigger = {
+		scope:title = title:e_britannia
+		scope:transfer_type = flag:created
+	}
+
+	immediate = {
+		culture = {
+			switch = {
+				trigger = has_name_list
+				name_list_irish = {
+					title:e_britannia = {
+						set_title_name = cn_eire_mhor
+						set_title_color = { 6 127 2 }
+					}
+				}
+				name_list_scottish = {
+					title:e_britannia = {
+						set_title_name = cn_albion
+						set_title_color = { 230 140 0 }
+					}
+				}
+				name_list_gaelic = {
+					title:e_britannia = {
+						set_title_name = cn_alba_mhor
+						set_title_color = { 20 120 120 }
+					}
+				}
+				name_list_welsh = {
+					title:e_britannia = {
+						set_title_name = cn_prydain
+						set_title_color = { 135 25 3 }
+					}
+				}
+				name_list_cornish = {
+					title:e_britannia = {
+						set_title_name = cn_breteni
+						set_title_color = { 204 153 10 }
+					}
+				}
+				name_list_pictish = {
+					title:e_britannia = {
+						set_title_name = cn_pictavia
+						set_title_color = { 0 95 184 }
+					}
+				}
+				fallback = {
+					title:e_britannia = {
+						reset_title_name = yes
+						set_title_color = { 172 22 22 }
+					}
+				}
+			}
+		}
+	}
+}
+
 
 # Ascended Throne memory maintenance
 title_event.9900 = {
@@ -359,6 +420,13 @@ title_event.9900 = {
 	}
 
 	immediate = {
+		if = {
+			limit = { exists = root.var:ascended_throne_reason }
+			root.var:ascended_throne_reason = { save_scope_as = real_transfer_type }
+		}
+		else = {
+			scope:transfer_type = { save_scope_as = real_transfer_type }
+		}
 		if = {
 			limit = {
 				is_target_in_variable_list = {
@@ -437,8 +505,82 @@ title_event.9900 = {
 				root = { remove_variable = ascended_throne_extra }
 			}
 		}
+		#Clean up LAAMPS who get the wrong governments in claimant wars
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_variable = city_construction_is_temple_citadel
+						any_in_list = {
+							variable = new_titles
+							this = root.var:city_construction_is_temple_citadel
+						}
+					}
+					AND = {
+						has_variable = city_construction_is_castle
+						any_in_list = {
+							variable = new_titles
+							this = root.var:city_construction_is_castle
+						}
+					}
+				}
+			}
+			#Can the LAAMP become Mandala?
+			if = {
+				limit = { has_variable = city_construction_is_temple_citadel }
+				if = {
+					limit = {
+						#... we're lenient
+						faith = { has_doctrine = doctrine_polytheist }
+					}
+					#Sort out the House shenanigans
+					if = {
+						limit = { is_house_head = no }
+						house = { 
+							if = {
+								limit = {
+									house_head = { 
+										is_landed = no
+										is_courtier_of = root
+									}
+								}
+								set_house_head = root
+							}
+						}
+					}
+					else = {
+						house ?= {
+							set_house_aspiration = { type = no_aspect }
+						}
+					}	
+				}
+				#Otherwise go feudals
+				else = {
+					assign_feudal_governments_effect = yes
+				}
+			}
+			#Otherwise we have city_construction_is_castle
+			else = {
+				#... Feudals shouldn't have temple capitals
+				if = {
+					limit = {
+						has_variable = holding_barony
+						capital_barony = { this != root.var:holding_barony }
+						capital_province = { has_holding_type = church_holding }
+					}
+					capital_province = { set_holding_type = castle_holding }				
+				}
+				#Otherwise go feudals
+				else = {
+					assign_feudal_governments_effect = yes
+				}
+			}
+			remove_variable = city_construction_is_temple_citadel
+			remove_variable = city_construction_is_castle
+			remove_variable = holding_barony
+		}
 		clear_variable_list = new_titles
-		remove_variable = title_count
+		remove_variable = title_count	
 	}
 }
 

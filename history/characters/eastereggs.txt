@@ -12,7 +12,7 @@ easteregg_johan_andersson = {
 	stewardship = 6
 	learning = 5
 
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 
 	trait = education_learning_3
@@ -25,10 +25,14 @@ easteregg_johan_andersson = {
 		birth = "1029.8.28"
 	}
 	1066.1.1 = {
-		 #Dalarna!
+		employer = 20005 #Dalarna!
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -45,7 +49,7 @@ easteregg_thomas_johansson = {
 	stewardship = 3
 	learning = 8
 
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	trait = education_learning_2
 	trait = zealous
@@ -56,10 +60,17 @@ easteregg_thomas_johansson = {
 	1023.3.11 = {
 		birth = "1031.3.11"
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -71,7 +82,7 @@ easteregg_martin_anward = {
 	name = "Martin"
 	dynasty = vanity_anward
 	dna = easteregg_martin_anward
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	sexuality = heterosexual
 	health = 7
@@ -99,10 +110,17 @@ easteregg_martin_anward = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100530 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -125,7 +143,7 @@ easteregg_henrik_fahraeus = {
 	stewardship = 6
 	learning = 7
 
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	trait = education_learning_4
 	trait = lustful
@@ -140,9 +158,13 @@ easteregg_henrik_fahraeus = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 100546
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -172,14 +194,13 @@ easteregg_olof_bjork = {
 	stewardship = 3
 	learning = 3
 
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	trait = education_martial_3
 	trait = humble
 	trait = diligent
 	trait = honest
 	trait = shrewd
-	#	trait = blademaster_1 # TODO_CD_EP2: Remove?
 
 	1028.3.4 = {
 		birth = "1028.3.4"
@@ -191,8 +212,12 @@ easteregg_olof_bjork = {
 	1066.1.1 = {
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
-		
+		employer = 100527
 		contract_disease_effect = { DISEASE = ill TREATMENT_EVENT = yes }
 		add_trait = lifestyle_blademaster
 		add_trait_xp = {
@@ -214,11 +239,11 @@ easteregg_olof_bjork = {
 easteregg_tobias_bodlund = {
 	name = "Tobias"
 	dynasty = vanity_bodlund
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 
 	trait = education_martial_2
-	trait = scholar
+	trait = erudite
 	trait = cynical
 	trait = ambitious
 	trait = strategist
@@ -229,10 +254,14 @@ easteregg_tobias_bodlund = {
 		birth = "1033.3.3"
 	}
 	1066.1.1 = {
-		 #Uppsala
+		employer = 100546 #Uppsala
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -245,7 +274,7 @@ easteregg_emil_tisander = {
 	name = "Emil"
 	dynasty = vanity_tisander
 	dna = easteregg_emil_tisander
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	sexuality = heterosexual
 
@@ -272,10 +301,17 @@ easteregg_emil_tisander = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Uppland
+		employer = 100546 #Uppland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -288,7 +324,7 @@ easteregg_alexander_oltner = {
 	name = "Alexander"
 	dynasty = vanity_oltner
 	dna = easteregg_alexander_oltner
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	sexuality = heterosexual
 	health = 7
@@ -312,10 +348,17 @@ easteregg_alexander_oltner = {
 			learn_language = language_anglic
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -338,7 +381,7 @@ easteregg_linda_tiger = {
 	learning = 3
 	prowess = 4
 
-	religion="norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	trait = education_diplomacy_2
 	trait = journaller
@@ -360,9 +403,13 @@ easteregg_linda_tiger = {
 		}
 	}
 	1066.1.1 = {
-		 # Lapland
+		employer = 20015 # Lapland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -378,7 +425,7 @@ easteregg_charna_frostwhisper = {
 	female = yes
 	prowess = 0
 
-	religion="catholic"
+	rite = roman_rite
 	culture = "swedish"
 	trait = education_intrigue_3
 	trait = stubborn
@@ -394,12 +441,19 @@ easteregg_charna_frostwhisper = {
 	1047.11.9 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Poland
+		employer = 762 # Poland
 		add_character_modifier = { modifier = prison_pet_stone_modifier } #... D: And now Production hoardes its ill-gotten gains!
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -412,7 +466,7 @@ easteregg_lysann_schlegel = {
 	name = "Lysann"
 	dynasty = vanity_schlegel
 	dna = easteregg_lysann_schlegel
-	religion = "catholic"
+	rite = roman_rite
 	culture = "saxon"
 	female = yes
 
@@ -438,10 +492,17 @@ easteregg_lysann_schlegel = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Count of Mansfeld, close to Halle
+		employer = 30335 # Count of Mansfeld, close to Halle
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -460,7 +521,7 @@ easteregg_sara_wendel = {
 	stewardship = 7
 	learning = 3
 
-	faith = "catholic"
+	rite = "roman_rite"
 	culture = "swedish"
 
 	trait = education_diplomacy_3
@@ -472,11 +533,18 @@ easteregg_sara_wendel = {
 	1041.10.29 = {
 		birth = "1041.10.29"
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-			#Värmland
+		employer = 102523	#Värmland
 		give_nickname = nick_the_savage
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -489,7 +557,7 @@ easteregg_pernilla_sparrhult = {
 	name = "Pernilla"
 	dynasty = vanity_sparrhult
 	female = yes
-	religion = haymanot
+	rite = haymanot
 	culture = ethiopian
 
 	trait = education_diplomacy_4
@@ -503,9 +571,13 @@ easteregg_pernilla_sparrhult = {
 		birth = "1033.2.7"
 	}
 	1066.1.1 = {
-		 #Axum
+		employer = 145655 #Axum
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -518,7 +590,7 @@ easteregg_mathilda_bjarnehed = {
 	name = Mathilda
 	dna = easteregg_mathilda_bjarnehed
 	dynasty = vanity_bjarnehed
-	religion = catholic
+	rite = roman_rite
 	culture = swedish
 	female = yes
 
@@ -536,11 +608,18 @@ easteregg_mathilda_bjarnehed = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -552,7 +631,7 @@ easteregg_mathilda_bjarnehed = {
 easteregg_matthew_frary = {
 	name = "Matthew"
 	dynasty = vanity_frary
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 
 	trait = education_martial_2
@@ -566,10 +645,17 @@ easteregg_matthew_frary = {
 	1041.01.01 = {
 		birth = "1041.01.01"
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Norfolk
+		employer = 5650 # Norfolk
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -582,7 +668,7 @@ easteregg_matthew_clohessy = {
 	name = "Matthew"
 	dynasty = vanity_clohessy
 	dna = easteregg_matthew_clohessy
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	sexuality = heterosexual
 
@@ -615,10 +701,17 @@ easteregg_matthew_clohessy = {
 			add_character_flag = no_headgear
 		} 
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Hertfordshire
+		employer = 131 # Hertfordshire
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -651,7 +744,7 @@ easteregg_matthew_clohessy = {
 				create_character_memory = {
 					type = became_friends
 					participants = {
-						new_relation = character:easteregg_daniel_moore
+						new_relation = character:1
 					}
 				}
 			}
@@ -661,14 +754,6 @@ easteregg_matthew_clohessy = {
 				}
 				add_trait = impatient
 				set_knight_status = force
-				liege = {
-					create_accolade = {
-						knight = root
-						primary = master_of_revels_attribute
-						secondary = thug_attribute
-						name = accolade_name_the_red_knight_of_harpenden
-					}
-				}
 			}
 		}
 	}
@@ -682,7 +767,7 @@ easteregg_linnea_thimren = {
 	name = Linne_a
 	dna = easteregg_linnea_thimren
 	dynasty = vanity_thimren
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = swedish
 	female = yes
 
@@ -710,9 +795,13 @@ easteregg_linnea_thimren = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 20014
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			give_witch_secret_or_trait_effect = yes
 			if = {
 				limit = {
@@ -734,7 +823,7 @@ easteregg_flavio_verna = {
 	dynasty = vanity_verna
 
 
-	religion = "catholic"
+	rite = roman_rite
 	culture = "italian"
 	trait = education_learning_3
 	trait = celibate
@@ -746,8 +835,11 @@ easteregg_flavio_verna = {
 	1041.9.15 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Matilda
+		employer = 7757 #Matilda
 		add_trait = lifestyle_blademaster
 		add_trait_xp = {
 			trait = lifestyle_blademaster
@@ -761,6 +853,10 @@ easteregg_flavio_verna = {
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -773,12 +869,12 @@ easteregg_sean_hughes = {
 	name = Sean
 	dna = easteregg_sean_hughes
 	dynasty = vanity_hughes
-	religion = catholic
+	rite = roman_rite
 	culture = saxon
 
 	trait = education_stewardship_3
 	# trait = beauty_good_1 # To replace; commented for now
-	trait = scholar
+	trait = erudite
 	trait = shrewd
 	trait = compassionate
 	trait = honest
@@ -793,10 +889,17 @@ easteregg_sean_hughes = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 20251
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			if = {
 				limit = {
 					has_dlc_feature = royal_court
@@ -816,7 +919,7 @@ easteregg_petter_vilberg = {
 	name = Petter
 	dna = easteregg_petter_vilberg
 	dynasty = vanity_vilberg
-	religion = catholic
+	rite = roman_rite
 	culture = norwegian
 	martial = 6
 	diplomacy = 6
@@ -840,12 +943,19 @@ easteregg_petter_vilberg = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 102553
 		give_nickname = nick_troublemaker
 		effect = {
 			add_character_flag = easteregg
-			add_trait = poet
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_trait = lifestyle_poet
 		}
 	}
 	1066.9.16 = {
@@ -858,7 +968,7 @@ easteregg_maximilian_olbers = {
 	name = Maximilian
 	dna = easteregg_maximilian_olbers
 	dynasty = vanity_olbers
-	religion = catholic
+	rite = roman_rite
 	culture = swedish
 	martial = 6
 	diplomacy = 7
@@ -883,11 +993,18 @@ easteregg_maximilian_olbers = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 102534
 		give_nickname = nick_the_lawgiver
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -900,7 +1017,7 @@ easteregg_milla_lankinen = {
 	name = Milla
 	dna = easteregg_milla_lankinen
 	dynasty = vanity_lankinen
-	religion = finnish_pagan
+	rite = finnish_pagan
 	culture = finnish
 	female = yes
 	martial = 5
@@ -927,9 +1044,13 @@ easteregg_milla_lankinen = {
 		}
 	}
 	1066.1.1 = {
-		 #Kemi
+		employer = 20618 #Kemi
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -942,7 +1063,7 @@ easteregg_jakub_potapczyk = {
 	name = "Jakub"
 	dynasty = vanity_potapczyk
 	dna = easteregg_jakub_potapczyk
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	sexuality = heterosexual
 	health = 7
@@ -950,7 +1071,7 @@ easteregg_jakub_potapczyk = {
 	trait = ambitious
 	trait = impatient
 	trait = gregarious
-	trait = poet
+	trait = lifestyle_poet
 	disallow_random_traits = yes
 	1040.9.3 = {
 		birth = yes
@@ -960,10 +1081,17 @@ easteregg_jakub_potapczyk = {
 			add_character_flag = has_scripted_weight
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Poland
+		employer = 762 #Poland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = {
 				type = secret_deviant
 			}
@@ -982,7 +1110,7 @@ easteregg_jakub_potapczyk = {
 easteregg_ewan_cowhig_croft = {
 	name = "Ewan"
 	dynasty = vanity_cowhig_croft
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	#Skills & Health
 	diplomacy = 10
@@ -1020,9 +1148,12 @@ easteregg_ewan_cowhig_croft = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		# Gloucestershire
-		
+		employer = 82040
 		# Totes.
 		give_nickname = nick_the_trustworthy_ironic
 		add_perk = prepared_for_anything_perk
@@ -1031,6 +1162,10 @@ easteregg_ewan_cowhig_croft = {
 		add_perk = twice_schemed_perk
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			# Create Bazcat.
 			add_character_modifier = { modifier = cat_story_modifier }
 			# Send me a-wanderin'. But, y'know, still in Gloucestershire.
@@ -1041,23 +1176,23 @@ easteregg_ewan_cowhig_croft = {
 			# Add the c o l l e c t i o n.
 			create_artifact_pedestal_human_skull_specific_effect = {
 				OWNER = root
-				DESKULLED = character:easteregg_alexander_windahl
+				DESKULLED = character:1
 			}
 			create_artifact_pedestal_human_skull_specific_effect = {
 				OWNER = root
-				DESKULLED = character:easteregg_daniel_moore
+				DESKULLED = character:1
 			}
 			create_artifact_pedestal_human_skull_specific_effect = {
 				OWNER = root
-				DESKULLED = character:easteregg_joseph_gardener
+				DESKULLED = character:1
 			}
 			create_artifact_pedestal_human_skull_specific_effect = {
 				OWNER = root
-				DESKULLED = character:easteregg_nicholas_meredith
+				DESKULLED = character:1
 			}
 			create_artifact_pedestal_human_skull_specific_effect = {
 				OWNER = root
-				DESKULLED = character:easteregg_tegan_harris
+				DESKULLED = character:1
 			}
 			# And some fun stuff.
 			learn_language = language_south_slavic
@@ -1075,7 +1210,7 @@ easteregg_joacim_carlberg = {
 	name = "Joacim"
 	dynasty = vanity_carlberg
 	dna = easteregg_joacim_carlberg
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	#Skills & Health
 	diplomacy = 4
@@ -1094,12 +1229,6 @@ easteregg_joacim_carlberg = {
 	#Other
 	trait = legitimized_bastard
 	trait = shrewd
-	# TODO_CD_EP2 Remove completely?
-	#trait = calm
-	#trait = honest
-	#trait = ambitious
-	#trait = cynical
-	#trait = compassionate
 	trait = flexible_leader
 
 	sexuality = heterosexual
@@ -1112,11 +1241,18 @@ easteregg_joacim_carlberg = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Jarl Faste of Dal
+		employer = 20008 #Jarl Faste of Dal
 		give_nickname = nick_the_eager
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1128,15 +1264,22 @@ easteregg_joacim_carlberg = {
 easteregg_david_horler = {
 	name = "David"
 	dynasty = vanity_horler
-	religion = "catholic"
+	rite = roman_rite
 	culture = "welsh"
 
 	1039.10.03 = {
 		birth = yes
-		 # William the Bastard
+		employer = 140 # William the Bastard
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
+	}
+	1054.7.16 = {
+		rite = roman_rite
 	}
 	1066.9.16 = {
 		death = yes
@@ -1148,7 +1291,7 @@ easteregg_paul_depre = {
 	name = "Paul"
 	dna = easteregg_paul_depre
 	dynasty = vanity_depre
-	religion = catholic
+	rite = roman_rite
 	culture = franconian
 
 	martial = 5
@@ -1176,12 +1319,19 @@ easteregg_paul_depre = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 #Sweden
+		employer = 100525 #Sweden
 		give_nickname = nick_the_black_sheep
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 		}
 	}
@@ -1195,7 +1345,7 @@ easteregg_debbie_lane = {
 	name = "Debbie"
 	dna = easteregg_debbie_lane
 	dynasty = vanity_lane
-	religion = catholic
+	rite = roman_rite
 	culture = norse
 	female = yes
 
@@ -1234,10 +1384,17 @@ easteregg_debbie_lane = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-			#Essex
+		employer = 132	#Essex
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1249,7 +1406,7 @@ easteregg_debbie_lane = {
 easteregg_petter_lundh = {
 	name = "Petter"
 	dynasty = vanity_lundh
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "norwegian"
 	dna = easteregg_petter_lundh
 
@@ -1285,6 +1442,18 @@ easteregg_petter_lundh = {
 		}
 	}
 
+	1066.1.1 = {
+		employer = norwegian.1001	#Trondheim
+		give_nickname = nick_the_philosopher
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+
 	1066.9.16 = {
 		death = yes
 	}
@@ -1294,7 +1463,7 @@ easteregg_petter_lundh = {
 easteregg_nicholas_meredith = {
 	name = "Nicholas"
 	dynasty = vanity_meredith
-	religion = catholic
+	rite = roman_rite
 	culture = anglo_saxon
 	
 	#Skills
@@ -1321,6 +1490,47 @@ easteregg_nicholas_meredith = {
 	1039.7.5 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = anglo_saxon_1001	#Middlesex
+		give_nickname = nick_the_girthy
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_secret = { type = secret_cannibal }
+			give_witch_secret_or_trait_effect = yes
+			add_trait_xp = {
+				trait = tourney_participant
+				track = foot
+				value = {
+					integer_range = {
+						min = 1
+						max = 50
+					}
+				}
+			}
+			create_artifact = {
+				name = easteregg_artifact_nicks_redolence
+				description = easteregg_artifact_nicks_redolence_description
+				type = miscellaneous
+				visuals = flask
+				modifier = artifact_attraction_opinion_3_modifier
+				modifier = artifact_spouse_opinion_add_3_modifier
+				modifier = artifact_negate_health_penalty_add_3_modifier
+				creator = root
+				rarity = famed
+				save_scope_as = nicks_redolence
+			}
+			scope:nicks_redolence = {
+				equip_artifact_to_owner = yes
+			}
+		}
+	}
 	1066.9.16 = { death = yes }
 }
 
@@ -1328,7 +1538,7 @@ easteregg_nicholas_meredith = {
 easteregg_william_riggott = {
 	name = "William"
 	dynasty = vanity_riggott
-	religion = catholic
+	rite = roman_rite
 	culture = anglo_saxon
 
 	#Education
@@ -1353,11 +1563,18 @@ easteregg_william_riggott = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-			#Rome
+		employer = 2008	#Rome
 		give_nickname = nick_the_beautiful_beard
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = { death = yes }
@@ -1367,7 +1584,7 @@ easteregg_william_riggott = {
 easteregg_anna_johansson = {
 	name = "Anna"
 	dynasty = vanity_johansson_2
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = swedish
 
 	#Education
@@ -1388,10 +1605,14 @@ easteregg_anna_johansson = {
 
 	1041.10.20 = { birth = yes }
 	1066.1.1 = {
-		 #Gavle
+		employer = 100544 #Gavle
 		give_nickname = nick_little
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_deviant }
 			add_secret = { type = secret_cannibal }
 			add_secret = { type = secret_witch }
@@ -1404,7 +1625,7 @@ easteregg_anna_johansson = {
 easteregg_arkadiusz_majewski = {
 	name = "Arkadiusz"
 	dynasty = vanity_majewski
-	religion = catholic
+	rite = roman_rite
 	culture = polish
 
 	#Skills
@@ -1426,10 +1647,17 @@ easteregg_arkadiusz_majewski = {
 	disallow_random_traits = yes
 
 	1037.01.03 = { birth = yes }
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Kuyavia
+		employer = 764 # Kuyavia
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_witch }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -1451,7 +1679,7 @@ easteregg_artur_kacprzak = {
 	name = "Artur"
 	dna = easteregg_artur_kacprzak_dna
 	dynasty = vanity_kacprzak
-	religion = catholic
+	rite = roman_rite
 	culture = polish
 
 	#Skills
@@ -1482,10 +1710,17 @@ easteregg_artur_kacprzak = {
 			add_character_flag = has_scripted_appearance
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 302036
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 			add_trait = lifestyle_blademaster
 			add_trait_xp = {
@@ -1508,7 +1743,7 @@ easteregg_anton_leirnes = {
 	name = "Anton"
 	dna = easteregg_anton_leirnes
 	dynasty = vanity_leirnes
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = swedish
 	#Skills
 	diplomacy = 5
@@ -1540,6 +1775,16 @@ easteregg_anton_leirnes = {
 			add_character_flag = no_headgear
 		}
 	}
+	1066.1.1 = {
+		employer = norwegian.1002	#Stolsheimen
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
 	1066.9.16 = { death = yes }
 }
 
@@ -1547,7 +1792,7 @@ easteregg_anton_leirnes = {
 easteregg_anton_sorokin = {
 	name = "Anton"
 	dynasty = vanity_sorokin
-	religion = "orthodox"
+	rite = roman_rite
 	culture = "russian"
 
 	#Skills
@@ -1567,7 +1812,7 @@ easteregg_anton_sorokin = {
 	trait = arrogant
 
 	#Other Traits
-	trait = scholar
+	trait = erudite
 	trait = reclusive
 
 	sexuality = heterosexual
@@ -1575,6 +1820,23 @@ easteregg_anton_sorokin = {
 
 	1034.6.21 = {
 		birth = yes
+	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
+	1066.1.1 = {
+		employer = 302266
+
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_secret = {
+				type = secret_witch
+			}
+		}
 	}
 	1066.9.16 = {
 		death = yes
@@ -1586,7 +1848,7 @@ easteregg_joel_hansson = {
 	name = "Joel"
 	dynasty = vanity_brock
 	dna = easteregg_joel_hansson
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = norse
 	father = easteregg_joel_hansson_father
 
@@ -1611,11 +1873,15 @@ easteregg_joel_hansson = {
 		}
 	}
 	1066.1.1 = {
-		# #Skåne
+		#employer = 168643 #Skåne
 		# No hard feeling Torgils but you kept making me a knight - I'm moving to the King for some peace and quiet.
-		
+		employer = 101515
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1627,7 +1893,7 @@ easteregg_nikola_stokic = {
 	name = Nikola
 	dynasty = vanity_stokic
 	dna = easteregg_nikola_stokic_dna
-	religion = orthodox
+	rite = roman_rite
 	culture = serbian
 	
 	diplomacy = 7
@@ -1656,11 +1922,18 @@ easteregg_nikola_stokic = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.1.1 = {
-		 # Raska
+		employer = 20499 # Raska
 		add_spouse = easteregg_tamara_stokic
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1672,7 +1945,7 @@ easteregg_nikola_stokic = {
 easteregg_malin_jonsson = {
 	name = "Malin"
 	dynasty = vanity_jonsson
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 	dna = easteregg_malin_jonsson
@@ -1706,11 +1979,18 @@ easteregg_malin_jonsson = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 20006
 		give_nickname = nick_the_inevitable
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1723,7 +2003,7 @@ easteregg_max_weltz = {
 	name = "Marc"
 	dynasty = vanity_du_welz
 	dna = easteregg_max_weltz
-	religion = catholic
+	rite = roman_rite
 	culture = french
 
 	#Skills
@@ -1757,12 +2037,19 @@ easteregg_max_weltz = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 		}
-		
+		employer = 40364
 	}
 	1066.9.16 = {
 		death = yes
@@ -1773,7 +2060,7 @@ easteregg_max_weltz = {
 easteregg_jonas_wickerstrom = {
 	name = "Jonas"
 	dynasty = vanity_wickerstrom
-	religion= "orthodox"
+	rite = roman_rite
 	culture = "swedish"
 	dna = easteregg_jonas_wickerstrom
 
@@ -1803,10 +2090,17 @@ easteregg_jonas_wickerstrom = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.1.1 = {
-		 #Optimatoi
+		employer = 1746 #Optimatoi
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1818,7 +2112,7 @@ easteregg_jonas_wickerstrom = {
 easteregg_arthur_bialecki = {
 	name = "Arthur"
 	dynasty = vanity_bialecki
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 
 	trait = education_diplomacy_2
@@ -1832,11 +2126,18 @@ easteregg_arthur_bialecki = {
 	1037.6.24 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		move_to_pool = yes
-		 #Poznan
+		employer = 302017 #Poznan
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1848,7 +2149,7 @@ easteregg_arthur_bialecki = {
 easteregg_patrick_mauffrey = {
 	name = "Patrick"
 	dynasty = vanity_mauffrey
-	religion= "catholic"
+	rite = roman_rite
 	culture = "occitan"
 
 	trait = education_intrigue_1
@@ -1867,10 +2168,17 @@ easteregg_patrick_mauffrey = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Guigues d'Albon, count of Viennois
+		employer = 40462 # Guigues d'Albon, count of Viennois
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1882,7 +2190,7 @@ easteregg_patrick_mauffrey = {
 easteregg_viktor_stadler = {
 	name = "Viktor"
 	dynasty = vanity_stadler
-	religion = catholic
+	rite = roman_rite
 	culture = swedish
 
 	#Skills
@@ -1912,11 +2220,18 @@ easteregg_viktor_stadler = {
 	1036.9.22 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Uppland
+		employer = 100546 #Uppland
 		give_nickname = nick_the_viking
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_incest }
 		}
 		move_to_pool = yes
@@ -1930,7 +2245,7 @@ easteregg_viktor_stadler = {
 easteregg_jesse_henning = {
 	name = "Jesse"
 	dynasty = vanity_henning
-	religion = catholic
+	rite = roman_rite
 	culture = saxon
 
 	#Education
@@ -1948,6 +2263,19 @@ easteregg_jesse_henning = {
 	1026.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = fox_1
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -1957,7 +2285,7 @@ easteregg_jesse_henning = {
 easteregg_rodrigue_delrue = {
 	name = "Rodrigue"
 	dynasty = vanity_delrue
-	religion = catholic
+	rite = roman_rite
 	culture = french
 
 	diplomacy = 4
@@ -1977,10 +2305,17 @@ easteregg_rodrigue_delrue = {
 	1037.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Amiens
+		employer = 40406 # Amiens
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -1993,7 +2328,7 @@ easteregg_hanna_lohman = {
 	name = "Hanna"
 	dna = easteregg_hanna_lohman
 	dynasty = vanity_lohman
-	religion = catholic
+	rite = roman_rite
 	culture = norse
 	female = yes
 
@@ -2014,7 +2349,7 @@ easteregg_hanna_lohman = {
 	trait = shy
 
 	#Other Traits
-	trait = scholar
+	trait = erudite
 	trait = journaller
 	trait = lifestyle_herbalist
 	trait = depressed_1
@@ -2031,10 +2366,17 @@ easteregg_hanna_lohman = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Ovre Dalarna
+		employer = 20005 #Ovre Dalarna
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2046,7 +2388,7 @@ easteregg_hanna_lohman = {
 easteregg_daniel_moore = {
 	name = "Daniel"
 	dynasty = vanity_moore
-	religion = catholic
+	rite = roman_rite
 	culture = anglo_saxon
 	female = no
 
@@ -2079,11 +2421,18 @@ easteregg_daniel_moore = {
 	1041.08.22 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Closest-ish to Manchester
-		set_relation_best_friend = { reason = friend_generic_history target = character:easteregg_alexander_windahl }
+		employer = 90027 #Closest-ish to Manchester
+		set_relation_best_friend = { reason = friend_generic_history target = character:1 }
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2095,7 +2444,7 @@ easteregg_daniel_moore = {
 easteregg_bartosz_byczynski = {
 	name = "Bartosz"
 	dynasty = vanity_byczynski
-	religion = catholic
+	rite = roman_rite
 	culture = polish
 
 	#Skills
@@ -2126,10 +2475,17 @@ easteregg_bartosz_byczynski = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Aberystwyth (Cardigan, its liege)
+		employer = 138496 #Aberystwyth (Cardigan, its liege)
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = {
 				type = secret_witch
 			}
@@ -2144,7 +2500,7 @@ easteregg_bartosz_byczynski = {
 easteregg_joseph_gardener = {
 	name = "Joseph"
 	dynasty = vanity_gardener
-	religion = catholic
+	rite = roman_rite
 	culture = anglo_saxon
 	female = no
 
@@ -2175,10 +2531,17 @@ easteregg_joseph_gardener = {
 	1040.3.8 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 131
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_blademaster
 			add_trait_xp = {
 				trait = lifestyle_blademaster
@@ -2202,7 +2565,7 @@ easteregg_peter_johannesson = {
 	name = "Peter"
 	dna = easteregg_peter_johannesson
 	dynasty = vanity_johannesson
-	religion = catholic
+	rite = roman_rite
 	culture = swedish
 	female = no
 
@@ -2226,10 +2589,17 @@ easteregg_peter_johannesson = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2252,7 +2622,7 @@ easteregg_peter_johannesson = {
 easteregg_troy_goodfellow = {
 	name = "Troy"
 	dynasty = vanity_goodfellow
-	religion = insular_celtic
+	rite = insular_celtic
 	culture = irish
 	female = no
 
@@ -2280,9 +2650,13 @@ easteregg_troy_goodfellow = {
 		birth = yes
 	}
 	1066.9.15 = {
-		 # Ulster
+		employer = 6180 # Ulster
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2295,7 +2669,7 @@ easteregg_katya_boestad = {
 	name = "Katya"
 	dna = easteregg_katya_boestad
 	dynasty = vanity_boestad
-	religion = bogomilist
+	rite = bogomilist_rite
 	culture = swedish
 	female = yes
 
@@ -2317,7 +2691,6 @@ easteregg_katya_boestad = {
 
 	#Other Traits
 	trait = shrewd
-	#	trait = mystic_2 # TODO_CD_EP2: Remove?
 	trait = wheezing
 
 	sexuality = homosexual
@@ -2332,9 +2705,13 @@ easteregg_katya_boestad = {
 		}
 	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_witch }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -2359,7 +2736,7 @@ easteregg_bianca_savazzi = {
 	name = "Bianca"
 	dna = easteregg_bianca_savazzi
 	dynasty = vanity_savazzi
-	religion = catholic
+	rite = roman_rite
 	culture = italian
 	female = yes
 
@@ -2393,10 +2770,17 @@ easteregg_bianca_savazzi = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Mantova
+		employer = 7757 # Mantova
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			if = {
 				limit = {
 					has_dlc_feature = royal_court
@@ -2425,7 +2809,7 @@ easteregg_bianca_savazzi = {
 easteregg_steacy_mcilwham = {
 	name = Steacy
 	dynasty = vanity_mcilwham
-	religion = catholic
+	rite = roman_rite
 	culture = scottish
 	sexuality = heterosexual
 	female = yes
@@ -2461,10 +2845,17 @@ easteregg_steacy_mcilwham = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 131002
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2477,7 +2868,7 @@ easteregg_nils_wadensten = {
 	name = "Nils"
 	dna = easteregg_nils_wadensten
 	dynasty = vanity_wadensten
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = swedish
 
 	#Education
@@ -2503,10 +2894,14 @@ easteregg_nils_wadensten = {
 		}
 	}
 	1066.9.15 = {
-		 #Umeå
+		employer = 20015 #Umeå
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2518,7 +2913,7 @@ easteregg_nils_wadensten = {
 easteregg_andreas_olsson = {
 	name = "Andreas"
 	dynasty = vanity_olsson
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = norse
 	female = no
 
@@ -2541,7 +2936,6 @@ easteregg_andreas_olsson = {
 	#Other Traits
 	trait = drunkard
 	trait = shrewd
-	#	trait = reveler_2 # TODO_CD_EP2: Remove?
 	trait = one_eyed
 
 	sexuality = heterosexual
@@ -2554,9 +2948,13 @@ easteregg_andreas_olsson = {
 		}
 	}
 	1066.1.1 = {
-		 #Halsingland
+		employer = 100527 #Halsingland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2579,7 +2977,7 @@ easteregg_andreas_olsson = {
 easteregg_henrik_lohmander = {
 	name = "Henrik"
 	dynasty = vanity_lohmander
-	religion = "shaivism"
+	rite = "shaivism"
 	culture = swedish
 	female = no
 	dna = easteregg_henrik_lohmander
@@ -2601,7 +2999,7 @@ easteregg_henrik_lohmander = {
 	trait = diligent
 
 	#Other Traits
-	trait = scholar
+	trait = erudite
 	trait = reclusive
 	trait = cautious_leader
 
@@ -2638,7 +3036,7 @@ easteregg_henrik_lohmander = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 188185
 		move_to_pool = yes
 		if = {
 			limit = { has_dlc_feature = royal_court }
@@ -2646,6 +3044,10 @@ easteregg_henrik_lohmander = {
 		}
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2658,7 +3060,7 @@ easteregg_ismael_serrano = {
 	name = "Ismael"
 	dynasty = vanity_serrano
 	dna = easteregg_ismael_serrano # Serrano
-	religion = "catholic"
+	rite = roman_rite
 	culture = "basque"
 	sexuality = heterosexual
 
@@ -2683,10 +3085,17 @@ easteregg_ismael_serrano = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Viscaya
+		employer = 107520 # Viscaya
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2698,7 +3107,7 @@ easteregg_ismael_serrano = {
 easteregg_fawn_rowe = {
 	name = "Fawn"
 	dynasty = vanity_rowe
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	female = yes
 
@@ -2713,11 +3122,18 @@ easteregg_fawn_rowe = {
 	1039.11.25 = {
 		birth=yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Kent
+		employer = 130 # Kent
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2729,7 +3145,7 @@ easteregg_fawn_rowe = {
 easteregg_lenaic_riedinger = {
 	name = "Le_nai_c"
 	dynasty = vanity_riedinger
-	religion = "catholic"
+	rite = roman_rite
 	culture = "norman"
 	sexuality = heterosexual
 
@@ -2740,7 +3156,7 @@ easteregg_lenaic_riedinger = {
 	trait = just
 	trait = brave
 	trait = strategist
-	trait = scholar
+	trait = erudite
 	trait = architect
 
 	disallow_random_traits = yes
@@ -2748,10 +3164,17 @@ easteregg_lenaic_riedinger = {
 	1035.11.25 = {
 		birth=yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Rouen
+		employer = 20112 # Rouen
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2763,7 +3186,7 @@ easteregg_lenaic_riedinger = {
 easteregg_niall_bird = {
 	name = "Niall"
 	dynasty = vanity_bird
-	religion = "catholic"
+	rite = insular_celtic
 	culture = "irish"
 
 	diplomacy = 7
@@ -2778,10 +3201,17 @@ easteregg_niall_bird = {
 	1039.11.25 = {
 		birth=yes
 	}
+	1054.7.16 = {
+		rite = insular_celtic
+	}
 	1066.1.1 = {
-		 # West Riding
+		employer = 5660 # West Riding
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -2805,7 +3235,7 @@ easteregg_christian_daflos = {
 	name = "Christian"
 	dna = easteregg_christian_daflos
 	dynasty = vanity_daflos
-	religion = "orthodox"
+	rite = roman_rite
 	culture = "greek"
 	female = no
 
@@ -2840,10 +3270,17 @@ easteregg_christian_daflos = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.9.15 = {
-		
+		employer = 1764
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2856,7 +3293,7 @@ easteregg_max_collin = {
 	name = "Max"
 	dna = easteregg_max_collin
 	dynasty = vanity_collin
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	female = no
 
@@ -2891,10 +3328,17 @@ easteregg_max_collin = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 115
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -2907,7 +3351,7 @@ easteregg_tegan_harris = {
 	name = "Tegan"
 	dna = easteregg_tegan_harris
 	dynasty = vanity_harris
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	female = yes
 
@@ -2941,10 +3385,17 @@ easteregg_tegan_harris = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.5 = {	#Slightly later date due to Edgar the Aetheling not receiving his county till five days into 1066.
-		
+		employer = 112
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_witch }
 		}
 	}
@@ -2957,7 +3408,7 @@ easteregg_tegan_harris = {
 easteregg_wojciech_cywinski = {
 	name = "Wojciech"
 	dynasty = vanity_cywinski
-	religion = "baltic_pagan"
+	rite = "baltic_pagan"
 	culture = "prussian"
 
 	#Skills
@@ -2986,9 +3437,13 @@ easteregg_wojciech_cywinski = {
 		birth = yes
 	}
 	1066.1.1 = {
-		
+		employer = 28015
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 		}
 	}
@@ -3002,7 +3457,7 @@ easteregg_nikolaos_kaltsogiannis = {
 	name = "Nikolaos"
 	dna = easteregg_nikolaos_kaltsogiannis
 	dynasty = vanity_kaltsogiannis
-	religion = "orthodox"
+	rite = roman_rite
 	culture = "greek"
 
 	#Skills
@@ -3033,10 +3488,17 @@ easteregg_nikolaos_kaltsogiannis = {
 		add_character_flag = no_headgear
 		add_character_flag = has_scripted_weight
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.1.1 = {
-		 #Count Nikephoros of Demetrias.
+		employer = 20517 #Count Nikephoros of Demetrias.
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3049,7 +3511,7 @@ easteregg_pontus_olofsson = {
 	name = "Pontius"
 	dna = easteregg_pontus_olofsson
 	dynasty = vanity_springmountain
-	religion = "catholic"
+	rite = roman_rite
 	culture = "norse"
 
 	#Skills
@@ -3079,10 +3541,17 @@ easteregg_pontus_olofsson = {
 		add_character_flag = has_scripted_appearance
 		add_character_flag = no_headgear
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Somewhere in the Kingdom of Pontus
+		employer = 20544 # Somewhere in the Kingdom of Pontus
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
@@ -3105,7 +3574,7 @@ easteregg_pontus_olofsson = {
 easteregg_karl_cederslatt = {
 	name = "Karl"
 	dynasty = vanity_cederslatt
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = no
 
@@ -3138,10 +3607,17 @@ easteregg_karl_cederslatt = {
 			add_character_flag = no_drunkard_visual
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-			#Skane
+		employer = 168643	#Skane
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 		}
 		move_to_pool = yes
@@ -3155,7 +3631,7 @@ easteregg_karl_cederslatt = {
 easteregg_sebastian_borg = {
 	name = "Sebastian"
 	dynasty = vanity_borg
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = no
 
@@ -3185,11 +3661,18 @@ easteregg_sebastian_borg = {
 	1036.9.30 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3204,7 +3687,7 @@ easteregg_elisabeth_gangenes = { #Programmer
 	name = "Elisabeth"
 	dynasty = easteregg_andriamasinavalona
 	dna = easteregg_elisabeth_gangenes
-	religion = "catholic"
+	rite = roman_rite
 	culture = "norwegian"
 	sexuality = homosexual
 	health = 7
@@ -3221,7 +3704,7 @@ easteregg_elisabeth_gangenes = { #Programmer
 	trait = ambitious
 
 	# Lifestyle Traits
-	trait = scholar
+	trait = erudite
 
 	# Stresscoping Traits
 	#trait = comfort_eater
@@ -3239,13 +3722,20 @@ easteregg_elisabeth_gangenes = { #Programmer
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Rogaland
-		# # Sweden
+		employer = 102568 # Rogaland
+		#employer = 100530 # Sweden
 
 		give_nickname = nick_the_silly
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			give_witch_secret_or_trait_effect = yes
 
 			# I may have certain biases, my desk certainly did not have several plushies! 
@@ -3333,7 +3823,7 @@ easteregg_elisabeth_gangenes = { #Programmer
 easteregg_isabella_welch = {
 	name = "Beau"
 	dynasty = vanity_welch
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 	dna = easteregg_isabella_welch
 	sexuality = bisexual
@@ -3356,18 +3846,25 @@ easteregg_isabella_welch = {
 	trait = torturer
 	# trait = beauty_good_2 # To replace; commented for now
 	trait = rakish
-	trait = poet
+	trait = lifestyle_poet
 
 	disallow_random_traits = yes
 
 	1044.01.14 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 #with my absolute fave Kaiser Heinrich
+		employer = 1316 #with my absolute fave Kaiser Heinrich
 		give_nickname = nick_the_cosmic_poet
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -3384,7 +3881,7 @@ easteregg_zack_holmgren = {
 	name = "Zack"
 	dna = easteregg_zack_holmgren
 	dynasty = vanity_holmgren
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	sexuality = heterosexual
 
@@ -3413,10 +3910,14 @@ easteregg_zack_holmgren = {
 		}
 	}
 	1066.1.1 = {
-		 #Umeå
+		employer = 20015 #Umeå
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3429,7 +3930,7 @@ easteregg_claudia_baldassi = {
 	name = "Claudia"
 	dna = easteregg_claudia_baldassi
 	dynasty = vanity_debaldassi
-	religion = "bogomilist"
+	rite = "bogomilist_rite"
 	culture = "cisalpine"
 	female = yes
 
@@ -3449,7 +3950,7 @@ easteregg_claudia_baldassi = {
 	trait = gluttonous
 	trait = greedy
 
-	trait = scholar
+	trait = erudite
 	trait = reclusive
 	trait = depressed_1
 
@@ -3458,9 +3959,13 @@ easteregg_claudia_baldassi = {
 
 	1034.7.11 = { birth = yes }
 	1066.1.1 = {
-			#Monferrato
+		employer = 7730	#Monferrato
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3472,7 +3977,7 @@ easteregg_claudia_baldassi = {
 easteregg_bjorn_blomberg = {
 	name = "BjO_rn"
 	dynasty = vanity_blomberg
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	sexuality = heterosexual
 
@@ -3498,10 +4003,14 @@ easteregg_bjorn_blomberg = {
 		birth = yes
 	}
 	1066.1.1 = {
-		 #Uppland
+		employer = 100546 #Uppland
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3514,7 +4023,7 @@ easteregg_joe_parkin = {
 	name = "Joe"
 	dna = easteregg_joe_parkin
 	dynasty = vanity_parkin
-	religion = "catholic"
+	rite = roman_rite
 	culture = "anglo_saxon"
 
 	#Skills
@@ -3550,12 +4059,72 @@ easteregg_joe_parkin = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Kent
+		employer = 130 #Kent
 		give_nickname = nick_monophthalmos
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_non_believer }
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Content Designer
+easteregg_ali_kara = {
+	name = "Ali"
+	dna = easteregg_ali_kara
+	dynasty = vanity_kara
+	rite = hanafi
+	culture = turkish
+
+	#Skills
+	diplomacy = 5
+	martial = 4
+	stewardship = 3
+	intrigue = 2
+	learning = 6
+	prowess = 1
+
+	#Education
+	trait = education_learning_3
+
+	#Personality
+	trait = paranoid
+	trait = craven
+	trait = content
+
+	#Other
+	trait = loyal
+	trait = hajjaj
+	trait = comfort_eater
+
+	sexuality = heterosexual
+	disallow_random_traits = yes
+
+	1034.8.10 = {
+		birth = yes
+		effect = {
+			add_character_flag = no_headgear
+		}
+	}
+	1066.1.1 = {
+		employer = 3040 #Rayy
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -3567,7 +4136,7 @@ easteregg_joe_parkin = {
 easteregg_krzysztof_bochenek = {
 	name = "Krzysztof"
 	dynasty = vanity_bochenek
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	female = no
 
@@ -3599,11 +4168,18 @@ easteregg_krzysztof_bochenek = {
 	1040.9.24 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Bytom is owned by the king, so we go to a neighbouring county instead
+		employer = 20395 #Bytom is owned by the king, so we go to a neighbouring county instead
 		give_nickname = nick_the_unrestrained
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_deviant }
 		}
 	}
@@ -3617,7 +4193,7 @@ easteregg_lukasz_opara = {
 	name = "L_ukasz"
 	dna = easteregg_lukasz_opara
 	dynasty = vanity_opara
-	religion = "slavic_pagan"
+	rite = "slavic_pagan"
 	culture = "polish"
 	female = no
 
@@ -3653,10 +4229,14 @@ easteregg_lukasz_opara = {
 		}
 	}
 	1066.1.1 = {
-		 #Bytom is owned by the king, so we go to a neighbouring county instead
+		employer = 20395 #Bytom is owned by the king, so we go to a neighbouring county instead
 		give_nickname = nick_priest_eater
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_cannibal }
 		}
 		move_to_pool = yes
@@ -3671,7 +4251,7 @@ easteregg_mateusz_mierzwa = {
 	name = "Mateusz"
 	dna = easteregg_mateusz_mierzwa
 	dynasty = vanity_mierzwa
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	female = no
 
@@ -3701,11 +4281,18 @@ easteregg_mateusz_mierzwa = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Poznan
+		employer = 302017 # Poznan
 		give_nickname = nick_the_kind
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_incest }
 		}
 		move_to_pool = yes
@@ -3720,7 +4307,7 @@ easteregg_natalia_lechnata = {
 	name = "Natalia"
 	dna = easteregg_natalia_lechnata
 	dynasty = vanity_lechnata
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	female = yes
 
@@ -3752,11 +4339,18 @@ easteregg_natalia_lechnata = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Krajna
+		employer = 302013 # Krajna
 		give_nickname = nick_the_wary
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -3779,7 +4373,7 @@ easteregg_natalia_poreba = {
 	name = "Natalia"
 	dna = easteregg_natalia_poreba
 	dynasty = vanity_poreba
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	female = yes
 
@@ -3814,11 +4408,18 @@ easteregg_natalia_poreba = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # Sącz
+		employer = 96098 # Sącz
 		give_nickname = nick_the_truthseeker
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_cannibal }
 		}
 	}
@@ -3832,7 +4433,7 @@ easteregg_alexander_windahl = {
 	name = "Alexander"
 	dynasty = vanity_windahl
 	dna = easteregg_alexander_windahl
-	religion = "slavic_pagan"
+	rite = "slavic_pagan"
 	culture = "polabian"
 	female = no
 
@@ -3868,10 +4469,14 @@ easteregg_alexander_windahl = {
 		}
 	}
 	1066.1.1 = {
-		 #Duke Krutoj of Veletia
+		employer = 20584 #Duke Krutoj of Veletia
 		give_nickname = nick_the_black_whirlwind
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -3894,7 +4499,7 @@ easteregg_struan_mccallum = {
 	name = "Struan"
 	dna = easteregg_struan_mccallum
 	dynasty = vanity_mccallum
-	religion = "insular_celtic"
+	rite = insular_celtic
 	culture = "gaelic"
 	female = no
 
@@ -3933,9 +4538,13 @@ easteregg_struan_mccallum = {
 	}
 
 	1066.1.1 = {
-		 # Atholl
+		employer = 994 # Atholl
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1115.1.1 = {
@@ -3948,7 +4557,7 @@ easteregg_riad_deneche = {
 	name = "Riad"
 	dna = easteregg_riad_deneche
 	dynasty = vanity_deneche
-	religion = "ashari"
+	rite = shafii
 	culture = "baranis"
 	female = no
 
@@ -3985,9 +4594,13 @@ easteregg_riad_deneche = {
 		}
 	}
 	1066.1.1 = {
-		 # High Chiefdom of Zab
+		employer = 155173 # High Chiefdom of Zab
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -4000,7 +4613,7 @@ easteregg_fenni_johansson = {
 	name = "Fenni"
 	dna = easteregg_fenni_johansson
 	dynasty = vanity_johansson_3
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 
@@ -4033,19 +4646,26 @@ easteregg_fenni_johansson = {
 		birth = yes
 		effect = { add_character_flag = no_drunkard_visual }
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			# He knows what he did.
 			attempted_murder_opinion_effect = {
-				VICTIM = character:easteregg_jakub_potapczyk
-				MURDERER = character:easteregg_fenni_johansson
+				VICTIM = character:1
+				MURDERER = character:1
 			}
-			set_relation_rival = { target = character:easteregg_jakub_potapczyk reason = rival_historical }
+			set_relation_rival = { target = character:1 reason = rival_historical }
 		}
 	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		move_to_pool = yes
 	}
 	1066.9.16 = {
@@ -4058,7 +4678,7 @@ easteregg_james_beaumont = {
 	name = "James"
 	dna = easteregg_james_beaumont_dna
 	dynasty = vanity_beaumont
-	religion = "insular_celtic"
+	rite = insular_celtic
 	culture = "norman"
 	#Personality
 	trait = compassionate
@@ -4077,11 +4697,15 @@ easteregg_james_beaumont = {
 	}
 	1066.1.1 = {
 		# Sheffield
-		
+		employer = 5660
 		give_nickname = nick_blue_lion
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			# Jag ar Svensk jaha
 			learn_language = language_norse
 			learn_language = language_anglic
@@ -4099,7 +4723,7 @@ easteregg_bahar_shefket = {
 	name = "Bahar"
 	dna = easteregg_bahar_shefket
 	dynasty = vanity_shefket
-	religion = "ashari"
+	rite = shafii
 	culture = "turkish"
 	sexuality = bisexual
 	female = yes
@@ -4110,7 +4734,7 @@ easteregg_bahar_shefket = {
 	trait = humble
 	trait = just
 
-	trait = scholar
+	trait = erudite
 
 	trait = depressed_1
 
@@ -4132,9 +4756,13 @@ easteregg_bahar_shefket = {
 	}
 
 	1066.1.1 = {
-		 #Mangyshlak
+		employer = 302629 #Mangyshlak
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 
@@ -4148,7 +4776,7 @@ easteregg_ola_jentzsch = { # Content Design
 	name = "Ola"
 	dna = easteregg_ola_jentzsch
 	dynasty = vanity_af_brantevik
-	religion = "catholic"
+	rite = roman_rite
 	culture = "norse"
 	sexuality = heterosexual
 	female = no
@@ -4160,11 +4788,11 @@ easteregg_ola_jentzsch = { # Content Design
 	trait = gregarious
 
 	trait = devoted
-	trait = scholar
+	trait = erudite
 	trait = comfort_eater
 	trait = journaller
 	trait = deviant
-	trait = poet
+	trait = lifestyle_poet
 	trait = pilgrim
 	trait = wild_oat
 
@@ -4185,9 +4813,13 @@ easteregg_ola_jentzsch = { # Content Design
 		}
 	}
 
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1055.1.4 = {
 		effect = {
-			set_character_faith = faith:mahayana
+			set_character_faith = faith:mahayana_faith
+			set_character_rite = rite:mahayana
 			learn_language_of_culture = culture:tangut
 			learn_language_of_culture = culture:han
 			learn_language_of_culture = culture:persian
@@ -4209,12 +4841,15 @@ easteregg_ola_jentzsch = { # Content Design
 	}
 
 	1066.1.1 = {
-		 #the king of Western Xia
+		employer = 206651 #the king of Western Xia
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
-	}
-	1066.9.16 = {
+		move_to_pool = yes
 		death = {
 			death_reason = death_literalist_debate
 		}
@@ -4226,7 +4861,8 @@ easteregg_hugo_cortell = { # Game Designer, Paradox Thalassic
 	name = "Hugo"
 	dna = easteregg_hugo_cortell # (Notice: I am *much* uglier in person)
 	dynasty = vanity_cortell
-	religion = "catholic" # Buddhism would have been cool too
+	# Buddhism would have been cool too
+	rite = roman_rite
 	culture = "catalan"
 
 	# Epic Designer Skills
@@ -4263,6 +4899,35 @@ easteregg_hugo_cortell = { # Game Designer, Paradox Thalassic
 			add_secret = { type = secret_deviant } # Can be added as trait, but secret has more gameplay value
 		}
 	}
+
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = { # By game start, I am of the age at which I started working (and I am now)
+		employer = andalusian0059 # Starting back at home
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			remove_short_term_gold = { 4 46 }
+			if = { # Book condemning the immorality of board games and their harmful effects on the youth (Source: I made it up)
+				limit = { has_dlc_feature = royal_court }
+				create_inspiration = book_inspiration
+			}
+			add_trait = lifestyle_physician
+			add_trait_xp = { # I can perform the first half of an amputation procedure
+				trait = lifestyle_physician
+				value = {
+					integer_range = {
+						min = small_lifestyle_random_xp_low
+						max = small_lifestyle_random_xp_high
+					}
+				}
+			}
+		}
+	}
 	1066.9.16 = { death = { death_reason = death_beaten_by_mob } }
 }
 
@@ -4271,7 +4936,7 @@ easteregg_alexander_newcombe = {
 	name = "Alexander"
 	dna = easteregg_alexander_newcombe_dna
 	dynasty = vanity_newcombe
-	religion = "mozarabic_church"
+	rite = mozarabic_church
 	culture = "anglo_saxon"
 
 	#Skills & Health
@@ -4296,10 +4961,14 @@ easteregg_alexander_newcombe = {
 		birth = yes
 	}
 	1066.1.1 = {
-		 # Emir al-Muqtadir of Zaragoza
+		employer = 3934 # Emir al-Muqtadir of Zaragoza
 		learn_language = language_arabic
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -4312,7 +4981,7 @@ easteregg_elena_zenko = {
 	name = "HelenE_"
 	dynasty = vanity_zenko
 	dna = easteregg_elena_zenko
-	religion = "slavic_pagan"
+	rite = "slavic_pagan"
 	culture = "russian"
 	female = yes
 
@@ -4352,10 +5021,14 @@ easteregg_elena_zenko = {
 		}
 	}
 	1066.1.1 = {
-		 #Lviv
+		employer = 302180 #Lviv
 
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = {
 				type = secret_witch
 			}
@@ -4378,7 +5051,7 @@ easteregg_stina_arvidsson_radestig = {
 	learning = 7
 	prowess = 4
 
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	sexuality = heterosexual
 	disallow_random_traits = yes
@@ -4401,9 +5074,13 @@ easteregg_stina_arvidsson_radestig = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 242505
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4435,7 +5112,7 @@ easteregg_sandra_runge_moller = { #QA
 	name = "Sandra"
 	dynasty = vanity_runge_moller
 	dna = easteregg_sandra_runge_moller
-	religion = "catholic"
+	rite = roman_rite
 	culture = "danish"
 	female = yes
 
@@ -4456,7 +5133,7 @@ easteregg_sandra_runge_moller = { #QA
 	trait = stubborn
 
 	#Other Traits
-	trait = poet
+	trait = lifestyle_poet
 	trait = comfort_eater
 
 
@@ -4470,8 +5147,11 @@ easteregg_sandra_runge_moller = { #QA
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1065.1.1 = {
-		
+		employer = 168643
 
 		effect = {
 			add_secret = { type = secret_non_believer	}
@@ -4482,6 +5162,10 @@ easteregg_sandra_runge_moller = { #QA
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 
@@ -4494,7 +5178,7 @@ easteregg_stella_carrick = {
 	name = "Stella"
 	dna = easteregg_stella_carrick_dna
 	dynasty = vanity_carrick
-	religion = "catholic"
+	rite = roman_rite
 	culture = "scottish"
 	female = yes
 
@@ -4524,10 +5208,17 @@ easteregg_stella_carrick = {
 		}
 	}
 
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 # King Malcolm 3 of Scotland
+		employer = 984 # King Malcolm 3 of Scotland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 
@@ -4541,7 +5232,7 @@ easteregg_alessandro_bragalini = {
 	name = "Alessandro"
 	dna = easteregg_alessandro_bragalini
 	dynasty = vanity_bragalini
-	religion = "catholic"
+	rite = roman_rite
 	culture = "greek"
 
 	#Skills
@@ -4570,6 +5261,29 @@ easteregg_alessandro_bragalini = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.9.15 = {
+		employer = cisalpine0661
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_trait = lifestyle_blademaster
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = {
+					integer_range = {
+						min = medium_lifestyle_random_xp_low
+						max = medium_lifestyle_random_xp_high
+					}
+				}
+			}
+		}
+	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -4579,7 +5293,7 @@ easteregg_alessandro_bragalini = {
 easteregg_jenny_wickman = {
 	name = "Jenny"
 	dynasty = vanity_wickman
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 
@@ -4609,10 +5323,17 @@ easteregg_jenny_wickman = {
 	1037.6.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		give_nickname = nick_the_mountain_dweller
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_mystic
 			add_trait_xp = {
 				trait = lifestyle_mystic
@@ -4626,7 +5347,7 @@ easteregg_jenny_wickman = {
 		}
 	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		move_to_pool = yes
 	}
 	1066.9.16 = {
@@ -4638,7 +5359,7 @@ easteregg_jenny_wickman = {
 easteregg_anna_strom = {
 	name = "Anna"
 	dynasty = vanity_strom
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 	dna = easteregg_anna_strom
@@ -4663,6 +5384,9 @@ easteregg_anna_strom = {
 	1028.6.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
 		add_trait = lifestyle_reveler
 		add_trait_xp = {
@@ -4676,9 +5400,13 @@ easteregg_anna_strom = {
 		}
 	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -4691,7 +5419,7 @@ easteregg_jon_astrup_hallkvist = {
 	name = "Jon"
 	dna = easteregg_jon_astrup_hallkvist
 	dynasty = vanity_astrup_hallkvist
-	religion = "catholic"
+	rite = roman_rite
 	culture = "norse"
 	female = no
 
@@ -4724,10 +5452,17 @@ easteregg_jon_astrup_hallkvist = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4750,7 +5485,7 @@ easteregg_maxence_voleau = { # Game Director
 	name = "Maxentius"
 	dynasty = vanity_voleau
 	dna = easteregg_maxence_voleau
-	religion = "catholic"
+	rite = roman_rite
 	culture = "breton"
 
 	#Skills
@@ -4785,10 +5520,17 @@ easteregg_maxence_voleau = { # Game Director
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Hoël nab Judhael of Cornouaille
+		employer = 178 #Hoël nab Judhael of Cornouaille
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_trait = lifestyle_reveler
 			add_trait_xp = {
 				trait = lifestyle_reveler
@@ -4810,7 +5552,7 @@ easteregg_fei_berg_hulthen = { # Technical Animator
 	name = "Fei"
 	dna = easteregg_fei_berg_hulthen
 	dynasty = vanity_berg_hulthen
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	sexuality = bisexual
 	female = no
@@ -4848,9 +5590,13 @@ easteregg_fei_berg_hulthen = { # Technical Animator
 	}
 
 	1066.1.1 = {
-		 # Denmark, to be Sweden
+		employer = 34156 # Denmark, to be Sweden
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_deviant }
 			add_secret = { type = secret_non_believer }
 		}
@@ -4865,8 +5611,8 @@ easteregg_fei_berg_hulthen = { # Technical Animator
 easteregg_chad_uhl = {
 	name = "Chad"
 	dna = easteregg_chad_uhl
-	#dynasty = vanity_uhl
-	religion = "catholic"
+	dynasty = vanity_uhl
+	rite = roman_rite
 	culture = "saxon"
 
 	#Skills
@@ -4880,7 +5626,7 @@ easteregg_chad_uhl = {
 	trait = deceitful
 	trait = stubborn
 
-	trait = scholar
+	trait = erudite
 	trait = shrewd
 	trait = profligate
 
@@ -4888,10 +5634,17 @@ easteregg_chad_uhl = {
 	disallow_random_traits = yes
 
 	1039.2.16 = { birth = yes }
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-			#Bavaria
+		employer = 112600	#Bavaria
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			learn_language = language_latin
 			learn_language = language_greek
 			learn_language = language_norse
@@ -4941,7 +5694,7 @@ easteregg_jason_cantalini = {
 	name = "Giasone"
 	dna = easteregg_jason_cantalini_dna
 	dynasty = vanity_cantalini
-	religion = "catholic"
+	rite = roman_rite
 	culture = "italian"
 
 	#Skills
@@ -4973,11 +5726,18 @@ easteregg_jason_cantalini = {
 	disallow_random_traits = yes
 
 	1039.11.19 = { birth = yes }
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 7804
 
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			create_artifact = {
@@ -5007,7 +5767,7 @@ easteregg_fabian_franzen = {
 	name = "Fabian"
 	dna = easteregg_fabian_franzen_dna
 	dynasty = vanity_melosso
-	religion = "catholic"
+	rite = roman_rite
 	culture = "cisalpine"
 
 	#Skills
@@ -5033,10 +5793,17 @@ easteregg_fabian_franzen = {
 	disallow_random_traits = yes
 
 	1043.9.24 = { birth = yes }
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 20352
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5049,7 +5816,7 @@ easteregg_veronica_pazos = {
 	name = "Veronica"
 	dna = easteregg_veronica_pazos_dna
 	dynasty = vanity_pazos
-	religion = "catholic"
+	rite = roman_rite
 	culture = "galician"
 
 	female = yes
@@ -5075,7 +5842,7 @@ easteregg_veronica_pazos = {
 	#Other
 	trait = irritable
 	trait = comfort_eater
-	trait = scholar
+	trait = erudite
 	trait = weak
 
 	sexuality = heterosexual
@@ -5085,11 +5852,18 @@ easteregg_veronica_pazos = {
 	1039.4.20 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Galicia
+		employer = 109500 #Galicia
 
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_cannibal }
 			add_character_flag = no_headgear
 			add_character_flag = has_scripted_appearance
@@ -5126,7 +5900,7 @@ easteregg_weronika_kowalczyk = {
 	name = "Weronika"
 	dna = easteregg_weronika_kowalczyk_dna
 	dynasty = vanity_kowalczyk
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 
 	female = yes
@@ -5159,10 +5933,17 @@ easteregg_weronika_kowalczyk = {
 	1043.4.20 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Skane
+		employer = 34156 #Skane
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_cannibal }
 		}
 		move_to_pool = yes
@@ -5177,7 +5958,7 @@ easteregg_jakob_jorstedt = {
 	name = "Jakob"
 	dna = easteregg_jakob_jorstedt_dna
 	dynasty = vanity_jorstedt
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 
 	#Skills
@@ -5207,10 +5988,17 @@ easteregg_jakob_jorstedt = {
 	1043.4.20 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		 #Uppland
+		employer = 100546 #Uppland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_deviant }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -5227,7 +6015,7 @@ easteregg_tess_lindholm = {
 	name = "Tess"
 	dna = easteregg_tess_lindholm_dna
 	dynasty = vanity_matsdotter
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	female = yes
 
@@ -5259,9 +6047,13 @@ easteregg_tess_lindholm = {
 		birth = yes
 	}
 	1066.9.15 = {
-		 #Västergötland
+		employer = 100525 #Västergötland
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = lifestyle_mystic
@@ -5286,7 +6078,7 @@ easteregg_tess_lindholm = {
 easteregg_johanna_hermansson = {
 	name = "Johanna"
 	dynasty = vanity_hermansson
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 
@@ -5303,14 +6095,21 @@ easteregg_johanna_hermansson = {
 	1036.7.29 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 20014
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
 		#	add_character_flag = no_headgear
 		#}
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5323,7 +6122,7 @@ easteregg_daan_broekhof = {
 	name = "Daan"
 	dna = easteregg_daan_broekhof_dna
 	dynasty = vanity_broekhof
-	religion = "catholic"
+	rite = roman_rite
 	culture = "dutch"
 
 	intrigue = 2
@@ -5345,10 +6144,17 @@ easteregg_daan_broekhof = {
 	1026.9.15 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 106520
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_secret = { type = secret_witch }
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
@@ -5364,7 +6170,7 @@ easteregg_daan_broekhof = {
 easteregg_oscar_andersson = {
 	name = "Oscar"
 	dynasty = vanity_andersson_2
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 
 	#Education
@@ -5380,8 +6186,11 @@ easteregg_oscar_andersson = {
 	1037.9.15 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100525 # Sweden
 		move_to_pool = yes
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
@@ -5389,6 +6198,10 @@ easteregg_oscar_andersson = {
 		#}
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5400,7 +6213,7 @@ easteregg_oscar_andersson = {
 easteregg_berrak_oz = {
 	name = "Berrak"
 	dynasty = vanity_oz
-	religion = "ashari"
+	rite = shafii
 	culture = "turkish"
 	female = yes
 	dna = easteregg_berrak_oz
@@ -5431,7 +6244,7 @@ easteregg_berrak_oz = {
 				}
 			}
 		}
-		
+		employer = 1732
 		#effect = {
 		#	add_character_flag = has_scripted_appearance
 		#	add_character_flag = no_headgear
@@ -5439,6 +6252,10 @@ easteregg_berrak_oz = {
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5450,7 +6267,7 @@ easteregg_berrak_oz = {
 easteregg_martin_tosta = {
 	name = "Martin"
 	dynasty = vanity_tosta
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swabian"
 
 	#Education
@@ -5466,10 +6283,17 @@ easteregg_martin_tosta = {
 	1024.9.15 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 10087
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5482,7 +6306,7 @@ easteregg_jakob_eklund = {
 	name = "Jakob"
 	dna = easteregg_jakob_eklund_dna
 	dynasty = vanity_eklund
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 
 	#Education
@@ -5499,10 +6323,17 @@ easteregg_jakob_eklund = {
 	1024.11.21 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 100536
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 
@@ -5539,7 +6370,7 @@ easteregg_luke_bean = {
 	name = "Lugh"
 	dynasty = vanity_bean
 	dna = easteregg_luke_bean_dna
-	religion = "rabbinism"
+	rite = "rabbinism"
 	culture = "ashkenazi"
 
 	#Education
@@ -5557,9 +6388,13 @@ easteregg_luke_bean = {
 		birth = yes
 	}
 	1066.9.15 = {
-		 # Ailech
+		employer = 929 # Ailech
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5574,7 +6409,7 @@ easteregg_ida_hedberg = {
 	name = "Ida"
 	dna = easteregg_ida_hedberg_dna
 	dynasty = vanity_hedberg
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 
@@ -5602,10 +6437,17 @@ easteregg_ida_hedberg = {
 		birth = yes
 		add_character_flag = has_scripted_appearance
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 20014
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5618,7 +6460,7 @@ easteregg_lucas_ribeiro = {
 	name = "Lucas"
 	dynasty = vanity_ribeiro
 	dna = easteregg_lucas_ribeiro_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "galician"
 
 	#Education
@@ -5634,10 +6476,17 @@ easteregg_lucas_ribeiro = {
 	1033.8.21 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Duke Nuno II
+		employer = 109607 # Duke Nuno II
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = beauty_good_1
@@ -5655,7 +6504,7 @@ easteregg_tomas_versekys = {
 	name = "Tomas"
 	dna = easteregg_tomas_versekys_dna
 	dynasty = vanity_versekys
-	religion = baltic_pagan
+	rite = baltic_pagan
 	culture = lithuanian
 	#Skills
 	diplomacy = 6
@@ -5684,6 +6533,10 @@ easteregg_tomas_versekys = {
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -5696,7 +6549,7 @@ easteregg_david_drake = {
 	name = "David"
 	dna = easteregg_david_drake
 	dynasty = vanity_drake
-	religion = norse_pagan
+	rite = norse_pagan
 	culture = anglo_saxon
 	female = no
 	# Stats
@@ -5724,9 +6577,13 @@ easteregg_david_drake = {
 		}
 	}
 	1066.1.1 = {
-		 #Would have been Lancashire but it's under the Mercian yoke
+		employer = 5644 #Would have been Lancashire but it's under the Mercian yoke
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			give_witch_secret_or_trait_effect = yes
 		}
 		move_to_pool = yes
@@ -5741,7 +6598,7 @@ easteregg_johan_husen = {
 	name = "Johan"
 	dynasty = vanity_husen
 	dna = easteregg_johan_husen_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	#Education
 	trait = education_martial_2
@@ -5757,10 +6614,17 @@ easteregg_johan_husen = {
 	1018.8.22 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 100525
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5775,7 +6639,7 @@ easteregg_alva_granholm = {
 	name = "Alva"
 	dynasty = vanity_granholm
 	dna = easteregg_alva_granholm_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 	sexuality = bisexual
@@ -5793,10 +6657,17 @@ easteregg_alva_granholm = {
 	1042.6.17 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Count Tjudmund
+		employer = 20005 # Count Tjudmund
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 			add_trait = shrewd
@@ -5816,7 +6687,7 @@ easteregg_alva_granholm = {
 easteregg_lucia_dzediti = {
 	name = "Lucia"
 	dynasty = vanity_dzediti
-	religion = "orthodox"
+	rite = roman_rite
 	culture = "vlach"
 	female = yes
 	dna = easteregg_lucia_dzediti
@@ -5837,10 +6708,17 @@ easteregg_lucia_dzediti = {
 	1041.2.9 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.1.1 = {
-		
+		employer = 302096
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -5848,7 +6726,7 @@ easteregg_lucia_dzediti = {
 	}
 	1066.5.5 = {
 		effect = {
-			set_random_lover_reason = { TARGET = character:easteregg_jason_cantalini }
+			set_random_lover_reason = { TARGET = character:1 }
 		}
 	}
 	1066.9.16 = {
@@ -5861,7 +6739,7 @@ easteregg_ernesto_lopez = {
 	name = "Ernesto"
 	dynasty = vanity_lopez
 	dna = easteregg_ernesto_lopez_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "castilian"
 	#Education
 	trait = education_intrigue_2
@@ -5873,15 +6751,22 @@ easteregg_ernesto_lopez = {
 	
 	#Other
 	trait = gout_ridden
-	trait = poet
+	trait = lifestyle_poet
 	disallow_random_traits = yes
 	1031.10.09 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 107500
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5896,7 +6781,7 @@ easteregg_daniel_velasquez = {
 	name = "Daniel"
 	dynasty = vanity_velasquez
 	dna = easteregg_daniel_velasquez_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "castilian"
 	#Education
 	trait = education_diplomacy_3
@@ -5915,10 +6800,17 @@ easteregg_daniel_velasquez = {
 	1029.08.29 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 #Count Rodrigo Díaz of Asturias de Oviedo
+		employer = 108512 #Count Rodrigo Díaz of Asturias de Oviedo
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -5933,7 +6825,7 @@ easteregg_francesca_passoni = {
 	name = "Francesca"
 	dynasty = vanity_passoni
 	dna = easteregg_francesca_passoni_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "cisalpine"
 	female = yes
 
@@ -5955,6 +6847,19 @@ easteregg_francesca_passoni = {
 		birth = yes
 		give_witch_secret_or_trait_effect = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = cisalpine0661
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
 	1066.9.16 = {
 		death = yes
 	}
@@ -5965,7 +6870,7 @@ easteregg_emelie_verdugo = {
 	name = "Emelie"
 	dynasty = vanity_verdugo
 	dna = easteregg_emelie_verdugo_dna
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "norse"
 	female = "yes"
 	# Stats
@@ -5999,12 +6904,16 @@ easteregg_emelie_verdugo = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 73221
 		add_character_modifier = {
 			modifier = cat_story_modifier
 		}
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6016,7 +6925,7 @@ easteregg_emelie_verdugo = {
 easteregg_carsten_mannetje = {
 	name = "Carsten"
 	dynasty = vanity_mannetje
-	religion = catholic 
+	rite = roman_rite
 	culture = dutch 
 	female = no
 	sexuality = heterosexual
@@ -6041,13 +6950,16 @@ easteregg_carsten_mannetje = {
 	trait = hunchbacked
 	trait = open_terrain_expert
 	trait = shrewd
-	trait = scholar
+	trait = erudite
 	trait = lifestyle_traveler
 
 	disallow_random_traits = yes
 
 	1028.7.23 = {
 		birth = yes
+	}
+	1054.7.16 = {
+		rite = roman_rite
 	}
 	1066.1.1 = {
 		learn_language = language_norse
@@ -6061,9 +6973,13 @@ easteregg_carsten_mannetje = {
 				}
 			}
 		}
-		
+		employer = 34156
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6076,7 +6992,7 @@ easteregg_celine_jensen = {
 	name = "CE_line"
 	dynasty = vanity_le_jensen
 	dna = easteregg_celine_jensen_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "french"
 	female = "yes"
 	# Stats
@@ -6103,10 +7019,17 @@ easteregg_celine_jensen = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 40026
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6119,7 +7042,7 @@ easteregg_johanna_uddstahl = {
 	name = "Johanna"
 	dynasty = vanity_bure
 	dna = easteregg_johanna_uddstahl_dna
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	female = "yes"
 	# Stats
@@ -6145,9 +7068,13 @@ easteregg_johanna_uddstahl = {
 		birth = yes
 	}
 	1066.1.1 = {
-		
+		employer = 20014
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_headgear
 		}
@@ -6162,7 +7089,7 @@ easteregg_anton_holmqvist = {
 	name = "Anton"
 	dynasty = vanity_holmqvist
 	dna = easteregg_anton_holmqvist_dna
-	religion = catholic
+	rite = roman_rite
 	culture = swedish
 	female = no
 	#Skills
@@ -6190,11 +7117,18 @@ easteregg_anton_holmqvist = {
 		birth = yes
 	}
 	# Delay a day so our liege uhh. Exists.
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.2 = {
 		# Angermanland, as Sodermannland was full.
-		
+		employer = 20014
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6207,7 +7141,7 @@ easteregg_samet_atasoy = {
 	name = "Samet"
 	dynasty = vanity_atasoy
 	dna = easteregg_samet_atasoy_dna
-	religion = orthodox
+	rite = roman_rite
 	culture = khazar
 	female = no
 
@@ -6229,10 +7163,17 @@ easteregg_samet_atasoy = {
 			add_character_flag = no_headgear
 		}
 	}
+	1054.7.16 = {
+		rite = byzantine_rite
+	}
 	1066.1.2 = {
-		
+		employer = 41308
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6245,7 +7186,7 @@ easteregg_daniel_tolman = {
 	name = "Daniel"
 	dynasty = vanity_tolman
 	dna = easteregg_daniel_tolman_dna
-	religion = "insular_celtic"
+	rite = insular_celtic
 	culture = "norman"
 	female = no
 
@@ -6278,9 +7219,13 @@ easteregg_daniel_tolman = {
 		}
 	}
 	1066.1.1 = {
-		
+		employer = 150
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 		}
 	}
 	1066.9.16 = {
@@ -6289,11 +7234,11 @@ easteregg_daniel_tolman = {
 }
 
 # Office
-easteregg_rebecca_ronnback = {
+easteregg_rebecca_gottfredsson = {
 	name = "Rebecka"
-	dynasty = vanity_ronnback
-	dna = 1
-	religion = "catholic"
+	dynasty = vanity_gottfredsson
+	dna = easteregg_rebecca_gottfredsson_dna
+	rite = roman_rite
 	culture = "swedish"
 	female = yes
 	#Education
@@ -6311,8 +7256,11 @@ easteregg_rebecca_ronnback = {
 	1042.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.1.1 = {
-		
+		employer = 20007
 		effect = {
 			add_trait_xp = {
 				trait = tourney_participant
@@ -6320,6 +7268,10 @@ easteregg_rebecca_ronnback = {
 				value = 100
 			}
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6331,11 +7283,11 @@ easteregg_rebecca_ronnback = {
 }
 
 # Front Desk
-easteregg_melanie_bjurman = {
+easteregg_melanie_albarn = {
 	name = "Melanie"
-	dynasty = vanity_bjurman
-	dna = 1
-	religion = "melieism"
+	dynasty = vanity_albarn
+	dna = easteregg_melanie_albarn_dna
+	rite = "melieism"
 	culture = "mel"
 	female = yes
 	#Education
@@ -6348,6 +7300,7 @@ easteregg_melanie_bjurman = {
 	trait = overseer
 	trait = loyal
 	trait = profligate
+	fertility = 0
 	#Other
 	sexuality = heterosexual
 	disallow_random_traits = yes
@@ -6355,10 +7308,14 @@ easteregg_melanie_bjurman = {
 		birth = yes
 	}
 	1066.1.1 = {
-		
+		employer = 20007
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6373,7 +7330,7 @@ easteregg_melanie_bjurman = {
 easteregg_sarah_lager = {
 	name = "Sarah"
 	dynasty = vanity_lager
-	religion = "ashari"
+	rite = shafii
 	culture = "maghrebi"
 	female = yes
 	#Education
@@ -6391,11 +7348,15 @@ easteregg_sarah_lager = {
 		birth = yes
 	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_modifier = { modifier = cat_story_modifier }
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6411,7 +7372,7 @@ easteregg_david_ostlund = {
 	name = "David"
 	dynasty = vanity_ostlund
 	dna = easteregg_david_ostlund_dna
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	#Education
 	trait = education_martial_3
@@ -6429,10 +7390,14 @@ easteregg_david_ostlund = {
 		birth = yes
 	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6448,7 +7413,7 @@ easteregg_mathias_frostewarn = {
 	name = "Mathias"
 	dynasty = vanity_frostewarn
 	dna = easteregg_mathias_frostewarn_dna
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "swedish"
 	#Education
 	trait = education_intrigue_3
@@ -6466,10 +7431,14 @@ easteregg_mathias_frostewarn = {
 		birth = yes
 	}
 	1066.9.15 = {
-		 # Sweden
+		employer = 100530 # Sweden
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6485,7 +7454,7 @@ easteregg_richard_lindkvist = {
 	name = "Richard"
 	dynasty = vanity_lindkvist
 	dna = easteregg_richard_lindkvist_dna
-	religion = "armenian_apostolic"
+	rite = armenian_rite
 	culture = "franconian"
 	#Education
 	trait = education_diplomacy_1
@@ -6498,10 +7467,14 @@ easteregg_richard_lindkvist = {
 		birth = yes
 	}
 	1066.9.15 = {
-		
+		employer = 1316
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6517,7 +7490,7 @@ easteregg_tomasz_ender = {
 	name = "Tomasz"
 	dynasty = vanity_ender
 	dna = easteregg_tomasz_ender_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "polish"
 	#Education
 	trait = education_stewardship_1
@@ -6534,11 +7507,18 @@ easteregg_tomasz_ender = {
 	1034.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		 # Poland
+		employer = 762 # Poland
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6554,7 +7534,7 @@ easteregg_marcus_bose = {
 	name = "Marcus"
 	dynasty = vanity_boseh
 	dna = easteregg_marcus_bose_dna
-	religion = "norse_pagan"
+	rite = "norse_pagan"
 	culture = "norse"
 	#Education
 	trait = education_diplomacy_1
@@ -6577,10 +7557,14 @@ easteregg_marcus_bose = {
 		birth = yes
 	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6596,7 +7580,7 @@ easteregg_philip_wessman = {
 	name = "Philip"
 	dynasty = vanity_wessman
 	dna = easteregg_philip_wessman_dna
-	religion = "paulician"
+	rite = "paulician_rite"
 	culture = "franconian"
 	#Education
 	trait = education_learning_2
@@ -6614,10 +7598,14 @@ easteregg_philip_wessman = {
 		birth = yes
 	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6633,7 +7621,7 @@ easteregg_neyla_garcia = {
 	name = "Neyla"
 	dynasty = vanity_garcia
 	dna = easteregg_neyla_garcia_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "castilian"
 	female = yes
 	#Education
@@ -6647,11 +7635,71 @@ easteregg_neyla_garcia = {
 	1039.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 107500
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Programmer
+easteregg_jacopo_freddi = {
+	name = "Jacopo"
+	dynasty = vanity_freddi
+	dna = easteregg_jacopo_freddi_dna
+	rite = roman_rite
+	culture = "cisalpine"
+	female = no
+
+	#Skills
+	diplomacy = 7
+	martial = 5
+	stewardship = 9
+	intrigue = 6
+	learning = 7
+	prowess = 9
+	
+	#Education
+	trait = education_learning_3
+	#Personality Traits
+	trait = honest
+	trait = diligent
+	trait = craven
+	#Other
+	trait = depressed_1
+	sexuality = heterosexual
+	disallow_random_traits = yes
+
+	1042.6.18 = {
+		birth = yes
+	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.9.15 = {
+		employer = 167994
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6667,7 +7715,7 @@ easteregg_jesse_kopparvall = {
 	name = "Jesse"
 	dynasty = vanity_kopparvall
 	dna = easteregg_jesse_kopparvall_dna
-	religion = "catholic"
+	rite = roman_rite
 	culture = "swedish"
 	#Education
 	trait = education_martial_4
@@ -6682,11 +7730,18 @@ easteregg_jesse_kopparvall = {
 	1031.10.09 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 100525
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6701,7 +7756,7 @@ easteregg_jesse_kopparvall = {
 easteregg_louise_mutel = {
 	name = "Louise"
 	dynasty = vanity_mutel
-	religion = "catholic"
+	rite = roman_rite
 	culture = "french"
 	female = yes
 	#Education
@@ -6715,11 +7770,18 @@ easteregg_louise_mutel = {
 	1035.1.1 = {
 		birth = yes
 	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
 	1066.9.15 = {
-		
+		employer = 214
 		move_to_pool = yes
 		effect = {
 			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
 			add_character_flag = has_scripted_appearance
 			add_character_flag = has_scripted_weight
 			add_character_flag = no_headgear
@@ -6727,5 +7789,649 @@ easteregg_louise_mutel = {
 	}
 	1066.9.16 = {
 		death = yes
+	}
+}
+
+# Programmer
+easteregg_jonathan_collinder = {
+	name = "Jonathan"
+	dynasty = vanity_collinder
+	dna = easteregg_jonathan_collinder_dna
+	rite = roman_rite
+	culture = "swedish"
+	female = no
+
+	#Skills
+	diplomacy = 8
+	martial = 4
+	stewardship = 5
+	intrigue = 2
+	learning = 3
+	prowess = 6
+	
+	#Education
+	trait = education_diplomacy_3
+	#Personality Traits
+	trait = gregarious
+	trait = trusting
+	trait = brave
+	#Other
+	trait = athletic
+	trait = physique_good_1
+	trait = reckless
+	sexuality = heterosexual
+	disallow_random_traits = yes
+
+	1035.3.24 = {
+		birth = yes
+	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.9.15 = {
+		employer = 34156 #Skane
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_character_flag = has_scripted_appearance
+			add_character_flag = has_scripted_weight
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# Programmer
+easteregg_liana_tosunyan = {
+	name = "Liana"
+	dynasty = vanity_tosunyan
+	dna = easteregg_liana_tosunyan_dna
+	female = yes
+
+	rite = armenian_rite
+	culture = "armenian"
+	
+	#Skills
+	diplomacy = 3
+	martial = 2
+	stewardship = 5
+	intrigue  = 8
+	learning  = 7
+	prowess  = 4
+
+	sexuality = heterosexual
+
+	#Education
+	trait = education_intrigue_3
+
+	#Personality
+	trait = shy
+	trait = stubborn
+	trait = calm
+
+	disallow_random_traits = yes
+
+	1036.7.29 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_headgear
+		}
+	}
+	1066.9.15 = {
+		employer = 41513
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+#Game Designer
+easteregg_laurence_kennedy = {
+	name = "Lorcan"
+	dynasty = vanity_ceanneidigh
+	dna = easteregg_laurence_kennedy_dna
+	
+	rite = insular_celtic
+	culture = "irish"
+	
+	#Skills
+	diplomacy = 6
+	martial = 4
+	stewardship = 5
+	intrigue  = 10
+	learning  = 10
+	prowess  = 3
+
+	sexuality = bisexual
+
+	#Education
+	trait = education_diplomacy_3
+
+	#Personality
+	trait = generous
+	trait = gluttonous
+	trait = eccentric
+	#Other
+	trait = lifestyle_reveler
+	trait = fornicator
+	trait = lunatic_1
+	trait = lifestyle_poet
+
+	disallow_random_traits = yes
+
+	1029.11.23 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_headgear
+			add_secret = { type = secret_deviant }
+			learn_language = language_anglic
+			learn_language = language_french
+		}
+	}
+	1066.9.15 = {
+		employer = 83355
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+	1111.9.16 = {
+		death = yes
+	}
+}
+
+easteregg_thea_ariens = { #Producer
+	name = "Thea"
+	dynasty = vanity_ariens
+	dna = easteregg_thea_ariens
+	rite = "roman_rite"
+	culture = "dutch"
+	female = yes
+	sexuality = bisexual
+
+	diplomacy = 7
+	martial = 3
+	stewardship = 5
+	intrigue = 4
+	learning = 5
+	prowess = 7
+
+	trait = education_diplomacy_3
+	trait = gregarious
+	trait = diligent
+	trait = sadistic
+	trait = lifestyle_traveler
+	trait = wheezing
+	trait = contrite
+	trait = athletic
+	trait = sodomite
+
+	disallow_random_traits = yes
+
+	1039.12.22 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+
+	1066.1.1 = {
+		employer = 102532
+		effect = {
+			give_nickname = nick_the_convicted
+			employer = {
+				imprison = {
+					target = prev
+					type = house_arrest
+				}
+			}
+		}
+	}
+
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# QA
+easteregg_bozdar_janiak = {
+	name = "BoZ_dar"
+	dynasty = vanity_Janiak
+	dna = easteregg_bozdar_janiak
+	rite = roman_rite
+	culture = "polish"
+	sexuality = heterosexual
+
+	#Skills
+	diplomacy = 8
+	martial = 5
+	stewardship = 6
+	intrigue = 4
+	learning = 6
+	prowess = 9
+
+	#Education
+	trait = education_diplomacy_3
+
+	#Personality Traits
+	trait = gluttonous
+	trait = ambitious
+	trait = patient
+
+	#Other Traits
+	trait = lifestyle_herbalist
+	trait = dwarf
+
+	disallow_random_traits = yes
+
+	1046.7.2 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = et_gniezno_1066_1 # Archbishop of Gniezno
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# QA
+easteregg_maksymilian_nowakowski = {
+	name = "Maksymilian"
+	dynasty = vanity_Nowakowski
+	dna = easteregg_maksymilian_nowakowski
+	rite = roman_rite
+	culture = "polish"
+	sexuality = heterosexual
+
+	#Skills
+	diplomacy = 4
+	martial = 5
+	stewardship = 6
+	intrigue = 5
+	learning = 6
+	prowess = 8
+
+	#Education
+	trait = education_stewardship_3
+
+	#Personality Traits
+	trait = compassionate
+	trait = gregarious
+	trait = ambitious
+
+	#Other Traits
+	trait = depressed_1
+	trait = lunatic_1
+	trait = shrewd
+	trait = knight_errant
+
+	disallow_random_traits = yes
+
+	1044.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = 30523 # c_atlantis (Gdańsk)
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# QA
+easteregg_piotr_szmil = {
+	name = "Piotr"
+	dynasty = vanity_szmil
+	dna = easteregg_piotr_szmil_dna
+	rite = roman_rite
+	culture = "polish"
+	sexuality = heterosexual
+
+	#Skills
+	diplomacy = 8
+	martial = 7
+	stewardship = 3
+	intrigue = 3
+	learning = 7
+	prowess = 9
+
+	#Education
+	trait = education_martial_2
+
+	#Personality Traits
+	trait = calm
+	trait = shy
+	trait = stubborn
+
+	#Other Traits
+	trait = athletic
+
+	disallow_random_traits = yes
+
+	1040.6.14 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1054.7.16 = {
+		rite = roman_rite
+	}
+	1066.1.1 = {
+		employer = 302026 # c_atlantis (Płock)
+		move_to_pool = yes
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_trait = tourney_participant
+			add_trait_xp = {
+				trait = tourney_participant
+				track = wit
+				value = {
+					integer_range = {
+						min = small_lifestyle_random_xp_low
+						max = small_lifestyle_random_xp_high
+					}
+				}
+			}
+			add_trait_xp = {
+				trait = tourney_participant
+				track = foot
+				value = {
+					integer_range = {
+						min = small_lifestyle_random_xp_low
+						max = small_lifestyle_random_xp_high
+					}
+				}
+			}
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# QA
+easteregg_shehabulddin_alessawey = {
+	name = "Shehabulddin"
+	dynasty = vanity_Alessawey
+	dna = easteregg_shehabulddin_alessawey
+	rite = hanafi
+	culture = "egyptian"
+	sexuality = heterosexual
+
+	#Skills
+	diplomacy = 3
+	martial = 2
+	stewardship = 0
+	intrigue = 8
+	learning = 9
+	prowess = 2
+
+	#Education
+	trait = education_stewardship_4
+
+	#Personality Traits
+	trait = generous
+	trait = forgiving
+	trait = impatient
+
+	#Other Traits
+	trait = diplomat
+	trait = comfort_eater
+	trait = depressed_1
+	trait = shrewd
+	trait = pilgrim
+	trait = organizer
+
+	disallow_random_traits = yes
+
+	1042.9.23 = {
+		birth = yes
+		effect = {
+			add_character_flag = has_scripted_appearance
+		}
+	}
+	1066.1.1 = {
+		employer = 522 # c_atlantis (Prague)
+		move_to_pool = yes
+		effect = {
+			give_nickname = nick_the_honest
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+		}
+	}
+	1066.9.16 = {
+		death = yes
+	}
+}
+
+# QA, Game Design
+easteregg_anon_saltfish = {
+	name = "Ann_2"
+	dynasty = vanity_saltfish
+	dna = easteregg_anon_saltfish_dna
+	female = yes
+
+	rite = "shinto"
+	culture = "japanese"
+
+	#Skills
+	diplomacy = 1
+	martial = 1
+	stewardship = 4
+	intrigue = 5
+	learning = 1
+	prowess = 4
+
+	sexuality = homosexual
+
+	#Education
+	trait = education_diplomacy_4
+
+	#Personality
+	trait = lustful
+	trait = trusting
+	trait = gregarious
+	trait = compassionate
+
+	#Others
+	trait = shrewd
+	trait = infertile
+	# trait = saint
+	trait = seducer
+	trait = athletic
+	trait = confider
+
+	disallow_random_traits = yes
+
+	portrait_override = {
+		portrait_modifier_overrides = {
+			custom_beards = female_empty
+			custom_hair = f_hair_fp3_iranian_02
+		}
+		colors = {
+			hair={ 1 0.53333 0.6 }
+		}
+	}
+
+	1045.9.8 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		give_nickname = nick_saltfish
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_character_flag = has_scripted_appearance
+
+			add_stress = 99
+			learn_language = language_anglic
+			title:b_atlantis.title_province = { save_scope_as = location }
+			create_artifact_animal_trinket_effect = {
+				OWNER = ROOT
+				HUNTER = ROOT
+				LEGENDARY = no
+				ANIMAL = flag:fox
+			}
+			hidden_effect_new_object = {
+				scope:newly_created_artifact ?= {
+					equip_artifact_to_owner = yes
+				}
+			}
+			# make pets on exactly the day game start, otherwise can't handle pet name.
+			create_story = story_cycle_pet_rock
+			create_story = story_cycle_pet_cat
+			every_owned_story = {
+				type = story_cycle_pet_rock
+				set_variable = {
+					name = rock_gender
+					value = flag:female
+				}
+				set_variable = {
+					name = rock_color
+					value = flag:gray
+				}
+			}
+			# no heterochromia iridum so pick one randomly :(
+			every_owned_story = {
+				type = story_cycle_pet_cat
+				random_list = {
+					1 = {
+						assign_cat_eye_color_effect = { COLOR = blue }
+					}
+					1 = {
+						assign_cat_eye_color_effect = { COLOR = yellow }
+					}
+				}
+				set_variable = {
+					name = cat_gender
+					value = flag:female
+				}
+				set_variable = {
+					name = cat_fur_color
+					value = flag:white
+				}
+			}
+			title:b_atlantis.holder = { add_courtier = ROOT }
+		}
+	}
+	1066.9.16 = {
+		death = {
+			death_reason = death_lost_in_the_forest
+		}
+	}
+}
+
+# Game Design
+easteregg_az = {
+	name = "Arthur"
+	dynasty = vanity_Az
+	dna = easteregg_Az_dna
+
+	rite = west_african_orisha_pagan
+	culture = "galician"
+
+	#Skills
+	diplomacy = 7
+	martial = 9
+	stewardship = 9
+	intrigue = 3
+	learning = 15
+	prowess = 15
+
+	sexuality = bisexual
+
+	#Education
+	trait = education_learning_3
+
+	#Personality
+	trait = stubborn
+	trait = compassionate
+	trait = patient
+
+	#Others
+	trait = lifestyle_blademaster
+	trait = lifestyle_poet
+	trait = lifestyle_mystic
+	trait = strong
+
+	disallow_random_traits = yes
+
+	portrait_override = {
+		portrait_modifier_overrides={
+			custom_hair=male_hair_fp2_iberian_christian_03
+			custom_beards=m_beard_ep3_byzantine_01
+		}
+	}
+
+	1031.11.4 = {
+		birth = yes
+	}
+	1066.9.15 = {
+		effect = {
+			add_character_flag = easteregg
+			add_to_global_variable_list = {
+				name = easteregg_characters_list
+				target = root
+			}
+			add_character_flag = has_scripted_appearance
+
+			title:b_atlantis.title_province = { save_scope_as = location }
+		}
 	}
 }

@@ -4,7 +4,10 @@ my_animation = {										# Name of the animation, this is the name events and g
 	male = {											# Animations are scripted for each portrait type, all types needs to be scripted
 		default = { head = "idle" torso = "idle" }		# Default animation used if no item has a weight > 0, or if it is used in a non scripted environment
 
-		force = no										# portrait_modifier are copied to children if they have none of their own. If specified, copying is skipped unless force = yes. Default is no.
+		## How to handle portrait_modifiers at this top level, in relation to animation variants
+		# (default) no: portrait_modifiers at top level are _copied_ animation variants, if they have no portrait_modifiers (or packs) defined
+		# yes: for each portrait_modifiers at this top level, we _add_ their overrides to all portrait_modifiers of all animation variants
+		force = yes/no
 
 		portrait_modifier = {							# Triggered portrait modifier for when this animation is picked. The first one satisfying the trigger will be picked.
 			trigger = {
@@ -17,12 +20,34 @@ my_animation = {										# Name of the animation, this is the name events and g
 
 		portrait_modifier = ...
 
-		evil = {										# Item, specifies animations to be used if this one is choosen by the weighted random
+		portrait_modifier_pack = <key>					# Add all of modifiers from the pack with name <key>. Packs are defined in `*.animationpack` files.
+
+		# Add a portrait modifier set. All modifier sets are applied independently when this animation is selected. (the first valid modifier in each is applied)
+		portrait_modifier_set = {
+			portrait_modifier = ...						# Portrait modifiers for the current variant (same syntax as for the default animation). If none are specified, the default animation ones will be used.
+			portrait_modifier = ...
+			portrait_modifier_pack = <key>				# Add all of modifiers from the pack with name <key>. Packs are defined in `*.animationpack` files.
+		}
+		portrait_modifier_set = { ... }
+
+		# Animation variant (possibly weighted)
+		evil = {
+			# Item, specifies animations to be used if this one is choosen by the weighted random
 			animation = { head = "evil" torso = "evil" }
 			
 			portrait_modifier = ...						# Portrait modifiers for the current variant (same syntax as for the default animation). If none are specified, the default animation ones will be used.
 			portrait_modifier = ...
-			
+
+			portrait_modifier_pack = <key>				# Add all of modifiers from the pack with name <key>. Packs are defined in `*.animationpack` files.
+
+			# Add a portrait modifier set. All modifier sets are applied independently when this animation is selected. (the first valid modifier in each is applied)
+			portrait_modifier_set = {
+				portrait_modifier = ...						# Portrait modifiers for the current variant (same syntax as for the default animation). If none are specified, the default animation ones will be used.
+				portrait_modifier = ...
+				portrait_modifier_pack = <key>				# Add all of modifiers from the pack with name <key>. Packs are defined in `*.animationpack` files.
+			}
+			portrait_modifier_set = { ... }
+
 			weight = {									# This is where the weight is calculated
 				base = 1								# The final weigth is calculated like this:
 														#  weight = base

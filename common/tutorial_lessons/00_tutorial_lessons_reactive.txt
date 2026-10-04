@@ -760,7 +760,7 @@ reactive_advice_dynamic_culture = {
 
 }
 
-reactive_advice_religion = {
+reactive_advice_religion_rites = {
 	delay = 0
 	chain = reactive_advice
 	start_automatically = no
@@ -768,7 +768,7 @@ reactive_advice_religion = {
 	# Your religion...
 	lesson_basics_religion_1 = {
 		text = "lesson_basics_religion_1_desc"
-		header_info = "lesson_step_1_of_4"
+		header_info = "lesson_step_1_of_5"
 		highlight_widget = "faith_button"
 
 		gui_transition = {
@@ -803,12 +803,28 @@ reactive_advice_religion = {
 	# Doctrines...
 	lesson_basics_religion_2 = {
 		text = "lesson_basics_religion_2_desc"
-		header_info = "lesson_step_2_of_4"
+		header_info = "lesson_step_2_of_5"
 
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
 			target = lesson_basics_religion_1
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = lesson_basics_religion_divergence
+		}
+	}
+	# Divergence...
+	lesson_basics_religion_divergence = {
+		text = "lesson_basics_religion_divergence_desc"
+		header_info = "lesson_step_3_of_5"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = lesson_basics_religion_2
 		}
 		gui_transition = {
 			button_id = "next"
@@ -819,13 +835,13 @@ reactive_advice_religion = {
 	# Fervor...
 	lesson_basics_religion_3 = {
 		text = "lesson_basics_religion_3_desc"
-		header_info = "lesson_step_3_of_4"
+		header_info = "lesson_step_4_of_5"
 		highlight_widget = "fervor_container"
 
 		gui_transition = {
 			button_id = "back"
 			button_text = "tutorial_lesson_button_back"
-			target = lesson_basics_religion_2
+			target = lesson_basics_religion_divergence
 		}
 		gui_transition = {
 			button_id = "next"
@@ -836,7 +852,7 @@ reactive_advice_religion = {
 	# Founding your own religion...
 	lesson_basics_religion_4 = {
 		text = "lesson_basics_religion_4_desc"
-		header_info = "lesson_step_4_of_4"
+		header_info = "lesson_step_5_of_5"
 		highlight_widget = "create_faith"
 
 		gui_transition = {
@@ -859,7 +875,7 @@ reactive_advice_religion = {
 	# Founding your own religion...
 	lesson_basics_religion_4_no_GUI_highlight = {
 		text = "lesson_basics_religion_4_desc"
-		header_info = "lesson_step_4_of_4"
+		header_info = "lesson_step_5_of_5"
 		shown_in_encyclopedia = no
 
 		gui_transition = {
@@ -874,8 +890,6 @@ reactive_advice_religion = {
 		}
 	}
 }
-
-
 
 reactive_advice_fabricate_claim = {
 	chain = reactive_advice
@@ -2131,11 +2145,9 @@ reactive_advice_travel_planning = {
 	trigger_transition = {
 		target = lesson_abort
 		trigger = {
-			NOT = {
-				OR = {
-					is_widgetid_open = activity_planner
-					is_widgetid_open = travel_planner_window
-				}
+			NOR = {
+				is_widgetid_open = activity_planner
+				is_widgetid_open = travel_planner_window
 			}
 		}
 	}
@@ -3137,6 +3149,8 @@ reactive_advice_tutorial_war = {
 		NOT = { is_tutorial_lesson_completed = reactive_advice_tutorial_war }
 		is_at_war = yes
 		has_global_variable = tutorial_completed
+		NOT = { has_global_variable = started_with_china_tutorial }
+
 		any_character_war = {
 			casus_belli = {
 				primary_attacker = root
@@ -3478,6 +3492,9 @@ reactive_advice_lesson_war_final_notes_victory = {
 		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = reactive_advice_lesson_war_final_notes_victory }
 		has_war_result_message_with_outcome = victory
+
+		# No need for a 'good luck' message for the chinese tutorial start
+		NOT = { has_global_variable = started_with_china_tutorial }
 	}
 
 	lesson_war_final_notes_victory_step_1 = {
@@ -3503,6 +3520,9 @@ reactive_advice_lesson_war_final_notes_defeat = {
 		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = reactive_advice_lesson_war_final_notes_defeat }
 		has_war_result_message_with_outcome = defeat
+
+		# No need for a 'good luck' message for the chinese tutorial start
+		NOT = { has_global_variable = started_with_china_tutorial }
 	}
 
 	lesson_war_final_notes_defeat_step_1 = {
@@ -3528,6 +3548,9 @@ reactive_advice_lesson_war_final_notes_white_peace = {
 		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = reactive_advice_lesson_war_final_notes_white_peace }
 		has_war_result_message_with_outcome = white_peace
+
+		# No need for a 'good luck' message for the chinese tutorial start
+		NOT = { has_global_variable = started_with_china_tutorial }
 	}
 
 	lesson_war_final_notes_white_peace_step_1 = {
@@ -3552,6 +3575,9 @@ reactive_advice_lesson_war_final_notes_invalidated = {
 		has_global_variable = tutorial_completed
 		NOT = { is_tutorial_lesson_completed = reactive_advice_lesson_war_final_notes_invalidated }
 		has_war_result_message_with_outcome = invalidated
+
+		# No need for a 'good luck' message for the chinese tutorial start
+		NOT = { has_global_variable = started_with_china_tutorial }
 	}
 
 	lesson_war_final_notes_invalidated_step_1 = {
@@ -4242,4 +4268,2026 @@ reactive_advice_tributaries = {
 			target = lesson_finish
 		}
 	}
+}
+
+## China or Celestial/Merit Government Related
+
+reactive_advice_meritocratic_governor = {
+	chain = reactive_advice
+	start_automatically = no
+
+	ra_merit_governor_intro = {
+		text = "ra_merit_governor_intro_desc"
+
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_advancing
+		}
+	}
+
+	ra_merit_governor_advancing = {
+		text = "ra_merit_governor_advancing_desc"
+
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_intro
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_treasury_1
+		}
+	}
+
+	ra_merit_governor_treasury_1 = {
+		text = "ra_merit_governor_treasury_1_desc"
+		animation = top_right
+		highlight_widget = "treasury"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_advancing
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_treasury_2
+		}
+	}
+
+	ra_merit_governor_treasury_2 = {
+		text = "ra_merit_governor_treasury_2_desc"
+		animation = top_right
+		highlight_widget = "transfer_gold_to_treasury_button_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_treasury_1
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_treasury_3
+		}
+	}
+
+	ra_merit_governor_treasury_3 = {
+		text = "ra_merit_governor_treasury_3_desc"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_treasury_2
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_realm_open
+		}
+	}
+
+	ra_merit_governor_realm_open = {
+		text = "ra_merit_governor_realm_open_desc"
+		animation = top_right
+		highlight_widget = tab_my_realm_tutorial_uses_this
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_treasury_3
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_holdings_list
+			trigger = {
+				custom_description = {
+					text = "ra_merit_governor_realm_open_prompt"
+					is_widgetid_open = realm_panel_contents
+				}
+			}
+		}
+	}
+
+	ra_merit_governor_domain_tab_open = {
+		text = "ra_merit_governor_domain_tab_open_desc"
+
+		highlight_widget = tab_domain
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_realm_open
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_holdings_list
+			trigger = {
+				custom_description = {
+					text = "ra_merit_governor_domain_tab_open_prompt"
+					is_widgetid_open = my_realm_domain_body
+				}
+			}
+		}
+
+		trigger_transition = {
+			target = ra_merit_governor_realm_open
+			trigger = {
+				NOT = { is_widgetid_open = realm_panel_contents }
+			}
+		}
+	}
+
+	ra_merit_governor_holdings_list = {
+		text = "ra_merit_governor_holdings_list_desc"
+
+		highlight_widget = "holding_realm_list_item"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_domain_tab_open
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_holding_view
+			trigger = {
+				custom_description = {
+					text = "ra_merit_governor_holdings_list_prompt"
+					is_widgetid_open = holding_view_buildings_area
+				}
+			}
+		}
+
+		trigger_transition = {
+			target = ra_merit_governor_domain_tab_open
+			trigger = {
+				NOT = { is_widgetid_open = my_realm_domain_body }
+			}
+		}
+	}
+
+	ra_merit_governor_holding_view = {
+		text = "ra_merit_governor_holding_view_desc"
+
+		animation = top_left
+		highlight_widget = holding_view_buildings_area
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_holdings_list
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_activities_open
+		}
+
+		trigger_transition = {
+			target = ra_merit_governor_holdings_list
+			trigger = {
+				NOT = { is_widgetid_open = holding_view_buildings_area }
+			}
+		}
+	}
+
+	ra_merit_governor_activities_open = {
+		text = "ra_merit_governor_activities_open_desc"
+
+		highlight_widget = tab_activities
+		animation = right
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_holding_view
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_inspection
+			trigger = {
+				custom_description = {
+					text = "ra_merit_governor_activities_open_prompt"
+					is_widgetid_open = activity_panel
+				}
+			}
+		}
+	}
+
+	ra_merit_governor_inspection = {
+		text = "ra_merit_governor_inspection_desc"
+
+		animation = center
+		highlight_widget = "inspection_tutorial_highlight"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_activities_open
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_advancing_retire
+		}
+
+		trigger_transition = {
+			target = ra_merit_governor_activities_open
+			trigger = {
+				NOT = { is_widgetid_open = activity_panel }
+			}
+		}
+	}
+
+	ra_merit_governor_advancing_retire = {
+		text = "ra_merit_governor_advancing_retire_desc"
+
+		highlight_widget = tab_decisions
+		highlight_widget = renounce_governorship_decision_tutorial_highlight
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_inspection
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_governor_finish
+		}
+	}
+
+	ra_merit_governor_finish = {
+		text = "ra_merit_governor_finish_desc"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_governor_advancing_retire
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}	
+}
+
+
+
+# Treasury only
+reactive_advice_treasury = {
+	chain = reactive_advice
+	start_automatically = no
+	
+	ra_treasury_1 = {
+		text = "ra_treasury_1_desc"
+		animation = top_right
+		highlight_widget = "treasury"
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_treasury_2
+		}
+	}
+
+	ra_treasury_2 = {
+		text = "ra_treasury_2_desc"
+		animation = top_right
+		highlight_widget = "transfer_gold_to_treasury_button_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_treasury_1
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_treasury_3
+		}
+	}
+
+	ra_treasury_3 = {
+		text = "ra_treasury_3_desc"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_treasury_2
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+}
+
+reactive_advice_dynastic_cycle = {
+	chain = reactive_advice
+	start_automatically = no
+
+
+	ra_dynastic_cycle_intro = {
+		text = "ra_dynastic_cycle_intro_desc"
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_open
+		}
+	}
+
+	ra_dynastic_cycle_open = {
+		text = "ra_dynastic_cycle_open_desc"
+		animation = right
+
+		highlight_widget = "dynastic_cycle_highlight"
+		
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_intro
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_effects
+			trigger = {
+				custom_description = {
+					text = "ra_dynastic_cycle_open_trigger"
+					is_widgetid_open = window_tgp_dynastic_cycle
+				}
+			}
+		}
+	}
+
+	ra_dynastic_cycle_era_open_eras = {
+		text = "ra_dynastic_cycle_era_open_eras_desc"
+		animation = center
+
+		highlight_widget_with_index = {
+			dynastic_cycle_tabs = 0
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_era_effects
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_effects
+			trigger = {
+				custom_description = {
+					text = "ra_dynastic_cycle_era_open_eras_trigger"
+					is_widgetid_open = dynastic_cycles_eras_tab_contents
+				}
+			}
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_open
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+	}
+
+	ra_dynastic_cycle_era_effects = {
+		text = ra_dynastic_cycle_era_effects_desc
+		animation = center
+
+		highlight_widget = "current_era_heading_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_open
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_open_groups
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_open
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+
+		# rewind if tab is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_era_open_eras
+			trigger = {
+				NOT = { is_widgetid_open = dynastic_cycles_eras_tab_contents }
+			}
+		}
+	}
+
+	ra_dynastic_cycle_era_open_groups = {
+		text = ra_dynastic_cycle_era_open_groups_desc
+		animation = center
+
+		highlight_widget_with_index = {
+			dynastic_cycle_tabs = 1
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_era_effects
+		}
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_groups
+			trigger = {
+				custom_description = {
+					text = "ra_dynastic_cycle_era_open_groups_trigger"
+					is_widgetid_open = dynastic_cycles_groups_tab_contents
+				}
+			}
+		}
+
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_open
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+	}
+
+	ra_dynastic_cycle_era_groups = {
+		text = ra_dynastic_cycle_era_groups_desc
+		animation = center
+		highlight_widget = "groups_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_era_open_groups
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_group_leader
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_open
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+
+		# rewind if tab is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_era_open_groups
+			trigger = {
+				NOT = { is_widgetid_open = dynastic_cycles_groups_tab_contents }
+			}
+		}
+	}
+
+	ra_dynastic_cycle_era_group_leader = {
+		text = ra_dynastic_cycle_era_group_leader_desc
+		animation = center
+		highlight_widget = "scene_area_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_era_groups
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_dynastic_cycle_era_actions
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_open
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+
+		# rewind if tab is closed
+		trigger_transition = {
+			target = ra_dynastic_cycle_era_open_groups
+			trigger = {
+				NOT = { is_widgetid_open = dynastic_cycles_groups_tab_contents }
+			}
+		}
+	}
+
+
+
+	ra_dynastic_cycle_era_actions = {
+		text = "ra_dynastic_cycle_era_actions_desc"
+		animation = center
+		highlight_widget = "dynastic_cycle_actions_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_dynastic_cycle_era_groups
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+
+		# FINISH lesson if view is closed. Since you are probably gonna click on one of those actions
+		trigger_transition = {
+			target = lesson_finish
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_dynastic_cycle }
+			}
+		}
+	}
+
+}
+
+
+reactive_advice_merit_candidacy = {
+	chain = reactive_advice
+	start_automatically = no
+
+	ra_merit_candidacy_intro = {
+		text = "ra_merit_candidacy_intro_desc"
+
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_open
+		}
+	}
+
+	ra_merit_candidacy_open = {
+		text = "ra_merit_candidacy_open_desc"
+
+		animation = top_right
+
+		highlight_widget = "tab_government_administration"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_intro
+		}
+		
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_house_members
+			trigger = {
+				custom_description = {
+					text = "ra_merit_candidacy_open_prompt"
+					is_widgetid_open = your_family
+				}
+			}
+		}
+
+	}
+
+	ra_merit_candidacy_house_members = {
+		text = "ra_merit_candidacy_house_members_desc"
+
+		highlight_widget = "admin_panel_your_family_character_list"
+
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_open
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_merit
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_merit_candidacy_open
+			trigger = {
+				NOT = { is_widgetid_open = your_family }
+			}
+		}
+	}
+
+	ra_merit_candidacy_merit = {
+		text = "ra_merit_candidacy_merit_desc"
+
+		highlight_widget = "admin_panel_character_item_merit_rank"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_house_members
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_score
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_merit_candidacy_open
+			trigger = {
+				NOT = { is_widgetid_open = your_family }
+			}
+		}
+	}
+
+	ra_merit_candidacy_score = {
+		text = "ra_merit_candidacy_score_desc"
+
+		highlight_widget = "admin_panel_character_item_promote_scheme"
+		highlight_widget = "admin_panel_character_item_influence_career"
+
+		
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_merit
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_exams
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_merit_candidacy_open
+			trigger = {
+				NOT = { is_widgetid_open = your_family }
+			}
+		}
+	}
+
+	ra_merit_candidacy_exams = {
+		text = "ra_merit_candidacy_exams_desc"
+
+		highlight_widget = "admin_panel_character_item_exams"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_score
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_child_exams
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_merit_candidacy_open
+			trigger = {
+				NOT = { is_widgetid_open = your_family }
+			}
+		}
+	}
+
+	ra_merit_candidacy_child_exams = {
+		text = "ra_merit_candidacy_child_exams_desc"
+
+		highlight_widget = "admin_panel_character_item_child_exam"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_exams
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_merit_candidacy_summary
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_merit_candidacy_open
+			trigger = {
+				NOT = { is_widgetid_open = your_family }
+			}
+		}
+	}
+
+	ra_merit_candidacy_summary = {
+		text = "ra_merit_candidacy_summary_desc"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_merit_candidacy_child_exams
+		}
+		
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+}
+
+reactive_advice_great_projects = {
+	chain = reactive_advice
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	ra_gp_1 = {
+		text = "ra_gp_1_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "tab_decisions"
+
+		highlight_widget_with_index = {
+			decision_tabs = 1
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_gp_2
+			trigger = {
+				custom_description = {
+					text = ra_gp_1_prompt
+					is_widgetid_open = tab_projects
+				}
+			}
+		}
+	}
+
+	ra_gp_2 = {
+		text = "ra_gp_2_desc"
+		shown_in_encyclopedia = no
+		animation = center
+
+		highlight_widget = "great_project_button"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_gp_1
+		}
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_gp_3
+			trigger = {
+				custom_description = {
+					text = ra_gp_2_prompt
+					OR = {
+						is_widgetid_open = great_project
+						is_widgetid_open = plan_great_project
+					}
+				}
+			}
+		}
+		trigger_transition = {
+			target = ra_gp_1
+			trigger = {
+				NOT = { is_widgetid_open = tab_projects }
+			}
+		}
+
+	}
+	
+	ra_gp_3 = {
+		text = "ra_gp_3_desc"
+		shown_in_encyclopedia = no
+		animation = far_left
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_gp_2
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+
+}
+
+reactive_advice_natural_disasters = {
+	chain = reactive_advice
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	ra_natural_disasters_1 = {
+		text = "ra_natural_disasters_1_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "natural_disaster_highlight"
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_natural_disasters_2
+			trigger = {
+				custom_description = {
+					text = ra_natural_disasters_1_prompt
+					is_widgetid_open = window_tgp_natural_disaster
+				}
+			}
+		}
+	}
+
+	ra_natural_disasters_2 = {
+		text = "ra_natural_disasters_2_desc"
+		shown_in_encyclopedia = no
+		animation = center
+
+		highlight_widget = "great_project_button"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_natural_disasters_1
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+
+		# rewind if view is closed
+		trigger_transition = {
+			target = ra_natural_disasters_1
+			trigger = {
+				NOT = { is_widgetid_open = window_tgp_natural_disaster }
+			}
+		}
+
+	}
+
+}
+
+reactive_advice_women_in_china = {
+	chain = reactive_advice
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	ra_women_in_china = {
+		text = "ra_women_in_china_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+}
+
+reactive_advice_christian_situation = {
+	chain = reactive_advice
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	ra_christian_situation_1 = {
+		text = "ra_christian_situation_1_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_2
+		}
+	}
+
+	ra_christian_situation_2 = {
+		text = "ra_christian_situation_2_desc"
+		animation = center
+		shown_in_encyclopedia = no
+		
+		highlight_widget = "christian_situation_highlight"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_1
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_3
+			trigger = {
+				custom_description = {
+					text = ra_christian_situation_2_prompt
+					is_widgetid_open = window_pam_christian_church
+				}
+			}
+		}
+	}
+
+	# so you're not forced to repeat steps you've already done
+	ra_christian_situation_2b = {
+		text = "ra_christian_situation_2_desc"
+		animation = center
+		shown_in_encyclopedia = no
+		
+		highlight_widget = "christian_situation_highlight"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_1
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_3
+			enabled = {
+				custom_description = {
+					text = ra_christian_situation_2_prompt
+				}
+			}
+		}
+	}
+
+	ra_christian_situation_3 = {
+		text = "ra_christian_situation_3_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "illustration"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_2b
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_go_to_overview
+		}
+
+		trigger_transition = {
+			target = ra_christian_situation_2
+			trigger = {
+				NOT = { is_widgetid_open = window_pam_christian_church }
+			}
+		}
+	}
+
+	# you're not looking at the overview tab, so we tell you to
+	ra_christian_situation_go_to_overview = {
+		text = "ra_christian_situation_go_to_overview_desc"
+		animation = center
+		shown_in_encyclopedia = no
+		
+		highlight_widget = "christian_church_button_tab_1"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_1
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_4
+			trigger = {
+				custom_description = {
+					text = ra_christian_situation_go_to_overview_prompt
+					is_widgetid_open = christian_church_tab_overview
+				}
+			}
+		}
+	}
+
+	ra_christian_situation_4 = {
+		text = "ra_christian_situation_4_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_church_book_section"
+		highlight_widget = "christian_situation_highlight"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_3
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_4b
+		}
+	}
+
+	ra_christian_situation_4b = {
+		text = "ra_christian_situation_4b_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_situation_highlight"
+		highlight_widget = "christian_church_catalysts_button"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_4c
+			trigger = {
+				custom_description = {
+					text = ra_christian_situation_4b_prompt
+					is_widgetid_open = catalysts_sub_window
+				}
+			}
+		}
+	}
+
+	ra_christian_situation_4c = {
+		text = "ra_christian_situation_4c_desc"
+		animation = far_left
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_situation_highlight"
+		highlight_widget = "catalysts_sub_window"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4b
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_close_catalyst_subwindow
+		}
+	}
+
+	ra_christian_situation_close_catalyst_subwindow = {
+		text = "ra_christian_situation_close_catalyst_subwindow_desc"
+		animation = far_left
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_situation_highlight"
+		highlight_widget = "catalysts_sub_window"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4c
+		}
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_4d
+			trigger = {
+				custom_description = {
+					text = ra_christian_situation_close_catalyst_subwindow_prompt
+					NOT = { is_widgetid_open = catalysts_sub_window }
+				}
+			}
+		}
+	}
+
+	ra_christian_situation_4d = {
+		text = "ra_christian_situation_4d_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_situation_highlight"
+		highlight_widget = "christian_church_decision_shortcuts"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4c
+		}
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_go_to_participants
+		}
+	}
+
+	# you're not looking at the participants tab, so we tell you to
+	ra_christian_situation_go_to_participants = {
+		text = "ra_christian_situation_go_to_participants_desc"
+		animation = center
+		shown_in_encyclopedia = no
+		
+		highlight_widget = "christian_church_button_tab_2"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4d
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_5
+			trigger = {
+				custom_description = {
+					text = ra_christian_situation_go_to_participants_prompt
+					is_widgetid_open = christian_church_tab_participants
+				}
+			}
+		}
+	}
+
+	ra_christian_situation_5 = {
+		text = "ra_christian_situation_5_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_4d
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_college_of_cardinals
+		}
+	}
+
+	ra_christian_situation_college_of_cardinals = {
+		text = "ra_christian_situation_college_of_cardinals_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		highlight_widget = "christian_church_college_of_cardinals_button"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_5
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = ra_christian_situation_6
+		}
+
+		trigger_transition = {
+			target = ra_christian_situation_6
+			trigger = {
+				NOT = { pam_can_hold_cardinalate_trigger = yes }
+			}
+		}
+	}
+
+	ra_christian_situation_6 = {
+		text = "ra_christian_situation_6_desc"
+		animation = center
+		shown_in_encyclopedia = no
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = ra_christian_situation_college_of_cardinals
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+}
+
+reactive_advice_puppets = {
+	chain = reactive_advice
+	delay = 0
+	start_automatically = no
+
+	reactive_advice_puppets_1 = {
+		text = "reactive_advice_puppets_desc"
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		highlight_widget = "tab_intrigue"
+		highlight_widget = "open_puppets_tab"
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_puppets_2
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_puppets_open_panel_prompt"
+					is_widgetid_open = vbox_puppet_section
+				}
+			}
+		}
+	}
+
+	reactive_advice_puppets_2 = {
+		text = "reactive_advice_puppets_2_desc"
+		animation = center
+
+		highlight_widget = "vbox_puppet_section"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_puppets_1
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_puppets_3
+		}
+
+		# Player closed the Puppets panel, they have to reopen it
+		trigger_transition = {
+			target = reactive_advice_puppets_1
+			trigger = {
+				NOT = { is_widgetid_open = vbox_puppet_section }
+			}
+		}
+	}
+
+	reactive_advice_puppets_3 = {
+		text = "reactive_advice_puppets_3_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_puppets_2
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_puppets_4
+		}
+
+		trigger_transition = {
+			target = reactive_advice_puppets_1
+			trigger = {
+				NOT = { is_widgetid_open = vbox_puppet_section }
+			}
+		}
+	}
+
+	reactive_advice_puppets_4 = {
+		text = "reactive_advice_puppets_4_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_puppets_3
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_puppets_5
+		}
+
+		trigger_transition = {
+			target = reactive_advice_puppets_1
+			trigger = {
+				NOT = { is_widgetid_open = vbox_puppet_section }
+			}
+		}
+	}
+	reactive_advice_puppets_5 = {
+		text = "reactive_advice_puppets_5_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_puppets_4
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			target = reactive_advice_puppets_1
+			trigger = {
+				NOT = { is_widgetid_open = vbox_puppet_section }
+			}
+		}
+	}
+}
+
+reactive_advice_clerical_regions = {
+	chain = reactive_advice
+	delay = 0
+	start_automatically = no
+
+	reactive_advice_clerical_regions_1 = {
+		text = "reactive_advice_clerical_regions_desc"
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		highlight_widget = "map_mode_religion_button"
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_clerical_regions_2
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_clerical_regions_faiths_map_mode_prompt"
+					OR = {
+						has_map_mode = clerical_regions
+						has_map_mode = religions
+					}
+				}
+			}
+		}
+	}
+
+	reactive_advice_clerical_regions_2 = {
+		text = "reactive_advice_clerical_regions_2_desc"
+		animation = center
+
+		highlight_widget = "map_mode_clerical_regions_button"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_clerical_regions_1
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_clerical_regions_3
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_clerical_regions_map_mode_prompt"
+					has_map_mode = clerical_regions
+				}
+			}
+		}
+
+		trigger_transition = {
+			target = reactive_advice_clerical_regions_1
+			trigger = {
+				NOR = {
+					has_map_mode = religions
+					has_map_mode = clerical_regions
+					has_map_mode = holy_orders
+				}
+			}
+		}
+	}
+
+	reactive_advice_clerical_regions_3 = {
+		text = "reactive_advice_clerical_regions_3_desc"
+		animation = right
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_clerical_regions_2
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_clerical_regions_4
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_clerical_regions_select_region_prompt"
+					has_map_mode = clerical_regions
+					is_game_view_open = title_view_window
+				}
+			}
+		}
+	}
+
+	reactive_advice_clerical_regions_4 = {
+		text = "reactive_advice_clerical_regions_4_desc"
+		animation = center
+
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_clerical_regions_3
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_clerical_regions_5
+		}
+
+		trigger_transition = {
+			target = reactive_advice_clerical_regions_3
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+
+	reactive_advice_clerical_regions_5 = {
+		text = "reactive_advice_clerical_regions_5_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_clerical_regions_4
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_clerical_regions_6
+		}
+
+		trigger_transition = {
+			target = reactive_advice_clerical_regions_3
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+
+	reactive_advice_clerical_regions_6 = {
+		text = "reactive_advice_clerical_regions_6_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_clerical_regions_5
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			target = reactive_advice_clerical_regions_3
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+}
+
+reactive_advice_personal_beliefs = {
+	chain = reactive_advice
+	delay = 0
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	reactive_advice_personal_beliefs_1 = {
+		text = "reactive_advice_personal_beliefs_desc"
+		animation = center
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		highlight_widget = "faith_button"
+		highlight_widget = "personal_beliefs_button"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_personal_beliefs_2
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_personal_beliefs_open_window_prompt"
+					is_widgetid_open = window_personal_beliefs
+				}
+			}
+		}
+	}
+
+	reactive_advice_personal_beliefs_2 = {
+		text = "reactive_advice_personal_beliefs_2_desc"
+		animation = right
+
+		highlight_widget = "personal_tenets_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_personal_beliefs_1
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_personal_beliefs_3
+		}
+
+		trigger_transition = {
+			target = reactive_advice_personal_beliefs_1
+			trigger = {
+				NOT = { is_widgetid_open = window_personal_beliefs }
+			}
+		}
+	}
+
+	reactive_advice_personal_beliefs_3 = {
+		text = "reactive_advice_personal_beliefs_3_desc"
+		animation = right
+
+		highlight_widget = "spiritual_fulfillment_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_personal_beliefs_2
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_personal_beliefs_4
+		}
+
+		trigger_transition = {
+			target = reactive_advice_personal_beliefs_1
+			trigger = {
+				NOT = { is_widgetid_open = window_personal_beliefs }
+			}
+		}
+	}
+
+	reactive_advice_personal_beliefs_4 = {
+		text = "reactive_advice_personal_beliefs_4_desc"
+		animation = left
+		
+
+		highlight_widget = "personal_beliefs_right_side_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_personal_beliefs_3
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+}
+
+reactive_advice_ecclesiastical_ruler = {
+	chain = reactive_advice
+	delay = 0
+	start_automatically = no
+	shown_in_encyclopedia = no
+
+	reactive_advice_ecclesiastical_ruler_1 = {
+		text = "reactive_advice_ecclesiastical_ruler_desc"
+		animation = center
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "skip"
+			button_text = "tutorial_lesson_button_skip"
+			target = lesson_finish
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_map_mode
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_map_mode = {
+		text = "reactive_advice_ecclesiastical_ruler_map_mode_desc"
+		animation = center
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		highlight_widget = "map_mode_religion_button"
+		highlight_widget = "map_mode_clerical_regions_button"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_1
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_open_archdiocese
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_ecclesiastical_ruler_map_mode_prompt"
+					has_map_mode = clerical_regions
+				}
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_open_archdiocese = {
+		text = "reactive_advice_ecclesiastical_ruler_open_archdiocese_desc"
+		animation = right
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_map_mode
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_archdiocese_view
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_ecclesiastical_ruler_open_archdiocese_prompt"
+					has_map_mode = clerical_regions
+					is_game_view_open = title_view_window
+				}
+			}
+		}
+
+		trigger_transition = {
+			target = reactive_advice_ecclesiastical_ruler_map_mode
+			trigger = {
+				NOT = { has_map_mode = clerical_regions }
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_archdiocese_view = {
+		text = "reactive_advice_ecclesiastical_ruler_archdiocese_view_desc"
+		animation = right
+
+		highlight_widget = "title_view_rite_button_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_open_archdiocese
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_cathedral_complex
+		}
+
+		trigger_transition = {
+			target = reactive_advice_ecclesiastical_ruler_open_archdiocese
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_cathedral_complex = {
+		text = "reactive_advice_ecclesiastical_ruler_cathedral_complex_desc"
+		animation = right
+
+		highlight_widget = "title_view_cathedral_complex_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_archdiocese_view
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_archdiocese_succession
+		}
+
+		trigger_transition = {
+			target = reactive_advice_ecclesiastical_ruler_open_archdiocese
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_archdiocese_succession = {
+		text = "reactive_advice_ecclesiastical_ruler_archdiocese_succession_desc"
+		animation = right
+
+		highlight_widget = "title_view_succession_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_cathedral_complex
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_open_cardinals
+		}
+
+		trigger_transition = {
+			target = reactive_advice_ecclesiastical_ruler_open_archdiocese
+			trigger = {
+				NOT = { is_game_view_open = title_view_window }
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_open_cardinals = {
+		text = "reactive_advice_ecclesiastical_ruler_open_cardinals_desc"
+		animation = right
+
+		interface_effect = {
+			close_all_views = yes
+		}
+
+		highlight_widget = "hud_college_of_cardinals_button_tutorial_uses_this"
+
+		gui_transition = {
+			button_id = "read_later"
+			button_text = "tutorial_lesson_button_read_later"
+			target = lesson_abort
+		}
+
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_archdiocese_view
+		}
+
+		trigger_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_2
+			trigger = {
+				custom_tooltip = {
+					text = "reactive_advice_ecclesiastical_ruler_open_cardinals_college_tt"
+					is_game_view_open = cardinals_window
+				}
+			}
+		}
+
+		trigger_transition = {
+			target = reactive_advice_ecclesiastical_ruler_2
+			trigger = {
+				NAND = {
+					pam_can_hold_cardinalate_trigger = yes
+					pam_college_election_title_is_theocratic_elective_trigger = yes
+					has_government = ecclesiastical_government
+				}
+			}
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_2 = {
+		text = "reactive_advice_ecclesiastical_ruler_2_desc"
+		animation = center
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_open_cardinals
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_next"
+			target = reactive_advice_ecclesiastical_ruler_3
+		}
+	}
+
+	reactive_advice_ecclesiastical_ruler_3 = {
+		text = "reactive_advice_ecclesiastical_ruler_3_desc"
+		animation = center
+		gui_transition = {
+			button_id = "back"
+			button_text = "tutorial_lesson_button_back"
+			target = reactive_advice_ecclesiastical_ruler_2
+		}
+
+		gui_transition = {
+			button_id = "next"
+			button_text = "tutorial_lesson_button_complete"
+			target = lesson_finish
+		}
+	}
+
 }
