@@ -13,10 +13,10 @@
 # 0018 - Confirm pledging.
 # 0020 - AI rulers pledge to Undirected GHW.
 # 0092 - AI rulers pledge to Directed GHW.
-# 0090 - Holy Orders pledging to GHW.
+# 0090 - Military Orders pledging to GHW.
 # 0021 - AI rulers counterpledge to Undirected GHW.
 # 0093 - AI rulers counterpledge to Directed GHW.
-# 0091 - Holy Orders counterpledging to GHW.
+# 0091 - Military Orders counterpledging to GHW.
 # 0022, 0023 - The Pope calls out unpledged player.
 # 0024 - Dead Recipient is replaced.
 # 0025 - Converted Recipient is replaced.
@@ -29,6 +29,7 @@
 # 0051 - GHW was declared.
 # 0052 - GHW was won.
 # 0053 - GHW was lost.
+# 0054 - GHW was invalidated after launching.
 # 0055 - GHW failed to start.
 # 0060 - Crusader trait gained.
 # 0058 - Crusader trait lost.
@@ -45,14 +46,30 @@ great_holy_war.0001 = {
 		has_doctrine = doctrine_spiritual_head
 		save_temporary_scope_as = the_faith
 		exists = religious_head
+		trigger_if = { # Player spiritual heads launch through a decision or bull, not this monthly pulse
+			limit = {
+				religious_head = { is_ai = no }
+			}
+			religious_head = { player_hof_requested_ghw_launch_trigger = yes }
+		}
 		NOR = {
 			exists = great_holy_war
 			exists = var:variable_ghw_cooldown
-			religion = { exists = var:variable_first_ghw_cooldown } # Do not event spam after Crusades have been just unlocked.
+			trigger_if = {
+				limit = {
+					NOT = {
+						religious_head = { religious_head_has_selected_ghw_target_trigger = yes }
+					}
+				}
+				religion = { exists = var:variable_first_ghw_cooldown } # Do not event spam after Crusades have been just unlocked.
+			}
 		}
 		religious_head = { is_imprisoned = no }
-		religion = { exists = var:variable_ghw_unlocked } #Activated by event for every religion.
-		suitable_faith_for_undirected_ghw_trigger = yes #Right combinations of Doctrines to have GHWs. And a valid target exists
+		religion = { exists = var:variable_ghw_unlocked } # Age of Crusades
+		OR = {
+			suitable_faith_for_undirected_ghw_trigger = yes #Right combinations of Doctrines to have GHWs. And a valid target exists
+			religious_head = { religious_head_has_selected_ghw_target_trigger = yes }
+		}
 	}
 	
 	immediate = {
@@ -60,7 +77,46 @@ great_holy_war.0001 = {
 
 		#Determine Sponsor.
 		religious_head = { save_scope_as = ghw_sponsor }
-		determine_ghw_target_effect = { FAITH = scope:the_faith }
+		if = {
+			limit = { scope:ghw_sponsor = { has_variable = player_ghw_launch } }
+			save_temporary_scope_value_as = {
+				name = skip_ghw_war_chest_gold
+				value = yes
+			}
+		}
+		if = {
+			limit = {
+				scope:ghw_sponsor = { has_variable = player_ghw_target_kingdom }
+			}
+			scope:ghw_sponsor = {
+				var:player_ghw_target_kingdom = { save_scope_as = target_kingdom }
+				remove_variable = player_ghw_target_kingdom
+				if = {
+					limit = { has_variable = player_ghw_launch }
+					remove_variable = player_ghw_launch
+				}
+			}
+			pam_determine_ghw_target_character_from_kingdom_effect = { FAITH = scope:the_faith }
+		}
+		else_if = {
+			limit = {
+				scope:ghw_sponsor = {
+					has_pam_dlc_trigger = yes
+					has_variable = pam_bull_ghw_target_kingdom
+				}
+			}
+			pam_use_bull_selected_ghw_target_effect = {
+				GHW_SPONSOR = scope:ghw_sponsor
+				FAITH = scope:the_faith
+			}
+		}
+		else = {
+			determine_ghw_target_effect = { FAITH = scope:the_faith }
+			if = {
+				limit = { scope:ghw_sponsor = { has_variable = player_ghw_launch } }
+				scope:ghw_sponsor = { remove_variable = player_ghw_launch }
+			}
+		}
 
 		# Launch the preparation phase
 		start_great_holy_war = {
@@ -78,7 +134,10 @@ great_holy_war.0001 = {
 			}
 		}
 		if = {
-			limit = { scope:ghw_sponsor.gold > 0 }
+			limit = {
+				scope:ghw_sponsor.gold > 0
+				NOT = { exists = scope:skip_ghw_war_chest_gold }
+			}
 			great_holy_war = {
 				change_war_chest_gold = {
 					value = scope:ghw_sponsor.gold
@@ -123,7 +182,7 @@ great_holy_war.0001 = {
 			scope:ghw_sponsor = {
 				random_courtier = {
 					alternative_limit = {
-						scope:the_faith = { has_doctrine = doctrine_gender_male_dominated }
+						scope:the_faith = { main_rite = { rite_has_doctrine = doctrine_gender_male_dominated } }
 						is_male = yes
 						is_adult = yes
 						is_ai = yes
@@ -135,7 +194,7 @@ great_holy_war.0001 = {
 						faith = scope:the_faith
 					}
 					alternative_limit = {
-						scope:the_faith = { has_doctrine = doctrine_gender_female_dominated }
+						scope:the_faith = { main_rite = { rite_has_doctrine = doctrine_gender_female_dominated } }
 						is_female = yes
 						is_adult = yes
 						is_ai = yes
@@ -174,13 +233,13 @@ great_holy_war.0001 = {
 				gender_female_chance = {
 					if = {
 						limit = {
-							scope:the_faith = { has_doctrine = doctrine_gender_male_dominated }
+							scope:the_faith = { main_rite = { rite_has_doctrine = doctrine_gender_male_dominated } }
 						}
 						add = 0
 					}
 					else_if = {
 						limit = {
-							scope:the_faith = { has_doctrine = doctrine_gender_female_dominated }
+							scope:the_faith = { main_rite = { rite_has_doctrine = doctrine_gender_female_dominated } }
 						}
 						add = 100
 					}
@@ -202,7 +261,7 @@ great_holy_war.0001 = {
 			limit = {
 				faith = scope:the_faith
 				highest_held_title_tier >= tier_county
-				NOT = { this = scope:ghw_sponsor }
+				this != scope:ghw_sponsor
 			}
 			trigger_event = great_holy_war.0003 #Send event immediately for player, then delay it for all the AIs.
 		}
@@ -214,7 +273,7 @@ great_holy_war.0001 = {
 						scope:the_faith.great_holy_war = { has_pledged_defender = prev }
 					}
 					AND = {
-						NOT = { faith = scope:the_faith }
+						faith != scope:the_faith
 						scope:the_faith.great_holy_war = { has_pledged_defender = prev }
 					}
 				}
@@ -242,7 +301,7 @@ great_holy_war.0001 = {
 		}
 		every_faith_holy_order = {
 			trigger_event = {
-				#Holy orders always join
+				#Military Orders always join
 				id = great_holy_war.0090
 				days = { 30 60 }
 			}
@@ -272,7 +331,7 @@ great_holy_war.0001 = {
 			faith = {
 				every_faith_holy_order = {
 					trigger_event = {
-						# Holy orders always join
+						# Military Orders always join
 						id = great_holy_war.0091
 						days = { 30 60 }
 					}
@@ -283,7 +342,6 @@ great_holy_war.0001 = {
 		great_holy_war = {
 			if = {
 				limit = {
-					has_ep3_dlc_trigger = yes
 					scope:the_faith = { this = faith:catholic }
 					ep3_frankokratia_ghw_trigger = yes
 					ep3_frankokratia_financier_exists_trigger = yes
@@ -675,10 +733,10 @@ great_holy_war.0003 = {
 				any_liege_or_above = { this = scope:the_faith.great_holy_war.ghw_target_character }
 			}
 			OR = { #Either be independent, or all lieges above you MUST be of the same Faith declaring the war to avoid messy situations of vassals and lieges fighting against each other.
-				is_independent_ruler = yes
+				top_liege = this
 				NOT = {
 					any_liege_or_above = {
-						NOT = { faith = scope:the_faith }
+						faith != scope:the_faith
 					}
 				}
 			}
@@ -695,7 +753,7 @@ great_holy_war.0003 = {
 			if = {
 				limit = {
 					has_trait = excommunicated
-					faith = { has_doctrine_parameter = excommunication_active }
+					rite = { rite_has_parameter = excommunication_active }
 				}
 				custom_tooltip = great_holy_war.0003.a.lifted_excommunication
 				trigger_event = {
@@ -714,7 +772,7 @@ great_holy_war.0003 = {
 			base = 10
 			modifier = {
 				factor = 0.5
-				is_independent_ruler = no
+				top_liege != this
 			}
 			modifier = {
 				factor = 0.5
@@ -738,7 +796,7 @@ great_holy_war.0003 = {
 		if = {
 			limit = {
 				has_trait = excommunicated
-				faith = { has_doctrine_parameter = excommunication_active }
+				rite = { rite_has_parameter = excommunication_active }
 			}
 			trigger_event = {
 				id = great_holy_war.0015
@@ -820,7 +878,7 @@ great_holy_war.0005 = {
 					is_alive = yes
 					is_ruler = yes
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 					}
 				}
 				exists = title:e_byzantium.holder
@@ -830,16 +888,14 @@ great_holy_war.0005 = {
 				limit = {
 					global_var:byz_claimant_champion = {
 						any_owned_story = {
-							story_type = frankokratia_story
+							type = frankokratia_story
 							var:byz_claimant = { is_alive = no }
 						}
 					}
 				}
 				global_var:byz_claimant_champion = {
 					random_owned_story = {
-						limit = {
-							story_type = frankokratia_story
-						}
+						type = frankokratia_story
 						every_in_list = {
 							variable = frankokratia_leaders
 							limit = {
@@ -869,17 +925,13 @@ great_holy_war.0005 = {
 
 scripted_trigger great_holy_war_0010_jerusalem_reason_trigger = {
 	title:c_atlantis.holder.top_liege = {
-		NOT = {
-			faith.religion = scope:awakening_faith.religion
-		}
+		faith.religion != scope:awakening_faith.religion
 	}
 }
 
 scripted_trigger great_holy_war_0010_rome_reason_trigger = {
 	title:c_atlantis.holder.top_liege = {
-		NOT = {
-			faith.religion = scope:awakening_faith.religion
-		}
+		faith.religion != scope:awakening_faith.religion
 	}
 }
 
@@ -948,9 +1000,7 @@ scripted_trigger great_holy_war_0010_europe_reason_trigger = {
 
 scripted_trigger great_holy_war_0010_mecca_reason_trigger = {
 	title:c_atlantis.holder.top_liege = {
-		NOT = {
-			faith.religion = scope:awakening_faith.religion
-		}
+		faith.religion != scope:awakening_faith.religion
 	}
 }
 
@@ -1004,15 +1054,12 @@ great_holy_war.0010 = {
 			religion = { exists = var:variable_ghw_unlocked }
 			has_global_variable = variable_ghw_global_unlocking_cooldown
 		}
-		exists = religious_head
-		religious_head = { is_imprisoned = no }
+		religious_head ?= { is_imprisoned = no }
 		num_county_followers >= 35 # Faith must have at least SOME legitimacy.
 		OR = {
 			AND = { # Historical setup.
 				title:c_atlantis.holder = {
-					NOT = {
-						faith.religion = root.religion
-					}
+					faith.religion != root.religion
 				}
 				current_date >= 1095.1.1
 				faith:catholic = root
@@ -1029,17 +1076,15 @@ great_holy_war.0010 = {
 			}
 			AND = { # Historical setup.
 				title:c_atlantis.holder.top_liege = {
-					NOT = {
-						faith.religion = root.religion
-					}
+					faith.religion != root.religion
 				}
 				faith:catholic = root
 			}
 			current_date >= 1100.1.1 # Free for all after Historical years
 			AND = { # Any Faith is seriously under attack.
-				any_holy_site = {
+				any_holy_site_barony = {
 					holder.top_liege = {
-						NOT = { faith.religion = root.religion }
+						faith.religion != root.religion
 					}
 					count >= 2
 				}
@@ -1050,9 +1095,9 @@ great_holy_war.0010 = {
 					exists = var:variable_ghw_unlocked
 				}
 				religion:islam_religion = root.religion
-				any_holy_site = {
+				any_holy_site_barony = {
 					holder.top_liege = {
-						NOT = { faith.religion = root.religion }
+						faith.religion != root.religion
 					}
 					count >= 1
 				}
@@ -1064,9 +1109,9 @@ great_holy_war.0010 = {
 				religion:islam_religion = {
 					exists = var:variable_ghw_unlocked
 				}
-				any_holy_site = {
+				any_holy_site_barony = {
 					holder.top_liege = {
-						NOT = { faith.religion = root.religion }
+						faith.religion != root.religion
 					}
 					count >= 1
 				}
@@ -1281,7 +1326,7 @@ great_holy_war.0011 = {
 							}
 						}
 					}
-					NOT = { faith.religion = scope:awakening_faith.religion }
+					faith.religion != scope:awakening_faith.religion
 				}
 					desc = great_holy_war.0011.generic.ending.positive
 			}
@@ -1303,7 +1348,7 @@ great_holy_war.0011 = {
 			triggered_desc = { # Co-religionists.
 				trigger = {
 					faith.religion = scope:awakening_faith.religion
-					NOT = { faith = scope:awakening_faith }
+					faith != scope:awakening_faith
 					exists = faith.religious_head
 				}
 					desc = great_holy_war.0011.generic.ending.coreligionist.head
@@ -1311,7 +1356,7 @@ great_holy_war.0011 = {
 			triggered_desc = { # Co-religionists (no Head).
 				trigger = {
 					faith.religion = scope:awakening_faith.religion
-					NOT = { faith = scope:awakening_faith }
+					faith != scope:awakening_faith
 					NOT = { exists = faith.religious_head }
 				}
 					desc = great_holy_war.0011.generic.ending.coreligionist.autonomous
@@ -1344,7 +1389,7 @@ great_holy_war.0011 = {
 		if = { #Localisation use only
 			limit = {
 				faith.religion = scope:awakening_faith.religion
-				NOT = { faith = scope:awakening_faith }
+				faith != scope:awakening_faith
 				exists = faith.religious_head
 			}
 			faith.religious_head = {
@@ -1380,7 +1425,7 @@ great_holy_war.0011 = {
 	option = { #Infidels incoming.
 		name = great_holy_war.0011.d
 		trigger = {
-			NOT = { root.faith = scope:awakening_faith }
+			root.faith != scope:awakening_faith
 			root.faith = {
 				faith_hostility_level = {
 					target = scope:awakening_faith
@@ -1551,7 +1596,7 @@ great_holy_war.0016 = {
 				30 = { #Excommunication available only if target already not excommunicated and religion allows it.
 					trigger = {
 						NOT = { has_trait = excommunicated }
-						faith = { has_doctrine_parameter = excommunication_active }
+						rite = { rite_has_parameter = excommunication_active }
 						highest_held_title_tier >= tier_kingdom
 					}
 					modifier = { #Fool me once...
@@ -1643,7 +1688,7 @@ great_holy_war.0016 = {
 		remove_character_flag = ghw_light_punishment
 		remove_character_flag = ghw_harsh_punishment
 		remove_character_flag = ghw_excommunication
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 		}
 	}
@@ -1770,7 +1815,7 @@ great_holy_war.0018 = {
 			if = {
 				limit = {
 					has_trait = excommunicated
-					faith = { has_doctrine = tenet_communion }
+					faith = { faith_has_sacraments_trigger = yes }
 				}
 				trigger_event = {
 					id = great_holy_war.0015
@@ -1799,13 +1844,12 @@ great_holy_war.0020 = {
 		is_at_war = no
 		is_imprisoned = no
 		highest_held_title_tier >= tier_county
-		NOT = { has_trait = incapable }
+		is_incapable = no
 		ai_zeal >= 0
 		root.faith = scope:the_faith
 		NOT = { target_is_liege_or_above = scope:target_character }
 		scope:the_faith = { # Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_attacker = root }
 			}
 		}
@@ -1853,10 +1897,10 @@ great_holy_war.0020 = {
 			25 = { # Pledge.
 				trigger = {
 					OR = { # Either be independent, or have no liege above you of the defending Faith, to avoid messy situations of vassals and lieges fighting against each other.
-						is_independent_ruler = yes
+						top_liege = this
 						any_liege_or_above = {
 							count = all
-							NOT = { faith = scope:target_faith }
+							faith != scope:target_faith
 						}
 					}
 				}
@@ -1870,7 +1914,7 @@ great_holy_war.0020 = {
 				if = {
 					limit = {
 						has_trait = excommunicated
-						faith = { has_doctrine_parameter = excommunication_active }
+						rite = { rite_has_parameter = excommunication_active }
 					}
 					trigger_event = {
 						id = great_holy_war.0015
@@ -2036,6 +2080,10 @@ great_holy_war.0020 = {
 					factor = 0.5
 					highest_held_title_tier = tier_empire
 				}
+				modifier = { #Tier
+					factor = 0.25
+					highest_held_title_tier = tier_hegemony
+				}
 			}
 		}
 	}
@@ -2046,7 +2094,7 @@ great_holy_war.0020 = {
 #Requires a the_faith scope, defined in the cb.
 great_holy_war.0092 = {
 	hidden = yes
-	
+
 	trigger = {
 		is_ai = yes
 		is_ruler = yes
@@ -2054,13 +2102,12 @@ great_holy_war.0092 = {
 		is_at_war = no
 		is_imprisoned = no
 		highest_held_title_tier >= tier_county
-		NOT = { has_trait = incapable }
+		is_incapable = no
 		ai_zeal >= 0
 		root.faith = scope:the_faith
 		NOT = { target_is_liege_or_above = scope:ghw_defender } #scope:target_character isn't created in the holy war decision where this event is called
 		scope:the_faith = { #Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_attacker = root }
 			}
 		}
@@ -2108,10 +2155,10 @@ great_holy_war.0092 = {
 			35 = { #Pledge.
 				trigger = {
 					OR = { # Either be independent, or have no liege above you of the defending Faith, to avoid messy situations of vassals and lieges fighting against each other.
-						is_independent_ruler = yes
+						top_liege = this
 						any_liege_or_above = {
 							count = all
-							NOT = { faith = scope:target_faith }
+							faith != scope:target_faith
 						}
 					}
 				}
@@ -2219,12 +2266,16 @@ great_holy_war.0092 = {
 					factor = 0.5
 					highest_held_title_tier = tier_empire
 				}
+				modifier = { #Tier
+					factor = 0.25
+					highest_held_title_tier = tier_hegemony
+				}
 			}
 		}
 	}
 }
 
-#AI hidden event to have a holy order pledge to a Great Holy War during the preparation phase.
+#AI hidden event to have a Military Order pledge to a Great Holy War during the preparation phase.
 #Event is fired when the Pope calls for the Crusade.
 #Requires a the_faith scope, defined by event.
 great_holy_war.0090 = {
@@ -2232,9 +2283,9 @@ great_holy_war.0090 = {
 	scope = holy_order
 
 	trigger = {
+		is_military_order_trigger = yes
 		scope:the_faith = { #Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_attacker = root.leader }
 			}
 		}
@@ -2263,11 +2314,10 @@ great_holy_war.0021 = {
 		is_at_war = no
 		is_imprisoned = no
 		highest_held_title_tier >= tier_county
-		NOT = { has_trait = incapable }
+		is_incapable = no
 		root.faith = scope:the_faith.great_holy_war.ghw_target_character.faith
 		scope:the_faith = { #Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_defender = root }
 			}
 			NOT = { exists = great_holy_war.ghw_war } #Must not have started already, only in preparation phase.
@@ -2316,10 +2366,10 @@ great_holy_war.0021 = {
 			15 = { #Pledge.
 				trigger = {
 					OR = { # Either be independent, or have no liege above you of the attacking Faith, to avoid messy situations of vassals and lieges fighting against each other.
-						is_independent_ruler = yes
+						top_liege = this
 						any_liege_or_above = {
 							count = all
-							NOT = { faith = scope:the_faith }
+							faith != scope:the_faith
 						}
 					}
 				}
@@ -2451,6 +2501,10 @@ great_holy_war.0021 = {
 					factor = 0.5
 					highest_held_title_tier = tier_empire
 				}
+				modifier = { #Tier
+					factor = 0.25
+					highest_held_title_tier = tier_hegemony
+				}
 			}
 		}
 	}
@@ -2462,7 +2516,7 @@ great_holy_war.0021 = {
 #Requires a the_faith scope, defined in the cb.
 great_holy_war.0093 = {
 	hidden = yes
-	
+
 	trigger = {
 		is_ai = yes
 		is_ruler = yes
@@ -2470,11 +2524,10 @@ great_holy_war.0093 = {
 		is_at_war = no
 		is_imprisoned = no
 		highest_held_title_tier >= tier_county
-		NOT = { has_trait = incapable }
+		is_incapable = no
 		root.faith = scope:target_faith
 		scope:the_faith = { #Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_defender = root }
 			}
 		}
@@ -2522,10 +2575,10 @@ great_holy_war.0093 = {
 			30 = { #Pledge.
 				trigger = {
 					OR = { # Either be independent, or have no liege above you of the attacking Faith, to avoid messy situations of vassals and lieges fighting against each other.
-						is_independent_ruler = yes
+						top_liege = this
 						any_liege_or_above = {
 							count = all
-							NOT = { faith = scope:the_faith }
+							faith != scope:the_faith
 						}
 					}
 				}
@@ -2627,12 +2680,16 @@ great_holy_war.0093 = {
 					factor = 0.5
 					highest_held_title_tier = tier_empire
 				}
+				modifier = { #Tier
+					factor = 0.25
+					highest_held_title_tier = tier_hegemony
+				}
 			}
 		}
 	}
 }
 
-#AI hidden event to have a holy order counterpledge to a Great Holy War during the preparation phase.
+#AI hidden event to have a Military Order counterpledge to a Great Holy War during the preparation phase.
 #Event is fired when the Pope calls for the Crusade and when the target Kingdom is switched.
 #Requires a the_faith scope, defined by event.
 great_holy_war.0091 = {
@@ -2640,9 +2697,9 @@ great_holy_war.0091 = {
 	scope = holy_order
 
 	trigger = {
+		is_military_order_trigger = yes
 		scope:the_faith = { #Crusade still exists
-			exists = great_holy_war
-			great_holy_war = {
+			great_holy_war ?= {
 				NOT = { has_pledged_defender = root.leader }
 			}
 			NOT = { exists = scope:the_faith.great_holy_war.ghw_war } #Must not have started already, only in preparation phase.
@@ -2824,7 +2881,7 @@ great_holy_war.0023 = {
 			if = {
 				limit = {
 					has_trait = excommunicated
-					faith = { has_doctrine_parameter = excommunication_active }
+					rite = { rite_has_parameter = excommunication_active }
 				}
 				custom_tooltip = great_holy_war.0003.a.lifted_excommunication
 				trigger_event = {
@@ -2838,7 +2895,7 @@ great_holy_war.0023 = {
 				pledge_ghw_war_chest_piety_effect = yes
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			zealous = minor_stress_impact_loss
 		}
@@ -2847,7 +2904,7 @@ great_holy_war.0023 = {
 			base = 10
 			modifier = {
 				factor = 0.5
-				is_independent_ruler = no
+				top_liege != this
 			}
 			modifier = {
 				factor = 0.5
@@ -2855,7 +2912,7 @@ great_holy_war.0023 = {
 			}
 			modifier = {
 				factor = 0.1
-				is_independent_ruler = no
+				top_liege != this
 				highest_held_title_tier <= tier_county
 			}
 			modifier = {
@@ -2882,7 +2939,7 @@ great_holy_war.0023 = {
 		if = {
 			limit = {
 				has_trait = excommunicated
-				faith = { has_doctrine_parameter = excommunication_active }
+				rite = { rite_has_parameter = excommunication_active }
 			}
 			trigger_event = {
 				id = great_holy_war.0015
@@ -2906,7 +2963,7 @@ great_holy_war.0023 = {
 				days = 550
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			generous = minor_stress_impact_loss
@@ -2942,7 +2999,7 @@ great_holy_war.0023 = {
 				is_at_war = no
 				NOT = {
 					any_war_enemy = {
-						NOT = { faith = scope:the_faith }
+						faith != scope:the_faith
 					}
 				}
 			}
@@ -2969,7 +3026,7 @@ great_holy_war.0023 = {
 			id = great_holy_war.0016
 			days = 37
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_gain
 			cynical = minor_stress_impact_loss
 		}
@@ -3041,7 +3098,7 @@ great_holy_war.0024 = {
 	}
 }
 
-#on_character_faith_change: of Recipient, pick another one.
+#on_rite_change: of Recipient, pick another one.
 great_holy_war.0025 = {
 	hidden = yes
 	scope = character
@@ -3081,7 +3138,7 @@ scripted_trigger great_holy_war_0026_valid_beneficiary_trigger = {
 		has_trait = excommunicated
 		has_trait = incapable
 		has_trait = devoted
-		has_serious_disease_trigger = yes
+		has_trait_with_flag = debilitating_illness
 	}
 	faith = root.faith
 	is_adult = yes
@@ -3126,15 +3183,15 @@ great_holy_war.0026 = {
 						OR = {
 							AND = {
 								is_male = yes
-								faith = { has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							}
 							AND = {
 								is_female = yes
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 							NOR = {
-								faith = { has_doctrine = doctrine_gender_male_dominated }
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 						}
 						is_close_family_or_spouse_of_root_trigger = yes
@@ -3148,15 +3205,15 @@ great_holy_war.0026 = {
 						OR = {
 							AND = {
 								is_male = yes
-								faith = { has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							}
 							AND = {
 								is_female = yes
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 							NOR = {
-								faith = { has_doctrine = doctrine_gender_male_dominated }
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 						}
 						is_close_family_or_spouse_of_root_trigger = yes
@@ -3169,15 +3226,15 @@ great_holy_war.0026 = {
 						OR = {
 							AND = {
 								is_male = yes
-								faith = { has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							}
 							AND = {
 								is_female = yes
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 							NOR = {
-								faith = { has_doctrine = doctrine_gender_male_dominated }
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 						}
 						is_close_family_or_spouse_of_root_trigger = yes
@@ -3189,15 +3246,15 @@ great_holy_war.0026 = {
 						OR = {
 							AND = {
 								is_male = yes
-								faith = { has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							}
 							AND = {
 								is_female = yes
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 							NOR = {
-								faith = { has_doctrine = doctrine_gender_male_dominated }
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 						}
 						age <= 40
@@ -3207,15 +3264,15 @@ great_holy_war.0026 = {
 						OR = {
 							AND = {
 								is_male = yes
-								faith = { has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							}
 							AND = {
 								is_female = yes
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 							NOR = {
-								faith = { has_doctrine = doctrine_gender_male_dominated }
-								faith = { has_doctrine = doctrine_gender_female_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_male_dominated }
+								rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							}
 						}
 					}
@@ -3304,8 +3361,7 @@ great_holy_war.0028 = {
 		exists = faith.great_holy_war
 		faith.great_holy_war = {
 			any_pledged_attacker = {
-				exists = ghw_beneficiary
-				ghw_beneficiary = root
+				ghw_beneficiary ?= root
 			}
 		}
 	}
@@ -3314,8 +3370,7 @@ great_holy_war.0028 = {
 		faith.great_holy_war = {
 			every_pledged_attacker = {
 				limit = {
-					exists = ghw_beneficiary
-					ghw_beneficiary = root
+					ghw_beneficiary ?= root
 				}
 				ghw_beneficiary = { save_scope_as = former_beneficiary }
 				reset_beneficiary = yes #Reset by default, then, if also an AI, reassign automatically.
@@ -3338,7 +3393,7 @@ great_holy_war.0028 = {
 	}
 }
 
-#On_character_faith_change.
+#on_rite_change.
 great_holy_war.0029 = {
 	hidden = yes
 	scope = character
@@ -3347,8 +3402,7 @@ great_holy_war.0029 = {
 		exists = scope:old_faith.great_holy_war
 		scope:old_faith.great_holy_war = {
 			any_pledged_attacker = {
-				exists = ghw_beneficiary
-				ghw_beneficiary = root
+				ghw_beneficiary ?= root
 			}
 		}
 	}
@@ -3357,8 +3411,7 @@ great_holy_war.0029 = {
 		scope:old_faith.great_holy_war = {
 			every_pledged_attacker = {
 				limit = {
-					exists = ghw_beneficiary
-					ghw_beneficiary = root
+					ghw_beneficiary ?= root
 				}
 				ghw_beneficiary = { save_scope_as = former_beneficiary }
 				reset_beneficiary = yes #Reset by default, then, if also an AI, reassign automatically.
@@ -3395,18 +3448,16 @@ great_holy_war.0030 = {
 	scope = faith
 	
 	trigger = {
-		exists = great_holy_war
-		great_holy_war = {
+		great_holy_war ?= {
 			any_pledged_attacker = { #If beneficiary has become invalid in the meantime, for whatever reason.
-				exists = ghw_beneficiary
-				ghw_beneficiary = {
+				ghw_beneficiary ?= {
 					OR = {
 						has_trait = incapable
 						has_trait = excommunicated
 						has_trait = devoted
-						has_serious_disease_trigger = yes
+						has_trait_with_flag = debilitating_illness
 						is_ruler = yes
-						any_heir_title = { count >= 1 }	#Shouldn't be heir to anything
+						any_heir_title = { }	#Shouldn't be heir to anything
 					}
 				}
 			}
@@ -3417,18 +3468,17 @@ great_holy_war.0030 = {
 		great_holy_war = {
 			every_pledged_attacker = {
 				limit = {
-					exists = ghw_beneficiary
-					ghw_beneficiary = {
+					ghw_beneficiary ?= {
 						OR = {
 							has_trait = incapable
 							has_trait = excommunicated
 							has_trait = devoted
-							has_serious_disease_trigger = yes
+							has_trait_with_flag = debilitating_illness
 							AND = {
 								is_ruler = yes
 								NOT = { government_has_flag = government_is_landless_adventurer }
 							}
-							any_heir_title = { count >= 1 }	#Shouldn't be heir to anything
+							any_heir_title = { }	#Shouldn't be heir to anything
 						}
 					}
 				}
@@ -3444,9 +3494,9 @@ great_holy_war.0030 = {
 								has_trait = incapable
 								has_trait = excommunicated
 								has_trait = devoted
-								has_serious_disease_trigger = yes
+								has_trait_with_flag = debilitating_illness
 								is_ruler = yes
-								any_heir_title = { count >= 1 }	#Shouldn't be heir to anything
+								any_heir_title = { }	#Shouldn't be heir to anything
 							}
 						}
 					}
@@ -3468,7 +3518,7 @@ great_holy_war.0030 = {
 								custom_tooltip = great_holy_war.0030.devoted.beneficiary
 							}
 							else_if = {
-								limit = { has_serious_disease_trigger = yes }
+								limit = { has_trait_with_flag = debilitating_illness }
 								custom_tooltip = great_holy_war.0030.sick.beneficiary
 							}
 							else_if = {
@@ -3476,7 +3526,7 @@ great_holy_war.0030 = {
 								custom_tooltip = great_holy_war.0030.ruler.beneficiary
 							}
 							else_if = {
-								limit = { any_heir_title = { count >= 1 } } #Shouldn't be heir to anything
+								limit = { any_heir_title = { } } #Shouldn't be heir to anything
 								custom_tooltip = great_holy_war.0030.heir.beneficiary
 							}
 						}
@@ -3563,17 +3613,20 @@ great_holy_war.0040 = {
 		scope:great_holy_war = {
 			change_war_chest_gold = root.var:triple_great_holy_war_pledge_amount
 		}
-		scope:scoped_pope = {
-			add_opinion = {
-				target = root
-				modifier = donated_ghw_money_2
+		if = {
+			limit = { scope:scoped_pope != root }
+			scope:scoped_pope = {
+				add_opinion = {
+					target = root
+					modifier = donated_ghw_money_2
+				}
 			}
 		}
 		add_character_flag = { # Used to check whether the Pope will harass for more later.
 			flag = ghw_pledged_gold
 			days = 7300
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			greedy = medium_stress_impact_gain
 		}
@@ -3589,17 +3642,20 @@ great_holy_war.0040 = {
 		}
 
 		scope:great_holy_war = { change_war_chest_gold = root.var:double_great_holy_war_pledge_amount }
-		scope:scoped_pope = {
-			add_opinion = {
-				target = root
-				modifier = donated_ghw_money_1
+		if = {
+			limit = { scope:scoped_pope != root }
+			scope:scoped_pope = {
+				add_opinion = {
+					target = root
+					modifier = donated_ghw_money_1
+				}
 			}
 		}
 		add_character_flag = { # Used to check whether the Pope will harass for more later.
 			flag = ghw_pledged_gold
 			days = 7300
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			greedy = medium_stress_impact_gain
 		}
@@ -3657,9 +3713,7 @@ great_holy_war.0050 = {
 			triggered_desc = {
 				desc = great_holy_war.0050.others.desc
 				trigger = {
-					NOT = {
-						scope:target_character = root
-					}
+					scope:target_character != root
 				}
 			}
 		}
@@ -3901,7 +3955,7 @@ great_holy_war.0071 = {
 	option = {
 		name = great_holy_war.0050.a
 		trigger = {
-			NOT = { scope:attacker.faith = root.faith }
+			scope:attacker.faith != root.faith
 		}
 		fallback = yes
 
@@ -3915,7 +3969,7 @@ great_holy_war.0052 = {
 		first_valid = { #Title for winners/bystanders
 			triggered_desc = {
 				trigger = {
-					NOT = { scope:ghw_defender.faith.religion = root.faith.religion }
+					scope:ghw_defender.faith.religion != root.faith.religion
 				}
 				desc = great_holy_war.0052.title.winners
 			}
@@ -4068,6 +4122,58 @@ great_holy_war.0053 = {
 	after = { remove_variable = ghw_war_chest_donated_sum }
 }
 
+#The Crusade was invalidated after the war had already been launched (fired from the undirected GHW casus belli on_invalidated).
+great_holy_war.0054 = {
+	title = great_holy_war.0054.title
+	desc = {
+		desc = great_holy_war.0054.desc.intro
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:ghw_sponsor = root }
+				desc = great_holy_war.0054.desc.sponsor
+			}
+			triggered_desc = {
+				trigger = { scope:ghw_defender = root }
+				desc = great_holy_war.0054.desc.defender
+			}
+			desc = great_holy_war.0054.desc.bystander
+		}
+		desc = great_holy_war.0054.desc.outro
+	}
+	theme = faith
+	override_background = {
+		reference = battlefield
+	}
+	left_portrait = {
+		character = scope:ghw_sponsor
+		animation = shame
+	}
+	right_portrait = {
+		character = scope:ghw_defender
+		animation = war_over_win
+	}
+	
+	option = {
+		name = great_holy_war.0054.a
+		trigger = { scope:ghw_sponsor = root }
+	}
+	
+	option = {
+		name = great_holy_war.0054.b
+		trigger = { scope:ghw_defender = root }
+	}
+	
+	option = {
+		name = great_holy_war.0054.c
+		trigger = {
+			NOR = {
+				scope:ghw_sponsor = root
+				scope:ghw_defender = root
+			}
+		}
+	}
+}
+
 #on_great_holy_war_invalidation: Crusade has been invalidated before starting.
 great_holy_war.0055 = {
 	hidden = yes
@@ -4082,7 +4188,7 @@ great_holy_war.0055 = {
 			religious_head = { save_scope_as = ghw_sponsor }
 			save_scope_as = the_faith
 			change_fervor = {
-				value =  -10
+				value = significant_fervor_loss
 				desc = fervor_loss_crusade_invalid
 			}
 			set_variable = {
@@ -4189,8 +4295,7 @@ great_holy_war.0060 = {
 			any_in_de_jure_hierarchy = {
 				tier = tier_barony
 				title_province = { this = scope:current_location } #Any province within it.
-				exists = holder
-				holder = { #The province's owner must also be part of the GHW on the opposite side.
+				holder ?= { #The province's owner must also be part of the GHW on the opposite side.
 					OR = {
 						any_character_war = {
 							OR = {
@@ -4312,7 +4417,7 @@ great_holy_war.0058 = {
 		is_imprisoned = no #Don't penalise captured faith_warriors.
 		NOR = {
 			has_trait = incapable
-			has_serious_disease_trigger = yes
+			has_trait_with_flag = debilitating_illness
 		}
 		OR = { #Character or liege must still be at war, obviously.
 			any_character_war = {
@@ -4349,7 +4454,7 @@ great_holy_war.0058 = {
 	}
 }
 
-#on_character_faith_change: check if the character has changed Religion, in which case the Crusader trait should be cleared.
+#on_rite_change: check if the character has changed Religion, in which case the Crusader trait should be cleared.
 great_holy_war.0059 = {
 	hidden = yes
 	scope = character
@@ -4562,18 +4667,19 @@ great_holy_war.0083 = {
 			location = scope:fallback_host.capital_province
 			template = new_commander_character
 			faith = root.faith
+			rite = root.rite
 			culture = root.culture
 			save_scope_as = fallback_recipient
 			gender_female_chance = {
 				if = {
 					limit = {
-						root.faith = { has_doctrine = doctrine_gender_male_dominated }
+						root.rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 					}
 					add = 0
 				}
 				else_if = {
 					limit = {
-						root.faith = { has_doctrine = doctrine_gender_female_dominated }
+						root.rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 					}
 					add = 100
 				}
@@ -4632,13 +4738,13 @@ great_holy_war.0084 = {
 			gender_female_chance = {
 				if = {
 					limit = {
-						root.faith = { has_doctrine = doctrine_gender_male_dominated }
+						root.rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 					}
 					add = 0
 				}
 				else_if = {
 					limit = {
-						root.faith = { has_doctrine = doctrine_gender_female_dominated }
+						root.rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 					}
 					add = 100
 				}

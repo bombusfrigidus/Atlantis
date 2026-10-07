@@ -1,7 +1,14 @@
 ﻿
 is_on_a_pilgrimage_trigger = {
-	exists = involved_activity
-	involved_activity = { has_activity_type = activity_pilgrimage }
+	involved_activity ?= {
+		has_activity_type = activity_pilgrimage
+		#NOT = { # Commenting out until Hajj-content is made distinct
+		#	has_activity_option = {
+		#		category = special_type
+		#		option = pilgrimage_type_hajj
+		#	}
+		#}
+	}
 	#No more pilgrimage events if you're on your way home :colbert:
 	exists = capital_province
 	NOT = { 
@@ -12,8 +19,8 @@ is_on_a_pilgrimage_trigger = {
 }
 
 is_on_a_hajj_trigger = {
-	exists = involved_activity
-	involved_activity = {
+	involved_activity ?= {
+		has_activity_type = activity_pilgrimage
 		has_activity_option = {
 			category = special_type
 			option = pilgrimage_type_hajj

@@ -86,7 +86,7 @@ mpo_jamukha_flavor.0001 = {
 			add_character_modifier = blood_brother_warrior_modifier
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			callous = medium_stress_impact_gain
 		}
@@ -107,7 +107,7 @@ mpo_jamukha_flavor.0001 = {
 				opinion = -25
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 			callous = medium_stress_impact_loss
 			gregarious = medium_stress_impact_gain
@@ -255,6 +255,24 @@ mpo_jamukha_flavor.0010 = {
 				save_scope_as = togrul
 			}
 		}
+		else_if = {
+			limit = {
+				character:1.house ?= {
+					any_house_member = {
+						mpo_jamukha_flavor_0010_togrul_trigger = yes
+					}
+				}
+			}
+			character:1.house ?= {
+				ordered_house_member = {
+					order_by = current_military_strength
+					limit = {
+						mpo_jamukha_flavor_0010_togrul_trigger = yes
+					}
+					save_scope_as = togrul
+				}
+			}
+		}
 		else = {
 			capital_county.empire ?= {
 				ordered_de_jure_county_holder = {
@@ -302,11 +320,31 @@ mpo_jamukha_flavor.0010 = {
 				opinion = 30
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 		}
 		ai_chance = {
 			base = 0
+		}
+	}
+	
+	on_trigger_fail = { # Jamukha becomes your rival anyways if you've migrated away
+		character:1 = {
+			save_scope_as = temujin
+		}
+		if = {
+			limit = {
+				is_independent_ruler = yes
+				NOT = { is_tributary_of = scope:temujin }
+			}
+			hidden_effect = {
+				scope:temujin = {
+					trigger_event = {
+						days = { 360 420 }
+						id = mpo_temujin_flavor.0020
+					}
+				}
+			}
 		}
 	}
 }
@@ -334,7 +372,7 @@ mpo_jamukha_flavor.0020 = {
 		outfit_tags = { nightgown }
 		camera = camera_event_very_right
 	}
-	window = scheme_successful_event_no_text
+	window = scheme_conclusion_event_no_header
 	
 	immediate = {
 		play_music_cue = "mx_cue_murder"
@@ -369,7 +407,7 @@ mpo_jamukha_flavor.0020 = {
 			modifier = temujin_jamukha_war_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -386,7 +424,7 @@ mpo_jamukha_flavor.0020 = {
 				value = scope:temujin
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deceitful = massive_stress_impact_loss
 			sadistic = massive_stress_impact_loss
 		}
@@ -404,7 +442,7 @@ mpo_jamukha_flavor.0020 = {
 			modifier = temujin_jamukha_war_smaller_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = massive_stress_impact_loss
 			vengeful = massive_stress_impact_loss
 		}

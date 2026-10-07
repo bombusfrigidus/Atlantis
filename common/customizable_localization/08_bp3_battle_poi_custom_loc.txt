@@ -461,6 +461,98 @@ BattlePoiNameHistorical = {
 		}
 		localization_key = BattlePoIHistoricalNameTalas
 	}
+
+	text = { #Battle of Subushi
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameSufuku
+	}
+
+	text = { #Battle of Baekgang
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameBaekgang
+	}
+
+	text = { #Battle of Palembang
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNamePalembang
+	}
+
+	text = { #Battle of Angkor
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameAngkor
+	}
+
+	text = { #Battle of Songping
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameSongping
+	}
+
+	text = { #Battle of Muye
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameMuye
+	}
+
+	text = { #Battle of Guandu
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameGuandu
+	}
+
+	text = { #Battle of Red Cliffs
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameRedCliffs
+	}
+
+	text = { #Battle of Yiling
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameYiling
+	}
+
+	text = { #Battle of Fei River
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameFeiRiver
+	}
+
+	text = { #Battle of Canhe Slope
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameCanheSlope
+	}
+
+	text = { #Battle of Xiangji Temple
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameXiangji
+	}
+
+	text = { #Battle of Gaoliang River
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalNameGaoliang
+	}
+
 }
 
 BattlePoIDescriptionHistorical = {
@@ -541,5 +633,96 @@ BattlePoIDescriptionHistorical = {
 			this = province:1
 		}
 		localization_key = BattlePoIHistoricalDescTalas
+	}
+
+	text = { #Battle of Subushi
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescSufuku
+	}
+
+	text = { #Battle of Baekgang
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescBaekgang
+	}
+
+	text = { #Battle of Palembang
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescPalembang
+	}
+
+	text = { #Battle of Angkor
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescAngkor
+	}
+
+	text = { #Battle of Songping
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescSongping
+	}
+
+	text = { #Battle of Muye
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescMuye
+	}
+
+	text = { #Battle of Red Cliffs
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescRedCliffs
+	}
+
+	text = { #Battle of Guandu
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescGuandu
+	}
+
+	text = { #Battle of Yiling
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescYiling
+	}
+
+	text = { #Battle of Fei River
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescFeiRiver
+	}
+
+	text = { #Battle of Canhe Slope
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescCanheSlope
+	}
+
+	text = { #Battle of Xiangji Temple
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescXiangji
+	}
+	
+	text = { #Battle of Gaoliang River
+		trigger = {
+			this = province:1
+		}
+		localization_key = BattlePoIHistoricalDescGaoliang
 	}
 }

@@ -1,0 +1,670 @@
+﻿@never_primary_score = -1000
+
+### Cardinal Titles
+
+# 867
+
+d_cd_ostia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_porto = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_velletri = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_frascati = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_albano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_palestrina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_sabina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_ciriaco = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_lorenzo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_cecilia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_balbina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_pietro = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_anastasia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_damaso = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_rufina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_sabina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_maria = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_prassede = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_cosma_e_damiano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_stefano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_clemente = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_trastevere = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_silvestro_e_martino = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_nereo_ed_achilleo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_eustachio = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_maria_nuova = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_teodoro = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_adriano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_marcello = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_vitale = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_angelo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_croce = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_portico_octaviae = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_crisogono = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_giorgio = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_cosmedin = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_stefano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_marco = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_apostoli = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_pudenziana = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_eusebio = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_sergio_e_bacco = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_nicola = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_prisca = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santi_giovanni_e_paolo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_quattro_coronati = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_agata = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_sisto = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_susanna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_lucia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_via = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_apollinare = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_callisto = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_santa_agnese = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cd_san_bartolomeo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_toledo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_santiago = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tarragona = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_sevilla = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_braga = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_merida = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tingitana = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_york = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tuam = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_dublin = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_cashel = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_armagh = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_canterbury = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_rouen = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_reims = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_sens = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tours = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_bourges = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_bordeaux = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_lyon = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tarentaise = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_vienne = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_eauze = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_auch = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_narbonne = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_besancon = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_arles = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_aix = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_embrun = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_milano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_genoa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_cagliari = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_torres = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_oristano = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_reggio_calabria = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_cosenza = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_messina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_palermo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_santa_severina = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_ravenna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_roma = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_pisa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_capua = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_napoli = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_salerno = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_benevento = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_bari = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_trani = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_brindisi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_aquileia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_esztergom = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_kalocsa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_split = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_ohrid = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_ragusa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_salzburg = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_trier = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_gniezno = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_mainz = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_magdeburg = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_cologne = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_hamburg = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_lund = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_uppsala = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_nidaros = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_kyiv = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_constantinople = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_jerusalem = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_antioch = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_cyprus = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_georgia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_kartli = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_armenia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_seleucia_ctesiphon = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_tyre = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_alexandria = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_axum = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_et_africa = {
+	capital = c_atlantis
+	landless = yes
+}

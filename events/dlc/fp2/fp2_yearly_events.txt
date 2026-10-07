@@ -5,7 +5,7 @@
 ## 1001	- 1001	Chess Two by Daniel Moore
 ## 1002	- 1002	Compromising Position by Daniel Moore
 ## 1003	- 1003	Tilting at Giants by Daniel Moore
-## 1004	- 1004	The Hawk of Quarysh by Daniel Moore
+## 1004	- 1004	The Hawk of Quraysh by Daniel Moore
 ## 1005	- 1005	Lost Viking by Daniel Moore
 ## 1006	- 1007	Viking Cheese by Daniel Moore
 ## 1008	- 1008	Consuming the Cheese by Daniel Moore
@@ -58,7 +58,7 @@ fp2_yearly.1001 = {
 	trigger = {
 		#Strategy Games Culture Tradition
 		has_fp2_dlc_trigger = yes
-		is_landed_or_landless_administrative = yes
+		is_landed_or_landless_administrative_or_theocratic = yes
 		capital_province = {
 			geographical_region = world_europe_west_iberia
 		}
@@ -150,7 +150,7 @@ fp2_yearly.1002 = {
 	trigger = {
 		has_fp2_dlc_trigger = yes
 		is_adult = yes
-		is_landed_or_landless_administrative = yes
+		is_landed_or_landless_administrative_or_theocratic = yes
 		any_courtier = { is_available_healthy_ai_adult = yes }
 
 		NOT = {
@@ -167,7 +167,7 @@ fp2_yearly.1002 = {
 				OR = {
 					has_trait = deviant
 					any_secret = {
-						secret_type = secret_deviant
+						type = secret_deviant
 					}
 				}
 			}
@@ -211,7 +211,7 @@ fp2_yearly.1002 = {
 		name = fp2_yearly.1002.b
 		scope:deviant_courtier = {
 			random_secret = {
-				limit = { secret_type = secret_deviant}
+				type = secret_deviant
 				reveal_to = root
 			}
 		}
@@ -223,7 +223,7 @@ fp2_yearly.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deviant = medium_stress_gain
 		}
 
@@ -231,7 +231,7 @@ fp2_yearly.1002 = {
 
 	option = {
 		name = fp2_yearly.1002.c
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deviant = medium_stress_loss
 		}
 
@@ -239,7 +239,7 @@ fp2_yearly.1002 = {
 			limit = {
 				NOT = {
 					any_secret = {
-						secret_type = secret_deviant
+						type = secret_deviant
 					}
 				}
 			}
@@ -265,7 +265,7 @@ fp2_yearly.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deviant = medium_stress_gain
 
 		}
@@ -289,7 +289,7 @@ fp2_yearly.1003 = {
 	theme = realm
 	right_portrait = {
 		character = scope:injured_knight
-		animation = lunatic
+		animation = paranoia
 
 	}
 
@@ -364,7 +364,7 @@ fp2_yearly.1003 = {
 }
 
 ###################################
-# The Hawk of Quarysh
+# The Hawk of Quraysh
 # By Daniel Moore
 ###################################
 fp2_yearly.1004 = {
@@ -403,11 +403,11 @@ fp2_yearly.1004 = {
 			save_scope_as = hawk_of_quraysh
 		}
 
-		dynasty:1 = {
+		dynasty:597 = {
 			save_scope_as = hawk_dynasty
 		}
 
-		dynasty:1 = {
+		dynasty:100721 = {
 			save_scope_as = abbasid_dynasty
 		}
 	}
@@ -429,7 +429,7 @@ fp2_yearly.1004 = {
 	option = { #How he inspired soldiers
 		name = fp2_yearly.1004.a
 			add_character_modifier = {
-				modifier = fp2_hawk_of_quarysh_martial_modifier
+				modifier = fp2_hawk_of_quraysh_martial_modifier
 				years = 10
 			}
 
@@ -445,7 +445,7 @@ fp2_yearly.1004 = {
 	option = { #How diplomatic he was
 		name = fp2_yearly.1004.b
 			add_character_modifier = {
-				modifier = fp2_hawk_of_quarysh_diplomacy_modifier
+				modifier = fp2_hawk_of_quraysh_diplomacy_modifier
 				years = 10
 			}
 
@@ -629,7 +629,7 @@ fp2_yearly.1006 = {
 		name = fp2_yearly.1006.a
 		remove_short_term_gold = minor_gold_value
 		#Cheese based bonus
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			gluttonous = minor_stress_impact_loss
 			comfort_eater = minor_stress_impact_loss
@@ -668,7 +668,7 @@ fp2_yearly.1006 = {
 
 	option = { #Nothing happens you hate cheese and having fun
 		name = fp2_yearly.1006.c
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gluttonous = miniscule_stress_impact_gain
 			comfort_eater = miniscule_stress_impact_gain
 			eccentric = miniscule_stress_impact_gain
@@ -691,7 +691,6 @@ fp2_yearly.1007 = {
 	left_portrait = {
 		character = root
 		animation = sadness
-
 	}
 
 	right_portrait = {
@@ -732,7 +731,6 @@ fp2_yearly.1007 = {
 
 		add_prestige = miniscule_prestige_value
 
-
 		ai_chance = {
 			base = 100
 			ai_value_modifier = {
@@ -743,12 +741,11 @@ fp2_yearly.1007 = {
 
 	option = {
 		name = fp2_yearly.1007.b
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gluttonous = major_stress_loss
 		}
 
 		add_gold = minor_gold_value
-
 
 		create_artifact = {
 			name = fp2_cheese_artifact
@@ -760,7 +757,6 @@ fp2_yearly.1007 = {
 
 			save_scope_as = newly_created_artifact
 		}
-
 
 		scope:newly_created_artifact = {
 			flag_as_trash_artifact = yes
@@ -788,7 +784,7 @@ fp2_yearly.1008 = {
 	}
 
 	trigger = {
-		any_artifact = {
+		any_character_artifact = {
 			has_variable = has_cheese_artifact
 		}
 
@@ -796,7 +792,7 @@ fp2_yearly.1008 = {
 
 	immediate = {
 
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_variable = has_cheese_artifact
 			}
@@ -888,6 +884,7 @@ fp2_yearly.2020 = {
 			random_traits = no
 			culture = scope:fp2_2020_valencia.culture
 			faith = scope:fp2_2020_valencia.faith
+			rite = scope:fp2_2020_valencia.rite
 			dynasty = none
 			save_scope_as = fp2_2020_laxatador
 		}
@@ -929,7 +926,7 @@ fp2_yearly.2020 = {
 			}
 		}
 
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 		scope:fp2_2020_valencia.county = {
 			add_county_modifier = {
 				modifier = fp2_funded_agriculture_modifier
@@ -955,7 +952,7 @@ fp2_yearly.2020 = {
 		name = fp2_struggle.2020.c
 		flavor = fp2_struggle.2020.c.desc
 
-		stress_impact = { gluttonous = minor_stress_impact_gain } # As you need to be glut to trigger the event, the stress is reduced to compensate
+		stress_and_fulfillment_impact = { gluttonous = minor_stress_impact_gain } # As you need to be glut to trigger the event, the stress is reduced to compensate
 		if = {
 			limit = { has_trait = gluttonous }
 			add_prestige = medium_prestige_gain # Resisting is very difficult
@@ -1066,7 +1063,7 @@ fp2_yearly.2025 = {
 	option = { # I will build a great monument
 		name = fp2_struggle.2025.b
 
-		remove_short_term_gold = minor_gold_value
+		remove_treasury_or_gold = minor_treasury_or_gold_value
 		send_interface_toast = {
 			type = event_toast_effect_good
 			title = fp2_monument_to_war_modifier
@@ -1085,7 +1082,7 @@ fp2_yearly.2025 = {
 	option = { # We will restore this town back to what it was
 		name = fp2_struggle.2025.c
 
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 		send_interface_toast = {
 			type = event_toast_effect_good
 			title = fp2_village_rebuiling_efforts_modifier
@@ -1178,7 +1175,7 @@ fp2_yearly.3000 = {
 			capital_county.faith.religion = religion:islam_religion
 			faith.religion = religion:islam_religion
 			capital_county = {
-				has_county_modifier = rice_fields_modifier
+				has_county_modifier = terraced_hills_modifier
 			}
 		}
 		OR = { # Vassal, neighbor, or liege is muslim with muslim capital
@@ -1241,12 +1238,12 @@ fp2_yearly.3000 = {
 				if = {
 					limit = {
 						NOT = {
-							has_county_modifier = rice_fields_modifier
+							has_county_modifier = terraced_hills_modifier
 						}
 					}
 					hidden_effect = {
 						add_county_modifier = {
-							modifier = rice_fields_modifier
+							modifier = terraced_hills_modifier
 							years = 20
 						}
 					}
@@ -1259,19 +1256,19 @@ fp2_yearly.3000 = {
 	option = {
 		name = fp2_flavor.0001.a
 
-		pay_short_term_gold = {
+		pay_treasury_or_gold = {
 			target = scope:rice_propagator
-			gold = scope:rice_propagator.medium_gold_value # The costs/duels were updated to be higher for balance reasons
+			value = scope:rice_propagator.medium_treasury_or_gold_value # The costs/duels were updated to be higher for balance reasons
 		}
 
 		scope:capital_county_scope = {
 			add_county_modifier = {
-				modifier = rice_fields_modifier
+				modifier = terraced_hills_modifier
 				years = 20
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = massive_stress_impact_gain
 			zealous = major_stress_impact_gain
 			deceitful = medium_stress_impact_gain
@@ -1346,7 +1343,7 @@ fp2_yearly.3000 = {
 
 					scope:capital_county_scope = {
 						add_county_modifier = {
-							modifier = rice_fields_modifier
+							modifier = terraced_hills_modifier
 							years = 20
 						}
 					}
@@ -1354,7 +1351,7 @@ fp2_yearly.3000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = massive_stress_impact_gain
 			impatient = major_stress_impact_gain
 			shy = major_stress_impact_gain
@@ -1425,7 +1422,7 @@ fp2_yearly.3000 = {
 
 					scope:capital_county_scope = {
 						add_county_modifier = {
-							modifier = rice_fields_modifier
+							modifier = terraced_hills_modifier
 							years = 20
 						}
 					}
@@ -1433,7 +1430,7 @@ fp2_yearly.3000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			honest = massive_stress_impact_gain
 			generous = major_stress_impact_gain
 			craven = medium_stress_impact_gain
@@ -1459,7 +1456,7 @@ fp2_yearly.3000 = {
 	option = {
 		name = fp2_flavor.0001.d
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = major_stress_impact_gain
 			ambitious = major_stress_impact_gain
 			generous = medium_stress_impact_gain
@@ -1586,7 +1583,7 @@ fp2_yearly.3001 = {
 
 	option = { #your language + vulgar (Latin + Castillian / Hebrew + Sephardí / Arabic + Mozarabic )
 		name = fp2_flavor.3001.c
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_loss
 			zealous = medium_stress_gain
 		}
@@ -1610,7 +1607,7 @@ fp2_yearly.3001 = {
 			years = 5
 		}
 		add_piety = minor_piety_loss
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 			zealous = minor_stress_impact_gain
 		}
@@ -1668,7 +1665,7 @@ fp2_yearly.3002 = {
 			NOT = { is_consort_of = root }
 			might_cheat_on_every_partner_trigger = yes
 			trigger_if = {
-				limit = { relation_with_character_is_incestuous_in_my_faith_trigger = { CHARACTER = root } }
+				limit = { relation_with_character_is_incestuous_in_my_rite_trigger = { CHARACTER = root } }
 				OR = {
 					has_perk = subtle_desire_perk
 					accepts_incest_with_trigger = { CHARACTER = root }
@@ -1694,7 +1691,7 @@ fp2_yearly.3002 = {
 				NOT = { is_consort_of = root }
 				might_cheat_on_every_partner_trigger = yes
 				trigger_if = {
-					limit = { relation_with_character_is_incestuous_in_my_faith_trigger = { CHARACTER = root } }
+					limit = { relation_with_character_is_incestuous_in_my_rite_trigger = { CHARACTER = root } }
 					OR = {
 						has_perk = subtle_desire_perk
 						accepts_incest_with_trigger = { CHARACTER = root }
@@ -1710,12 +1707,13 @@ fp2_yearly.3002 = {
 
 		trigger = {
 			NOT = { has_trait = celibate }
+			might_cheat_on_every_partner_trigger = yes
 			OR = {
 				has_perk = unshackled_lust_perk
 				is_attracted_to_gender_of = root
 			}
 			trigger_if = {
-				limit = { relation_with_character_is_incestuous_in_my_faith_trigger = { CHARACTER = scope:fp2_flavor_3011_best_friend } }
+				limit = { relation_with_character_is_incestuous_in_my_rite_trigger = { CHARACTER = scope:fp2_flavor_3011_best_friend } }
 				OR = {
 					has_perk = subtle_desire_perk
 					accepts_incest_with_trigger = { CHARACTER = scope:fp2_flavor_3011_best_friend }
@@ -1732,18 +1730,18 @@ fp2_yearly.3002 = {
 						scope:fp2_flavor_3011_best_friend = {
 							is_female = yes
 						}
-						NOT = { faith = { has_doctrine = doctrine_homosexuality_accepted } }
+						NOT = { rite = { rite_has_doctrine = doctrine_homosexuality_accepted } }
 					}
 					AND = {
 						is_male = yes
 						scope:fp2_flavor_3011_best_friend = {
 							is_male = yes
 						}
-						NOT = { faith = { has_doctrine = doctrine_homosexuality_accepted } }
+						NOT = { rite = { rite_has_doctrine = doctrine_homosexuality_accepted } }
 					}
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = medium_stress_impact_gain
 				zealous = medium_stress_impact_gain #some extra stress
 			}
@@ -1783,7 +1781,7 @@ fp2_yearly.3002 = {
 
 	option = { #allowe them to move in but stay as friends
 		name = fp2_flavor.3011.b
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_loss
 			lustful = medium_stress_impact_gain
 		}
@@ -1837,7 +1835,7 @@ fp2_yearly.3002 = {
 			}
 			text = fp2_flavor.3011.c
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain #you get stressed at losing your bff
 			lustful = minor_stress_impact_gain
 			callous = minor_stress_loss
@@ -1933,7 +1931,7 @@ fp2_yearly.3003 = {
 
 	option = { #pretend nothing's wrong
 		name = fp2_flavor.3021.a
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 			compassionate = minor_stress_impact_gain
 			honest = minor_stress_impact_gain
@@ -1998,7 +1996,7 @@ fp2_yearly.3003 = {
 				send_interface_toast = {
 					title = fp2_flavor.3021.b.success
 					left_icon = ROOT
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = minor_stress_impact_gain
 						compassionate = minor_stress_impact_gain
 						honest = minor_stress_impact_gain
@@ -2017,7 +2015,7 @@ fp2_yearly.3003 = {
 							opinion = -20
 						}
 					}
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = medium_stress_impact_gain
 						compassionate = minor_stress_impact_gain
 						honest = minor_stress_impact_gain
@@ -2072,7 +2070,7 @@ fp2_yearly.3003 = {
 						opinion = -30
 					}
 				}
-				stress_impact = {
+				stress_and_fulfillment_impact = {
 					base = medium_stress_impact_gain
 				}
 			}
@@ -2105,7 +2103,7 @@ fp2_yearly.3003 = {
 				opinion = -50
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_loss
 			brave = minor_stress_impact_gain
 			honest = minor_stress_impact_gain
@@ -2173,7 +2171,7 @@ fp2_yearly.4001 = {
 
 		add_prestige = minor_prestige_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 			lazy = medium_stress_impact_gain
 			diligent = major_stress_impact_loss
@@ -2191,7 +2189,7 @@ fp2_yearly.4001 = {
 	option = { #a little nap can't hurt anyone
 		name = fp2_yearly.4001.b
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 			diligent = massive_stress_impact_gain
 		}
@@ -2242,9 +2240,7 @@ fp2_yearly.4002 = {
 
 		#has a county that doesn't match your faith
 		any_directly_owned_province = {
-			NOT = {
-				faith = root.faith
-			}
+			faith != root.faith
 		}
 
 		#and capital is located in Iberia
@@ -2256,9 +2252,7 @@ fp2_yearly.4002 = {
 	immediate = {
 		random_directly_owned_province = {
 			limit = {
-				NOT = {
-					faith = root.faith
-				}
+				faith != root.faith
 			}
 			save_scope_as = interfaith_province
 		}
@@ -2283,7 +2277,7 @@ fp2_yearly.4002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_gain
 			cynical = minor_stress_loss
 			arrogant = medium_stress_gain
@@ -2325,7 +2319,7 @@ fp2_yearly.4002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_loss
 			cynical = medium_stress_gain
 			forgiving = major_stress_gain
@@ -2460,7 +2454,7 @@ fp2_yearly.4003 = {
 		}
 	}
 
-	option = { #Call upon a local Holy Order
+	option = { #Call upon a local Military Order
 		name = fp2_yearly.4003.a
 
 		trigger = {
@@ -2478,7 +2472,7 @@ fp2_yearly.4003 = {
 
 		add_piety = minor_piety_gain
 
-		remove_short_term_gold = minor_gold_value
+		remove_treasury_or_gold = minor_treasury_or_gold_value
 
 		add_internal_flag = special
 
@@ -2500,9 +2494,9 @@ fp2_yearly.4003 = {
 
 		add_piety = medium_piety_gain
 
-		remove_short_term_gold = major_gold_value
+		remove_treasury_or_gold = major_treasury_or_gold_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = major_stress_impact_gain
 			arbitrary = medium_stress_impact_gain
 			cynical = medium_stress_impact_gain
@@ -2526,7 +2520,7 @@ fp2_yearly.4003 = {
 
 		add_piety = medium_piety_loss
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 			zealous = major_stress_impact_gain
 			humble = medium_stress_impact_gain
@@ -2575,11 +2569,11 @@ fp2_yearly.4004 = {
 		is_available_at_peace_adult = yes
 
 		#Mozarabic exists...
-		exists = faith:mozarabic_church
+		exists = rite:mozarabic_church
 
 		#...but you are not Mozarabic
 		NOT = {
-			faith = faith:mozarabic_church
+			rite = rite:mozarabic_church
 		}
 
 		#and capital is located in Iberia
@@ -2594,11 +2588,11 @@ fp2_yearly.4004 = {
 			location = root.capital_province
 			gender_female_chance = {
 				if = {
-					limit = { root.faith = { has_doctrine = doctrine_gender_male_dominated } }
+					limit = { root.rite = { rite_has_doctrine = doctrine_gender_male_dominated } }
 					add = 0
 				}
 				else_if = {
-					limit = { root.faith = { has_doctrine = doctrine_gender_female_dominated } }
+					limit = { root.rite = { rite_has_doctrine = doctrine_gender_female_dominated } }
 					add = 100
 				}
 				else = {
@@ -2648,10 +2642,13 @@ fp2_yearly.4004 = {
 			prowess = { min_template_decent_skill max_template_high_skill }
 
 			culture = root.culture
-			faith = faith:mozarabic_church
+			faith = root.faith
+			rite = rite:mozarabic_church
 
 			dynasty = none
-			after_creation = { 
+			save_scope_as = mozarab_wanderer
+
+			after_creation = {
 				add_gold = { minor_gold_value medium_gold_value }
 				add_prestige = { minor_prestige_gain medium_prestige_gain }
 				add_piety = { minor_piety_gain medium_piety_gain }
@@ -2665,8 +2662,6 @@ fp2_yearly.4004 = {
 					}
 				}
 			}
-
-			save_scope_as = mozarab_wanderer
 		}
 	}
 
@@ -2675,7 +2670,7 @@ fp2_yearly.4004 = {
 
 		add_piety = minor_piety_loss
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 			zealous = major_stress_impact_gain
 			stubborn = minor_stress_impact_gain
@@ -2843,11 +2838,11 @@ fp2_yearly.4005 = {
 		is_available_at_peace_adult = yes
 
 		#Mozarabic exists...
-		exists = faith:mozarabic_church
+		exists = rite:mozarabic_church
 
 		#...but you are not Mozarabic
 		NOT = {
-			faith = faith:mozarabic_church
+			rite = rite:mozarabic_church
 		}
 
 		#and you have a county that has a city holding
@@ -2877,14 +2872,14 @@ fp2_yearly.4005 = {
 			limit = {
 				any_pool_character = {
 					province = scope:mozarab_quarter.title_province
-					faith = faith:mozarabic_church
+					rite = rite:mozarabic_church
 					is_available_healthy_ai_adult = yes
 				}
 			}
 			random_pool_character = {
 				province = scope:mozarab_quarter.title_province
 				limit = {
-					faith = faith:mozarabic_church
+					rite = rite:mozarabic_church
 					is_available_healthy_ai_adult = yes
 				}
 				save_scope_as = mozarab_merchant
@@ -2905,7 +2900,8 @@ fp2_yearly.4005 = {
 				random_traits = yes
 
 				culture = scope:mozarab_quarter.culture
-				faith = faith:mozarabic_church
+				faith = scope:mozarab_quarter.faith
+				rite = rite:mozarabic_church
 
 				dynasty = none
 
@@ -2917,7 +2913,7 @@ fp2_yearly.4005 = {
 	option = { #You may have a little enclave, as a treat
 		name = fp2_yearly.4005.a
 
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 
 		scope:mozarab_quarter = {
 			add_county_modifier = {
@@ -2945,7 +2941,7 @@ fp2_yearly.4005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_impact_gain
 			greedy = major_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -2985,7 +2981,7 @@ fp2_yearly.4005 = {
 			limit = {
 				has_trait = zealous
 				NOT = {
-					faith = faith:mozarabic_church
+					rite = rite:mozarabic_church
 				}
 			}
 			add_opinion = {
@@ -2997,7 +2993,7 @@ fp2_yearly.4005 = {
 
 		every_vassal = {
 			limit = {
-				faith = faith:mozarabic_church
+				rite = rite:mozarabic_church
 			}
 			add_opinion = {
 				target = root
@@ -3006,7 +3002,7 @@ fp2_yearly.4005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_loss
 			cynical = medium_stress_gain
 			forgiving = major_stress_gain
@@ -3060,7 +3056,7 @@ fp2_yearly.4006 = {
 		is_available_at_peace_adult = yes
 
 		#Mozarabic exists
-		exists = faith:mozarabic_church
+		exists = rite:mozarabic_church
 
 		#You are not Christian at all
 		NOT = {
@@ -3096,7 +3092,7 @@ fp2_yearly.4006 = {
 			limit = {
 				any_pool_character = {
 					province = scope:mozarab_church.title_province
-					faith = faith:mozarabic_church
+					rite = rite:mozarabic_church
 					is_available_healthy_ai_adult = yes
 					has_trait = devoted
 				}
@@ -3104,7 +3100,7 @@ fp2_yearly.4006 = {
 			random_pool_character = {
 				province = scope:mozarab_church.title_province
 				limit = {
-					faith = faith:mozarabic_church
+					rite = rite:mozarabic_church
 					is_available_healthy_ai_adult = yes
 				}
 				save_scope_as = mozarab_priest
@@ -3127,7 +3123,8 @@ fp2_yearly.4006 = {
 				random_traits = yes
 
 				culture = scope:mozarab_church.culture
-				faith = faith:mozarabic_church
+				faith = rite:mozarabic_church.faith
+				rite = rite:mozarabic_church
 
 				dynasty = none
 
@@ -3142,7 +3139,7 @@ fp2_yearly.4006 = {
 	option = { #You can build a church
 		name = fp2_yearly.4006.a
 
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 
 		root = {
 			add_character_modifier = {
@@ -3167,7 +3164,7 @@ fp2_yearly.4006 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_impact_gain
 			greedy = major_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -3212,7 +3209,7 @@ fp2_yearly.4006 = {
 
 		every_vassal = {
 			limit = {
-				faith = faith:mozarabic_church
+				rite = rite:mozarabic_church
 			}
 			add_opinion = {
 				target = root
@@ -3221,7 +3218,7 @@ fp2_yearly.4006 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_loss
 			compassionate = massive_stress_gain
 			generous = major_stress_gain
@@ -3258,7 +3255,7 @@ fp2_yearly.4007 = {
 	type = character_event
 	title = fp2_yearly.4007.t
 	desc = fp2_yearly.4007.desc
-	theme = faith
+	theme = christian
 	left_portrait = {
 		character = root
 		animation = admiration
@@ -3339,7 +3336,7 @@ fp2_yearly.4007 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = massive_stress_impact_gain
 			honest = massive_stress_impact_gain
 			just = major_stress_impact_gain
@@ -3369,7 +3366,7 @@ fp2_yearly.4007 = {
 
 		add_piety = miniscule_piety_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			cynical = massive_stress_impact_gain
 			deceitful = massive_stress_impact_gain
@@ -3405,7 +3402,7 @@ fp2_yearly.4007 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 			zealous = massive_stress_impact_gain
 			honest = massive_stress_impact_gain
@@ -3584,7 +3581,7 @@ fp2_yearly.4008 = {
 		has_fp2_dlc_trigger = yes
 
 		#Standard check
-		is_landed_or_landless_administrative = yes
+		is_landed_or_landless_administrative_or_theocratic = yes
 		is_available_at_peace_adult = yes
 
 		#You are Iberian
@@ -3623,12 +3620,13 @@ fp2_yearly.4008 = {
 				location = root.capital_province
 				gender = female
 
-				trait = poet
+				trait = lifestyle_poet
 
 				random_traits = yes
 
 				culture = root.culture
 				faith = root.faith
+				rite = root.rite
 
 				dynasty = none
 
@@ -3652,7 +3650,7 @@ fp2_yearly.4008 = {
 
 		add_prestige = minor_prestige_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			arrogant = miniscule_stress_impact_loss
 			stubborn = miniscule_stress_impact_loss
@@ -3778,7 +3776,7 @@ fp2_yearly.4009 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = medium_stress_impact_gain
 			craven = medium_stress_impact_gain
 			content = major_stress_impact_gain
@@ -3828,7 +3826,7 @@ fp2_yearly.4009 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			calm = medium_stress_impact_gain
 			craven = medium_stress_impact_gain
@@ -3986,7 +3984,7 @@ fp2_yearly.4010 = {
 					title = fp2_yearly.4010.a.fail
 					type = event_toast_effect_bad
 					left_icon = root
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = medium_stress_gain
 						ambitious = major_stress_impact_gain
 						zealous = medium_stress_impact_gain
@@ -4023,7 +4021,7 @@ fp2_yearly.4010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = miniscule_stress_impact_loss
 			calm = medium_stress_impact_gain
 			content = medium_stress_impact_gain
@@ -4062,7 +4060,7 @@ fp2_yearly.4010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_loss
 			cynical = medium_stress_impact_gain
 			lazy = medium_stress_impact_gain
@@ -4144,15 +4142,15 @@ fp2_yearly.8000 = {
 			has_religion = religion:judaism_religion
 		}
 
-		root.faith = {
+		root.rite = {
 			OR = {
-				has_doctrine = tenet_religious_legal_pronouncements
-				has_doctrine = tenet_literalism
-				has_doctrine = tenet_adaptive
+				rite_has_tenet = tenet_religious_legal_pronouncements
+				rite_has_tenet = tenet_literalism
+				rite_has_tenet = tenet_adaptive
 			}
 		}
 
-		NOT = { faith.religious_head = root }
+		faith.religious_head != root
 
 		exists = root.faith.religious_head
 
@@ -4161,13 +4159,11 @@ fp2_yearly.8000 = {
 		fp2_character_involved_in_struggle_trigger = yes
 
 		any_held_county = {
-			any_county_province = {
-				OR = {
-					terrain = farmlands
-					terrain = plains
-					terrain = hills
-					terrain = floodplains
-				}
+			county_has_province_with_terrain = {
+				terrain = farmlands
+				terrain = plains
+				terrain = hills
+				terrain = floodplains
 			}
 		}
 	}
@@ -4190,13 +4186,11 @@ fp2_yearly.8000 = {
 			}
 			random_held_county = {
 				limit = {
-					any_county_province = {
-						OR = {
-							terrain = farmlands
-							terrain = plains
-							terrain = hills
-							terrain = floodplains
-						}
+					county_has_province_with_terrain = {
+						terrain = farmlands
+						terrain = plains
+						terrain = hills
+						terrain = floodplains
 					}
 				}
 				save_scope_as = vineyard_county
@@ -4240,21 +4234,21 @@ fp2_yearly.8000 = {
 		create_character = { #this is the head of faith's emissary
 			age = { 25 75 }
 			location = root.capital_province
-			gender_female_chance = root_faith_dominant_gender_female_chance #could be female, if given the right context.  
-			trait = zealous 
+			gender_female_chance = root_faith_dominant_gender_female_chance #could be female, if given the right context.
+			trait = zealous
 			template = priest_character_template
-			save_scope_as = hof_emissary 	#this saves him as a scope so we can get nice effects to bounce off him! 
-		}	
+			save_scope_as = hof_emissary 	#this saves him as a scope so we can get nice effects to bounce off him!
+		}
 	}
 
-	
-	option = { #Destroying fine wine? Have the caliph gone insane? 
+
+	option = { #Destroying fine wine? Have the caliph gone insane?
 		name = fp2_yearly.8000.a
 		trigger = {
 			NOT = { has_trait = zealous }
 			OR = {
 				has_trait = drunkard
-				has_trait = gregarious 
+				has_trait = gregarious
 				has_trait = lifestyle_reveler
 			}
 		}
@@ -4269,7 +4263,7 @@ fp2_yearly.8000 = {
         	}
    		}
 
-   		stress_impact = { 
+   		stress_and_fulfillment_impact = {
    			craven = minor_stress_impact_gain
    			temperate = medium_stress_impact_gain
    			trusting = minor_stress_impact_gain
@@ -4305,16 +4299,16 @@ fp2_yearly.8000 = {
 			}
    		}
 
-   		stress_impact = { 
+   		stress_and_fulfillment_impact = {
    			compassionate = minor_stress_impact_gain
    			cynical = minor_stress_impact_gain
-   			gluttonous = medium_stress_impact_gain 
+   			gluttonous = medium_stress_impact_gain
    			gregarious = medium_stress_impact_gain
    			lifestyle_reveler = major_stress_impact_gain
    			drunkard = massive_stress_impact_gain
    		}
 
-   		add_piety = major_piety_gain 
+   		add_piety = major_piety_gain
 
    		scope:vinoclast_caliph = {
    			add_opinion = {
@@ -4324,12 +4318,12 @@ fp2_yearly.8000 = {
    			}
    		}
 
-   		scope:vineyard_county = { 
+   		scope:vineyard_county = {
 			add_county_modifier = {
-				modifier = vineyards_burnt_county_modifier 
-				years = 20 
+				modifier = vineyards_burnt_county_modifier
+				years = 20
 			}
-		}	
+		}
 
 		if = {
 			limit = { has_title = title:c_atlantis }
@@ -4355,7 +4349,7 @@ fp2_yearly.8000 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			craven = minor_stress_impact_gain
    			temperate = minor_stress_impact_gain
    			trusting = minor_stress_impact_gain
@@ -4479,7 +4473,7 @@ fp2_yearly.8001 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
 			# Characters who are set in their ways or have no respect for common folk find this a very unappealing option.
 			arrogant = medium_stress_impact_gain
 			august = minor_stress_impact_gain
@@ -4527,7 +4521,7 @@ fp2_yearly.8001 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
 			# Characters who are careful or hate the masses find this a very unappealing option.
 			eccentric = minor_stress_impact_loss
 			craven = minor_stress_impact_gain
@@ -4563,7 +4557,7 @@ fp2_yearly.8001 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
 			# Characters who likes efficiency and democracy dislikes this option
 			ambitious = medium_stress_impact_gain
 			compassionate = minor_stress_impact_gain
@@ -4602,11 +4596,11 @@ fp2_yearly.8002 = {
 			has_religion = religion:judaism_religion
 		}
 
-		faith = {
+		rite = {
 			OR = {
-				has_doctrine = tenet_religious_legal_pronouncements
-				has_doctrine = tenet_literalism
-				has_doctrine = tenet_adaptive
+				rite_has_tenet = tenet_religious_legal_pronouncements
+				rite_has_tenet = tenet_literalism
+				rite_has_tenet = tenet_adaptive
 			}
 		}
 
@@ -4663,7 +4657,7 @@ fp2_yearly.8002 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# Craven character's don't wanna take the risk, and humble and trusting doesn't want to undermine the ulama
 			craven = minor_stress_impact_gain
 			humble = minor_stress_impact_gain
@@ -4717,14 +4711,14 @@ fp2_yearly.8002 = {
         	}
    		}
 
-		stress_impact = { #temperate or cautious characters don't wanna eat strange blobs washed up from the Atlantic 
-			inappetetic = medium_stress_impact_gain 
+		stress_and_fulfillment_impact = { #temperate or cautious characters don't wanna eat strange blobs washed up from the Atlantic
+			inappetetic = medium_stress_impact_gain
 			temperate = minor_stress_impact_gain
-			paranoid = minor_stress_impact_gain 
-				
-			# but gluttons really wanna try it! 
-			comfort_eater = medium_stress_impact_loss 
-			gluttonous = medium_stress_impact_loss 
+			paranoid = minor_stress_impact_gain
+
+			# but gluttons really wanna try it!
+			comfort_eater = medium_stress_impact_loss
+			gluttonous = medium_stress_impact_loss
 			lifestyle_reveler = minor_stress_impact_loss
 		}
 	}
@@ -4732,7 +4726,7 @@ fp2_yearly.8002 = {
 	option = { #Be cautious and wait for official ruling
 		name = fp2_yearly.8002.c
 
-		scope:preoccupied_ulama = { 
+		scope:preoccupied_ulama = {
 			add_opinion = {
 				target = root
 				opinion = 20
@@ -4748,7 +4742,7 @@ fp2_yearly.8002 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# Ambitious or Impatient characters don't wanna wait for the ulama
 			ambitious = minor_stress_impact_gain
 			arbitrary = minor_stress_impact_gain
@@ -4791,7 +4785,7 @@ fp2_yearly.8002 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# Rational characters find this to be total overkill
 			cynical = minor_stress_impact_gain
 
@@ -4828,7 +4822,7 @@ fp2_yearly.8003 = {
 		is_landed = yes
 		is_ai = no
 		any_child = {
-			is_available_child = yes 
+			is_available_child = yes
   			age >= 6
   			age <= 13
 			NOT = { has_trait = blind }
@@ -4861,7 +4855,7 @@ fp2_yearly.8003 = {
   				age <= 13
 				NOT = {	has_trait = blind}
 			}
-			save_scope_as = enthusiastic_child 
+			save_scope_as = enthusiastic_child
 		}
 
 		root.capital_province = { save_scope_as = flight_capital }
@@ -4874,14 +4868,14 @@ fp2_yearly.8003 = {
 				}
 				NOT = { exists = global_var:ibnfirnas_created } #makes sure that he wasn't already spawned by the event elsewhere (mostly relevant in multiplayer, since this is a player-only event)
 			}
-			create_character = { 
-				age = { 56 80 } #their rough age during the period of their flourishing 
+			create_character = {
+				age = { 56 80 } #their rough age during the period of their flourishing
 				location = root.capital_province
 				name = "Abbas ibn Firnas" #Armen Firman
 				gender = male
 				template = scholar_character
 				trait = intellect_good_1
-				trait = poet
+				trait = lifestyle_poet
 				trait = education_learning_4
 				random_traits_list = { #his personality
 					count = 3
@@ -4892,20 +4886,21 @@ fp2_yearly.8003 = {
 				}
 				culture = culture:baranis
 				dynasty = none
-				faith = faith:muwalladi
+				faith = faith:sunni
+				rite = rite:maliki
 				save_scope_as = flying_polymath
 			}
 			set_global_variable = ibnfirnas_created
 		}
 
-		else = { #or it defaults to a random one 
+		else = { #or it defaults to a random one
 			create_character = {
 				age = { 50 80 }
 				location = root.capital_province
 				template = scholar_character
 				trait = intellect_good_2
 				trait = education_learning_3
-				trait = architect 
+				trait = architect
 				random_traits_list = {
 					count = 3
 					brave = {}
@@ -4917,6 +4912,7 @@ fp2_yearly.8003 = {
 				}
 				culture = root.capital_province.culture
 				faith = root.faith
+				rite = root.rite
 				save_scope_as = flying_polymath
 			}
 		}
@@ -5038,7 +5034,7 @@ fp2_yearly.8003 = {
 	   		}
 	   	}
 
-   		stress_impact = { #Compassionate people worry about bystanders getting hurt
+   		stress_and_fulfillment_impact = { #Compassionate people worry about bystanders getting hurt
    			compassionate = minor_stress_impact_gain
    			craven = minor_stress_impact_gain
    		}
@@ -5105,7 +5101,7 @@ fp2_yearly.8003 = {
 			}
 		}
 
-		stress_impact = { #cravens, contents and the bedridden don't wanna take the risk
+		stress_and_fulfillment_impact = { #cravens, contents and the bedridden don't wanna take the risk
    			craven = medium_stress_impact_gain
    			content = minor_stress_impact_gain
    			ill = minor_stress_impact_gain
@@ -5125,7 +5121,7 @@ fp2_yearly.8003 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			ambitious = minor_stress_impact_gain
    			brave = minor_stress_impact_gain
    			curious = minor_stress_impact_gain
@@ -5215,7 +5211,7 @@ fp2_yearly.8004 = {
 				name = "Gherardo da Cremona" #Gerard of Cremona
 				gender = male
 				template = scholar_character
-				trait = scholar
+				trait = erudite
 				trait = education_learning_4
 				random_traits_list = { #his personality
 					count = 3
@@ -5262,6 +5258,7 @@ fp2_yearly.8004 = {
 				}
 				culture = root.culture
 				faith = root.faith
+				rite = root.rite
 				save_scope_as = translation_enthusiast
 			}
 		}
@@ -5273,7 +5270,7 @@ fp2_yearly.8004 = {
 		name = fp2_yearly.8004.a
 
 
-		remove_short_term_gold = monumental_gold_value #this is expensive!
+		remove_treasury_or_gold = monumental_treasury_or_gold_value #this is expensive!
 
 		if = {
 			limit = {
@@ -5293,7 +5290,7 @@ fp2_yearly.8004 = {
 				}
 				modifier = {
 					add = 40
-					has_trait = scholar
+					has_trait = erudite
 				}
 				modifier = {
 					add = 40
@@ -5368,7 +5365,7 @@ fp2_yearly.8004 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# Content or lazy characters don't want to make the effort
 			content = minor_stress_impact_gain
 			lazy = minor_stress_impact_gain
@@ -5385,7 +5382,7 @@ fp2_yearly.8004 = {
 	option = { #If you are so capable, #italic you#! can do all the translations
 		name = fp2_yearly.8004.b
 
-		remove_short_term_gold = medium_gold_value #this is expensive!
+		remove_treasury_or_gold = medium_treasury_or_gold_value #this is expensive!
 
 
 		if = {
@@ -5416,7 +5413,7 @@ fp2_yearly.8004 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# self-absorbed cheapskates still don't want to pay for this
 			arrogant = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -5463,12 +5460,12 @@ fp2_yearly.8004 = {
 			}
    		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# ambitious or learned characters cry from this
 			ambitious = minor_stress_impact_gain
 			diligent = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
-			scholar = major_stress_impact_gain
+			erudite = major_stress_impact_gain
 		}
 	}
 }
@@ -5516,7 +5513,7 @@ fp2_yearly.8005 = {
 
 	trigger = {
 		has_fp2_dlc_trigger = yes
-		is_landed_or_landless_administrative = yes
+		is_landed_or_landless_administrative_or_theocratic = yes
 		OR = {
 			capital_province = { geographical_region = world_europe_west_iberia }
 			culture = { has_cultural_pillar = heritage_iberian }
@@ -5537,11 +5534,11 @@ fp2_yearly.8005 = {
 	name = fp2_yearly.8005.a
 
 		trigger = {
-			num_of_relation_lover >= 1
-			NOT = { has_trait = poet }
+			any_relation = { type = lover }
+			NOT = { has_trait = lifestyle_poet }
 		}
 
-   		add_trait = poet
+   		add_trait = lifestyle_poet
 
    		scope:courtly_lover = {
    			add_opinion = {
@@ -5561,7 +5558,7 @@ fp2_yearly.8005 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			chaste = major_stress_impact_gain
    			content = minor_stress_impact_gain
    			arrogant = major_stress_impact_gain
@@ -5581,7 +5578,7 @@ fp2_yearly.8005 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			greedy = minor_stress_impact_gain
    			impatient = minor_stress_impact_gain
    			paranoid = minor_stress_impact_gain
@@ -5598,7 +5595,7 @@ fp2_yearly.8005 = {
 	option = { #Sponsor more musicians
 	name = fp2_yearly.8005.c
 
-   		remove_short_term_gold = medium_gold_value
+   		remove_treasury_or_gold = medium_treasury_or_gold_value
 
    		add_character_modifier = {
    			modifier = investing_in_music_modifier
@@ -5615,7 +5612,7 @@ fp2_yearly.8005 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			content = minor_stress_impact_gain
    			greedy = minor_stress_impact_gain
    			lazy = minor_stress_impact_gain
@@ -5647,7 +5644,7 @@ fp2_yearly.8005 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			base = minor_stress_impact_gain
    			calm = medium_stress_impact_gain
    			compassionate = medium_stress_impact_gain
@@ -5698,6 +5695,7 @@ fp2_yearly.8006 = {
 	}
 
 	trigger = {
+		is_ai = no
 		has_fp2_dlc_trigger = yes
 		is_landed = yes
 		any_neighboring_top_liege_realm_owner = { fp2_yearly.8006_ruler_trigger = yes }
@@ -5753,6 +5751,7 @@ fp2_yearly.8006 = {
 			}
 			culture = culture:russian
 			faith = scope:former_master.faith
+			rite = scope:former_master.rite
 			dynasty = none
 			save_scope_as = saqaliba_leader
 
@@ -5832,7 +5831,7 @@ fp2_yearly.8006 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			content = minor_stress_impact_gain
    			craven = minor_stress_impact_gain
    			paranoid = minor_stress_impact_gain
@@ -5865,7 +5864,7 @@ fp2_yearly.8006 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			ambitious = minor_stress_impact_gain
    			compassionate = minor_stress_impact_gain
    			generous = major_stress_impact_gain
@@ -5880,9 +5879,7 @@ fp2_yearly.8006 = {
 
 		if = {
   			limit = {
-  				OR = {
-  					has_any_good_relationship_with_character_trigger = { CHARACTER = scope:former_master }
-   				}
+  				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:former_master }
    			}
 			add_character_modifier = {
 				modifier = obligations_fulfilled_modifier
@@ -5909,7 +5906,7 @@ fp2_yearly.8006 = {
 			}
    		}
 
-   		stress_impact = {
+   		stress_and_fulfillment_impact = {
    			ambitious = minor_stress_impact_gain
    			compassionate = massive_stress_impact_gain
    			generous = massive_stress_impact_gain
@@ -5936,7 +5933,7 @@ scripted_trigger valid_grantable_county_barony = {
 	is_holy_site = no
 	county.holder = {
 		any_held_title = { # Make sure it isn't revoking their last title
-			tier = tier_county
+			title_tier = county
 			count >= 2
 		}
 	}
@@ -5997,7 +5994,7 @@ fp2_yearly.9000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_loss
 			greedy = minor_stress_impact_gain
 			compassionate = medium_stress_impact_gain
@@ -6056,7 +6053,7 @@ fp2_yearly.9000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_loss
 			greedy = minor_stress_impact_loss
 		}
@@ -6086,7 +6083,7 @@ fp2_yearly.9000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_loss
 			greedy = minor_stress_impact_loss
 		}
@@ -6260,7 +6257,7 @@ fp2_yearly.9001 = {
 			fp2_polish_should_heritage_israelite_get_upset_effect = yes
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -6319,7 +6316,7 @@ fp2_yearly.9001 = {
 				compare_modifier = {
 					value = scope:duel_value
 					multiplier = -3.5
-				}				
+				}
 				desc = fp2_james.0002.b.failed_interrogation
 				send_interface_message = {
 					type = event_intrigue_bad
@@ -6353,7 +6350,7 @@ fp2_yearly.9001 = {
 			}
 		}
 
-		stress_impact = { compassionate = medium_stress_impact_gain }
+		stress_and_fulfillment_impact = { compassionate = medium_stress_impact_gain }
 		ai_chance = {
 			base = 10
 			ai_value_modifier = {
@@ -6376,7 +6373,7 @@ fp2_yearly.9001 = {
 			}
 			fp2_polish_should_heritage_israelite_get_upset_effect = yes
 
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				compassionate = medium_stress_impact_gain
 				diligent = medium_stress_impact_gain
 				just = medium_stress_impact_gain
@@ -6447,7 +6444,7 @@ fp2_yearly.9002 = {
 			}
 			holder = {
 				any_held_title = {
-					tier = tier_county
+					title_tier = county
 					count >= 2
 				}
 			}
@@ -6526,7 +6523,7 @@ fp2_yearly.9002 = {
 				}
 				holder = {
 					any_held_title = {
-						tier = tier_county
+						title_tier = county
 						count >= 2
 					}
 				}
@@ -6597,7 +6594,7 @@ fp2_yearly.9002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			compassionate = medium_stress_impact_loss
@@ -6617,7 +6614,7 @@ fp2_yearly.9002 = {
 		name = fp2_james.0003.b
 		scope:fp2_james_003_jewish_refugee_leader = { silent_disappearance_effect = yes }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = minor_stress_impact_loss
 			zealous = minor_stress_impact_loss
 		}
@@ -6709,7 +6706,7 @@ fp2_yearly.9005 = {
 		}
 		scope:fp2_james_0004_place_of_murder = {
 			change_county_control = major_county_control_gain
-			set_county_faith = root.faith # TODO, the modifier should really increase conversion speed
+			set_county_faith = root.faith
 			add_county_modifier = {
 				modifier = fp2_toledo_nights_modifier
 				years = 10
@@ -6719,14 +6716,17 @@ fp2_yearly.9005 = {
 			limit = {
 				faith = scope:fp2_james_0004_place_of_murder.faith
 			}
-			add_county_modifier = fp2_toledo_nights_fallout_modifier
+			add_county_modifier = {
+				modifier = fp2_toledo_nights_fallout_modifier
+				years = 10
+			}
 		}
 		add_hook = {
 			type = favor_hook
 			target = scope:fp2_james_0004_murder_baron
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			just = massive_stress_impact_gain
 			compassionate = major_stress_impact_gain
 			forgiving = major_stress_impact_gain
@@ -6802,7 +6802,7 @@ fp2_yearly.9006 = {
 
 	trigger = {
 		any_sub_realm_barony = { # There's a church held by a right-faith bishop in a wrong-faith province
-			NOT = { holder = root } # Ensure it's not a lay-clergy player
+			holder != root # Ensure it's not a lay-clergy player
 			holder.faith = root.faith
 			holder.capital_province = { has_holding_type = church_holding }
 			is_unprotected_hostile_faith = yes
@@ -6822,7 +6822,7 @@ fp2_yearly.9006 = {
 	immediate = {
 		random_sub_realm_barony = {
 			limit = {
-				NOT = { holder = root }
+				holder != root
 				holder.faith = root.faith
 				holder.capital_province = { has_holding_type = church_holding }
 				is_unprotected_hostile_faith = yes
@@ -6844,10 +6844,10 @@ fp2_yearly.9006 = {
 
 	option = { # Change the orientation of the church
 		name = fp2_james.0005.a
-		remove_short_term_gold = medium_gold_value
+		remove_treasury_or_gold = medium_treasury_or_gold_value
 		add_piety = medium_piety_gain
 		scope:fp2_james_wrong_temple.county ={
-			set_county_faith = root.faith # TODO, the modifier should really increase conversion speed
+			set_county_faith = root.faith
 			add_county_modifier = {
 				modifier = fp2_correctly_facing_church
 				years = 15
@@ -6859,7 +6859,7 @@ fp2_yearly.9006 = {
 			opinion = 20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_gain
 			zealous = minor_stress_impact_loss
 		}
@@ -6881,7 +6881,7 @@ fp2_yearly.9006 = {
 			opinion = -25
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 		}
 		ai_chance = {

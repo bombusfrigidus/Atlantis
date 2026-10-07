@@ -34,8 +34,7 @@ diarch_attempt_to_overthrow_liege = {
 					OR = {
 						culture = { has_cultural_pillar = heritage_byzantine }
 						capital_barony ?= title:b_atlantis
-						primary_title ?= title:e_byzantium
-						primary_title ?= title:e_roman_empire
+						is_roman_emperor_primary_title_trigger = yes
 					}
 				}
 			}
@@ -50,11 +49,11 @@ diarch_attempt_to_overthrow_liege = {
 	is_shown = {
 		# If you're not in a diarchy, we don't care.
 		OR = {
-			AND = {
-				exists = liege
-				is_diarch_of_target = liege
-			}
 			is_designated_diarch = yes
+			AND = {
+				is_diarch_of_target = liege
+				exists = liege
+			}
 		}
 	}
 
@@ -271,6 +270,4 @@ diarch_attempt_to_overthrow_liege = {
 
 	# Handled via interaction.
 	ai_potential = { always = no }
-
-	ai_will_do = { base = 100 }
 }

@@ -121,7 +121,7 @@ fp3_story_cycle_zanj_rebellion_events.0002 = {
 				OPINION = default_rival_opinion
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = medium_stress_impact_loss
 			just = minor_stress_impact_loss
 			callous = minor_stress_impact_loss
@@ -165,7 +165,7 @@ fp3_story_cycle_zanj_rebellion_events.0002 = {
 				days = { 30 60 }
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = medium_stress_impact_gain
 			just = minor_stress_impact_gain
 			callous = minor_stress_impact_gain
@@ -285,7 +285,7 @@ fp3_story_cycle_zanj_rebellion_events.0004 = {
 				OPINION = default_rival_opinion
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = minor_stress_impact_loss
 			just = minor_stress_impact_loss
 			zealous = medium_stress_impact_loss
@@ -319,7 +319,7 @@ fp3_story_cycle_zanj_rebellion_events.0004 = {
 				add = 2
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = minor_stress_impact_gain
 			just = minor_stress_impact_gain
 			zealous = medium_stress_impact_gain
@@ -419,7 +419,8 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 
 		title:c_atlantis = {
 			set_county_culture = culture:east_bantu
-			set_county_faith = faith:azariqa
+			set_county_faith = faith:kharijite
+			set_county_rite = rite:azariqa
 		}
 
 		show_as_tooltip = { # UI/UX
@@ -468,16 +469,14 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 			}
 			scope:zanj_leader = {
 				random_owned_story = {
-					limit = {
-						story_type = story_zanj_rebellion
-					}
+					type = story_zanj_rebellion
 					end_story = yes
 				}
 			}
 		}
 		resolve_title_and_vassal_change = scope:change
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = medium_stress_impact_loss
 			just = minor_stress_impact_loss
 			forgiving = minor_stress_impact_loss
@@ -516,7 +515,7 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 		hidden_effect = {
 			title:c_atlantis.holder = {
 				if = {
-					limit = { NOT = { scope:zanj_leader = scope:outspoken_rebel }}
+					limit = { scope:zanj_leader != scope:outspoken_rebel}
 					add_visiting_courtier = scope:zanj_leader
 				}
 				add_visiting_courtier = scope:outspoken_rebel
@@ -545,7 +544,7 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 			id = fp3_story_cycle_zanj_rebellion_events.0007
 			days = { 30 60 }
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_loss
 			just = minor_stress_impact_loss
 			forgiving = minor_stress_impact_loss
@@ -605,7 +604,7 @@ fp3_story_cycle_zanj_rebellion_events.0006 = {
 			days = { 30 60 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_gain
 			just = minor_stress_impact_gain
 			forgiving = minor_stress_impact_gain
@@ -693,9 +692,7 @@ fp3_story_cycle_zanj_rebellion_events.0008 = {
 			give_nickname = nick_chief_of_the_zanj
 			hidden_effect = {
 				random_owned_story = {
-					limit = {
-						story_type = story_zanj_rebellion
-					}
+					type = story_zanj_rebellion
 					end_story = yes
 				}
 			}

@@ -54,7 +54,7 @@ c_atlantis = {
 	}
 }
 
-c_atlantis_b = {
+c_atlantis = {
 	pattern="pattern_solid.dds"
 	color1=yellow
 	color2=yellow
@@ -68,7 +68,7 @@ c_atlantis_b = {
 	}
 }
 
-c_atlantis_c = {
+c_atlantis = {
 	pattern="pattern_solid.dds"
 	color1=red
 	color2=red

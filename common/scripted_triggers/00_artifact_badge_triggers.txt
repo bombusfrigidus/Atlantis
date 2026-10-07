@@ -1,0 +1,8 @@
+﻿
+barony_title_is_unique_badge_christian_holy_site_trigger = {
+	OR = {
+		this = title:b_atlantis
+		this = title:b_atlantis
+		this = title:b_atlantis
+	}
+}

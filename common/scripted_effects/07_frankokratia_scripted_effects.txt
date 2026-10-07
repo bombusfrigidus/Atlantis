@@ -190,6 +190,9 @@ ep3_frankokratia_story_setup_save_vars_effect = {
 		name = byz_claimant
 		value = scope:byz_claimant
 	}
+	scope:byz_claimant = {
+		add_character_flag = byz_claimant_flag
+	}
 }
 
 ep3_frankokratia_remove_pledged_attackers_effect = {
@@ -197,8 +200,8 @@ ep3_frankokratia_remove_pledged_attackers_effect = {
 		#save neeeded scopes
 		save_scope_as = byz_claimant_champion
 		random_owned_story = {
+			type = frankokratia_story
 		 	limit = {
-		 		story_type = frankokratia_story
 		 		exists = var:byz_claimant
 		 	}
 		 	var:byz_claimant = {
@@ -247,7 +250,7 @@ ep3_frankokratia_remove_pledged_attackers_effect = {
 	every_pledged_attacker = {
 		limit = {
 			has_character_flag = joining_frankokratia
-			NOT = { this = root.faith.religious_head }
+			this != root.faith.religious_head
 		}
 		#Unpledge from GHW
 		faith.great_holy_war = {
@@ -262,9 +265,7 @@ ep3_frankokratia_remove_pledged_attackers_effect = {
 	}
 	scope:byz_claimant_champion = {
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			if = {
 				limit = {
 					global_var:financier_title.holder ?= {
@@ -465,7 +466,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_istria
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -476,7 +477,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_istria
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -491,7 +492,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_ragusa
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -502,7 +503,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_ragusa
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -521,7 +522,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_dalmatia
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -532,7 +533,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_dalmatia
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -551,7 +552,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_cephalonia
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -562,7 +563,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_cephalonia
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -581,7 +582,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_krete
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -592,7 +593,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_krete
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -612,7 +613,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_cyprus
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -623,7 +624,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_cyprus
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -642,7 +643,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_crimea
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -653,7 +654,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
 				duchy = title:d_crimea
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -813,7 +814,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		limit = {
 			any_realm_county = {
 				NOT = { is_in_list = financier_sate_titles }
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = { is_at_war_with = title:e_byzantium.holder }
@@ -823,7 +824,7 @@ ep3_frankokratia_save_financier_sate_lands_effect = {
 		random_realm_county = {
 			limit = {
 				NOT = { is_in_list = financier_sate_titles }
-				any_county_province = { is_coastal = yes }
+				has_coastal_province = yes
 				holder = {
 					is_ai = yes
 					NOT = {
@@ -958,9 +959,7 @@ ep3_frankokratia_gather_governor_funds_effect = {
 	}
 	scope:attacker = {
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			save_scope_as = frankokratia_story
 		}
 	}
@@ -979,7 +978,7 @@ ep3_frankokratia_gather_governor_funds_effect = {
 					every_in_list = {
 						variable = frankokratia_leaders
 						limit = {
-							NOT = { this = scope:attacker }
+							this != scope:attacker
 						}
 						add = 1
 					}
@@ -1006,7 +1005,7 @@ ep3_frankokratia_capital_sacking_effect = {
 			every_in_list = {
 				variable = frankokratia_leaders
 				limit = {
-					NOT = { this = scope:attacker }
+					this != scope:attacker
 				}
 				add_dread = medium_dread_gain
 			}
@@ -1044,11 +1043,44 @@ ep3_frankokratia_capital_sacking_effect = {
 		}
 		custom_tooltip = byz_capital_building_destroyed_tooltip
 	}
-	scope:claimant.primary_title = {
-		state_faith = {
-			change_fervor = {
-				value = major_fervor_value
-				desc = imperial_capital_sacked_fervor_gain
+	scope:claimant = {
+		if = {
+			limit = {
+				government_allows = state_faith
+			}
+			primary_title = {
+				state_rite.faith = {
+					change_fervor = {
+						value = major_fervor_value
+						desc = imperial_capital_sacked_fervor_gain
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:claimant.capital_county.rite = {
+					rite_has_doctrine = special_doctrine_is_eastern_christian_faith
+				}
+			}
+			scope:claimant.capital_county.faith = {
+				change_fervor = {
+					value = major_fervor_value
+					desc = imperial_capital_sacked_fervor_gain
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:claimant.rite = {
+					rite_has_doctrine = special_doctrine_is_eastern_christian_faith
+				}
+			}
+			scope:claimant.faith = {
+				change_fervor = {
+					value = major_fervor_value
+					desc = imperial_capital_sacked_fervor_gain
+				}
 			}
 		}
 	}
@@ -1158,7 +1190,7 @@ ep3_frankokratia_capital_sacking_effect = {
 			every_in_list = {
 				variable = frankokratia_leaders
 				limit = {
-					NOT = { this = scope:attacker }
+					this != scope:attacker
 				}
 				add_trait = despoiler_of_byzantium
 			}
@@ -1175,8 +1207,7 @@ ep3_frankokratia_kill_byzantines_effect = {
 			limit = {
 				NOT = {
 					any_heir_title = {
-						exists = holder
-						holder = {
+						holder ?= {
 							this = global_var:byz_claimant_champion
 						}
 					}
@@ -1190,8 +1221,7 @@ ep3_frankokratia_kill_byzantines_effect = {
 			limit = {
 				NOT = {
 					any_heir_title = {
-						exists = holder
-						holder = {
+						holder ?= {
 							this = global_var:byz_claimant_champion
 						}
 					}
@@ -1226,8 +1256,7 @@ ep3_frankokratia_kill_byzantines_effect = {
 				limit = {
 					NOT = {
 						any_heir_title = {
-							exists = holder
-							holder = {
+							holder ?= {
 								this = global_var:byz_claimant_champion
 							}
 						}
@@ -1566,7 +1595,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 					any_realm_county = {
 						kingdom = title:k_hellas
 						title:k_hellas = {
-							NOT = { this = scope:latin_kingdom_1 }
+							this != scope:latin_kingdom_1
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
@@ -1581,7 +1610,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 					any_realm_county = {
 						kingdom = title:k_bulgaria
 						title:k_bulgaria = {
-							NOT = { this = scope:latin_kingdom_1 }
+							this != scope:latin_kingdom_1
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
@@ -1596,7 +1625,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 					any_realm_county = {
 						kingdom = title:k_krete
 						title:k_krete = {
-							NOT = { this = scope:latin_kingdom_1 }
+							this != scope:latin_kingdom_1
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
@@ -1611,7 +1640,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 					any_realm_county = {
 						kingdom = title:k_nikaea
 						title:k_nikaea = {
-							NOT = { this = scope:latin_kingdom_1 }
+							this != scope:latin_kingdom_1
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
@@ -1626,7 +1655,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 					any_realm_county = {
 						kingdom = title:k_cyprus
 						title:k_cyprus = {
-							NOT = { this = scope:latin_kingdom_1 }
+							this != scope:latin_kingdom_1
 							ep3_frankokratia_latin_kingdom_available_trigger = yes
 						}
 					}
@@ -1757,7 +1786,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 				title:e_byzantium = {
 					any_in_de_jure_hierarchy = {
 						tier = tier_kingdom
-						NOT = { this = scope:latin_kingdom_1 }
+						this != scope:latin_kingdom_1
 						ep3_frankokratia_latin_kingdom_available_trigger = yes
 						any_de_jure_county = {
 							#Belongs to the empire
@@ -1784,7 +1813,7 @@ ep3_frankokratia_designate_latin_empire_effect = {
 				random_in_de_jure_hierarchy = {
 					limit = {
 						tier = tier_kingdom
-						NOT = { this = scope:latin_kingdom_1 }
+						this != scope:latin_kingdom_1
 						ep3_frankokratia_latin_kingdom_available_trigger = yes
 						any_de_jure_county = {
 							#Belongs to the empire
@@ -1866,7 +1895,7 @@ ep3_latin_empire_designate_financier_lands_effect = {
 						this = scope:latin_capital
 					}
 					kingdom = scope:latin_capital.kingdom
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 					holder = {
 						is_ai = yes
 						NOT = {
@@ -1882,7 +1911,7 @@ ep3_latin_empire_designate_financier_lands_effect = {
 						this = scope:latin_capital
 					}
 					kingdom = scope:latin_capital.kingdom
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 					holder = {
 						is_ai = yes
 						NOT = {
@@ -1904,7 +1933,7 @@ ep3_latin_empire_designate_financier_lands_effect = {
 						is_in_list = financier_sate_titles
 						this = scope:latin_capital
 					}
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 					holder = {
 						is_ai = yes
 						NOT = {
@@ -1922,7 +1951,7 @@ ep3_latin_empire_designate_financier_lands_effect = {
 					any_neighboring_county = {
 						kingdom = scope:latin_capital.kingdom
 					}
-					any_county_province = { is_coastal = yes }
+					has_coastal_province = yes
 					holder = {
 						is_ai = yes
 						NOT = {
@@ -1997,7 +2026,7 @@ ep3_frankokratia_grant_latin_empire_effect = {
 	scope:latin_capital.kingdom = {
 		every_de_jure_county = {
 			limit = {
-				NOT = { this = scope:latin_capital }
+				this != scope:latin_capital
 				holder = {
 					OR = {
 						this = title:e_byzantium.holder
@@ -2009,7 +2038,7 @@ ep3_frankokratia_grant_latin_empire_effect = {
 							}
 						}
 					}
-					NOT = { this = scope:financier }
+					this != scope:financier
 				}
 			}
 			add_to_list = latin_emperor_titles
@@ -2375,7 +2404,7 @@ ep3_frankokratia_grant_latin_empire_effect = {
 	if = {
 		limit = {
 			scope:latin_emperor = {
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 		}
 		scope:latin_emperor = {
@@ -2413,9 +2442,7 @@ ep3_frankokratia_clear_old_lands_change_capital_effect = {
 	}
 	if = {
 		limit = {
-			NOT = {
-				this = scope:latin_empire_receiver
-			}
+			this != scope:latin_empire_receiver
 		}
 		scope:beneficiary = {
 			save_scope_as = old_title_gainer
@@ -2528,7 +2555,7 @@ ep3_frankokratia_distribute_lands_to_crusaders_effect = {
 				#Don't give out financier's lands, unless financier is latin emp
 				holder = {
 					this = scope:financier
-					NOT = { this = scope:latin_emperor }
+					this != scope:latin_emperor
 				}
 				this = title:c_atlantis
 			}
@@ -2631,7 +2658,7 @@ ep3_frankokratia_distribute_lands_to_crusaders_effect = {
 						NOT = {
 							holder = {
 								this = scope:financier
-								NOT = { this = scope:latin_emperor }
+								this != scope:latin_emperor
 							}
 						}
 					}
@@ -2680,7 +2707,7 @@ ep3_frankokratia_distribute_lands_to_crusaders_effect = {
 						NOT = {
 							holder = {
 								this = scope:financier
-								NOT = { this = scope:latin_emperor }
+								this != scope:latin_emperor
 							}
 						}
 					}
@@ -2959,19 +2986,8 @@ ep3_frankokratia_grant_latin_lands_effect = {
 				this = scope:financier
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					religion = religion:islam_religion
-					culture = { has_cultural_pillar = heritage_iranian }
-					culture = { has_cultural_pillar = heritage_turkic }
-					culture = { has_cultural_pillar = heritage_arabic }
-				}
-			}
-			scope:latin_title_gainer = { change_government = clan_government }
-		}
-		else = {
-			scope:latin_title_gainer = { change_government = feudal_government }
+		scope:latin_title_gainer = {
+			assign_feudal_governments_effect = yes
 		}
 	}
 }
@@ -3156,6 +3172,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 			location = scope:claimant.location
 			template = ep3_frankokratia_crusader_template
 			faith = scope:frankokratia_crusader.faith
+			rite = scope:frankokratia_crusader.rite
 			culture = scope:frankokratia_crusader.culture
 			save_scope_as = new_latin_lord
 		}
@@ -3175,9 +3192,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 			ep3_frankokratia_beneficiary_trigger = yes
 			ep3_frankokratia_beneficiary_gender_trigger = yes
 			dynasty = scope:frankokratia_crusader.dynasty
-			NOT = {
-				this = scope:emp_beneficiary
-			}
+			this != scope:emp_beneficiary
 		}
 		scope:frankokratia_crusader = {
 			set_variable = {
@@ -3196,9 +3211,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_trigger = yes
-					NOT = {
-						this = scope:emp_beneficiary
-					}
+					this != scope:emp_beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3219,9 +3232,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_trigger = yes
-					NOT = {
-						this = scope:emp_beneficiary
-					}
+					this != scope:emp_beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3241,9 +3252,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 			limit = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-				NOT = {
-					this = scope:emp_beneficiary
-				}
+				this != scope:emp_beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3263,9 +3272,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-					NOT = {
-						this = scope:emp_beneficiary
-					}
+					this != scope:emp_beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3286,9 +3293,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				culture = scope:frankokratia_crusader.culture
 				ep3_frankokratia_beneficiary_gender_trigger = yes
-				NOT = {
-					this = scope:emp_beneficiary
-				}
+				this != scope:emp_beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3308,9 +3313,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				culture = scope:frankokratia_crusader.culture
 				ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-				NOT = {
-					this = scope:emp_beneficiary
-				}
+				this != scope:emp_beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3329,9 +3332,7 @@ ep3_frankokratia_pick_emperor_beneficiary_effect = {
 			province = scope:frankokratia_crusader.capital_province
 			limit = {
 				ep3_frankokratia_beneficiary_trigger = yes
-				NOT = {
-					this = scope:emp_beneficiary
-				}
+				this != scope:emp_beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3704,6 +3705,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 			location = scope:latin_emperor.location
 			template = ep3_frankokratia_crusader_template
 			faith = scope:frankokratia_crusader.faith
+			rite = scope:frankokratia_crusader.rite
 			culture = scope:frankokratia_crusader.culture
 			save_scope_as = new_latin_lord
 		}
@@ -3723,9 +3725,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 			ep3_frankokratia_beneficiary_trigger = yes
 			ep3_frankokratia_beneficiary_gender_trigger = yes
 			dynasty = scope:frankokratia_crusader.dynasty
-			NOT = {
-				this = scope:frankokratia_crusader.var:beneficiary
-			}
+			this != scope:frankokratia_crusader.var:beneficiary
 		}
 		scope:frankokratia_crusader = {
 			set_variable = {
@@ -3744,9 +3744,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_trigger = yes
-					NOT = {
-						this = scope:frankokratia_crusader.var:beneficiary
-					}
+					this != scope:frankokratia_crusader.var:beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3767,9 +3765,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_trigger = yes
-					NOT = {
-						this = scope:frankokratia_crusader.var:beneficiary
-					}
+					this != scope:frankokratia_crusader.var:beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3789,9 +3785,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 			limit = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-				NOT = {
-					this = scope:frankokratia_crusader.var:beneficiary
-				}
+				this != scope:frankokratia_crusader.var:beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3811,9 +3805,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 				limit = {
 					ep3_frankokratia_beneficiary_trigger = yes
 					ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-					NOT = {
-						this = scope:frankokratia_crusader.var:beneficiary
-					}
+					this != scope:frankokratia_crusader.var:beneficiary
 				}
 				scope:frankokratia_crusader = {
 					set_variable = {
@@ -3834,9 +3826,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				culture = scope:frankokratia_crusader.culture
 				ep3_frankokratia_beneficiary_gender_trigger = yes
-				NOT = {
-					this = scope:frankokratia_crusader.var:beneficiary
-				}
+				this != scope:frankokratia_crusader.var:beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3856,9 +3846,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 				ep3_frankokratia_beneficiary_trigger = yes
 				culture = scope:frankokratia_crusader.culture
 				ep3_frankokratia_beneficiary_gender_soft_trigger = yes
-				NOT = {
-					this = scope:frankokratia_crusader.var:beneficiary
-				}
+				this != scope:frankokratia_crusader.var:beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -3877,9 +3865,7 @@ ep3_frankokratia_pick_crusader_beneficiary_effect = {
 			province = scope:frankokratia_crusader.capital_province
 			limit = {
 				ep3_frankokratia_beneficiary_trigger = yes
-				NOT = {
-					this = scope:frankokratia_crusader.var:beneficiary
-				}
+				this != scope:frankokratia_crusader.var:beneficiary
 			}
 			scope:frankokratia_crusader = {
 				set_variable = {
@@ -4184,26 +4170,9 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 			NOT = {
 				liege = title:e_byzantium.holder
 			}
+			highest_held_title_tier < tier_kingdom
 		}
-		if = {
-			limit = {
-				OR = {
-					religion = religion:islam_religion
-					culture = { has_cultural_pillar = heritage_iranian }
-					culture = { has_cultural_pillar = heritage_turkic }
-					culture = { has_cultural_pillar = heritage_arabic }
-				}
-				highest_held_title_tier < tier_kingdom
-				
-			}
-			change_government = clan_government
-		}
-		else_if = {
-			limit = {
-				highest_held_title_tier < tier_kingdom
-			}
-			change_government = feudal_government
-		}
+		assign_feudal_governments_effect = yes
 		create_character_memory = {
 			type = frankokratia_byz_independent_memory
 		}
@@ -4419,7 +4388,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 			any_vassal = {
 				is_in_list = byz_vassals
 				highest_held_title_tier <= tier_duchy
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 				OR = {
 					ai_boldness <= medium_negative_ai_value
 					ai_honor >= medium_positive_ai_value
@@ -4455,7 +4424,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 				any_vassal = {
 					is_in_list = byz_vassals
 					highest_held_title_tier <= tier_duchy
-					government_has_flag = government_is_administrative
+					government_has_mechanic = administrative
 					OR = {
 						ai_boldness <= medium_negative_ai_value
 						ai_honor >= medium_positive_ai_value
@@ -4490,7 +4459,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 				limit = {
 					is_in_list = byz_vassals
 					highest_held_title_tier <= tier_duchy
-					government_has_flag = government_is_administrative
+					government_has_mechanic = administrative
 					OR = {
 						ai_boldness <= medium_negative_ai_value
 						ai_honor >= medium_positive_ai_value
@@ -4525,7 +4494,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 					limit = {
 						is_in_list = byz_vassals
 						any_held_title = {
-							tier = tier_kingdom
+							title_tier = kingdom
 							any_de_jure_county = {
 								save_temporary_scope_as = county_temp
 								scope:vassalizing_vassal.capital_county = {
@@ -4557,7 +4526,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 			}
 			any_vassal = {
 				highest_held_title_tier >= tier_kingdom
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 			}
 		}
 		while = {
@@ -4575,10 +4544,10 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						house ?= {
 							any_house_member = {
 								any_held_title = {
-									tier = tier_kingdom
+									title_tier = kingdom
 								}
 								highest_held_title_tier >= tier_kingdom
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 						}
 					}
@@ -4589,10 +4558,10 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						house ?= {
 							any_house_member = {
 								any_held_title = {
-									tier = tier_kingdom
+									title_tier = kingdom
 								}
 								highest_held_title_tier >= tier_kingdom
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 						}
 					}
@@ -4600,10 +4569,10 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						random_house_member = {
 							limit = {
 								any_held_title = {
-									tier = tier_kingdom
+									title_tier = kingdom
 								}
 								highest_held_title_tier >= tier_kingdom
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 							save_scope_as = new_byz_liege
 						}
@@ -4636,9 +4605,8 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						has_domicile = yes
 						domicile.domicile_location = {
 							kingdom = {
-								exists = holder
-								holder = {
-									government_has_flag = government_is_administrative
+								holder ?= {
+									government_has_mechanic = administrative
 									liege = title:e_byzantium.holder
 								}
 							}
@@ -4651,9 +4619,8 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						has_domicile = yes
 						domicile.domicile_location = {
 							kingdom = {
-								exists = holder
-								holder = {
-									government_has_flag = government_is_administrative
+								holder ?= {
+									government_has_mechanic = administrative
 									liege = title:e_byzantium.holder
 								}
 							}
@@ -4694,7 +4661,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 						random_vassal = {
 							limit = {
 								highest_held_title_tier >= tier_kingdom
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 							save_scope_as = new_byz_liege
 						}
@@ -4727,14 +4694,12 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 	every_vassal = {
 		limit = {
 			highest_held_title_tier = tier_kingdom
-			government_has_flag = government_is_administrative
+			government_has_mechanic = administrative
 			exists = house
 			save_temporary_scope_as = house_king
 			house.house_head = {
 				#Not already house head
-				NOT = {
-					this = scope:house_king
-				}
+				this != scope:house_king
 				highest_held_title_tier < tier_kingdom
 				#Only remove player house head status if they're in the realm
 				OR = {
@@ -4747,7 +4712,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 				house = {
 					any_house_member = {
 						highest_held_title_tier = tier_kingdom
-						government_has_flag = government_is_administrative
+						government_has_mechanic = administrative
 						max_military_strength > scope:house_king.max_military_strength
 					}
 				}
@@ -4769,15 +4734,13 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 		every_vassal_or_below = {
 			limit = {
 				highest_held_title_tier >= tier_county
-				government_has_flag = government_is_administrative
+				government_has_mechanic = administrative
 				exists = house
 				save_temporary_scope_as = house_chud
 				house.house_head = {
 					#Not already house head
-					NOT = {
-						this = scope:house_chud
-					}
-					government_has_flag = government_is_administrative
+					this != scope:house_chud
+					government_has_mechanic = administrative
 					highest_held_title_tier < tier_kingdom
 					#Only remove player house head status if they're in the realm
 					OR = {
@@ -4786,7 +4749,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 					}
 					#Liege is the Byzantine emperor
 					liege ?= {
-						is_independent_ruler = yes
+						top_liege = this
 					}
 					#If there's more than one admin survivor of their house, they are the strongest
 					NOT = {
@@ -4801,7 +4764,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 										max_military_strength > scope:house_chud.max_military_strength
 									}
 								}
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 						}
 					}
@@ -4820,7 +4783,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 	every_vassal_or_below = {
 		limit = {
 			is_landed = yes
-			government_has_flag = government_is_administrative
+			government_has_mechanic = administrative
 			highest_held_title_tier < tier_kingdom
 			OR = {
 				liege = {
@@ -4829,20 +4792,7 @@ ep3_frankokratia_form_byzantine_kingdoms_effect = {
 				liege = title:e_byzantium.holder
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					religion = religion:islam_religion
-					culture = { has_cultural_pillar = heritage_iranian }
-					culture = { has_cultural_pillar = heritage_turkic }
-					culture = { has_cultural_pillar = heritage_arabic }
-				}
-			}
-			change_government = clan_government
-		}
-		else = {
-			change_government = feudal_government
-		}
+		assign_feudal_governments_effect = yes
 	}
 }
 
@@ -4865,23 +4815,22 @@ ep3_frankokratia_byzantine_independence_effect = {
 					OR = {
 						trigger_if = {
 							limit = {
-								exists = liege
-								liege = {
-									government_has_flag = government_is_administrative
+								liege ?= {
+									government_has_mechanic = administrative
 								}
 							}
 							NOT = {
-								government_has_flag = government_is_administrative
+								government_has_mechanic = administrative
 							}
 						}
 						liege = {
 							governor_efficiency < 0.7
 						}
 						culture = {
-							NOT = { this = scope:temp_byz_liege.culture }
+							this != scope:temp_byz_liege.culture
 						}
 						faith = {
-							NOT = { this = scope:temp_byz_liege.faith }
+							this != scope:temp_byz_liege.faith
 						}
 						opinion = {
 							target = liege
@@ -4927,26 +4876,9 @@ ep3_frankokratia_byzantine_independence_effect = {
 					governor_efficiency >= 1.4
 				}
 			}
+			highest_held_title_tier < tier_kingdom
 		}
-		if = {
-			limit = {
-				OR = {
-					religion = religion:islam_religion
-					culture = { has_cultural_pillar = heritage_iranian }
-					culture = { has_cultural_pillar = heritage_turkic }
-					culture = { has_cultural_pillar = heritage_arabic }
-				}
-				highest_held_title_tier < tier_kingdom
-				
-			}
-			change_government = clan_government
-		}
-		else_if = {
-			limit = {
-				highest_held_title_tier < tier_kingdom
-			}
-			change_government = feudal_government
-		}
+		assign_feudal_governments_effect = yes
 		create_character_memory = {
 			type = frankokratia_byz_independent_memory
 		}
@@ -4971,8 +4903,7 @@ ep3_frankokratia_vassalize_latin_counts_effect = {
 			any_vassal = {
 				highest_held_title_tier = tier_county
 				primary_title.duchy = {
-					exists = holder
-					holder = {
+					holder ?= {
 						is_vassal_of = scope:latin_emperor
 					}
 				}
@@ -4982,8 +4913,7 @@ ep3_frankokratia_vassalize_latin_counts_effect = {
 			limit = {
 				highest_held_title_tier = tier_county
 				primary_title.duchy = {
-					exists = holder
-					holder = {
+					holder ?= {
 						is_vassal_of = scope:latin_emperor
 					}
 				}
@@ -5019,10 +4949,9 @@ ep3_frankokratia_vassalize_latin_counts_effect = {
 	if = {
 		limit = {
 			any_held_title = {
-				tier = tier_county
+				title_tier = county
 				duchy = {
-					exists = holder
-					holder = {
+					holder ?= {
 						is_vassal_or_below_of = scope:latin_emperor
 					}
 				}
@@ -5031,21 +4960,19 @@ ep3_frankokratia_vassalize_latin_counts_effect = {
 		while = {
 			limit = {
 				any_held_title = {
-					tier = tier_county
+					title_tier = county
 					duchy = {
-						exists = holder
-						holder = {
+						holder ?= {
 							is_vassal_or_below_of = scope:latin_emperor
 						}
 					}
 				}
 			}
 			random_held_title = {
+				title_tier = county
 				limit = {
-					tier = tier_county
 					duchy = {
-						exists = holder
-						holder = {
+						holder ?= {
 							is_vassal_or_below_of = scope:latin_emperor
 						}
 					}
@@ -5076,9 +5003,7 @@ ep3_frankokratia_end_story_effect = {
 		remove_character_flag = pope_condemned_crusader_claim
 		remove_character_flag = pope_endorsed_crusader_claim
 		random_owned_story = {
-			limit = {
-				story_type = frankokratia_story
-			}
+			type = frankokratia_story
 			var:claimant ?= {
 				hidden_effect = {
 					remove_character_modifier = eager_for_empire_modifier
@@ -5343,7 +5268,7 @@ greek_anarchy_army_spawn_effect = {
 							culture = {
 								has_cultural_parameter = unlock_maa_akritai
 							}
-							any_county_province = {
+							county_has_province_with_terrain = {
 								terrain = mountains
 							}
 						}
@@ -6717,11 +6642,9 @@ greek_anarchy_army_spawn_effect = {
 							culture = {
 								has_innovation = innovation_war_camels
 							}
-							any_county_province = {
-								OR = {
-									terrain = drylands
-									terrain = desert
-								}
+							county_has_province_with_terrain = {
+								terrain = drylands
+								terrain = desert
 							}
 						}
 					}
@@ -6734,11 +6657,9 @@ greek_anarchy_army_spawn_effect = {
 							culture = {
 								has_innovation = innovation_war_camels
 							}
-							any_county_province = {
-								OR = {
-									terrain = drylands
-									terrain = desert
-								}
+							county_has_province_with_terrain = {
+								terrain = drylands
+								terrain = desert
 							}
 						}
 					}
@@ -6749,11 +6670,9 @@ greek_anarchy_army_spawn_effect = {
 							culture = {
 								has_innovation = innovation_war_camels
 							}
-							any_county_province = {
-								OR = {
-									terrain = drylands
-									terrain = desert
-								}
+							county_has_province_with_terrain = {
+								terrain = drylands
+								terrain = desert
 							}
 						}
 						culture = {
@@ -6853,7 +6772,7 @@ greek_anarchy_army_spawn_effect = {
 			trigger = {
 				scope:defender = {
 					any_realm_county = {
-						any_county_province = {
+						county_has_province_with_terrain = {
 							terrain = mountains
 						}
 					}
@@ -6876,7 +6795,7 @@ greek_anarchy_army_spawn_effect = {
 			trigger = {
 				scope:defender = {
 					any_realm_county = {
-						any_county_province = {
+						county_has_province_with_terrain = {
 							terrain = forest
 						}
 					}
@@ -6963,8 +6882,7 @@ frankokratia_latin_emp_end_msg_effect = {
 		every_in_de_jure_hierarchy = {
 			if = {
 				limit = {
-					exists = holder
-					holder = {
+					holder ?= {
 						is_ai = no
 						NOR = {
 							is_in_list = latin_destroyed_recipients
@@ -6982,8 +6900,7 @@ frankokratia_latin_emp_end_msg_effect = {
 		every_in_de_jure_hierarchy = {
 			if = {
 				limit = {
-					exists = holder
-					holder = {
+					holder ?= {
 						is_ai = no
 						NOR = {
 							is_in_list = latin_destroyed_recipients
@@ -7009,9 +6926,7 @@ frankokratia_latin_emp_end_msg_effect = {
 		every_in_list = {
 			list = latin_destroyed_recipients
 			limit = {
-				NOT = {
-					this = root
-				}
+				this != root
 			}
 			trigger_event = ep3_frankokratia_events.0100
 		}
@@ -7040,7 +6955,7 @@ frankokratia_remove__war_leader_var_effect = {
 				}
 				any_war_attacker = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 						any_in_list = {
 							variable = frankokratia_leaders
 							this = scope:actor
@@ -7053,7 +6968,7 @@ frankokratia_remove__war_leader_var_effect = {
 			limit = {
 				any_war_participant = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 						any_in_list = {
 							variable = frankokratia_leaders
 							this = scope:actor
@@ -7064,7 +6979,7 @@ frankokratia_remove__war_leader_var_effect = {
 			random_war_participant = {
 				limit = {
 					any_owned_story = {
-						story_type = frankokratia_story
+						type = frankokratia_story
 						any_in_list = {
 							variable = frankokratia_leaders
 							this = scope:actor
@@ -7072,8 +6987,8 @@ frankokratia_remove__war_leader_var_effect = {
 					}
 				}
 				random_owned_story = {
+					type = frankokratia_story
 					limit = {
-						story_type = frankokratia_story
 						any_in_list = {
 							variable = frankokratia_leaders
 							this = scope:actor

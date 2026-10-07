@@ -83,7 +83,7 @@ legend_spread_events.0001 = {
 			exists = legend_property:ancestor
 		}
 		any_courtier = { #there's someone to tell you about this
-			NOT = { this = root }
+			this != root
 			is_available_ai_adult = yes
 		}
 	}
@@ -156,7 +156,7 @@ legend_spread_events.0001 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			content = medium_stress_impact_gain
 			humble = medium_stress_impact_gain
 		}
@@ -182,7 +182,7 @@ legend_spread_events.0001 = {
 				target = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = major_stress_impact_gain
 			deceitful = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
@@ -219,7 +219,7 @@ legend_spread_events.0001 = {
 				target = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			content = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain #it's weird to have your child in the market
@@ -246,7 +246,7 @@ legend_spread_events.0001 = {
 			modifier = legend_my_own_ancestor_modifier
 			years = 25
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = major_stress_impact_gain
 			content = medium_stress_impact_gain
 		}
@@ -300,11 +300,11 @@ legend_spread_events.0010 = {
 		is_available_adult = yes
 		promoted_legend ?= {
 			legend_owner = root
-			exists = legend_property:beast #any legend featuring a beast
+			has_legend_chronicle = beast_slayer
 			NOT = { has_variable = had_legends_0010 }
 		}
 		any_courtier = { #there's someone to tell you about this
-			NOT = { this = root }
+			this != root
 			is_available_ai_adult = yes
 		}
 	}
@@ -393,7 +393,7 @@ legend_spread_events.0010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			honest = major_stress_impact_gain
 			humble = major_stress_impact_gain
 		}
@@ -473,7 +473,7 @@ legend_spread_events.0010 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			honest = medium_stress_impact_gain
 		}
@@ -499,7 +499,7 @@ legend_spread_events.0010 = {
 				target = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = major_stress_impact_gain
 			deceitful = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
@@ -603,7 +603,7 @@ legend_spread_events.0020 = {
 				modifier = cruelty_opinion
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_gain
 			calm = major_stress_impact_gain
 		}
@@ -668,7 +668,7 @@ legend_spread_events.0020 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			honest = medium_stress_impact_gain
 		}
@@ -690,7 +690,7 @@ legend_spread_events.0020 = {
 			modifier = legend_sus_rumors_modifier
 			years = 2
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			arrogant = medium_stress_impact_gain
 			wrathful = medium_stress_impact_gain
@@ -767,7 +767,7 @@ legend_spread_events.0030 = {
 			is_legend_worthy_memory = yes
 		}
 		any_courtier = { #chronicler backup
-			NOT = { this = root }
+			this != root
 			is_available_ai_adult = yes
 		}
 	}
@@ -829,7 +829,7 @@ legend_spread_events.0030 = {
 			modifier = legend_lazy_modifier
 			years = 5
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = major_stress_impact_loss
 			stubborn = major_stress_impact_loss
 			calm = medium_stress_impact_gain
@@ -912,7 +912,7 @@ legend_spread_events.0030 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = medium_stress_impact_gain
 			stubborn = medium_stress_impact_gain
 		}
@@ -944,7 +944,7 @@ legend_spread_events.0030 = {
 				modifier = pleased_opinion
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_loss
 			content = medium_stress_impact_loss
 			shy = major_stress_impact_loss
@@ -1012,7 +1012,7 @@ legend_spread_events.0040 = {
 	lower_center_portrait = {
 		trigger = {
 			exists = scope:chaplain
-			NOT = { scope:chaplain = scope:chronicler }
+			scope:chaplain != scope:chronicler
 		}
 		character = scope:chaplain
 	}
@@ -1036,7 +1036,7 @@ legend_spread_events.0040 = {
 			NOT = { has_variable = had_legends_0040 }
 		}
 		any_courtier = { #chronicler backup
-			NOT = { this = root }
+			this != root
 			is_available_ai_adult = yes
 		}
 	}
@@ -1073,7 +1073,7 @@ legend_spread_events.0040 = {
 		promoted_legend = {
 			set_legend_chapter = { name = motivation localization_key = legend_chapter_motivation_evil }
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = major_stress_impact_loss
 			sadistic = major_stress_impact_loss
 			calm = medium_stress_impact_gain
@@ -1118,9 +1118,7 @@ legend_spread_events.0040 = {
 					}
 					add_piety = medium_piety_gain
 					every_vassal_or_below = {
-						limit = {
-							has_vassal_stance = courtly
-						}
+						vassal_stance = courtly
 						custom = every_courtly_vassal
 						add_opinion = {
 							target = root
@@ -1161,7 +1159,7 @@ legend_spread_events.0040 = {
 			} 
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_loss
 			callous = medium_stress_impact_gain
 			sadistic = medium_stress_impact_gain
@@ -1200,7 +1198,7 @@ legend_spread_events.0040 = {
 		else = {
 			add_piety = miniscule_piety_loss
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 			compassionate = medium_stress_impact_gain
 		}
@@ -1327,7 +1325,7 @@ legend_spread_events.0050 = {
 		random_courtier_or_guest = {
 			limit = { 
 				0050_valid_courtier = yes
-				NOT = { this = scope:bard }
+				this != scope:bard
 			}
 			weight = {
 				base = 1
@@ -1384,7 +1382,7 @@ legend_spread_events.0050 = {
 				OPINION = default_lover_opinion
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			rakish = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -1395,7 +1393,7 @@ legend_spread_events.0050 = {
 			}
 			modifier = {
 				factor = 0
-				might_cheat_on_every_partner_trigger = no
+				might_cheat_on_every_partner_trigger = yes
 			}
 		}
 	}
@@ -1406,6 +1404,11 @@ legend_spread_events.0050 = {
 			skill = intrigue
 			value = medium_skill_rating
 			50 = {
+				trigger = {
+					scope:honored_lady = {
+						might_cheat_on_every_partner_trigger = yes
+					}
+				}
 				compare_modifier = {
 					value = scope:duel_value
 					multiplier = 3.5
@@ -1477,7 +1480,7 @@ legend_spread_events.0050 = {
 				opinion = -25
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			seducer = major_stress_impact_loss
 			lustful = medium_stress_impact_loss
 			honest = medium_stress_impact_gain
@@ -1490,20 +1493,12 @@ legend_spread_events.0050 = {
 				OR = {
 					has_trait = honest
 					has_trait = compassionate
-					trigger_if = {
-						limit = { exists = scope:my_spouse }
-						NOT = {
-							might_cheat_on_partner_trigger = { PARTNER = scope:my_spouse }
-						}
-					}
+					might_cheat_on_every_partner_trigger = yes
 				}
 			}
 			modifier = {
 				factor = 2
-				OR = {
-					has_trait = lustful
-					has_trait = seducer
-				}
+				has_lustful_adjacent_trait_trigger = yes
 			}
 		}
 	}
@@ -1518,7 +1513,7 @@ legend_spread_events.0050 = {
 				target = root
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			lustful = major_stress_impact_gain
 			seducer = major_stress_impact_gain
@@ -1658,7 +1653,7 @@ legend_spread_events.0060 = {
 			REASON = rival_mocked_legend
 			OPINION = -20
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			wrathful = massive_stress_impact_loss
 			calm = medium_stress_impact_gain
@@ -1718,7 +1713,7 @@ legend_spread_events.0060 = {
 				}
 			} 
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
 		}
@@ -1745,7 +1740,7 @@ legend_spread_events.0060 = {
 				years = 10
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			callous = medium_stress_impact_loss
 			deceitful = medium_stress_impact_loss
@@ -1765,7 +1760,7 @@ legend_spread_events.0060 = {
 	option = { #Didn't hear anything
 		name = legend_spread_events.0060.d
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 			calm = medium_stress_impact_loss
 			forgiving = medium_stress_impact_loss
@@ -1898,7 +1893,7 @@ legend_spread_events.0070 = {
 			days = { 10 20 }
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			depressed_1 = major_stress_impact_gain
 			depressed_genetic = major_stress_impact_gain
@@ -1938,7 +1933,7 @@ legend_spread_events.0070 = {
 		custom_tooltip = legend_spread_events.0070.a.tt
 		add_piety = minor_piety_gain
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
 			callous = medium_stress_impact_gain
@@ -1969,7 +1964,7 @@ legend_spread_events.0070 = {
 		set_variable = legend_chain_depressed_var
 		trigger_appropriate_breakdown_effect = yes
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 			arrogant = major_stress_impact_gain
 			ambitious = major_stress_impact_gain
@@ -1997,7 +1992,7 @@ legend_spread_events.0070 = {
 			days = { 10 20 }
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_gain
 			depressed_1 = major_stress_impact_gain
 			depressed_genetic = major_stress_impact_gain
@@ -2121,7 +2116,7 @@ legend_spread_events.0071 = {
 		random_neighboring_and_across_water_top_liege_realm_owner = {
 			limit = {
 				legend_spread_events_0071_promoter_trigger = yes
-				NOT = { this = scope:promoter }
+				this != scope:promoter
 			}
 			weight = {
 				base = 1
@@ -2141,7 +2136,7 @@ legend_spread_events.0071 = {
 			random_vassal = {
 				limit = {
 					legend_spread_events_0071_promoter_trigger = yes
-					NOT = { this = scope:promoter }
+					this != scope:promoter
 				}
 				weight = {
 					base = 1
@@ -2162,7 +2157,7 @@ legend_spread_events.0071 = {
 			random_courtier = {
 				limit = {
 					legend_spread_events_0071_promoter_trigger = yes
-					NOT = { this = scope:promoter }
+					this != scope:promoter
 				}
 				weight = {
 					base = 1
@@ -2190,7 +2185,7 @@ legend_spread_events.0071 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			ambitious = medium_stress_impact_gain
 		}
@@ -2219,7 +2214,7 @@ legend_spread_events.0071 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			ambitious = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -2243,7 +2238,7 @@ legend_spread_events.0071 = {
 	option = { #Try to convince your vassals you're cool instead
 		name = legend_spread_events.0071.c
 		every_vassal = {
-			limit = { has_vassal_stance = parochial }
+			vassal_stance = parochial
 			custom = every_parochial_vassal
 			add_opinion = {
 				modifier = impressed_opinion
@@ -2252,7 +2247,7 @@ legend_spread_events.0071 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			ambitious = medium_stress_impact_loss
 		}
@@ -2289,7 +2284,7 @@ legend_spread_events.0071 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = medium_stress_impact_loss
 			callous = medium_stress_impact_loss
 			deceitful = medium_stress_impact_loss
@@ -2422,7 +2417,7 @@ legend_spread_events.0072 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_impact_loss
 			cynical = medium_stress_impact_gain
 			gregarious = medium_stress_impact_gain
@@ -2459,7 +2454,7 @@ legend_spread_events.0072 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			ambitious = medium_stress_impact_gain
 			zealous = medium_stress_impact_gain
@@ -2483,7 +2478,7 @@ legend_spread_events.0072 = {
 	option = { #Try to convince your vassals you're cool instead
 		name = legend_spread_events.0072.c
 		every_vassal = {
-			limit = { has_vassal_stance = zealot }
+			vassal_stance = zealot
 			custom = every_zealot_vassal
 			add_opinion = {
 				modifier = impressed_opinion
@@ -2499,7 +2494,7 @@ legend_spread_events.0072 = {
 			add_piety = minor_piety_gain
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = medium_stress_impact_gain
 			zealous = medium_stress_impact_gain
 			ambitious = medium_stress_impact_loss
@@ -2533,7 +2528,7 @@ legend_spread_events.0072 = {
 			}
 		}				
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_loss
 			callous = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -2663,7 +2658,7 @@ legend_spread_events.0073 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = medium_stress_impact_gain
 			wrathful = medium_stress_impact_loss
 			brave = medium_stress_impact_loss
@@ -2698,7 +2693,7 @@ legend_spread_events.0073 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			ambitious = medium_stress_impact_gain
 			zealous = medium_stress_impact_gain
@@ -2722,7 +2717,7 @@ legend_spread_events.0073 = {
 	option = { #Try to convince your vassals you're cool instead
 		name = legend_spread_events.0073.c
 		every_vassal = {
-			limit = { has_vassal_stance = glory_hound }
+			vassal_stance = glory_hound
 			custom = every_glory_hound_vassal
 			add_opinion = {
 				modifier = impressed_opinion
@@ -2738,7 +2733,7 @@ legend_spread_events.0073 = {
 			add_prestige = minor_prestige_gain
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = medium_stress_impact_loss
 		}
 		ai_chance = {
@@ -2768,7 +2763,7 @@ legend_spread_events.0073 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
@@ -2901,7 +2896,7 @@ legend_spread_events.0074 = {
 		}
 		if = {
 			limit = {
-				any_spouse = { count >= 1 }
+				any_spouse = { }
 			}
 			random_spouse = {
 				weight = {
@@ -2931,7 +2926,7 @@ legend_spread_events.0074 = {
 			years = 25
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_gain
 			sadistic = medium_stress_impact_gain
 			compassionate = medium_stress_impact_loss
@@ -2970,7 +2965,7 @@ legend_spread_events.0074 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = medium_stress_impact_loss
 			ambitious = medium_stress_impact_gain
 		}
@@ -2994,12 +2989,10 @@ legend_spread_events.0074 = {
 	option = { #Try to convince your vassals you're cool instead
 		name = legend_spread_events.0074.c
 		trigger = {
-			any_vassal = {
-				count >= 1
-			}
+			any_vassal = { }
 		}
 		every_vassal = {
-			limit = { has_vassal_stance = courtly }
+			vassal_stance = courtly
 			custom = every_courtly_vassal
 			add_opinion = {
 				modifier = impressed_opinion
@@ -3018,7 +3011,7 @@ legend_spread_events.0074 = {
 			add_prestige = minor_prestige_gain
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			
 		}
 		ai_chance = {
@@ -3051,7 +3044,7 @@ legend_spread_events.0074 = {
 			}
 		}
 		
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain

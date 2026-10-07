@@ -3,6 +3,7 @@
 ###################################
 
 # Make it a Pious playthrough that encourage the Caliph to get support from the Muslim world
+### Struggle Persia Ending Assertion Decision ###
 struggle_persia_ending_assertion_decision = {
 	decision_group_type = major
 	title = struggle_persia_ending_assertion
@@ -44,7 +45,7 @@ struggle_persia_ending_assertion_decision = {
 			struggle:persian_struggle = {
 				NOT = {
 					any_involved_ruler = {
-						is_independent_ruler = yes
+						top_liege = this
 						is_landed = yes
 						highest_held_title_tier >= tier_duchy
 						has_trait = fp3_struggle_detractor
@@ -58,12 +59,12 @@ struggle_persia_ending_assertion_decision = {
 			struggle:persian_struggle = {
 				NOT = {
 					any_involved_ruler = {
-						is_independent_ruler = yes
+						top_liege = this
 						is_landed = yes
 						highest_held_title_tier >= tier_duchy
-						faith = {
+						rite = {
 							NOT = {
-								has_doctrine = muhammad_succession_sunni_doctrine
+								rite_has_doctrine = muhammad_succession_sunni_doctrine
 							}
 						}
 					}
@@ -107,6 +108,10 @@ struggle_persia_ending_assertion_decision = {
 				STRUGGLE = persian_struggle
 			}
 		}
+		if = {
+			limit = { has_ach_dlc_trigger = yes }
+			add_character_flag = ach_ended_struggle
+		}
 		show_as_tooltip = {
 			fp3_ending_effects_assertion = yes
 		}
@@ -116,7 +121,7 @@ struggle_persia_ending_assertion_decision = {
 			limit = {
 				has_dlc_feature = roads_to_power
 				fp3_struggle_is_the_caliph = yes
-				NOT = { government_has_flag = government_is_administrative }
+				NOT = { government_has_mechanic = administrative }
 			}
 			custom_tooltip = adopt_admin_government_tt
 		}
@@ -124,9 +129,18 @@ struggle_persia_ending_assertion_decision = {
 		title:d_sunni = { remove_variable = struggle_block_dissolution_faction }
 		title:e_arabia = { remove_variable = struggle_block_dissolution_faction }
 
+		# Silk Road bonus towards prosperity if and when Persia's turmoil comes to an end
+		tgp_silk_road_iranian_intermezzo_ending_effect = yes
 	}
 	
-	ai_check_interval = 36
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 36
+		kingdom = 36
+		empire = 36
+		hegemony = 36
+	}
 	ai_potential = { always = yes }
 	ai_will_do = { base = 100 }
 }
@@ -136,6 +150,7 @@ struggle_persia_ending_assertion_decision = {
 # Humiliate Caliphate Ending
 ###################################
 
+### Struggle Persia Ending Foundation Decision ###
 struggle_persia_ending_foundation_decision = {
 	decision_group_type = major
 	title = struggle_persia_ending_foundation
@@ -152,7 +167,7 @@ struggle_persia_ending_foundation_decision = {
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
 		# Independent
-		is_independent_ruler = yes
+		top_liege = this
 		# Muslim
 		custom_tooltip = {
 			text = struggle_persia_ending_decision_caliphate_muslim_tt
@@ -200,7 +215,7 @@ struggle_persia_ending_foundation_decision = {
 			custom_tooltip = {
 				text = struggle_persia_ending_foundation_decision_option_succession_tt
 				NOT = {
-					faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+					rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 				}
 			}
 		}
@@ -231,42 +246,40 @@ struggle_persia_ending_foundation_decision = {
 		# HERE GOES THE SPECIFIC TRIGGERS FOR EACH OPTION - It goes here to make the buttons selectable (UI issue workaround)
 		trigger_if = {
 			# CHALLENGER - if you change this, also change the `ai_chance = {}` of the specific widget option below!
-			limit = {  scope:struggle_persia_ending_foundation_decision_option_shia = yes }
-			OR = {
-				any_realm_province = {
-					OR = {
-						custom_tooltip = {
-							text = holy_site_of_root_faith_tt
-							barony = {
-								is_holy_site_of = root.faith
+			limit = { scope:struggle_persia_ending_foundation_decision_option_shia = yes }
+			any_realm_province = {
+				OR = {
+					custom_tooltip = {
+						text = holy_site_of_root_faith_tt
+						barony = {
+							is_holy_site_of = root.faith
+						}
+					}
+					has_building_or_higher = the_friday_mosque_01
+					has_building_or_higher = house_of_wisdom_01
+					has_building_or_higher = holy_site_great_mosque_of_samarra_01
+					trigger_if = {
+						limit = {
+							root.rite = {
+								rite_has_doctrine = muhammad_succession_shia_doctrine
 							}
 						}
-						has_building_or_higher = the_friday_mosque_01
-						has_building_or_higher = house_of_wisdom_01
-						has_building_or_higher = holy_site_great_mosque_of_samarra_01
-						trigger_if = {
-							limit = {
-								root.faith = {
-									has_doctrine = muhammad_succession_shia_doctrine
-								}
+						has_building_or_higher = holy_site_imam_ali_mosque_01
+					}
+					trigger_if = {
+						limit = {
+							root.rite = {
+								rite_has_doctrine = muhammad_succession_shia_doctrine
 							}
-							has_building_or_higher = holy_site_imam_ali_mosque_01
 						}
-						trigger_if = {
-							limit = {
-								root.faith = {
-									has_doctrine = muhammad_succession_shia_doctrine
-								}
-							}
-							has_building_or_higher = imam_reza_shrine_01
-						}
+						has_building_or_higher = imam_reza_shrine_01
 					}
 				}
 			}
 			# Muhakkima
 			trigger_if = {
 				limit = {
-					faith = { has_doctrine = muhammad_succession_muhakkima_doctrine }
+					rite = { rite_has_doctrine = muhammad_succession_muhakkima_doctrine }
 				}
 				fp3_valid_muhakkima_head = yes
 			}
@@ -280,7 +293,7 @@ struggle_persia_ending_foundation_decision = {
 				}
 				custom_tooltip = {
 					text = hof_must_not_be_your_faith_tt
-					NOT = { faith.religious_head.faith = root.faith }
+					faith.religious_head.faith != root.faith
 				}
 				faith.religious_head = root
 			}
@@ -350,16 +363,16 @@ struggle_persia_ending_foundation_decision = {
 	                                has_building_or_higher = holy_site_great_mosque_of_samarra_01
 	                                trigger_if = {
 	                                    limit = {
-	                                        root.faith = {
-	                                            has_doctrine = muhammad_succession_shia_doctrine
+	                                        root.rite = {
+	                                            rite_has_doctrine = muhammad_succession_shia_doctrine
 	                                        }
 	                                    }
 	                                    has_building_or_higher = holy_site_imam_ali_mosque_01
 	                                }
 	                                trigger_if = {
 	                                    limit = {
-	                                        root.faith = {
-	                                            has_doctrine = muhammad_succession_shia_doctrine
+	                                        root.rite = {
+	                                            rite_has_doctrine = muhammad_succession_shia_doctrine
 	                                        }
 	                                    }
 	                                    has_building_or_higher = imam_reza_shrine_01
@@ -370,7 +383,7 @@ struggle_persia_ending_foundation_decision = {
 	                    # Muhakkima
 	                    trigger_if = {
 	                        limit = {
-	                            faith = { has_doctrine = muhammad_succession_muhakkima_doctrine }
+	                            rite = { rite_has_doctrine = muhammad_succession_muhakkima_doctrine }
 	                        }
 	                        fp3_valid_muhakkima_head = yes
 	                    }
@@ -384,7 +397,7 @@ struggle_persia_ending_foundation_decision = {
 	                        }
 	                        custom_tooltip = {
 	                            text = hof_must_not_be_your_faith_tt
-	                            NOT = { faith.religious_head.faith = root.faith }
+	                            faith.religious_head.faith != root.faith
 	                        }
 	                        faith.religious_head = root
 	                    }
@@ -449,6 +462,10 @@ struggle_persia_ending_foundation_decision = {
 				STRUGGLE = persian_struggle
 			}
 		}
+		if = {
+			limit = { has_ach_dlc_trigger = yes }
+			add_character_flag = ach_ended_struggle
+		}
 		if = { # Shia Caliphate
 			limit = { scope:struggle_persia_ending_foundation_decision_option_shia = yes }
 			custom_tooltip = struggle_persia_ending_foundation_decision_option.t.shia
@@ -481,9 +498,20 @@ struggle_persia_ending_foundation_decision = {
 
 		title:d_sunni = { remove_variable = struggle_block_dissolution_faction }
 		title:e_arabia = { remove_variable = struggle_block_dissolution_faction }
+		
+		# Silk Road bonus towards prosperity if and when Persia's turmoil comes to an end
+		tgp_silk_road_iranian_intermezzo_ending_effect = yes
 	}
 	
-	ai_check_interval = 36
+	# Kingdom+ only
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 36
+		empire = 36
+		hegemony = 36
+	}
 	ai_potential = { always = yes }
 	ai_will_do = { base = 100 }
 }
@@ -492,6 +520,7 @@ struggle_persia_ending_foundation_decision = {
 # Resurgent Persia Ending
 ###################################
 
+### Struggle Persia Ending Rekindle Iran Decision ###
 struggle_persia_ending_rekindle_iran_decision = {
 	decision_group_type = major
 	title = struggle_persia_ending_rekindle_iran
@@ -508,7 +537,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
 		# Independent
-		is_independent_ruler = yes
+		top_liege = this
 	}
 
 	is_valid = { # We can skip some of the more elementary checks due to this being struggle-only
@@ -544,7 +573,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 				text = struggle_persia_ending_rekindle_iran_decision_nb_ally_tt
 				any_ally = {
 					count >= 2
-					is_independent_ruler = yes
+					top_liege = this
 					primary_title = { is_mercenary_company = no }
 					primary_title = { is_holy_order = no }
 					highest_held_title_tier = tier_kingdom
@@ -569,7 +598,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 			limit = { scope:struggle_persia_ending_rekindle_iran_decision_option_secret_faith = yes }
 			custom_tooltip = {
 				text = struggle_persia_ending_rekindle_iran_decision_secret_tt
-				any_secret = { secret_type = secret_crypto_religionist }
+				any_secret = { type = secret_crypto_religionist }
 			}
 		}
 	}
@@ -585,7 +614,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 			current_description = struggle_persia_ending_rekindle_iran_decision_option_public_faith_desc
 			localization = struggle_persia_ending_rekindle_iran_decision_option_public_faith
 			icon = "gfx/interface/icons/character_interactions/religious.dds"
-			ai_chance = { value = ai_zeal } #todo_cd_polish
+			ai_chance = { value = ai_zeal }
  		}
 
 		item = { # SECRET FAITH
@@ -596,7 +625,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 			current_description = struggle_persia_ending_rekindle_iran_decision_option_secret_faith_desc
 			localization = struggle_persia_ending_rekindle_iran_decision_option_secret_faith
 			icon = "gfx/interface/icons/character_interactions/icon_scheme_crypto_religion.dds"
-			ai_chance = { value = ai_zeal } #todo_cd_polish
+			ai_chance = { value = ai_zeal }
 		}
 	}
 
@@ -609,17 +638,26 @@ struggle_persia_ending_rekindle_iran_decision = {
 			}
 		}
 		if = {
+			limit = { has_ach_dlc_trigger = yes }
+			add_character_flag = ach_ended_struggle
+		}
+		if = {
 			limit = { scope:struggle_persia_ending_rekindle_iran_decision_option_secret_faith = yes }
 			if = {
 				limit = { exists = secret_faith }
-				secret_faith = { save_scope_as = propagated_faith }
+				secret_faith = {
+					save_scope_as = propagated_faith
+					main_rite = { save_scope_as = propagated_rite }
+				}
 			}
 			else = {
-				faith =  { save_scope_as = propagated_faith }
+				faith = { save_scope_as = propagated_faith }
+				rite = { save_scope_as = propagated_rite }
 			}
 		}
 		else = {
-			faith =  { save_scope_as = propagated_faith }
+			faith = { save_scope_as = propagated_faith }
+			rite = { save_scope_as = propagated_rite }
 		}
 		trigger_event = fp3_struggle.0091
 		show_as_tooltip = { # Fake effects, custom-made to be readable (and also a summary of what happens across several events for OOP/UX reasons)
@@ -630,9 +668,20 @@ struggle_persia_ending_rekindle_iran_decision = {
 
 		title:d_sunni = { remove_variable = struggle_block_dissolution_faction }
 		title:e_arabia = { remove_variable = struggle_block_dissolution_faction }
+		
+		# Silk Road bonus towards prosperity if and when Persia's turmoil comes to an end
+		tgp_silk_road_iranian_intermezzo_ending_effect = yes
 	}
 
-	ai_check_interval = 36
+	# Kingdom+ only
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 36
+		empire = 36
+		hegemony = 36
+	}
 	ai_potential = { always = yes }
 	ai_will_do = { base = 100 }
 }
@@ -643,6 +692,7 @@ struggle_persia_ending_rekindle_iran_decision = {
 ###################################
 
 # Bring in skilled characters that like you at the cost of offending your other vassals.
+### Favor Skilled Outsiders ###
 favour_skilled_outsiders_decision = {
 	desc = favour_skilled_outsiders_decision_desc
 	confirm_text = favour_skilled_outsiders_decision_confirm
@@ -654,9 +704,9 @@ favour_skilled_outsiders_decision = {
 	decision_group_type = courtier
 	
 	is_shown = {
-		has_fp3_dlc_trigger = yes
 		is_landed = yes
 		favour_skilled_outsiders_decision_valid_character_to_take_trigger = yes
+		has_fp3_dlc_trigger = yes
 	}
 
 	is_valid = {
@@ -862,7 +912,7 @@ favour_skilled_outsiders_decision = {
 	
 	cost = { prestige = favour_skilled_outsiders_decision_prestige_cost_value }
 
-	ai_check_interval = 24
+	ai_check_interval = 0
 
 	ai_potential = {
 		# Check this stuff early, else we'll go through a bunch of county checks unnecessarily.
@@ -934,6 +984,7 @@ favour_skilled_outsiders_decision = {
 ###################################
 # Sunder Caliphate Ending
 ###################################
+### Destroy the Caliphate ###
 fp3_sunder_the_caliphate_decision = {
 	decision_group_type = major
 	title = fp3_sunder_the_caliphate_decision
@@ -946,18 +997,16 @@ fp3_sunder_the_caliphate_decision = {
 	sort_order = 80
 
 	is_shown = {
-		is_landless_adventurer = no
-		exists = title:d_sunni.holder
+		any_character_struggle = {
+			involvement = involved
+			is_struggle_type = persian_struggle
+		}
 		NOR = {
+			house ?= title:d_sunni.holder.house
 			this = title:d_sunni.holder
-			house = title:d_sunni.holder.house
 		}
-		OR = {
-			any_character_struggle = {
-				involvement = involved
-				is_struggle_type = persian_struggle
-			}
-		}
+		exists = title:d_sunni.holder
+		is_landless_adventurer = no
 	}
 
 	is_valid = {
@@ -965,7 +1014,7 @@ fp3_sunder_the_caliphate_decision = {
 		custom_tooltip = {
 			text = struggle_persia_ending_foundation_decision_option_succession_tt
 			NOT = {
-				faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+				rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 			}
 		}
 		custom_tooltip = {
@@ -1005,6 +1054,10 @@ fp3_sunder_the_caliphate_decision = {
 			}
 			
 		}
+		if = {
+			limit = { has_ach_dlc_trigger = yes }
+			add_character_flag = ach_ended_struggle
+		}
 		
 		title:d_sunni.holder = {
 			save_scope_as = the_caliph
@@ -1021,7 +1074,15 @@ fp3_sunder_the_caliphate_decision = {
 	cost = {
 		piety = massive_piety_value
 	}
-	ai_check_interval = 120
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 120
+		empire = 120
+		hegemony = 120
+	}
 	ai_potential = { always = yes }
 	ai_will_do = { base = 100 }
 }
@@ -1029,6 +1090,7 @@ fp3_sunder_the_caliphate_decision = {
 ###################################
 # Become a Clan Government
 ###################################
+### Adopt Clan Ways through House ###
 fp3_become_clan_government_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/fp3/friendly.dds"
@@ -1036,21 +1098,28 @@ fp3_become_clan_government_decision = {
 	desc = fp3_become_clan_government_decision_desc
 	selection_tooltip = fp3_become_clan_government_decision_tooltip
 
-	ai_check_interval = 64
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 64
+		duchy = 64
+		kingdom = 64
+		empire = 64
+		hegemony = 64
+	}
 
 	cost = { prestige = major_prestige_value }
 
 	is_shown = {
-		has_fp3_dlc_trigger = yes
 		# You are Feudal
 		government_has_flag = government_is_feudal
+		house.house_head != root
+		# Religion is Islam (Clan)
+		religion ?= religion:islam_religion
+		has_fp3_dlc_trigger = yes
+		# House head is Clan
+		house.house_head ?= { government_has_flag = government_is_clan }
 		# Has a House and is not House Head
 		exists = house
-		NOT = { house.house_head = root }
-		# Religion is Islam (Clan)
-		religion = religion:islam_religion
-		# House head is Clan
-		house.house_head = { government_has_flag = government_is_clan }
 	}
 
 	is_valid = {
@@ -1072,6 +1141,10 @@ fp3_become_clan_government_decision = {
 		legend_seed_struggle_ending_effect = {
 			ENDER = root
 			STRUGGLE = persian_struggle
+		}
+		if = {
+			limit = { has_ach_dlc_trigger = yes }
+			add_character_flag = ach_ended_struggle
 		}
 		show_as_tooltip ={
 			change_government = clan_government

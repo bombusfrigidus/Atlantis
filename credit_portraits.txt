@@ -1,1 +1,20 @@
-﻿
+﻿# Format: group_key = { key = bookmark_portrait_key text = "String Text "}
+
+left = { key = historical_export_easteregg_alexander_oltner text = "Alexander Oltner" }
+right = { key = historical_export_easteregg_johanna_uddstahl text = "Johanna Uddståhl" }
+left = { key = historical_export_easteregg_henrik_fahraeus text = "Henrik Fåhraeus" }
+right = { key = historical_export_easteregg_veronica_pazos text = "Verónica Pazos" }
+left = { key = historical_export_easteregg_petter_lundh text = "Petter Lundh" }
+right = { key = historical_export_easteregg_riad_deneche text = "Riad Deneche" }
+left = { key = historical_export_easteregg_lucas_ribeiro text = "Lucas Ribeiro Rodrigues" }
+right = { key = historical_export_easteregg_joel_hansson text = "Joel Hansson" }
+left = { key = historical_export_easteregg_jakob_jorstedt text = "Jakob Jorstedt" }
+right = { key = historical_export_easteregg_david_drake text = "David Drake" }
+left = { key = historical_export_easteregg_celine_jensen text = "Céline Jensen" }
+right = { key = historical_export_easteregg_artur_kacprzak text = "Artur Kacprzak" }
+left = { key = historical_export_easteregg_jason_cantalini text = "Jason Cantalini" }
+right = { key = historical_export_easteregg_nils_wadensten text = "Nils Wadensten" }
+left = { key = historical_export_easteregg_chad_uhl text = "Chad Uhl" }
+right = { key = historical_export_easteregg_emelie_verdugo text = "Emelie Verdugo" }
+left = { key = historical_export_easteregg_daan_broekhof text = "Daan Broekhof" }
+right = { key = historical_export_easteregg_thea_ariens text = "Thea Ariëns" }

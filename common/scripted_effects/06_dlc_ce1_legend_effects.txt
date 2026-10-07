@@ -22,12 +22,16 @@ grab_appropriate_chronicler_effect = {
 	if = { #If the culture would have relied on poets for this we grab them first
 		limit = {
 			OR = {
-				culture = { has_cultural_tradition = tradition_fp1_northern_stories }
-				culture = { has_cultural_tradition = tradition_poetry }
-				culture = { has_cultural_tradition = tradition_storytellers }
-				culture = { has_cultural_tradition = tradition_chanson_de_geste }
-				faith = {
-					trait_is_virtue = poet
+				culture = { 
+					OR = {
+						has_cultural_tradition = tradition_fp1_northern_stories
+						has_cultural_parameter = poet_trait_gives_bonuses
+						has_cultural_tradition = tradition_storytellers
+						has_cultural_tradition = tradition_chanson_de_geste 
+					}
+				}
+				rite = {
+					trait_is_virtue_rite = lifestyle_poet
 				}
 			}
 			any_court_position_holder = {
@@ -91,7 +95,7 @@ grab_appropriate_chronicler_effect = {
 	else = {
 		ordered_courtier = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				is_available_ai_adult = yes
 			}
 			order_by = {
@@ -99,7 +103,7 @@ grab_appropriate_chronicler_effect = {
 				if = {
 					limit = {
 						OR = {
-							has_trait = poet
+							has_trait = lifestyle_poet
 							has_trait = journaller
 						}
 					}
@@ -168,7 +172,7 @@ grab_appropriate_bard_feast_effect = {
 						is_vassal_of = root
 						is_courtier_of = root
 					}
-					NOT = { this = root }
+					this != root
 					NOT = { is_spouse_of = root }
 					NOT = { is_child_of = root }
 					NOT = { is_councillor_of = root }
@@ -183,7 +187,7 @@ grab_appropriate_bard_feast_effect = {
 						is_vassal_of = root
 						is_courtier_of = root
 					}
-					NOT = { this = root }
+					this != root
 					NOT = { is_spouse_of = root }
 					NOT = { is_child_of = root }
 					is_physically_able_ai_adult = yes
@@ -192,7 +196,7 @@ grab_appropriate_bard_feast_effect = {
 					value = diplomacy
 					if = {
 						limit = {
-							has_trait = poet
+							has_trait = lifestyle_poet
 						}
 						add = 10
 					}
@@ -250,7 +254,7 @@ grab_appropriate_bard_effect = {
 	else_if = {
 		limit = {
 			any_courtier = {
-				NOT = { this = root }
+				this != root
 				NOT = { is_spouse_of = root }
 				NOT = { is_child_of = root }
 				NOT = { is_councillor_of = root }
@@ -259,7 +263,7 @@ grab_appropriate_bard_effect = {
 		}
 		ordered_courtier = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				NOT = { is_spouse_of = root }
 				NOT = { is_child_of = root }
 				NOT = { is_councillor_of = root }
@@ -269,7 +273,7 @@ grab_appropriate_bard_effect = {
 				value = diplomacy
 				if = {
 					limit = {
-						has_trait = poet
+						has_trait = lifestyle_poet
 					}
 					add = 10
 				}
@@ -413,7 +417,9 @@ grab_mythical_founder_effect = {
 							root.primary_title = title:k_romagna
 							root.primary_title = title:k_sardinia
 							root.primary_title = title:e_italy
-							root.primary_title = title:e_roman_empire
+							root = {
+								is_roman_emperor_primary_title_excluding_byzantium_trigger = yes
+							}
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:aeneas }
@@ -439,7 +445,7 @@ grab_mythical_founder_effect = {
 							root.primary_title = title:k_romagna
 							root.primary_title = title:k_sardinia
 							root.primary_title = title:e_italy
-							root.primary_title = title:e_roman_empire
+							root = { is_roman_emperor_primary_title_excluding_byzantium_trigger = yes }
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:romulus }
@@ -451,7 +457,7 @@ grab_mythical_founder_effect = {
 							root.primary_title = title:k_romagna
 							root.primary_title = title:k_sardinia
 							root.primary_title = title:e_italy
-							root.primary_title = title:e_roman_empire
+							root = { is_roman_emperor_primary_title_excluding_byzantium_trigger = yes }
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:numa }
@@ -463,7 +469,7 @@ grab_mythical_founder_effect = {
 							root.primary_title = title:k_romagna
 							root.primary_title = title:k_sardinia
 							root.primary_title = title:e_italy
-							root.primary_title = title:e_roman_empire
+							root = { is_roman_emperor_primary_title_excluding_byzantium_trigger = yes }
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:belisarius }
@@ -703,8 +709,8 @@ grab_mythical_founder_effect = {
 				10 = { # Emperor Constantine
 					trigger = {
 						OR = {
-							root.primary_title = title:c_atlantis
-							root.primary_title = title:e_byzantium
+							root.capital_county = title:c_atlantis
+							root = { is_roman_emperor_primary_title_trigger = yes }
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:constantine }
@@ -712,8 +718,8 @@ grab_mythical_founder_effect = {
 				10 = { # Emperor Justinian
 					trigger = {
 						OR = {
-							root.primary_title = title:c_atlantis
-							root.primary_title = title:e_byzantium
+							root.capital_county = title:c_atlantis
+							root = { is_roman_emperor_primary_title_trigger = yes }
 						}
 					}
 					set_variable = { name = mythical_ancestor_var value = flag:justinian }
@@ -912,6 +918,7 @@ change_legend_quality_effect = {
 				add = $VALUE$
 			}
 		}
+		custom_tooltip = maximum_legend_quality_discount_reach_tt
 		set_variable = {
 			name = legend_quality_progress
 			value = 100
@@ -926,6 +933,7 @@ change_legend_quality_effect = {
 				add = $VALUE$
 			}
 		}
+		custom_tooltip = minimum_legend_quality_discount_reach_tt
 		set_variable = {
 			name = legend_quality_progress
 			value = 0
@@ -1079,14 +1087,14 @@ legend_ending_rewards_mythical_heroic_effect = {
 
 legend_ending_rewards_mythical_holy_effect = {
 	add_legitimacy = massive_legitimacy_gain
-	# Chance to become a Saint
+	# Chance to become a Herald
 	if = {
 		limit = {
 			dynasty ?= {
 				ce1_heroic_track_perks >= 3
 			}
 		}
-		add_trait = saint
+		add_trait = herald
 		if = {
 			limit = { NOT = { has_global_variable = num_of_saints_var } }
 			set_global_variable = {
@@ -1175,7 +1183,7 @@ legend_ending_rewards_legitimizing_effect = {
 	}
 	if = { #Roman Heritage legend without a Roman Empire
 		limit = {
-			scope:title_claim = title:e_roman_empire
+			scope:title_claim = title:h_roman_empire
 			NOT = {
 				exists = global_var:flag_restored_roman_empire
 			}
@@ -1208,9 +1216,7 @@ legend_ending_rewards_legitimizing_effect = {
 				if = {
 					limit = {
 						exists = this.holder
-						NOT = {
-							this.holder = root
-						}
+						this.holder != root
 					}
 					root = {
 						add_pressed_claim = prev
@@ -1235,9 +1241,7 @@ legend_ending_rewards_legitimizing_effect = {
 	else_if = {
 		limit = {
 			exists = scope:title_claim.holder
-			NOT = {
-				scope:title_claim.holder = root
-			}
+			scope:title_claim.holder != root
 		}
 		add_pressed_claim = scope:title_claim
 		add_to_variable_list = {
@@ -1647,7 +1651,7 @@ get_appropriate_exotic_location = {
 				religion = religion:christianity_religion
 				NOT = {
 					any_character_to_title_neighboring_and_across_water_county = {
-						holder = { faith = faith:coptic }
+						holder = { faith = faith:miaphysitism }
 					}
 				}
 				NOT = { # Prester John isn't exciting if Egypt is Christian
@@ -1681,13 +1685,15 @@ get_appropriate_exotic_location = {
 							OR = {
 								geographical_region = world_india
 								geographical_region = world_tibet
-								geographical_region = world_burma
+								geographical_region = world_asia_southeast_mainland
+								geographical_region = world_asia_china
 							}
 						}
 					}
 					culture = { culture_overlaps_geographical_region = world_india }
 					culture = { culture_overlaps_geographical_region = world_tibet }
-					culture = { culture_overlaps_geographical_region = world_burma }
+					culture = { culture_overlaps_geographical_region = world_asia_southeast_mainland }
+					culture = { culture_overlaps_geographical_region = world_asia_china }
 				}
 			}
 			save_scope_value_as = {
@@ -1723,8 +1729,14 @@ get_appropriate_exotic_location = {
 		999 = { # Beyul, hidden valleys
 			trigger = {
 				OR = {
-					capital_county.title_province = { geographical_region = world_tibet }
+					capital_county.title_province = { 
+						OR = {
+							geographical_region = world_tibet
+							geographical_region = world_asia_china
+						}
+					}
 					culture = { culture_overlaps_geographical_region = world_tibet }
+					culture = { culture_overlaps_geographical_region = world_asia_china }
 				}
 			}
 			save_scope_value_as = {
@@ -2236,13 +2248,13 @@ give_legendary_building_location_standard_effect = {
 	else_if = { # Otherwise, prioritize a title you hold directly
 		limit = {
 			any_held_title = {
-				tier = tier_county
+				title_tier = county
 				title_province = { has_special_building_slot = no }
 			}
 		}
 		random_held_title = {
+			title_tier = county
 			limit = {
-				tier = tier_county
 				title_province = { has_special_building_slot = no }
 			}
 			title_province = { save_scope_as = legendary_locale }
@@ -2251,15 +2263,15 @@ give_legendary_building_location_standard_effect = {
 	else_if = { #Otherwise, prioritize a barony that you hold directly
 		limit = {
 			any_held_title = {
-				tier = tier_barony
+				title_tier = barony
 				title_province = {
 					has_special_building_slot = no
 				}
 			}
 		}
 		random_held_title = {
+			title_tier = barony
 			limit = {
-				tier = tier_barony
 				title_province = {
 					has_special_building_slot = no
 				}
@@ -2273,13 +2285,13 @@ give_legendary_building_location_standard_effect = {
 	else_if = { # Otherwise, prioritize a barony within a title you hold
 		limit = {
 			any_held_title = {
-				tier = tier_county
+				title_tier = county
 				any_county_province = { has_special_building_slot = no }
 			}
 		}
 		random_held_title = {
+			title_tier = county
 			limit = {
-				tier = tier_county
 				any_county_province = { has_special_building_slot = no }
 			}
 			random_county_province = {
@@ -2340,12 +2352,12 @@ give_legendary_building_location_standard_effect = {
 				has_trait_xp = {
 					trait = lifestyle_hunter
 					track = hunter
-					value >= 62
+					value >= 50
 				}
 				has_trait_xp = {
 					trait = lifestyle_hunter
 					track = falconer
-					value >= 62
+					value >= 50
 				}
 				culture ?= {
 					has_cultural_parameter = always_unlock_legendary_hunting_lodge
@@ -2410,14 +2422,31 @@ legend_seed_new_title_effect = {
 legend_seed_great_deed_dynasty_effect = {
 	if = {
 		limit = { has_dlc_feature = legends }
-		create_legend_seed = {
-			type = legitimizing
-			quality = famed
-			chronicle = great_deed_dynasty
-			properties = {
-				dynasty = root.dynasty
-				founder = root
-				title = root.primary_title.empire
+		if = {
+			limit = {
+				highest_held_title_tier < tier_hegemony
+			}
+			create_legend_seed = {
+				type = legitimizing
+				quality = famed
+				chronicle = great_deed_dynasty
+				properties = {
+					dynasty = root.dynasty
+					founder = root
+					title = root.primary_title.empire
+				}
+			}
+		}
+		else = {
+			create_legend_seed = {
+				type = legitimizing
+				quality = famed
+				chronicle = great_deed_dynasty
+				properties = {
+					dynasty = root.dynasty
+					founder = root
+					title = root.primary_title
+				}
 			}
 		}
 	}
@@ -2426,12 +2455,15 @@ legend_seed_great_deed_dynasty_effect = {
 legend_seed_great_deed_region_effect = {
 	if = {
 		limit = { has_dlc_feature = legends }
+		$REGION$ = {
+			save_scope_as = legend_region
+		}
 		create_legend_seed = {
 			type = heroic
 			quality = famed
 			chronicle = great_deed_region
 			properties = {
-				legend_region = $REGION$
+				legend_region = scope:legend_region
 				founder = root
 			}
 		}
@@ -2951,8 +2983,11 @@ create_swan_knight_legend_seed_effect = {
 			location = {
 				OR = {
 					geographical_region = world_india
-					geographical_region = world_burma
 					geographical_region = ghw_region_caucasus
+					geographical_region = world_asia_china
+					geographical_region = world_asia_japan
+					geographical_region = world_asia_korea
+					geographical_region = world_asia_southeast
 				}
 			}
 		}

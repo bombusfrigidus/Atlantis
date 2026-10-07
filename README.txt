@@ -9,7 +9,24 @@ Atlantis is a CK3 TC template. Contact:
  - bombus_frigidus@gmail.com
  - bombus_frigidus on Discord
 
-Atlantis is compatible with CK3 1.16.0.1 as of 2025/05/03. 
+Atlantis targets CK3 1.20.*. The updater under tools can refresh matching files from an installed game directory.
+
+Updating Atlantis from an installed CK3 version
+-----------------------------------------------
+
+tools/update_atlantis.py compares each Atlantis file with the file at the same relative path in the CK3 game directory. A differing shared-path file is overwritten from the game; Atlantis-only files are left alone, and files that exist only in the game are not added. Both descriptor.mod and Atlantis.mod have their supported_version updated when present.
+
+This is a deliberately destructive file-level refresh, not a semantic merge. It overwrites Atlantis edits in every matching path, including map_data and other replace_path directories. Review the dry run and retain the backup before restoring conversion-specific changes.
+
+From the CK3 game directory, preview with:
+
+    python .\Atlantis\tools\update_atlantis.py
+
+Apply after backing up all affected Atlantis files to the sibling Atlantis_update_backups folder:
+
+    python .\Atlantis\tools\update_atlantis.py --apply
+
+Use --game-root and --mod-root to override source and target directories, --supported-version to change descriptor metadata, and --backup-root to change the backup location. To roll back, pass the timestamped backup directory to --restore-from.
 
 The update from 1.15.0.2 is wholly by Striped Honey (stripedhoney on Discord, BiggDeer on GitHub). Cheers!
 

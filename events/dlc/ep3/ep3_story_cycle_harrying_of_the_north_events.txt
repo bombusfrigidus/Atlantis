@@ -48,7 +48,7 @@ ep3_story_cycle_harrying.0001 = {
 		animation = thinking
 	}
 	right_portrait = {
-		trigger = { NOT = { root = this } }
+		trigger = { root != this }
 		character = scope:ruler_england
 		animation = personality_honorable
 	}
@@ -70,7 +70,7 @@ ep3_story_cycle_harrying.0001 = {
 			this = character:1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 		}
 
@@ -86,7 +86,7 @@ ep3_story_cycle_harrying.0001 = {
 			this = scope:ruler_england
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_impact_loss
 		}
 
@@ -96,7 +96,7 @@ ep3_story_cycle_harrying.0001 = {
 	}
 
 	option = { #All others
-		name = ep3_story_cycle_harrying.0001.b
+		name = ep3_story_cycle_harrying.0001.c
 
 		trigger = {
 			NOR = {
@@ -139,7 +139,7 @@ ep3_story_cycle_harrying.0002 = {
 		animation = thinking
 	}
 	right_portrait = {
-		trigger = { NOT = { root = this } }
+		trigger = { root != this }
 		character = scope:ruler_england
 		animation = personality_honorable
 	}
@@ -161,7 +161,7 @@ ep3_story_cycle_harrying.0002 = {
 			this = character:1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_impact_loss
 		}
 
@@ -177,7 +177,7 @@ ep3_story_cycle_harrying.0002 = {
 			this = scope:ruler_england
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_impact_loss
 		}
 
@@ -213,7 +213,7 @@ ep3_story_cycle_harrying.0003 = {
 		animation = thinking
 	}
 	right_portrait = {
-		trigger = { NOT = { root = this } }
+		trigger = { root != this }
 		character = scope:ruler_england
 		animation = personality_honorable
 	}
@@ -235,7 +235,7 @@ ep3_story_cycle_harrying.0003 = {
 			this = character:1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 
@@ -251,7 +251,7 @@ ep3_story_cycle_harrying.0003 = {
 			this = scope:ruler_england
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_impact_loss
 		}
 
@@ -304,7 +304,7 @@ ep3_story_cycle_harrying.0004 = {
 		animation = thinking
 	}
 	right_portrait = {
-		trigger = { NOT = { root = this } }
+		trigger = { root != this }
 		character = scope:ruler_england
 		animation = personality_honorable
 	}
@@ -326,7 +326,7 @@ ep3_story_cycle_harrying.0004 = {
 			this.culture = culture:anglo_saxon
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 
@@ -342,7 +342,7 @@ ep3_story_cycle_harrying.0004 = {
 			this = scope:ruler_england
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_impact_loss
 		}
 
@@ -456,7 +456,7 @@ ep3_story_cycle_harrying.1000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = miniscule_stress_impact_loss
 			sadistic = miniscule_stress_impact_loss
 			vengeful = minor_stress_impact_loss
@@ -497,7 +497,7 @@ ep3_story_cycle_harrying.1000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = miniscule_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
 			wrathful = minor_stress_impact_gain
@@ -516,7 +516,7 @@ ep3_story_cycle_harrying.1000 = {
 	option = { #Exact a levy of crops
 		name = ep3_story_cycle_harrying.1000.c
 
-		add_gold = medium_gold_value
+		add_treasury_or_gold = medium_treasury_or_gold_value
 
 		scope:crop_duchy = {
 			change_county_control = -10
@@ -531,7 +531,7 @@ ep3_story_cycle_harrying.1000 = {
 
 		every_vassal = {
 			custom = every_minority_vassal
-			limit = { has_vassal_stance = minority }
+			vassal_stance = minority
 			add_opinion = {
 				target = root 
 				modifier = annoyed_opinion
@@ -539,7 +539,7 @@ ep3_story_cycle_harrying.1000 = {
 			}
 		}	
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			sadistic = medium_stress_impact_gain
 			vengeful = major_stress_impact_gain
 			compassionate = miniscule_stress_impact_loss
@@ -624,7 +624,7 @@ ep3_story_cycle_harrying.1005 = {
 	option = { #Rebuild and stock the road with armed guards
 		name = ep3_story_cycle_harrying.1005.a
 
-		remove_short_term_gold = major_gold_value
+		remove_treasury_or_gold = major_treasury_or_gold_value
 
 		every_in_list = {
 			list = great_north_road
@@ -635,7 +635,7 @@ ep3_story_cycle_harrying.1005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = miniscule_stress_impact_loss
 			diligent = miniscule_stress_impact_loss
 			lazy = minor_stress_impact_gain
@@ -654,7 +654,7 @@ ep3_story_cycle_harrying.1005 = {
 	option = { #Rebuild the road
 		name = ep3_story_cycle_harrying.1005.b
 
-		remove_short_term_gold = major_gold_value
+		remove_treasury_or_gold = major_treasury_or_gold_value
 
 		every_in_list = {
 			list = great_north_road
@@ -665,7 +665,7 @@ ep3_story_cycle_harrying.1005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 			lazy = miniscule_stress_impact_gain
 			greedy = minor_stress_impact_gain
@@ -696,7 +696,7 @@ ep3_story_cycle_harrying.1005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = miniscule_stress_impact_loss
 			sadistic = miniscule_stress_impact_loss
 			greedy = miniscule_stress_impact_loss
@@ -775,7 +775,7 @@ ep3_story_cycle_harrying.1010 = {
 		ep3_increase_resistance_effect = { AMOUNT = harrying_medium_increase_value }
 		ep3_increase_pacification_effect = { AMOUNT = harrying_medium_increase_value }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = miniscule_stress_impact_loss
 			sadistic = miniscule_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
@@ -800,7 +800,7 @@ ep3_story_cycle_harrying.1010 = {
 		disfigure_recipient_effect = yes
 		torture_blind_castrate_disfigure_opinion_effect = { VERB = disfigured }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			sadistic = minor_stress_impact_loss
 			compassionate = medium_stress_impact_gain
 			just = minor_stress_impact_gain
@@ -853,9 +853,7 @@ ep3_story_cycle_harrying.1010 = {
 	
 					add_prestige = medium_prestige_loss
 					every_vassal = { 
-						limit = {
-							has_vassal_stance = glory_hound
-						}
+						vassal_stance = glory_hound
 						custom = every_glory_hound_vassal
 						add_opinion = {
 							modifier = tournament_mocked_opinion #Re-using
@@ -884,7 +882,7 @@ ep3_story_cycle_harrying.1010 = {
 			years = 15
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			sadistic = major_stress_impact_gain
 			compassionate = miniscule_stress_impact_loss
@@ -912,9 +910,7 @@ ep3_story_cycle_harrying.1011 = {
 		desc = ep3_story_cycle_harrying.1011.desc
 		triggered_desc = {
 			trigger = {
-				scope:spouse_courtier = {
-					exists = this 
-				}			
+				exists = scope:spouse_courtier	
 			}
 			desc = ep3_story_cycle_harrying.1011.desc.spouse
 		}
@@ -930,9 +926,7 @@ ep3_story_cycle_harrying.1011 = {
 	}
 	lower_center_portrait = {
 		trigger = {
-			scope:spouse_courtier = {
-				exists = this
-			}
+			exists = scope:spouse_courtier
 		}
 		character = scope:spouse_courtier
 	}
@@ -946,31 +940,24 @@ ep3_story_cycle_harrying.1011 = {
 		if = { #Ugly if/else block starts here!
 			limit = {
 				scope:captured = {
-					is_married = no
+					can_marry_common_trigger = yes
 					is_betrothed = no
 				}
 			}
 			if = { #Grab a courtier
 				limit = {
-					AND = {
-						scope:captured = { is_female = yes }
-						any_courtier = {
-							is_female = no
-							is_married = no
-							is_betrothed = no
-							is_adult = yes
-							culture = culture:norman
-							age > scope:captured.age_plus_10
-							age < scope:captured.age_minus_10
-						}
+					any_courtier = {
+						can_marry_character_trigger = { CHARACTER = scope:captured }
+						sex_opposite_of = scope:captured
+						culture = culture:norman
+						age > scope:captured.age_plus_10
+						age < scope:captured.age_minus_10
 					}
 				}
 				random_courtier = {
 					limit = {
-						is_female = no
-						is_married = no
-						is_betrothed = no
-						is_adult = yes
+						sex_opposite_of = scope:captured
+						can_marry_character_trigger = { CHARACTER = scope:captured }
 						culture = culture:norman
 						age > scope:captured.age_plus_10
 						age < scope:captured.age_minus_10
@@ -989,51 +976,13 @@ ep3_story_cycle_harrying.1011 = {
 					save_scope_as = spouse_courtier
 				}
 			}
-			else_if = { #Gender reverse
-				limit = {
-					AND = {
-						scope:captured = { is_female = no }
-						any_courtier = {
-							is_female = yes
-							is_married = no
-							is_betrothed = no
-							is_adult = yes
-							culture = culture:norman
-							age > scope:captured.age_plus_10
-							age < scope:captured.age_minus_10
-						}
-					}
-				}
-				random_courtier = {
-					limit = {
-						is_female = yes
-						is_married = no
-						is_betrothed = no
-						is_adult = yes
-						culture = culture:norman
-						age > scope:captured.age_plus_10
-						age < scope:captured.age_minus_10
-					}
-					weight = {
-						base = 1
-						modifier = {
-							factor = 10
-							is_lowborn = no
-						}
-						modifier = {
-							factor = 5
-							is_close_or_extended_family_of = root
-						}
-					}
-					save_scope_as = spouse_courtier
-				}
-			}
 			else = { #Just in case
 				hidden_effect = {
 					create_character = {
 						location = root.location
 						random_traits = yes
 						faith = root.faith
+						rite = root.rite
 						culture = culture:norman
 						age = scope:captured.age
 						gender_female_chance = {
@@ -1051,8 +1000,7 @@ ep3_story_cycle_harrying.1011 = {
 
 		if = { #Just to ensure she's actually part of your court, if generated
 			limit = {
-				scope:spouse_courtier = {
-					exists = this
+				scope:spouse_courtier ?= {
 					NOT = {
 						is_courtier_of = root
 					}
@@ -1074,9 +1022,7 @@ ep3_story_cycle_harrying.1011 = {
 				first_valid = {
 					triggered_desc = {
 						trigger = { 
-							scope:spouse_courtier = {
-								exists = this 
-							}
+							exists = scope:spouse_courtier
 						}
 						desc = ep3_story_cycle_harrying.1011.a.spouselanguage
 					}
@@ -1088,9 +1034,7 @@ ep3_story_cycle_harrying.1011 = {
 		scope:captured = {
 			if = {
 				limit = {
-					scope:spouse_courtier = {
-						exists = this
-					}
+					exists = scope:spouse_courtier
 				}
 				marry = scope:spouse_courtier
 			}
@@ -1125,7 +1069,7 @@ ep3_story_cycle_harrying.1011 = {
 			opinion = 35
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 			patient = miniscule_stress_impact_loss
 			lazy = miniscule_stress_impact_gain
@@ -1157,7 +1101,7 @@ ep3_story_cycle_harrying.1011 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 			patient = miniscule_stress_impact_loss
 			lazy = miniscule_stress_impact_gain
@@ -1189,6 +1133,19 @@ ep3_story_cycle_harrying.1011 = {
 	}
 }
 
+scripted_trigger harrying_1015_trigger = {
+	culture = culture:anglo_saxon
+	highest_held_title_tier > tier_county	
+	any_held_title = {
+		tier = tier_county
+		is_landless_type_title = no
+		any_county_province = {
+			has_holding = yes
+			num_buildings > 0
+		}
+	}
+}
+
 # Punish a village
 ep3_story_cycle_harrying.1015 = {
 	type = character_event
@@ -1209,29 +1166,34 @@ ep3_story_cycle_harrying.1015 = {
 
 	trigger = {
 		any_vassal = {
-			culture = culture:anglo_saxon
-			highest_held_title_tier > tier_county	
-			any_county = {
-				any_province = {
-					has_holding = yes
-					num_buildings > 0
-				}
-			}		
+			harrying_1015_trigger = yes	
 		}
 	}
 
 	immediate = {
 		random_vassal = {
-			limit = { culture = culture:anglo_saxon }
+			limit = { 
+				harrying_1015_trigger = yes
+			}
 			save_scope_as = vassal
-			random_realm_province = {
+			random_held_title = {
 				limit = {
-					has_holding = yes
-					num_buildings >= 1
+					tier = tier_county
+					is_landless_type_title = no
+					any_county_province = {
+						has_holding = yes
+						num_buildings > 0
+					}
 				}
-				save_scope_as = offending_village	
-				every_neighboring_province = { add_to_list = resettlement_villages }
-				hidden_effect = { destroy_random_building_variable_effect = yes }
+				random_county_province = {
+					limit = {
+						has_holding = yes
+						num_buildings > 0
+					}
+					save_scope_as = offending_village	
+					every_neighboring_province = { add_to_list = resettlement_villages }
+					hidden_effect = { destroy_random_building_variable_effect = yes }
+				}
 			}
 		}
 		save_scope_as = root_scope #for tooltip
@@ -1251,7 +1213,7 @@ ep3_story_cycle_harrying.1015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_loss
 			sadistic = minor_stress_impact_loss
 			vengeful = minor_stress_impact_loss
@@ -1270,6 +1232,12 @@ ep3_story_cycle_harrying.1015 = {
 
 	option = { #Resettle the residents
 		name = ep3_story_cycle_harrying.1015.b
+		trigger = {
+			any_in_list = {
+				list = resettlement_villages
+				count >= 1
+			}
+		}
 
 		scope:offending_village = {
 			add_province_modifier = {
@@ -1287,7 +1255,7 @@ ep3_story_cycle_harrying.1015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			sadistic = minor_stress_impact_loss
 			compassionate = medium_stress_impact_gain
 			just = minor_stress_impact_gain
@@ -1388,6 +1356,7 @@ ep3_story_cycle_harrying.2000 = {
 				location = root.location
 				culture = culture:anglo_saxon
 				faith = root.location.faith
+				rite = root.location.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = starving_man
 			}
@@ -1422,7 +1391,7 @@ ep3_story_cycle_harrying.2000 = {
 			days = { 3 6 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_gain
 			callous = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -1445,7 +1414,7 @@ ep3_story_cycle_harrying.2000 = {
 
 		add_courtier = scope:starving_man
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			callous = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -1505,7 +1474,7 @@ ep3_story_cycle_harrying.2000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_loss
 			generous = minor_stress_impact_gain
 			lazy = minor_stress_impact_gain
@@ -1639,6 +1608,7 @@ ep3_story_cycle_harrying.2005 = {
 				location = root.location
 				culture = culture:anglo_saxon
 				faith = root.location.faith
+				rite = root.location.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = murderer
 			}
@@ -1680,8 +1650,8 @@ ep3_story_cycle_harrying.2005 = {
 		custom_tooltip = diplomacy_family.2250.b.tt
 		hidden_effect = {
 			random_scheme = {
+				type = murder
 				limit = {
-					scheme_type = murder
 					scheme_target_character = scope:willy_family
 				}
 				add_scheme_modifier = {
@@ -1696,7 +1666,7 @@ ep3_story_cycle_harrying.2005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			vengeful = medium_stress_impact_loss
 			sadistic = minor_stress_impact_loss
 			forgiving = medium_stress_impact_gain
@@ -1736,7 +1706,7 @@ ep3_story_cycle_harrying.2005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			callous = minor_stress_impact_loss
 			compassionate = minor_stress_impact_gain
@@ -1756,7 +1726,7 @@ ep3_story_cycle_harrying.2005 = {
 
 		add_courtier = scope:murderer
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = minor_stress_impact_loss
 			diligent = minor_stress_impact_gain
 		}
@@ -1894,7 +1864,7 @@ ep3_story_cycle_harrying.2010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			content = medium_stress_impact_gain
 			greedy = miniscule_stress_impact_gain
@@ -1950,7 +1920,7 @@ ep3_story_cycle_harrying.2010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_loss
 			generous = medium_stress_impact_gain
 		}
@@ -1983,7 +1953,7 @@ ep3_story_cycle_harrying.2010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = minor_stress_impact_loss
 			diligent = minor_stress_impact_gain
 		}
@@ -2047,9 +2017,7 @@ ep3_story_cycle_harrying.2015 = {
 			limit = {
 				scope:william = {
 					any_vassal = {
-						NOT = {
-							this = root
-						}
+						this != root
 						culture = culture:anglo_saxon
 					}
 				}
@@ -2057,9 +2025,7 @@ ep3_story_cycle_harrying.2015 = {
 			scope:william = {
 				random_vassal = {
 					limit = {
-						NOT = {
-							this = root
-						}
+						this != root
 						culture = culture:anglo_saxon
 					}
 					save_scope_as = other_vassal
@@ -2174,7 +2140,7 @@ ep3_story_cycle_harrying.2015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			content = medium_stress_impact_gain
 			deceitful = miniscule_stress_impact_loss
@@ -2227,7 +2193,7 @@ ep3_story_cycle_harrying.2015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_loss
 			generous = medium_stress_impact_gain
 			just = miniscule_stress_impact_gain
@@ -2257,7 +2223,7 @@ ep3_story_cycle_harrying.2015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = minor_stress_impact_loss
 			diligent = minor_stress_impact_gain
 		}
@@ -2331,7 +2297,7 @@ ep3_story_cycle_harrying.3000 = {
 				save_scope_as = neighboring_church
 			}
 		}
-		hidden_effect = {
+		hidden_effect_new_object = {
 			create_character = {
 				template = priest_character_template
 				location = scope:neighboring_church
@@ -2374,7 +2340,7 @@ ep3_story_cycle_harrying.3000 = {
 			}			
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_loss
 			callous = miniscule_stress_impact_loss
 			compassionate = medium_stress_impact_gain
@@ -2399,7 +2365,7 @@ ep3_story_cycle_harrying.3000 = {
 
 		add_gold = medium_gold_value
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = miniscule_stress_impact_loss
 			greedy = miniscule_stress_impact_loss
 			generous = minor_stress_impact_gain
@@ -2424,7 +2390,7 @@ ep3_story_cycle_harrying.3000 = {
 			years = 10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_gain
 			generous = minor_stress_impact_loss
 		}
@@ -2485,6 +2451,7 @@ ep3_story_cycle_harrying.3005 = {
 			location = root.location
 			culture = culture:norman
 			faith = root.location.faith
+			rite = root.location.rite
 			gender_female_chance = root_soldier_female_chance
 			save_scope_as = norman_soldier
 		}
@@ -2579,7 +2546,7 @@ ep3_story_cycle_harrying.3005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_loss
 			callous = miniscule_stress_impact_loss
 			compassionate = miniscule_stress_impact_gain
@@ -2662,7 +2629,7 @@ ep3_story_cycle_harrying.3005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			generous = medium_stress_impact_loss
@@ -2697,7 +2664,7 @@ ep3_story_cycle_harrying.3005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = medium_stress_impact_loss
 			brave = medium_stress_impact_gain
 		}
@@ -2760,7 +2727,7 @@ ep3_story_cycle_harrying.3010 = {
 		has_ep3_dlc_trigger = yes
 		is_available = yes
 		is_healthy = yes
-		global_var:harrying_of_the_north.story_owner = {
+		global_var:harrying_of_the_north.story_owner ?= {
 			save_temporary_scope_as = william_temp
 			any_vassal_or_below = {
 				ep3_story_cycle_harrying_3010_ambushable_noble_trigger = { WILLIAM = scope:william_temp }
@@ -2810,7 +2777,7 @@ ep3_story_cycle_harrying.3010 = {
 			INVALIDATION_EVENT = fp1_yearly.2002 #Re-use this
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = medium_stress_impact_loss
 			wrathful = miniscule_stress_impact_loss
 			calm = miniscule_stress_impact_gain
@@ -2836,7 +2803,7 @@ ep3_story_cycle_harrying.3010 = {
 
 		ep3_decrease_pacification_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = medium_stress_impact_gain
 			wrathful = miniscule_stress_impact_gain
 			calm = miniscule_stress_impact_loss
@@ -2902,6 +2869,7 @@ ep3_story_cycle_harrying.3011 = {
 				location = root.location
 				culture = culture:anglo_saxon
 				faith = root.faith
+				rite = root.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = saxon_soldier_1
 			}
@@ -2910,6 +2878,7 @@ ep3_story_cycle_harrying.3011 = {
 				location = root.location
 				culture = culture:anglo_saxon
 				faith = root.faith
+				rite = root.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = saxon_soldier_2
 			}
@@ -2922,7 +2891,7 @@ ep3_story_cycle_harrying.3011 = {
 		add_courtier = scope:saxon_soldier_1
 		add_courtier = scope:saxon_soldier_2
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			forgiving = medium_stress_impact_loss
 			vengeful = minor_stress_impact_gain
 		}
@@ -2953,7 +2922,7 @@ ep3_story_cycle_harrying.3011 = {
 			years = 10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = miniscule_stress_impact_loss
 			greedy = miniscule_stress_impact_gain
 		}
@@ -3016,6 +2985,7 @@ ep3_story_cycle_harrying.3015 = {
 				location = scope:danish_king.location
 				template = new_warrior_character
 				faith = scope:danish_king.faith
+				rite = scope:danish_king.rite
 				culture = scope:danish_king.culture
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = knight_1
@@ -3024,6 +2994,7 @@ ep3_story_cycle_harrying.3015 = {
 				location = scope:danish_king.location
 				template = new_berserker_character
 				faith = scope:danish_king.faith
+				rite = scope:danish_king.rite
 				culture = scope:danish_king.culture
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = knight_2
@@ -3032,6 +3003,7 @@ ep3_story_cycle_harrying.3015 = {
 				location = scope:danish_king.location
 				template = new_commander_character
 				faith = scope:danish_king.faith
+				rite = scope:danish_king.rite
 				culture = scope:danish_king.culture
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = knight_3
@@ -3091,7 +3063,7 @@ ep3_story_cycle_harrying.3015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			brave = miniscule_stress_impact_loss
 			content = medium_stress_impact_gain
@@ -3153,7 +3125,7 @@ ep3_story_cycle_harrying.3015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			patient = miniscule_stress_impact_loss
 			impatient = minor_stress_impact_gain
 		}
@@ -3183,7 +3155,7 @@ ep3_story_cycle_harrying.3015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			humble = medium_stress_impact_gain
 		}
@@ -3296,7 +3268,7 @@ ep3_story_cycle_harrying.3020 = {
 			return_trip = no
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			brave = miniscule_stress_impact_loss
 			content = medium_stress_impact_gain
@@ -3316,7 +3288,7 @@ ep3_story_cycle_harrying.3020 = {
 
 		ep3_decrease_resistance_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			patient = miniscule_stress_impact_loss
 			impatient = minor_stress_impact_gain
 		}
@@ -3362,6 +3334,7 @@ ep3_story_cycle_harrying.3021 = {
 		title:k_england.holder = {
 			save_temporary_scope_as = willy_temp
 			any_vassal = {
+				is_adult = yes
 				culture = culture:anglo_saxon
 				capital_province = { geographical_region = world_europe_west_britannia }
 				highest_held_title_tier > tier_barony
@@ -3384,6 +3357,7 @@ ep3_story_cycle_harrying.3021 = {
 			save_scope_as = willy
 			random_vassal = {
 				limit = {
+					is_adult = yes
 					culture = culture:anglo_saxon
 					capital_province = { geographical_region = world_europe_west_britannia }
 					highest_held_title_tier > tier_barony
@@ -3415,6 +3389,7 @@ ep3_story_cycle_harrying.3021 = {
 				location = scope:willy_vassal.location
 				culture = scope:willy_vassal.culture
 				faith = scope:willy_vassal.faith
+				rite = scope:willy_vassal.rite
 				gender_female_chance = root_soldier_female_chance
 				save_scope_as = knight_2
 			}
@@ -3438,7 +3413,7 @@ ep3_story_cycle_harrying.3021 = {
 			INVALIDATION_EVENT = fp1_yearly.2002 #Re-use this
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = medium_stress_impact_gain
 			just = minor_stress_impact_gain
 			wrathful = minor_stress_impact_loss
@@ -3508,7 +3483,7 @@ ep3_story_cycle_harrying.3021 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = minor_stress_impact_loss
 			just = miniscule_stress_impact_loss
 			wrathful = medium_stress_impact_gain
@@ -3579,7 +3554,7 @@ ep3_story_cycle_harrying.3021 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = miniscule_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
 			content = minor_stress_impact_gain
@@ -3604,7 +3579,7 @@ ep3_story_cycle_harrying.3021 = {
 
 		ep3_decrease_resistance_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			patient = miniscule_stress_impact_loss
 			impatient = minor_stress_impact_gain
 			just = miniscule_stress_impact_loss
@@ -3621,6 +3596,13 @@ ep3_story_cycle_harrying.3021 = {
 
 	after = {
 		ep3_harrying_widget_clear_effect = yes
+
+		start_travel_plan = {
+			destination = root.domicile.domicile_location
+			players_use_planner = no
+			on_arrival_destinations = last
+			return_trip = no
+		}
 	}
 }
 
@@ -3663,7 +3645,7 @@ ep3_story_cycle_harrying.3022 = {
 
 		add_gold = { 50 100 }
 
-		hidden_effect = {
+		hidden_effect_new_object = {
 			scope:willy_vassal = {
 				create_artifact_brooch_effect = { 
 					OWNER = scope:willy_vassal 
@@ -3706,7 +3688,7 @@ ep3_story_cycle_harrying.3022 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = minor_stress_impact_gain
 			just = minor_stress_impact_gain
 			wrathful = miniscule_stress_impact_loss
@@ -3760,9 +3742,7 @@ ep3_story_cycle_harrying.3022 = {
 				random_sub_realm_duchy = {
 					limit = {
 						holder.culture = culture:norman
-						NOT = {
-							this = scope:saved_duchy
-						}
+						this != scope:saved_duchy
 					}
 					show_as_tooltip = {
 						add_county_modifier = {
@@ -3786,7 +3766,7 @@ ep3_story_cycle_harrying.3022 = {
 			destroy_artifact = scope:traitors_head_artifact
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = minor_stress_impact_loss
 			just = miniscule_stress_impact_loss
 			wrathful = minor_stress_impact_gain
@@ -3984,7 +3964,7 @@ ep3_story_cycle_harrying.3051 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_loss
 			callous = miniscule_stress_impact_loss
 			compassionate = miniscule_stress_impact_gain
@@ -4005,7 +3985,7 @@ ep3_story_cycle_harrying.3051 = {
 
 		flavor = ep3_story_cycle_harrying.3051.b.tt
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			generous = medium_stress_impact_loss
@@ -4077,9 +4057,7 @@ ep3_story_cycle_harrying.3052 = {
 		if = {
 			limit = {
 				scope:cambridgeshire.holder = {
-					NOT = {
-						this = scope:william
-					}
+					this != scope:william
 				}
 			}
 			scope:cambridgeshire.holder = {
@@ -4096,7 +4074,7 @@ ep3_story_cycle_harrying.3052 = {
 			days = 1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_loss
 			callous = miniscule_stress_impact_loss
 			compassionate = miniscule_stress_impact_gain
@@ -4128,7 +4106,7 @@ ep3_story_cycle_harrying.3052 = {
 			days = 1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			generous = medium_stress_impact_loss
@@ -4389,7 +4367,7 @@ ep3_story_cycle_harrying.3054 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = medium_stress_impact_loss
 			callous = miniscule_stress_impact_loss
 			compassionate = miniscule_stress_impact_gain
@@ -4426,7 +4404,7 @@ ep3_story_cycle_harrying.3054 = {
 			days = 1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_gain
 			greedy = minor_stress_impact_gain
 			generous = medium_stress_impact_loss
@@ -4506,6 +4484,7 @@ ep3_story_cycle_harrying.3055 = {
 					gender_female_chance = 50
 					culture = culture:anglo_saxon
 					faith = root.faith
+					rite = root.rite
 					save_scope_as = sympathetic_courtier
 				}
 				scope:william = {
@@ -4519,7 +4498,7 @@ ep3_story_cycle_harrying.3055 = {
 	option = { #You look around your cell
 		name = ep3_story_cycle_harrying.3055.a
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_gain
 		}
 
@@ -4553,7 +4532,7 @@ ep3_story_cycle_harrying.3056 = {
 	option = { # A lifeline!
 		name = ep3_story_cycle_harrying.3056.a
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 
@@ -4671,7 +4650,7 @@ ep3_story_cycle_harrying.3057 = {
 		#	add_character_flag = sympathetic_courtier_flag
 		#}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 

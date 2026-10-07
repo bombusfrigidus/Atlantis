@@ -1,0 +1,129 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+e_japan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_yamato = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kinai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_nankaido = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_east_sanindo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_west_sanindo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_west_sanyodo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_east_sanyodo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_azuma = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_east_bando = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_west_bando = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tokaido = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tosando = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_hokurikudo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_tsukushi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_north_saikaido = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_south_saikaido = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_chrysanthemum_throne = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_shunkan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_takaoka = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_yoshitsune = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_miyoshi_kiyotsura = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_hiei_wayfarers = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_northern_blades = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_laamp_band_of_the_inland_sea = {
+	capital = c_atlantis
+	landless = yes
+}

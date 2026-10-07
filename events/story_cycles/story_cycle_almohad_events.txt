@@ -24,7 +24,7 @@ almohad.0002 = {
 				trigger_if = { # Invalidate if the top liege has converted to Masmudi, but NOT if the top liege is the holder themselves, UNLESS they are also the holder of the Maghreb title (in which case the Almohad's goals have already been achieved)
 					limit = {
 						OR = {
-							NOT = { this = top_liege }
+							top_liege != this
 							any_held_title = {
 								this = title:k_maghreb
 							}
@@ -35,8 +35,8 @@ almohad.0002 = {
 				OR = { # Last resort check to make sure that we don't automatically game over a player
 					is_ai = yes # Either they have to be AI
 					any_held_title = { # Or they have to hold land elsewhere
-						tier = tier_county
-						NOT = { this = scope:almohad_county }
+						title_tier = county
+						this != scope:almohad_county
 					}
 				}
 			}
@@ -63,7 +63,7 @@ almohad.0003 = {
 		side_commander = {
 			top_liege = {
 				any_owned_story = {
-					story_type = story_almohad_invasion
+					type = story_almohad_invasion
 				}
 			}
 		}
@@ -240,6 +240,12 @@ almohad.1002 = {
 		name = almohad.1002.b
 		flavor = almohad.1002.b.flavor
 		set_character_faith_with_conversion = faith:masmudi
+		if = {
+			limit = { 
+				faith:masmudi = { has_doctrine = doctrine_monotheist }
+			}
+			custom_description_no_bullet = { text = mandala_monotheist_warning_tt }
+		}
 		add_piety = massive_piety_loss
 		add_piety_level = -1
 		scope:ibn_tumart = {

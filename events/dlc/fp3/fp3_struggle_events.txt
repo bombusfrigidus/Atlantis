@@ -102,6 +102,7 @@ fp3_struggle.0001 = {
 fp3_struggle.0051 = { # BOOKMARK EVENT
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0051.t
 	desc = {
 		first_valid = {
@@ -208,7 +209,7 @@ fp3_struggle.0051 = { # BOOKMARK EVENT
 					triggered_desc = {
 						trigger = {
 							any_character_struggle = { is_struggle_type = persian_struggle }
-							has_title = title:c_atlantis
+							has_title = character:1.primary_title
 						}
 						desc = fp3_struggle.0051.b
 					}
@@ -231,6 +232,7 @@ fp3_struggle.0051 = { # BOOKMARK EVENT
 fp3_struggle.0071 = { # Strengthen the Caliphate Ending
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0071.t
 	desc = {
 		first_valid = {
@@ -276,12 +278,12 @@ fp3_struggle.0071 = { # Strengthen the Caliphate Ending
 		trigger = {
 			has_dlc_feature = roads_to_power
 			fp3_struggle_is_the_caliph = yes
-			NOT = { government_has_flag = government_is_administrative }
+			NOT = { government_has_mechanic = administrative }
 		}
 		name = fp3_struggle.0071.b
 		clicksound = "event:/DLC/FP3/SFX/UI/Notifications/Toasts/struggle_end_positive"
 		
-		convert_to_administrative_from_feudalism_effect = yes
+		convert_to_administrative_from_feudalism_effect = { GOVERNMENT_TO_ADOPT = flag:administrative }
 		add_legitimacy_effect = { LEGITIMACY = admin_convert_legitimacy_value } #One Time Legitimacy Boost
 		
 		ai_chance = {
@@ -322,6 +324,7 @@ fp3_struggle.0071 = { # Strengthen the Caliphate Ending
 fp3_struggle.0072 = { # Notification for relevant people
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0071.t
 	desc = {
 		first_valid = {
@@ -411,6 +414,7 @@ fp3_struggle.0072 = { # Notification for relevant people
 fp3_struggle.0081 = { #
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0082.t
 	desc = {
 		first_valid = {
@@ -478,6 +482,7 @@ fp3_struggle.0081 = { #
 fp3_struggle.0082 = { # Notification for relevant people
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0082.t
 	desc = {
 		first_valid = {
@@ -547,6 +552,7 @@ fp3_struggle.0082 = { # Notification for relevant people
 fp3_struggle.0091 = { # Rekindle Iran
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0091.t
 	desc = {
 		first_valid = {
@@ -578,7 +584,7 @@ fp3_struggle.0091 = { # Rekindle Iran
 
 		play_music_cue = struggleend_cue
 
-		dynasty:1 = { save_scope_as = sassanid_dynasty }
+		dynasty:1029100 = { save_scope_as = sassanid_dynasty }
 	}
 
 	option = {
@@ -600,6 +606,7 @@ fp3_struggle.0091 = { # Rekindle Iran
 fp3_struggle.0092 = { # Notification for relevant people
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0091.t
 	desc = {
 		desc = fp3_struggle.0092.intro
@@ -648,15 +655,16 @@ fp3_struggle.0092 = { # Notification for relevant people
 fp3_struggle.0095 = { # Temper the Caliphate, Shia Ending
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0095.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith = {
+					rite = {
 						OR = {
-							has_doctrine = muhammad_succession_shia_doctrine
-							has_doctrine = muhammad_succession_zandaqa_doctrine
+							rite_has_doctrine = muhammad_succession_shia_doctrine
+							rite_has_doctrine = muhammad_succession_zandaqa_doctrine
 						}
 					}
 				}
@@ -664,8 +672,8 @@ fp3_struggle.0095 = { # Temper the Caliphate, Shia Ending
 			}
 			triggered_desc = {
 				trigger = {
-					faith = {
-						has_doctrine = muhammad_succession_muhakkima_doctrine
+					rite = {
+						rite_has_doctrine = muhammad_succession_muhakkima_doctrine
 					}
 				}
 				desc = fp3_struggle.0095.desc.muhakkima
@@ -709,6 +717,7 @@ fp3_struggle.0095 = { # Temper the Caliphate, Shia Ending
 fp3_struggle.0096 = { # Notification for relevant people
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0095.t
 	desc = {
 		first_valid = {
@@ -764,7 +773,7 @@ fp3_struggle.0096 = { # Notification for relevant people
 		trigger = {
 			NOR = {
 				has_trait = fp3_struggle_supporter
-				faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+				rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 			}
 		}
 		clicksound = "event:/DLC/FP3/SFX/UI/Notifications/Toasts/struggle_end_positive"
@@ -775,7 +784,7 @@ fp3_struggle.0096 = { # Notification for relevant people
 		trigger = {
 			OR = {
 				has_trait = fp3_struggle_supporter
-				faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+				rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 			}
 		}
 		clicksound = "event:/DLC/FP3/SFX/UI/Notifications/Toasts/struggle_end_negative"
@@ -785,15 +794,16 @@ fp3_struggle.0096 = { # Notification for relevant people
 fp3_struggle.0100 = { # Temper the Caliphate, Vassalize Caliphate Ending
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0100.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith = { 
+					rite = {
 						OR = {
-							has_doctrine = muhammad_succession_shia_doctrine 
-							has_doctrine = muhammad_succession_zandaqa_doctrine 
+							rite_has_doctrine = muhammad_succession_shia_doctrine 
+							rite_has_doctrine = muhammad_succession_zandaqa_doctrine 
 						}
 					}
 				}
@@ -801,7 +811,7 @@ fp3_struggle.0100 = { # Temper the Caliphate, Vassalize Caliphate Ending
 			}
 			triggered_desc = {
 				trigger = {
-					faith = { has_doctrine = muhammad_succession_muhakkima_doctrine }
+					rite = { rite_has_doctrine = muhammad_succession_muhakkima_doctrine }
 				}
 				desc =  fp3_struggle.0100.desc.muhakkima
 			}
@@ -839,6 +849,7 @@ fp3_struggle.0100 = { # Temper the Caliphate, Vassalize Caliphate Ending
 fp3_struggle.0101 = { # Notification for relevant people
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = fp3_struggle.0100.t
 	desc = {
 		first_valid = {
@@ -891,7 +902,7 @@ fp3_struggle.0101 = { # Notification for relevant people
 		trigger = {
 			NOR = {
 				has_trait = fp3_struggle_supporter
-				faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+				rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 			}
 		}
 		clicksound = "event:/DLC/FP3/SFX/UI/Notifications/Toasts/struggle_end_positive"
@@ -902,7 +913,7 @@ fp3_struggle.0101 = { # Notification for relevant people
 		trigger = {
 			OR = {
 				has_trait = fp3_struggle_supporter
-				faith = { has_doctrine = muhammad_succession_sunni_doctrine }
+				rite = { rite_has_doctrine = muhammad_succession_sunni_doctrine }
 			}
 		}
 		clicksound = "event:/DLC/FP3/SFX/UI/Notifications/Toasts/struggle_end_negative"
@@ -1169,9 +1180,8 @@ fp3_struggle.9982 = { # Revision 2 nav event, to make QA's life easier and avoid
 
 		random_ruler = {
 			limit = {
-				this = top_liege
-				exists = location # TIL, we are somehow generating *a lot* of top lieges without a location set
-				location = { geographical_region = world_persian_empire }
+				top_liege = this
+				location ?= { geographical_region = world_persian_empire }
 			}
 			primary_title = { save_scope_as = debug_caliph }
 		}
@@ -1233,6 +1243,7 @@ fp3_struggle.9983 = { # Create Persian Empire Test
 fp3_struggle.9984 = { # Ending simulator - Allows you to end the struggle in a clean way, works better/is safer than commands
 	type = character_event
 	window = fullscreen_event
+	queue_icon = "gfx/interface/icons/splash_icons/splash_persia.dds"
 	title = ENDING_DECISION_AVAILABLE
 	desc = ENDING_DECISION_BUTTON_LABEL_MULTIPLE
 	orphan = yes

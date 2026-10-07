@@ -520,8 +520,11 @@ TitleAdjBase = {
 					this = title:e_golden_horde
 					this = title:e_ilkhanate
 					#this = title:e_chagatai
-					this = title:e_black_horde
+					this = title:e_red_horde
 					this = title:e_white_horde
+					this = title:e_great_yuan
+					this = title:e_blue_horde
+					this = title:e_omnod_dalai_khanate
 					this = title:e_aarlud_khanate
 					this = title:e_togskol_khanate
 					this = title:e_baruun_khanate	
@@ -550,8 +553,9 @@ TitleAdjBase = {
 					this = title:d_yungdrung_bon
 					this = title:e_hre
 					this = title:d_western_isles
-					this = title:e_roman_empire
+					this = title:h_roman_empire
 					this = title:e_byzantium
+					this = title:h_eastern_roman_empire
 					this = title:k_armenian_principality
 					this = title:d_northern_isles
 					this = title:e_wendish_empire
@@ -645,6 +649,34 @@ TitleAdjBase = {
 					this = title:d_laamp_voiteh
 					this = title:d_laamp_aelfwine
 					this = title:d_laamp_karatzas
+					this = title:d_laamp_ding_hui
+					this = title:d_laamp_zhu_quanzhong
+					this = title:d_laamp_miyoshi_kiyotsura
+					this = title:d_laamp_hidden_valley_banner
+					this = title:d_laamp_way_of_the_mountains
+					this = title:d_laamp_pongyi_thaing_fellowship
+					this = title:d_laamp_ravine_lords
+					this = title:d_laamp_sirafi_mariners
+					this = title:d_laamp_liangshan_band
+					this = title:d_laamp_frontier_guardians
+					this = title:d_laamp_companions_of_caodong
+					this = title:d_laamp_hiei_wayfarers
+					this = title:d_laamp_northern_blades
+					this = title:d_laamp_band_of_the_inland_sea
+					this = title:d_laamp_munheon_disciples
+					this = title:d_laamp_white_tigers
+					this = title:d_laamp_pathwalkers
+					this = title:d_laamp_delta_company
+					this = title:d_laamp_leaf_hermits
+					this = title:d_laamp_disciples_of_chongyang
+					this = title:d_laamp_wandering_lute
+					this = title:d_laamp_lembongs_band
+					this = title:d_laamp_dawn_company
+					this = title:d_laamp_eastern_sculptors
+					this = title:d_laamp_stormbringers
+					this = title:d_laamp_samadhi_and_prajna_society
+					this = title:d_laamp_arrow_cutters
+					this = title:d_laamp_ordinators
 					this = title:d_laamp_kizil_buga
 					this = title:d_laamp_ali_ibn_reverter
 					this = title:d_laamp_andronikos_komnenos
@@ -920,81 +952,6 @@ TitleIsPlural = {
 }
 
 
-# v1.5
-RarityAdjToArtifactSlotType = {
-	log_loc_errors = no
-	type = artifact
-
-	text = {
-		trigger = { 
-			OR = { 
-				   artifact_slot_type = pedestal
-				   artifact_slot_type = sculpture
-				   artifact_slot_type = throne
-				   artifact_slot_type = wall_big
-				   artifact_slot_type = wall_small
-			 }
-		}
-		localization_key = slot_type_1
-	}
-
-	text = {
-		trigger = { 
-			OR = {
-				artifact_slot_type = helmet 
-				artifact_slot_type = regalia
-			}
-		}
-		localization_key = slot_type_2
-	}
-
-	text = {
-		fallback = yes
-		localization_key = slot_type_0
-	}
-
-}
-
-# v1.5
-RarityAdjToArtifactType = {
-	log_loc_errors = no
-	type = artifact
-
-	text = {
-		trigger = { 
-			OR = { 
-				   artifact_type = pedestal
-				   artifact_type = sculpture
-				   artifact_type = throne
-				   artifact_type = goblet
-				   artifact_type = wall_big
-				   artifact_type = wall_small
-				   artifact_type = elixir
-				   artifact_type = philosophers_stone
-			 }
-		}
-		localization_key = slot_type_1
-	}
-
-	text = {
-		trigger = { 
-			OR = {
-				artifact_type = helmet 
-				artifact_type = regalia
-				artifact_type = box
-				artifact_type = panacea
-			}
-		}
-		localization_key = slot_type_2
-	}
-
-	text = {
-		fallback = yes
-		localization_key = slot_type_0
-	}
-
-}
-
 PL_ActivityStringBypass = {
 	log_loc_errors = no
 	type = activity
@@ -1263,7 +1220,7 @@ HighGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_high_god_name
 	}
@@ -1277,21 +1234,21 @@ HighGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = priscillianism_high_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_high_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_high_god_name
 	}
@@ -1334,35 +1291,35 @@ HighGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:vaishnavism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_high_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_high_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:srikula_shaktism
+				this = faith:shakta_faith
 		}
 		localization_key = shaktism_good_god_sundari
 	}
 	
 	text = {
 		trigger = {
-				this = faith:kalikula_shaktism
+				this = faith:shakta_faith
 		}
 		localization_key = shaktism_good_god_kali
 	}
 	
 	text = {
 		trigger = {
-				this = faith:krishnaism
+				this = faith:vaishnava_faith
 		}
 		localization_key = krishnaism_high_god_name
 	}
@@ -1619,15 +1576,15 @@ HighGodNameWol = {
 HealthGodNameBase = {
 	type = faith
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_health_god_name
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_health_god_name
+#	}
 	
 	text = {
 		trigger = {
@@ -1686,14 +1643,14 @@ HealthGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_health_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_health_god_name
 	}
@@ -1725,7 +1682,7 @@ HealthGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_health_god_name
 	}
@@ -1739,21 +1696,21 @@ HealthGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_health_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_health_god_name
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_health_god_name
 	}
@@ -1796,7 +1753,7 @@ HealthGodNameBase = {
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_health_god_name
 	}
@@ -2090,14 +2047,14 @@ CreatorNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_creator_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_creator_god_name_cel
 	}
@@ -2122,7 +2079,7 @@ CreatorNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_creator_god_name_cel
 	}
@@ -2136,28 +2093,28 @@ CreatorNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_creator_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:sabianism
+				this = faith:mandaean_faith
 		}
 		localization_key = sabianism_creator_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_creator_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_creator_god_name_cel
 	}
@@ -2426,22 +2383,22 @@ FertilityGodNameCel = {
 		localization_key = west_christian_fertility_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_fertility_god_name_cel
-	}
-	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_fertility_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_fertility_god_name_cel
+#	}
+#	
+#	text = {
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_fertility_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -2500,14 +2457,14 @@ FertilityGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_fertility_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_fertility_god_name_cel
 	}
@@ -2532,7 +2489,7 @@ FertilityGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_fertility_god_name_cel
 	}
@@ -2546,21 +2503,21 @@ FertilityGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_fertility_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_fertility_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_fertility_god_name_cel
 	}
@@ -2603,7 +2560,7 @@ FertilityGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_fertility_god_name_cel
 	}
@@ -2846,22 +2803,22 @@ WealthGodNameCel = {
 		localization_key = west_christian_wealth_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_wealth_god_name_cel
-	}
-	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_wealth_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_wealth_god_name_cel
+#	}
+#	
+#	text = {
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_wealth_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -2920,14 +2877,14 @@ WealthGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_wealth_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_wealth_god_name_cel
 	}
@@ -2959,7 +2916,7 @@ WealthGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_wealth_god_name_cel
 	}
@@ -2973,21 +2930,21 @@ WealthGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_wealth_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_wealth_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_wealth_god_name_cel
 	}
@@ -3030,21 +2987,21 @@ WealthGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vaishnavism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_wealth_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_wealth_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:krishnaism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_wealth_god_name_cel
 	}
@@ -3284,22 +3241,22 @@ HouseholdGodNameCel = {
 		localization_key = west_christian_household_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_household_god_name_cel
-	}
-	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_household_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_household_god_name_cel
+#	}
+#	
+#	text = {
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_household_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -3358,14 +3315,14 @@ HouseholdGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_household_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_household_god_name_cel
 	}
@@ -3390,7 +3347,7 @@ HouseholdGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_household_god_name_cel
 	}
@@ -3404,21 +3361,21 @@ HouseholdGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_household_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_household_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_household_god_name_cel
 	}
@@ -3461,7 +3418,7 @@ HouseholdGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_household_god_name_cel
 	}
@@ -3691,12 +3648,12 @@ FateGodNameCel = {
 	log_loc_errors = no
 	type = faith
 	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_fate_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_fate_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -4035,22 +3992,22 @@ KnowledgeGodNameCel = {
 		localization_key = west_christian_knowledge_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_knowledge_god_name_cel
-	}
-	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_knowledge_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_knowledge_god_name_cel
+#	}
+#	
+#	text = {
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_knowledge_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -4109,14 +4066,14 @@ KnowledgeGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_knowledge_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_knowledge_god_name_cel
 	}
@@ -4141,14 +4098,14 @@ KnowledgeGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:cainitism
+				this = faith:gnostic_faith
 		}
 		localization_key = cainitism_knowledge_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_knowledge_god_name_cel
 	}
@@ -4162,21 +4119,21 @@ KnowledgeGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_knowledge_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_knowledge_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_knowledge_god_name_cel
 	}
@@ -4219,14 +4176,14 @@ KnowledgeGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vaishnavism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_knowledge_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_knowledge_god_name_cel
 	}
@@ -4240,7 +4197,7 @@ KnowledgeGodNameCel = {
 
 	text = {
 		trigger = {
-				this = faith:krishnaism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_knowledge_god_name_cel
 	}
@@ -4473,22 +4430,22 @@ WarGodNameCel = {
 		localization_key = west_christian_war_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-			OR = {
-				this = faith:coptic
-				this = faith:armenian_apostolic
-			}
-		}
-		localization_key = east_christian_war_god_name_cel
-	}
-	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_war_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#			OR = {
+#				this = faith:coptic
+#				this = faith:armenian_apostolic
+#			}
+#		}
+#		localization_key = east_christian_war_god_name_cel
+#	}
+#	
+#	text = {
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_war_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -4547,14 +4504,14 @@ WarGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_war_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_war_god_name_cel
 	}
@@ -4586,7 +4543,7 @@ WarGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_war_god_name_cel
 	}
@@ -4600,21 +4557,21 @@ WarGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_war_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_war_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_war_god_name_cel
 	}
@@ -4657,14 +4614,14 @@ WarGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vaishnavism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_war_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:shaivism
+				this = faith:shaiva_faith
 		}
 		localization_key = shaivism_war_god_name_cel
 	}
@@ -4678,7 +4635,7 @@ WarGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:krishnaism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_war_god_name_cel
 	}
@@ -4915,12 +4872,12 @@ TricksterGodNameCel = {
 	log_loc_errors = no
 	type = faith
 	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_trickster_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_trickster_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -5033,14 +4990,14 @@ TricksterGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vaishnavism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_trickster_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:krishnaism
+				this = faith:vaishnava_faith
 		}
 		localization_key = vaishnavism_trickster_god_name_cel
 	}
@@ -5320,14 +5277,14 @@ NightGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_night_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_night_god_name_cel
 	}
@@ -5352,7 +5309,7 @@ NightGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_night_god_name_cel
 	}
@@ -5366,21 +5323,21 @@ NightGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_night_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_night_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_night_god_name_cel
 	}
@@ -5642,12 +5599,12 @@ WaterGodNameCel = {
 		localization_key = west_christian_water_god_name_cel
 	}
 	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_water_god_name_cel
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_water_god_name_cel
+#	}
 	
 	text = {
 		trigger = {
@@ -5706,14 +5663,14 @@ WaterGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_water_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_water_god_name_cel
 	}
@@ -5738,7 +5695,7 @@ WaterGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_water_god_name_cel
 	}
@@ -5752,21 +5709,21 @@ WaterGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_water_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_water_god_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_water_god_name_cel
 	}
@@ -6082,7 +6039,7 @@ WitchGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_witchgod_name_cel
 	}
@@ -6107,7 +6064,7 @@ WitchGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:valentinianism
+				this = faith:gnostic_faith
 		}
 		localization_key = valentinianism_witchgod_name_cel
 	}
@@ -6121,21 +6078,21 @@ WitchGodNameCel = {
 	
 	text = {
 		trigger = {
-				this = faith:priscillianism
+				this = faith:gnostic_faith
 		}
 		localization_key = manicheanism_witchgod_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:mandeaism
+				this = faith:mandaean_faith
 		}
 		localization_key = mandeaism_witchgod_name_cel
 	}
 	
 	text = {
 		trigger = {
-				this = faith:manichean
+				this = faith:manichaean_faith
 		}
 		localization_key = manicheanism_witchgod_name_cel
 	}
@@ -6996,12 +6953,12 @@ HouseOfWorshipBase = {
 	log_loc_errors = no
 	type = faith
 	
-	text = {
-		trigger = {
-				this = faith:insular_celtic
-		}
-		localization_key = insular_celtic_house_of_worship
-	}
+#	text = { TODO_PAM_ALI rites don't support flav locs right now, enable when we do
+#		trigger = {
+#				this = faith:insular_celtic
+#		}
+#		localization_key = insular_celtic_house_of_worship
+#	}
 	
 	text = {
 		trigger = {
@@ -7021,7 +6978,7 @@ HouseOfWorshipBase = {
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_house_of_worship
 	}
@@ -7046,7 +7003,7 @@ HouseOfWorshipBase = {
 	
 	text = {
 		trigger = {
-				this = faith:alevi
+				this = rite:alevi
 		}
 		localization_key = alevi_house_of_worship
 	}
@@ -7166,14 +7123,14 @@ ReligiousTextAdj = {
 	
 	text = {
 		trigger = {
-				this = faith:vajrayana
+				this = faith:vajrayana_faith
 		}
 		localization_key = vajrayana_religious_text_adj
 	}
 	
 	text = {
 		trigger = {
-				this = faith:lamaism
+				this = faith:vajrayana_faith
 		}
 		localization_key = lamaism_religious_text_adj
 	}
@@ -7198,14 +7155,14 @@ ReligiousTextAdj = {
 	
 	text = {
 		trigger = {
-				this = faith:sabianism
+				this = faith:mandaean_faith
 		}
 		localization_key = sabianism_religious_text_adj
 	}
 	
 	text = {
 		trigger = {
-				this = faith:cainitism 
+				this = faith:gnostic_faith 
 		}
 		localization_key = cainite_religious_text_adj
 	}
@@ -7257,7 +7214,7 @@ ReligiousTextAdj = {
 	
 	text = {
 		trigger = {
-				this = faith:alevi
+				this = rite:alevi
 		}
 		localization_key = alevi_religious_text_adj
 	}

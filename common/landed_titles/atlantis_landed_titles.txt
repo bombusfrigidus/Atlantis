@@ -19,41 +19,41 @@ e_atlantis = {
 					province = 1
 					color = { 50 50 50 }
 				}
-				b_atlantis_2 = {
+				b_atlantis_b = {
 					province = 2
 					color = { 50 50 50 }
 				}
-				b_atlantis_3 = {
+				b_atlantis_c = {
 					province = 3
 					color = { 50 50 50 }
 				}
 			}
 			c_atlantis_b = {
 				color = { 75 75 75 }
-				b_atlantis_4 = {
+				b_atlantis_d = {
 					province = 4
 					color = { 25 25 25 }
 				}
-				b_atlantis_5 = {
+				b_atlantis_e = {
 					province = 5
 					color = { 25 25 25 }
 				}
-				b_atlantis_6 = {
+				b_atlantis_f = {
 					province = 6
 					color = { 25 25 25 }
 				}
 			}
 			c_atlantis_c = {
 				color = { 50 50 50 }
-				b_atlantis_7 = {
+				b_atlantis_g = {
 					province = 7
 					color = { 1 1 1 }
                 }
-				b_atlantis_8 = {
+				b_atlantis_h = {
 					province = 8
 					color = { 1 1 1 }
 				}
-				b_atlantis_9 = {
+				b_atlantis_i = {
 					province = 9
 					color = { 1 1 1 }
 				}

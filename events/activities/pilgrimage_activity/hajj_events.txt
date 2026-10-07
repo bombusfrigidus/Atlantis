@@ -35,7 +35,7 @@ hajj.0010 = {
 	hidden = yes 
 	scope = faith
 	trigger = {
-		has_doctrine = doctrine_pilgrimage_mandatory_hajj
+		main_rite = { rite_has_doctrine = doctrine_pilgrimage_mandatory_hajj }
 		any_faith_ruler = {
 			is_landed = yes
 			capital_province.barony ?= title:b_atlantis
@@ -67,7 +67,7 @@ hajj.0011 = {
 			trigger = {
 				OR = {
 					has_trait = cynical
-					any_secret = { secret_type = secret_non_believer }
+					any_secret = { type = secret_non_believer }
 				}
 			}
 			animation = boredom
@@ -76,6 +76,8 @@ hajj.0011 = {
 	}
 	immediate = {
 		add_trait = hajjaj
+		# Full SF parity with a completed hajj (major under mandatory-pilgrimage doctrines).
+		pilgrimage_sp_reward_effect = yes
 		#Set up the memory in case we change capital and want to go on a second Hajj
 		create_character_memory = { type = completed_hajj_memory }
 		scope:new_memory ?= {
@@ -86,6 +88,15 @@ hajj.0011 = {
 			set_variable = {
 				name = hajj_destination
 				value = title:b_atlantis.title_province
+			}
+			# Keep holy-site cooldown tracking consistent with pilgrimage activity memories.
+			set_variable = {
+				name = pilgrimage_destination
+				value = title:b_atlantis.title_province
+			}
+			set_variable = {
+				name = pilgrimage_holy_site_cooldown
+				years = 5
 			}
 			if = {
 				limit = { exists = var:hajj_destination }
@@ -99,7 +110,7 @@ hajj.0011 = {
 			trigger = {
 				OR = {
 					has_trait = cynical
-					any_secret = { secret_type = secret_non_believer }
+					any_secret = { type = secret_non_believer }
 				}
 			}
 			text = hajj.0011.a_cynical
@@ -147,7 +158,7 @@ hajj.0500 = {
 				AND = {
 					has_trait = zealous
 					NOT = {
-						any_secret = { secret_type = secret_non_believer }
+						any_secret = { type = secret_non_believer }
 					}
 				}
 				ai_zeal >= 50
@@ -158,9 +169,9 @@ hajj.0500 = {
 		}
 		is_available_healthy_adult = yes
 		#Needs to be a mandatory Hajj religion
-		faith = { 
-			has_doctrine_parameter = mandatory_hajj
-			any_holy_site = { this = title:b_atlantis }
+		rite = { rite_has_parameter = mandatory_hajj }
+		faith = {
+			any_holy_site_barony = { this = title:b_atlantis }
 		}
 		#This really should take care of most Hajj/Pilgrim-related trigger checks - if you don't have this trait, you really shouldn't have a Hajj cooldown etc
 		NOT = { has_trait = hajjaj }
@@ -218,7 +229,7 @@ hajj.0500 = {
 			add_character_modifier = hajj_promised_modifier
 		}
 		add_piety = minor_piety_gain
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -239,7 +250,7 @@ hajj.0500 = {
 				opinion = -5
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			sadistic = medium_stress_impact_loss
 			callous = minor_stress_impact_loss
 			compassionate = major_stress_impact_gain
@@ -401,7 +412,7 @@ hajj.3010 = {
 								show_in_conclusion = yes
 								#Effects
 								root = {
-									stress_impact = {
+									stress_and_fulfillment_impact = {
 										base = medium_stress_impact_gain
 										cynical = medium_stress_impact_loss #To weigh it up
 									}
@@ -431,7 +442,7 @@ hajj.3010 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 		}
@@ -535,7 +546,7 @@ hajj.3020 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			athletic = medium_stress_impact_loss
 			lazy = medium_stress_impact_gain
 		}
@@ -560,7 +571,7 @@ hajj.3020 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_loss #To weigh up the lazy gain
 			lazy = minor_stress_impact_gain
 		}
@@ -625,7 +636,7 @@ hajj.3020 = {
 				trigger_event = hajj.3021
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_gain
 			athletic = medium_stress_impact_gain
 			lazy = medium_stress_impact_loss
@@ -664,6 +675,7 @@ hajj.3021 = {
 			location = root.location
 			culture = root.location.culture
 			faith = root.faith
+			rite = root.rite
 			save_scope_as = penalizer
 		}
 		3020_hajj_penalization_effect = yes
@@ -689,7 +701,7 @@ hajj.3021 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_loss
 			compassionate = minor_stress_impact_gain
 			sadistic = medium_stress_impact_loss
@@ -720,7 +732,7 @@ hajj.3021 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_loss
 			greedy = minor_stress_impact_gain
 		}
@@ -754,7 +766,7 @@ hajj.3021 = {
 				#No effects, you had your chance
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = minor_stress_impact_loss
 			zealous = minor_stress_impact_loss #To weigh up the lazy gain
 			lazy = minor_stress_impact_gain
@@ -816,7 +828,7 @@ hajj.3030 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			impatient = minor_stress_impact_gain
 			arrogant = miniscule_stress_impact_gain
 		}
@@ -853,7 +865,7 @@ hajj.3030 = {
 				NOT = { has_perk = healthy_perk }
 				learning >= medium_skill_rating 
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				craven = minor_stress_impact_gain
 				paranoid = medium_stress_impact_gain
 			}
@@ -941,7 +953,7 @@ hajj.3030 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_gain
 			craven = minor_stress_impact_loss
 			paranoid = medium_stress_impact_loss
@@ -975,7 +987,7 @@ hajj.3040 = {
 			trigger = {
 				OR = { 
 					has_trait = cynical
-					any_secret = { secret_type = secret_non_believer }
+					any_secret = { type = secret_non_believer }
 				}
 			}
 			animation = personality_callous
@@ -1030,7 +1042,7 @@ hajj.3040 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = major_stress_impact_loss
 			greedy = medium_stress_impact_gain
 			sadistic = major_stress_impact_loss
@@ -1070,7 +1082,7 @@ hajj.3040 = {
 					if = {
 						limit = { has_character_modifier = hajj_camel_knowledge_modifier }
 						every_vassal_or_below = {
-							limit = { has_vassal_stance = zealot }
+							vassal_stance = zealot
 							custom = every_zealot_vassal
 							add_opinion = {
 								modifier = humored_opinion
@@ -1088,7 +1100,7 @@ hajj.3040 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = minor_stress_impact_loss
 			greedy = minor_stress_impact_gain
 			sadistic = minor_stress_impact_loss
@@ -1127,7 +1139,7 @@ hajj.3040 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = miniscule_stress_impact_gain
 			sadistic = miniscule_stress_impact_loss
 		}
@@ -1158,7 +1170,7 @@ hajj.3040 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_gain
 			greedy = minor_stress_impact_loss
 		}
@@ -1188,13 +1200,13 @@ hajj.3001 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith = { has_doctrine = doctrine_gender_male_dominated }
+					rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 				}
 				desc = hajj.3001.desc.male_dominated
 			}
 			triggered_desc = {
 				trigger = {
-					faith = { has_doctrine = doctrine_gender_female_dominated }
+					rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 				}
 				desc = hajj.3001.desc.female_dominated
 			}
@@ -1217,14 +1229,14 @@ hajj.3001 = {
 		trigger = {
 			OR = {
 				AND = {
-					faith = { has_doctrine = doctrine_gender_male_dominated }
+					rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 					is_male = yes
 				}
 				AND = {
-					faith = { has_doctrine = doctrine_gender_female_dominated }
+					rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 					is_female = yes
 				}
-				faith = { has_doctrine = doctrine_gender_equal }
+				rite = { rite_has_doctrine = doctrine_gender_equal }
 			}
 		}
 		pious_type_option_effect = yes
@@ -1243,7 +1255,7 @@ hajj.3001 = {
 				show_in_conclusion = yes
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = minor_stress_impact_gain
 			arrogant = minor_stress_impact_gain
 			beauty_good_1 = minor_stress_impact_gain
@@ -1268,14 +1280,14 @@ hajj.3001 = {
 				scope:host = {
 					if = {
 						limit = {
-							faith = { has_doctrine = doctrine_gender_male_dominated }
+							rite = { rite_has_doctrine = doctrine_gender_male_dominated }
 							is_female = yes
 						}
 						add_piety = miniscule_piety_gain
 					}
 					else_if = {
 						limit = {
-							faith = { has_doctrine = doctrine_gender_female_dominated }
+							rite = { rite_has_doctrine = doctrine_gender_female_dominated }
 							is_male = yes
 						}
 						add_piety = miniscule_piety_gain
@@ -1287,7 +1299,7 @@ hajj.3001 = {
 				show_in_conclusion = yes
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 			humble = minor_stress_impact_gain
 		}

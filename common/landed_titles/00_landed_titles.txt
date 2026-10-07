@@ -3,7 +3,6 @@
 @always_primary_score = 1000
 @never_primary_score = -1000
 
-
 ########################
 #### VANILLA TITLES ####
 ########################
@@ -13,5547 +12,6448 @@
 # - \b[X]_(?!atlantis\b)[a-zA-Z0-9_]+\b
 # - Replace the X with bcdke depending on what title you want to find, or just put them all in to find every title
 
-k_papal_state = { 
+h_roman_empire = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_orthodox = { 
+h_eastern_roman_empire = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_fashion = { 
+h_dar_al_islam = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_iconoclast = { 
+h_india = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_patriarchate_in_the_east = { 
+k_papal_state = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_coptic_papacy = { 
+k_orthodox = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_apostolic_church = { 
+k_fashion = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_conversos = { 
+d_iconoclast = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_manichean = { 
+d_patriarchate_in_the_east = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_danelaw = { 
+d_coptic_papacy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_daneland = { 
+d_apostolic_church = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mediterranean_sea = { 
+d_conversos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sunni = { 
+d_manichean = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shiite = { 
+k_danelaw = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_imami = { 
+k_daneland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ismaili = { 
+k_mediterranean_sea = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nizari = { 
+d_sunni = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zayidi = { 
+d_shiite = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_masmudi = { 
+d_imami = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_muwalladi = { 
+d_ismaili = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ghulat = { 
+d_nizari = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_golden_horde = { 
+d_zayidi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_ilkhanate = { 
+d_masmudi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_chagatai = { 
+d_muwalladi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_black_horde = { 
+d_ghulat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_white_horde = { 
+e_golden_horde = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_aarlud_khanate = { 
+e_ilkhanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_togskol_khanate = { 
+e_chagatai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_baruun_khanate = { 
+e_red_horde = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_uyghur_khanate = { 
+e_white_horde = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_kirghiz_khanate = { 
+e_aarlud_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_mongol_empire = { 
+e_togskol_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_great_liao = { 
+e_baruun_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_kara_khitai = { 
+e_great_yuan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_timurids = { 
+e_blue_horde = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bosporan_kingdom = { 
+e_omnod_dalai_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_naiman = { 
+e_uyghur_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karaism = { 
+e_kirghiz_khanate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_haymanot = { 
+e_mongol_empire = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_malabarism = { 
+e_great_liao = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samaritan = { 
+e_kara_khitai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kabarism = { 
+e_jin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mazdayasna = { 
+e_timurids = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zurvanism = { 
+e_caspian-pontic_steppe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gayomarthianism = { 
+k_galicia-volhynia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khurmazta = { 
+
+k_bosporan_kingdom = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_naiman = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_karaism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_haymanot = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_malabarism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_samaritan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kabarism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_mazdayasna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_zurvanism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gayomarthianism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_khurmazta = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_mazdakism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_khurramism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_urartuism = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_sakya_trizin = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_guiyi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_switzerland = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_austria = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_carantania = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_visigoths = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_outremer = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_toledo = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_templar = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_teutonic_order = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_hospitaller = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_st_lazarus = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sword_brethren = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_the_tau = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_the_holy_sepulchre = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_hashshashin = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bektashi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_haruriyyah = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_jomsvikings = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_immortals = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_zealots = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_holy_sepulchre = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_the_first_patriarchate = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_order_of_the_holy_virgin = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_saint_anthony = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_saint_addai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_saint_patrick = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sky_lords = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_spirit_guardians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_warriors_perun = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_chosen_perkunas = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sons_kaleva = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_huitzilopochtli = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_santiago = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_alcantara = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_calatrava = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_aviz = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_st_thomas = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_knights_of_the_red_star = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_followers_arjuna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ashokas_chosen = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bulls_rishabha = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_zun_warriors = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_safavid_order = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_benedictine_order = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cluniacs = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_camaldolese = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cistercians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_columban_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pastoral_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_eremetic_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_anianian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_st_denis_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_maurian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gallic_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_latin_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_corbine_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ulaid_monasteries = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gaelic_columbans = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_brythonic_abbeys = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_akritai_of_the_passes = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_fleurians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_imperial_canonesses = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vallombrosans = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_premonstratensians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_carthusians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tironensians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_fontevraud_order = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_augustinian_canons = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sankt_gallen_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ottonian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_guntherian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_hirsau_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_princely_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ripollese_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_iberian_cluniacs = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gurloesian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ugo_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_glagolitic_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_martinian_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_eastern_cluniacs = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_edgaric_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_norman_benedictines = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_norman_cistercians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_baltic_cistercians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_iberian_cistercians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_eastern_cistercians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_midlands_monasteries = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gaelic_abbeys = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_carmelites = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_franciscans = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_dominicans = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_poor_clares = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_studites = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_athonite_hermits = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bithynians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_latros_hesychasts = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sumelan_monks = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_georgian_monasteries = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_evergetine_cenobites = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_klimentine_monasteries = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_kyivan_studites = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_yurievs = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_boeotians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_euphrosynians = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sisters_of_the_nativity = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bahitawi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_desert_fathers = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_monks_of_hayk = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_eastern_vardapets = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sons_of_the_covenant = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_rightful_dayroye = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_community_of_st_catherine = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ghazis_of_al_thugur = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ghazis_of_dar_al_harb = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ghazis_of_al_andalus = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ghazis_of_sharq_al_andalus = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ghazis_of_gharb_al_andalus = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_turkic_ghazis = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bahr_al_maghrib_raiders = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_latin_empire = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_beth_nahrain = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_slavia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_armenia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_viet = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_majapahit = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_ruucuu = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_north_sea = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_carthage = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_pechenegs = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_carthage = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_tripolitania = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_mauretania = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_carthago_nova = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_zaragoza = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_erzerum = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_amalfi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_belgrade = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pronsk = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sandomiersk = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_swiss = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_yungdrung_bon = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_hre = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_hansa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_britannia = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_england = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_bedford = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_northumberland = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lancaster = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_york = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_norfolk = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_hereford = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gloucester = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_canterbury = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_somerset = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_cornwall = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_wales = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_gwynedd = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_powys = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_deheubarth = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_scotland = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_albany = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_the_isles = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_galloway = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_western_isles = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lothian = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_moray = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mazdakism = { 
+k_ireland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khurramism = { 
+d_meath = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_urartuism = { 
+d_ulster = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sakya_trizin = { 
+d_connacht = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_guiyi = { 
+d_leinster = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_switzerland = { 
+d_munster = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_austria = { 
+k_cornwall = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_visigoths = { 
+k_mann_the_isles = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_outremer = { 
+k_cumbria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_toledo = { 
+d_cumbria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_templar = { 
+e_germany = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_teutonic_order = { 
+k_saxony = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_hospitaler = { 
+d_angria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hashshashin = { 
+d_westfalen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bektashi = { 
+d_ostfalen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_haruriyyah = { 
+d_holstein = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jomsvikings = { 
+k_frisia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_immortals = { 
+d_holland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zealots = { 
+d_gelre = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holy_sepulchre = { 
+d_utrecht = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saint_anthony = { 
+d_frisia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saint_addai = { 
+k_lotharingia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sky_lords = { 
+d_luxembourg = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_spirit_guardians = { 
+d_brabant = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_warriors_perun = { 
+d_julich = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chosen_perkunas = { 
+d_upper_lorraine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sons_kaleva = { 
+d_lower_lorraine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_huitzilopochtli = { 
+d_bar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_santiago = { 
+k_bavaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_knights_calatrava = { 
+d_bavaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_followers_arjuna = { 
+d_nordgau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ashokas_chosen = { 
+d_salzburg = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bulls_rishabha = { 
+d_augsburg = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zun_warriors = { 
+d_steyermark = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_latin_empire = { 
+d_osterreich = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_slavia = { 
+d_tyrol = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_beth_nahrain = { 
+d_carinthia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_armenia = { 
+d_krain = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_north_sea = { 
+k_east_francia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pechenegs = { 
+d_west_franconia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zaragoza = { 
+d_east_franconia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_erzerum = { 
+d_hesse = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_amalfi = { 
+d_currezia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_belgrade = { 
+d_alsace = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pronsk = { 
+d_swabia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sandomiersk = { 
+d_anhalt = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_swiss = { 
+d_thuringia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yungdrung_bon = { 
+e_illyria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_hre = { 
+e_macedonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hansa = { 
+e_anatolia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_britannia = { 
+e_oriens = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_england = { 
+e_aegyptus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bedford = { 
+e_africa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_northumberland = { 
+e_byzantium = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lancaster = { 
+k_saruhan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_york = { 
+k_trinacria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_norfolk = { 
+k_tekke = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hereford = { 
+k_trebizond = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gloucester = { 
+k_ottoman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_canterbury = { 
+k_rum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_somerset = { 
+k_mentese = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cornwall = { 
+k_karaman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_wales = { 
+k_germiyan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gwynedd = { 
+k_eretnid = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_powys = { 
+k_aydin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_deheubarth = { 
+k_candar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_scotland = { 
+k_thessalonika = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_albany = { 
+d_thrace = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_the_isles = { 
+d_strymon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_galloway = { 
+d_aegean_islands = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_western_isles = { 
+d_thessalonika = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lothian = { 
+d_thessaly = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_moray = { 
+k_epirus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ireland = { 
+d_epirus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_meath = { 
+d_dyrrachion = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ulster = { 
+d_cephalonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_connacht = { 
+k_hellas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_leinster = { 
+d_athens = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_munster = { 
+d_achaia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_cornwall = { 
+k_krete = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mann_the_isles = { 
+d_krete = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_germany = { 
+k_croatia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_saxony = { 
+d_dalmatia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_angria = { 
+d_croatia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_westfalen = { 
+d_slavonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostfalen = { 
+d_bosna = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holstein = { 
+d_lower_bosna = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_frisia = { 
+d_usora = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_holland = { 
+d_ragusa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gelre = { 
+k_serbia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_utrecht = { 
+d_rashka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_frisia = { 
+d_macva = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lotharingia = { 
+d_duklja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_luxembourg = { 
+k_bosnia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_brabant = { 
+k_albania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_julich = { 
+k_bulgaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_upper_lorraine = { 
+d_vidin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_lorraine = { 
+d_turnovo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bar = { 
+d_dobrudja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bavaria = { 
+d_bulgaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bavaria = { 
+d_philippopolis = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nordgau = { 
+k_cyprus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salzburg = { 
+d_cyprus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_augsburg = { 
+k_nikaea = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_steyermark = { 
+d_opsikion = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_osterreich = { 
+d_ephese = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tyrol = { 
+d_thracesia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_carinthia = { 
+d_optimatoi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_krain = { 
+d_bucellaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_istria = { 
+k_anatolia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_east_francia = { 
+d_cilicia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_west_franconia = { 
+d_cibyrrhaeot = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_east_franconia = { 
+d_anatolia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hesse = { 
+d_cappadocia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_currezia = { 
+d_charsianon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alsace = { 
+k_pontus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_swabia = { 
+d_paphlagonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anhalt = { 
+d_armeniac = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thuringia = { 
+d_sebasteia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_roman_empire = { 
+d_chaldia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_byzantium = { 
+k_armenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_saruhan = { 
+d_mesopotamia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_trinacria = { 
+d_vaspurakan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tekke = { 
+d_greater_armenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_trebizond = { 
+k_georgia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ottoman = { 
+d_abkhazia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_rum = { 
+d_georgia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mentese = { 
+k_sicily = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_karaman = { 
+d_sicily = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_germiyan = { 
+d_benevento = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_eretnid = { 
+d_capua = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_aydin = { 
+d_apulia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_candar = { 
+d_salerno = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_thessalonika = { 
+d_calabria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thrace = { 
+k_venice = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_strymon = { 
+d_venice = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aegean_islands = { 
+k_armenian_principality = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thessalonika = { 
+k_old_armenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thessaly = { 
+e_italy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_epirus = { 
+k_genoa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_epirus = { 
+k_pisa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dyrrachion = { 
+k_naples = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cephalonia = { 
+k_italy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hellas = { 
+d_friuli = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_athens = { 
+d_verona = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_achaia = { 
+d_piedmonte = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_krete = { 
+d_lombardia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_krete = { 
+d_genoa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_croatia = { 
+d_emilia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dalmatia = { 
+d_pisa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_croatia = { 
+d_toscana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_slavonia = { 
+d_istria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bosna = { 
+k_sardinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_bosna = { 
+d_corsica = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_usora = { 
+d_sardinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ragusa = { 
+k_romagna = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_serbia = { 
+d_romagna = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rashka = { 
+d_ancona = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_macva = { 
+d_spoleto = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_duklja = { 
+d_latium = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bosnia = { 
+e_scandinavia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bulgaria = { 
+k_sweden = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vidin = { 
+d_svealand = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_turnovo = { 
+d_bergslagen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dobrudja = { 
+d_vastergotland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bulgaria = { 
+d_ostergotland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_philippopolis = { 
+d_smaland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_cyprus = { 
+d_norrland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cyprus = { 
+d_gotland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_nikaea = { 
+k_sapmi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_opsikion = { 
+d_aarjetje = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ephese = { 
+d_vuovdisamieana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_thracesia = { 
+d_duortnoseatnu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_optimatoi = { 
+d_giemajohka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bucellaria = { 
+d_guoldat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_anatolia = { 
+k_denmark = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cilicia = { 
+d_sjaelland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cibyrrhaeot = { 
+d_skane = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anatolia = { 
+d_jylland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cappadocia = { 
+d_slesvig = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_charsianon = { 
+k_norway = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pontus = { 
+d_viken = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_paphlagonia = { 
+d_agder = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_armeniac = { 
+d_vestlandi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sebasteia = { 
+d_trandalog = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chaldia = { 
+d_dalir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_armenia = { 
+d_halogaland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mesopotamia = { 
+d_iceland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vaspurakan = { 
+d_northern_isles = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_greater_armenia = { 
+d_jamtland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_georgia = { 
+k_finland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tao = { 
+d_finland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_abkhazia = { 
+d_savo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_georgia = { 
+d_pohjanmaa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sicily = { 
+d_karelia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sicily = { 
+e_wendish_empire = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_benevento = { 
+k_pomerania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_capua = { 
+d_pommerania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_apulia = { 
+d_nordmark = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salerno = { 
+d_pomerelia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_calabria = { 
+d_ostmark = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_venice = { 
+k_lithuania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_venice = { 
+d_lithuanians = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_armenian_principality = { 
+d_prussia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_old_armenia = { 
+d_masuria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_italy = { 
+d_courland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_genoa = { 
+d_samogitia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pisa = { 
+d_latgalians = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_naples = { 
+k_esthonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_italy = { 
+d_esthonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_friuli = { 
+d_livonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_verona = { 
+k_livonia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_piedmonte = { 
+e_west_slavia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lombardia = { 
+k_moravia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_genoa = { 
+k_poland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_emilia = { 
+d_lesser_poland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pisa = { 
+d_wielkopolska = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_toscana = { 
+d_mazovia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sardinia = { 
+d_upper_silesia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_corsica = { 
+d_lower_silesia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sardinia = { 
+d_kuyavia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_romagna = { 
+k_bohemia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_romagna = { 
+d_bohemia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ancona = { 
+d_moravia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_spoleto = { 
+d_volhynia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_latium = { 
+d_halych = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_scandinavia = { 
+d_cherven_cities = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sweden = { 
+k_sorbia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_svealand = { 
+d_meissen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bergslagen = { 
+d_lausitz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vastergotland = { 
+e_russia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostergotland = { 
+k_ruthenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_smaland = { 
+d_kiev = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_norrland = { 
+d_turov = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gotland = { 
+d_pereyaslavl = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sapmi = { 
+d_chernigov = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aarjetje = { 
+d_karachev = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vuovdisamieana = { 
+d_novosil = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_duortnoseatnu = { 
+k_novgorod = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_giemajohka = { 
+d_novgorod = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_guoldat = { 
+d_vepsia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_denmark = { 
+d_luki = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sjaelland = { 
+k_white_rus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_skane = { 
+d_grodno = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jylland = { 
+d_pinsk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_slesvig = { 
+d_minsk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_norway = { 
+d_polotsk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_viken = { 
+d_smolensk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_agder = { 
+k_opolye = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vestlandi = { 
+d_opolye = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_trandalog = { 
+d_ryazan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dalir = { 
+d_nizhny_novgorod = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_halogaland = { 
+k_bjarmaland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_iceland = { 
+d_biarmia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_northern_isles = { 
+d_chudia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jamtland = { 
+d_vologda = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_finland = { 
+d_ustyug = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_finland = { 
+k_pontic_steppe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_savo = { 
+d_yedisan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pohjanmaa = { 
+d_kizilyedisan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karelia = { 
+d_levedia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_wendish_empire = { 
+d_red_levedia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pomerania = { 
+d_don_valley = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pommerania = { 
+d_tana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nordmark = { 
+d_crimea = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pomerelia = { 
+k_caucasus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostmark = { 
+d_khazaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lithuania = { 
+d_azov = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lithuanians = { 
+d_alania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_prussia = { 
+d_ciscaucasia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_masuria = { 
+k_caspian_steppe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_courland = { 
+d_itil = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samogitia = { 
+d_pecheneg = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_latgalians = { 
+d_mugodzhar_hills = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_esthonia = { 
+d_aqtobe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_esthonia = { 
+d_atyrau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_livonia = { 
+d_manatau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_livonia = { 
+k_magyar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_west_slavia = { 
+k_volga_bulgaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_moravia = { 
+d_volga_bulgaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bohemia = { 
+d_kazan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_poland = { 
+d_jalmat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lesser_poland = { 
+d_bugurslan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wielkopolska = { 
+d_martyuba = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mazovia = { 
+k_mordvinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_upper_silesia = { 
+d_mordvinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_silesia = { 
+d_saran = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kuyavia = { 
+d_voronezh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bohemia = { 
+d_chuvashia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bohemia = { 
+d_khopyor = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_moravia = { 
+d_tambov = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_galicia-volhynia = { 
+k_permia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_volhynia = { 
+d_perm = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_halych = { 
+d_ural = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cherven_cities = { 
+d_udmurtia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sorbia = { 
+k_bashkiria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_meissen = { 
+d_bashkiria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lausitz = { 
+d_sakmara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_russia = { 
+d_uraltau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ruthenia = { 
+d_vogulia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kiev = { 
+e_siberia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_turov = { 
+k_yugra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pereyaslavl = { 
+d_ostyaki = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chernigov = { 
+d_konda = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karachev = { 
+d_pelym = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_novosil = { 
+d_kazym = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_novgorod = { 
+k_sibir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_novgorod = { 
+d_sibir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vepsia = { 
+d_ishim = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_luki = { 
+d_tara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_white_rus = { 
+d_lanikaz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_grodno = { 
+k_ob = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pinsk = { 
+d_salair = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_minsk = { 
+d_aley = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_polotsk = { 
+d_altaishan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_smolensk = { 
+d_ala_tau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_opolye = { 
+d_vasyugan_mire = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_opolye = { 
+d_baraba_steppe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ryazan = { 
+d_kulyndy_steppe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nizhny_novgorod = { 
+e_mongolia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bjarmaland = { 
+k_otuken = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_biarmia = { 
+d_orkhon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chudia = { 
+d_ogrash = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vologda = { 
+d_selenga_valley = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ustyug = { 
+d_EM_onon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_caspian-pontic_steppe = { 
+d_EM_yujuelu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pontic_steppe = { 
+d_EM_wajiezi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yedisan = { 
+k_naimania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kizilyedisan = { 
+d_ovorkhangai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_levedia = { 
+d_arkhangai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_red_levedia = { 
+d_khovsgol = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_don_valley = { 
+d_gobi_altai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tana = { 
+d_ubsunur_hollow = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_crimea = { 
+d_zavkhan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_caucasus = { 
+d_khovd = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khazaria = { 
+k_tuva = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_azov = { 
+d_togina = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alania = { 
+d_tannu_ola = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ciscaucasia = { 
+d_katu_yaryk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_caspian_steppe = { 
+d_western_sayan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_itil = { 
+k_khakassia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pecheneg = { 
+d_khakass_hollow = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mugodzhar_hills = { 
+d_blue_khakassia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aqtobe = { 
+d_shoria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_atyrau = { 
+d_kargassia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_manatau = { 
+d_eastern_sayan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_magyar = { 
+k_buryatia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_volga = { 
+d_uda_valley = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_volga_bulgaria = { 
+d_dauria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_volga_bulgaria = { 
+d_bargujin_tukum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kazan = { 
+d_baigaluuls = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jalmat = { 
+d_tsagaanbaigal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bugurslan = { 
+k_angara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_martyuba = { 
+d_yenisei_kan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mordvinia = { 
+d_chuna_valley = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mordvinia = { 
+d_lena = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saran = { 
+d_angara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_voronezh = { 
+k_gobi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chuvashia = { 
+d_em_tataria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khopyor = { 
+d_em_wuguguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tambov = { 
+d_gobi_dadaels = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_permia = { 
+d_gobi_shatuoguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_perm = { 
+d_gobi_ongi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ural = { 
+e_tartaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_udmurtia = { 
+k_zhetysu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bashkiria = { 
+d_zhetysu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bashkiria = { 
+d_alakol = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sakmara = { 
+d_tarbagatai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_uraltau = { 
+k_cuman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vogulia = { 
+d_turgay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_siberia = { 
+d_kokturgay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_yugra = { 
+d_saryarka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ostyaki = { 
+d_qyzylsaryarka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_konda = { 
+d_kazakh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pelym = { 
+k_qara_dala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kazym = { 
+d_atbasar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sibir = { 
+d_kurgan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sibir = { 
+k_saryarka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ishim = { 
+d_karkaraly = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tara = { 
+d_tokumbay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lanikaz = { 
+d_karabas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ob = { 
+d_betpa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salair = { 
+k_kipchak = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aley = { 
+d_semey = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_altaishan = { 
+d_jinghiz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ala_tau = { 
+d_degelen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vasyugan_mire = { 
+d_kentarlau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baraba_steppe = { 
+k_dzungaria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kulyndy_steppe = { 
+d_kara_khoja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_mongolia = { 
+d_beshbalik = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_otuken = { 
+d_altay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_orkhon = { 
+d_akaltay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ogrash = { 
+d_gurbantunggut = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_selenga_valley = { 
+d_naiman_gobi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ovorkhangai = { 
+e_turan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_arkhangai = { 
+k_khotan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khovsgol = { 
+d_khotan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gobi_altai = { 
+d_kashgar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ubsunur_hollow = { 
+d_karashar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zavkhan = { 
+d_charkliq = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khovd = { 
+d_loulan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tuva = { 
+k_oghuz_il = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_togina = { 
+d_transcaspiana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tannu_ola = { 
+d_garabogazkol = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_katu_yaryk = { 
+d_jemba = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_western_sayan = { 
+d_aral_il = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_khakassia = { 
+d_barsuki = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khakass_hollow = { 
+d_aral_karakum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_blue_khakassia = { 
+k_syr_darya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shoria = { 
+d_syr_darya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kargassia = { 
+d_chah = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_eastern_sayan = { 
+d_muyunkum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_buryatia = { 
+d_talas_alatau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_uda_valley = { 
+k_transoxiana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dauria = { 
+d_soghd = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bargujin_tukum = { 
+d_badakhshan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baigaluuls = { 
+d_khuttal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tsagaanbaigal = { 
+d_osrushana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_angara = { 
+d_ferghana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yenisei_kan = { 
+d_khorezm = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chuna_valley = { 
+d_uzboy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lena = { 
+e_bactria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_angara = { 
+e_persia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_tartaria = { 
+k_persia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_zhetysu = { 
+d_isfahan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zhetysu = { 
+d_kirman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alakol = { 
+d_yazd = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tarbagatai = { 
+d_rayy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ili = { 
+d_hamadan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_cuman = { 
+d_fars = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_turgay = { 
+d_hormuz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kokturgay = { 
+d_khuzestan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saryarka = { 
+d_kermanshah = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_qyzylsaryarka = { 
+k_khorasan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kazakh = { 
+d_nishapur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_qara_dala = { 
+d_merv = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_atbasar = { 
+d_ghur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kurgan = { 
+d_herat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kush = { 
+d_balkh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tobol = { 
+d_nasa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_saryarka = { 
+d_kohestan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karkaraly = { 
+k_daylam = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tokumbay = { 
+d_daylam = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karabas = { 
+d_tabaristan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_betpa = { 
+d_gurgan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kipchak = { 
+d_azerbaijan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_semey = { 
+d_shirvan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jinghiz = { 
+k_makran = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_degelen = { 
+d_makran = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kentarlau = { 
+d_jabal_kufs = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_dzungaria = { 
+d_sistan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kara_khoja = { 
+k_kabulistan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_beshbalik = { 
+d_kabul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_altay = { 
+d_zabulistan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_akaltay = { 
+k_mesopotamia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gurbantunggut = { 
+d_samarra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_naiman_gobi = { 
+d_wasit = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_turan = { 
+d_kufa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_khotan = { 
+d_basra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khotan = { 
+d_baghdad = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kashgar = { 
+k_jazira = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_karashar = { 
+d_diyarrabia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_charkliq = { 
+d_diyarmudar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_loulan = { 
+d_diyarbakr = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_oghuz_il = { 
+d_euphrates = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transcaspiana = { 
+d_kurdistan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_garabogazkol = { 
+e_carpathia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jemba = { 
+k_dacia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aral_il = { 
+d_transylvanian_alps = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_barsuki = { 
+d_muntenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aral_karakum = { 
+d_oltenia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_syr_darya = { 
+k_moldavia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_syr_darya = { 
+d_bukovina = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chah = { 
+d_moldova = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_muyunkum = { 
+d_bugeac = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_talas_alatau = { 
+k_hungary = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_transoxiana = { 
+d_visegrad = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_soghd = { 
+d_somogy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_badakhshan = { 
+d_nyitra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khuttal = { 
+d_ungvar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_osrushana = { 
+d_transcarpathia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ferghana = { 
+d_transylvania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khorezm = { 
+d_bihar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_uzboy = { 
+d_temes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_bactria = { 
+d_bacs = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_persia = { 
+d_gyor = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_persia = { 
+d_syrmia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_isfahan = { 
+e_france = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kirman = { 
+k_france = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yazd = { 
+d_valois = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rayy = { 
+d_berry = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hamadan = { 
+d_anjou = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_fars = { 
+d_normandy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hormuz = { 
+d_orleans = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khuzestan = { 
+d_champagne = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kermanshah = { 
+d_burgundy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_khorasan = { 
+d_flanders = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nishapur = { 
+k_aquitaine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_merv = { 
+d_gascogne = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ghur = { 
+d_aquitaine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_herat = { 
+d_toulouse = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_balkh = { 
+d_languedoc = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nasa = { 
+d_armagnac = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kohestan = { 
+d_poitou = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_daylam = { 
+d_auvergne = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_daylam = { 
+d_bourbon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tabaristan = { 
+k_brittany = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gurgan = { 
+d_brittany = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_azerbaijan = { 
+k_burgundy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shirvan = { 
+d_provence = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_makran = { 
+d_savoie = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_makran = { 
+d_dauphine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jabal_kufs = { 
+d_upper_burgundy = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sistan = { 
+d_transjurania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kabulistan = { 
+e_spain = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_afghanistan = { 
+k_andalusia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kabul = { 
+d_cordoba = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zabulistan = { 
+d_granada = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mesopotamia = { 
+d_sevilla = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samarra = { 
+d_toledo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wasit = { 
+k_badajoz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kufa = { 
+d_beja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_basra = { 
+d_badajoz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baghdad = { 
+d_algarve = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_jazira = { 
+k_valencia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_diyarrabia = { 
+d_valencia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_diyarmudar = { 
+d_mallorca = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_diyarbakr = { 
+d_murcia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_euphrates = { 
+k_castille = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kurdistan = { 
+d_castilla = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_carpathia = { 
+d_cantabria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_dacia = { 
+k_aragon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transylvanian_alps = { 
+d_aragon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_muntenia = { 
+d_barcelona = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_oltenia = { 
+k_navarra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_moldavia = { 
+d_navarra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bukovina = { 
+d_viscaya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_moldova = { 
+k_asturias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bugeac = { 
+k_leon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hungary = { 
+d_leon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_visegrad = { 
+d_asturias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_somogy = { 
+k_spanish_galicia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nyitra = { 
+d_galicia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ungvar = { 
+k_portugal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transcarpathia = { 
+d_porto = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transylvania = { 
+d_coimbra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bihar = { 
+e_maghreb = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_temes = { 
+k_maghreb = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bacs = { 
+d_marrakesh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gyor = { 
+d_sous = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_syrmia = { 
+d_tafilalt = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_france = { 
+d_fes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_france = { 
+d_rif = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_valois = { 
+d_canarias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_berry = { 
+k_canarias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anjou = { 
+k_tahert = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_normandy = { 
+d_tlemcen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_orleans = { 
+d_tahert = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_champagne = { 
+d_alger = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_burgundy = { 
+d_bejaia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_flanders = { 
+d_zab = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_aquitaine = { 
+d_mzab = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gascogne = { 
+k_africa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aquitaine = { 
+d_kairouan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_toulouse = { 
+d_tunis = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_languedoc = { 
+d_kroumerie = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_armagnac = { 
+d_gabes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_poitou = { 
+d_jerid = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_auvergne = { 
+d_tripolitania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bourbon = { 
+d_syrte = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_brittany = { 
+k_anbiya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_brittany = { 
+d_zammour = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_burgundy = { 
+d_adrar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_provence = { 
+d_touat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_savoie = { 
+d_taghaza = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dauphine = { 
+k_sahara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_upper_burgundy = { 
+d_tadmekka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_transjurania = { 
+d_ghat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_spain = { 
+d_air = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_andalusia = { 
+d_kawar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cordoba = { 
+d_tibesti = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_granada = { 
+d_fezzan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sevilla = { 
+e_arabia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_toledo = { 
+k_israel = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_badajoz = { 
+k_arabia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_beja = { 
+d_jawf = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_badajoz = { 
+d_amman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_algarve = { 
+d_shammar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_valencia = { 
+d_medina = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_valencia = { 
+d_mecca = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mallorca = { 
+d_asir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_murcia = { 
+d_najd = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_castille = { 
+d_yamama = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_castilla = { 
+d_bahrain = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cantabria = { 
+d_oman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_aragon = { 
+k_yemen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aragon = { 
+d_sanaa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_barcelona = { 
+d_taizz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_navarra = { 
+d_hadramawt = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_navarra = { 
+d_mahra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_viscaya = { 
+d_socotra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_asturias = { 
+k_egypt = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_leon = { 
+d_cyrenaica = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_leon = { 
+d_alexandria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_asturias = { 
+d_delta = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_spanish_galicia = { 
+d_cairo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_galicia = { 
+d_eastern_desert = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_portugal = { 
+d_sinai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_porto = { 
+k_jerusalem = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_coimbra = { 
+d_oultrejourdain = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_maghreb = { 
+d_palestine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_maghreb = { 
+d_urdunn = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_marrakesh = { 
+k_syria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sous = { 
+d_aleppo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tafilalt = { 
+d_edessa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_fes = { 
+d_homs = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rif = { 
+d_antioch = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_canarias = { 
+d_lebanon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_canarias = { 
+d_damascus = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tahert = { 
+d_palmyra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tlemcen = { 
+e_abyssinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tahert = { 
+k_abyssinia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alger = { 
+d_aksum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bejaia = { 
+d_dahlaks = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zab = { 
+d_lasta = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mzab = { 
+d_gondar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_africa = { 
+d_gojjam = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kairouan = { 
+d_showa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tunis = { 
+k_nubia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kroumerie = { 
+d_nobatia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gabes = { 
+d_makuria = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jerid = { 
+d_shamir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tripolitania = { 
+d_alwa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_syrte = { 
+d_sennar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_anbiya = { 
+k_blemmyia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zammour = { 
+d_naqis = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_adrar = { 
+d_bazin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_touat = { 
+d_baqlin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_taghaza = { 
+k_damot = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sahara = { 
+d_damot = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tadmekka = { 
+d_kaffa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ghat = { 
+d_sharka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_air = { 
+k_adal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kawar = { 
+d_dawaro = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tibesti = { 
+d_adal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_fezzan = { 
+d_mora = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_arabia = { 
+d_danakil = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_israel = { 
+d_zaila = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_arabia = { 
+d_sanaag = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jawf = { 
+e_azania = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_amman = { 
+k_ajuraan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shammar = { 
+d_hafun = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_medina = { 
+d_mogadishu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mecca = { 
+d_west_ajuraan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_asir = { 
+k_bale = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_najd = { 
+d_shabelle = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yamama = { 
+d_bali = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_al-hasa = { 
+d_samalo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bahrain = { 
+k_zanj = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_oman = { 
+d_pate = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_yemen = { 
+d_mombasa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sanaa = { 
+d_bonde_la_ufa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_taizz = { 
+d_zanzibar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hadramawt = { 
+e_kanem_bornu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mahra = { 
+k_kanem = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_socotra = { 
+d_kanem = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_egypt = { 
+d_bornu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cyrenaica = { 
+d_kagha = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alexandria = { 
+k_sao = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_delta = { 
+d_baguirmi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_cairo = { 
+d_salamat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_eastern_desert = { 
+d_wandala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sinai = { 
+k_hausaland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_jerusalem = { 
+d_kano = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_oultrejourdain = { 
+d_katsina = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_palestine = { 
+d_kebbi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_urdunn = { 
+d_gobir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_syria = { 
+k_darfur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aleppo = { 
+d_darfur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_edessa = { 
+d_west_darfur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_homs = { 
+d_wadai = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_antioch = { 
+d_kordofan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lebanon = { 
+e_mali = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_damascus = { 
+k_songhay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_palmyra = { 
+d_kawkaw = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_abyssinia = { 
+d_timbuktu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_abyssinia = { 
+d_dendi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aksum = { 
+k_gurma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dahlaks = { 
+d_lower_gurma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lasta = { 
+d_upper_gurma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gondar = { 
+d_yatenga = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gojjam = { 
+k_ghana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_showa = { 
+d_wagadu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_nubia = { 
+d_mema = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nobatia = { 
+d_tagant = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_makuria = { 
+d_diafunu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shamir = { 
+d_kaniaga = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_alwa = { 
+k_mali = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sennar = { 
+d_manding = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_blemmyia = { 
+d_bambuk = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_naqis = { 
+d_futa_jalon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bazin = { 
+d_loma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baqlin = { 
+k_takrur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_damot = { 
+d_takrur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_damot = { 
+d_silla = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kaffa = { 
+d_djolof = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sharka = { 
+k_jenne = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_adal = { 
+d_jenne = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dawaro = { 
+d_bobo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_adal = { 
+k_kaabu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mora = { 
+d_kaabu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_danakil = { 
+d_wuli = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zaila = { 
+d_kasa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sanaag = { 
+e_guinea = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_ajuraan = { 
+k_guinea = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ajuraan = { 
+d_sapi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_hafun = { 
+d_kono = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mogadishu = { 
+d_bassa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_west_ajuraan = { 
+d_toro = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_outer_ajuraan = { 
+d_wenyon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shabelle = { 
+d_kru = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bali = { 
+k_kong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_samalo = { 
+d_worodugu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_kanem_bornu = { 
+d_kong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kanem = { 
+d_lobi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kanem = { 
+k_akan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bornu = { 
+d_ashanti = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kagha = { 
+d_adiukru = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sao = { 
+d_gyaman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baguirmi = { 
+d_brong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_salamat = { 
+d_eweland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wandala = { 
+k_gur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_hausaland = { 
+d_dagomba = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kano = { 
+d_wagadugu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_katsina = { 
+d_mamprusi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kebbi = { 
+k_borgu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gobir = { 
+d_borgu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_darfur = { 
+d_savalu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_darfur = { 
+k_yorubaland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_west_darfur = { 
+d_ibadan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wadai = { 
+d_oyo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kordofan = { 
+d_ife = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_mali = { 
+d_benin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_songhay = { 
+d_igboland = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kawkaw = { 
+d_nupe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_timbuktu = { 
+d_kwararafa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dendi = { 
+e_hindustan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_gurma = { 
+e_rajastan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lower_gurma = { 
+k_sindh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_upper_gurma = { 
+d_sauvira = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yatenga = { 
+d_bhakkar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_ghana = { 
+k_punjab = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wagadu = { 
+d_multan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mema = { 
+d_lahore = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tagant = { 
+d_gandhara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_diafunu = { 
+k_delhi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kaniaga = { 
+d_kuru = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_mali = { 
+d_haritanaka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_manding = { 
+d_mathura = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bambuk = { 
+d_vodamayutja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_futa_jalon = { 
+k_gujarat = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_loma = { 
+d_gurjara_mandala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_takrur = { 
+d_anartta = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_takrur = { 
+d_saurashtra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_silla = { 
+d_lata = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_djolof = { 
+k_rajputana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_jenne = { 
+d_maru = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jenne = { 
+d_jangladesh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bobo = { 
+d_stravani = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kaabu = { 
+d_medapata = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kaabu = { 
+d_ajmer = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wuli = { 
+k_malwa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kasa = { 
+d_dadhipadra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_guinea = { 
+d_akara_dasarna = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_guinea = { 
+d_anupa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sapi = { 
+k_kosala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kono = { 
+d_kanyakubja = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bassa = { 
+d_saryupara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_toro = { 
+d_jejakabhukti = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wenyon = { 
+k_himalaya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kru = { 
+d_kurmanchal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kong = { 
+d_khasa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_worodugu = { 
+d_nepal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kong = { 
+d_limbuwan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lobi = { 
+k_kashmir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_akan = { 
+d_kasmira = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ashanti = { 
+d_pamir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_adiukru = { 
+e_bengal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gyaman = { 
+k_bengal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_brong = { 
+d_gauda = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_eweland = { 
+d_varendra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_gur = { 
+d_vanga = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dagomba = { 
+d_nadia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wagadugu = { 
+d_suhma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mamprusi = { 
+k_kamarupa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_borgu = { 
+d_kamarupanagara = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_borgu = { 
+d_sutiya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_savalu = { 
+d_para_lauhitya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_yorubaland = { 
+k_bihar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ibadan = { 
+d_magadha = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_oyo = { 
+d_tirabhukti = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ife = { 
+d_kasi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_benin = { 
+d_jharkand = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_igbo = { 
+k_gondwana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_igboland = { 
+d_dahala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nupe = { 
+d_ratanpur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kwararafa = { 
+k_orissa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_india = { 
+d_tosali = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_hindustan = { 
+d_daksina_kosala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_rajastan = { 
+d_kalinga = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_sindh = { 
+d_dandakaranya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sauvira = { 
+e_deccan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bhakkar = { 
+k_bene_israel = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_punjab = { 
+k_maharastra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_multan = { 
+d_devagiri = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lahore = { 
+d_vidharba = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gandhara = { 
+d_konkana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_delhi = { 
+d_nasikya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kuru = { 
+d_rattapadi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_haritanaka = { 
+k_karnata = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_mathura = { 
+d_kalyani = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vodamayutja = { 
+d_gangavadi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_gujarat = { 
+d_nulambavadi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gurjara_mandala = { 
+d_raichur_doab = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anartta = { 
+k_tamilakam = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saurashtra = { 
+d_pandya_nadu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lata = { 
+d_chola_nadu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_rajputana = { 
+d_chera_nadu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_maru = { 
+d_tondai_nadu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jangladesh = { 
+k_andhra = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_stravani = { 
+d_udayagiri = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_medapata = { 
+d_vengi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ajmer = { 
+k_telingana = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_malwa = { 
+d_warangal = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dadhipadra = { 
+d_racakonda = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_akara_dasarna = { 
+k_lanka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_anupa = { 
+d_dakhina_desa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kosala = { 
+d_ruhunu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kanyakubja = { 
+d_sinhala = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_saryupara = { 
+e_tibet = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jejakabhukti = { 
+k_u = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_himalaya = { 
+d_yarlung = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kurmanchal = { 
+d_lhasa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_khasa = { 
+d_nagchu = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nepal = { 
+d_conyi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_limbuwan = { 
+k_tsang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kashmir = { 
+d_xigaze = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kasmira = { 
+d_sagya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pamir = { 
+d_ngamring = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_bengal = { 
+d_nyima = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bengal = { 
+k_kham = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gauda = { 
+d_qamdo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_varendra = { 
+d_boyul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vanga = { 
+d_nyingchi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nadia = { 
+d_nangqen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_suhma = { 
+d_lhatok = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kamarupa = { 
+d_lingtsang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kamarupanagara = { 
+d_dege = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sutiya = { 
+d_batang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_para_lauhitya = { 
+d_litang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bihar = { 
+k_amdo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_magadha = { 
+d_xining = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tirabhukti = { 
+d_tuyuhun = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kasi = { 
+d_nagormo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_jharkand = { 
+d_amdo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_gondwana = { 
+d_zadoi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dahala = { 
+d_qumarleb = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ratanpur = { 
+d_aksay = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_orissa = { 
+k_gyalrong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tosali = { 
+d_gyalrong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_daksina_kosala = { 
+d_chakla = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kalinga = { 
+d_golog = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dandakaranya = { 
+d_malho = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_pagan = { 
+d_gainlho = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pagan = { 
+k_guge = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tagaung = { 
+d_ngari = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sriksetra = { 
+d_kinnaur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_arakan = { 
+d_purang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ramannadesa = { 
+k_maryul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_deccan = { 
+d_ladakh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_bene_israel = { 
+d_zanskar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_maharastra = { 
+d_baltiyul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_devagiri = { 
+d_aksai_chin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vidharba = { 
+d_rutog = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_konkana = { 
+k_lhomon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nasikya = { 
+d_bumthang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rattapadi = { 
+d_paro = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_karnata = { 
+d_monyul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kalyani = { 
+d_lhoyul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gangavadi = { 
+d_dzayul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nulambavadi = { 
+e_andong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_raichur_doab = { 
+k_balhae = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tamilakam = { 
+d_BAL_parhae = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_pandya_nadu = { 
+d_BAL_moe_su = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chola_nadu = { 
+d_BAL_buyeo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chera_nadu = { 
+d_BAL_amnok_jangryeong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tondai_nadu = { 
+d_BAL_southern_balhae = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_andhra = { 
+d_LIAO_dongjing = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_udayagiri = { 
+k_shiwei = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_vengi = { 
+d_SW_qingxingan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_telingana = { 
+d_SW_lingxiguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_warangal = { 
+d_SW_ruzheguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_racakonda = { 
+d_SW_puyudao = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lanka = { 
+d_SW_sushenguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dakhina_desa = { 
+d_SW_heicheziguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ruhunu = { 
+d_SW_dashiweiguo = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sinhala = { 
+k_khitan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-e_tibet = { 
+d_LIAO_linhuang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_u = { 
+d_LIAO_shangjing = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yarlung = { 
+k_luzhen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lhasa = { 
+d_BAL_dongpyeong = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nagchu = { 
+d_BAL_cheolli = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_conyi = { 
+d_BAL_hoewon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_tsang = { 
+d_BAL_yeojintang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xigaze = { 
+d_BAL_anwon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_sagya = { 
+k_raole = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ngamring = { 
+d_LIAO_zhongjing = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nyima = { 
+d_liaoxi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_kham = { 
+d_yanyun_yuyi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_qamdo = { 
+e_amur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_boyul = { 
+k_amur = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nyingchi = { 
+d_eman_boli = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nangqen = { 
+d_eman_sikhotebei = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lhatok = { 
+d_eman_samagero = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lingtsang = { 
+d_eman_nivkhia = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dege = { 
+d_eman_amar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_batang = { 
+d_eman_bureya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_litang = { 
+k_aynumosir = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_amdo = { 
+d_sahaliyan = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xining = { 
+d_menas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_tuyuhun = { 
+d_sum = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nagormo = { 
+k_hitakami = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_amdo = { 
+d_hitakami = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zadoi = { 
+d_nushiro = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_qumarleb = { 
+e_srivijaya = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_gyalrong = { 
+k_yavakadvipa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gyalrong = { 
+d_JAV_mataram = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_chakla = { 
+d_JAV_taruma = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_golog = { 
+d_IDO_bali = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_malho = { 
+k_malayadvipa = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_gainlho = { 
+d_SUM_palembang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_guge = { 
+d_SUM_jambi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ngari = { 
+d_SUM_riau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_kinnaur = { 
+d_SUM_aceh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_purang = { 
+d_SUM_minangkabau = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_maryul = { 
+d_nias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ladakh = { 
+d_handumans = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zanskar = { 
+k_hujung_medini = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_baltiyul = { 
+d_MAL_langkasuka = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aksai_chin = { 
+d_MAL_pahang = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_rutog = { 
+d_nf_ampelas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_lhomon = { 
+d_nf_aplakes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_bumthang = { 
+d_nf_agelastos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_paro = { 
+d_nf_doukas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_monyul = { 
+d_nf_gerontas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_lhoyul = { 
+d_nf_hexavoulis = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_dzayul = { 
+d_nf_kardias = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_xia = { 
+d_nf_katakalitzes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_xia = { 
+d_nf_kourkouas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_wuluhai = { 
+d_nf_krateros = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_zhenfan = { 
+d_nf_lachanodrakon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_liangzhou = { 
+d_nf_makedon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_shanzhou = { 
+d_nf_maleios = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_qilin = { 
+d_nf_maleinos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_ganzhou = { 
+d_nf_maurikios = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_yijinai = { 
+d_nf_melissenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_guiyi = { 
+d_nf_pastillas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_aksay = { 
+d_nf_ooryphas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_ampelas = { 
+d_nf_sellokalas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_aplakes = { 
+d_nf_skleros = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_agelastos = { 
+d_nf_arcruni = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_doukas = { 
+d_nf_argyros = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_gerontas = { 
+d_nf_basiliakos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_hexavoulis = { 
+d_nf_botaneiates = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kardias = { 
+d_nf_bryennios = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_katakalitzes = { 
+d_nf_diogenes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kourkouas = { 
+d_nf_dragosevic = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_krateros = { 
+d_nf_kamateros = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_lachanodrakon = { 
+d_nf_karandenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_makedon = { 
+d_nf_kaukadenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_maleios = { 
+d_nf_komnenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_maleinos = { 
+d_nf_makrembolites = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_maurikios = { 
+d_nf_murzuphlos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_melissenos = { 
+d_nf_ouranos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_pastillas = { 
+d_nf_pahlavuni = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_ooryphas = { 
+d_nf_palaiologos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_sellokalas = { 
+d_nf_pegonites = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_skleros = { 
+d_nf_phokas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_arcruni = { 
+d_nf_pleustes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_argyros = { 
+d_nf_synadenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_basiliakos = { 
+d_nf_tarchaneiotes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_botaneiates = { 
+d_nf_taronites = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_bryennios = { 
+d_nf_varajnuni = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_diogenes = { 
+d_nf_saronites = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_dragosevic = { 
+d_nf_garidas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kamateros = { 
+d_nf_areobindenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_karandenos = { 
+d_nf_alopos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kaukadenos = { 
+d_nf_durres = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_komnenos = { 
+d_nf_angelos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_makrembolites = { 
+d_nf_batatzes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_murzuphlos = { 
+d_nf_branas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_ouranos = { 
+d_nf_gabras = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_pahlavuni = { 
+d_nf_kamytzes = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_palaiologos = { 
+d_nf_kantakouzenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_pegonites = { 
+d_nf_komnenos_doukas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_phokas = { 
+d_nf_kontostephanos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_pleustes = { 
+d_nf_lampardas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_synadenos = { 
+d_nf_macrodoukas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_tarchaneiotes = { 
+d_nf_petraliphas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_taronites = { 
+d_nf_raoul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_varajnuni = { 
+d_nf_rogerios = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_saronites = { 
+d_laamp_anangapida = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_garidas = { 
+d_laamp_ziyar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_areobindenos = { 
+d_laamp_ahwazi = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_alopos = { 
+d_laamp_guttorm = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_durres = { 
+d_laamp_hrolfr = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_angelos = { 
+d_laamp_ubbe = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_batatzes = { 
+d_laamp_enian = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_branas = { 
+d_laamp_sevener_caliph = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_gabras = { 
+d_laamp_twelver_caliph = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kamytzes = { 
+d_laamp_qutid = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kantakouzenos = { 
+d_laamp_sabbah = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_komnenos_doukas = { 
+d_laamp_wake = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_kontostephanos = { 
+d_laamp_el_cid = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_lampardas = { 
+d_laamp_henry_of_skalitz = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_macrodoukas = { 
+d_laamp_crispin = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_petraliphas = { 
+d_laamp_suleyman = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_raoul = { 
+d_laamp_wallada = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_nf_rogerios = { 
+d_laamp_danishmend = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_anangapida = { 
+d_laamp_voiteh = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_ziyar = { 
+d_laamp_aelfwine = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_ahwazi = { 
+d_laamp_karatzas = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_guttorm = { 
+d_laamp_kalbid = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_hrolfr = { 
+d_laamp_du_leon = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_ubbe = { 
+d_laamp_kizil_buga = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_enian = { 
+d_laamp_ali_ibn_reverter = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_sevener_caliph = { 
+d_laamp_andronikos_komnenos = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_twelver_caliph = { 
+d_laamp_asen = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_qutid = { 
+d_laamp_mieszko = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_sabbah = { 
+d_laamp_raimon_brun = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_wake = { 
+d_laamp_lalibela = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_el_cid = { 
+d_laamp_muhammad_bakhtiyar = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_crispin = { 
+d_laamp_raoul = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_suleyman = { 
+k_adiukru = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_wallada = { 
+k_toro = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_danishmend = { 
+k_winideheim = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_voiteh = { 
+k_cossack = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_aelfwine = { 
+d_laamp_hidden_valley_banner = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_karatzas = { 
+d_laamp_way_of_the_mountains = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_kalbid = { 
+d_laamp_pongyi_thaing_fellowship = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_du_leon = { 
+d_laamp_ravine_lords = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_kizil_buga = { 
+d_laamp_sirafi_mariners = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_ali_ibn_reverter = { 
+d_laamp_munheon_disciples = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_andronikos_komnenos = { 
+d_laamp_white_tigers = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_asen = { 
+d_laamp_pathwalkers = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_mieszko = { 
+d_laamp_delta_company = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_raimon_brun = { 
+d_laamp_leaf_hermits = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_lalibela = { 
+d_laamp_lembongs_band = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_muhammad_bakhtiyar = { 
+d_laamp_stormbringers = {
 	capital = c_atlantis
 	landless = yes
 }
 
-d_laamp_raoul = { 
+d_laamp_samadhi_and_prajna_society = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_adiukru = { 
+d_laamp_arrow_cutters = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_toro = { 
+d_laamp_ordinators = {
 	capital = c_atlantis
 	landless = yes
 }
 
-k_winideheim = { 
+d_al-hasa = {
 	capital = c_atlantis
 	landless = yes
 }

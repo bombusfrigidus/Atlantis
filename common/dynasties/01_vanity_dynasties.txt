@@ -1,20 +1,4 @@
-﻿## Stragglers
-easteregg_de_belfort = {
-	name = "dynn_Belfort"
-	prefix = "dynnp_de"
-	culture = "french"
-	motto = dynn_Belfort_motto
-}
-
-easteregg_andriamasinavalona = { # Andriamasinavalona, Ancestral Royal Family of Madagascar (I can trace it to Andriamasinavalona, King of Imerina during 1675-1710) 
-	name = "dynn_andriamasinavalona"
-	culture = norwegian
-	motto = "dynn_andriamasinavalona_motto"
-}
-
-##
-
-vanity_andersson = {
+﻿vanity_andersson = {
 	name = "dynn_Andersson"
 	culture = "swedish"
 	motto = dynn_Andersson_motto
@@ -436,6 +420,12 @@ vanity_parkin = {
 	motto = dynn_Parkin_motto
 }
 
+vanity_kara = {
+	name = "dynn_Kara"
+	culture = turkish
+	motto = dynn_Kara_motto
+}
+
 vanity_bochenek = {
 	name = "dynn_Bochenek"
 	culture = polish
@@ -761,16 +751,16 @@ vanity_bure = {
 	motto = dynn_bure_motto
 }
 
-vanity_ronnback = {
-	name = dynn_Andersson
+vanity_gottfredsson = {
+	name = dynn_gottfredsson
 	culture = "swedish"
-	motto = dynn_ronnback_motto
+	motto = dynn_gottfredsson_motto
 }
 
-vanity_bjurman = {
-	name = dynn_Andersson
+vanity_albarn = {
+	name = dynn_albarn
 	culture = "swedish"
-	motto = dynn_bjurman_motto
+	motto = dynn_albarn_motto
 }
 
 vanity_lager = {
@@ -846,4 +836,90 @@ vanity_lilja = {
 	name = "dynn_lilja"
 	culture = "swedish"
 	motto = dynn_lilja_motto
+}
+
+vanity_freddi = {
+	name = "dynn_freddi"
+	culture = "cisalpine"
+	motto = dynn_freddi_motto
+}
+
+vanity_collinder = {
+	name = "dynn_collinder"
+	culture = "swedish"
+	motto = dynn_collinder_motto
+}
+
+vanity_tosunyan = {
+	name = "dynn_tosunyan"
+	culture = armenian
+	motto = dynn_tosunyan_motto
+}
+
+dynn_skalitz = {
+	name = "dynn_skalitz"
+	prefix = "dynnp_of"
+	culture = "czech"
+	motto = dynn_skalitz_motto
+}
+
+dynn_kobyla = {
+	name = "dynn_kobyla"
+	culture = "czech"
+	motto = dynn_kobyla_motto
+}
+
+dynn_kobyla_late = {
+	name = "dynn_kobyla"
+	culture = "czech"
+	motto = dynn_kobyla_motto
+}
+
+vanity_ceanneidigh = {
+	name = dynn_Ceanneidigh
+	prefix = "dynnp_ua"
+	culture = irish
+	motto = dynn_ceanneidigh_motto
+}
+
+vanity_ariens = {
+	name = "dynn_Ariens"
+	culture = "dutch"
+	motto = dynn_Ariens_motto
+}
+
+vanity_Janiak = {
+	name = "dynn_Janiak"
+	culture = "polish"
+	motto = dynn_Janiak_motto
+}
+
+vanity_Nowakowski = {
+	name = "dynn_Nowakowski"
+	culture = "polish"
+	motto = dynn_Nowakowski_motto
+}
+
+vanity_szmil = {
+	name = "dynn_Szmil"
+	culture = "polish"
+	motto = dynn_Szmil_motto
+}
+
+vanity_Alessawey = {
+	name = "dynn_Alessawey"
+	culture = "egyptian"
+	motto = dynn_Alessawey_motto
+}
+
+vanity_saltfish = {
+	name = "dynn_Saltfish"
+	culture = "japanese"
+	motto = dynn_Saltfish_motto
+}
+
+vanity_Az = {
+	name = "dynn_Az"
+	culture = "galician"
+	motto = dynn_Az_motto
 }

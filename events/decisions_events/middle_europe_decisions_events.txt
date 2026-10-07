@@ -52,7 +52,7 @@ middle_europe_decisions.0001 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				top_liege = scope:scoped_emperor
 			}
 			trigger_event = middle_europe_decisions.0002
@@ -119,7 +119,7 @@ middle_europe_decisions.0003 = {
 	}
 	right_portrait = {
 		trigger = {
-			NOT = { scope:scoped_emperor = root }
+			scope:scoped_emperor != root
 		}
 		character = scope:scoped_emperor
 		animation = happiness
@@ -135,7 +135,7 @@ middle_europe_decisions.0003 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				top_liege = scope:scoped_emperor
 			}
 			trigger_event = middle_europe_decisions.0004
@@ -165,7 +165,7 @@ middle_europe_decisions.0004 = {
 			triggered_desc = {
 				trigger = {
 					has_title = title:e_hre
-					NOT = { dynasty = scope:scoped_ruler.dynasty }
+					dynasty != scope:scoped_ruler.dynasty
 				}
 				desc = middle_europe_decisions.0004.desc.emperor_blackmailed
 			}
@@ -242,7 +242,7 @@ middle_europe_decisions.0005 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				is_ruler = yes
 				is_landed = yes
 				capital_province = { geographical_region = world_europe }
@@ -317,7 +317,7 @@ middle_europe_decisions.0006 = {
 	option = {
 		name = middle_europe_decisions.0006.b
 		trigger = {
-			NOT = { this = scope:scoped_emperor }
+			this != scope:scoped_emperor
 		}
 	}
 }
@@ -353,7 +353,7 @@ middle_europe_decisions.0007 = {
 		# Send narrative fluff to other players (if any).
 		every_player = {
 			limit = {
-				NOT = { this = root }
+				this != root
 				top_liege = scope:former_liege
 			}
 			trigger_event = middle_europe_decisions.0008
@@ -392,7 +392,7 @@ middle_europe_decisions.0008 = {
 			# Everybody else's.
 			triggered_desc = {
 				trigger = {
-					NOT = { this = scope:former_liege }
+					this != scope:former_liege
 				}
 				desc = middle_europe_decisions.0008.desc.others
 			}
@@ -432,7 +432,7 @@ middle_europe_decisions.0008 = {
 	option = {
 		name = middle_europe_decisions.0008.b
 		trigger = {
-			NOT = { this = scope:former_liege }
+			this != scope:former_liege
 		}
 	}
 }
@@ -536,7 +536,7 @@ middle_europe_decisions.0010 = {
 			every_player = { # Notify
 				limit = {
 					is_vassal_of = root
-					NOT = { this = root }
+					this != root
 				}
 				trigger_event = middle_europe_decisions.0011
 			}
@@ -622,7 +622,7 @@ middle_europe_decisions.0010 = {
 			every_player = { # Notify
 				limit = {
 					is_vassal_of = root
-					NOT = { this = root }
+					this != root
 				}
 				trigger_event = middle_europe_decisions.0011
 			}
@@ -638,7 +638,7 @@ middle_europe_decisions.0010 = {
 			}
 		}
 		hidden_effect = { # Reinburse cost.
-			add_gold = 1500
+			add_treasury_or_gold = 1500
 			add_prestige_no_experience = 3000
 		}
 	}
@@ -684,7 +684,7 @@ middle_europe_decisions.0012 = {
 		hidden_effect = {
 			every_player = { # Notify
 				limit = {
-					NOT = { this = root }
+					this != root
 					is_ruler = yes
 					is_landed = yes
 					capital_province = { geographical_region = world_europe }
@@ -776,18 +776,63 @@ middle_europe_decisions.0013 = {
 middle_europe_decisions.0015 = {
 	type = character_event
 	title = middle_europe_decisions.0015.t
-	desc = middle_europe_decisions.0015.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:hre_blessing_authority }
+				desc = middle_europe_decisions.0015.desc
+			}
+			desc = middle_europe_decisions.0015.desc.unblessed
+		}
+	}
 	theme = realm
 	left_portrait =	{
 		character = scope:founder
 		animation = personality_bold
 	}
+	artifact = {
+		target = scope:newly_created_artifact
+		position = lower_right_portrait
+	}
 
 	immediate = {
 		play_music_cue = "mx_cue_epic_sacral_moment"
 		restore_holy_roman_empire_decision_scripted_effect = yes
+		custom_tooltip = hre_elector_list_created_tt
 		legend_seed_new_title_effect = yes
 		create_artifact_reichskrone_effect = { OWNER = this }
+		if = {
+			limit = {
+				has_pam_dlc_trigger = yes
+				exists = scope:hre_blessing_authority
+				religion = religion:christianity_religion
+				situation:the_christian_church ?= {
+					situation_top_has_catalyst = catalyst_restore_hre_with_pope_blessing
+				}
+			}
+			situation:the_christian_church = {
+				trigger_situation_catalyst = {
+					catalyst = catalyst_restore_hre_with_pope_blessing
+					character = root
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_pam_dlc_trigger = yes
+				NOT = { exists = scope:hre_blessing_authority }
+				religion = religion:christianity_religion
+				situation:the_christian_church ?= {
+					situation_top_has_catalyst = catalyst_the_christian_church_restored_hre_without_blessing
+				}
+			}
+			situation:the_christian_church = {
+				trigger_situation_catalyst = {
+					catalyst = catalyst_the_christian_church_restored_hre_without_blessing
+					character = root
+				}
+			}
+		}
 	}
 
 	#Renovatio Imperii!
@@ -796,11 +841,15 @@ middle_europe_decisions.0015 = {
 		give_nickname = nick_the_great
 		add_prestige_experience = monumental_fame_gain
 		every_vassal = {
+			custom = custom_every_rightful_vassal
+			limit = {
+				save_temporary_scope_as = vassal_temp
+				root = { is_rightful_liege_of = scope:vassal_temp }
+			}
 			add_opinion = {
 				modifier = reformed_holy_roman_empire_opinion
 				target = root
 			}
-			custom = restore_holy_roman_empire_decision_effects_vassal_opinion.tt
 		}
 		ai_chance = {	#When taken, the AI should always pick this.
 			base = 100
@@ -820,7 +869,15 @@ middle_europe_decisions.0015 = {
 middle_europe_decisions.0016 = {
 	type = character_event
 	title = middle_europe_decisions.0015.t
-	desc = middle_europe_decisions.0016.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:hre_blessing_authority }
+				desc = middle_europe_decisions.0016.desc
+			}
+			desc = middle_europe_decisions.0016.desc.unblessed
+		}
+	}
 	theme = realm
 	left_portrait =	{
 		character = scope:founder
@@ -830,7 +887,7 @@ middle_europe_decisions.0016 = {
 	immediate = {
 		#Other emperors are not happy about this.
 		if = {
-			limit = { highest_held_title_tier = tier_empire }
+			limit = { highest_held_title_tier >= tier_empire }
 			play_music_cue = "mx_cue_combat_2"
 		}
 	}
@@ -839,19 +896,19 @@ middle_europe_decisions.0016 = {
 	option = {
 		name = {	#Other emperors are threatened.
 			trigger = {
-				highest_held_title_tier = tier_empire
-				NOT = { has_title = title:e_byzantium }
+				highest_held_title_tier >= tier_empire
+				is_roman_emperor_trigger = no
 			}
 			text = middle_europe_decisions.0016.a
 		}
 		name = {	#The true emperor is a tad pissed off.
-			trigger = { has_title = title:e_byzantium }
+			trigger = { is_roman_emperor_trigger = yes }
 			text = middle_europe_decisions.0016.b
 		}
 		name = {	#All other rulers fear Roman invasion.
 			trigger = {
 				NOR = {
-					highest_held_title_tier = tier_empire
+					highest_held_title_tier >= tier_empire
 					any_liege_or_above = { this = scope:founder }
 				}
 			}
@@ -912,8 +969,8 @@ middle_europe_decisions.0017 = {
 				limit = { middle_europe_decisions_0017_most_powerful_saxon_vassal_trigger = yes }
 				order_by = {
 					every_held_title = {
+						title_tier = county
 						limit = {
-							tier = tier_county
 							kingdom = title:k_sorbia
 						}
 						add = 1
@@ -936,8 +993,7 @@ middle_europe_decisions.0017 = {
 		# Get my heir
 		if = {
 			limit = {
-				exists = player_heir
-				player_heir = {
+				player_heir ?= {
 					liege = root
 					OR = {
 						any_county_in_region = {
@@ -953,9 +1009,7 @@ middle_europe_decisions.0017 = {
 		# Get a courtier
 		if = {
 			limit = {
-				any_courtier = {
-					count >= 1
-				}
+				any_courtier = { }
 			}
 			random_courtier = {
 				limit = {

@@ -5,7 +5,7 @@
 
 1 = {
     culture = atlantean
-    religion = atlantite
+    rite = atlantis_rite
     holding = castle_holding
 }
 
@@ -17,11 +17,11 @@
 	holding = none
 }
 
-#    c_atlantis_b
+#    c_atlantis
 
 4 = {
 	culture = atlantean
-	religion = atlantite
+	rite = atlantis_rite
 	holding = castle_holding
 }
 
@@ -31,15 +31,15 @@
 
 6 = {
 	culture = atlantean
-	religion = atlantite
+	rite = atlantis_rite
 	holding = castle_holding
 }
 
-#    c_atlantis_c
+#    c_atlantis
 
 7 = {
 	culture = atlantean
-	religion = atlantite
+	rite = atlantis_rite
 	holding = castle_holding
 }
 

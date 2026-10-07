@@ -1,1 +1,180 @@
-﻿
+﻿c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+d_norfolk = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = d_norfolk_norman
+	}
+}
+d_lancaster = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = d_lancaster_norman
+	}
+}
+d_canterbury = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = d_canterbury_norman
+	}
+}
+d_bedford = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = d_bedford_norman
+	}
+}
+d_york = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = d_york_norman
+	}
+	item = {
+		trigger = {
+			coa_switch_to_norse_trigger = yes
+		}
+		coat_of_arms = d_york_norse
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}
+c_atlantis = {
+	item = {
+		trigger = {
+			coa_switch_to_norman_trigger = yes
+		}
+		coat_of_arms = c_atlantis
+	}
+}

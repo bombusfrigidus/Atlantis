@@ -1,0 +1,33 @@
+﻿atlantis_rite = {
+	name = atlantis_rite
+	desc = atlantis_rite_desc
+	founder = k_papal_state
+	faith = atlantis_faith
+
+	color = { 0.8 0.8 0.6 }
+	icon = christianity_papal_cross_01
+    tenets = {
+        tenet_communion
+    }
+
+	tenet_selection_pair = {
+		requires_dlc_flag = by_god_alone
+		tenet = tenet_dulia
+		fallback_tenet = tenet_armed_pilgrimages
+	}
+	tenet_selection_pair = {
+		requires_dlc_flag = by_god_alone
+		tenet = tenet_apostolic_succession
+		fallback_tenet = tenet_communal_identity
+	}
+
+	doctrines = {
+		special_doctrine_is_western_christian_faith
+		doctrine_clerical_marriage_disallowed
+		doctrine_adultery_men_shunned
+		doctrine_homosexuality_shunned
+	}
+
+	# TODO_PAM_DESIGN TIT-72804
+	cultures = { italian roman lombard langobard cisalpine }
+}

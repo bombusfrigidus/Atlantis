@@ -7,8 +7,7 @@ PilgrimageName = {
 		trigger = {
 			OR = {
 				AND = {
-					exists = involved_activity
-					involved_activity = {
+					involved_activity ?= {
 						has_activity_option = {
 							category = special_type
 							option = pilgrimage_type_hajj
@@ -257,7 +256,7 @@ GetPilgrimOrHajjiTrait = {
 	#If you need your Hajji trait
 	text = {
 		trigger = { 
-			faith = { has_doctrine_parameter = mandatory_hajj }
+			rite = { rite_has_parameter = mandatory_hajj }
 			NOT = { has_trait = hajjaj }
 		}
 		localization_key = activity_pilgrimage_hajjaj_custom_host_desc

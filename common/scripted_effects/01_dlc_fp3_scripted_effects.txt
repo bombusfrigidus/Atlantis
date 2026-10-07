@@ -31,15 +31,13 @@ destroy_the_magi_scripted_effect = {
 
 	faith = {
 		change_fervor = {
-			value = 50
+			value = major_fervor_gain
 			desc = fervor_gain_magi_destroyed
 		}
 		if = {
-			limit = { 
-				AND = {
-					has_doctrine = doctrine_spiritual_head 
-					has_doctrine = doctrine_theocracy_temporal
-				}
+			limit = {
+				has_doctrine = doctrine_spiritual_head
+				main_rite = { rite_has_doctrine = doctrine_theocracy_temporal }
 			}
 			custom_tooltip = replace_the_high_priest_effect_tooltip
 			hidden_effect = {
@@ -83,7 +81,7 @@ destroy_the_magi_scripted_effect = {
 			}
 			else_if = {
 				limit = {
-					faith = { has_doctrine = doctrine_major_branch_behdin }
+					rite = { rite_has_doctrine = doctrine_major_branch_behdin }
 				}
 				add_opinion = {
 					target = root
@@ -98,19 +96,19 @@ opinion_based_on_sky_burial_viewpoint_scripted_effect = {
 	if = {
 		limit = {
 			OR = {
-				faith = { has_doctrine_parameter = sky_burials_active }
+				rite = { rite_has_parameter = sky_burials_active }
 				has_trait = compassionate
 				has_trait = cynical
 				has_trait = trusting 
 				has_trait = forgiving 
 				AND = {
-					NOT = {	faith = { has_doctrine_parameter = sky_burials_active }	}
+					NOT = {	rite = { rite_has_parameter = sky_burials_active }	}
 					ai_compassion >= medium_positive_ai_value
 					ai_zeal <= medium_positive_ai_value
 				}
 				AND = {
-					NOT = {	faith = { has_doctrine_parameter = sky_burials_active }	}
-					faith = { has_doctrine = doctrine_pluralism_pluralistic }
+					NOT = {	rite = { rite_has_parameter = sky_burials_active }	}
+					rite = { rite_has_doctrine = doctrine_pluralism_pluralistic }
 					ai_zeal <= medium_positive_ai_value
 				}
 			}	
@@ -142,19 +140,19 @@ opinion_based_on_sky_burial_viewpoint_for_relatives_scripted_effect = {
 	if = {
 		limit = {
 			OR = {
-				faith = { has_doctrine_parameter = sky_burials_active }
+				rite = { rite_has_parameter = sky_burials_active }
 				has_trait = compassionate
 				has_trait = cynical
 				has_trait = trusting 
 				has_trait = forgiving 
 				AND = {
-					NOT = {	faith = { has_doctrine_parameter = sky_burials_active }	}
+					NOT = {	rite = { rite_has_parameter = sky_burials_active }	}
 					ai_compassion >= medium_positive_ai_value
 					ai_zeal <= medium_positive_ai_value
 				}
 				AND = {
-					NOT = {	faith = { has_doctrine_parameter = sky_burials_active }	}
-					faith = { has_doctrine = doctrine_pluralism_pluralistic }
+					NOT = {	rite = { rite_has_parameter = sky_burials_active }	}
+					rite = { rite_has_doctrine = doctrine_pluralism_pluralistic }
 					ai_zeal <= medium_positive_ai_value
 				}
 			}	
@@ -331,7 +329,7 @@ spawn_seljuk_character_effect = {
 			}
 
 			add_character_flag = is_seljuk
-			game_rule_create_spouse_and_children = { CHARACTER = this } #to make sure there is someone to continue the invasions
+			game_rule_create_spouse_and_children = { CHARACTER = this LOCATION = this } #to make sure there is someone to continue the invasions
 		}
 		save_scope_as = lead_seljuk
 	}
@@ -394,7 +392,7 @@ try_to_settle_the_seljuk_effect = {
 				modifier = {
 					holder.top_liege = { save_temporary_scope_as = top_liege_temp }
 					any_neighboring_county = {
-						NOT = { holder.top_liege = scope:top_liege_temp }
+						holder.top_liege != scope:top_liege_temp
 					}
 				}
 			}
@@ -456,7 +454,7 @@ seljuk_war_target_evaluation_and_declaration_effect = {
 	if = {
 		limit = {
 			scope:lead_seljuk = {
-				is_independent_ruler = no
+				top_liege != this
 				liege = {
 					any_vassal = {
 						highest_held_title_tier > tier_barony
@@ -488,15 +486,13 @@ seljuk_war_target_evaluation_and_declaration_effect = {
 				limit = {
 					liege = {
 						any_targeting_faction = {
-							faction_is_type = liberty_faction
+							faction_type = liberty_faction
 						}
 					}
 				}					
 				liege = {
 					random_targeting_faction = {
-						limit = {
-							faction_is_type = liberty_faction
-						}
+						faction_type = liberty_faction
 						save_temporary_scope_as = liberty_faction
 					}
 				}
@@ -758,7 +754,7 @@ seljuk_request_independence_from_liege_effect = {
 			limit = {
 				liege = {
 					any_targeting_faction = {
-						faction_is_type = independence_faction
+						faction_type = independence_faction
 					}
 				}
 			}
@@ -787,9 +783,7 @@ seljuk_request_independence_from_liege_effect = {
 		#debug_log = "Seljuk asked for independence"
 		liege = {
 			random_targeting_faction = {
-				limit = {
-					faction_is_type = independence_faction
-				}
+				faction_type = independence_faction
 				faction_start_war = {}
 			}
 		}
@@ -804,7 +798,8 @@ spawn_zanj_leader_character_effect = {
 		age = { 55 65 }
 		name = "Muhammad"
 		gender = male
-		faith = faith:zayidi
+		faith = faith:shia
+		rite = rite:zayidi
 		location = title:c_atlantis.title_province
 		culture = culture:bedouin
 
@@ -816,7 +811,8 @@ spawn_zanj_leader_character_effect = {
 	create_character = {
 		age = { 55 65 }
 		gender = female
-		faith = faith:azariqa
+		faith = faith:kharijite
+		rite = rite:azariqa
 		location = title:c_atlantis.title_province
 		culture = culture:bedouin
 
@@ -829,7 +825,8 @@ spawn_zanj_leader_character_effect = {
 		age = { 25 35 }
 		name = "Ali"
 		gender = male
-		faith = faith:zayidi
+		faith = faith:shia
+		rite = rite:zayidi
 		location = title:c_atlantis.title_province
 		culture = culture:bedouin
 		father = scope:zanj_leader_father
@@ -877,7 +874,8 @@ spawn_zanj_representative_character_effect = {
 	create_character = {
 		age = { 30 40 }
 		gender_female_chance = 50
-		faith = faith:azariqa
+		faith = faith:kharijite
+		rite = rite:azariqa
 		location = title:c_atlantis.title_province
 		culture = culture:east_bantu
 
@@ -998,7 +996,8 @@ create_zanj_courtier_effect = {
 	hidden_effect = {
 		create_character = {
 			location = $LOCATION$
-			faith = faith:azariqa
+			faith = faith:kharijite
+			rite = rite:azariqa
 			culture = culture:east_bantu
 			dynasty = none
 			age = { 18 30 }
@@ -1014,7 +1013,8 @@ create_zanj_courtier_effect = {
 create_zanj_vassal_effect = {
 	hidden_effect = {
 		create_character = {
-			faith = faith:azariqa
+			faith = faith:kharijite
+			rite = rite:azariqa
 			culture = culture:east_bantu
 			gender_female_chance = 50
 			age = { 18 30 }
@@ -1360,5 +1360,14 @@ create_seljuk_army_at_peace_effect = {
 				name = fp3_seljuk_horde_army_title
 			}
 		}
+	}
+}
+
+increase_tax_collector_skill = {
+	switch = {
+		trigger = root.var:skill_to_increase
+		flag:stewardship = { add_stewardship_skill = 1 }
+		flag:intrigue = { add_intrigue_skill = 1 }
+		flag:diplomacy = { add_diplomacy_skill = 1 }
 	}
 }

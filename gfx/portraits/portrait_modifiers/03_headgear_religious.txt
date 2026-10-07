@@ -1,0 +1,1290 @@
+﻿headgear_religious = {
+
+	usage = game
+	selection_behavior = weighted_random
+	priority = 3
+
+## PAM Crowns & Christian Monastic Orders ##
+# These sit at the top of the group so they beat the Orthodox landed-clergy mitre and the
+# Catholic blocks below (the first entry in file order whose weight reaches 100 is selected).
+
+	pam_hildegard_crown = { # Hildegard von Bingen wears her namesake crown (history character and mid-game spawn)
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = pam_nun_crown_01
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 138
+				exists = this
+				has_pam_dlc_trigger = yes
+				OR = {
+					AND = {
+						exists = character:1
+						this = character:1
+					}
+					AND = {
+						is_alive = yes
+						has_variable = hildegard
+					}
+				}
+			}
+		}
+	}
+
+	pam_female_ruler_clergy_crown = { # Western Christian female ruler clergy wear the nun's crown instead of a mitre (PAM)
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = pam_nun_crown_01
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 137 # Above catholic_cardinal (+135), below popes (+140); popes are also excluded below.
+				exists = this
+				is_female = yes
+				has_pam_dlc_trigger = yes
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_head_no_poverty_trigger = no
+				NOR = {
+					has_title = title:k_papal_state
+					primary_title ?= title:k_papal_state
+				}
+				OR = {
+					portrait_is_cardinal_trigger = yes
+					AND = {
+						portrait_religious_high_trigger = yes
+						OR = {
+							portrait_is_archbishop_trigger = yes
+							portrait_is_prince_bishop_trigger = yes
+							portrait_is_kingdom_bishop_trigger = yes
+						}
+					}
+				}
+			}
+		}
+	}
+
+	christian_monastic_bare_headed = {
+		# Without this Eastern archabbots take the mitre, Western ones 01_headgear_base hats
+		# Nuns excluded so they keep the veil from catholic_devoted
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { no_headgear }
+		weight = {
+			base = 0
+			modifier = {
+				add = 132 # Above religious_orthodox_high (+130), below the PAM crowns above.
+				exists = this
+				portrait_religious_christian_trigger = yes
+				NOT = {
+					AND = {
+						is_female = yes
+						portrait_has_trait_trigger = { TRAIT = devoted }
+					}
+				}
+				OR = {
+					government_has_flag = government_is_monastic_holy_order
+					AND = {
+						employer ?= { government_has_flag = government_is_monastic_holy_order }
+						portrait_religious_devoted_trigger = yes
+					}
+				}
+			}
+		}
+	}
+
+## Orthodox ##
+
+	religious_orthodox_high = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_orthodox_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 130
+				portrait_religious_orthodox_landed_clergy_trigger = yes
+			}
+		}
+	}
+
+	orthodox_female_clergy_veil = {
+		# Headscarf only: the rest of the Byzantine female set is jewelled court hats.
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = clergy_veils_orthodox
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120 # Same tier as religious_orthodox_bare_headed below, which is gated to men.
+				is_female = yes
+				portrait_religious_orthodox_trigger = yes
+				OR = {
+					portrait_religious_devoted_trigger = yes
+					portrait_religious_high_trigger = yes
+					portrait_religious_high_no_poverty_trigger = yes
+				}
+				NOR = {
+					portrait_has_trait_trigger = { TRAIT = devoted } # Nuns still get habits
+					portrait_religious_orthodox_landed_clergy_trigger = yes
+				}
+			}
+		}
+	}
+
+	religious_orthodox_bare_headed = {
+		# Without this, 01_headgear_base priority-1 hats would put secular headwear on these priests
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit no_headgear }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120 # Below religious_orthodox_high (+130) so landed clergy still get the mitre.
+				is_female = no # Women are veiled by orthodox_female_clergy_veil above
+				portrait_religious_orthodox_trigger = yes
+				OR = {
+					portrait_religious_devoted_trigger = yes
+					portrait_religious_high_trigger = yes
+					portrait_religious_high_no_poverty_trigger = yes
+				}
+				NOR = {
+					portrait_has_trait_trigger = { TRAIT = devoted } # Nuns still get habits
+					portrait_religious_orthodox_landed_clergy_trigger = yes
+				}
+			}
+		}
+	}
+
+	religious_orthodox_head = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_orthodox_head
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 200
+				portrait_religious_head_trigger = yes
+				OR = {
+					faith = faith:orthodox
+					portrait_christian_faith_orthodox_trigger = yes
+				}
+			}
+		}
+	}
+
+
+## Catholic ##
+
+	catholic_cardinal = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_cardinal_hat
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 135 # Above catholic_archbishop (+130), below popes (+140).
+				portrait_is_cardinal_trigger = yes
+			}
+		}
+	}
+
+	catholic_devoted = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_catholic_devoted
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { monk_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_religious_devoted_trigger = yes
+				OR = {
+					portrait_religious_western_christian_trigger = yes
+					portrait_religious_orthodox_trigger = yes
+				}
+			}
+		}
+	}
+
+	catholic_head = {
+		outfit_tags = { rank_headgear }
+		usage = game
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_head
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 120			
+				OR = {
+					AND = {
+						portrait_religious_head_no_poverty_trigger = yes
+						portrait_religious_catholic_trigger = yes
+					}
+					has_title = title:k_papal_state
+				}
+				NOT = {
+					faith = {
+						has_doctrine_parameter = vows_of_poverty_active
+					}
+				}
+			}	
+		}
+	}
+
+	catholic_archbishop = {
+		outfit_tags = { rank_headgear }
+		usage = game
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_archbishop_mitre
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 130
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				portrait_is_archbishop_trigger = yes
+				has_pam_dlc_trigger = no # Owners take this rank's mitre from the PAM entry below.
+			}
+		}
+	}
+
+	catholic_prince_bishop = {
+		outfit_tags = { rank_headgear }
+		usage = game
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_bishop_mitre
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				OR = {
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+				}
+				has_pam_dlc_trigger = no # Owners take this rank's mitre from the PAM entry below.
+			}
+		}
+	}
+
+	# Clergywomen below mitre rank take secular veils; the habit belongs to the nuns above.
+
+	catholic_female_clergy_veil = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = clergy_veils_western
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120
+				is_female = yes
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				# EP2 era 2 uses the same base-game veils as the pre-EP2 pool
+				# Children land here because era triggers miss some birth years under sixteen
+				OR = {
+					has_ep2_dlc_trigger = no
+					portrait_era2_trigger = yes
+					is_adult = no
+				}
+				NOR = {
+					portrait_is_archbishop_trigger = yes
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+					portrait_is_cardinal_trigger = yes
+				}
+			}
+		}
+	}
+
+	ep2_catholic_female_clergy_veil_era1 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = clergy_veils_ep2_western_era1
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120
+				is_female = yes
+				is_adult = yes # Children are covered by catholic_female_clergy_veil, era regardless
+				has_ep2_dlc_trigger = yes
+				portrait_era1_trigger = yes
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				NOR = {
+					portrait_is_archbishop_trigger = yes
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+					portrait_is_cardinal_trigger = yes
+				}
+			}
+		}
+	}
+
+	ep2_catholic_female_clergy_veil_era3 = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = clergy_veils_ep2_western_era3
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120
+				is_female = yes
+				is_adult = yes # Children are covered by catholic_female_clergy_veil, era regardless
+				has_ep2_dlc_trigger = yes
+				portrait_era2_trigger = no # A dead adult born 1125-1149 matches era2 and era3 both
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				OR = {
+					portrait_era3_trigger = yes
+					portrait_era4_trigger = yes
+				}
+				NOR = {
+					portrait_is_archbishop_trigger = yes
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+					portrait_is_cardinal_trigger = yes
+				}
+			}
+		}
+	}
+
+	catholic_clergy_with_mitre = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_bishop_mitre
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 40
+				is_female = no # Women of this rank are veiled by the entries above
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				NOR = {
+					portrait_is_archbishop_trigger = yes
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+					portrait_is_cardinal_trigger = yes
+				}
+			}
+		}
+	}
+
+	# A character matching both eras (a dead adult born 1125-1149) takes the early entry on file order
+
+	pam_catholic_archbishop_mitre_early = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_archbishop_mitre_pam_early
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 130
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				portrait_is_archbishop_trigger = yes
+				has_pam_dlc_trigger = yes
+				OR = {
+					portrait_era1_trigger = yes
+					portrait_era2_trigger = yes
+				}
+			}
+		}
+	}
+
+	pam_catholic_archbishop_mitre_late = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_archbishop_mitre_pam_late
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 130
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				portrait_is_archbishop_trigger = yes
+				has_pam_dlc_trigger = yes
+				OR = {
+					portrait_era3_trigger = yes
+					portrait_era4_trigger = yes
+				}
+			}
+		}
+	}
+
+	pam_catholic_prince_bishop_mitre_early = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_bishop_mitre_pam_early
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				OR = {
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+				}
+				has_pam_dlc_trigger = yes
+				OR = {
+					portrait_era1_trigger = yes
+					portrait_era2_trigger = yes
+				}
+			}
+		}
+	}
+
+	pam_catholic_prince_bishop_mitre_late = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_bishop_mitre_pam_late
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 125
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				OR = {
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+				}
+				has_pam_dlc_trigger = yes
+				OR = {
+					portrait_era3_trigger = yes
+					portrait_era4_trigger = yes
+				}
+			}
+		}
+	}
+
+	catholic_clergy_bare_headed = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit bishop_outfit no_headgear }
+		weight = {
+			base = 0
+			modifier = {
+				add = 120
+				is_female = no # Women of this rank are veiled by the entries above
+				portrait_religious_western_christian_trigger = yes
+				portrait_religious_high_trigger = yes
+				NOR = {
+					portrait_is_archbishop_trigger = yes
+					portrait_is_prince_bishop_trigger = yes
+					portrait_is_kingdom_bishop_trigger = yes
+					portrait_is_cardinal_trigger = yes
+				}
+			}
+		}
+	}
+
+	popes = {
+		outfit_tags = { rank_headgear }
+		usage = game
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = catholic_head
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 140
+				portrait_religious_head_popes_trigger = yes
+			}
+		}
+	}
+
+## Christian Military Orders ##
+
+	christian_military_order_bare_headed = {
+		# Without this no_headgear weight they fall through to 01_headgear_base culture hats
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 }
+			}
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { no_headgear }
+		weight = {
+			base = 0
+			modifier = {
+				add = 115 # Below religious_orthodox_high (+130) / catholic_archbishop (+130) / catholic_prince_bishop (+125) so a Grand Master who also qualifies as landed clergy / HoF still gets their mitre.
+				portrait_wear_christian_holy_order_trigger = yes
+				portrait_wear_helmet_trigger = no
+			}
+		}
+	}
+
+## Jewish ##
+
+	religious_jewish_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_jewish_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_religious_high_no_poverty_trigger = yes
+				OR = {
+					portrait_religious_jewish_trigger = yes
+					portrait_religious_hellenism_trigger = yes
+				}
+			}
+		}
+	}
+
+	religious_jewish_head = {
+		outfit_tags = { rank_headgear }
+		usage = game
+		dna_modifiers = {
+			accessory = {
+				mode = add
+
+				gene = headgear
+				template = religious_jewish_head
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 140
+				portrait_religious_head_no_poverty_trigger = yes
+				portrait_religious_jewish_trigger = yes
+			}
+		}
+	}
+
+## Muslim ##
+
+	religious_muslim_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_muslim_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 111
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_muslim_trigger = yes
+			}
+		}
+	}
+
+
+
+## Northern Pagan ##
+
+	religious_northern_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_northern_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_norse_trigger = yes
+			}
+		}
+	}
+
+## CCP4 Siberian Khanty / Sami ##
+
+religious_siberian_high_headgear = {
+	dna_modifiers = {
+		accessory = {
+			mode = add
+			gene = headgear
+			template = ccp4_religious_siberian_commoner
+			range = { 0 1 }
+		}
+	}
+	outfit_tags = { priest_outfit }
+	weight = {
+		base = 0
+		modifier = {
+			add = 105 # higher than steppe
+			portrait_religious_high_no_poverty_trigger = yes
+			portrait_religious_siberian_trigger = yes
+		}
+	}
+}
+
+religious_sami_high_headgear = {
+	dna_modifiers = {
+		accessory = {
+			mode = add
+			gene = headgear
+			template = ccp4_sami_low_nobility
+			range = { 0 1 }
+		}
+	}
+	outfit_tags = { priest_outfit }
+	weight = {
+		base = 0
+		modifier = {
+			add = 105 # higher than norse
+			portrait_religious_high_no_poverty_trigger = yes
+			portrait_religious_sami_trigger = yes
+		}
+	}
+}
+
+    ## CCP7 Emishi Ainu Kamuy ##
+    religious_kamuyist_high_headgear = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = ccp7_ainu_sapanpe
+                range = { 0 1 }
+            }
+        }
+        outfit_tags = { priest_outfit }
+        weight = {
+            base = 0
+            modifier = {
+                add = 105 #higher than steppe
+                portrait_religious_high_trigger = yes
+                portrait_religious_emishi_trigger = yes
+            }
+        }
+    }
+
+    ## CCP7 Shaman ##
+    religious_shamanist_high_headgear = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = religious_steppe_high
+                range = { 0 1 }
+            }
+        }
+        outfit_tags = { priest_outfit }
+        weight = {
+            base = 0
+            modifier = {
+                add = 105 #higher than steppe
+                portrait_religious_high_trigger = yes
+                portrait_religious_shamanism_trigger = yes
+            }
+        }
+    }
+
+    ## CCP7 Nivkh Shaman ##
+    religious_nivkh_shamanist_high_headgear = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = headgear
+                template = ccp7_nivkh_shaman
+                range = { 0 1 }
+            }
+        }
+        outfit_tags = { priest_outfit }
+        weight = {
+            base = 0
+            modifier = {
+                add = 105 #higher than steppe
+                portrait_religious_high_trigger = yes
+                portrait_religious_emishi_trigger = yes
+            }
+        }
+    }
+
+## Steppe ##
+
+	religious_steppe_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_steppe_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_steppe_trigger = yes
+			}
+			modifier = {
+				add = 100
+				has_court_position = court_astrologer_court_position
+				exists = situation:the_great_steppe
+				liege ?= {
+					any_character_situation = {
+						this = situation:the_great_steppe
+					}
+				}
+			}
+		}
+	}
+
+## Japanese (Shinto) ##
+
+	religious_japanese_headgear = { 
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = tgp_shinto_priest
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { monk_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				OR = {
+					portrait_religious_high_trigger = yes
+					portrait_religious_devoted_trigger = yes
+				}
+			   	portrait_religious_buddhist_trigger = no # Not appropriate for Buddhists
+				portrait_japanese_clothing_trigger = yes
+			}
+		}
+	}
+
+## Buddhist ##
+
+	religious_buddhist_devoted_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = beards
+				template = no_beard
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { monk_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 300
+				OR = {
+					portrait_religious_devoted_trigger = yes
+					portrait_religious_high_trigger = yes
+				}
+				portrait_religious_buddhist_trigger = yes
+				NOT = { has_character_flag = has_scripted_appearance }
+			}
+			modifier = {
+				factor = 0
+				has_tgp_dlc_trigger = yes
+				portrait_chinese_clothing_trigger = yes
+			}
+		}
+	}
+
+	religious_buddhist_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = beards
+				template = no_beard
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_buddhist_trigger = yes
+				NOT = { has_character_flag = has_scripted_appearance }
+			}
+			modifier = {
+				factor = 0
+				has_tgp_dlc_trigger = yes
+				portrait_chinese_clothing_trigger = yes
+			}
+		}
+	}
+
+## Chinese Buddhist (TGP) ##
+
+	religious_buddhist_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				OR = {
+					portrait_religious_devoted_trigger = yes
+					portrait_religious_high_no_poverty_trigger = yes
+				}
+				portrait_religious_buddhist_trigger = yes
+				NOT = { has_character_flag = has_scripted_appearance }
+				portrait_chinese_clothing_trigger = yes
+			}
+		}
+	}
+
+## Hinduist ##
+
+	religious_hindu_devoted_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { monk_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_has_trait_trigger = { TRAIT = devoted }
+				portrait_religious_hindu_trigger = yes
+			}
+		}
+	}
+
+	religious_hindu_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_hindu_trigger = yes
+			}
+		}
+	}
+
+## Zoroastrian ##
+
+	religious_zoroastrian_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_zoroastrian_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_zoroastrian_trigger = yes
+			}
+		}
+	}
+
+## Jain ##
+
+	religious_jain_devoted_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { monk_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				portrait_has_trait_trigger = { TRAIT = devoted }
+				portrait_religious_jain_trigger = yes
+			}
+		}
+	}
+
+	religious_jain_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				exists = this
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_jain_trigger = yes
+			}
+		}
+	}
+
+## African Pagan ##
+
+	# religious_african_devoted_clothes = {
+	# 	dna_modifiers = {
+	# 		accessory = {
+	# 			mode = add
+	# 			gene = clothes
+	# 			template = mena_commoner_clothes
+	# 			range = { 0 1 } # For the randomness to work correctly
+	# 		}
+	# 	}
+	#	outfit_tags = { monk_outfit }
+	# 	weight = {
+	# 		base = 0
+	# 		modifier = {
+	# 			add = 100
+	# 			portrait_has_trait_trigger = { TRAIT = devoted }
+	# 			religion = religion:islam_religion
+	# 		}
+	# 	}
+	# }
+
+	religious_african_high_headgear = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = headgear
+				template = religious_african_high
+				range = { 0 1 }
+			}
+		}
+		outfit_tags = { priest_outfit }
+		weight = {
+			base = 0
+			modifier = {
+				add = 110
+				portrait_religious_high_no_poverty_trigger = yes
+				portrait_religious_african_trigger = yes
+			}
+		}
+	}
+
+}

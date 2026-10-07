@@ -1,4 +1,5 @@
-﻿end_investments_minor_decision = {
+﻿### End Pious Investments ###
+end_investments_minor_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_spend_money.dds"
 	}
@@ -20,8 +21,17 @@
 	ai_check_interval = 0
 }
 
+### Designated Terrain ###
 choose_designated_terrain_decision = {
-	ai_check_interval = 120
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 120
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
 
 	picture = { reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds" }
 
@@ -29,13 +39,16 @@ choose_designated_terrain_decision = {
 	decision_group_type = major
 
 	is_shown = {
-		is_landed = no
 		has_perk = mustering_the_troops_perk
 		NOR = {
 			landless_inspector_terrain_master_trigger = { TERRAIN = woodlands }
 			landless_inspector_terrain_master_trigger = { TERRAIN = highlands }
 			landless_inspector_terrain_master_trigger = { TERRAIN = lowlands }
 			landless_inspector_terrain_master_trigger = { TERRAIN = drylands }
+		}
+		OR = {
+			is_landed = no
+			government_has_flag = government_is_nomadic
 		}
 	}
 
@@ -81,6 +94,7 @@ choose_designated_terrain_decision = {
 								terrain = mountains
 								terrain = hills
 								terrain = desert_mountains
+								terrain = terraced_hills
 							}
 						}
 					}
@@ -167,8 +181,17 @@ choose_designated_terrain_decision = {
 	ai_will_do = { base = 10 }
 }
 
+### Master Terrain ###
 choose_master_terrain_decision = {
-	ai_check_interval = 120
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 120
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
 
 	picture = { reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds" }
 
@@ -176,8 +199,13 @@ choose_master_terrain_decision = {
 	decision_group_type = major
 
 	is_shown = {
-		is_landed = no
 		has_perk = personal_touch_perk
+		OR = {
+			landless_inspector_terrain_master_trigger = { TERRAIN = woodlands }
+			landless_inspector_terrain_master_trigger = { TERRAIN = highlands }
+			landless_inspector_terrain_master_trigger = { TERRAIN = lowlands }
+			landless_inspector_terrain_master_trigger = { TERRAIN = drylands }
+		}
 		NOR = {
 			# Woodlands
 			has_character_modifier = master_terrain_forest_modifier
@@ -198,12 +226,7 @@ choose_master_terrain_decision = {
 			has_character_modifier = master_terrain_desert_modifier
 			has_character_modifier = master_terrain_oasis_modifier
 		}
-		OR = {
-			landless_inspector_terrain_master_trigger = { TERRAIN = woodlands }
-			landless_inspector_terrain_master_trigger = { TERRAIN = highlands }
-			landless_inspector_terrain_master_trigger = { TERRAIN = lowlands }
-			landless_inspector_terrain_master_trigger = { TERRAIN = drylands }
-		}
+		is_landed = no
 	}
 
 	widget = {
@@ -564,6 +587,7 @@ choose_master_terrain_decision = {
 }
 
 # Form Bosporan Kingdom 
+### Restore the Bosporan Kingdom ###
 form_bosporan_kingdom_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/event_scenes/ep3_medi_estate.dds"
@@ -572,25 +596,25 @@ form_bosporan_kingdom_decision = {
 	sort_order = 50
 
 	is_shown = {
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:flag_bosporan_kingdom
-			}
-		}
-		culture = {
+		culture ?= {
 			OR = {
 				has_cultural_pillar = heritage_central_germanic
 				has_cultural_pillar = heritage_byzantine
 			}
 		}
-		highest_held_title_tier <= tier_kingdom
 		any_held_title = {
 			OR = {
-				de_jure_liege = title:d_crimea
-				de_jure_liege = title:d_azov
-				this = title:d_crimea
+				de_jure_liege ?= title:d_crimea
 				this = title:d_azov
+				de_jure_liege ?= title:d_azov
+				this = title:d_crimea
+			}
+		}
+		highest_held_title_tier <= tier_kingdom
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:flag_bosporan_kingdom
 			}
 		}
 	}
@@ -598,7 +622,7 @@ form_bosporan_kingdom_decision = {
 	is_valid = {
 		completely_controls = title:d_crimea
 		completely_controls = title:d_azov
-		is_independent_ruler = yes
+		top_liege = this
 		prestige_level >= 3
 	}
 	
@@ -659,7 +683,18 @@ form_bosporan_kingdom_decision = {
 			TITLE = title:d_don_valley
 			DE_JURE = title:k_bosporan_kingdom
 		}
-		
+		adjust_de_jure_effect = {
+			TITLE = title:d_kizilyedisan
+			DE_JURE = title:k_bosporan_kingdom
+		}
+		adjust_de_jure_effect = {
+			TITLE = title:d_red_levedia
+			DE_JURE = title:k_bosporan_kingdom
+		}
+		adjust_de_jure_effect = {
+			TITLE = title:d_tana
+			DE_JURE = title:k_bosporan_kingdom
+		}
 		if = {
 			limit = {
 				province:1 = {
@@ -677,14 +712,36 @@ form_bosporan_kingdom_decision = {
 
 	cost = {
 		gold = {
-			value = 250
+			value = 0
+			if = {
+				limit = {
+					has_treasury = no
+				}
+				add = 250
+			}
+		}
+		treasury = {
+			value = 0
+			if = {
+				limit = {
+					has_treasury = yes
+				}
+				add = 250
+			}
 		}
 		prestige = {
 			value = 2000
 		}
 	}
 
-	ai_check_interval = 1000
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 60
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
 
 	ai_potential = {
 		is_ruler = yes
@@ -701,11 +758,12 @@ form_bosporan_kingdom_decision = {
 	}
 
 	ai_will_do = {
-		base = 80
+		base = 100
 	}
 }
 
 # Merging France and Aquitaine
+### France as One ###
 merge_aquitaine_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_found_kingdom.dds"
@@ -737,23 +795,27 @@ merge_aquitaine_decision = {
 	sort_order = 50
 
 	is_shown = {
+		culture ?= { has_cultural_pillar = heritage_frankish }
+		OR = {
+			has_title = title:k_france
+			has_title = title:k_aquitaine
+		}
+		NOR = {
+			title:k_aquitaine = { is_titular = yes }
+			title:k_france = { is_titular = yes }
+		}
 		NOT = {
 			is_target_in_global_variable_list = {
 				name = unavailable_unique_decisions
 				target = flag:merged_aquitaine
 			}
 		}
-		culture = { has_cultural_pillar = heritage_frankish }
-		OR = {
-			has_title = title:k_aquitaine
-			has_title = title:k_france
-		}
 	}
 
 	is_valid = {
 		has_title = title:k_aquitaine
 		has_title = title:k_france
-		is_independent_ruler = yes
+		top_liege = this
 		prestige_level >= 3
 	}
 
@@ -766,7 +828,7 @@ merge_aquitaine_decision = {
 		save_scope_as = rightful_liege
 
 		add_legitimacy_effect = { LEGITIMACY = massive_legitimacy_gain }
-		dynasty = { add_dynasty_prestige = massive_dynasty_prestige_value }
+		dynasty ?= { add_dynasty_prestige = massive_dynasty_prestige_value }
 
 		if = {
 			limit = {
@@ -806,7 +868,14 @@ merge_aquitaine_decision = {
 		}
 	}
 
-	ai_check_interval = 60
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 60
+		empire = 60
+		hegemony = 60
+	}
 
 	ai_potential = {
 		is_ruler = yes
@@ -819,21 +888,27 @@ merge_aquitaine_decision = {
 
 # The Legacy of the Adventurer
 # By Ariana Tranumn
+### Legacy of [GetPlayer.GetHouse.GetBaseNameNoTooltip] ###
 enact_legacy_of_adventurer_decision = {
 	picture = { # pic
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
 	}
 	desc = enact_legacy_of_adventurer_decision_desc
 	decision_group_type = adventurer
-	ai_check_interval = 36
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 36
+		kingdom = 0
+		empire = 0
+		hegemony = 0
+	}
 
 	ai_potential = {
 		government_has_flag = government_is_landless_adventurer
 	}
 
 	is_shown = {
-		# DLC check.
-		has_ep3_dlc_trigger = yes
 		is_landless_adventurer = yes
 		NOT = { has_trait = gallowsbait }
 		NOT = { 
@@ -841,6 +916,8 @@ enact_legacy_of_adventurer_decision = {
 				has_house_modifier = legacy_adventurer_house_modifier
 			}
 		}
+		# DLC check.
+		has_ep3_dlc_trigger = yes
 	}
 
 	is_valid = {

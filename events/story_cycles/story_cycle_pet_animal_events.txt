@@ -128,6 +128,27 @@ pet_animal.0001 = {
 						}
 					}
 					1 = {
+						trigger = { has_character_flag = name_hunter }
+						set_variable = {
+							name = story_cycle_cat_name
+							value = flag:cat_name_hunter
+						}
+					}
+					1 = {
+						trigger = { has_character_flag = name_pollyanna }
+						set_variable = {
+							name = story_cycle_cat_name
+							value = flag:cat_name_pollyanna
+						}
+					}
+					1 = {
+						trigger = { has_character_flag = name_flora }
+						set_variable = {
+							name = story_cycle_cat_name
+							value = flag:cat_name_flora
+						}
+					}
+					1 = {
 						trigger = { has_character_flag = name_gray }
 						set_variable = {
 							name = story_cycle_cat_name
@@ -281,6 +302,24 @@ pet_animal.0001 = {
 					}
 				}
 				default = {
+					localization_key = cat_name_hunter
+					trigger = {
+						has_character_flag = name_hunter
+					}
+				}
+				default = {
+					localization_key = cat_name_pollyanna
+					trigger = {
+						has_character_flag = name_pollyanna
+					}
+				}
+				default = {
+					localization_key = cat_name_flora
+					trigger = {
+						has_character_flag = name_flora
+					}
+				}
+				default = {
 					localization_key = cat_name_gray
 					trigger = {
 						has_character_flag = name_gray
@@ -345,6 +384,9 @@ pet_animal.0001 = {
 		remove_character_flag = name_mite
 		remove_character_flag = name_paws
 		remove_character_flag = name_mittens
+		remove_character_flag = name_hunter
+		remove_character_flag = name_pollyanna
+		remove_character_flag = name_flora
 		remove_character_flag = name_gray
 		remove_character_flag = name_flame
 		remove_character_flag = name_snow
@@ -362,6 +404,13 @@ pet_animal.0001 = {
 			set_variable = {
 				name = story_cycle_cat_name
 				value = flag:custom
+			}
+		}
+		random_owned_story = {
+			limit = { story_type = story_cycle_pet_cat }
+			set_variable = {
+				name = story_cycle_cat_name
+				value = story_owner.var:story_cycle_cat_name
 			}
 		}
 	}
@@ -736,10 +785,10 @@ pet_animal.0106 = {
 					type = friend
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 			}
 			every_relation = {
@@ -747,10 +796,10 @@ pet_animal.0106 = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 				add_to_list = can_get_cat
 			}
@@ -761,11 +810,11 @@ pet_animal.0106 = {
 					type = lover
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 			}
 			every_relation = {
@@ -773,11 +822,11 @@ pet_animal.0106 = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 				add_to_list = can_get_cat
 			}
@@ -788,11 +837,11 @@ pet_animal.0106 = {
 					NOT = { has_relation_rival = root }
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 			}
 			every_vassal = {
@@ -800,11 +849,11 @@ pet_animal.0106 = {
 					NOT = { has_relation_rival = root }
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 				add_to_list = can_get_cat
 			}
@@ -814,22 +863,22 @@ pet_animal.0106 = {
 				any_consort = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 			}
 			every_consort = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_cat }
-					NOT = { this = scope:spouse }
+					this != scope:spouse
 				}
 				add_to_list = can_get_cat
 			}
@@ -840,7 +889,7 @@ pet_animal.0106 = {
 		}
 		random_in_list = {
 			list = can_get_cat
-			limit = { NOT = { this = scope:receiver_1 } }
+			limit = { this != scope:receiver_1 }
 			save_scope_as = receiver_2
 		}
 		random_in_list = {
@@ -1044,7 +1093,7 @@ pet_animal.0108 = {
 			limit = {
 				scope:receiver= {
 					any_owned_story = {
-						story_type = story_cycle_pet_cat
+						type = story_cycle_pet_cat
 					}
 				}
 			}
@@ -1397,7 +1446,7 @@ pet_animal.0201 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = miniscule_stress_impact_gain
 			craven = miniscule_stress_impact_loss
 		}
@@ -1457,7 +1506,7 @@ pet_animal.0201 = {
 				}
 			}
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			craven = miniscule_stress_impact_gain
 			brave = miniscule_stress_impact_loss
 		}
@@ -1564,7 +1613,7 @@ pet_animal.0202 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			chaste = miniscule_stress_impact_gain
 			lustful = miniscule_stress_impact_loss
 		}
@@ -1587,7 +1636,7 @@ pet_animal.0202 = {
 			opinion = -20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			chaste = miniscule_stress_impact_loss
 			lustful = miniscule_stress_impact_gain
 		}
@@ -1654,7 +1703,7 @@ pet_animal.0203 = {
 			opinion = -10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = minor_stress_impact_loss
 			humble = minor_stress_impact_gain
 			compassionate = miniscule_stress_impact_gain
@@ -1683,7 +1732,7 @@ pet_animal.0203 = {
 			opinion = 15
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = miniscule_stress_impact_loss
 			callous = miniscule_stress_impact_gain
 		}
@@ -1725,7 +1774,7 @@ pet_animal.0204 = {
 			years = 5
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 
@@ -1789,7 +1838,7 @@ pet_animal.0205 = {
 
 		add_dread = minor_dread_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 		}
 
@@ -1811,7 +1860,7 @@ pet_animal.0205 = {
 			opinion = 10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 		}
 
@@ -1835,7 +1884,7 @@ pet_animal.0205 = {
 			opinion = -15
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 		}
 
@@ -2005,6 +2054,13 @@ pet_animal.1001 = {
 			set_variable = {
 				name = story_cycle_dog_name
 				value = flag:custom
+			}
+		}
+		random_owned_story = {
+			limit = { story_type = story_cycle_pet_dog }
+			set_variable = {
+				name = story_cycle_dog_name
+				value = story_owner.var:story_cycle_dog_name
 			}
 		}
 	}
@@ -2496,31 +2552,30 @@ pet_animal.1109 = {
 			any_vassal = {
 				is_available_ai = yes
 				any_owned_story = {
-					story_type = story_cycle_pet_dog
+					type = story_cycle_pet_dog
 					exists = story_owner.var:story_cycle_dog_name
 				}
 			}
 			any_courtier = {
 				is_available_ai = yes
 				any_owned_story = {
-					story_type = story_cycle_pet_dog
+					type = story_cycle_pet_dog
 					exists = story_owner.var:story_cycle_dog_name
 				}
 			}
 			any_neighboring_top_liege_realm_owner = {
 				is_available_ai = yes
 				any_owned_story = {
-					story_type = story_cycle_pet_dog
+					type = story_cycle_pet_dog
 					exists = story_owner.var:story_cycle_dog_name
 				}
 			}
 			AND = {
-				exists = liege
-				liege = {
+				liege ?= {
 					is_available_ai = yes
-					NOT = { this = root }
+					this != root
 					any_owned_story = {
-						story_type = story_cycle_pet_dog
+						type = story_cycle_pet_dog
 						exists = story_owner.var:story_cycle_dog_name
 					}
 				}
@@ -2540,7 +2595,7 @@ pet_animal.1109 = {
 						any_vassal = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
@@ -2549,14 +2604,14 @@ pet_animal.1109 = {
 						limit = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
 						save_scope_as = other_owner
 						random_owned_story = {
+							type = story_cycle_pet_dog
 							limit = {
-								story_type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 							save_scope_as = other_story
@@ -2568,7 +2623,7 @@ pet_animal.1109 = {
 						any_courtier = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
@@ -2577,14 +2632,14 @@ pet_animal.1109 = {
 						limit = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
 						save_scope_as = other_owner
 						random_owned_story = {
+							type = story_cycle_pet_dog
 							limit = {
-								story_type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 							save_scope_as = other_story
@@ -2596,7 +2651,7 @@ pet_animal.1109 = {
 						any_neighboring_top_liege_realm_owner = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
@@ -2605,14 +2660,14 @@ pet_animal.1109 = {
 						limit = {
 							is_available_ai = yes
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
 						save_scope_as = other_owner
 						random_owned_story = {
+							type = story_cycle_pet_dog
 							limit = {
-								story_type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 							save_scope_as = other_story
@@ -2623,9 +2678,9 @@ pet_animal.1109 = {
 					trigger = {
 						liege = {
 							is_available_ai = yes
-							NOT = { this = root }
+							this != root
 							any_owned_story = {
-								story_type = story_cycle_pet_dog
+								type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 						}
@@ -2633,8 +2688,8 @@ pet_animal.1109 = {
 					liege = {
 						save_scope_as = other_owner
 						random_owned_story = {
+							type = story_cycle_pet_dog
 							limit = {
-								story_type = story_cycle_pet_dog
 								exists = story_owner.var:story_cycle_dog_name
 							}
 							save_scope_as = other_story
@@ -3209,8 +3264,8 @@ pet_animal.1190 = {
 					type = friend
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 				}
 			}
@@ -3219,8 +3274,8 @@ pet_animal.1190 = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 				}
 				add_to_list = can_get_dog
@@ -3232,8 +3287,8 @@ pet_animal.1190 = {
 					type = lover
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3243,8 +3298,8 @@ pet_animal.1190 = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3257,8 +3312,8 @@ pet_animal.1190 = {
 					NOT = { has_relation_rival = root }
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3268,8 +3323,8 @@ pet_animal.1190 = {
 					NOT = { has_relation_rival = root }
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3281,8 +3336,8 @@ pet_animal.1190 = {
 				any_consort = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3291,8 +3346,8 @@ pet_animal.1190 = {
 				limit = {
 					NOT = {
 						any_owned_story = {
-								story_type = story_cycle_pet_cat
-							}
+							type = story_cycle_pet_cat
+						}
 					}
 					NOT = { is_in_list = can_get_dog }
 				}
@@ -3305,7 +3360,7 @@ pet_animal.1190 = {
 		}
 		random_in_list = {
 			list = can_get_dog
-			limit = { NOT = { this = scope:receiver_1 } }
+			limit = { this != scope:receiver_1 }
 			save_scope_as = receiver_2
 		}
 		random_in_list = {
@@ -3473,8 +3528,8 @@ pet_animal.1192 = {
 			limit = {
 				scope:receiver= {
 					any_owned_story = {
-							story_type = story_cycle_pet_dog
-						}
+						type = story_cycle_pet_dog
+					}
 				}
 			}
 			save_scope_value_as = {
@@ -3585,11 +3640,11 @@ pet_animal.2001 = {
 	trigger = {
 		NOT = { has_character_flag = had_pet_animal_2001_event }
 		any_owned_story = {
-			story_type = story_cycle_pet_cat
+			type = story_cycle_pet_cat
 			exists = story_owner.var:story_cycle_cat_name
 		}
 		any_owned_story = {
-			story_type = story_cycle_pet_dog
+			type = story_cycle_pet_dog
 			exists = story_owner.var:story_cycle_dog_name
 		}
 	}
@@ -3623,11 +3678,11 @@ pet_animal.2002 = {
 		NOT = { has_character_flag = had_pet_animal_2002_event }
 		NOT = { has_character_flag = had_pet_animal_2001_event } #They haven't already cozied it up
 		any_owned_story = {
-			story_type = story_cycle_pet_cat
+			type = story_cycle_pet_cat
 			exists = story_owner.var:story_cycle_cat_name
 		}
 		any_owned_story = {
-			story_type = story_cycle_pet_dog
+			type = story_cycle_pet_dog
 			exists = story_owner.var:story_cycle_dog_name
 		}
 	}
@@ -3638,15 +3693,11 @@ pet_animal.2002 = {
 			years = 10
 		}
 		random_owned_story = {
-				limit = {
-					story_type = story_cycle_pet_cat
-				}
+				type = story_cycle_pet_cat
 				save_scope_as = cat_story
 			}
 			random_owned_story = {
-				limit = {
-					story_type = story_cycle_pet_dog
-				}
+				type = story_cycle_pet_dog
 				save_scope_as = dog_story
 			}
 	}
@@ -3883,16 +3934,16 @@ pet_animal.5001 = {
 	left_portrait = scope:rival
 	
 	trigger = {
-		NOR = {
-			has_character_flag = had_pet_animal_5001_event
-			has_character_flag = had_pet_animal_5002_event
-			has_character_flag = had_pet_animal_3050_event
+		has_none_of_variables = {
+			name = had_pet_animal_5001_event
+			name = had_pet_animal_5002_event
+			name = had_pet_animal_3050_event
 		}
 		any_relation = {
 			type = rival
 			is_ai = yes
 			any_owned_story = {
-				story_type = story_cycle_pet_cat
+				type = story_cycle_pet_cat
 			}
 		}
 	}
@@ -3907,15 +3958,13 @@ pet_animal.5001 = {
 			limit = {
 				is_ai = yes
 				any_owned_story = {
-					story_type = story_cycle_pet_cat
+					type = story_cycle_pet_cat
 				}
 			}
 			save_scope_as = rival
 
 			random_owned_story = {
-				limit = {
-					story_type = story_cycle_pet_cat
-				}
+				type = story_cycle_pet_cat
 				save_scope_as = rival_cat_story
 			}
 
@@ -3934,7 +3983,7 @@ pet_animal.5001 = {
 		scope:rival_cat_story = {
 			hidden_effect = { end_story = yes }
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_gain
 			sadistic = medium_stress_impact_loss
 		}
@@ -3957,16 +4006,16 @@ pet_animal.5002 = {
 	left_portrait = scope:rival
 	
 	trigger = {
-		NOR = {
-			has_character_flag = had_pet_animal_5001_event
-			has_character_flag = had_pet_animal_5002_event
-			has_character_flag = had_pet_animal_3050_event
+		has_none_of_variables = {
+			name = had_pet_animal_5001_event
+			name = had_pet_animal_5002_event
+			name = had_pet_animal_3050_event
 		}
 		any_relation = {
 			type = rival
 			is_ai = yes
 			any_owned_story = {
-				story_type = story_cycle_pet_dog
+				type = story_cycle_pet_dog
 			}
 		}
 	}
@@ -3981,15 +4030,13 @@ pet_animal.5002 = {
 			limit = {
 				is_ai = yes
 				any_owned_story = {
-					story_type = story_cycle_pet_dog
+					type = story_cycle_pet_dog
 				}
 			}
 			save_scope_as = rival
 
 			random_owned_story = {
-				limit = {
-					story_type = story_cycle_pet_dog
-				}
+				type = story_cycle_pet_dog
 				save_scope_as = rival_dog_story
 			}
 
@@ -4008,7 +4055,7 @@ pet_animal.5002 = {
 		scope:rival_dog_story = {
 			hidden_effect = { end_story = yes }
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = major_stress_impact_gain
 			sadistic = medium_stress_impact_loss
 		}
@@ -4132,7 +4179,7 @@ pet_animal.6003 = {
 	option = {
 		name = pet_animal.6003.a
 		add_unpressed_claim = scope:target_county
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			content = medium_stress_impact_gain
 			honest = medium_stress_impact_gain
 			just = medium_stress_impact_gain
@@ -4152,7 +4199,7 @@ pet_animal.6003 = {
 			}
 		}
 		progress_towards_friend_effect = { CHARACTER = scope:neighboring_ruler REASON = friend_returned_lost_scroll OPINION = 0 }
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			content = minor_stress_loss
 			honest = medium_stress_loss
 			just = minor_stress_loss
@@ -4187,9 +4234,7 @@ pet_animal.6004 = {
 			years = 10
 		}
 		random_owned_story = {
-			limit = {
-				story_type = story_cycle_pet_dog
-			}
+			type = story_cycle_pet_dog
 			save_scope_as = story
 		}
 		increase_wounds_effect = { REASON = dog_attack }
@@ -4249,7 +4294,17 @@ pet_animal.6051 = {
 
 	option = {
 		name = pet_animal.6001.a
-		add_stress = minor_stress_loss
+		if = {
+			limit = {
+				any_owned_story = {
+					has_variable = bonus_to_petting_pet
+				}
+			}
+			add_stress = medium_stress_loss
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
 	}
 }
 
@@ -4282,7 +4337,17 @@ pet_animal.6052 = {
 
 	option = {
 		name = pet_animal.6001.a
-		add_stress = minor_stress_loss
+		if = {
+			limit = {
+				any_owned_story = {
+					has_variable = bonus_to_petting_pet
+				}
+			}
+			add_stress = medium_stress_loss
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
 	}
 }
 
@@ -4476,6 +4541,13 @@ pet_animal.3001 = {
 			set_variable = {
 				name = story_cycle_eagle_name
 				value = flag:custom
+			}
+		}
+		random_owned_story = {
+			limit = { story_type = story_cycle_pet_eagle }
+			set_variable = {
+				name = story_cycle_eagle_name
+				value = story_owner.var:story_cycle_eagle_name
 			}
 		}
 	}
@@ -4804,7 +4876,7 @@ pet_animal.3011 = { # Eagle is found / returns
 
 	left_portrait = {
 		character = root
-	 	animation = hunting_falcon #TODO_MPO - Change to eagle
+	 	animation = hunting_falcon
 	}
 
 	lower_right_portrait = {
@@ -4873,7 +4945,7 @@ pet_animal.3011 = { # Eagle is found / returns
 			IMPRISONER = root
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_gain
 			vengeful = medium_stress_impact_loss
 			just = minor_stress_impact_loss
@@ -5156,7 +5228,7 @@ pet_animal.3013 = { # Finding a thief
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 			vengeful = minor_stress_impact_gain
 			just = minor_stress_impact_gain
@@ -5243,14 +5315,14 @@ pet_animal.3020 = { # Time to let go :(
 		}
 		triggered_animation = {
 			trigger = { always = yes }
-			animation = hunting_falcon #TODO_MPO - Change to eagle
+			animation = hunting_falcon
 		}
 	}
 
 	trigger = {
-		NOR = {
-			has_character_flag = eagle_is_missing
-			has_character_flag = eagle_is_dying
+		has_none_of_variables = {
+			name = eagle_is_missing
+			name = eagle_is_dying
 		}
 		is_alive = yes
 		exists = var:story_cycle_eagle_name
@@ -5291,9 +5363,9 @@ pet_animal.3020 = { # Time to let go :(
 		custom_tooltip = pet_animal.3020.a_tt
 		if = {
 			limit = { # First time getting the event
-				NOR = {
-					has_character_flag = eagle_let_go
-					has_character_flag = eagle_let_go_2
+				has_none_of_variables = {
+					name = eagle_let_go
+					name = eagle_let_go_2
 				}
 			}
 			scope:newly_created_artifact = { set_owner = root }
@@ -5730,7 +5802,7 @@ pet_animal.3030 = { # Eagle is injured
 			target = scope:random_smart_courtier
 			gold = minor_gold_value
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 		}
 
@@ -5798,7 +5870,7 @@ pet_animal.3030 = { # Eagle is injured
 
 		add_prestige = miniscule_prestige_loss
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_impact_gain
 			callous = minor_stress_impact_loss
 		}
@@ -5823,7 +5895,7 @@ pet_animal.3040 = { # Eagle training session, chance to level and/or gain person
 
 	left_portrait = {
 		character = root
-		animation = hunting_falcon #TODO_MPO - Change to eagle
+		animation = hunting_falcon
 	}
 
 	immediate = {
@@ -6015,10 +6087,10 @@ pet_animal.3050 = {
 	trigger = {
 		has_mpo_dlc_trigger = yes
 		government_has_flag = government_is_nomadic
-		NOR = {
-			has_character_flag = had_pet_animal_5001_event
-			has_character_flag = had_pet_animal_5002_event
-			has_character_flag = had_pet_animal_3050_event
+		has_none_of_variables = {
+			name = had_pet_animal_5001_event
+			name = had_pet_animal_5002_event
+			name = had_pet_animal_3050_event
 		}
 		any_relation = {
 			type = rival
@@ -6091,7 +6163,7 @@ pet_animal.3050 = {
 					right_icon = scope:rival
 					scope:rival = { weaken_eagle_effect = yes }
 
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						compassionate = major_stress_impact_gain
 						sadistic = medium_stress_impact_loss
 					}
@@ -6117,7 +6189,7 @@ pet_animal.3050 = {
 						}
 					}
 
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = miniscule_stress_impact_gain
 					}
 				}
@@ -6163,7 +6235,7 @@ pet_animal.3050 = {
 
 					add_prestige = miniscule_prestige_gain
 
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						honest = medium_stress_impact_gain
 						just = minor_stress_impact_gain
 					}
@@ -6180,7 +6252,7 @@ pet_animal.3050 = {
 					title = pet_animal.3050.bad
 					type = event_toast_effect_bad
 					left_icon = root
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = miniscule_stress_impact_gain
 					}
 				}
@@ -6237,7 +6309,7 @@ pet_animal.3050 = {
 						}
 					}
 
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						honest = medium_stress_impact_gain
 						just = minor_stress_impact_gain
 					}
@@ -6254,7 +6326,7 @@ pet_animal.3050 = {
 					title = pet_animal.3050.bad
 					type = event_toast_effect_bad
 					left_icon = root
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = miniscule_stress_impact_gain
 					}
 				}
@@ -6301,7 +6373,7 @@ pet_animal.3050 = {
 					scope:rival_eagle_story = {
 						hidden_effect = { end_story = yes }
 					}
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						honest = medium_stress_impact_gain
 						greedy = medium_stress_impact_loss
 					}
@@ -6320,7 +6392,7 @@ pet_animal.3050 = {
 					left_icon = root
 					right_icon = scope:rival
 
-					stress_impact = {
+					stress_and_fulfillment_impact = {
 						base = miniscule_stress_impact_gain
 					}
 				}
@@ -6389,7 +6461,7 @@ pet_animal.3060 = {
 
 	right_portrait = {
 		character = scope:token_child
-		animation = hunting_falcon #TODO_MPO - Change to eagle
+		animation = hunting_falcon
 	}
 
 	trigger = {
@@ -6651,13 +6723,11 @@ pet_animal.3080 = { # Your eagle brings you a little gift
 	desc = pet_animal.3080.desc
 	theme = pet
 
-	#override_background = { reference = ep2_travel_steppe } #TODO_MPO
-
 	cooldown = { years = 15 }
 
 	left_portrait = {
 		character = root
-		animation = hunting_falcon #TODO_MPO - Change to eagle
+		animation = hunting_falcon
 	}
 
 	weight_multiplier = {
@@ -6674,11 +6744,8 @@ pet_animal.3080 = { # Your eagle brings you a little gift
 	}
 
 	trigger = {
-		NOT = {
-			any_artifact = { # Don't want to give this event to someone who's already stacked on artifacts
-				artifact_owner = root
-				count >= 3
-			}
+		any_character_artifact = { # Don't want to give this event to someone who's already stacked on artifacts
+			count < 3
 		}
 	}
 

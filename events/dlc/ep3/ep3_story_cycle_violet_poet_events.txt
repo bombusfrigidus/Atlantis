@@ -47,6 +47,10 @@ ep3_story_cycle_violet_poet.0001 = {
 			modifier = double_moon_modifier
 			save_scope_as = double_moon_book
 		}
+		random_owned_story = {
+			type = story_cycle_violet_poet
+			set_variable = { name = artifact value = scope:double_moon_book }
+		}
 		hidden_effect = {
 			scope:double_moon_book = {
 				set_artifact_rarity = illustrious
@@ -69,7 +73,7 @@ ep3_story_cycle_violet_poet.0001 = {
 
 		flavor = ep3_story_cycle_violet_poet.0001.a.tt
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			content = miniscule_stress_impact_loss
 		}
 
@@ -92,7 +96,7 @@ ep3_story_cycle_violet_poet.0001 = {
 			return_trip = no
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 		}
 
@@ -142,13 +146,13 @@ ep3_story_cycle_violet_poet.0002 = {
 		any_courtier = {
 			count > 1
 		}
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		} 
 	}
 
 	immediate = {
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -168,7 +172,7 @@ ep3_story_cycle_violet_poet.0002 = {
 
 		add_character_flag = violet_poet_designated_heir
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 		}
 
@@ -195,7 +199,7 @@ ep3_story_cycle_violet_poet.0002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 		}
 
@@ -215,7 +219,7 @@ ep3_story_cycle_violet_poet.0003 = {
 			triggered_desc = {
 				trigger = {
 					scope:heir1 = {
-						has_trait = poet
+						has_trait = lifestyle_poet
 					}
 				}
 				desc = ep3_story_cycle_violet_poet.0003.poet
@@ -276,13 +280,13 @@ ep3_story_cycle_violet_poet.0003 = {
 		any_courtier = {
 			count > 1
 		}
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 	}
 
 	immediate = {
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -295,7 +299,7 @@ ep3_story_cycle_violet_poet.0003 = {
 			limit = {
 				any_courtier = {
 					OR = {
-						has_trait = poet
+						has_trait = lifestyle_poet
 						diplomacy > 20
 					}
 				}
@@ -303,7 +307,7 @@ ep3_story_cycle_violet_poet.0003 = {
 			random_courtier = {
 				limit = {
 					OR = {
-						has_trait = poet
+						has_trait = lifestyle_poet
 						diplomacy > 20
 					}
 				}
@@ -311,7 +315,7 @@ ep3_story_cycle_violet_poet.0003 = {
 					base = 1
 					modifier = {
 						factor = 4
-						has_trait = poet
+						has_trait = lifestyle_poet
 					}
 					modifier = {
 						factor = 2
@@ -327,6 +331,7 @@ ep3_story_cycle_violet_poet.0003 = {
 					template = generic_peasant_character
 					culture = location.county.culture
 					faith = location.county.faith
+					rite = location.county.rite
 					gender_female_chance = 50
 					location = root.location
 					save_scope_as = heir1
@@ -372,6 +377,7 @@ ep3_story_cycle_violet_poet.0003 = {
 					template = generic_peasant_character
 					culture = location.county.culture
 					faith = location.county.faith
+					rite = location.county.rite
 					gender_female_chance = 100
 					location = root.location
 					save_scope_as = heir2
@@ -384,6 +390,7 @@ ep3_story_cycle_violet_poet.0003 = {
 				template = ep3_wallada_heir_template
 				culture = location.county.culture
 				faith = location.county.faith
+				rite = location.county.rite
 				gender_female_chance = 100
 				location = root.location
 				save_scope_as = heir3
@@ -394,7 +401,6 @@ ep3_story_cycle_violet_poet.0003 = {
 	option = { #Choose heir 1
 		name = ep3_story_cycle_violet_poet.0003.a
 
-		set_designated_heir = scope:heir1
 		if = {
 			limit = {
 				scope:heir1 = {
@@ -409,7 +415,9 @@ ep3_story_cycle_violet_poet.0003 = {
 			ADOPTER = root
 		}
 
-		stress_impact = {
+		set_designated_heir = scope:heir1
+
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 		}
 
@@ -421,7 +429,6 @@ ep3_story_cycle_violet_poet.0003 = {
 	option = { #Choose heir 2
 		name = ep3_story_cycle_violet_poet.0003.b
 
-		set_designated_heir = scope:heir2
 		if = {
 			limit = {
 				scope:heir2 = {
@@ -436,7 +443,9 @@ ep3_story_cycle_violet_poet.0003 = {
 			ADOPTER = root
 		}
 
-		stress_impact = {
+		set_designated_heir = scope:heir2
+
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 		}
 
@@ -448,7 +457,6 @@ ep3_story_cycle_violet_poet.0003 = {
 	option = { #Choose heir 3
 		name = ep3_story_cycle_violet_poet.0003.c
 
-		set_designated_heir = scope:heir3
 		if = {
 			limit = {
 				scope:heir3 = {
@@ -463,7 +471,9 @@ ep3_story_cycle_violet_poet.0003 = {
 			ADOPTER = root
 		}
 
-		stress_impact = {
+		set_designated_heir = scope:heir3
+
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_gain
 		}
 
@@ -493,7 +503,7 @@ ep3_story_cycle_violet_poet.0004 = {
 	}
 
 	immediate = {
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -509,9 +519,9 @@ ep3_story_cycle_violet_poet.0004 = {
 		hidden_effect = { #To avoid redundancy
 			if = {
 				limit = {
-					has_trait = poet
+					has_trait = lifestyle_poet
 				}
-				remove_trait = poet
+				remove_trait = lifestyle_poet
 			}
 
 			###Give them XP in the trait based off a few factors
@@ -519,7 +529,7 @@ ep3_story_cycle_violet_poet.0004 = {
 			if = {
 				limit = {
 					any_memory = {
-						has_memory_type = had_sex
+						memory_type = had_sex
 						count > 4 
 					}
 				}
@@ -587,11 +597,11 @@ ep3_story_cycle_violet_poet.0011 = {
 	immediate = {
 		if = {
 			limit = {
-				any_artifact = {
+				any_character_artifact = {
 					has_artifact_modifier = double_moon_modifier
 				}
 			}
-			random_artifact = {
+			random_character_artifact = {
 				limit = {
 					has_artifact_modifier = double_moon_modifier
 				}
@@ -661,15 +671,15 @@ ep3_story_cycle_violet_poet.1000 = {
 		is_landless_ruler = yes
 		is_available_travelling = yes
 		has_trait = violet_poet
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 	}
 
 	immediate = {
 		location = { save_scope_as = location }
-		province:1 = { save_scope_as = cordoba } # b_cordoba
-		random_artifact = {
+		province:1 = { save_scope_as = cordoba } # b_atlantis
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -682,22 +692,15 @@ ep3_story_cycle_violet_poet.1000 = {
 
 		add_learning_lifestyle_xp = minor_lifestyle_experience
 
-		if = {
-			limit = {
-				any_artifact = {
-					has_artifact_modifier = double_moon_modifier
-				}
-			}
-			scope:double_moon_book = {
-				set_artifact_description = ep3_story_cycle_violet_poet.1000.a.book
-				custom_tooltip = ep3_story_cycle_violet_poet.book.tt
-				hidden_effect = {
-					add_artifact_modifier = artifact_independent_ruler_opinion_2_modifier
-				}
+		scope:double_moon_book = {
+			set_artifact_description = ep3_story_cycle_violet_poet.1000.a.book
+			custom_tooltip = ep3_story_cycle_violet_poet.book.tt
+			hidden_effect = {
+				add_artifact_modifier = artifact_independent_ruler_opinion_2_modifier
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			greedy = minor_stress_impact_gain
 			content = minor_stress_impact_loss
@@ -728,7 +731,7 @@ ep3_story_cycle_violet_poet.1000 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			diligent = miniscule_stress_impact_loss
 			greedy = miniscule_stress_impact_loss
 			brave = miniscule_stress_impact_loss
@@ -762,14 +765,14 @@ ep3_story_cycle_violet_poet.1005 = {
 	trigger = {
 		has_ep3_dlc_trigger = yes
 		has_trait = violet_poet
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 	}
 
 	immediate = {
 		location = { save_scope_as = location }
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -780,6 +783,7 @@ ep3_story_cycle_violet_poet.1005 = {
 				template = peasant_child_character
 				culture = location.county.culture
 				faith = location.county.faith
+				rite = location.county.rite
 				gender_female_chance = 100
 				learning = 14
 				diplomacy = 16
@@ -799,7 +803,7 @@ ep3_story_cycle_violet_poet.1005 = {
 
 		add_courtier = scope:child
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -818,18 +822,11 @@ ep3_story_cycle_violet_poet.1005 = {
 	option = { #Write a poem about it
 		name = ep3_story_cycle_violet_poet.1005.b
 
-		if = {
-			limit = {
-				any_artifact = {
-					has_artifact_modifier = double_moon_modifier
-				}
-			}
-			scope:double_moon_book = {
-				set_artifact_description = ep3_story_cycle_violet_poet.1005.b.book
-				custom_tooltip = ep3_story_cycle_violet_poet.book.tt
-				hidden_effect = {
-					add_artifact_modifier = artifact_child_opinion_2_modifier
-				}
+		scope:double_moon_book = {
+			set_artifact_description = ep3_story_cycle_violet_poet.1005.b.book
+			custom_tooltip = ep3_story_cycle_violet_poet.book.tt
+			hidden_effect = {
+				add_artifact_modifier = artifact_child_opinion_2_modifier
 			}
 		}
 
@@ -839,7 +836,7 @@ ep3_story_cycle_violet_poet.1005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			diligent = miniscule_stress_impact_loss
 			greedy = miniscule_stress_impact_loss
@@ -873,7 +870,7 @@ ep3_story_cycle_violet_poet.1005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -917,7 +914,7 @@ ep3_story_cycle_violet_poet.1010 = {
 				is_attracted_to_gender_of = root
 			}
 		}
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 	}
@@ -928,12 +925,16 @@ ep3_story_cycle_violet_poet.1010 = {
 			random_spouse = {
 				limit = {
 					is_attracted_to_gender_of = root
+					might_cheat_on_every_partner_trigger = yes
+				}
+				alternative_limit = {
+					is_attracted_to_gender_of = root
 				}
 				save_scope_as = ruler_spouse
 			}
 			save_scope_as = ruler
 		}
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -966,6 +967,13 @@ ep3_story_cycle_violet_poet.1010 = {
 				modifier = {
 					attraction >= high_positive_attraction
 					factor = 1.2
+				}
+
+				modifier = {
+					factor = 0
+					scope:ruler_spouse = {
+						might_cheat_on_every_partner_trigger = yes
+					}
 				}
 
 				send_interface_toast = {
@@ -1003,7 +1011,7 @@ ep3_story_cycle_violet_poet.1010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lustful = minor_stress_impact_loss
 			gregarious = miniscule_stress_impact_loss
 			shy = minor_stress_impact_gain
@@ -1021,24 +1029,17 @@ ep3_story_cycle_violet_poet.1010 = {
 	option = { #Write about it
 		name = ep3_story_cycle_violet_poet.1010.b
 
-		if = {
-			limit = {
-				any_artifact = {
-					has_artifact_modifier = double_moon_modifier
-				}
-			}
-			scope:double_moon_book = {
-				set_artifact_description = ep3_story_cycle_violet_poet.1010.b.book
-				custom_tooltip = ep3_story_cycle_violet_poet.book.tt
-				hidden_effect = {
-					add_artifact_modifier = artifact_seduce_scheme_phase_duration_add_2_modifier
-				}
+		scope:double_moon_book = {
+			set_artifact_description = ep3_story_cycle_violet_poet.1010.b.book
+			custom_tooltip = ep3_story_cycle_violet_poet.book.tt
+			hidden_effect = {
+				add_artifact_modifier = artifact_seduce_scheme_phase_duration_add_2_modifier
 			}
 		}
 
 		add_prestige = minor_prestige_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = miniscule_stress_impact_loss
 			shy = minor_stress_impact_loss
 		}
@@ -1071,8 +1072,8 @@ ep3_story_cycle_violet_poet.1010 = {
 
 		hidden_effect = {
 			random_scheme = {
+				type = courting
 				limit = {
-					scheme_type = courting
 					scheme_target_character = scope:ruler_spouse
 				}
 				add_scheme_modifier = {
@@ -1081,7 +1082,7 @@ ep3_story_cycle_violet_poet.1010 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -1129,6 +1130,7 @@ ep3_story_cycle_violet_poet.1015 = {
 			gender_female_chance = root_attraction_based_female_chance
 			location = root.location
 			faith = root.faith
+			rite = root.rite
 			culture = root.culture
 
 			after_creation = {
@@ -1205,7 +1207,7 @@ ep3_story_cycle_violet_poet.1015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lustful = minor_stress_impact_loss
 			gregarious = miniscule_stress_impact_loss
 			shy = minor_stress_impact_gain
@@ -1243,7 +1245,7 @@ ep3_story_cycle_violet_poet.1015 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lustful = minor_stress_impact_gain
 			gregarious = miniscule_stress_impact_loss
 			trusting = miniscule_stress_impact_loss
@@ -1271,7 +1273,7 @@ ep3_story_cycle_violet_poet.1015 = {
 			silent_disappearance_effect = yes
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_impact_loss
 			humble = miniscule_stress_impact_gain
 		}
@@ -1310,14 +1312,14 @@ ep3_story_cycle_violet_poet.1020 = {
 	trigger = {
 		has_ep3_dlc_trigger = yes
 		has_trait = violet_poet
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 	}
 
 	immediate = {
 		location = { save_scope_as = location }
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -1361,18 +1363,11 @@ ep3_story_cycle_violet_poet.1020 = {
 			}
 		}
 
-		if = {
-			limit = {
-				any_artifact = {
-					has_artifact_modifier = double_moon_modifier
-				}
-			}
-			scope:double_moon_book = {
-				set_artifact_description = ep3_story_cycle_violet_poet.1020.a.book
-				custom_tooltip = ep3_story_cycle_violet_poet.book.tt
-				hidden_effect = {
-					add_artifact_modifier = artifact_personal_scheme_phase_duration_add_2_modifier
-				}
+		scope:double_moon_book = {
+			set_artifact_description = ep3_story_cycle_violet_poet.1020.a.book
+			custom_tooltip = ep3_story_cycle_violet_poet.book.tt
+			hidden_effect = {
+				add_artifact_modifier = artifact_personal_scheme_phase_duration_add_2_modifier
 			}
 		}
 
@@ -1382,7 +1377,7 @@ ep3_story_cycle_violet_poet.1020 = {
 			OPINION = default_friend_opinion
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_loss
 		}
 
@@ -1436,7 +1431,7 @@ ep3_story_cycle_violet_poet.1020 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lazy = medium_stress_impact_gain
 			diligent = miniscule_stress_impact_loss
 			ambitious = miniscule_stress_impact_loss
@@ -1575,6 +1570,7 @@ ep3_story_cycle_violet_poet.1025 = {
 			template = fp1_capital_county_orphan_character
 			culture = location.county.culture
 			faith = location.county.faith
+			rite = location.county.rite
 			gender_female_chance = 100 #For protege purposes
 			location = root.location
 			save_scope_as = orphan
@@ -1610,6 +1606,7 @@ ep3_story_cycle_violet_poet.1025 = {
 				template = fp1_capital_county_orphan_character
 				culture = location.county.culture
 				faith = location.county.faith
+				rite = location.county.rite
 				gender_female_chance = 50
 				location = root.location
 				save_scope_as = new_orphan
@@ -1649,7 +1646,7 @@ ep3_story_cycle_violet_poet.1025 = {
 			years = 30
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = minor_stress_loss
 			compassionate = minor_stress_loss
 			greedy = medium_stress_gain
@@ -1696,7 +1693,7 @@ ep3_story_cycle_violet_poet.1025 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = medium_stress_gain
 			compassionate = medium_stress_gain
 			greedy = minor_stress_loss
@@ -1781,9 +1778,9 @@ ep3_story_cycle_violet_poet.1025 = {
 	after = {
 		if = {
 			limit = {
-				OR = {
-					has_character_flag = one_orphan_taken_flag
-					has_character_flag = no_orphans_taken_flag
+				has_variable = {
+					name = one_orphan_taken_flag
+					name = no_orphans_taken_flag
 				}
 			}
 			every_in_list = {
@@ -1919,13 +1916,13 @@ ep3_story_cycle_violet_poet.1030 = {
 			limit = {
 				any_courtier = {
 					is_physically_able_ai_adult = yes
-					has_trait = poet
+					has_trait = lifestyle_poet
 				}
 			}
 			random_courtier = {
 				limit = {
 					is_physically_able_ai_adult = yes
-					has_trait = poet
+					has_trait = lifestyle_poet
 				}
 				save_scope_as = courtier_poet
 			}
@@ -1953,7 +1950,7 @@ ep3_story_cycle_violet_poet.1030 = {
 			opinion = 25
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = minor_stress_loss
 			greedy = minor_stress_loss
 			callous = medium_stress_gain
@@ -1983,7 +1980,7 @@ ep3_story_cycle_violet_poet.1030 = {
 			opinion = -10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			compassionate = medium_stress_gain
 			greedy = medium_stress_gain
 			callous = minor_stress_loss
@@ -2064,7 +2061,7 @@ ep3_story_cycle_violet_poet.2000 = {
 			is_alive = yes
 			is_available_ai_adult = yes
 		}
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		} 
 	}
@@ -2074,7 +2071,7 @@ ep3_story_cycle_violet_poet.2000 = {
 		character:1 = {
 			save_scope_as = zaydun
 		}
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -2095,7 +2092,7 @@ ep3_story_cycle_violet_poet.2000 = {
 			days = { 11 15 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			brave = minor_stress_impact_loss
 			craven = medium_stress_impact_gain
 			lustful = miniscule_stress_impact_loss
@@ -2113,22 +2110,15 @@ ep3_story_cycle_violet_poet.2000 = {
 	option = { #Write a poem in memory of a lost love
 		name = ep3_story_cycle_violet_poet.2000.b
 
-		if = {
-			limit = {
-				any_artifact = {
-					has_artifact_modifier = double_moon_modifier
-				}
-			}
-			scope:double_moon_book = {
-				set_artifact_description = ep3_story_cycle_violet_poet.2000.a.book
-				custom_tooltip = ep3_story_cycle_violet_poet.book.tt
-				hidden_effect = {
-					add_artifact_modifier = artifact_courting_scheme_phase_duration_add_3_modifier
-				}
+		scope:double_moon_book = {
+			set_artifact_description = ep3_story_cycle_violet_poet.2000.a.book
+			custom_tooltip = ep3_story_cycle_violet_poet.book.tt
+			hidden_effect = {
+				add_artifact_modifier = artifact_courting_scheme_phase_duration_add_3_modifier
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			content = miniscule_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
 			forgiving = minor_stress_impact_gain
@@ -2274,7 +2264,7 @@ ep3_story_cycle_violet_poet.2005 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			lustful = minor_stress_impact_loss
 			chaste = minor_stress_impact_gain
 		}
@@ -2301,7 +2291,7 @@ ep3_story_cycle_violet_poet.2005 = {
 			opinion = -25
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = minor_stress_impact_loss
 			content = medium_stress_impact_gain
 			lustful = minor_stress_impact_gain
@@ -2346,7 +2336,7 @@ ep3_story_cycle_violet_poet.2010 = {
 
 	trigger = {
 		has_ep3_dlc_trigger = yes
-		any_artifact = {
+		any_character_artifact = {
 			has_artifact_modifier = double_moon_modifier
 		}
 		character:1 = this
@@ -2358,7 +2348,7 @@ ep3_story_cycle_violet_poet.2010 = {
 
 	immediate = {
 		location = { save_scope_as = location }
-		random_artifact = {
+		random_character_artifact = {
 			limit = {
 				has_artifact_modifier = double_moon_modifier
 			}
@@ -2383,7 +2373,7 @@ ep3_story_cycle_violet_poet.2010 = {
 			opinion = 10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_gain
 			vengeful = minor_stress_impact_gain
 			compassionate = minor_stress_impact_loss
@@ -2412,7 +2402,7 @@ ep3_story_cycle_violet_poet.2010 = {
 			opinion = -10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
 			compassionate = minor_stress_impact_gain
@@ -2612,7 +2602,7 @@ ep3_story_cycle_violet_poet.2015 = {
 			opinion = -10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_loss
 			vengeful = miniscule_stress_impact_loss
 			compassionate = minor_stress_impact_gain
@@ -2657,7 +2647,7 @@ ep3_story_cycle_violet_poet.2015 = {
 			opinion = -70
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = medium_stress_impact_loss
 			vengeful = medium_stress_impact_loss
 			compassionate = major_stress_impact_gain

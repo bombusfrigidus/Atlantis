@@ -23,12 +23,12 @@ fp2_struggle_ending_culture_list_effect = {
 }
 
 # Add all Involved independent rulers to a list
-fp2_stuggle_ending_involved_list_effect = {
+fp2_struggle_ending_involved_list_effect = {
 	save_scope_as = struggle_ender
 	struggle:iberian_struggle = {
 		every_involved_ruler = {
 			limit = {
-				is_independent_ruler = yes
+				top_liege = this
 				primary_title = { is_mercenary_company = no }
 			}
 			add_to_list = struggle_involvees
@@ -164,7 +164,7 @@ fp2_struggle_compromise_create_new_kingdom_effect = {
 			limit = {
 				title_capital_county = de_jure_liege.title_capital_county
 				exists = de_jure_liege.holder
-				NOT = { holder = de_jure_liege.holder }
+				holder != de_jure_liege.holder
 			}
 			de_jure_liege = {
 				# So kingdom has a capital
@@ -392,8 +392,7 @@ fp2_struggle_compromise_distribute_the_actual_titles = {
 				save_temporary_scope_as = new_owner_temp
 				primary_title = {
 					tier = tier_duchy
-					exists = de_jure_liege
-					de_jure_liege = { fp2_struggle_ending_compromise_create_title_trigger = yes }
+					de_jure_liege ?= { fp2_struggle_ending_compromise_create_title_trigger = yes }
 				}
 			}
 			save_scope_as = new_owner
@@ -410,8 +409,7 @@ fp2_struggle_compromise_distribute_the_actual_titles = {
 				save_temporary_scope_as = new_owner_temp
 				primary_title = {
 					tier = tier_kingdom
-					exists = de_jure_liege
-					de_jure_liege = { fp2_struggle_ending_compromise_create_title_trigger = yes }
+					de_jure_liege ?= { fp2_struggle_ending_compromise_create_title_trigger = yes }
 				}
 			}
 			save_scope_as = new_owner
@@ -445,7 +443,7 @@ fp2_struggle_compromise_modifier_rewards_effect = {
 		hidden_effect = {
 			every_involved_ruler = {
 				limit = {
-					is_independent_ruler = yes
+					top_liege = this
 					primary_title = { is_mercenary_company = no }
 					exists = house
 					NOT = {
@@ -456,7 +454,7 @@ fp2_struggle_compromise_modifier_rewards_effect = {
 			}
 			every_involved_ruler = {
 				limit = {
-					is_independent_ruler = yes
+					top_liege = this
 					primary_title = { is_mercenary_company = no }
 				}
 				fp2_struggle_compromise_modifier_rewards_personal_county_effect = yes
@@ -492,7 +490,7 @@ fp2_struggle_compromise_truce_effect = {
 				struggle:iberian_struggle = {
 					any_involved_ruler = {
 						count > 1
-						is_independent_ruler = yes
+						top_liege = this
 						primary_title = { is_mercenary_company = no }
 					}
 				}
@@ -500,7 +498,7 @@ fp2_struggle_compromise_truce_effect = {
 			struggle:iberian_struggle = {
 				every_involved_ruler = {
 					limit = {
-						is_independent_ruler = yes
+						top_liege = this
 						primary_title = { is_mercenary_company = no }
 					}
 					add_to_list = fp2_struggle_compromise_truce_list
@@ -558,7 +556,7 @@ fp2_struggle_conciliation_modifier_rewards_effect = {
 		}
 		every_involved_ruler = {
 			limit = {
-				is_independent_ruler = yes
+				top_liege = this
 				primary_title = { is_mercenary_company = no }
 				exists = house
 				NOT = {
@@ -1059,36 +1057,75 @@ purchase_truce_interaction_work_out_truce_days_effect = {
 }
 
 purchase_truce_interaction_work_out_purchase_cost_effect = {
-	scope:actor = {
-		# Small cost.
+	scope:puppet_or_actor = {
 		if = {
-			limit = { always = scope:pt_sum_small }
-			pay_short_term_gold = {
-				target = scope:recipient
-				gold = {
-					value = 0
-					add = pt_sum_small_value
+			limit = {
+				has_personal_tenet_flag = tenet_peace_of_god_personal_truce
+			}
+			# Small cost.
+			if = {
+				limit = { always = scope:pt_sum_small }
+				add_piety = {
+					value = pt_sum_small_value
+					multiply = -1
+				}
+				scope:recipient = {
+					add_piety = scope:puppet_or_actor.pt_sum_small_value
+				}
+			}
+			# Large cost.
+			else_if = {
+				limit = { always = scope:pt_sum_large }
+				add_piety = {
+					value = pt_sum_large_value
+					multiply = -1
+				}
+				scope:recipient = {
+					add_piety = scope:puppet_or_actor.pt_sum_large_value
+				}
+			}
+			# Medium cost; we do this last as a fallback.
+			else = {
+				add_piety = {
+					value = pt_sum_medium_value
+					multiply = -1
+				}
+				scope:recipient = {
+					add_piety = scope:puppet_or_actor.pt_sum_medium_value
 				}
 			}
 		}
-		# Large cost.
-		else_if = {
-			limit = { always = scope:pt_sum_large }
-			pay_short_term_gold = {
-				target = scope:recipient
-				gold = {
-					value = 0
-					add = pt_sum_large_value
-				}
-			}
-		}
-		# Medium cost; we do this last as a fallback.
 		else = {
-			pay_short_term_gold = {
-				target = scope:recipient
-				gold = {
-					value = 0
-					add = pt_sum_medium_value
+			# Small cost.
+			if = {
+				limit = { always = scope:pt_sum_small }
+				pay_short_term_gold = {
+					target = scope:recipient
+					gold = {
+						value = 0
+						add = pt_sum_small_value
+					}
+				}
+			}
+			# Large cost.
+			else_if = {
+				limit = { always = scope:pt_sum_large }
+				pay_short_term_gold = {
+					target = scope:recipient
+					gold = {
+						value = 0
+						add = pt_sum_large_value
+					}
+				}
+			}
+			# Medium cost; we do this last as a fallback.
+			else = {
+				pay_short_term_gold = {
+					target = scope:recipient
+					gold = {
+						value = 0
+						add = pt_sum_medium_value
+					}
 				}
 			}
 		}
@@ -1116,7 +1153,7 @@ purchase_truce_interaction_activate_catalyst_effect = {
 			}
 			activate_struggle_catalyst = {
 				catalyst = catalyst_bought_important_truce
-				character = scope:actor
+				character = scope:puppet_or_actor
 			}
 		}
 	}
@@ -1142,7 +1179,7 @@ purchase_truce_interaction_activate_catalyst_effect = {
 			}
 			activate_struggle_catalyst = {
 				catalyst = catalyst_sign_truce_outside_war
-				character = scope:actor
+				character = scope:puppet_or_actor
 			}
 		}
 	}
@@ -1166,6 +1203,10 @@ clean_revolt_county_modifiers_from_faction_members_effect = {
 }
 
 generate_troops_from_revolt_county_modifiers_effect = {
+	if = {
+		limit = { NOT = { exists = scope:war } }
+		war ?= { save_scope_as = war }
+	}
 	if = {
 		limit = {
 			scope:attacker = {
@@ -1217,7 +1258,7 @@ generate_troops_from_revolt_county_modifiers_effect = {
 						}
 
 						spawn_army = {
-							name = event_troop_default_name
+							name = peasant_troops_name
 							levies = var:number_rebel_reinforcements
 							location = scope:chosen_location
 							war = scope:war
@@ -1236,7 +1277,6 @@ generate_troops_from_revolt_county_modifiers_effect = {
 fp2_contract_assistance_war_pay_effect = {
 	if = {
 		limit = {
-			has_fp2_dlc_trigger = yes
 			any_war_participant = {
 				has_variable = owed_contract_assistance_war
 				var:owed_contract_assistance_war = scope:war
@@ -1325,7 +1365,6 @@ fp2_contract_assistance_war_pay_effect = {
 fp2_contract_assistance_invalidated_effect = {
 	if = {
 		limit = {
-			has_fp2_dlc_trigger = yes
 			any_war_participant = {
 				has_variable = owed_contract_assistance_war
 				var:owed_contract_assistance_war = scope:war
@@ -1415,7 +1454,7 @@ gifting_leads_towards_friendship_effect = {
 		# then verify the right struggle phase
 		limit = {
 			is_diff_faith_or_culture_trigger = {
-				CHAR = scope:actor
+				CHAR = scope:puppet_or_actor
 				STATUS = involved
 			}
 			any_character_struggle = {
@@ -1425,7 +1464,7 @@ gifting_leads_towards_friendship_effect = {
 		}
 		progress_towards_friend_effect = {
 			REASON = friend_struggle_gift
-			CHARACTER = scope:actor
+			CHARACTER = scope:puppet_or_actor
 			OPINION = 0
 		}
 	}
@@ -1452,7 +1491,7 @@ fp2_lyonese_monk_return_territories_effect = {
 		}
 		scope:acolyte = {
 			every_held_title = {
-				limit = { tier >= tier_county }
+				title_tier >= county
 				change_title_holder = {
 					holder = scope:acolyte_host
 					change = scope:change
@@ -1464,6 +1503,12 @@ fp2_lyonese_monk_return_territories_effect = {
 }
 
 fp2_lyonese_monk_cancel_chain_effect = {
+	if = {
+		limit = {
+			NOT = { exists = scope:acolyte }
+		}
+		scope:story.var:acolyte ?= { save_scope_as = acolyte }
+	}
 	# Tidy up the story.
 	scope:story = { end_story = yes }
 	# Tidy up scope:acolyte.
@@ -1497,7 +1542,10 @@ fp2_lyonese_monk_cancel_chain_effect = {
 	}
 	## Or else they're given to the Pope.
 	else_if = {
-		limit = { scope:remove_acolyte = flag:pope }
+		limit = {
+			scope:remove_acolyte = flag:pope
+			exists = scope:pope
+		}
 		fp2_lyonese_monk_return_territories_effect = yes
 		# So we walk through the narrative...
 		scope:acolyte = {
@@ -1540,15 +1588,14 @@ fp2_lyonese_monk_cancel_chain_effect = {
 fp2_border_raid_damage_effect = {
 	change_county_control = fp2_border_raid_control_change_value
 	change_development_level = fp2_border_raid_development_change_value
-	if = {
-		limit = { exists = scope:raid_province }
+	scope:raid_province ?= { 
 		show_as_tooltip = { destroy_random_building_effect = yes }
 	}
 	scope:attacker = { add_gold = fp2_border_raid_gold_change_value }
 }
 
 ##################################################
-# Historical Artefacts
+# Historical Artifacts
 ##################################################
 
 create_artifact_goblet_chalice_of_dona_urraca = {
@@ -1569,7 +1616,7 @@ create_artifact_goblet_chalice_of_dona_urraca = {
 	}
 	scope:newly_created_artifact = {
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 		set_variable = {
@@ -1577,8 +1624,8 @@ create_artifact_goblet_chalice_of_dona_urraca = {
 			value = yes
 		}
 		set_variable = {
-			name = relic
-			value = flag:christian
+			name = relic_religion
+			value = religion:christianity_religion
 		}
 	}
 }
@@ -1603,7 +1650,7 @@ create_artifact_various_aquamanile_santiago = {
 	}
 	scope:newly_created_artifact = {
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 		set_variable = {
@@ -1636,7 +1683,7 @@ create_artifact_various_bells_santiago = {
 	}
 	scope:newly_created_artifact = {
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 		set_variable = {
@@ -1668,14 +1715,14 @@ create_artifact_fp2_votive_crowns_effect = {
 	}
 	scope:newly_created_artifact = {
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 	}
 }
 
 ##################################################
-# Other Artefacts
+# Other Artifacts
 ##################################################
 
 create_artifact_fp2_armillary_sphere_core_effect = {
@@ -1719,7 +1766,7 @@ create_artifact_fp2_armillary_sphere_effect = {
 					$OWNER$ = { has_royal_court = no }
 				}
 				set_variable = {
-					name = dlc_potential_court_artefact
+					name = dlc_potential_court_artifact
 					value = yes
 				}
 			}
@@ -1747,20 +1794,40 @@ create_artifact_fp2_armillary_sphere_effect = {
 create_artifact_fp2_2p_chess_board_effect = {
 	$OWNER$ = { save_scope_as = owner }
 	set_artifact_rarity_common = yes
-	create_artifact = {
-		name = fp2_2p_chess_board
-		description = fp2_2p_chess_board_desc
-		type = miscellaneous_when_not_court
-		visuals = fp2_2p_chess_board
-		wealth = scope:wealth
-		quality = scope:quality
-		modifier = artifact_stress_gain_2_modifier
-		save_scope_as = newly_created_artifact
+	if = {
+		limit = {
+			location = {
+				bg_game_type_region_go_trigger = yes
+			}
+		}
+		create_artifact = {
+			name = tgp_go_board
+			description = tgp_go_board_desc
+			type = miscellaneous_when_not_court
+			visuals = go_board_game_artifact
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = artifact_stress_gain_2_modifier
+			save_scope_as = newly_created_artifact
+		}
 	}
+	else = { #Chess is the fallback
+		create_artifact = {
+			name = fp2_2p_chess_board
+			description = fp2_2p_chess_board_desc
+			type = miscellaneous_when_not_court
+			visuals = fp2_2p_chess_board
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = artifact_stress_gain_2_modifier
+			save_scope_as = newly_created_artifact
+		}
+	}
+	#Same followup modifiers:
 	scope:newly_created_artifact = {
 		# Flag this as something that can be reforged for free.
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 		# And used in board games.
@@ -1788,7 +1855,7 @@ create_artifact_fp2_4p_chess_board_effect = {
 	scope:newly_created_artifact = {
 		# Flag this as something that can be reforged for free.
 		set_variable = {
-			name = dlc_potential_court_artefact
+			name = dlc_potential_court_artifact
 			value = yes
 		}
 		# And used in board games.
@@ -1840,7 +1907,7 @@ create_artifact_fp2_andalusian_aquamanile_effect = {
 					$OWNER$ = { has_royal_court = no }
 				}
 				set_variable = {
-					name = dlc_potential_court_artefact
+					name = dlc_potential_court_artifact
 					value = yes
 				}
 			}
@@ -2040,8 +2107,8 @@ fp2_struggle_found_kingdom_toledo_empire_effect = {
 	if = {
 		limit = { NOT = { exists = scope:has_kingdom_toledo_absorb_list_been_created } }
 		ordered_held_title = {
+			title_tier = duchy
 			limit = {
-				tier = tier_duchy
 				is_titular = no
 				NOT = { this = title:d_toledo }
 				root = { completely_controls = prev }
@@ -2068,7 +2135,7 @@ fp2_struggle_found_kingdom_toledo_empire_effect = {
 		if = {
 			limit = {
 				exists = de_jure_liege.holder
-				NOT = { de_jure_liege.holder = root }
+				de_jure_liege.holder != root
 			}
 			de_jure_liege.holder = { add_to_list = kingdom_toledo_opinion_list }
 		}
@@ -2111,7 +2178,7 @@ fp2_struggle_compromise_tooltip_effect = {
 			struggle:iberian_struggle = {
 				any_involved_ruler = {
 					count > 1
-					is_independent_ruler = yes
+					top_liege = this
 					primary_title = { is_mercenary_company = no }
 				}
 			}

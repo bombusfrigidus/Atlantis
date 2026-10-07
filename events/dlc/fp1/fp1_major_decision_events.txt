@@ -125,7 +125,7 @@ fp1_major_decisions.0003 = {
 	option = {
 		name = fp1_major_decisions.0003.b
 		trigger = {
-			NOT = { faith = scope:founder.faith }
+			faith != scope:founder.faith
 		}
 
 		ai_chance = {
@@ -181,7 +181,7 @@ fp1_major_decisions.0011 = {
 					is_ai = yes
 					any_held_title = {
 						count >= 1
-						tier = tier_county
+						title_tier = county
 						NOT = { this = title:c_atlantis }
 					}
 					this = scope:founder
@@ -255,7 +255,7 @@ fp1_major_decisions.0011 = {
 					}
 				}
 				#Obviously, we exempt scope:founder themselves.
-				NOT = { this = scope:founder }
+				this != scope:founder
 			}
 			#Vassal players get a separate event.
 			if = {
@@ -550,7 +550,7 @@ fp1_major_decisions.0031 = {
 					}
 				}
 				#Obviously, we exempt scope:founder themselves.
-				NOT = { this = scope:founder }
+				this != scope:founder
 			}
 			#Vassal players get a separate event.
 			if = {
@@ -580,7 +580,7 @@ fp1_major_decisions.0031 = {
 		# Get your bonus troops.
 		forge_the_jomsvikings_maa_reward_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			# Usually bad form to give stress impact on single event options, but if you're cynical and taking this option, you *know* you're doing it for purely cynical reasons.
 			zealous = massive_stress_impact_loss
 			cynical = medium_stress_impact_gain
@@ -612,7 +612,7 @@ fp1_major_decisions.0032 = {
 		# Everyone else sees them as pirates.
 		triggered_animation = {
 			trigger = {
-				NOT = { faith = scope:leader.faith }
+				faith != scope:leader.faith
 			}
 			animation = schadenfreude
 		}
@@ -694,7 +694,7 @@ fp1_major_decisions.0033 = {
 		# Everyone else sees them as pirates.
 		triggered_animation = {
 			trigger = {
-				NOT = { faith = scope:leader.faith }
+				faith != scope:leader.faith
 			}
 			animation = schadenfreude
 		}
@@ -713,7 +713,7 @@ fp1_major_decisions.0033 = {
 		show_as_tooltip = {
 			scope:founder.faith = {
 				change_fervor = {
-					value = 10
+					value = significant_fervor_gain
 					desc = fervor_gain_holy_order_founded
 				}
 			}
@@ -898,7 +898,7 @@ fp1_major_decisions.1001 = {
 		custom_tooltip = fp1_major_decisions.1001.a.tt
 		trigger_event = fp1_major_decisions.1002
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = major_stress_impact_loss
 			paranoid = major_stress_impact_loss
 			honest = major_stress_impact_loss
@@ -931,7 +931,7 @@ fp1_major_decisions.1001 = {
 		# Gain some very minor stress loss for opting out.
 		## Stress loss handled in stress_impact.
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = minor_stress_loss
 			vengeful = minor_stress_impact_gain
 			impatient = minor_stress_impact_gain
@@ -1041,7 +1041,7 @@ fp1_major_decisions.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = medium_stress_impact_loss
 			humble = major_stress_impact_loss
 		}
@@ -1079,7 +1079,7 @@ fp1_major_decisions.1002 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = major_stress_impact_loss
 			zealous = massive_stress_impact_loss
 		}
@@ -1114,7 +1114,7 @@ fp1_major_decisions.1002 = {
 					has_character_modifier = high_queen_of_the_seas_fp1_modifier
 				}
 			}
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				base = massive_stress_gain
 				paranoid = major_stress_impact_loss
 				honest = major_stress_impact_gain
@@ -1122,7 +1122,7 @@ fp1_major_decisions.1002 = {
 		}
 		## Ordinary stress otherwise.
 		else = {
-			stress_impact = {
+			stress_and_fulfillment_impact = {
 				paranoid = major_stress_impact_loss
 				honest = major_stress_impact_gain
 			}
@@ -1173,7 +1173,7 @@ fp1_major_decisions.1002 = {
 		# The court is confused and afraid.
 		fp1_major_decisions_1002_courtiers_terrified_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			vengeful = major_stress_impact_loss
 			forgiving = minor_stress_impact_gain
 		}
@@ -1207,7 +1207,7 @@ fp1_major_decisions.1002 = {
 		# The court is confused and afraid.
 		fp1_major_decisions_1002_courtiers_terrified_effect = yes
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = medium_stress_impact_loss
 			craven = medium_stress_impact_gain
 			zealous = medium_stress_impact_gain
@@ -1252,6 +1252,7 @@ scripted_effect fp1_1011_gib_pretty_hair_effect = {
 #	Tanglehair becomes Fairhair.
 fp1_major_decisions.1011 = {
 	type = character_event
+	window = big_event_window
 	title = fp1_major_decisions.1011.t
 	desc = {
 		desc = fp1_major_decisions.1011.desc.intro
@@ -1275,44 +1276,63 @@ fp1_major_decisions.1011 = {
 	}
 	override_background = { reference = fp1_ocean_norse }
 
-	trigger = {
-		# This character is Harald Fairhair.
-		exists = character:1
-		this = character:1
-		# The title they've acquired is Norway.
-		scope:title = title:k_norway
-		# Norway has been created by them.
-		scope:transfer_type = flag:created
-		# Norway has not been created previously.
-		NOT = { exists = global_var:norway_created }
-	}
-
 	immediate = {
 		play_music_cue = "mx_cue_succession"
 		# Check to see if Gyda is still around and kicking, and if so, treat this as a romance.
 		character:1 = {
-			if = {
-				limit = {
-					is_alive = yes
-					can_marry_character_trigger = { CHARACTER = root }
-					has_any_bad_relationship_with_root_trigger = no
-					is_ai = yes
+			hidden_effect = {
+				if = {
+					limit = {
+						betrothed ?= {
+							NOR = {
+								this = character:1
+								is_ai = no
+							}
+						}
+					}
+					break_betrothal = betrothed
 				}
-				save_scope_as = gyda
+				else_if = {
+					limit = {
+						is_adult = yes
+						is_married = yes
+						any_spouse = {
+							NOR = {
+								this = character:1
+								is_ai = no
+							}
+						}
+					}
+					every_spouse = {
+						prev = {
+							divorce = prev
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						exists = concubinist
+						concubinist = {
+							NOR = {
+								this = character:1
+								is_ai = no
+							}
+						}
+					}
+					concubinist = {
+						remove_concubine = prev
+					}
+				}
+				if = {
+					limit = {
+						is_alive = yes
+						could_marry_character_trigger = { CHARACTER = root }
+						has_any_bad_relationship_with_root_trigger = no
+						is_ai = yes
+					}
+					save_scope_as = gyda
+				}
 			}
-		}
-	}
-
-	# My vow fulfilled!
-	option = {
-		name = fp1_major_decisions.1011.a
-
-		# Apply standard haircut effects.
-		fp1_1011_gib_pretty_hair_effect = yes
-
-		ai_chance = {
-			# AI should only default to this if Gyda is unavailable.
-			base = 0
 		}
 	}
 	
@@ -1323,13 +1343,41 @@ fp1_major_decisions.1011 = {
 			# Gyda must have been valid.
 			exists = scope:gyda
 			# And, for MP, remain valid.
-			can_marry_character_trigger = { CHARACTER = scope:gyda }
+			could_marry_character_trigger = { CHARACTER = scope:gyda }
+		}
+		
+		if = {
+			limit = {
+				is_married = yes
+				primary_spouse ?= {
+					NOT = {
+						this = character:1
+					}
+				}
+			}
+			divorce = primary_spouse
+		}
+		else_if = {
+			limit = {
+				betrothed ?= {
+					NOT = {
+						this = character:1
+					}
+				}
+			}
+			break_betrothal = betrothed
 		}
 
 		# Apply standard haircut effects.
 		fp1_1011_gib_pretty_hair_effect = yes
 		# Harald & Gyda are wed.
 		if = {
+			limit = {
+				scope:gyda = { is_adult = no }
+			}
+			create_betrothal = scope:gyda
+		}
+		else_if = {
 			limit = {
 				has_ep2_dlc_trigger = yes
 			}
@@ -1345,17 +1393,32 @@ fp1_major_decisions.1011 = {
 		add_opinion = {
 			target = scope:gyda
 			modifier = love_opinion
-			opinion = 50
+			opinion = 150
 		}
 		reverse_add_opinion = {
 			target = scope:gyda
 			modifier = love_opinion
-			opinion = 50
+			opinion = 150
 		}
+		
+		add_stress = -200
 
 		ai_chance = {
 			# AI should always select this option if it's present.
 			base = 100
+		}
+	}
+
+	# My vow fulfilled!
+	option = {
+		name = fp1_major_decisions.1011.a
+
+		# Apply standard haircut effects.
+		fp1_1011_gib_pretty_hair_effect = yes
+
+		ai_chance = {
+			# AI should only default to this if Gyda is unavailable.
+			base = 0
 		}
 	}
 	
@@ -1384,13 +1447,6 @@ fp1_major_decisions.1011 = {
 # Check Norway's creation status.
 fp1_major_decisions.1012 = {
 	hidden = yes
-
-	# If Norway has just been created for the first time...
-	trigger = {
-		scope:title = title:k_norway
-		scope:transfer_type = flag:created
-		NOT = { exists = global_var:norway_created }
-	}
 
 	# ... flag that.
 	immediate = {

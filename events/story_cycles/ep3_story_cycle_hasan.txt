@@ -38,13 +38,14 @@ hasan_sabbah.1000 = {
 					education_learning_4 = {}
 				}
 				location = root.location
-				faith = faith:ismaili
+				faith = faith:shia
+				rite = rite:ismaili
 				culture = culture:persian
+				save_scope_as = amira
 				after_creation = {
 					dynasty = { set_dynasty_name = dynn_zarrab }
 					house = { set_house_name = dynn_zarrab }
 				}
-				save_scope_as = amira
 			}
 			location = { save_scope_as = location }
 		}
@@ -61,14 +62,20 @@ hasan_sabbah.1000 = {
 			POS = second
 		}
 
-		set_character_faith = faith:ismaili
+		set_character_faith = faith:shia
+		set_character_rite = rite:ismaili
+		change_spiritual_fulfillment = medium_spiritual_fulfillment_value
+		if = {
+			limit = { 
+				faith:shia = { has_doctrine = doctrine_monotheist }
+			}
+			custom_description_no_bullet = { text = mandala_monotheist_warning_tt }
+		}
 		custom_tooltip = {
 			text = unlock_evangelize_decision_tt
 			create_story = story_hasan
 			random_owned_story = {
-				limit = {
-					story_type = story_hasan
-				}
+				type = story_hasan
 				set_variable = {
 					name = story_phase
 					value = 1
@@ -78,7 +85,8 @@ hasan_sabbah.1000 = {
 				limit = {
 					religion = religion:islam_religion
 				}
-				set_character_faith = faith:ismaili
+				set_character_faith = faith:shia
+				set_character_rite = rite:ismaili
 			}
 		}
 		custom_tooltip = advance_to_the_assassins_tt
@@ -95,9 +103,7 @@ hasan_sabbah.1000 = {
 			text = unlock_evangelize_decision_tt
 			create_story = story_hasan
 			random_owned_story = {
-				limit = {
-					story_type = story_hasan
-				}
+				type = story_hasan
 				set_variable = {
 					name = story_phase
 					value = 1
@@ -162,7 +168,7 @@ hasan_sabbah.1010 = {
 				}
 				modifier = {
 					factor = 0.75
-					NOT = { scope:location.county.religion = root.religion }
+					scope:location.county.religion != root.religion
 				}
 				modifier = {
 					factor = 10
@@ -190,7 +196,7 @@ hasan_sabbah.1010 = {
 				}
 				modifier = {
 					factor = 1.25
-					NOT = { scope:location.county.religion = root.religion }
+					scope:location.county.religion != root.religion
 				}
 				min = 10
 				send_interface_toast = {
@@ -217,17 +223,17 @@ hasan_sabbah.1010 = {
 			if = {
 				limit = {
 					any_owned_story = {
-						story_type = story_hasan
+						type = story_hasan
 						exists = var:radical_points
 						var:radical_points >= 5
 					}
 					OR = {
-						faith = faith:ismaili
-						faith = faith:nizari
+						rite = rite:ismaili
+						rite = rite:nizari
 					}
-					NOR = {
-						has_character_flag = arrived_in_egypt
-						has_character_flag = had_hasan_sabah_20
+					has_none_of_variables = {
+						name = arrived_in_egypt
+						name = had_hasan_sabah_20
 					}
 				}
 				trigger_event = {
@@ -239,7 +245,7 @@ hasan_sabbah.1010 = {
 			else_if = {
 				limit = {
 					any_owned_story = {
-						story_type = story_hasan
+						type = story_hasan
 						exists = var:radical_points
 						var:radical_points >= 15
 						NOT = { exists = var:ultimate_foe }
@@ -253,20 +259,12 @@ hasan_sabbah.1010 = {
 			else_if = {
 				limit = {
 					any_owned_story = {
-						story_type = story_hasan
+						type = story_hasan
 						exists = var:story_phase
 						var:story_phase >= 2
 						NOT = { exists = var:ultimate_foe }
 					}
-					faith:ismaili = {
-						NOT = {
-							religious_head = scope:location.county.holder
-							religious_head = scope:location.county.holder.top_liege
-							religious_head = scope:location.county.holder.liege
-							religious_head = scope:location.county.holder.liege.liege
-						}
-					}
-					faith:nizari = {
+					faith:shia = {
 						NOT = {
 							religious_head = scope:location.county.holder
 							religious_head = scope:location.county.holder.top_liege
@@ -307,7 +305,7 @@ hasan_sabbah.1020 = {
 		NOT = {
 			has_character_flag = had_hasan_sabah_20
 		}
-		faith:ismaili.religious_head ?= { is_landed = yes }
+		faith:shia.religious_head ?= { is_landed = yes }
 	}
 
 	immediate = {
@@ -320,7 +318,7 @@ hasan_sabbah.1020 = {
 				years = 1
 			}
 		}
-		faith:ismaili.religious_head = {
+		faith:shia.religious_head = {
 			save_scope_as = ismaili_caliph
 			capital_county = { save_scope_as = cairo }
 		}
@@ -349,7 +347,7 @@ hasan_sabbah.1020 = {
 	# Let'sa not
 	option = {
 		name = hasan_sabbah.1020.b
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = medium_stress_impact_gain
 			ambitious = medium_stress_impact_gain
 		}
@@ -385,7 +383,7 @@ hasan_sabbah.1022 = {
 
 	immediate = {
 		add_character_flag = arrived_in_egypt
-		faith:ismaili.religious_head = {
+		faith:shia.religious_head = {
 			save_scope_as = ismaili_caliph
 			save_scope_as = background_throne_room_scope
 		}
@@ -405,9 +403,10 @@ hasan_sabbah.1022 = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { character:1 = faith:nizari } }
+					limit = { NOT = { character:1.rite = rite:nizari } }
 					character:1 = {
-						set_character_faith = faith:nizari
+						set_character_faith = faith:shia
+						set_character_rite = rite:nizari
 					}
 				}
 			}
@@ -416,10 +415,11 @@ hasan_sabbah.1022 = {
 		if = {
 			limit = {
 				NOT = {
-					faith = faith:nizari
+					rite = rite:nizari
 				}
 			}
-			set_character_faith = faith:nizari
+			set_character_faith = faith:shia
+			set_character_rite = rite:nizari
 		}
 		add_piety = major_piety_gain
 		ai_chance = {
@@ -433,12 +433,13 @@ hasan_sabbah.1022 = {
 		if = {
 			limit = {
 				NOT = {
-					faith = faith:ismaili
+					rite = rite:ismaili
 				}
 			}
-			set_character_faith = faith:ismaili
+			set_character_faith = faith:shia
+			set_character_rite = rite:ismaili
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -478,14 +479,14 @@ hasan_sabbah.1030 = {
 
 	trigger = {
 		OR = {
-			faith = faith:ismaili
-			faith = faith:nizari
+			rite = rite:ismaili
+			rite = rite:nizari
 		}
-		exists = faith:ismaili.religious_head
+		exists = faith:shia.religious_head
 	}
 
 	immediate = {
-		faith:ismaili.religious_head = { save_scope_as = new_ismaili_caliph }
+		faith:shia.religious_head = { save_scope_as = new_ismaili_caliph }
 		character:1 ?= {
 			liege = { save_scope_as = liege }
 			save_scope_as = nizar
@@ -498,15 +499,14 @@ hasan_sabbah.1030 = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { faith = faith:nizari } }
-					set_character_faith = faith:nizari
+					limit = { NOT = { rite = rite:nizari } }
+					set_character_faith = faith:shia
+					set_character_rite = rite:nizari
 				}
 			}
 		}
 		random_owned_story = {
-			limit = {
-				story_type = story_hasan
-			}
+			type = story_hasan
 			save_scope_as = story
 		}
 	}
@@ -553,8 +553,9 @@ hasan_sabbah.1030 = {
 			}
 		}
 		if = {
-			limit = { NOT = { faith = faith:nizari } }
-			set_character_faith = faith:nizari
+			limit = { NOT = { rite = rite:nizari } }
+			set_character_faith = faith:shia
+			set_character_rite = rite:nizari
 		}
 		add_piety = medium_piety_gain
 		if = {
@@ -592,10 +593,11 @@ hasan_sabbah.1030 = {
 			reason = friend_supported_my_claim
 		}
 		if = {
-			limit = { NOT = { faith = faith:ismaili } }
-			set_character_faith = faith:ismaili
+			limit = { NOT = { rite = rite:ismaili } }
+			set_character_faith = faith:shia
+			set_character_rite = rite:ismaili
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -610,10 +612,11 @@ hasan_sabbah.1030 = {
 			NOT = { exists = scope:new_ismaili_caliph }
 		}
 		if = {
-			limit = { NOT = { faith = faith:ismaili } }
-			set_character_faith = faith:ismaili
+			limit = { NOT = { rite = rite:ismaili } }
+			set_character_faith = faith:shia
+			set_character_rite = rite:ismaili
 		}
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			ambitious = medium_stress_impact_gain
 		}
 		ai_chance = {
@@ -641,15 +644,25 @@ hasan_sabbah.1031 = {
 	}
 
 	trigger = {
-		scope:location.county.holder.top_liege = {
-			NOT = {
-				faith = root.faith
+		trigger_if = {
+			limit = {
+				NOT = { exists = scope:location }
 			}
-			realm_size >= 10
-			highest_held_title_tier >= tier_kingdom
+			location.county.holder.top_liege ?= {
+				faith != root.faith
+				realm_size >= 10
+				highest_held_title_tier >= tier_kingdom
+			}
+		}
+		trigger_else = {
+			scope:location.county.holder.top_liege = {
+				faith != root.faith
+				realm_size >= 10
+				highest_held_title_tier >= tier_kingdom
+			}
 		}
 		any_owned_story = {
-			story_type = story_hasan
+			type = story_hasan
 			NOT = {
 				exists = var:ultimate_foe
 			}
@@ -657,9 +670,15 @@ hasan_sabbah.1031 = {
 	}
 
 	immediate = {
+		if = {
+			limit = {
+				NOT = { exists = scope:location }
+			}
+			location ?= { save_scope_as = location }
+		}
 		scope:location.county.holder.top_liege = { save_scope_as = seljuk_equivalent }
 		random_owned_story = {
-			limit = { story_type = story_hasan }
+			type = story_hasan
 			save_scope_as = story
 		}
 	}
@@ -678,7 +697,7 @@ hasan_sabbah.1031 = {
 		}
 		if = {
 			limit = {
-				faith = faith:nizari
+				rite = rite:nizari
 			}
 			custom_tooltip = unlock_final_hasan_decisions_2_tt
 		}
@@ -727,12 +746,12 @@ hasan_sabbah.1040 = {
 
 	immediate = {
 		random_owned_story = {
-			limit = { story_type = story_hasan }
+			type = story_hasan
 			var:ultimate_foe = { save_scope_as = ultimate_foe }
 		}
 	}
 
-	# Make them angy
+	# Make them angry
 	option = {
 		name = hasan_sabbah.1040.a
 		duel = {

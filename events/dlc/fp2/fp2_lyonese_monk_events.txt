@@ -63,7 +63,7 @@ scripted_trigger fp2_suitable_base_convert_trigger = {
 	NOR = {
 		has_trait = cynical
 		ai_zeal <= high_negative_ai_value
-		any_secret = { secret_type = secret_non_believer }
+		any_secret = { type = secret_non_believer }
 	}
 	# Exclude characters that might turn up as scope:irate_theocrat.
 	NOR = {
@@ -120,7 +120,7 @@ scripted_trigger fp2_lyonese_monk_suitable_annoyed_theocrat_landless_monk_trigge
 	has_trait = devoted
 	faith = scope:story.var:base_faith
 	is_available_ai_adult = yes
-	NOT = { this = scope:acolyte }
+	this != scope:acolyte
 }
 
 scripted_trigger fp2_lyonese_monk_has_suitable_annoyed_theocrat_trigger = {
@@ -233,15 +233,16 @@ scripted_effect fp2_lyonese_monk_grab_and_update_pope_effect = {
 		limit = {
 			NOT = { exists = scope:pope }
 		}
-		scope:story.var:base_faith.religious_head = { save_scope_as = pope }
+		scope:story.var:base_faith.main_rite.head_of_rite = { save_scope_as = pope }
 	}
 	# Otherwise, check to see if the current Pope is the same as the last Pope.
 	else_if = {
 		limit = {
-			NOT = { scope:story.var:base_faith.religious_head = scope:pope }
+			scope:story.var:base_faith.main_rite.head_of_rite != scope:pope
+
 		}
 		scope:pope = { save_scope_as = old_pope }
-		scope:story.var:base_faith.religious_head = { save_scope_as = pope }
+		scope:story.var:base_faith.main_rite.head_of_rite = { save_scope_as = pope }
 	}
 	# Update the capital.
 	## If scope:pope has a specific one, take that.
@@ -307,6 +308,7 @@ fp2_lyonese_monk.0001 = {
 			#General
 			age = fp2_lyonese_monk_age_value
 			faith = root.faith
+			rite = root.rite
 			culture = culture:french
 			dynasty = generate
 			#Education
@@ -318,7 +320,7 @@ fp2_lyonese_monk.0001 = {
 			trait = brave
 			#Misc
 			trait = theologian
-			trait = scholar
+			trait = lifestyle_scholar
 			trait = whole_of_body
 			trait = devoted
 			health = 5
@@ -333,9 +335,21 @@ fp2_lyonese_monk.0001 = {
 			learning = 8
 			prowess = 2
 			save_scope_as = acolyte
-		} 
-		scope:acolyte.house = { set_house_name = "dynn_d__Lyon" }
-		scope:acolyte.dynasty = { set_dynasty_name = "dynn_d__Lyon" }
+		}
+		scope:acolyte = {
+			hidden_effect = {
+				add_character_flag = {
+					flag = reduced_ailment_chance # try to keep them around long enough to actually complete the event chain
+					years = 15
+				}
+				add_trait_xp = {
+					trait = lifestyle_scholar
+					value = 65
+				}
+			}
+			house = { set_house_name = "dynn_d__Lyon" }
+			dynasty = { set_dynasty_name = "dynn_d__Lyon" }
+		}
 	}
 
 	# Of course, what's mine is yours!
@@ -380,7 +394,7 @@ fp2_lyonese_monk.0001 = {
 			days = 7
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = miniscule_stress_impact_loss
 			greedy = minor_stress_impact_gain
 			callous = minor_stress_impact_gain
@@ -403,7 +417,7 @@ fp2_lyonese_monk.0001 = {
 		add_piety = minor_piety_gain
 		scope:acolyte = { silent_disappearance_effect = yes }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = minor_stress_impact_gain
 			sadistic = minor_stress_impact_gain
 			generous = minor_stress_impact_gain
@@ -426,7 +440,7 @@ fp2_lyonese_monk.0001 = {
 		add_prestige = miniscule_prestige_gain
 		scope:acolyte = { silent_disappearance_effect = yes }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			callous = miniscule_stress_impact_loss
 			sadistic = miniscule_stress_impact_loss
 			gregarious = minor_stress_impact_gain
@@ -462,12 +476,10 @@ fp2_lyonese_monk.0002 = {
 		# Now we try to grab eligible candidates.
 		every_county_in_region = {
 			region = dlc_fp2_lyonese_monk_region
-			holder = {
-				if = {
-					limit = { fp2_lyonese_monk_0002_valid_court_trigger = yes }
-					add_to_list = potential_monk_court_list
-				}
+			limit = {
+				holder = { fp2_lyonese_monk_0002_valid_court_trigger = yes }
 			}
+			holder = { add_to_list = potential_monk_court_list }
 		}
 		# Then sort within them.
 		random_in_list = {
@@ -563,7 +575,7 @@ fp2_lyonese_monk.0011 = {
 			months = 1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = miniscule_stress_impact_loss
 			paranoid = minor_stress_impact_gain
 		}
@@ -582,11 +594,13 @@ fp2_lyonese_monk.0011 = {
 
 		# Clean house.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = miniscule_stress_impact_loss
 			shy = miniscule_stress_impact_loss
 			trusting = minor_stress_impact_gain
@@ -645,16 +659,18 @@ fp2_lyonese_monk.0021 = {
 	option = {
 		name = fp2_lyonese_monk.0021.a
 		trigger = {
-			NOR = {
-				has_character_flag = fp2_lyonese_monk_entered_controversy_flag
-				has_character_flag = fp2_lyonese_monk_entered_schism_flag
+			has_none_of_variables = {
+				name = fp2_lyonese_monk_entered_controversy_flag
+				name = fp2_lyonese_monk_entered_schism_flag
 			}
 		}
 
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 		# Clean house.
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 
 		# No stress impact for notification option.
 		ai_chance = {
@@ -674,7 +690,9 @@ fp2_lyonese_monk.0021 = {
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 		# Clean house.
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 
 		# No stress impact for notification option.
 		ai_chance = {
@@ -691,7 +709,9 @@ fp2_lyonese_monk.0021 = {
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 		# Clean house.
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 
 		# No stress impact for notification option.
 		ai_chance = {
@@ -746,12 +766,14 @@ fp2_lyonese_monk.0031 = {
 	option = {
 		name = fp2_lyonese_monk.0031.a
 		trigger = {
-			NOT = { faith = scope:story.var:base_faith }
+			faith != scope:story.var:base_faith
 		}
 
 		# Clean house.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 
@@ -766,12 +788,14 @@ fp2_lyonese_monk.0031 = {
 	option = {
 		name = fp2_lyonese_monk.0031.b
 		trigger = {
-			NOT = { scope:acolyte.faith = scope:story.var:base_faith }
+			scope:acolyte.faith != scope:story.var:base_faith
 		}
 
 		# Clean house.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 
@@ -832,7 +856,9 @@ fp2_lyonese_monk.0041 = {
 
 		# Clean house.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 
@@ -879,7 +905,9 @@ fp2_lyonese_monk.0051 = {
 
 		# Clean house.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 		# Everything ends.
 		custom_tooltip = fp2_lyonese_monk.0000.tt.teachings_fade
 
@@ -963,7 +991,7 @@ fp2_lyonese_monk.0201 = {
 			months = { 4 8 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = minor_stress_impact_gain
 			paranoid = major_stress_impact_gain
@@ -985,7 +1013,7 @@ fp2_lyonese_monk.0201 = {
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
 		# Stress loss applied in the stress impact.
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_loss
 			paranoid = minor_stress_impact_loss
 			trusting = medium_stress_impact_gain
@@ -1010,7 +1038,7 @@ fp2_lyonese_monk.0201 = {
 		# Lil bit o'consolation prestige.
 		add_prestige = miniscule_prestige_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			shy = miniscule_stress_impact_loss
 			gregarious = minor_stress_impact_gain
 			zealous = minor_stress_impact_gain
@@ -1187,7 +1215,7 @@ fp2_lyonese_monk.0221 = {
 			opinion = 20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = miniscule_stress_impact_loss
 			compassionate = miniscule_stress_impact_loss
 			callous = minor_stress_impact_gain
@@ -1214,7 +1242,7 @@ fp2_lyonese_monk.0221 = {
 			opinion = -20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = miniscule_stress_impact_loss
 			trusting = minor_stress_impact_gain
 			compassionate = minor_stress_impact_gain
@@ -1293,7 +1321,7 @@ fp2_lyonese_monk.0231 = {
 			opinion = 20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = medium_stress_impact_gain
 		}
@@ -1320,7 +1348,7 @@ fp2_lyonese_monk.0231 = {
 		}
 		scope:irate_theocrat = { add_stress = minor_stress_gain }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			zealous = medium_stress_impact_gain
 		}
@@ -1400,7 +1428,7 @@ fp2_lyonese_monk.0241 = {
 		# Scope:acolyte leaves.
 		fp2_lyonese_monk_cancel_chain_effect = { REMOVAL = banished }
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = minor_stress_impact_gain
 			eccentric = minor_stress_impact_gain
@@ -1429,7 +1457,7 @@ fp2_lyonese_monk.0241 = {
 			opinion = -10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = medium_stress_impact_gain
 		}
@@ -1459,7 +1487,7 @@ fp2_lyonese_monk.0241 = {
 			months = { 4 8 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			zealous = medium_stress_impact_gain
 		}
@@ -1541,7 +1569,7 @@ fp2_lyonese_monk.0401 = {
 			opinion = 20
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			arrogant = medium_stress_impact_gain
 			cynical = medium_stress_impact_gain
@@ -1574,7 +1602,7 @@ fp2_lyonese_monk.0401 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			arrogant = miniscule_stress_impact_loss
 			humble = medium_stress_impact_gain
@@ -1673,7 +1701,7 @@ fp2_lyonese_monk.0411 = {
 		resolve_title_and_vassal_change = scope:change
 		# Make sure the place spawns as a theocracy.
 		hidden_effect = {
-			scope:acolyte = { change_government = theocracy_government }
+			scope:acolyte = { change_government = ecclesiastical_government }
 		}
 		# Nab some converts.
 		fp2_add_random_vassals_to_converts_list_effect = { LIEGE = scope:acolyte_host }
@@ -1683,7 +1711,7 @@ fp2_lyonese_monk.0411 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			generous = minor_stress_impact_loss
 			greedy = major_stress_impact_gain
 		}
@@ -1706,7 +1734,7 @@ fp2_lyonese_monk.0411 = {
 		# Gain a little prestige for putting your foot down.
 		add_prestige = minor_prestige_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			greedy = miniscule_stress_impact_loss
 			generous = minor_stress_impact_gain
 		}
@@ -1791,7 +1819,7 @@ fp2_lyonese_monk.0421 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			zealous = minor_stress_impact_gain
 		}
@@ -1829,7 +1857,7 @@ fp2_lyonese_monk.0421 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = minor_stress_impact_gain
 		}
@@ -1867,7 +1895,7 @@ fp2_lyonese_monk.0421 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = miniscule_stress_impact_loss
 			zealous = minor_stress_impact_gain
 			cynical = minor_stress_impact_gain
@@ -1907,7 +1935,7 @@ fp2_lyonese_monk.0431 = {
 			triggered_desc = {
 				trigger = {
 					exists = scope:old_pope
-					NOT = { scope:old_pope = scope:pope }
+					scope:old_pope != scope:pope
 				}
 				desc = fp2_lyonese_monk.0431.desc.pope.different
 			}
@@ -1951,7 +1979,7 @@ fp2_lyonese_monk.0431 = {
 			opinion = 10
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = medium_stress_impact_gain
 		}
@@ -2036,7 +2064,7 @@ fp2_lyonese_monk.0431 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			zealous = medium_stress_impact_gain
 			cynical = medium_stress_impact_gain
@@ -2079,7 +2107,7 @@ fp2_lyonese_monk.0431 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			cynical = miniscule_stress_impact_loss
 			humble = medium_stress_impact_gain
@@ -2206,7 +2234,7 @@ fp2_lyonese_monk.0441 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = minor_stress_impact_gain
 		}
@@ -2241,7 +2269,7 @@ fp2_lyonese_monk.0441 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = miniscule_stress_impact_loss
 			arrogant = minor_stress_impact_gain
 		}
@@ -2270,7 +2298,7 @@ fp2_lyonese_monk.0441 = {
 		# Gain some piety out of it. Even though you're likely at a net loss by this point.
 		add_piety = medium_piety_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			cynical = minor_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -2350,7 +2378,7 @@ fp2_lyonese_monk.0601 = {
 			opinion = 50
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			zealous = miniscule_stress_impact_loss
 			humble = miniscule_stress_impact_loss
 			cynical = major_stress_impact_gain
@@ -2368,6 +2396,7 @@ fp2_lyonese_monk.0601 = {
 
 		# Welp, don't say you weren't warned.
 		excommunicate_character = {
+			EXCOMMUNICATOR = scope:pope
 			REQUESTING_CHARACTER = scope:pope
 			TARGET_CHARACTER = scope:acolyte_host
 		}
@@ -2380,7 +2409,7 @@ fp2_lyonese_monk.0601 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			cynical = miniscule_stress_impact_loss
 			arrogant = miniscule_stress_impact_loss
 			zealous = major_stress_impact_gain
@@ -2433,7 +2462,7 @@ fp2_lyonese_monk.0611 = {
 	trigger = {
 		fp2_lyonese_monk_0000_valid_for_events_trigger = yes
 		any_held_title = {
-			tier = tier_county
+			title_tier = county
 			faith = scope:story.var:base_faith
 		}
 	}
@@ -2460,8 +2489,8 @@ fp2_lyonese_monk.0611 = {
 		}
 		else = {
 			random_held_title = {
+				title_tier = county
 				limit = {
-					tier = tier_county
 					faith = scope:story.var:base_faith
 				}
 				save_scope_as = rioting_county
@@ -2503,7 +2532,7 @@ fp2_lyonese_monk.0611 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = miniscule_stress_impact_loss
 			gregarious = miniscule_stress_impact_loss
 			wrathful = medium_stress_impact_gain
@@ -2576,7 +2605,7 @@ fp2_lyonese_monk.0611 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			calm = miniscule_stress_impact_loss
 			gregarious = miniscule_stress_impact_loss
 			wrathful = medium_stress_impact_gain
@@ -2618,7 +2647,7 @@ fp2_lyonese_monk.0611 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = miniscule_stress_impact_loss
 			compassionate = major_stress_impact_gain
 		}
@@ -2648,7 +2677,7 @@ fp2_lyonese_monk.0611 = {
 		# Take a nice chunk o'piety for your zeal!
 		add_piety = major_piety_gain
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			wrathful = miniscule_stress_impact_loss
 			compassionate = major_stress_impact_gain
 		}
@@ -2685,7 +2714,7 @@ fp2_lyonese_monk.0611 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = major_stress_loss
 			shy = minor_stress_impact_loss
 			gregarious = minor_stress_impact_gain
@@ -2722,7 +2751,7 @@ scripted_trigger fp2_lyonese_monk_0621_suitable_vassal_trigger = {
 	# Available for narrative purposes.
 	is_available_ai_adult = yes
 	# And uhhh... make sure they don't nab themselves.
-	NOT = { this = scope:acolyte }
+	this != scope:acolyte
 }
 
 #	Zealous vassals protest your heresy.
@@ -2788,6 +2817,7 @@ fp2_lyonese_monk.0621 = {
 					min = -49
 				}
 				desc = fp2_lyonese_monk.0621.a.tt.success
+				min = 10
 				send_interface_toast = {
 					title = fp2_lyonese_monk.0621.a.tt.success
 					left_icon = scope:zealous_vassal
@@ -2809,6 +2839,7 @@ fp2_lyonese_monk.0621 = {
 					min = -49
 				}
 				desc = fp2_lyonese_monk.0621.a.tt.failure
+				min = 10
 				send_interface_toast = {
 					title = fp2_lyonese_monk.0621.a.tt.failure
 					left_icon = scope:zealous_vassal
@@ -2836,7 +2867,7 @@ fp2_lyonese_monk.0621 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			stubborn = miniscule_stress_impact_loss
 			humble = medium_stress_impact_gain
@@ -2877,7 +2908,7 @@ fp2_lyonese_monk.0621 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			stubborn = miniscule_stress_impact_loss
 			humble = medium_stress_impact_gain
@@ -2907,7 +2938,7 @@ fp2_lyonese_monk.0621 = {
 			opinion = 50
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = miniscule_stress_impact_loss
 			fickle = miniscule_stress_impact_loss
 			arrogant = minor_stress_impact_gain
@@ -3002,7 +3033,7 @@ fp2_lyonese_monk.0631 = {
 			months = { 6 12 }
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			base = medium_stress_gain
 			greedy = minor_stress_impact_gain
 			paranoid = minor_stress_impact_gain
@@ -3064,8 +3095,11 @@ fp2_lyonese_monk.0641 = {
 				add_prowess_skill = -2
 			}
 			add_heresiarch_trait_effect = yes
+			remove_trait = excommunicated
 			# Make this clear too.
-			hidden_effect = { force_character_skill_recalculation = yes }
+			hidden_effect = {
+				force_character_skill_recalculation = yes
+			}
 			# _Small_ diplo-immunity.
 			add_character_flag = {
 				flag = flag_hostile_actions_disabled_delay
@@ -3074,6 +3108,7 @@ fp2_lyonese_monk.0641 = {
 		}
 		# Nab a scope:pope, so that they can welcome you back.
 		fp2_lyonese_monk_grab_and_update_pope_effect = yes
+		add_known_rite = faith:adoptionist.main_rite
 	}
 
 	# Yes... yes, why not, if they're so set on accusing us?
@@ -3086,8 +3121,15 @@ fp2_lyonese_monk.0641 = {
 			flag = delay_player_faith_conversion_notification_event
 			days = 1
 		}
-		set_character_faith_with_conversion = faith:adoptionist
+		convert_to_rite_with_consequences_effect = { RITE = faith:adoptionist.main_rite }
+		if = {
+			limit = { 
+				faith:adoptionist = { has_doctrine = doctrine_monotheist }
+			}
+			custom_description_no_bullet = { text = mandala_monotheist_warning_tt }
+		}
 		add_heresiarch_trait_effect = yes
+		remove_trait = excommunicated
 		## The hidden character's list gets used.
 		every_in_list = {
 			list = hidden_converts
@@ -3124,7 +3166,7 @@ fp2_lyonese_monk.0641 = {
 			months = 1
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			trusting = miniscule_stress_impact_loss
 			cynical = miniscule_stress_impact_loss
 			paranoid = medium_stress_impact_gain
@@ -3157,7 +3199,7 @@ fp2_lyonese_monk.0641 = {
 			}
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			paranoid = miniscule_stress_impact_loss
 			zealous = miniscule_stress_impact_loss
 			cynical = medium_stress_impact_gain
@@ -3320,7 +3362,7 @@ fp2_lyonese_monk.0801 = {
 			months = 2
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			gregarious = miniscule_stress_impact_loss
 			shy = medium_stress_impact_gain
 		}
@@ -3347,7 +3389,7 @@ fp2_lyonese_monk.0801 = {
 			months = 2
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			shy = miniscule_stress_impact_loss
 			gregarious = medium_stress_impact_gain
 		}
@@ -3375,7 +3417,7 @@ fp2_lyonese_monk.0801 = {
 			months = 2
 		}
 
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			humble = miniscule_stress_impact_loss
 			arrogant = major_stress_impact_gain
 		}
@@ -3475,9 +3517,6 @@ fp2_lyonese_monk.0811 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_elipandic }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -3512,9 +3551,11 @@ fp2_lyonese_monk.0811 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0811.a.tt.success
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.a.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0811_elipandic_school_effect = yes
 					}
 				}
@@ -3526,9 +3567,11 @@ fp2_lyonese_monk.0811 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0811.a.tt.failure
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.a.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Felicians.
 						if = {
@@ -3546,7 +3589,7 @@ fp2_lyonese_monk.0811 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = miniscule_stress_impact_loss
 			deceitful = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -3566,9 +3609,6 @@ fp2_lyonese_monk.0811 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_felicitous }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -3602,10 +3642,12 @@ fp2_lyonese_monk.0811 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0811.b.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.b.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0811_felicitous_school_effect = yes
 					}
 				}
@@ -3616,10 +3658,12 @@ fp2_lyonese_monk.0811 = {
 						multiplier = -3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0811.b.tt.failure
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.b.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -3637,7 +3681,7 @@ fp2_lyonese_monk.0811 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deceitful = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -3657,9 +3701,6 @@ fp2_lyonese_monk.0811 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_radical }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -3693,10 +3734,12 @@ fp2_lyonese_monk.0811 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0811.c.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.c.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0811_radical_school_effect = yes
 					}
 				}
@@ -3708,9 +3751,11 @@ fp2_lyonese_monk.0811 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0811.c.tt.failure
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0811.c.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -3728,7 +3773,7 @@ fp2_lyonese_monk.0811 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			deceitful = medium_stress_impact_gain
@@ -3786,7 +3831,7 @@ fp2_lyonese_monk.0811 = {
 scripted_effect fp2_lyonese_monk_0821_elipandic_school_effect = {
 	custom_tooltip = fp2_lyonese_monk.0000.tt.favour_elipandics
 	show_as_tooltip = {
-		faith:adoptionist = { add_doctrine = tenet_religious_legal_pronouncements }
+		faith:adoptionist = { add_tenet = tenet_religious_legal_pronouncements }
 	}
 }
 
@@ -3794,8 +3839,8 @@ scripted_effect fp2_lyonese_monk_0821_elipandic_school_effect = {
 scripted_effect fp2_lyonese_monk_0821_felicitous_school_effect = {
 	custom_tooltip = fp2_lyonese_monk.0000.tt.favour_felicians
 	faith:adoptionist = {
-		remove_doctrine = tenet_religious_legal_pronouncements
-		add_doctrine = tenet_false_conversion_sanction
+		remove_tenet = tenet_religious_legal_pronouncements
+		add_tenet = tenet_false_conversion_sanction
 	}
 }
 
@@ -3803,8 +3848,8 @@ scripted_effect fp2_lyonese_monk_0821_felicitous_school_effect = {
 scripted_effect fp2_lyonese_monk_0821_radical_school_effect = {
 	custom_tooltip = fp2_lyonese_monk.0000.tt.favour_radicals
 	faith:adoptionist = {
-		remove_doctrine = tenet_religious_legal_pronouncements
-		add_doctrine = tenet_pursuit_of_power
+		remove_tenet = tenet_religious_legal_pronouncements
+		add_tenet = tenet_pursuit_of_power
 	}
 }
 
@@ -3863,9 +3908,6 @@ fp2_lyonese_monk.0821 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_elipandic }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -3899,10 +3941,12 @@ fp2_lyonese_monk.0821 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0821.a.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.a.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0821_elipandic_school_effect = yes
 					}
 				}
@@ -3914,9 +3958,11 @@ fp2_lyonese_monk.0821 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0821.a.tt.failure
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.a.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Felicians.
 						if = {
@@ -3934,7 +3980,7 @@ fp2_lyonese_monk.0821 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = miniscule_stress_impact_loss
 			deceitful = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -3954,9 +4000,6 @@ fp2_lyonese_monk.0821 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_felicitous }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -3990,10 +4033,12 @@ fp2_lyonese_monk.0821 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0821.b.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.b.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0821_felicitous_school_effect = yes
 					}
 				}
@@ -4004,10 +4049,12 @@ fp2_lyonese_monk.0821 = {
 						multiplier = -3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0821.b.tt.failure
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.b.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -4025,7 +4072,7 @@ fp2_lyonese_monk.0821 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deceitful = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -4045,9 +4092,6 @@ fp2_lyonese_monk.0821 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_radical }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -4082,9 +4126,11 @@ fp2_lyonese_monk.0821 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0821.c.tt.success
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.c.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0821_radical_school_effect = yes
 					}
 				}
@@ -4096,9 +4142,11 @@ fp2_lyonese_monk.0821 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0821.c.tt.failure
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0821.c.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -4116,7 +4164,7 @@ fp2_lyonese_monk.0821 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			deceitful = medium_stress_impact_gain
@@ -4243,9 +4291,6 @@ fp2_lyonese_monk.0831 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_elipandic }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -4279,10 +4324,12 @@ fp2_lyonese_monk.0831 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0831.a.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.a.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0831_elipandic_school_effect = yes
 					}
 				}
@@ -4293,10 +4340,12 @@ fp2_lyonese_monk.0831 = {
 						multiplier = -3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0831.a.tt.failure
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.a.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Felicians.
 						if = {
@@ -4314,7 +4363,7 @@ fp2_lyonese_monk.0831 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			stubborn = miniscule_stress_impact_loss
 			deceitful = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -4334,9 +4383,6 @@ fp2_lyonese_monk.0831 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_felicitous }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -4370,10 +4416,12 @@ fp2_lyonese_monk.0831 = {
 						multiplier = 3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0831.b.tt.success
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.b.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0831_felicitous_school_effect = yes
 					}
 				}
@@ -4384,10 +4432,12 @@ fp2_lyonese_monk.0831 = {
 						multiplier = -3.5
 						min = -49
 					}
+					min = 10
 					desc = fp2_lyonese_monk.0831.b.tt.failure
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.b.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -4405,7 +4455,7 @@ fp2_lyonese_monk.0831 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			deceitful = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			arrogant = medium_stress_impact_gain
@@ -4425,9 +4475,6 @@ fp2_lyonese_monk.0831 = {
 				limit = { scope:conclave_engagement = flag:piety }
 				piety >= fp2_lyonese_monk_conclave_cost_value
 			}
-			# Can't take a stance on something that scope:acolyte is already pushing for.
-			#TODO_CD_FP2_POLISH; fix this.
-			#NOT = { scope:acolyte_stance = flag:school_radical }
 		}
 		show_as_unavailable = {
 			# Piety path costing.
@@ -4462,9 +4509,11 @@ fp2_lyonese_monk.0831 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0831.c.tt.success
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.c.tt.success
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						fp2_lyonese_monk_0831_radical_school_effect = yes
 					}
 				}
@@ -4476,9 +4525,11 @@ fp2_lyonese_monk.0831 = {
 						min = -49
 					}
 					desc = fp2_lyonese_monk.0831.c.tt.failure
+					min = 10
 					send_interface_toast = {
 						title = fp2_lyonese_monk.0831.c.tt.failure
 						left_icon = scope:council_1_venue
+						right_icon = faith:adoptionist
 						# We take scope:acolyte's preference.
 						## Elipandics.
 						if = {
@@ -4496,7 +4547,7 @@ fp2_lyonese_monk.0831 = {
 		}
 
 		# Stress impacts here based on the virtues lionised by each school.
-		stress_impact = {
+		stress_and_fulfillment_impact = {
 			arrogant = miniscule_stress_impact_loss
 			stubborn = medium_stress_impact_gain
 			deceitful = medium_stress_impact_gain
@@ -4560,19 +4611,19 @@ fp2_lyonese_monk.0841 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = doctrine_pluralism_pluralistic }
+					faith:adoptionist = { main_rite = { rite_has_doctrine = doctrine_pluralism_pluralistic } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.pluralist
 			}
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = doctrine_pluralism_righteous }
+					faith:adoptionist = { main_rite = { rite_has_doctrine = doctrine_pluralism_righteous } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.righteous
 			}
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = doctrine_pluralism_fundamentalist }
+					faith:adoptionist = { main_rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.fundamentalist
 			}
@@ -4581,19 +4632,19 @@ fp2_lyonese_monk.0841 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = tenet_false_conversion_sanction }
+					faith:adoptionist = { main_rite = { rite_has_tenet = tenet_false_conversion_sanction } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.sanctioned_false_conversions
 			}
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = tenet_religious_legal_pronouncements }
+					faith:adoptionist = { main_rite = { rite_has_tenet = tenet_religious_legal_pronouncements } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.religious_law
 			}
 			triggered_desc = {
 				trigger = {
-					faith:adoptionist = { has_doctrine = tenet_pursuit_of_power }
+					faith:adoptionist = { main_rite = { rite_has_tenet = tenet_pursuit_of_power } }
 				}
 				desc = fp2_lyonese_monk.0841.desc.pursuit_of_power
 			}
@@ -4665,7 +4716,7 @@ fp2_lyonese_monk.0841 = {
 				if = {
 					limit = { scope:acolyte_stance = flag:school_elipandic }
 					# The one we've already got.
-					show_as_tooltip = { add_doctrine = tenet_religious_legal_pronouncements }
+					show_as_tooltip = { add_tenet = tenet_religious_legal_pronouncements }
 					# And the two we can genuinely add.
 					add_doctrine = doctrine_pluralism_righteous
 					add_doctrine = special_doctrine_adoptionist_school_elipandic_doctrine
@@ -4675,21 +4726,21 @@ fp2_lyonese_monk.0841 = {
 					limit = { scope:acolyte_stance = flag:school_felicitous }
 					# Remove some inappropriate ones.
 					hidden_effect = { remove_doctrine = doctrine_pluralism_fundamentalist }
-					remove_doctrine = tenet_religious_legal_pronouncements
+					remove_tenet = tenet_religious_legal_pronouncements
 					# Add our new ones.
 					add_doctrine = doctrine_pluralism_pluralistic
-					add_doctrine = tenet_false_conversion_sanction
+					add_tenet = tenet_false_conversion_sanction
 					add_doctrine = special_doctrine_adoptionist_school_felicitous_doctrine
 				}
 				# Radicals.
 				if = {
 					limit = { scope:acolyte_stance = flag:school_radical }
 					# Remove the inappropriate ones.
-					remove_doctrine = tenet_religious_legal_pronouncements
+					remove_tenet = tenet_religious_legal_pronouncements
 					# Add our new ones.
 					show_as_tooltip = { add_doctrine = doctrine_pluralism_fundamentalist }
 					# Add our new ones.
-					add_doctrine = tenet_pursuit_of_power
+					add_tenet = tenet_pursuit_of_power
 					add_doctrine = special_doctrine_adoptionist_school_radical_doctrine
 				}
 			}
@@ -4699,34 +4750,34 @@ fp2_lyonese_monk.0841 = {
 					# Pluralism.
 					## Elipandics - 
 					if = {
-						limit = { has_doctrine = doctrine_pluralism_fundamentalist }
+						limit = { main_rite = { rite_has_doctrine = doctrine_pluralism_fundamentalist } }
 						add_doctrine = doctrine_pluralism_fundamentalist
 					}
 					## Felicians - 
 					if = {
-						limit = { has_doctrine = doctrine_pluralism_pluralistic }
+						limit = { main_rite = { rite_has_doctrine = doctrine_pluralism_pluralistic } }
 						add_doctrine = doctrine_pluralism_pluralistic
 					}
 					## Radicals - 
 					if = {
-						limit = { has_doctrine = doctrine_pluralism_righteous }
+						limit = { main_rite = { rite_has_doctrine = doctrine_pluralism_righteous } }
 						add_doctrine = doctrine_pluralism_righteous
 					}
 					# Tenets.
 					## Elipandics - 
 					if = {
-						limit = { has_doctrine = tenet_religious_legal_pronouncements }
-						add_doctrine = tenet_religious_legal_pronouncements
+						limit = { main_rite = { rite_has_tenet = tenet_religious_legal_pronouncements } }
+						add_tenet = tenet_religious_legal_pronouncements
 					}
 					## Felicians - 
 					if = {
-						limit = { has_doctrine = tenet_false_conversion_sanction }
-						add_doctrine = tenet_false_conversion_sanction
+						limit = { main_rite = { rite_has_tenet = tenet_false_conversion_sanction } }
+						add_tenet = tenet_false_conversion_sanction
 					}
 					## Radicals - 
 					if = {
-						limit = { has_doctrine = tenet_pursuit_of_power }
-						add_doctrine = tenet_pursuit_of_power
+						limit = { main_rite = { rite_has_tenet = tenet_pursuit_of_power } }
+						add_tenet = tenet_pursuit_of_power
 					}
 					# School.
 					## Elipandics - 
@@ -4822,6 +4873,8 @@ fp2_lyonese_monk.0841 = {
 
 	after = {
 		# Clean up the story.
-		scope:story = { end_story = yes }
+		hidden_effect = {
+			scope:story = { end_story = yes }
+		}
 	}
 }

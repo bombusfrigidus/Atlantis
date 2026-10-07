@@ -41,9 +41,7 @@
 								any_sub_realm_county = { count > 1 }
 							}
 						}
-						NOT = {
-							this = holder.capital_county
-						}
+						this != holder.capital_county
 					}
 				}
 				weight = {
@@ -108,7 +106,7 @@ create_almohads_effect = {
 	}
 	faith:masmudi = {
 		change_fervor = {
-			value = 50
+			value = major_fervor_gain
 			desc = fervor_gain_almohads
 		}
 	}
@@ -281,7 +279,7 @@ almohads_find_target_titles_effect = {
 				NOT = { scope:almohad_county.holder.top_liege = title:k_maghreb.holder.top_liege }
 				scope:almohad_county.holder.top_liege = {
 					any_sub_realm_county = {
-						NOT = { this = scope:almohad_county }
+						this != scope:almohad_county
 						kingdom = title:k_maghreb
 					}
 				}

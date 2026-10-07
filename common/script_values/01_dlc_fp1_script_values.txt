@@ -37,7 +37,7 @@ gruesome_festival_key_sacrifice_piety_value = {
 	# Landless faith hostility block.
 	if = {
 		limit = {
-			scope:sacrifice = { is_landed_or_landless_administrative = no }
+			scope:sacrifice = { is_landed_or_landless_administrative_or_theocratic = no }
 		}
 		# HumSac'ing a hostile faith.
 		if = {
@@ -48,33 +48,7 @@ gruesome_festival_key_sacrifice_piety_value = {
 						value = faith_hostile_level
 					}
 					# Exempt faiths/families you syncretise with.
-					NOR = {
-						# Eastern Family syncretism.
-						AND = {
-							has_doctrine = tenet_eastern_syncretism
-							scope:sacrifice.religion = { is_in_family = rf_eastern }
-						}
-						# Unreformed pagans syncretism.
-						AND = {
-							has_doctrine = tenet_unreformed_syncretism
-							scope:sacrifice.faith = { has_doctrine_parameter = unreformed }
-						}
-						# Christian syncretism.
-						AND = {
-							has_doctrine = tenet_christian_syncretism
-							scope:sacrifice.religion = religion:christianity_religion
-						}
-						# Islamic syncretism.
-						AND = {
-							has_doctrine = tenet_islamic_syncretism
-							scope:sacrifice.religion = religion:islam_religion
-						}
-						# Jewish syncretism.
-						AND = {
-							has_doctrine = tenet_jewish_syncretism
-							scope:sacrifice.religion = religion:judaism_religion
-						}
-					}
+					NOT = { main_rite = { rite_is_syncretic_with = { RITE = scope:sacrifice.rite } } }
 				}
 			}
 			add = minor_piety_gain
@@ -96,9 +70,9 @@ gruesome_festival_key_sacrifice_piety_value = {
 	scope:sacrifice = {
 		if = {
 			limit = {
-				is_landed_or_landless_administrative = yes
+				is_landed_or_landless_administrative_or_theocratic = yes
 				# Exempt HoFs: they get their own block.
-				NOT = { this = faith.religious_head }
+				this != faith.religious_head
 			}
 			# No extra gain for HumSac'ing a baron.
 			# HumSac'ing a count.
@@ -121,6 +95,10 @@ gruesome_festival_key_sacrifice_piety_value = {
 				limit = { highest_held_title_tier = tier_empire }
 				add = major_piety_gain
 			}
+			if = {
+				limit = { highest_held_title_tier = tier_hegemony }
+				add = massive_piety_gain
+			}
 		}
 	}
 	# HoF block.
@@ -129,7 +107,7 @@ gruesome_festival_key_sacrifice_piety_value = {
 		limit = {
 			scope:sacrifice = {
 				this = faith.religious_head
-				NOT = { faith = scope:gf_faith }
+				faith != scope:gf_faith
 			}
 		}
 		add = major_piety_gain
@@ -163,7 +141,7 @@ gruesome_festival_regular_animal_piety_value = {
 	# If not of the faith, invert this & reduce it a little.
 	if = {
 		limit = {
-			NOT = { faith = scope:gf_faith }
+			faith != scope:gf_faith
 		}
 		# HumSac faiths still aren't happy.
 		if = {
@@ -189,7 +167,7 @@ gruesome_festival_magnificent_animal_piety_value = {
 	# If not of the faith, invert this & reduce it a little.
 	if = {
 		limit = {
-			NOT = { faith = scope:gf_faith }
+			faith != scope:gf_faith
 		}
 		# HumSac faiths still aren't happy.
 		if = {
@@ -215,7 +193,7 @@ gruesome_festival_regular_human_piety_value = {
 	# If not of the faith, invert this & reduce it a little.
 	if = {
 		limit = {
-			NOT = { faith = scope:gf_faith }
+			faith != scope:gf_faith
 		}
 		# HumSac faiths still aren't happy.
 		if = {
@@ -241,7 +219,7 @@ gruesome_festival_magnificent_human_piety_value = {
 	# If not of the faith, invert this & reduce it a little.
 	if = {
 		limit = {
-			NOT = { faith = scope:gf_faith }
+			faith != scope:gf_faith
 		}
 		# HumSac faiths still aren't happy.
 		if = {
@@ -501,7 +479,7 @@ scandinavian_adventurer_priority_value = {
 	#Weight down heavily for pacifist faith.
 	if = {
 		limit = {
-			faith = { has_doctrine_parameter = pacifist_opinion_active }
+			faith = { has_doctrine_parameter = pacifist }
 		}
 		add = -30
 	}
@@ -641,7 +619,7 @@ scandinavian_adventurer_target_title_priority_value = {
 	#Mark up wetlands, as it beats forests & taiga.
 	if = {
 		limit = {
-			title_province = { terrain = wetlands}
+			title_province = { terrain = wetlands }
 		}
 		add = 5
 	}
@@ -655,9 +633,7 @@ scandinavian_adventurer_target_title_priority_value = {
 	#Non-tribal lands are desirable, since they're richer.
 	if = {
 		limit = {
-			holder = {
-				NOT = { government_has_flag = government_is_tribal }
-			}
+			title_province = { holding_is_tribal = yes }
 		}
 		add = 10
 	}
@@ -738,7 +714,7 @@ fp1_best_available_riddler_value = {
 		add = 5
 	}
 	if = {
-		limit = { has_trait = scholar }
+		limit = { has_trait = erudite }
 		add = 5
 	}
 	if = {
@@ -1000,7 +976,7 @@ fp1_jomsvikings_coup_priority_value = {
 		limit = {
 			holder = {
 				any_held_title = {
-					tier = tier_county
+					title_tier = county
 					count = 1
 				}
 				NOT = {
@@ -1130,4 +1106,9 @@ bondi_gold_value = {
 	divide = 5
 	ceiling = yes
 	multiply = 5
+}
+
+north_sea_held_value = {
+	value = 0
+	add = scope:temp_scope.title_held_years
 }

@@ -1,12 +1,15 @@
 ﻿activity_chariot_race = {
 	is_shown = {
-		highest_held_title_tier = tier_empire
+		highest_held_title_tier >= tier_empire
 		is_landed = yes
 		culture = { has_cultural_parameter = hosts_chariot_races }
 		has_dlc_feature = roads_to_power
+		ai_activity_war_check = yes
+		ai_activity_coronation_check = yes
 	}
 
 	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_chariot_race }
 		is_available_adult = yes
 	}
 
@@ -24,50 +27,16 @@
 	}
 
 	on_invalidated = {
-		# Host becomes unlanded
-		if = {
-			limit = {
-				scope:host = { is_landed = no }
-			}
-			scope:activity = {
-				activity_type = { save_scope_as = activity_type }
-			}
-			every_attending_character = {
-				trigger_event = activity_system.0320
-			}
-		}
-		if = { # No one shows up
-			limit = {
-				has_attending_activity_guests = no
-			}
-			scope:activity = {
-				activity_type = { save_scope_as = activity_type }
-				activity_location = { save_scope_as = location }
-			}
-			scope:host = { trigger_event = activity_system.0100 }
-		}
+		invalidation_incapable_effect = yes
+		invalidation_unlanded_effect = yes
+		invalidation_imprisoned_effect = yes
+		invalidation_nobody_present_effect = yes
+		invalidation_host_isolated_effect = yes
 		chariot_race_remove_variables_effect = yes
 	}
 
 	on_host_death = {
-		# Make the title heir the new host
-		if = {
-			limit = { exists = scope:host.primary_title.current_heir }
-			scope:host.primary_title.current_heir = { save_scope_as = new_host }
-		}
-		# Otherwise pass to primary heir
-		else = {
-			scope:host.primary_heir = { save_scope_as = new_host }
-		}
-
-		# If we have a new host, set them
-		if = {
-			limit = { exists = scope:new_host }
-			set_activity_host = scope:new_host
-			scope:new_host = {
-				trigger_event = { id = activity_system.0080 days = 1 }
-			}
-		}
+		activity_try_use_new_host_effect = yes
 	}
 
 	# desc is only shown in debug AI watch window
@@ -130,6 +99,8 @@
 				desc = reclusive
 			}
 		}
+	
+		add = activity_general_ai_will_do_value
 	}
 
 	ai_check_interval = 60
@@ -292,6 +263,9 @@
 		chariot_option_entertainment = {
 			
 			chariot_entertainment_bad = {
+				default = {
+					has_personal_tenet_flag = tenet_vows_of_poverty_humble_host
+				}
 			
 			# desc is only shown in debug AI watch window
 				ai_will_do = {
@@ -318,7 +292,12 @@
 				}
 			}
 			chariot_entertainment_normal = {
-				default = yes
+				is_valid = {
+					pam_vows_of_poverty_premium_activity_option_valid_trigger = yes
+				}
+				default = {
+					NOT = { has_personal_tenet_flag = tenet_vows_of_poverty_humble_host }
+				}
 				# desc is only shown in debug AI watch window
 				ai_will_do = {
 					value = 10
@@ -344,6 +323,9 @@
 				}
 			}
 			chariot_entertainment_good = {
+				is_valid = {
+					pam_vows_of_poverty_premium_activity_option_valid_trigger = yes
+				}
 				# desc is only shown in debug AI watch window
 				ai_will_do = {
 					value = 10
@@ -400,9 +382,14 @@
 										short_term_gold >= chariot_race_entrance_fee
 										is_ai = no
 									}
-									NOT = { this = scope:host }
+									this != scope:host
 								}
-								remove_short_term_gold = chariot_race_entrance_fee
+								send_interface_toast = {
+									type = event_toast_effect_neutral
+									title = activity_chariot_race_pay_entrance_fee
+									left_icon = scope:host
+									remove_short_term_gold = chariot_race_entrance_fee
+								}
 							}
 							# we add some money to the pot either way to offset the gains in case a bunch of people make good bets
 							scope:activity = {
@@ -452,6 +439,7 @@
 							location = scope:activity.activity_location
 							template = generic_bookmaker_character
 							faith = scope:activity.activity_location.faith
+							rite = scope:activity.activity_location.rite
 							culture = scope:activity.activity_location.culture
 							save_scope_as = bookmaker
 						}
@@ -596,7 +584,7 @@
 					scope:activity = {
 						every_guest_subset = {
 							name = spectators
-							limit = { NOT = { this = scope:host } }
+							limit = { this != scope:host }
 							disburse_chariot_race_activity_spectator_rewards = yes
 							# Notification event for spectators
 							trigger_event = chariot_race.0501
@@ -619,6 +607,7 @@
 
 		defaults = {
 			1 = activity_invite_rule_vassals_and_below
+			1 = activity_invite_rule_confederates
 			1 = activity_invite_rule_tributaries
 			1 = activity_invite_rule_charioteers
 			2 = activity_invite_rule_friends
@@ -679,7 +668,7 @@
 			is_required = no
 
 			can_pick = {
-				NOT = { this = scope:host }
+				this != scope:host
 				is_healthy = yes
 				is_adult = yes
 				NOT = { is_spouse_of = scope:host }
@@ -806,12 +795,16 @@
 		chariot_race_pivotal_moment_widget = "widget_activity_pivotal_moment_event_window"
 	}
 
-	### Backgrounds
+	###################
+	# GRAPHICS
+	###################
+
+	header_background = "gfx/interface/illustrations/activity_header_backgrounds/activity_chariot_race.dds"
 
 	# Travel
 	background = { # Bridge
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_riverside_province = yes
 				geographical_region = world_europe
@@ -827,10 +820,40 @@
 		environment = "environment_travel_bridge"
 		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
 	}
+
+	background = { #Rice Fields - If we have Paddy fields AND/or terraced hills
+	#This goes before other terrain since it can override in many different terrains if built
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				OR = {
+					terrain = terraced_hills
+					has_building_or_higher = paddy_fields_01
+				}
+			}
+		}
+		texture = "gfx/interface/illustrations/event_scenes/tgp_rice_fields.dds"
+		environment = "environment_tgp_rice_fields"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_rice_fields"
+	}
+
+	background = { #Farmlands - East Asia
+		trigger = {
+			scope:host.location != scope:activity.activity_location
+			scope:host.location = {
+				terrain = farmlands
+				culture = { has_graphical_east_asia_culture_group_trigger = yes }
+			}
+		}
+		texture = "gfx/interface/illustrations/event_scenes/tgp_farm_asia.dds"
+		environment = "environment_tgp_farm_asia"
+		ambience = "event:/DLC/EP4/SFX/Events/Event_Backgrounds/tgp_farm_asia"
+	}
 	
 	background = { # Farmland, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				exists = province_owner
@@ -842,7 +865,7 @@
 	}
 	background = { # Farmland, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				terrain = farmlands
 				NOT = { exists = province_owner }
@@ -855,7 +878,7 @@
 
 	background = { #Desert, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				exists = province_owner
@@ -867,7 +890,7 @@
 	}
 	background = { #Desert, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_desert_trigger = yes
 				NOT = { exists = province_owner }
@@ -880,7 +903,7 @@
 
 	background = { #forest snowy
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location ?= { hunt_snowy_forest_trigger = yes }
 		}
 		texture = "gfx/interface/illustrations/event_scenes/ep2_hunt_snowy_forest.dds"
@@ -890,7 +913,7 @@
 
 	background = { #forest_pine
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_pine_trigger = yes
 			}
@@ -902,7 +925,7 @@
 
 	background = { #forest
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_forest_trigger = yes
 			}
@@ -914,7 +937,7 @@
 
 	background = { #mountains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				exists = province_owner
@@ -926,7 +949,7 @@
 	}
 	background = { #mountains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_mountains_trigger = yes
 				NOT = { exists = province_owner }
@@ -939,7 +962,7 @@
 
 	background = { #steppe, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				exists = province_owner
@@ -951,7 +974,7 @@
 	}
 	background = { #steppe, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_steppe_trigger = yes
 				NOT = { exists = province_owner }
@@ -964,7 +987,7 @@
 
 	background = { #drylands (formerly desert)
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_drylands_trigger = yes
 			}
@@ -976,7 +999,7 @@
 
 	background = { #wetlands
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_wetlands_trigger = yes
 			}
@@ -988,7 +1011,7 @@
 
 	background = { #jungle
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_wilderness_jungle_trigger = yes
 			}
@@ -1000,7 +1023,7 @@
 
 	background = { #plains, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				exists = province_owner
@@ -1012,7 +1035,7 @@
 	}
 	background = { #plains, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_plains_trigger = yes
 				NOT = { exists = province_owner }
@@ -1025,7 +1048,7 @@
 
 	background = { #hills, settled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				exists = province_owner
@@ -1037,7 +1060,7 @@
 	}
 	background = { #hills, unsettled
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				graphical_hills_trigger = yes
 				NOT = { exists = province_owner }
@@ -1050,7 +1073,7 @@
 
 	background = { #sea
 		trigger = {
-			NOT = { scope:host.location = scope:activity.activity_location }
+			scope:host.location != scope:activity.activity_location
 			scope:host.location = {
 				is_sea_province = yes
 			}

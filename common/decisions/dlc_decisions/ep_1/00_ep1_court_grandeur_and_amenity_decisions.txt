@@ -18,46 +18,47 @@
 #############################################
 
 # Pay a little prestige to boot out all the guests from your palace.
+### Order Mass Eviction ###
 order_mass_eviction_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
 	}
 	ai_check_interval = 0
-	
+
 	sort_order = 79
 
 	desc = order_mass_eviction_decision_desc
 	selection_tooltip = order_mass_eviction_decision_tooltip
 
 	is_shown = {
-		# Standard filter checks.
-		is_playable_character = yes
 		has_royal_court = yes
-		has_dlc_feature = royal_court
 		# Has a suitable lack of rooms.
 		amenity_level = {
-			type = court_lodging_standards
+			target = court_lodging_standards
 			value <= medium_amenity_level
 		}
+		has_dlc_feature = royal_court
+		# Standard filter checks.
+		is_playable_character = yes
 	}
 
 	is_valid = {
 		# Restate the amenity level requirement so it's visible.
 		amenity_level = {
-			type = court_lodging_standards
+			target = court_lodging_standards
 			value <= medium_amenity_level
 		}
 		# At least one guest if you have more than the minimum amenities.
 		trigger_if = {
 			limit = {
 				amenity_level = {
-					type = court_lodging_standards
+					target = court_lodging_standards
 					value > low_amenity_level
 				}
 			}
 			custom_description = {
 				text = AT_LEAST_ONE_GUEST_TRIGGER
-				any_pool_guest = { count >= 1 }
+				any_pool_guest = { }
 			}
 		}
 		# At least one guest or evictable  courtier if you have low amenities.
@@ -65,7 +66,7 @@ order_mass_eviction_decision = {
 			OR = {
 				custom_description = {
 					text = AT_LEAST_ONE_GUEST_TRIGGER
-					any_pool_guest = { count >= 1 }
+					any_pool_guest = { }
 				}
 				custom_description = {
 					text = AT_LEAST_ONE_UNIMPORTANT_COURTIER_TRIGGER
@@ -90,7 +91,7 @@ order_mass_eviction_decision = {
 		if = {
 			limit = {
 				amenity_level = {
-					type = court_lodging_standards
+					target = court_lodging_standards
 					value > low_amenity_level
 				}
 			}
@@ -119,6 +120,7 @@ order_mass_eviction_decision = {
 #############################################
 
 # Arrange for a major room to be remodelled with decor inspired by a more grandiose culture.
+### Exoticize a Grand Hall ###
 exoticise_a_grand_hall_decision = {
 	picture = {
 		trigger = {
@@ -135,8 +137,7 @@ exoticise_a_grand_hall_decision = {
 					OR = {
 						culture = { has_cultural_pillar = heritage_byzantine }
 						capital_barony ?= title:b_atlantis
-						primary_title ?= title:e_byzantium
-						primary_title ?= title:e_roman_empire
+						is_roman_emperor_primary_title_trigger = yes
 					}
 				}
 			}
@@ -150,42 +151,52 @@ exoticise_a_grand_hall_decision = {
 		reference = "gfx/interface/illustrations/event_scenes/mpo_tent_interior_mongol.dds"
 	}
 	picture = {
+		trigger = {
+			government_has_flag = government_is_celestial
+		}
+		reference = "gfx/interface/illustrations/event_scenes/tgp_asia_throne_room.dds"
+	}
+	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_knight_kneeling.dds"
 	}
-	ai_check_interval = 120
-	
+
+	ai_check_interval_by_tier = {
+		barony = 0
+		county = 0
+		duchy = 0
+		kingdom = 120
+		empire = 120
+		hegemony = 120
+	}
+
 	sort_order = 80
 
 	desc = exoticise_a_grand_hall_decision_desc
 	selection_tooltip = exoticise_a_grand_hall_decision_tooltip
 
 	is_shown = {
-		# Standard filter checks.
-		is_playable_character = yes
 		has_royal_court = yes
-		has_dlc_feature = royal_court
-		# Has suitably amazing rooms.
-		amenity_level = {
-			type = court_lodging_standards
-			value >= very_high_amenity_level
-		}
 		# Grandeur requirements.
-		OR = {
+		trigger_if = {
+			limit = { is_ai = yes }
 			# AI need to border a player or an empire.
-			AND = {
-				is_ai = yes
-				OR = {
-					any_player = {
-						has_royal_court = yes
-						any_neighboring_and_across_water_realm_same_rank_owner = { this = root }
-						any_neighboring_and_across_water_top_liege_realm_owner = { this = root }
-					}
-					any_neighboring_and_across_water_top_liege_realm_owner = { this.primary_title.tier = tier_empire }
+			OR = {
+				any_neighboring_and_across_water_top_liege_realm_owner = { this.primary_title.tier >= tier_empire }
+				any_player = {
+					any_neighboring_and_across_water_top_liege_realm_owner = { this = root }
+					any_neighboring_and_across_water_realm_same_rank_owner = { this = root }
+					has_royal_court = yes
 				}
 			}
-			# Players handle this in the is_valid block.
-			is_ai = no
 		}
+		# Has suitably amazing rooms.
+		amenity_level = {
+			target = court_lodging_standards
+			value >= very_high_amenity_level
+		}
+		has_dlc_feature = royal_court
+		# Standard filter checks.
+		is_playable_character = yes
 	}
 
 	is_valid = {
@@ -193,6 +204,10 @@ exoticise_a_grand_hall_decision = {
 		trigger_if = {
 			limit = { is_ai = no }
 			OR = {
+				custom_description = {
+					text = exoticise_a_grand_hall_decision.tt.any_valid_hegemony
+					any_hegemony = { exoticise_a_grand_hall_decision_list_builder_guts_trigger = yes }
+				}
 				custom_description = {
 					text = exoticise_a_grand_hall_decision.tt.any_valid_empire
 					any_empire = { exoticise_a_grand_hall_decision_list_builder_guts_trigger = yes }

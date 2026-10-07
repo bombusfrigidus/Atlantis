@@ -37,8 +37,11 @@
 		base = 0
 		ai_agent_join_chance_basic_suite_modifier = yes
 	}
-	valid_agent = { is_valid_agent_standard_trigger = yes }
-	agent_groups_owner_perspective = { councillors courtiers guests }
+	valid_agent = { 
+		is_valid_agent_standard_trigger = yes
+		title_scheme_valid_agent_trigger = yes
+	}
+	agent_groups_owner_perspective = { councillors courtiers guests puppets }
 
 	odds_prediction = {
 		add = base_odds_prediction_target_is_title_value
@@ -65,28 +68,7 @@
 				multiply = 5
 			}
 		}
-		# house_head_request_interaction
-		modifier = {
-			add = political_scheme_variable_list_value
-			scope:owner = {
-				has_variable_list = supporting_political_schemes
-			}
-			desc = HOUSE_HEAD_SCHEME_SUPPORT_DESC
-		}
-		modifier = {
-			add = -10
-			scope:owner = { has_character_modifier = political_schemes_distracted_modifier }
-			desc = political_schemes_distracted_modifier
-		}
-		#Modifiers
-		modifier = {
-			scope:owner = {
-				has_character_modifier = united_political_agents_modifier
-				is_vassal_of = scope:target
-			}
-			desc = united_political_agents_modifier
-			add = 15
-		}
+		political_scheme_title_base_chance_modifier = yes
 	}
 
 	# On Actions
@@ -137,7 +119,7 @@
 				if = { # Invalidation due to loss of land
 					limit = {
 						exists = scope:target.holder
-						NOT = { scope:target.holder = scope:owner }
+						scope:target.holder != scope:owner
 					}
 					custom_tooltip = scheme_target_another_holder
 				}

@@ -1,0 +1,169 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+e_suvarnabhumi = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_pagan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_pagan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tagaung = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sriksetra = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_arakan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ramannadesa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_mongnai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_yongchang = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tengchong = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_dvaravati = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_lop_buri = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_muang_sua = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sukhothai = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_tun_sun = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_haripunjaya = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_sipsongpanna = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_siam = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_brunei = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_brunei = {
+	capital = c_atlantis
+	landless = yes
+}
+
+e_kambuja = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_funan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_baigaur = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vyadhapura = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_angkor = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_ratanakiri = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_angkor_borey = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_chenla = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_phonsavan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_mukdahan = {
+	capital = c_atlantis
+	landless = yes
+}
+
+k_champa = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_indrapura = {
+	capital = c_atlantis
+	landless = yes
+}
+
+d_vijaya = {
+	capital = c_atlantis
+	landless = yes
+}
